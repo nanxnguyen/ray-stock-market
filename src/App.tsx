@@ -11,8 +11,8 @@ import type {
 import type { VietcapFilterGroup } from './types/vietcap'
 import { VN30_SYMBOLS, createInitialIndices } from './data/mockMarket'
 import { createInitialStocks, tickStocks, tickIndices } from './lib/marketSimulation'
-import { formatPrice, formatQuantity, priceColor, toPolylinePoints, toAreaPath } from './lib/marketFormat'
-import { filterStocks } from './lib/filterStocks'
+import { formatPrice, formatQuantity, priceColor, toPolylinePoints, toAreaPath, minMaxRange } from './lib/marketFormat'
+import { filterStockStates } from './lib/filterStocks'
 import { getAllCoveredWarrants } from './lib/vietcapNormalize'
 import TopBar from './components/TopBar'
 import IndexStrip from './components/IndexStrip'
@@ -22,6 +22,7 @@ import FooterBar from './components/FooterBar'
 import GridView from './components/GridView'
 import HeatmapView from './components/HeatmapView'
 import IntradayChartModal from './components/IntradayChartModal'
+import TradingViewModal from './components/TradingViewModal'
 import './App.css'
 
 function getTheme(dark: boolean): ThemeTokens {
@@ -79,6 +80,7 @@ function mapStockRows(
     const chg = +(s.lp - s.r).toFixed(2)
     const fbal = s.fb - s.fs
     const avg = +((s.hi + s.lo + s.lp) / 3).toFixed(2)
+    const sparkRange = s.ipts.length > 1 ? minMaxRange(s.ipts) : undefined
     return {
       sym: s.s,
       ng: s.ng,
@@ -106,8 +108,8 @@ function mapStockRows(
       fbc: fbal >= 0 ? '#4ade80' : '#f87171',
       room: s.rm ? formatQuantity(Math.abs(s.rm)) : '',
       kltt: formatQuantity(Math.abs(s.rm) || s.tv),
-      sparkPts: s.ipts.length > 1 ? toPolylinePoints(s.ipts) : '',
-      sparkFill: s.ipts.length > 1 ? toAreaPath(s.ipts) : '',
+      sparkPts: sparkRange ? toPolylinePoints(s.ipts, 100, 22, sparkRange) : '',
+      sparkFill: sparkRange ? toAreaPath(s.ipts, 100, 22, sparkRange) : '',
       onChart: () => openChart(s.s),
     }
   })
@@ -138,7 +140,6 @@ function mapIndexViews(
 }
 
 function App() {
-  const [time, setTime] = useState(new Date())
   const [stocks, setStocks] = useState<StockState[]>(() => createInitialStocks())
   const [indices, setIndices] = useState<MarketIndexState[]>(() => createInitialIndices())
   const [darkMode, setDarkMode] = useState(true)
@@ -170,11 +171,6 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const c = setInterval(() => setTime(new Date()), 1000)
-    return () => clearInterval(c)
-  }, [])
-
-  useEffect(() => {
     if (stocks.length === 0) return
     const p = setInterval(() => {
       setStocks((prev) => tickStocks(prev, Date.now()))
@@ -198,13 +194,9 @@ function App() {
     window.history.replaceState({}, '', newUrl)
   }, [filter.group, filter.value])
 
-  const timeStr = `${String(time.getDate()).padStart(2, '0')}/${String(time.getMonth() + 1).padStart(2, '0')}/${time.getFullYear()} ${String(time.getHours()).padStart(2, '0')}:${String(time.getMinutes()).padStart(2, '0')}:${String(time.getSeconds()).padStart(2, '0')}`
-
   const toggleDark = () => setDarkMode((p) => !p)
 
   const allStocks = useMemo(() => {
-    const rows = mapStockRows(stocks, darkMode, th, openChart)
-    
     // Add CW data when filter is CW
     if (filter.group === 'CW') {
       const cwRaw = getAllCoveredWarrants()
@@ -248,7 +240,9 @@ function App() {
       return cwRows
     }
     
-    return filterStocks(rows, filter, VN30_SYMBOLS)
+    // Filter first, then format
+    const filteredStocks = filterStockStates(stocks, filter, VN30_SYMBOLS)
+    return mapStockRows(filteredStocks, darkMode, th, openChart)
   }, [stocks, darkMode, th, openChart, filter])
 
   const handleFilterChange = useCallback((group: VietcapFilterGroup, value?: string) => {
@@ -344,7 +338,7 @@ function App() {
       fontFamily: "'Inter', system-ui, sans-serif", color: th.text,
       overflow: 'hidden', background: th.appBg,
     }}>
-      <TopBar th={th} timeStr={timeStr} toggleDark={toggleDark} />
+      <TopBar th={th} toggleDark={toggleDark} />
       <IndexStrip
         indices={mapIndexViews(indices, (sym, color) => setIdxChart({ open: true, sym, color }))}
         th={th}
@@ -369,20 +363,11 @@ function App() {
         <IntradayChartModal chart={chartView} onClose={closeChart} />
       )}
       {idxChart.open && (
-        <div onClick={() => setIdxChart({ open: false, sym: '', color: '' })} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.7)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' }}>
-          <div onClick={(e) => e.stopPropagation()} style={{ background: '#060c18', border: '1px solid #1a3050', borderRadius: 12, width: 980, height: 640, maxWidth: '97vw', maxHeight: '93vh', overflow: 'hidden', animation: 'fadeUp .18s ease', boxShadow: '0 32px 80px rgba(0,0,0,.7), 0 0 40px rgba(37,99,235,.12)', display: 'flex', flexDirection: 'column' }}>
-            <div style={{ background: '#0b1628', padding: '10px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1a3050', flexShrink: 0 }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-                <div style={{ background: '#1e3a5f', borderRadius: 6, padding: '3px 10px' }}>
-                  <span style={{ fontSize: 13, fontWeight: 800, color: '#60a5fa', fontFamily: "'Inter', sans-serif", letterSpacing: 0.5 }}>{idxChart.sym}</span>
-                </div>
-                <span style={{ fontSize: 10, color: '#3a5570' }}>Biểu đồ TradingView - Thời gian thực</span>
-              </div>
-              <button onClick={() => setIdxChart({ open: false, sym: '', color: '' })} style={{ background: '#0f1e36', color: '#64748b', border: '1px solid #1a3050', borderRadius: 6, width: 28, height: 28, cursor: 'pointer', fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u2715'}</button>
-            </div>
-            <iframe src={`https://s.tradingview.com/widgetembed/?frameElementId=tv1&symbol=${encodeURIComponent('HOSE:VNINDEX')}&interval=D&theme=dark&locale=vi`} style={{ flex: 1, width: '100%', border: 'none', background: '#060c18' }} allowTransparency scrolling="no" />
-          </div>
-        </div>
+        <TradingViewModal
+          sym={idxChart.sym}
+          tvSymbol={idxChart.sym}
+          onClose={() => setIdxChart({ open: false, sym: '', color: '' })}
+        />
       )}
     </div>
   )

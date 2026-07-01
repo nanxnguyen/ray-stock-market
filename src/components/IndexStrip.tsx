@@ -1,9 +1,10 @@
+import { memo } from 'react'
 import type { ThemeTokens, MarketIndexView } from '../types/priceboard'
 import GlobalMarketsPanel from './GlobalMarketsPanel'
 
 type Props = { indices: MarketIndexView[]; th: ThemeTokens }
 
-export default function IndexStrip({ indices, th }: Props) {
+function IndexStripInner({ indices, th }: Props) {
   return (
     <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', flexShrink: 0, height: 152, overflow: 'hidden' }}>
       <div style={{ display: 'flex', flex: 1, minWidth: 0, overflow: 'hidden' }}>
@@ -50,3 +51,6 @@ export default function IndexStrip({ indices, th }: Props) {
     </div>
   )
 }
+
+const IndexStrip = memo(IndexStripInner)
+export default IndexStrip

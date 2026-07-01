@@ -1,4 +1,6 @@
-export default function FooterBar() {
+import { memo } from 'react'
+
+function FooterBarInner() {
   return (
     <div style={{
       background: '#060c18', borderTop: '1px solid #0f1e36',
@@ -16,3 +18,6 @@ export default function FooterBar() {
     </div>
   )
 }
+
+const FooterBar = memo(FooterBarInner)
+export default FooterBar

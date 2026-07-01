@@ -1,8 +1,17 @@
+import { useState, useEffect } from 'react'
+import { memo } from 'react'
 import type { ThemeTokens } from '../types/priceboard'
 
-type Props = { th: ThemeTokens; timeStr: string; toggleDark: () => void }
+type Props = { th: ThemeTokens; toggleDark: () => void }
 
-export default function TopBar({ th, timeStr, toggleDark }: Props) {
+function TopBarInner({ th, toggleDark }: Props) {
+  const [timeStr, setTimeStr] = useState(() => formatTime(new Date()))
+
+  useEffect(() => {
+    const c = setInterval(() => setTimeStr(formatTime(new Date())), 1000)
+    return () => clearInterval(c)
+  }, [])
+
   return (
     <div style={{
       background: 'linear-gradient(90deg, #060c18 0%, #0b1628 60%, #060c18 100%)',
@@ -91,3 +100,10 @@ export default function TopBar({ th, timeStr, toggleDark }: Props) {
     </div>
   )
 }
+
+function formatTime(d: Date): string {
+  return `${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}/${d.getFullYear()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}:${String(d.getSeconds()).padStart(2, '0')}`
+}
+
+const TopBar = memo(TopBarInner)
+export default TopBar

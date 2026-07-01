@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, memo } from 'react'
 import type { ThemeTokens, StockRow } from '../types/priceboard'
 
 type Props = { rows: StockRow[]; th: ThemeTokens }
@@ -20,13 +20,17 @@ function parsePct(pct: string): number {
   return isNaN(n) ? 0 : n
 }
 
-export default function HeatmapView({ rows, th }: Props) {
+type HeatCell = { sym: string; pct: string; bg: string; onChart: () => void }
+
+function HeatmapViewInner({ rows, th }: Props) {
   const sectors = useMemo(() => {
-    const map = new Map<string, StockRow[]>()
+    const map = new Map<string, HeatCell[]>()
     for (const s of rows) {
       const sec = s.ng || 'Khác'
+      const pctVal = parsePct(s.pct)
+      const cell: HeatCell = { sym: s.sym, pct: s.pct, bg: heatColor(pctVal), onChart: s.onChart }
       if (!map.has(sec)) map.set(sec, [])
-      map.get(sec)!.push(s)
+      map.get(sec)!.push(cell)
     }
     return Array.from(map.entries())
   }, [rows])
@@ -44,31 +48,27 @@ export default function HeatmapView({ rows, th }: Props) {
             {sec}
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
-            {items.map((s) => {
-              const pctVal = parsePct(s.pct)
-              const bg = heatColor(pctVal)
-              return (
+            {items.map((c) => (
                 <div
-                  key={s.sym}
-                  onClick={s.onChart}
+                  key={c.sym}
+                  onClick={c.onChart}
                   onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.25)' }}
                   onMouseLeave={(e) => { e.currentTarget.style.filter = 'none' }}
                   style={{
-                    background: bg, borderRadius: 5,
+                    background: c.bg, borderRadius: 5,
                     padding: '6px 10px', cursor: 'pointer',
                     minWidth: 80, textAlign: 'center',
                     transition: 'filter .15s',
                   }}
                 >
                   <div style={{ fontSize: 11, fontWeight: 700, color: '#fff', fontFamily: "'Inter', sans-serif", letterSpacing: 0.3 }}>
-                    {s.sym}
+                    {c.sym}
                   </div>
                   <div style={{ fontSize: 10, color: 'rgba(255,255,255,.85)', fontFamily: "'JetBrains Mono', monospace", marginTop: 1 }}>
-                    {s.pct}
+                    {c.pct}
                   </div>
                 </div>
-              )
-            })}
+              ))}
           </div>
         </div>
       ))}
@@ -90,3 +90,6 @@ export default function HeatmapView({ rows, th }: Props) {
     </div>
   )
 }
+
+const HeatmapView = memo(HeatmapViewInner)
+export default HeatmapView

@@ -56,46 +56,91 @@ export function createInitialStocks(): StockState[] {
 }
 
 export function tickStocks(stocks: StockState[], now: number): StockState[] {
-  return stocks.map((s) => {
-    const expire = s.fl_ && now - s.fts > 800
-    if (Math.random() < 0.55) return expire ? { ...s, fl_: null } : s
+  const len = stocks.length
+  const willChange = new Array<number>()
+  const willExpire = new Array<number>()
+
+  for (let i = 0; i < len; i++) {
+    if (Math.random() < 0.55) {
+      const s = stocks[i]
+      if (s.fl_ && now - s.fts > 800) willExpire.push(i)
+    } else {
+      willChange.push(i)
+    }
+  }
+
+  if (willChange.length === 0 && willExpire.length === 0) return stocks
+
+  const result = stocks.slice()
+  const r100 = 100
+  const r200 = 200
+
+  for (let k = 0; k < willChange.length; k++) {
+    const i = willChange[k]
+    const s = stocks[i]
     const dir = Math.random() > 0.48 ? 1 : -1
     let lp = +(s.lp + dir * s.tk).toFixed(2)
     lp = Math.max(s.fl, Math.min(s.cl, lp))
-    if (lp === s.lp) return expire ? { ...s, fl_: null } : s
-    const lq = (Math.floor(Math.random() * 100) + 1) * 100
-    const pct = +((lp - s.r) / s.r * 100).toFixed(1)
-    const newPts = [...s.ipts.slice(1), lp]
-    return {
+    if (lp === s.lp) {
+      if (s.fl_ && now - s.fts > 800) {
+        result[i] = { ...s, fl_: null }
+      }
+      continue
+    }
+    const lq = (Math.floor(Math.random() * 100) + 1) * r100
+    const newPts = s.ipts.slice(1)
+    newPts.push(lp)
+    result[i] = {
       ...s,
       lp,
       lq,
-      pct,
+      pct: +((lp - s.r) / s.r * 100).toFixed(1),
       tv: s.tv + lq,
       hi: Math.max(s.hi, lp),
       lo: Math.min(s.lo, lp),
       b1p: +Math.max(s.fl, lp - s.tk).toFixed(2),
-      b1q: (Math.floor(Math.random() * 200) + 1) * 100,
+      b1q: (Math.floor(Math.random() * 200) + 1) * r200,
       a1p: +Math.min(s.cl, lp + s.tk).toFixed(2),
-      a1q: (Math.floor(Math.random() * 200) + 1) * 100,
+      a1q: (Math.floor(Math.random() * 200) + 1) * r200,
       fl_: dir > 0 ? 'u' : 'd',
       fts: now,
       ipts: newPts,
     }
-  })
+  }
+
+  for (let k = 0; k < willExpire.length; k++) {
+    const i = willExpire[k]
+    const s = stocks[i]
+    result[i] = { ...s, fl_: null }
+  }
+
+  return result
 }
 
 export function tickIndices(indices: MarketIndexState[]): MarketIndexState[] {
-  return indices.map((idx) => {
+  const len = indices.length
+  const result = indices.slice()
+  let changed = false
+
+  for (let i = 0; i < len; i++) {
+    const idx = indices[i]
     const d = (Math.random() - 0.49) * idx.v * 0.0004
     const v = +(idx.v + d).toFixed(2)
     const ch = +(idx.ch + d).toFixed(2)
-    return {
-      ...idx,
-      v,
-      ch,
-      pct: +(ch / (v - ch) * 100).toFixed(2),
-      h: [...idx.h.slice(1), v],
+
+    if (v !== idx.v || ch !== idx.ch) {
+      changed = true
+      const newH = idx.h.slice(1)
+      newH.push(v)
+      result[i] = {
+        ...idx,
+        v,
+        ch,
+        pct: +(ch / (v - ch) * 100).toFixed(2),
+        h: newH,
+      }
     }
-  })
+  }
+
+  return changed ? result : indices
 }

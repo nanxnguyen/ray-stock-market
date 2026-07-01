@@ -1,3 +1,14 @@
+export function minMaxRange(arr: number[]): [number, number, number] {
+  if (!arr || arr.length === 0) return [0, 0, 0]
+  let mn = arr[0]
+  let mx = arr[0]
+  for (let i = 1; i < arr.length; i++) {
+    if (arr[i] < mn) mn = arr[i]
+    if (arr[i] > mx) mx = arr[i]
+  }
+  return [mn, mx, mx - mn]
+}
+
 export function formatPrice(v: number): string {
   return (+v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 }
@@ -14,23 +25,21 @@ export function priceColor(price: number, reference: number, ceiling: number, fl
   return '#facc15'
 }
 
-export function toPolylinePoints(history: number[], w = 100, ht = 22): string {
+export function toPolylinePoints(history: number[], w = 100, ht = 22, range?: [number, number, number]): string {
   if (!history || history.length < 2) return ''
-  const mn = Math.min(...history)
-  const mx = Math.max(...history)
-  const rng = mx - mn || 1
+  const [mn, , rng] = range || minMaxRange(history)
+  const effectiveRng = rng || 1
   return history
-    .map((v, i) => `${((i / (history.length - 1)) * w).toFixed(1)},${(ht - 2 - ((v - mn) / rng) * (ht - 4)).toFixed(1)}`)
+    .map((v, i) => `${((i / (history.length - 1)) * w).toFixed(1)},${(ht - 2 - ((v - mn) / effectiveRng) * (ht - 4)).toFixed(1)}`)
     .join(' ')
 }
 
-export function toAreaPath(history: number[], w = 100, ht = 22): string {
+export function toAreaPath(history: number[], w = 100, ht = 22, range?: [number, number, number]): string {
   if (!history || history.length < 2) return ''
-  const mn = Math.min(...history)
-  const mx = Math.max(...history)
-  const rng = mx - mn || 1
+  const [mn, , rng] = range || minMaxRange(history)
+  const effectiveRng = rng || 1
   const pts = history.map(
-    (v, i) => `${((i / (history.length - 1)) * w).toFixed(1)},${(ht - 2 - ((v - mn) / rng) * (ht - 4)).toFixed(1)}`
+    (v, i) => `${((i / (history.length - 1)) * w).toFixed(1)},${(ht - 2 - ((v - mn) / effectiveRng) * (ht - 4)).toFixed(1)}`
   )
   return `M 0,${ht} L ${pts.join(' L ')} L ${w},${ht} Z`
 }

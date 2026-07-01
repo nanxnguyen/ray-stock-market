@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import type { ThemeTokens } from '../types/priceboard'
 import type { VietcapFilterGroup, FilterGroupConfig } from '../types/vietcap'
 import SymbolSearch from './SymbolSearch'
@@ -22,7 +23,7 @@ type Props = {
 
 const SECTOR_LIST = ['Tất cả','VN30','Ngân hàng','BĐS','Thực phẩm','Chứng khoán','Thép','Năng lượng','Công nghệ','Dược phẩm','Bảo hiểm','Bán lẻ','Vận tải','Hóa chất','Cao su','Thủy sản','Dệt may']
 
-export default function FilterBar({ th, filter, onFilterChange, onSymbolAdd, viewMode = 'table', onViewModeChange, showSector, onToggleSector, activeSector = 'Tất cả', onSectorChange }: Props) {
+function FilterBarInner({ th, filter, onFilterChange, onSymbolAdd, viewMode = 'table', onViewModeChange, showSector, onToggleSector, activeSector = 'Tất cả', onSectorChange }: Props) {
   const displayGroup = resolveTopGroup(filter.group)
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
@@ -115,3 +116,6 @@ export default function FilterBar({ th, filter, onFilterChange, onSymbolAdd, vie
     </div>
   )
 }
+
+const FilterBar = memo(FilterBarInner)
+export default FilterBar

@@ -1,10 +1,42 @@
+import { useState, useRef, useCallback, useEffect } from 'react'
+import { memo } from 'react'
 import type { ThemeTokens, StockRow } from '../types/priceboard'
 
 type Props = { rows: StockRow[]; th: ThemeTokens }
 
-export default function StockTable({ rows, th }: Props) {
+const ROW_HEIGHT = 26
+const OVERSCAN = 20
+
+function StockTableInner({ rows, th }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const [scrollTop, setScrollTop] = useState(0)
+  const [containerHeight, setContainerHeight] = useState(800)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    setContainerHeight(el.clientHeight)
+    const ro = new ResizeObserver(([entry]) => {
+      if (entry) setContainerHeight(entry.contentRect.height)
+    })
+    ro.observe(el)
+    return () => ro.disconnect()
+  }, [])
+
+  const handleScroll = useCallback(() => {
+    const el = containerRef.current
+    if (el) setScrollTop(el.scrollTop)
+  }, [])
+  const startIndex = Math.max(0, Math.floor(scrollTop / ROW_HEIGHT) - OVERSCAN)
+  const visibleCount = Math.ceil(containerHeight / ROW_HEIGHT) + OVERSCAN * 2
+  const endIndex = Math.min(rows.length, startIndex + visibleCount)
+  const visibleRows = rows.slice(startIndex, endIndex)
+
+  const topSpacerHeight = startIndex * ROW_HEIGHT
+  const bottomSpacerHeight = Math.max(0, (rows.length - endIndex) * ROW_HEIGHT)
+
   return (
-    <div style={{ flex: 1, overflow: 'auto', background: th.tableBg }}>
+    <div ref={containerRef} onScroll={handleScroll} style={{ flex: 1, overflow: 'auto', background: th.tableBg }}>
       <table style={{ width: 'max-content', minWidth: '100%', fontSize: 11, fontVariantNumeric: 'tabular-nums', fontFamily: "'JetBrains Mono', monospace" }}>
         <thead style={{ position: 'sticky', top: 0, zIndex: 20 }}>
           <tr style={{ background: '#080f1c', color: '#4a7090', fontSize: 9.5, fontWeight: 700, letterSpacing: '.5px', textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>
@@ -46,12 +78,17 @@ export default function StockTable({ rows, th }: Props) {
           </tr>
         </thead>
         <tbody>
-          {rows.map((s) => (
+          {topSpacerHeight > 0 && (
+            <tr aria-hidden="true" style={{ height: topSpacerHeight }}>
+              <td colSpan={29} style={{ padding: 0, border: 'none' }} />
+            </tr>
+          )}
+          {visibleRows.map((s) => (
             <tr
               key={s.sym}
               onMouseEnter={(e) => { e.currentTarget.style.background = th.rowHover }}
               onMouseLeave={(e) => { e.currentTarget.style.background = s.bg }}
-              style={{ background: s.bg, borderBottom: `1px solid ${th.rowBorder}`, height: 26, transition: 'background .5s' }}
+              style={{ background: s.bg, borderBottom: `1px solid ${th.rowBorder}`, height: ROW_HEIGHT, transition: 'background .5s' }}
             >
               <td onClick={s.onChart} style={{ position: 'sticky', left: 0, zIndex: 5, background: s.bg, padding: '3px 8px', textAlign: 'center', borderRight: `1px solid ${th.cellBorder}`, fontWeight: 700, fontSize: '11.5px', color: '#60a5fa', cursor: 'pointer', letterSpacing: '.3px', fontFamily: "'Inter', sans-serif" }}>{s.sym}</td>
               <td style={{ position: 'sticky', left: 58, zIndex: 5, background: s.bg, padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorder}`, color: '#b07ef8' }}>{s.ceil}</td>
@@ -84,8 +121,16 @@ export default function StockTable({ rows, th }: Props) {
               <td style={{ padding: '3px 8px', textAlign: 'right', color: th.volColor }}>{s.kltt}</td>
             </tr>
           ))}
+          {bottomSpacerHeight > 0 && (
+            <tr aria-hidden="true" style={{ height: bottomSpacerHeight }}>
+              <td colSpan={29} style={{ padding: 0, border: 'none' }} />
+            </tr>
+          )}
         </tbody>
       </table>
     </div>
   )
 }
+
+const StockTable = memo(StockTableInner)
+export default StockTable
