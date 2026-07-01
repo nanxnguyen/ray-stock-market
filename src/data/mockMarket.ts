@@ -1,15 +1,9 @@
 import type { RawStock, MarketIndexState } from '../types/priceboard'
-import type { VietcapSymbol, VietcapPrice } from '../types/vietcap'
+import type { VietcapSymbol } from '../types/vietcap'
 import symbolsData from './generated/symbols.json'
-import pricesData from './generated/prices.json'
-import { normalizeSymbols, normalizeStocks, getVN30Symbols } from '../lib/vietcapNormalize'
+import { normalizeScrapedStocks, getVN30Symbols } from '../lib/vietcapNormalize'
 
-const symbolMap = normalizeSymbols(symbolsData as VietcapSymbol[])
-
-export const RAW_STOCKS: RawStock[] = normalizeStocks(
-  pricesData as unknown as Record<string, VietcapPrice>,
-  symbolMap,
-)
+export const RAW_STOCKS: RawStock[] = normalizeScrapedStocks()
 
 export const VN30_SYMBOLS: string[] = getVN30Symbols(symbolsData as VietcapSymbol[])
 

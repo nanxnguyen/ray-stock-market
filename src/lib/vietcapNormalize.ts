@@ -2,7 +2,37 @@
 import type { RawStock } from '../types/priceboard'
 import type { VietcapSymbol, VietcapPrice, VietcapIndexConfig, VietcapSector } from '../types/vietcap'
 import symbolsData from '../data/generated/symbols.json'
+import pricesData from '../data/generated/prices.json'
 import cwData from '../data/generated/covered-warrants.json'
+
+export type ScrapedPrice = {
+  symbol: string
+  ceil: number
+  ref: number
+  floor: number
+  match: number
+  matchVol: number
+  high: number
+  low: number
+  open: number
+  avg: number
+  volume: number
+  value: number
+  foreignBuyVol: number
+  foreignSellVol: number
+  bid1: number
+  bidVol1: number
+  bid2: number
+  bidVol2: number
+  bid3: number
+  bidVol3: number
+  ask1: number
+  askVol1: number
+  ask2: number
+  askVol2: number
+  ask3: number
+  askVol3: number
+}
 
 export function normalizeSymbols(raw: VietcapSymbol[]): Map<string, VietcapSymbol> {
   const map = new Map<string, VietcapSymbol>()
@@ -33,6 +63,10 @@ export function getTypeName(type: string): string {
     case 'ETF': return 'Quỹ ETF'
     default: return type
   }
+}
+
+function vndToPrice(vnd: number): number {
+  return vnd > 0 ? +(vnd / 100).toFixed(2) : 0
 }
 
 export function normalizePrice(
@@ -69,15 +103,62 @@ export function normalizePrice(
 
 export function normalizeStocks(
   priceData: Record<string, VietcapPrice>,
-  symbolMap: Map<string, VietcapSymbol>,
+  sm: Map<string, VietcapSymbol>,
 ): RawStock[] {
   const stocks: RawStock[] = []
   for (const [symbol, price] of Object.entries(priceData)) {
-    const meta = symbolMap.get(symbol)
+    const meta = sm.get(symbol)
     const raw = normalizePrice(symbol, price, meta)
     if (raw) stocks.push(raw)
   }
   return stocks.sort((a, b) => a.s.localeCompare(b.s))
+}
+
+function normalizeScrapedPrice(
+  p: ScrapedPrice,
+  meta?: VietcapSymbol,
+): RawStock | null {
+  if (!p.ref || p.ref === 0) return null
+
+  const cl = vndToPrice(p.ceil)
+  const r = vndToPrice(p.ref)
+  const fl = vndToPrice(p.floor)
+  const lp = vndToPrice(p.match)
+  const hi = vndToPrice(p.high)
+  const lo = vndToPrice(p.low)
+  const pct = r > 0 ? +((lp - r) / r * 100).toFixed(1) : 0
+
+  return {
+    s: p.symbol,
+    ng: meta?.companyNameEn || meta?.companyName || meta?.organShortName || meta?.organName || '',
+    cl,
+    r,
+    fl,
+    lp,
+    lq: p.matchVol || 0,
+    pct,
+    tv: p.value || 0,
+    hi: hi || lp,
+    lo: lo || lp,
+    fb: p.foreignBuyVol || 0,
+    fs: p.foreignSellVol || 0,
+    rm: 0,
+  }
+}
+
+export function normalizeScrapedStocks(): RawStock[] {
+  const arr = pricesData as unknown as ScrapedPrice[]
+  const stocks: RawStock[] = []
+  for (const p of arr) {
+    const meta = symbolMap.get(p.symbol)
+    const raw = normalizeScrapedPrice(p, meta)
+    if (raw) stocks.push(raw)
+  }
+  return stocks.sort((a, b) => a.s.localeCompare(b.s))
+}
+
+export function getScrapedPrices(): ScrapedPrice[] {
+  return pricesData as unknown as ScrapedPrice[]
 }
 
 // CW data type from Vietcap API
@@ -164,8 +245,8 @@ export function normalizeIndices(
   }))
 }
 
-export function getVN30Symbols(symbols: VietcapSymbol[]): string[] {
-  return symbols
+export function getVN30Symbols(syms: VietcapSymbol[]): string[] {
+  return syms
     .filter((s) => s.type === 'STOCK' && s.board === 'HSX')
     .map((s) => s.symbol)
     .slice(0, 30)

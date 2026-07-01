@@ -1,8 +1,13 @@
 import type { StockState, MarketIndexState } from '../types/priceboard'
 import { RAW_STOCKS } from '../data/mockMarket'
+import { getScrapedPrices, type ScrapedPrice } from './vietcapNormalize'
 
 function randomQty(): number {
   return (Math.floor(Math.random() * 200) + 1) * 100
+}
+
+function vndToPrice(vnd: number): number {
+  return vnd > 0 ? +(vnd / 100).toFixed(2) : 0
 }
 
 export function generateIntraday(lastPrice: number, reference: number): number[] {
@@ -19,23 +24,30 @@ export function generateIntraday(lastPrice: number, reference: number): number[]
 }
 
 export function createInitialStocks(): StockState[] {
+  const scrapedPrices = getScrapedPrices()
+  const priceMap = new Map<string, ScrapedPrice>()
+  for (const p of scrapedPrices) {
+    priceMap.set(p.symbol, p)
+  }
+
   return RAW_STOCKS.map((d) => {
     const tk = d.r >= 50 ? 0.10 : d.r >= 10 ? 0.05 : 0.01
+    const scraped = priceMap.get(d.s)
     return {
       ...d,
       tk,
-      b3p: +Math.max(d.fl, d.lp - tk * 3).toFixed(2),
-      b3q: randomQty(),
-      b2p: +Math.max(d.fl, d.lp - tk * 2).toFixed(2),
-      b2q: randomQty(),
-      b1p: +Math.max(d.fl, d.lp - tk).toFixed(2),
-      b1q: randomQty(),
-      a1p: +Math.min(d.cl, d.lp + tk).toFixed(2),
-      a1q: randomQty(),
-      a2p: +Math.min(d.cl, d.lp + tk * 2).toFixed(2),
-      a2q: randomQty(),
-      a3p: +Math.min(d.cl, d.lp + tk * 3).toFixed(2),
-      a3q: randomQty(),
+      b3p: scraped ? vndToPrice(scraped.bid3) : +Math.max(d.fl, d.lp - tk * 3).toFixed(2),
+      b3q: scraped ? scraped.bidVol3 : randomQty(),
+      b2p: scraped ? vndToPrice(scraped.bid2) : +Math.max(d.fl, d.lp - tk * 2).toFixed(2),
+      b2q: scraped ? scraped.bidVol2 : randomQty(),
+      b1p: scraped ? vndToPrice(scraped.bid1) : +Math.max(d.fl, d.lp - tk).toFixed(2),
+      b1q: scraped ? scraped.bidVol1 : randomQty(),
+      a1p: scraped ? vndToPrice(scraped.ask1) : +Math.min(d.cl, d.lp + tk).toFixed(2),
+      a1q: scraped ? scraped.askVol1 : randomQty(),
+      a2p: scraped ? vndToPrice(scraped.ask2) : +Math.min(d.cl, d.lp + tk * 2).toFixed(2),
+      a2q: scraped ? scraped.askVol2 : randomQty(),
+      a3p: scraped ? vndToPrice(scraped.ask3) : +Math.min(d.cl, d.lp + tk * 3).toFixed(2),
+      a3q: scraped ? scraped.askVol3 : randomQty(),
       fl_: null,
       fts: 0,
       ipts: generateIntraday(d.lp, d.r),
