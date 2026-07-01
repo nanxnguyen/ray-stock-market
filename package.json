@@ -11,8 +11,11 @@
     "sync:vietcap-data": "node scripts/sync-vietcap-data.mjs"
   },
   "dependencies": {
+    "ag-grid-community": "^32.3.9",
+    "ag-grid-react": "^32.3.9",
     "react": "^19.2.7",
-    "react-dom": "^19.2.7"
+    "react-dom": "^19.2.7",
+    "shadcn-ui": "^0.9.5"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
