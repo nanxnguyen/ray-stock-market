@@ -8,6 +8,8 @@
 
 **Tech Stack:** React 19, TypeScript, Vite, inline styles (existing pattern)
 
+**Hover strategy:** All `style-hover` effects from HTML source → React `onMouseEnter`/`onMouseLeave` handlers (e.g., `onMouseEnter={e => e.currentTarget.style.borderColor = '#2563eb'}`).
+
 ## Global Constraints
 
 - Dark mode only (light mode tokens kept but not primary)
@@ -24,29 +26,30 @@
 
 | File | Action | Purpose |
 |------|--------|---------|
-| `src/types/priceboard.ts` | Modify | Add `textMuted`, `rowHover`, `toggleLabel` to ThemeTokens; add viewMode type |
-| `src/App.css` | Modify | Add animations (ticker, fadeUp, flashUp/flashDn, pricePop, pulse), scrollbar styles |
+| `src/types/priceboard.ts` | Modify | Add `textMuted`, `rowHover`, `toggleLabel`, `toggleBg`, `togglePos` to ThemeTokens; add `statusBg`, `gradId`, `onClick` to MarketIndexView; add `sparkPts`, `sparkFill` to StockRow |
+| `src/App.css` | Modify | Add `@import` at TOP, animations (ticker, fadeUp, flashUp/flashDn, pricePop, pulse), scrollbar styles |
 | `src/App.tsx` | Modify | Wire view modes, global markets, TradingView modal, ticker tape |
 | `src/components/TopBar.tsx` | Modify | Market status, clock, ticker tape, logo update, toggle label |
 | `src/components/IndexStrip.tsx` | Modify | Global markets panel, LIVE badge, intraday chart, click→TradingView |
-| `src/components/FilterBar.tsx` | Modify | View mode toggle buttons (Table/Grid/Heatmap) |
+| `src/components/FilterBar.tsx` | Modify | View mode toggle buttons (Table/Grid/Heatmap), sector filter panel |
 | `src/components/StockTable.tsx` | Modify | NN columns (Mua/Bán/↕/Room), row hover, darker colors |
 | `src/components/FooterBar.tsx` | Modify | Update footer text |
 | `src/components/GridView.tsx` | **Create** | Card view with sparklines |
-| `src/components/HeatmapView.tsx` | **Create** | Sector heatmap with color-coded cells |
+| `src/components/HeatmapView.tsx` | **Create** | Sector heatmap with color-coded cells + legend |
 | `src/components/TradingViewModal.tsx` | **Create** | TradingView embed modal for indices |
 | `src/components/GlobalMarketsPanel.tsx` | **Create** | US/EU/ASIA/COMM tabs with market data |
+| `src/components/IntradayChartModal.tsx` | **Create** | Intraday chart modal with SVG chart, volume bars, stats row |
 
 ---
 
-### Task 1: Theme Tokens + CSS Animations
+### Task 1: Theme Tokens + Types + CSS Animations
 
 **Files:**
-- Modify: `src/types/priceboard.ts:14-55`
+- Modify: `src/types/priceboard.ts`
 - Modify: `src/App.css`
 
 **Interfaces:**
-- Produces: Updated `ThemeTokens` type with `textMuted`, `rowHover`, `toggleLabel`, `toggleBg`, `togglePos`; CSS animations for ticker, fadeUp, flash, pricePop, pulse
+- Produces: Updated `ThemeTokens` with `textMuted`, `rowHover`, `toggleLabel`, `toggleBg`, `togglePos`; updated `MarketIndexView` with `statusBg`, `gradId`, `onClick`; updated `StockRow` with `sparkPts`, `sparkFill`; CSS animations
 
 - [ ] **Step 1: Update ThemeTokens type**
 
@@ -86,7 +89,82 @@ export type ThemeTokens = {
 }
 ```
 
-- [ ] **Step 2: Update getTheme() in App.tsx**
+- [ ] **Step 2: Update MarketIndexView type**
+
+Add `statusBg`, `gradId`, `onClick` to `MarketIndexView`:
+```typescript
+export type MarketIndexView = {
+  name: string
+  color: string
+  val: string
+  chg: string
+  vol: string
+  up: number
+  dn: number
+  nc: number
+  pts: string
+  fill: string
+  statusBg: string
+  gradId: string
+  onClick: () => void
+}
+```
+
+- [ ] **Step 3: Add sparkPts/sparkFill to StockRow**
+
+Add `sparkPts` and `sparkFill` to `StockRow`:
+```typescript
+export type StockRow = {
+  sym: string
+  ng: string
+  bg: string
+  ceil: string
+  tc: string
+  floor: string
+  b3p: string
+  b3q: string
+  b3c: string
+  b2p: string
+  b2q: string
+  b2c: string
+  b1p: string
+  b1q: string
+  b1c: string
+  lp: string
+  lq: string
+  lc: string
+  pct: string
+  pc: string
+  chg: string
+  tvol: string
+  a1p: string
+  a1q: string
+  a1c: string
+  a2p: string
+  a2q: string
+  a2c: string
+  a3p: string
+  a3q: string
+  a3c: string
+  hi: string
+  hc: string
+  avg: string
+  ac: string
+  lo: string
+  oc: string
+  fbuy: string
+  fsell: string
+  fbal: string
+  fbc: string
+  room: string
+  kltt: string
+  sparkPts: string
+  sparkFill: string
+  onChart: () => void
+}
+```
+
+- [ ] **Step 4: Update getTheme() in App.tsx**
 
 Update `src/App.tsx` `getTheme()` to match HTML source values:
 ```typescript
@@ -126,10 +204,12 @@ function getTheme(dark: boolean): ThemeTokens {
 }
 ```
 
-- [ ] **Step 3: Add CSS animations to App.css**
+- [ ] **Step 5: Add CSS animations to App.css**
 
-Append to `src/App.css`:
+**IMPORTANT:** `@import` must be at the TOP of the file (before `@keyframes`). Add to `src/App.css` at the very beginning:
 ```css
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
 /* Animations */
 @keyframes ticker {
   from { transform: translateX(100vw); }
@@ -163,21 +243,18 @@ Append to `src/App.css`:
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: #2563eb; }
-
-/* Font imports */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
 ```
 
-- [ ] **Step 4: Build + Lint**
+- [ ] **Step 6: Build + Lint**
 
 Run: `npm run build && npm run lint`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 7: Commit**
 
 ```bash
 git add src/types/priceboard.ts src/App.tsx src/App.css
-git commit -m "feat: update theme tokens, add CSS animations and fonts"
+git commit -m "feat: update theme tokens, MarketIndexView, StockRow types, add CSS animations and fonts"
 ```
 
 ---
@@ -310,7 +387,7 @@ git commit -m "feat: update TopBar with market status, ticker tape, logo, toggle
 - Create: `src/components/TradingViewModal.tsx`
 
 **Interfaces:**
-- Consumes: `sym: string`, `color: string`, `onClose: () => void`
+- Consumes: `sym: string`, `color: string`, `tvSymbol: string`, `onClose: () => void`
 - Produces: Modal with TradingView iframe embed + "Mở TradingView" link
 
 - [ ] **Step 1: Create TradingViewModal.tsx**
@@ -592,7 +669,7 @@ git commit -m "feat: update IndexStrip with LIVE badge, intraday chart, click ha
 
 ---
 
-### Task 6: GridView (Card View)
+### Task 6: GridView (Card View) with Sparklines
 
 **Files:**
 - Create: `src/components/GridView.tsx`
@@ -620,6 +697,14 @@ export default function GridView({ rows, th }: Props) {
           <div
             key={s.sym}
             onClick={s.onChart}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.borderColor = '#2563eb'
+              e.currentTarget.style.background = th.rowHover
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.borderColor = th.cellBorder
+              e.currentTarget.style.background = s.bg
+            }}
             style={{
               background: s.bg, border: `1px solid ${th.cellBorder}`, borderRadius: 8,
               padding: '10px 12px', cursor: 'pointer', transition: 'all .4s',
@@ -644,7 +729,12 @@ export default function GridView({ rows, th }: Props) {
               <span style={{ fontSize: 9, color: th.textMuted }}>{s.chg}</span>
             </div>
             <div style={{ fontSize: 9, color: th.textMuted, marginTop: 4 }}>KL: {s.tvol}</div>
-            {/* Sparkline placeholder — would need ipts data */}
+            {s.sparkPts && (
+              <svg viewBox="0 0 100 24" preserveAspectRatio="none" style={{ width: '100%', height: 22, marginTop: 5, display: 'block' }}>
+                <path d={s.sparkFill} fill={s.lc} opacity={0.12} />
+                <polyline points={s.sparkPts} fill="none" stroke={s.lc} strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" />
+              </svg>
+            )}
           </div>
         ))}
       </div>
@@ -662,23 +752,23 @@ Expected: PASS
 
 ```bash
 git add src/components/GridView.tsx
-git commit -m "feat: add GridView card view component"
+git commit -m "feat: add GridView card view with sparklines"
 ```
 
 ---
 
-### Task 7: HeatmapView
+### Task 7: HeatmapView with Legend
 
 **Files:**
 - Create: `src/components/HeatmapView.tsx`
 
 **Interfaces:**
 - Consumes: stocks data grouped by sector, `ThemeTokens`, `onChart` callback
-- Produces: Heatmap with sector sections, color-coded cells
+- Produces: Heatmap with sector sections, color-coded cells, legend
 
 - [ ] **Step 1: Create HeatmapView.tsx**
 
-Create `src/components/HeatmapView.tsx` with heatColor function matching HTML source:
+Create `src/components/HeatmapView.tsx` with heatColor function and legend matching HTML source:
 ```typescript
 function heatColor(pct: number): string {
   if (pct >= 6.5) return '#7c3aed'
@@ -693,7 +783,28 @@ function heatColor(pct: number): string {
 }
 ```
 
-Component receives `stocks: StockState[]` and `th: ThemeTokens`, groups by `ng` (sector), renders sectors with cells.
+Component receives `stocks: StockState[]` and `th: ThemeTokens`, groups by `ng` (sector), renders sectors with cells. Include legend at bottom:
+
+```tsx
+{/* Legend */}
+<div style={{
+  display: 'flex', alignItems: 'center', gap: 6, marginTop: 8, paddingTop: 8,
+  borderTop: `1px solid ${th.cellBorderL}`,
+}}>
+  <span style={{ fontSize: 9, color: th.textMuted, fontFamily: "'Inter', sans-serif" }}>Chú thích:</span>
+  <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
+    <div style={{ width: 28, height: 14, borderRadius: 3, background: '#7c3aed' }} /><span style={{ fontSize: 8, color: th.textMuted }}>Trần</span>
+    <div style={{ width: 28, height: 14, borderRadius: 3, background: '#166534', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+4%</span>
+    <div style={{ width: 28, height: 14, borderRadius: 3, background: '#15803d', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+2%</span>
+    <div style={{ width: 28, height: 14, borderRadius: 3, background: '#78350f', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>0%</span>
+    <div style={{ width: 28, height: 14, borderRadius: 3, background: '#991b1b', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-2%</span>
+    <div style={{ width: 28, height: 14, borderRadius: 3, background: '#7f1d1d', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-4%</span>
+    <div style={{ width: 28, height: 14, borderRadius: 3, background: '#1e3a8a', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>Sàn</span>
+  </div>
+</div>
+```
+
+Each heatmap cell gets `onMouseEnter`/`onMouseLeave` for `filter: brightness(1.25)` hover effect.
 
 - [ ] **Step 2: Build + Lint**
 
@@ -704,7 +815,7 @@ Expected: PASS
 
 ```bash
 git add src/components/HeatmapView.tsx
-git commit -m "feat: add HeatmapView component with sector-based heatmap"
+git commit -m "feat: add HeatmapView with sector heatmap and legend"
 ```
 
 ---
@@ -722,7 +833,7 @@ git commit -m "feat: add HeatmapView component with sector-based heatmap"
 
 Add NN section columns to table header: Mua, Bán, ↕, Room
 Update header colors to match HTML source (#080f1c background, #4a7090 text)
-Add row hover effect via onMouseEnter/onMouseLeave
+Add row hover effect via `onMouseEnter`/`onMouseLeave`
 
 - [ ] **Step 2: Update StockTable row cells**
 
@@ -791,18 +902,18 @@ git commit -m "feat: update FooterBar with price/quantity labels"
 
 ---
 
-### Task 10: FilterBar — View Mode Toggle Buttons
+### Task 10: FilterBar — View Mode Toggle + Sector Filter
 
 **Files:**
 - Modify: `src/components/FilterBar.tsx`
 
 **Interfaces:**
-- Consumes: `ThemeTokens`, `viewMode: string`, `onViewModeChange: (mode: string) => void`
-- Produces: Filter bar with 3 view mode toggle buttons (Table ☰ / Grid ⊞ / Heatmap ▦) before search
+- Consumes: `ThemeTokens`, `viewMode: string`, `onViewModeChange: (mode: string) => void`, `activeSector`, `onSectorChange`
+- Produces: Filter bar with 3 view mode toggle buttons (Table ☰ / Grid ⊞ / Heatmap ▦), sector filter panel
 
 - [ ] **Step 1: Add view mode props to FilterBar**
 
-Add `viewMode` and `onViewModeChange` props to FilterBar component.
+Add `viewMode`, `onViewModeChange`, `activeSector`, `onSectorChange` props to FilterBar component.
 
 - [ ] **Step 2: Add view mode toggle buttons**
 
@@ -830,39 +941,108 @@ Insert 3 buttons at the start of FilterBar (before search input):
 </div>
 ```
 
-- [ ] **Step 3: Build + Lint**
+- [ ] **Step 3: Add sector filter panel**
+
+When `activeSector` is set (or a `showSector` prop is true), render a sector button panel below the filter bar:
+```tsx
+{showSector && (
+  <div style={{
+    background: th.navBg, borderBottom: `1px solid ${th.navBorder}`,
+    padding: '7px 14px', display: 'flex', flexWrap: 'wrap', gap: 5, flexShrink: 0,
+    animation: 'fadeUp .15s ease',
+  }}>
+    {sectorList.map((sec) => (
+      <button
+        key={sec}
+        onClick={() => onSectorChange(sec)}
+        style={{
+          background: activeSector === sec ? '#2563eb' : th.iconBg,
+          color: activeSector === sec ? '#fff' : th.textMuted,
+          border: `1px solid ${activeSector === sec ? '#2563eb' : th.navBorder}`,
+          borderRadius: 16, padding: '3px 11px', fontSize: 10.5,
+          fontWeight: activeSector === sec ? 700 : 400,
+          cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s',
+        }}
+      >
+        {sec}
+      </button>
+    ))}
+  </div>
+)}
+```
+
+Where `sectorList = ['Tất cả','VN30','Ngân hàng','BĐS','Thực phẩm','Chứng khoán','Thép','Năng lượng','Công nghệ','Dược phẩm','Bảo hiểm','Bán lẻ','Vận tải','Hóa chất','Cao su','Thủy sản','Dệt may']`.
+
+- [ ] **Step 4: Build + Lint**
 
 Run: `npm run build && npm run lint`
 Expected: PASS
 
-- [ ] **Step 4: Commit**
+- [ ] **Step 5: Commit**
 
 ```bash
 git add src/components/FilterBar.tsx
-git commit -m "feat: add view mode toggle buttons to FilterBar"
+git commit -m "feat: add view mode toggle and sector filter to FilterBar"
 ```
 
 ---
 
-### Task 11: App.tsx Integration — Wire Everything Together
+### Task 11: IntradayChartModal
+
+**Files:**
+- Create: `src/components/IntradayChartModal.tsx`
+
+**Interfaces:**
+- Consumes: `sym: string`, `lp: string`, `lc: string`, `chg: string`, `chgBg: string`, `linePts: string`, `fillPath: string`, `refY: number`, `yLabels: string[]`, `vbars`, `stats`, `ranges`, `onClose: () => void`
+- Produces: Intraday chart modal with gradient header, SVG chart, volume bars, stats grid
+
+- [ ] **Step 1: Create IntradayChartModal.tsx**
+
+Create `src/components/IntradayChartModal.tsx` matching HTML source lines 342-418:
+- Gradient header (`linear-gradient(90deg,#060c18,#0b1628)`)
+- Symbol badge + price + change badge with `chgBg` background
+- Range selector buttons (1Đ, 5Đ, 15Đ, 1T)
+- SVG chart with grid lines, reference line, polyline, area fill
+- Volume bars
+- Time axis (09:00, 10:30, 11:30, 13:30, 14:30, 15:00)
+- Stats row (6-column grid)
+
+- [ ] **Step 2: Build + Lint**
+
+Run: `npm run build && npm run lint`
+Expected: PASS
+
+- [ ] **Step 3: Commit**
+
+```bash
+git add src/components/IntradayChartModal.tsx
+git commit -m "feat: add IntradayChartModal with SVG chart, volume bars, stats"
+```
+
+---
+
+### Task 12: App.tsx Integration — Wire Everything Together
 
 **Files:**
 - Modify: `src/App.tsx`
 
 **Interfaces:**
-- Consumes: All components from Tasks 1-10
-- Produces: Fully integrated app with view modes, TradingView modal, global markets
+- Consumes: All components from Tasks 1-11
+- Produces: Fully integrated app with view modes, TradingView modal, global markets, intraday chart
 
-- [ ] **Step 1: Add state for viewMode and idxChart**
+- [ ] **Step 1: Add state for viewMode, idxChart, showSector, activeSector, chartModal**
 
 ```typescript
 const [viewMode, setViewMode] = useState<'table' | 'grid' | 'heat'>('table')
 const [idxChart, setIdxChart] = useState<{ open: boolean; sym: string; color: string }>({ open: false, sym: '', color: '' })
+const [showSector, setShowSector] = useState(false)
+const [activeSector, setActiveSector] = useState('Tất cả')
+const [chartModal, setChartModal] = useState<{ open: boolean; sym: string; lp: string; lc: string; chg: string; chgBg: string }>({ open: false, sym: '', lp: '', lc: '', chg: '', chgBg: '' })
 ```
 
 - [ ] **Step 2: Update mapIndexViews to include onClick**
 
-Add `onClick` and `color` to `MarketIndexView` type, pass `setIdxChart` callback.
+Add `onClick` and `color` to `MarketIndexView` (type already updated in Task 1), pass `setIdxChart` callback.
 
 - [ ] **Step 3: Update IndexStrip call**
 
@@ -878,7 +1058,7 @@ Replace single `<StockTable>` with conditional rendering:
 ```tsx
 {viewMode === 'table' && <StockTable rows={allStocks} th={th} />}
 {viewMode === 'grid' && <GridView rows={allStocks} th={th} />}
-{viewMode === 'heat' && <HeatmapView stocks={stocks} th={th} />}
+{viewMode === 'heat' && <HeatmapView stocks={stocks} th={th} onChart={handleChartClick} />}
 ```
 
 - [ ] **Step 6: Add TradingViewModal**
@@ -894,43 +1074,44 @@ Replace single `<StockTable>` with conditional rendering:
 )}
 ```
 
-- [ ] **Step 7: Pass viewMode to FilterBar**
+- [ ] **Step 7: Add IntradayChartModal**
 
 ```tsx
-<FilterBar th={th} filter={filter} onFilterChange={handleFilterChange} onSymbolAdd={handleSymbolAdd} viewMode={viewMode} onViewModeChange={setViewMode} />
+{chartModal.open && (
+  <IntradayChartModal
+    sym={chartModal.sym}
+    lp={chartModal.lp}
+    lc={chartModal.lc}
+    chg={chartModal.chg}
+    chgBg={chartModal.chgBg}
+    linePts={chartLine.linePts}
+    fillPath={chartLine.fillPath}
+    refY={chartLine.refY}
+    yLabels={chartLine.yLabels}
+    vbars={chartLine.vbars}
+    stats={chartLine.stats}
+    ranges={chartLine.ranges}
+    onClose={() => setChartModal(prev => ({ ...prev, open: false }))}
+  />
+)}
 ```
 
-- [ ] **Step 8: Update mapIndexViews return type**
+- [ ] **Step 8: Pass viewMode and sector props to FilterBar**
 
-Add `color` and `onClick` to `MarketIndexView`:
-
-```typescript
-function mapIndexViews(
-  indices: MarketIndexState[],
-  onIndexClick: (sym: string, color: string) => void,
-): MarketIndexView[] {
-  return indices.map((idx) => {
-    const color = idx.ch >= 0 ? '#22c55e' : '#f43f5e'
-    return {
-      name: idx.n,
-      color,
-      val: idx.v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }),
-      chg: `${idx.ch >= 0 ? '+' : ''}${idx.ch.toFixed(2)} (${idx.pct >= 0 ? '+' : ''}${idx.pct.toFixed(2)}%)`,
-      vol: idx.vol,
-      up: idx.up,
-      dn: idx.dn,
-      nc: idx.nc,
-      pts: toPolylinePoints(idx.h),
-      fill: toAreaPath(idx.h),
-      statusBg: (idx.ch >= 0 ? 'rgba(34,197,94,.15)' : 'rgba(244,63,94,.15)'),
-      gradId: `ig${idx.n}`,
-      onClick: () => onIndexClick(idx.n, color),
-    }
-  })
-}
+```tsx
+<FilterBar
+  th={th}
+  filter={filter}
+  onFilterChange={handleFilterChange}
+  onSymbolAdd={handleSymbolAdd}
+  viewMode={viewMode}
+  onViewModeChange={setViewMode}
+  showSector={showSector}
+  onToggleSector={() => setShowSector(p => !p)}
+  activeSector={activeSector}
+  onSectorChange={setActiveSector}
+/>
 ```
-
-Update `MarketIndexView` type in `src/types/priceboard.ts` to include `color`, `statusBg`, `gradId`, `onClick`.
 
 - [ ] **Step 9: Build + Lint**
 
@@ -940,13 +1121,13 @@ Expected: PASS
 - [ ] **Step 10: Commit**
 
 ```bash
-git add src/App.tsx src/types/priceboard.ts src/components/IndexStrip.tsx
-git commit -m "feat: integrate view modes, TradingView modal, global markets in App"
+git add src/App.tsx src/types/priceboard.ts src/components/IndexStrip.tsx src/components/FilterBar.tsx
+git commit -m "feat: integrate view modes, TradingView modal, global markets, intraday chart, sector filter in App"
 ```
 
 ---
 
-### Task 12: Final Integration Verification
+### Task 13: Final Integration Verification
 
 **Files:** None (verification only)
 
@@ -965,11 +1146,12 @@ Expected: PASS
 Start dev server, verify:
 - TopBar: logo, market status, clock, ticker tape, toggle
 - IndexStrip: index cards with LIVE badge, global markets panel
-- FilterBar: view mode toggle buttons
+- FilterBar: view mode toggle buttons, sector filter panel
 - StockTable: NN columns, hover effects
 - GridView: card layout with sparklines
-- HeatmapView: sector heatmap
+- HeatmapView: sector heatmap with legend
 - TradingViewModal: opens on index click
+- IntradayChartModal: opens on stock click, shows chart + volume + stats
 - Footer: correct text
 
 - [ ] **Step 4: Final commit**

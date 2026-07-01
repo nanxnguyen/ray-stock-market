@@ -1,9 +1,33 @@
-@keyframes mq {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@keyframes ticker {
   from { transform: translateX(100vw); }
   to { transform: translateX(-200%); }
 }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes flashUp {
+  0% { background: #14532d; }
+  60% { background: #14532d; }
+  100% { background: inherit; }
+}
+@keyframes flashDn {
+  0% { background: #450a0a; }
+  60% { background: #450a0a; }
+  100% { background: inherit; }
+}
+@keyframes pricePop {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #2563eb; }

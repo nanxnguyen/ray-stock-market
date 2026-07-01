@@ -12,9 +12,17 @@ type Props = {
   filter: { group: VietcapFilterGroup; value: string; searchText: string }
   onFilterChange: (group: VietcapFilterGroup, value?: string) => void
   onSymbolAdd: (symbol: string) => void
+  viewMode?: 'table' | 'grid' | 'heat'
+  onViewModeChange?: (mode: 'table' | 'grid' | 'heat') => void
+  showSector?: boolean
+  onToggleSector?: () => void
+  activeSector?: string
+  onSectorChange?: (sector: string) => void
 }
 
-export default function FilterBar({ th, filter, onFilterChange, onSymbolAdd }: Props) {
+const SECTOR_LIST = ['Tất cả','VN30','Ngân hàng','BĐS','Thực phẩm','Chứng khoán','Thép','Năng lượng','Công nghệ','Dược phẩm','Bảo hiểm','Bán lẻ','Vận tải','Hóa chất','Cao su','Thủy sản','Dệt may']
+
+export default function FilterBar({ th, filter, onFilterChange, onSymbolAdd, viewMode = 'table', onViewModeChange, showSector, onToggleSector, activeSector = 'Tất cả', onSectorChange }: Props) {
   const displayGroup = resolveTopGroup(filter.group)
 
   const tabStyle = (active: boolean): React.CSSProperties => ({
@@ -31,10 +39,12 @@ export default function FilterBar({ th, filter, onFilterChange, onSymbolAdd }: P
   })
 
   return (
-    <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', alignItems: 'center', padding: '4px 10px', gap: 4, flexShrink: 0, height: 38, position: 'relative' }}>
+    <div>
+      <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', alignItems: 'center', padding: '4px 10px', gap: 4, flexShrink: 0, height: 38, position: 'relative' }}>
       <div style={{ display: 'flex', gap: 2, flexShrink: 0 }}>
-        <button style={{ background: th.iconBg, border: 'none', width: 24, height: 24, borderRadius: 4, cursor: 'pointer', color: th.iconColor, fontSize: 12 }}>☰</button>
-        <button style={{ background: th.iconBg, border: 'none', width: 24, height: 24, borderRadius: 4, cursor: 'pointer', color: th.iconColor, fontSize: 12 }}>⊞</button>
+        <button onClick={() => onViewModeChange?.('table')} style={{ background: viewMode === 'table' ? '#2563eb' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'table' ? '#fff' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u2630'}</button>
+        <button onClick={() => onViewModeChange?.('grid')} style={{ background: viewMode === 'grid' ? '#2563eb' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'grid' ? '#fff' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u229E'}</button>
+        <button onClick={() => onViewModeChange?.('heat')} style={{ background: viewMode === 'heat' ? '#2563eb' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'heat' ? '#fff' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u25A6'}</button>
       </div>
 
       <SymbolSearch th={th} onSelect={onSymbolAdd} />
@@ -73,10 +83,35 @@ export default function FilterBar({ th, filter, onFilterChange, onSymbolAdd }: P
       </div>
 
       <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexShrink: 0 }}>
-        <span style={{ fontSize: 14, color: '#94a3b8', cursor: 'pointer' }}>▶</span>
+        <span onClick={onToggleSector} style={{ fontSize: 14, color: showSector ? '#3b82f6' : '#94a3b8', cursor: 'pointer' }}>▶</span>
         <span style={{ fontSize: 14, color: '#94a3b8', cursor: 'pointer' }}>⚙</span>
         <span style={{ fontSize: 14, color: '#94a3b8', cursor: 'pointer' }}>⬇</span>
       </div>
+    </div>
+    {showSector && (
+      <div style={{
+        background: th.navBg, borderBottom: `1px solid ${th.navBorder}`,
+        padding: '7px 14px', display: 'flex', flexWrap: 'wrap', gap: 5, flexShrink: 0,
+        animation: 'fadeUp .15s ease',
+      }}>
+        {SECTOR_LIST.map((sec) => (
+          <button
+            key={sec}
+            onClick={() => onSectorChange?.(sec)}
+            style={{
+              background: activeSector === sec ? '#2563eb' : th.iconBg,
+              color: activeSector === sec ? '#fff' : th.textMuted,
+              border: `1px solid ${activeSector === sec ? '#2563eb' : th.navBorder}`,
+              borderRadius: 16, padding: '3px 11px', fontSize: 10.5,
+              fontWeight: activeSector === sec ? 700 : 400,
+              cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s',
+            }}
+          >
+            {sec}
+          </button>
+        ))}
+      </div>
+    )}
     </div>
   )
 }

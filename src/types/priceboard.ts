@@ -15,6 +15,7 @@ export type ThemeTokens = {
   rowOdd: string
   rowEven: string
   rowBorder: string
+  rowHover: string
   cellBorder: string
   cellBorderL: string
   symColor: string
@@ -22,8 +23,10 @@ export type ThemeTokens = {
   iconBg: string
   iconColor: string
   text: string
+  textMuted: string
   toggleBg: string
   togglePos: string
+  toggleLabel: string
   toggleIcon: string
   toggleTitle: string
 }
@@ -108,6 +111,8 @@ export type StockRow = {
   fbc: string
   room: string
   kltt: string
+  sparkPts: string
+  sparkFill: string
   onChart: () => void
 }
 
@@ -134,6 +139,9 @@ export type MarketIndexView = {
   nc: number
   pts: string
   fill: string
+  statusBg: string
+  gradId: string
+  onClick: () => void
 }
 
 export type ChartState = {
@@ -147,11 +155,12 @@ export type ChartView = {
   lp: string
   lc: string
   chg: string
+  chgBg: string
   linePts: string
   fillPath: string
   refY: number
   yLabels: string[]
   vbars: { x: string; y: string; w: string; h: string; c: string }[]
   stats: { label: string; val: string; color: string }[]
-  ranges: { label: string; bg: string; fg: string; onClick: () => void }[]
+  ranges: { label: string; bg: string; fg: string; border: string; onClick: () => void }[]
 }

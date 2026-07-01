@@ -19,36 +19,41 @@ import IndexStrip from './components/IndexStrip'
 import FilterBar from './components/FilterBar'
 import StockTable from './components/StockTable'
 import FooterBar from './components/FooterBar'
+import GridView from './components/GridView'
+import HeatmapView from './components/HeatmapView'
 import IntradayChartModal from './components/IntradayChartModal'
 import './App.css'
 
 function getTheme(dark: boolean): ThemeTokens {
   return {
-    appBg:       dark ? '#060d18' : '#f0f4f8',
-    navBg:       dark ? '#0d1624' : '#ffffff',
-    navBorder:   dark ? '#1e3a5f' : '#e2e8f0',
-    navItemColor:dark ? '#94a3b8' : '#374151',
-    idxColBorder:dark ? '#1e3a5f' : '#e8edf4',
-    idxTitle:    dark ? '#e2e8f0' : '#1e293b',
-    glItemBorder:dark ? '#1a2d45' : '#f1f5f9',
-    glNameColor: dark ? '#cbd5e1' : '#334155',
-    filterBorder:dark ? '#1e3a5f' : '#e2e8f0',
-    searchText:  dark ? '#475569' : '#cbd5e1',
-    tabFg:       dark ? '#94a3b8' : '#374151',
-    tabBorder:   dark ? '1px solid #1e3a5f' : '1px solid #e2e8f0',
-    tableBg:     dark ? '#060d18' : '#f8fafc',
-    rowOdd:      dark ? '#0f1929' : '#ffffff',
-    rowEven:     dark ? '#0d1624' : '#f8fafc',
-    rowBorder:   dark ? '#152033' : '#e8edf3',
-    cellBorder:  dark ? '#1e3a5f' : '#e2e8f0',
-    cellBorderL: dark ? '#152033' : '#eef2f7',
+    appBg:       dark ? '#060c18' : '#f0f4f8',
+    navBg:       dark ? '#0b1628' : '#ffffff',
+    navBorder:   dark ? '#1a3050' : '#e1e8f0',
+    navItemColor:dark ? '#8098b4' : '#374151',
+    idxColBorder:dark ? '#1a3050' : '#e4ecf5',
+    idxTitle:    dark ? '#d4e0ee' : '#1e293b',
+    glItemBorder:dark ? '#132035' : '#f0f5fb',
+    glNameColor: dark ? '#b0c4d8' : '#334155',
+    filterBorder:dark ? '#1a3050' : '#e1e8f0',
+    searchText:  dark ? '#3a5570' : '#94a3b8',
+    tabFg:       dark ? '#8098b4' : '#374151',
+    tabBorder:   dark ? '1px solid #1a3050' : '1px solid #e1e8f0',
+    tableBg:     dark ? '#060c18' : '#f4f7fb',
+    rowOdd:      dark ? '#0b1628' : '#ffffff',
+    rowEven:     dark ? '#08101e' : '#f8fafd',
+    rowBorder:   dark ? '#0d1a2e' : '#eaf0f8',
+    rowHover:    dark ? '#102040' : '#eef4ff',
+    cellBorder:  dark ? '#1a3050' : '#dce8f5',
+    cellBorderL: dark ? '#0d1a2e' : '#eaf0f8',
     symColor:    dark ? '#60a5fa' : '#1d4ed8',
-    volColor:    dark ? '#7fa8cc' : '#475569',
-    iconBg:      dark ? '#1a2d45' : '#f1f5f9',
-    iconColor:   dark ? '#94a3b8' : '#64748b',
-    text:        dark ? '#e2e8f0' : '#1e293b',
+    volColor:    dark ? '#4a7090' : '#64748b',
+    iconBg:      dark ? '#0f1e36' : '#f0f5fb',
+    iconColor:   dark ? '#4a6080' : '#64748b',
+    text:        dark ? '#d4e0ee' : '#1e293b',
+    textMuted:   dark ? '#3a5570' : '#94a3b8',
     toggleBg:    dark ? '#2563eb' : '#475569',
     togglePos:   dark ? '22px' : '2px',
+    toggleLabel: dark ? 'LIGHT' : 'DARK',
     toggleIcon:  dark ? '\u2600' : '\uD83C\uDF19',
     toggleTitle: dark ? 'Chuyển Light mode' : 'Chuyển Dark mode',
   }
@@ -101,14 +106,19 @@ function mapStockRows(
       fbc: fbal >= 0 ? '#4ade80' : '#f87171',
       room: s.rm ? formatQuantity(Math.abs(s.rm)) : '',
       kltt: formatQuantity(Math.abs(s.rm) || s.tv),
+      sparkPts: s.ipts.length > 1 ? toPolylinePoints(s.ipts) : '',
+      sparkFill: s.ipts.length > 1 ? toAreaPath(s.ipts) : '',
       onChart: () => openChart(s.s),
     }
   })
 }
 
-function mapIndexViews(indices: MarketIndexState[]): MarketIndexView[] {
+function mapIndexViews(
+  indices: MarketIndexState[],
+  onIndexClick: (sym: string, color: string) => void,
+): MarketIndexView[] {
   return indices.map((idx) => {
-    const color = idx.ch >= 0 ? '#4ade80' : '#f87171'
+    const color = idx.ch >= 0 ? '#22c55e' : '#f43f5e'
     return {
       name: idx.n,
       color,
@@ -120,6 +130,9 @@ function mapIndexViews(indices: MarketIndexState[]): MarketIndexView[] {
       nc: idx.nc,
       pts: toPolylinePoints(idx.h),
       fill: toAreaPath(idx.h),
+      statusBg: idx.ch >= 0 ? 'rgba(34,197,94,.15)' : 'rgba(244,63,94,.15)',
+      gradId: `ig${idx.n}`,
+      onClick: () => onIndexClick(idx.n, color),
     }
   })
 }
@@ -140,12 +153,16 @@ function App() {
     const value = params.get('filter-value') || 'DEFAULT'
     return { group, value, searchText: '', watchlist: [] }
   })
-  const [chart, setChart] = useState<ChartState>({ open: false, sym: '', range: '1D' })
+  const [chart, setChart] = useState<ChartState>({ open: false, sym: '', range: '1Đ' })
+  const [viewMode, setViewMode] = useState<'table' | 'grid' | 'heat'>('table')
+  const [idxChart, setIdxChart] = useState<{ open: boolean; sym: string; color: string }>({ open: false, sym: '', color: '' })
+  const [showSector, setShowSector] = useState(false)
+  const [activeSector, setActiveSector] = useState('Tất cả')
 
   const th = useMemo(() => getTheme(darkMode), [darkMode])
 
   const openChart = useCallback((sym: string) => {
-    setChart({ open: true, sym, range: '1D' })
+    setChart({ open: true, sym, range: '1Đ' })
   }, [])
 
   const closeChart = useCallback(() => {
@@ -223,6 +240,8 @@ function App() {
           fbc: fbal >= 0 ? '#4ade80' : '#f87171',
           room: '',
           kltt: formatQuantity(cw.tv),
+          sparkPts: '',
+          sparkFill: '',
           onChart: () => openChart(cw.s),
         }
       })
@@ -288,17 +307,20 @@ function App() {
     })
     const color = priceColor(s.lp, s.r, s.cl, s.fl)
     const chgVal = +(s.lp - s.r).toFixed(2)
-    const ranges = ['1D', '1W', '1M', '3M'].map((r) => ({
+    const ranges = ['1Đ', '5Đ', '15Đ', '1T'].map((r) => ({
       label: r,
       bg: r === chart.range ? '#2563eb' : th.iconBg,
       fg: r === chart.range ? '#fff' : th.navItemColor,
+      border: r === chart.range ? '#2563eb' : th.navBorder,
       onClick: () => setChart((prev) => ({ ...prev, range: r })),
     }))
+    const chgBg = s.pct >= 0 ? 'rgba(34,197,94,.15)' : 'rgba(244,63,94,.15)'
     return {
       sym: s.s,
       lp: formatPrice(s.lp),
       lc: color,
       chg: (chgVal >= 0 ? '+' : '') + formatPrice(chgVal) + ' (' + (s.pct >= 0 ? '+' : '') + s.pct.toFixed(1) + '%)',
+      chgBg,
       linePts,
       fillPath,
       refY,
@@ -323,17 +345,44 @@ function App() {
       overflow: 'hidden', background: th.appBg,
     }}>
       <TopBar th={th} timeStr={timeStr} toggleDark={toggleDark} />
-      <IndexStrip indices={mapIndexViews(indices)} th={th} />
+      <IndexStrip
+        indices={mapIndexViews(indices, (sym, color) => setIdxChart({ open: true, sym, color }))}
+        th={th}
+      />
       <FilterBar
         th={th}
         filter={filter}
         onFilterChange={handleFilterChange}
         onSymbolAdd={handleSymbolAdd}
+        viewMode={viewMode}
+        onViewModeChange={setViewMode}
+        showSector={showSector}
+        onToggleSector={() => setShowSector(p => !p)}
+        activeSector={activeSector}
+        onSectorChange={setActiveSector}
       />
-      <StockTable rows={allStocks} th={th} />
+      {viewMode === 'table' && <StockTable rows={allStocks} th={th} />}
+      {viewMode === 'grid' && <GridView rows={allStocks} th={th} />}
+      {viewMode === 'heat' && <HeatmapView rows={allStocks} th={th} />}
       <FooterBar />
       {chartView && (
-        <IntradayChartModal chart={chartView} th={th} onClose={closeChart} />
+        <IntradayChartModal chart={chartView} onClose={closeChart} />
+      )}
+      {idxChart.open && (
+        <div onClick={() => setIdxChart({ open: false, sym: '', color: '' })} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,.7)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center', backdropFilter: 'blur(4px)' }}>
+          <div onClick={(e) => e.stopPropagation()} style={{ background: '#060c18', border: '1px solid #1a3050', borderRadius: 12, width: 980, height: 640, maxWidth: '97vw', maxHeight: '93vh', overflow: 'hidden', animation: 'fadeUp .18s ease', boxShadow: '0 32px 80px rgba(0,0,0,.7), 0 0 40px rgba(37,99,235,.12)', display: 'flex', flexDirection: 'column' }}>
+            <div style={{ background: '#0b1628', padding: '10px 18px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #1a3050', flexShrink: 0 }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
+                <div style={{ background: '#1e3a5f', borderRadius: 6, padding: '3px 10px' }}>
+                  <span style={{ fontSize: 13, fontWeight: 800, color: '#60a5fa', fontFamily: "'Inter', sans-serif", letterSpacing: 0.5 }}>{idxChart.sym}</span>
+                </div>
+                <span style={{ fontSize: 10, color: '#3a5570' }}>Biểu đồ TradingView - Thời gian thực</span>
+              </div>
+              <button onClick={() => setIdxChart({ open: false, sym: '', color: '' })} style={{ background: '#0f1e36', color: '#64748b', border: '1px solid #1a3050', borderRadius: 6, width: 28, height: 28, cursor: 'pointer', fontSize: 14, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u2715'}</button>
+            </div>
+            <iframe src={`https://s.tradingview.com/widgetembed/?frameElementId=tv1&symbol=${encodeURIComponent('HOSE:VNINDEX')}&interval=D&theme=dark&locale=vi`} style={{ flex: 1, width: '100%', border: 'none', background: '#060c18' }} allowTransparency scrolling="no" />
+          </div>
+        </div>
       )}
     </div>
   )

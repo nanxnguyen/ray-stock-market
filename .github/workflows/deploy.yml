@@ -33,7 +33,7 @@ jobs:
 
       - name: Build
         env:
-          # Example: /vietcap-priceboard/ - auto-derived from repo name.
+          # Example: /ray-stock-market/ - auto-derived from repo name.
           VITE_BASE_URL: /${{ github.event.repository.name }}/
         run: npm run build
 
