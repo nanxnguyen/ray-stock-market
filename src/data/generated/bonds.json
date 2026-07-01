@@ -1,0 +1,20 @@
+[
+  {
+    "symbol": "VBH2224001",
+    "board": "BOND",
+    "type": "BOND",
+    "organName": "Vietcombank"
+  },
+  {
+    "symbol": "BID2224001",
+    "board": "BOND",
+    "type": "BOND",
+    "organName": "BIDV"
+  },
+  {
+    "symbol": "CTG2224001",
+    "board": "BOND",
+    "type": "BOND",
+    "organName": "VietinBank"
+  }
+]

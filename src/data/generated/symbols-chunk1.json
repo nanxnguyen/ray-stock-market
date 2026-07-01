@@ -1,0 +1,702 @@
+[
+  {
+    "symbol": "DSE",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Chứng khoán DNSE",
+    "companyNameEn": "DNSE Securities Joint Stock Company"
+  },
+  {
+    "symbol": "DSN",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Công viên nước Đầm Sen",
+    "companyNameEn": "Dam Sen Water Park Corporation"
+  },
+  {
+    "symbol": "DTA",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đệ Tam",
+    "companyNameEn": "De Tam Joint Stock Company"
+  },
+  {
+    "symbol": "DTL",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đại Thiên Lộc",
+    "companyNameEn": "Dai Thien Loc Corporation"
+  },
+  {
+    "symbol": "DTT",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Kỹ nghệ Đô Thành",
+    "companyNameEn": "Do Thanh Technology Corporation"
+  },
+  {
+    "symbol": "DVP",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư và Phát triển Cảng Đình Vũ",
+    "companyNameEn": "Dinh Vu Port Investment & Development Joint Stock Company"
+  },
+  {
+    "symbol": "DXG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập đoàn Đất Xanh",
+    "companyNameEn": "Dat Xanh Group Joint Stock Company"
+  },
+  {
+    "symbol": "DXS",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Dịch vụ Bất động sản Đất Xanh",
+    "companyNameEn": "Dat Xanh Real Estate Services Joint Stock Company"
+  },
+  {
+    "symbol": "DXV",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần VICEM Vật liệu Xây dựng Đà Nẵng",
+    "companyNameEn": "Danang Building Material VICEM Joint Stock Company"
+  },
+  {
+    "symbol": "E1VFVN30",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF DCVFMVN30",
+    "companyNameEn": "DCVFMVN30 ETF"
+  },
+  {
+    "symbol": "EIB",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Ngân hàng Thương mại Cổ phần Xuất nhập khẩu Việt Nam",
+    "companyNameEn": "Vietnam Export Import Commercial Joint Stock Bank"
+  },
+  {
+    "symbol": "ELC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Công nghệ - Viễn thông ELCOM",
+    "companyNameEn": "ELCOM Technology Communications Corporation"
+  },
+  {
+    "symbol": "EVE",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Everpia",
+    "companyNameEn": "Everpia Joint Stock Company"
+  },
+  {
+    "symbol": "EVF",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Tài chính Tổng hợp Cổ phần Điện Lực",
+    "companyNameEn": "EVN General Finance Joint Stock Company"
+  },
+  {
+    "symbol": "EVG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập đoàn Everland",
+    "companyNameEn": "Everland Group Joint Stock Company"
+  },
+  {
+    "symbol": "FCM",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Bê tông Phan Vũ Hà Nam",
+    "companyNameEn": "Phan Vu Ha Nam Concrete Joint Stock Company"
+  },
+  {
+    "symbol": "FCN",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần FECON",
+    "companyNameEn": "FECON Corporation"
+  },
+  {
+    "symbol": "FDC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư Thành phố Hồ Chí Minh",
+    "companyNameEn": "Foreign Trade Development And Investment Corporation of Ho Chi Minh City"
+  },
+  {
+    "symbol": "FIR",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Địa ốc First Real",
+    "companyNameEn": "First Real Joint Stock Company"
+  },
+  {
+    "symbol": "FIT",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập đoàn F.I.T",
+    "companyNameEn": "F.I.T Group Joint Stock Company"
+  },
+  {
+    "symbol": "FMC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Thực phẩm Sao Ta",
+    "companyNameEn": "Sao Ta Foods Joint Stock Company"
+  },
+  {
+    "symbol": "FPT",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần FPT",
+    "companyNameEn": "FPT Corporation"
+  },
+  {
+    "symbol": "FRT",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Bán lẻ Kỹ thuật số FPT",
+    "companyNameEn": "FPT Digital Retail Joint Stock Company"
+  },
+  {
+    "symbol": "FTS",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Chứng khoán FPT",
+    "companyNameEn": "FPT Securities Joint Stock Company"
+  },
+  {
+    "symbol": "FUCTVGF3",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Quỹ Đầu tư Tăng trưởng Thiên Việt 3",
+    "companyNameEn": "Thien Viet Growth Fund 3"
+  },
+  {
+    "symbol": "FUCTVGF4",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Quỹ Đầu tư Tăng trưởng Thiên Việt 4",
+    "companyNameEn": "Thien Viet Growth Fund 4"
+  },
+  {
+    "symbol": "FUCTVGF5",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Quỹ Đầu tư Tăng trưởng Thiên Việt 5",
+    "companyNameEn": "Thien Viet Growth Fund 5"
+  },
+  {
+    "symbol": "FUCVREIT",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Quỹ Đầu tư Bất động sản Techcom Việt Nam",
+    "companyNameEn": "Techcom Vietnam REIT Fund"
+  },
+  {
+    "symbol": "FUEABVND",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF ABFVN DIAMOND",
+    "companyNameEn": "ETF ABFVN DIAMOND FUND"
+  },
+  {
+    "symbol": "FUEBFVND",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF BVFVN DIAMOND",
+    "companyNameEn": "BVFVN DIAMOND ETF"
+  },
+  {
+    "symbol": "FUEDCMID",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF DCVFMVNMIDCAP",
+    "companyNameEn": "ETF DCVFMVNMIDCAP"
+  },
+  {
+    "symbol": "FUEFCV50",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF FPT CAPITAL VNX50",
+    "companyNameEn": "ETF FPT CAPITAL VNX50"
+  },
+  {
+    "symbol": "FUEIP100",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF IPAAM VN100",
+    "companyNameEn": "IPAAM VN100 ETF"
+  },
+  {
+    "symbol": "FUEKIV30",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF KIM GROWTH VN30",
+    "companyNameEn": "KIM GROWTH VN30 ETF"
+  },
+  {
+    "symbol": "FUEKIVFS",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF KIM GROWTH VNFINSELECT",
+    "companyNameEn": "KIM GROWTH VNFINSELECT ETF"
+  },
+  {
+    "symbol": "FUEKIVND",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF KIM GROWTH VN DIAMOND",
+    "companyNameEn": "KIM GROWTH VN DIAMOND ETF"
+  },
+  {
+    "symbol": "FUEMAV30",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF MAFM VN30",
+    "companyNameEn": "MAFM VN30 ETF"
+  },
+  {
+    "symbol": "FUEMAVND",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF MAFM VNDIAMOND",
+    "companyNameEn": "MAFM VNDIAMOND ETF"
+  },
+  {
+    "symbol": "FUEMITEC",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "QUỸ ETF VINACAPITAL VNMITECH",
+    "companyNameEn": "VINACAPITAL VNMITECH ETF"
+  },
+  {
+    "symbol": "FUESSV30",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF SSIAM VN30",
+    "companyNameEn": "SSIAM VN30 ETF"
+  },
+  {
+    "symbol": "FUESSV50",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF SSIAM VNX50",
+    "companyNameEn": "SSIAM VNX50 ETF"
+  },
+  {
+    "symbol": "FUESSVFL",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF SSIAM VNFIN LEAD",
+    "companyNameEn": "SSIAM VNFIN LEAD ETF"
+  },
+  {
+    "symbol": "FUETCC50",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF TECHCOM CAPITAL VNX50",
+    "companyNameEn": "ETF Fund TECHCOM CAPITAL VNX50"
+  },
+  {
+    "symbol": "FUETPVND",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF VFCVN DIAMOND",
+    "companyNameEn": "ETF VFCVN DIAMOND Fund"
+  },
+  {
+    "symbol": "FUEVFVND",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF DCVFMVN DIAMOND",
+    "companyNameEn": "DCVFMVN DIAMOND ETF"
+  },
+  {
+    "symbol": "FUEVN100",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "Quỹ ETF VINACAPITAL VN100",
+    "companyNameEn": "VINACAPITAL VN100 ETF"
+  },
+  {
+    "symbol": "FUEVN50G",
+    "type": "ETF",
+    "board": "HSX",
+    "companyName": "QUỸ ETF VINACAPITAL VN50 GROWTH",
+    "companyNameEn": "VINACAPITAL VN50 GROWTH ETF"
+  },
+  {
+    "symbol": "GAS",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Tổng Công ty Khí Việt Nam - Công ty Cổ phần",
+    "companyNameEn": "PetroVietnam Gas Joint Stock Corporation"
+  },
+  {
+    "symbol": "GDT",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Chế biến Gỗ Đức Thành",
+    "companyNameEn": "Duc Thanh Wood Processing Joint Stock Company"
+  },
+  {
+    "symbol": "GEE",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Điện lực Gelex",
+    "companyNameEn": "GELEX Electricity Joint Stock Company"
+  },
+  {
+    "symbol": "GEG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Điện Gia Lai",
+    "companyNameEn": "Gia Lai Electricity Joint Stock Company"
+  },
+  {
+    "symbol": "GEL",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Hạ tầng GELEX",
+    "companyNameEn": "GELEX Infrastructure Joint Stock Company"
+  },
+  {
+    "symbol": "GEX",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập đoàn Gelex",
+    "companyNameEn": "Gelex Group Joint Stock Company"
+  },
+  {
+    "symbol": "GHC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Thủy điện Gia Lai",
+    "companyNameEn": "Gia Lai Hydropower Joint Stock Company"
+  },
+  {
+    "symbol": "GIL",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khẩu Bình Thạnh",
+    "companyNameEn": "Binh Thanh Import Export Production and Trade Joint Stock Company"
+  },
+  {
+    "symbol": "GMD",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Gemadept",
+    "companyNameEn": "Gemadept Corporation"
+  },
+  {
+    "symbol": "GMH",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Minh Hưng Quảng Trị",
+    "companyNameEn": "Quang Tri Minh Hung Joint Stock Company"
+  },
+  {
+    "symbol": "GSP",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Vận tải Sản phẩm Khí Quốc tế",
+    "companyNameEn": "International Gas Product Shipping Joint Stock Company"
+  },
+  {
+    "symbol": "GTA",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Chế biến Gỗ Thuận An",
+    "companyNameEn": "Thuan An Wood Processing Joint Stock Company"
+  },
+  {
+    "symbol": "GVR",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Tập đoàn Công nghiệp Cao su Việt Nam - Công ty Cổ phần",
+    "companyNameEn": "Viet Nam Rubber Group - Joint Stock Company"
+  },
+  {
+    "symbol": "HAG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Hoàng Anh Gia Lai",
+    "companyNameEn": "Hoang Anh Gia Lai Joint Stock Company"
+  },
+  {
+    "symbol": "HAH",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Vận tải và Xếp dỡ Hải An",
+    "companyNameEn": "Hai An Transport and Stevedoring Joint Stock Company"
+  },
+  {
+    "symbol": "HAP",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập Đoàn Hapaco",
+    "companyNameEn": "Hapaco Group Joint Stock Company"
+  },
+  {
+    "symbol": "HAR",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư Thương mại Bất động sản An Dương Thảo Điền",
+    "companyNameEn": "An Duong Thao Dien Real Estate Trade Joint Stock Company"
+  },
+  {
+    "symbol": "HAS",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Hacisco",
+    "companyNameEn": "Hacisco Joint Stock Company"
+  },
+  {
+    "symbol": "HAX",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Dịch vụ Ô tô Hàng Xanh",
+    "companyNameEn": "Hang Xanh Motors Service Joint Stock Company"
+  },
+  {
+    "symbol": "HCD",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư Sản xuất và Thương mại HCD",
+    "companyNameEn": "HCD Investment Producing And Trading Joint Stock Company"
+  },
+  {
+    "symbol": "HCM",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Chứng khoán Thành phố Hồ Chí Minh",
+    "companyNameEn": "Ho Chi Minh City Securities Corporation"
+  },
+  {
+    "symbol": "HDB",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Ngân hàng Thương mại Cổ phần Phát Triển Thành phố Hồ Chí Minh",
+    "companyNameEn": "Ho Chi Minh City Development Joint Stock Commercial Bank"
+  },
+  {
+    "symbol": "HDC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Phát triển Nhà Bà Rịa Vũng Tàu",
+    "companyNameEn": "Ba Ria - Vung Tau House Development Joint Stock Company"
+  },
+  {
+    "symbol": "HDG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập đoàn Hà Đô",
+    "companyNameEn": "Ha Do Joint Stock Company"
+  },
+  {
+    "symbol": "HHP",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần HHP Global",
+    "companyNameEn": "HHP Global Joint Stock Company"
+  },
+  {
+    "symbol": "HHS",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư Dịch vụ Hoàng Huy",
+    "companyNameEn": "Hoang Huy Investment Services Joint Stock Company"
+  },
+  {
+    "symbol": "HHV",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư Hạ tầng Giao thông Đèo Cả",
+    "companyNameEn": "Deo Ca Traffic Infrastructure Investment Joint Stock Company"
+  },
+  {
+    "symbol": "HID",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Halcom Vietnam",
+    "companyNameEn": "Halcom Vietnam Joint Stock Company"
+  },
+  {
+    "symbol": "HII",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần An Tiến Industries",
+    "companyNameEn": "An Tien Industries Joint Stock Company"
+  },
+  {
+    "symbol": "HMC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Kim khí Thành phố Hồ Chí Minh - VNSTEEL",
+    "companyNameEn": "VNSTEEL - HoChiMinh City Metal Corporation"
+  },
+  {
+    "symbol": "HNA",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Thủy điện Hủa Na",
+    "companyNameEn": "Hua Na Hydropower Joint Stock Company"
+  },
+  {
+    "symbol": "HPA",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Phát triển Nông nghiệp Hoà Phát",
+    "companyNameEn": "Hoa Phat Agriculture Development Joint Stock Company"
+  },
+  {
+    "symbol": "HPG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập đoàn Hòa Phát",
+    "companyNameEn": "Hoa Phat Group Joint Stock Company"
+  },
+  {
+    "symbol": "HPX",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư Hải Phát",
+    "companyNameEn": "Hai Phat Investment Joint Stock Company"
+  },
+  {
+    "symbol": "HQC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tư vấn - Thương mại - Dịch vụ Địa ốc Hoàng Quân",
+    "companyNameEn": "Hoang Quan Consulting Trading Service Real Estate Corporation"
+  },
+  {
+    "symbol": "HRC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Cao su Hòa Bình",
+    "companyNameEn": "Hoa Binh Rubber Joint Stock Company"
+  },
+  {
+    "symbol": "HSG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Tập đoàn Hoa Sen",
+    "companyNameEn": "Hoa Sen Group"
+  },
+  {
+    "symbol": "HSL",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư Phát triển Thực phẩm Hồng Hà",
+    "companyNameEn": "Hong Ha Food Investment Development Joint Stock Company"
+  },
+  {
+    "symbol": "HT1",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Xi măng VICEM Hà Tiên",
+    "companyNameEn": "VICEM Ha Tien Cement Joint Stock Company"
+  },
+  {
+    "symbol": "HTG",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Tổng Công ty Cổ phần Dệt may Hòa Thọ",
+    "companyNameEn": "Hoa Tho Textile - Garment Joint Stock Corporation"
+  },
+  {
+    "symbol": "HTI",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư Phát triển Hạ tầng IDICO",
+    "companyNameEn": "IDICO Infrastructure Development Investment Joint Stock Company"
+  },
+  {
+    "symbol": "HTL",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Kỹ thuật và Ô tô Trường Long",
+    "companyNameEn": "Truong Long Engineering and Auto Joint Stock Company"
+  },
+  {
+    "symbol": "HTN",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Hưng Thịnh Incons",
+    "companyNameEn": "Hung Thinh Incons Joint Stock Company"
+  },
+  {
+    "symbol": "HTV",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Logistics Vicem",
+    "companyNameEn": "Logistics Vicem Joint Stock Company"
+  },
+  {
+    "symbol": "HU1",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư và Xây dựng HUD1",
+    "companyNameEn": "HUD1 Investment And Construction Joint Stock Company"
+  },
+  {
+    "symbol": "HUB",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Xây lắp Thừa Thiên Huế",
+    "companyNameEn": "Thua Thien Hue Construction Joint Stock Company"
+  },
+  {
+    "symbol": "HVH",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư và Công nghệ HVC",
+    "companyNameEn": "HVC Investment And Technology Joint Stock Company"
+  },
+  {
+    "symbol": "HVN",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Tổng Công ty Hàng không Việt Nam - CTCP",
+    "companyNameEn": "Vietnam Airlines Joint Stock Company"
+  },
+  {
+    "symbol": "ICT",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Viễn thông - Tin học Bưu điện",
+    "companyNameEn": "Joint Stock Company for Telecoms and Informatics"
+  },
+  {
+    "symbol": "IDI",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Đầu tư và Phát triển Đa Quốc Gia I.D.I",
+    "companyNameEn": "I.D.I International Development and Investment Corporation"
+  },
+  {
+    "symbol": "IJC",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Phát triển Hạ tầng Kỹ thuật",
+    "companyNameEn": "Becamex Infrastructure Development Joint Stock Company"
+  },
+  {
+    "symbol": "ILB",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần ICD Tân Cảng - Long Bình",
+    "companyNameEn": "ICD Tan Cang - Long Binh Joint Stock Company"
+  },
+  {
+    "symbol": "IMP",
+    "type": "STOCK",
+    "board": "HSX",
+    "companyName": "Công ty Cổ phần Dược phẩm Imexpharm",
+    "companyNameEn": "Imexpharm Corporation"
+  }
+]

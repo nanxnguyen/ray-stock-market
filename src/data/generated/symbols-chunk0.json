@@ -1,0 +1,706 @@
+{
+  "total": 1896,
+  "totalChunks": 19,
+  "chunk": [
+    {
+      "symbol": "AAA",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Nhựa An Phát Xanh",
+      "companyNameEn": "An Phat Bioplastics Joint Stock Company"
+    },
+    {
+      "symbol": "AAM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ Phần Thủy Sản MeKong",
+      "companyNameEn": "Mekong Fisheries Joint Stock Company"
+    },
+    {
+      "symbol": "AAN",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Lương thực A An",
+      "companyNameEn": "A AN FOOD JOIN STOCK COMPANY"
+    },
+    {
+      "symbol": "AAT",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Tiên Sơn Thanh Hóa",
+      "companyNameEn": "Tien Son Thanh Hoa Group Joint Stock Company"
+    },
+    {
+      "symbol": "ABR",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư Nhãn Hiệu Việt",
+      "companyNameEn": "Viet Brand Invest Joint Stock Company"
+    },
+    {
+      "symbol": "ABS",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Dịch vụ Nông nghiệp Bình Thuận",
+      "companyNameEn": "BinhThuan Agriculture Services Joint Stock Company"
+    },
+    {
+      "symbol": "ABT",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Xuất nhập khẩu Thủy sản Bến Tre",
+      "companyNameEn": "Bentre Aquaproduct Import And Export Joint Stock Company"
+    },
+    {
+      "symbol": "ACB",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Ngân hàng Thương mại Cổ phần Á Châu",
+      "companyNameEn": "Asia Commercial Joint Stock Bank"
+    },
+    {
+      "symbol": "ACC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư và Xây dựng Bình Dương ACC",
+      "companyNameEn": "ACC Binh Duong Investment and Construction Joint Stock Company"
+    },
+    {
+      "symbol": "ACG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Gỗ An Cường",
+      "companyNameEn": "An Cuong Wood - Working Joint Stock Company"
+    },
+    {
+      "symbol": "ACL",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Xuất nhập khẩu Thủy sản Cửu Long An Giang",
+      "companyNameEn": "CuuLong Fish Joint Stock Company"
+    },
+    {
+      "symbol": "ADG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Clever Group",
+      "companyNameEn": "Clever Group Corporation"
+    },
+    {
+      "symbol": "ADP",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Sơn Á Đông",
+      "companyNameEn": "A Dong Paint Stock Company"
+    },
+    {
+      "symbol": "ADS",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần DAMSAN",
+      "companyNameEn": "Damsan Joint Stock Company"
+    },
+    {
+      "symbol": "AFX",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Xuất Nhập khẩu Nông sản Thực phẩm An Giang",
+      "companyNameEn": "An Giang Agriculture and Foods Import - Export Joint Stock Company"
+    },
+    {
+      "symbol": "AGG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư và Phát triển Bất động sản An Gia",
+      "companyNameEn": "An Gia Real Estate Investment And Development Corporation"
+    },
+    {
+      "symbol": "AGR",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Chứng khoán AGRIBANK",
+      "companyNameEn": "AgriBank Securities Corporation"
+    },
+    {
+      "symbol": "ANT",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Rau quả Thực phẩm An Giang",
+      "companyNameEn": "An Giang Fruit-Vegetables & Foodstuff Joint Stock Company"
+    },
+    {
+      "symbol": "ANV",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Nam Việt",
+      "companyNameEn": "Nam Viet Corporation"
+    },
+    {
+      "symbol": "APG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Chứng khoán APG",
+      "companyNameEn": "APG Securities Joint Stock Company"
+    },
+    {
+      "symbol": "APH",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn An Phát Holdings",
+      "companyNameEn": "An Phat Holdings Joint Stock Company"
+    },
+    {
+      "symbol": "ASG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn ASG",
+      "companyNameEn": "ASG Corporation"
+    },
+    {
+      "symbol": "ASM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Sao Mai",
+      "companyNameEn": "Sao Mai Group Corporation"
+    },
+    {
+      "symbol": "ASP",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Dầu khí An Pha",
+      "companyNameEn": "An Pha Petrol Joint Stock Company"
+    },
+    {
+      "symbol": "AST",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Dịch vụ Hàng không Taseco",
+      "companyNameEn": "Taseco Air Services Joint Stock Company"
+    },
+    {
+      "symbol": "BAF",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Nông nghiệp BAF Việt Nam",
+      "companyNameEn": "BAF Vietnam Agriculture Joint Stock Company"
+    },
+    {
+      "symbol": "BCE",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Xây dựng và Giao thông Bình Dương",
+      "companyNameEn": "Binh Duong Construction & Civil Engineering Joint Stock Company"
+    },
+    {
+      "symbol": "BCG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Bamboo Capital",
+      "companyNameEn": "Bamboo Capital Group Joint Stock Company"
+    },
+    {
+      "symbol": "BCM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tập đoàn Đầu tư và Phát triển Công nghiệp Becamex - CTCP",
+      "companyNameEn": "Becamex Investment And Industrial Development Group"
+    },
+    {
+      "symbol": "BFC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Phân bón Bình Điền",
+      "companyNameEn": "Binh Dien Fertilizer Joint Stock Company"
+    },
+    {
+      "symbol": "BHN",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tổng Công ty Cổ phần Bia - Rượu - Nước giải khát Hà Nội",
+      "companyNameEn": "Hanoi Beer Alcohol and Beverage Joint Stock Corporation"
+    },
+    {
+      "symbol": "BIC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tổng Công ty Cổ phần Bảo hiểm Ngân hàng Đầu tư và Phát triển Việt Nam",
+      "companyNameEn": "BIDV Insurance Corporation"
+    },
+    {
+      "symbol": "BID",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Ngân hàng Thương mại Cổ phần Đầu tư và Phát triển Việt Nam",
+      "companyNameEn": "Joint Stock Commercial Bank for Investment and Development of Vietnam"
+    },
+    {
+      "symbol": "BKG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư BKG Việt Nam",
+      "companyNameEn": "BKG Vietnam Investment Joint Stock Company"
+    },
+    {
+      "symbol": "BMC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Khoáng sản Bình Định",
+      "companyNameEn": "Binh Dinh Minerals Joint Stock Company"
+    },
+    {
+      "symbol": "BMI",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tổng Công ty Cổ phần Bảo Minh",
+      "companyNameEn": "Bao Minh Insurance Corporation"
+    },
+    {
+      "symbol": "BMP",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Nhựa Bình Minh",
+      "companyNameEn": "Binh Minh Plastics Joint Stock Company"
+    },
+    {
+      "symbol": "BRC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Cao su Bến Thành",
+      "companyNameEn": "Ben Thanh Rubber Joint Stock Company"
+    },
+    {
+      "symbol": "BSI",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Chứng khoán BIDV",
+      "companyNameEn": "BIDV Joint Stock Securities Company"
+    },
+    {
+      "symbol": "BSR",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Lọc Hóa dầu Bình Sơn",
+      "companyNameEn": "Binh Son Refining and Petrochemical Joint Stock Company"
+    },
+    {
+      "symbol": "BTP",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Nhiệt điện Bà Rịa",
+      "companyNameEn": "Ba Ria Thermal Power Joint Stock Company"
+    },
+    {
+      "symbol": "BTT",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Thương mại - Dịch vụ Bến Thành",
+      "companyNameEn": "Ben Thanh Trading and Service Joint Stock Company"
+    },
+    {
+      "symbol": "BVH",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tập đoàn Bảo Việt",
+      "companyNameEn": "Bao Viet Holdings"
+    },
+    {
+      "symbol": "BWE",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần - Tổng công ty Nước - Môi trường Bình Dương",
+      "companyNameEn": "Binh Duong Water - Environment Corporation - Joint Stock Company"
+    },
+    {
+      "symbol": "C32",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư và Xây dựng 3-2",
+      "companyNameEn": "3-2 Investment and Construction Joint Stock Company"
+    },
+    {
+      "symbol": "C47",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Xây dựng 47",
+      "companyNameEn": "Construction Joint Stock Company 47"
+    },
+    {
+      "symbol": "CCC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ Phần Xây Dựng CDC",
+      "companyNameEn": "CDC Construction Joint Stock Company"
+    },
+    {
+      "symbol": "CCI",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư Phát triển Công nghiệp Thương mại Củ Chi",
+      "companyNameEn": "Cuchi Commercial and Industrial Developing Investment Joint Stock Company"
+    },
+    {
+      "symbol": "CCL",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư và Phát triển Đô thị Dầu khí Cửu Long",
+      "companyNameEn": "Cuu Long Petro Urban Development And Investment Corporation"
+    },
+    {
+      "symbol": "CDC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Chương Dương",
+      "companyNameEn": "Chuong Duong Corporation"
+    },
+    {
+      "symbol": "CHP",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Thủy điện Miền Trung",
+      "companyNameEn": "Central Hydropower Joint Stock Company"
+    },
+    {
+      "symbol": "CIG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần COMA 18",
+      "companyNameEn": "COMA 18 Joint Stock Company"
+    },
+    {
+      "symbol": "CII",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư Hạ tầng Kỹ thuật Thành phố Hồ Chí Minh",
+      "companyNameEn": "Ho Chi Minh City Infrastructure Investment Joint Stock Company"
+    },
+    {
+      "symbol": "CKG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn CIC",
+      "companyNameEn": "CIC Group Joint Stock Company"
+    },
+    {
+      "symbol": "CLC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Cát Lợi",
+      "companyNameEn": "Cat Loi Joint Stock Company"
+    },
+    {
+      "symbol": "CLL",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Cảng Cát Lái",
+      "companyNameEn": "Cat Lai Port Joint Stock Company"
+    },
+    {
+      "symbol": "CLW",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Cấp nước Chợ Lớn",
+      "companyNameEn": "ChoLon Water Supply Joint Stock Company"
+    },
+    {
+      "symbol": "CMG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Công nghệ CMC",
+      "companyNameEn": "CMC Corporation"
+    },
+    {
+      "symbol": "CMV",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Thương nghiệp Cà Mau",
+      "companyNameEn": "Ca Mau Trading Joint Stock Company"
+    },
+    {
+      "symbol": "CMX",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần CAMIMEX Group",
+      "companyNameEn": "CAMIMEX Group Joint Stock Company"
+    },
+    {
+      "symbol": "CNG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần CNG Việt Nam",
+      "companyNameEn": "Clean Natural Gas Vietnam Joint Stock Company"
+    },
+    {
+      "symbol": "COM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Vật tư - Xăng dầu",
+      "companyNameEn": "Materials - Petroleum Joint Stock Company"
+    },
+    {
+      "symbol": "CRC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Create Capital Việt Nam",
+      "companyNameEn": "Create Capital Vietnam Joint Stock Company"
+    },
+    {
+      "symbol": "CRE",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Bất động sản Thế Kỷ",
+      "companyNameEn": "Century Land Joint Stock Company"
+    },
+    {
+      "symbol": "CRV",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Bất động sản CRV",
+      "companyNameEn": "CRV Real Estate Group Joint Stock Company"
+    },
+    {
+      "symbol": "CSM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Công nghiệp Cao su Miền Nam",
+      "companyNameEn": "The Southern Rubber Industry Joint Stock Company"
+    },
+    {
+      "symbol": "CSV",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Hóa chất Cơ bản miền Nam",
+      "companyNameEn": "South Basic Chemicals Joint Stock Company"
+    },
+    {
+      "symbol": "CTD",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Xây dựng Coteccons",
+      "companyNameEn": "Coteccons Construction Joint Stock Company"
+    },
+    {
+      "symbol": "CTF",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần City Auto",
+      "companyNameEn": "City Auto Corporation"
+    },
+    {
+      "symbol": "CTG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Ngân hàng Thương mại Cổ phần Công thương Việt Nam",
+      "companyNameEn": "Vietnam Joint Stock Commercial Bank For Industry and Trade"
+    },
+    {
+      "symbol": "CTI",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư Phát triển Cường Thuận IDICO",
+      "companyNameEn": "Cuong Thuan IDICO Development Investment Corporation"
+    },
+    {
+      "symbol": "CTR",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tổng Công ty Cổ phần Công trình Viettel",
+      "companyNameEn": "Viettel Construction Joint Stock Corporation"
+    },
+    {
+      "symbol": "CTS",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Chứng khoán Vietinbank",
+      "companyNameEn": "Vietinbank Securities Joint Stock Company"
+    },
+    {
+      "symbol": "CVT",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần CMC",
+      "companyNameEn": "CMC Joint Stock Company"
+    },
+    {
+      "symbol": "D2D",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Phát triển Đô thị Công nghiệp số 2",
+      "companyNameEn": "Industrial Urban Development Joint - Stock Company No.2"
+    },
+    {
+      "symbol": "DAH",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Khách sạn Đông Á",
+      "companyNameEn": "Dong A Hotel Group Joint Stock Company"
+    },
+    {
+      "symbol": "DAT",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đầu tư Du lịch và Phát triển Thủy sản",
+      "companyNameEn": "Travel Investment and Seafood Development Corporation"
+    },
+    {
+      "symbol": "DBC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Dabaco Việt Nam",
+      "companyNameEn": "DABACO Group"
+    },
+    {
+      "symbol": "DBD",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Dược - Trang thiết bị y tế Bình Định (BIDIPHAR)",
+      "companyNameEn": "Binh Dinh Pharmaceutical and Medical Equipment Joint Stock Company"
+    },
+    {
+      "symbol": "DBT",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Dược phẩm Bến Tre",
+      "companyNameEn": "Bentre Pharmaceutical Joint-Stock Company"
+    },
+    {
+      "symbol": "DC4",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Dicera Holdings",
+      "companyNameEn": "Dicera Holdings Joint Stock Company"
+    },
+    {
+      "symbol": "DCL",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Dược phẩm Cửu Long",
+      "companyNameEn": "Cuu Long Pharmaceutical Joint Stock Corporation"
+    },
+    {
+      "symbol": "DCM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần - Tổng Công ty Phân bón Dầu Khí Cà Mau",
+      "companyNameEn": "PetroVietnam Ca Mau Fertilizer Corporation"
+    },
+    {
+      "symbol": "DGC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Hóa chất Đức Giang",
+      "companyNameEn": "Ducgiang Chemicals Group Joint Stock Company"
+    },
+    {
+      "symbol": "DGW",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Thế Giới Số",
+      "companyNameEn": "Digiworld Corp."
+    },
+    {
+      "symbol": "DHA",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Hóa An",
+      "companyNameEn": "Hoa An Joint Stock Company"
+    },
+    {
+      "symbol": "DHC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Đông Hải Bến Tre",
+      "companyNameEn": "DongHai Joint Stock Company of Ben Tre"
+    },
+    {
+      "symbol": "DHG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Dược Hậu Giang",
+      "companyNameEn": "DHG Pharmaceutical Joint Stock Company"
+    },
+    {
+      "symbol": "DHM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Thương mại & Khai thác Khoáng sản Dương Hiếu",
+      "companyNameEn": "Duong Hieu Trading and Mining Joint Stock Company"
+    },
+    {
+      "symbol": "DIG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tổng Công ty Cổ phần Đầu tư Phát triển Xây dựng",
+      "companyNameEn": "Development Investment Construction Joint Stock Corporation"
+    },
+    {
+      "symbol": "DLG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Đức Long Gia Lai",
+      "companyNameEn": "Duc Long Gia Lai Group Joint Stock Company"
+    },
+    {
+      "symbol": "DMC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Xuất nhập khẩu Y tế DOMESCO",
+      "companyNameEn": "Domesco Medical Import - Export Joint Stock Corporation"
+    },
+    {
+      "symbol": "DPG",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Đạt Phương",
+      "companyNameEn": "Dat Phuong Group Joint Stock Company"
+    },
+    {
+      "symbol": "DPM",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Tổng Công ty Phân bón và Hóa chất Dầu khí - Công ty Cổ phần",
+      "companyNameEn": "Petrovietnam Fertilizer and Chemicals Corporation"
+    },
+    {
+      "symbol": "DPR",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Cao su Đồng Phú",
+      "companyNameEn": "Dong Phu Rubber Joint Stock Company"
+    },
+    {
+      "symbol": "DQC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Tập đoàn Điện Quang",
+      "companyNameEn": "Dien Quang Group Joint Stock Company"
+    },
+    {
+      "symbol": "DRC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Cao su Đà Nẵng",
+      "companyNameEn": "DaNang Rubber Joint Stock Company"
+    },
+    {
+      "symbol": "DRH",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần DRH Holdings",
+      "companyNameEn": "DRH Holdings JSC"
+    },
+    {
+      "symbol": "DRL",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Thủy điện - Điện lực 3",
+      "companyNameEn": "Hydro Power Joint Stock Company - Power No.3"
+    },
+    {
+      "symbol": "DSC",
+      "type": "STOCK",
+      "board": "HSX",
+      "companyName": "Công ty Cổ phần Chứng khoán DSC",
+      "companyNameEn": "DSC Securities Corporation"
+    }
+  ]
+}

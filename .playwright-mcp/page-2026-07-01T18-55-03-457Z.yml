@@ -1,0 +1,188 @@
+- generic [ref=f6e2]:
+  - generic [ref=f6e4]:
+    - generic [ref=f6e5]:
+      - generic [ref=f6e6]:
+        - generic [ref=f6e7]:
+          - link [ref=f6e8] [cursor=pointer]:
+            - /url: /home
+            - generic [ref=f6e9]:
+              - img [ref=f6e11]
+              - img [ref=f6e13]
+          - generic [ref=f6e15]:
+            - button "Cơ sở" [ref=f6e17] [cursor=pointer]
+            - button "Phái sinh" [ref=f6e18] [cursor=pointer]
+          - generic [ref=f6e19]: 02/07/2026 01:55:02
+        - generic [ref=f6e22]:
+          - img [ref=f6e23]
+          - img [ref=f6e25] [cursor=pointer]
+          - generic [ref=f6e26]:
+            - button "Mở tài khoản" [ref=f6e27] [cursor=pointer]
+            - button "Đăng nhập" [ref=f6e28] [cursor=pointer]
+          - img [ref=f6e31] [cursor=pointer]
+      - generic [ref=f6e34]:
+        - link "Trang chủ" [ref=f6e35] [cursor=pointer]:
+          - /url: /home
+        - button "Bảng giá" [ref=f6e37] [cursor=pointer]:
+          - generic [ref=f6e38]: Bảng giá
+          - img [ref=f6e39]
+        - link "Thị trường" [ref=f6e40] [cursor=pointer]:
+          - /url: /iq/market
+        - button "Thông tin tài sản" [ref=f6e42] [cursor=pointer]:
+          - generic [ref=f6e43]: Thông tin tài sản
+          - img [ref=f6e44]
+        - button "Giao dịch tiền" [ref=f6e46] [cursor=pointer]:
+          - generic [ref=f6e47]: Giao dịch tiền
+          - img [ref=f6e48]
+        - button "Giao Dịch Chứng Khoán" [ref=f6e50] [cursor=pointer]:
+          - generic [ref=f6e51]: Giao Dịch Chứng Khoán
+          - img [ref=f6e52]
+        - button "Vietcap IQ" [ref=f6e54] [cursor=pointer]:
+          - generic [ref=f6e55]: Vietcap IQ
+          - img [ref=f6e56]
+        - button "AI News" [ref=f6e58] [cursor=pointer]:
+          - generic [ref=f6e59]: AI News
+          - img [ref=f6e60]
+        - button "Xem thêm" [ref=f6e62] [cursor=pointer]:
+          - generic [ref=f6e63]: Xem thêm
+          - img [ref=f6e64]
+    - generic [ref=f6e69]:
+      - generic [ref=f6e71]:
+        - generic [ref=f6e73] [cursor=pointer]:
+          - generic [ref=f6e74]:
+            - generic [ref=f6e75]:
+              - generic [ref=f6e76]: VN-Index
+              - generic [ref=f6e77]: Đóng cửa
+            - generic [ref=f6e79]: "----"
+          - generic [ref=f6e81]:
+            - generic [ref=f6e82]:
+              - text: "KL:"
+              - text: "•GT: 0.00 Tỷ"
+            - generic [ref=f6e83]:
+              - img [ref=f6e84]
+              - img [ref=f6e85]
+              - img [ref=f6e86]
+        - generic [ref=f6e93] [cursor=pointer]:
+          - generic [ref=f6e94]:
+            - generic [ref=f6e95]:
+              - generic [ref=f6e96]: VN30-Index
+              - generic [ref=f6e97]: Đóng cửa
+            - generic [ref=f6e99]: "----"
+          - generic [ref=f6e101]:
+            - generic [ref=f6e102]:
+              - text: "KL:"
+              - text: "•GT: 0.00 Tỷ"
+            - generic [ref=f6e103]:
+              - img [ref=f6e104]
+              - img [ref=f6e105]
+              - img [ref=f6e106]
+        - generic [ref=f6e113] [cursor=pointer]:
+          - generic [ref=f6e114]:
+            - generic [ref=f6e115]:
+              - generic [ref=f6e116]: HNX-Index
+              - generic [ref=f6e117]: Đóng cửa
+            - generic [ref=f6e119]: "----"
+          - generic [ref=f6e121]:
+            - generic [ref=f6e122]:
+              - text: "KL:"
+              - text: "•GT: 0.00 Tỷ"
+            - generic [ref=f6e123]:
+              - img [ref=f6e124]
+              - img [ref=f6e125]
+              - img [ref=f6e126]
+        - generic [ref=f6e133] [cursor=pointer]:
+          - generic [ref=f6e134]:
+            - generic [ref=f6e135]:
+              - generic [ref=f6e136]: HNX30-Index
+              - generic [ref=f6e137]: Đóng cửa
+            - generic [ref=f6e139]: "----"
+          - generic [ref=f6e141]:
+            - generic [ref=f6e142]:
+              - text: "KL:"
+              - text: "•GT: 0.00 Tỷ"
+            - generic [ref=f6e143]:
+              - img [ref=f6e144]
+              - img [ref=f6e145]
+              - img [ref=f6e146]
+        - generic [ref=f6e153] [cursor=pointer]:
+          - generic [ref=f6e154]:
+            - generic [ref=f6e155]:
+              - generic [ref=f6e156]: UPCOM-Index
+              - generic [ref=f6e157]: Đóng cửa
+            - generic [ref=f6e159]: "----"
+          - generic [ref=f6e161]:
+            - generic [ref=f6e162]:
+              - text: "KL:"
+              - text: "•GT: 0.00 Tỷ"
+            - generic [ref=f6e163]:
+              - img [ref=f6e164]
+              - img [ref=f6e165]
+              - img [ref=f6e166]
+        - generic [ref=f6e174]:
+          - generic [ref=f6e175] [cursor=pointer]: Mỹ
+          - generic [ref=f6e176] [cursor=pointer]: Châu Âu
+          - generic [ref=f6e177] [cursor=pointer]: Châu Á
+          - generic [ref=f6e178] [cursor=pointer]: Hàng hoá
+          - generic [ref=f6e179] [cursor=pointer]: Khác
+      - generic [ref=f6e191]:
+        - generic [ref=f6e192]:
+          - generic [ref=f6e193]:
+            - img "List ngang hàng" [ref=f6e195] [cursor=pointer]
+            - img "Nhóm theo ngành" [ref=f6e197] [cursor=pointer]
+            - img "Tất cả danh mục" [ref=f6e199] [cursor=pointer]
+          - generic [ref=f6e201]:
+            - img
+            - textbox "Tìm kiếm..." [ref=f6e202]
+          - generic [ref=f6e203]:
+            - generic [ref=f6e205] [cursor=pointer]:
+              - generic [ref=f6e206]: Danh mục quan tâm
+              - img [ref=f6e207]
+            - generic [ref=f6e210] [cursor=pointer]:
+              - generic [ref=f6e211]: HOSE
+              - img [ref=f6e212]
+            - generic [ref=f6e215] [cursor=pointer]:
+              - generic [ref=f6e216]: HNX
+              - img [ref=f6e217]
+            - generic [ref=f6e220] [cursor=pointer]:
+              - generic [ref=f6e221]: UPCOM
+              - img [ref=f6e222]
+            - generic [ref=f6e225] [cursor=pointer]:
+              - generic [ref=f6e226]: Phái Sinh
+              - img [ref=f6e227]
+            - button "Chứng Quyền" [ref=f6e229]
+            - generic [ref=f6e231] [cursor=pointer]:
+              - generic [ref=f6e232]: Ngành
+              - img [ref=f6e233]
+            - generic [ref=f6e236] [cursor=pointer]:
+              - generic [ref=f6e237]: Trái phiếu
+              - img [ref=f6e238]
+        - generic [ref=f6e241]:
+          - img [ref=f6e243] [cursor=pointer]
+          - img [ref=f6e245] [cursor=pointer]
+          - img [ref=f6e247] [cursor=pointer]
+          - img [ref=f6e249] [cursor=pointer]
+      - grid [ref=f6e253]:
+        - rowgroup [ref=f6e254]:
+          - row [ref=f6e255]
+          - row [ref=f6e256]
+        - rowgroup [ref=f6e257]:
+          - row [ref=f6e258]
+          - row [ref=f6e259]
+        - rowgroup [ref=f6e260]
+        - rowgroup [ref=f6e261]
+        - rowgroup
+        - rowgroup
+        - rowgroup
+        - rowgroup
+  - generic [ref=f6e274]:
+    - generic [ref=f6e276]:
+      - text: "Cơ sở: Giá: x1,000 - Khối lượng: x1"
+      - text: "Phái sinh & Bond: Giá: x1 - Khối lượng: x1"
+    - generic [ref=f6e278]:
+      - generic [ref=f6e280] [cursor=pointer]: OTP
+      - generic [ref=f6e281] [cursor=pointer]:
+        - img [ref=f6e283]
+        - generic [ref=f6e286]: Tài sản
+      - generic [ref=f6e288] [cursor=pointer]:
+        - img [ref=f6e290]
+        - generic [ref=f6e292]: Sổ lệnh
+      - generic [ref=f6e294] [cursor=pointer]: Đặt lệnh

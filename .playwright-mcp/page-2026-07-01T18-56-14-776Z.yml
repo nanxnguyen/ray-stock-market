@@ -1,0 +1,59 @@
+- generic [ref=f12e2]:
+  - generic [ref=f12e5]:
+    - generic [ref=f12e6]:
+      - generic [ref=f12e7]:
+        - link [ref=f12e8] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f12e9]:
+            - img [ref=f12e11]
+            - img [ref=f12e13]
+        - generic [ref=f12e15]:
+          - button "Cơ sở" [ref=f12e16] [cursor=pointer]
+          - button "Phái sinh" [ref=f12e17] [cursor=pointer]
+        - generic [ref=f12e18]: "---"
+      - generic [ref=f12e21]:
+        - img [ref=f12e22]
+        - img [ref=f12e24] [cursor=pointer]
+        - generic [ref=f12e25]:
+          - button "Mở tài khoản" [ref=f12e26] [cursor=pointer]
+          - button "Đăng nhập" [ref=f12e27] [cursor=pointer]
+        - img [ref=f12e30] [cursor=pointer]
+    - generic [ref=f12e33]:
+      - link "Trang chủ" [ref=f12e34] [cursor=pointer]:
+        - /url: /home
+      - button "Bảng giá" [ref=f12e36] [cursor=pointer]:
+        - generic [ref=f12e37]: Bảng giá
+        - img [ref=f12e38]
+      - link "Thị trường" [ref=f12e39] [cursor=pointer]:
+        - /url: /iq/market
+      - button "Thông tin tài sản" [ref=f12e41] [cursor=pointer]:
+        - generic [ref=f12e42]: Thông tin tài sản
+        - img [ref=f12e43]
+      - button "Giao dịch tiền" [ref=f12e45] [cursor=pointer]:
+        - generic [ref=f12e46]: Giao dịch tiền
+        - img [ref=f12e47]
+      - button "Giao Dịch Chứng Khoán" [ref=f12e49] [cursor=pointer]:
+        - generic [ref=f12e50]: Giao Dịch Chứng Khoán
+        - img [ref=f12e51]
+      - button "Vietcap IQ" [ref=f12e53] [cursor=pointer]:
+        - generic [ref=f12e54]: Vietcap IQ
+        - img [ref=f12e55]
+      - button "AI News" [ref=f12e57] [cursor=pointer]:
+        - generic [ref=f12e58]: AI News
+        - img [ref=f12e59]
+      - button "Xem thêm" [ref=f12e61] [cursor=pointer]:
+        - generic [ref=f12e62]: Xem thêm
+        - img [ref=f12e63]
+  - generic [ref=f12e68]:
+    - generic [ref=f12e70]:
+      - text: "Cơ sở: Giá: x1,000 - Khối lượng: x1"
+      - text: "Phái sinh & Bond: Giá: x1 - Khối lượng: x1"
+    - generic [ref=f12e72]:
+      - generic [ref=f12e74] [cursor=pointer]: OTP
+      - generic [ref=f12e75] [cursor=pointer]:
+        - img [ref=f12e77]
+        - generic [ref=f12e80]: Tài sản
+      - generic [ref=f12e82] [cursor=pointer]:
+        - img [ref=f12e84]
+        - generic [ref=f12e86]: Sổ lệnh
+      - generic [ref=f12e88] [cursor=pointer]: Đặt lệnh

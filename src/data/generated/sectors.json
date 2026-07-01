@@ -1,0 +1,121 @@
+[
+  {
+    "icbCode": "8300",
+    "icbName": "Bán lẻ",
+    "icbNameEn": "Retail",
+    "level": 2,
+    "parentIcbCode": "53"
+  },
+  {
+    "icbCode": "8350",
+    "icbName": "Ngân hàng",
+    "icbNameEn": "Banks",
+    "level": 2,
+    "parentIcbCode": "83"
+  },
+  {
+    "icbCode": "8770",
+    "icbName": "Bất động sản",
+    "icbNameEn": "Real Estate",
+    "level": 2,
+    "parentIcbCode": "87"
+  },
+  {
+    "icbCode": "8210",
+    "icbName": "Thực phẩm",
+    "icbNameEn": "Food Products",
+    "level": 2,
+    "parentIcbCode": "35"
+  },
+  {
+    "icbCode": "8120",
+    "icbName": "Công nghệ",
+    "icbNameEn": "Technology",
+    "level": 2,
+    "parentIcbCode": "95"
+  },
+  {
+    "icbCode": "8600",
+    "icbName": "Chứng khoán",
+    "icbNameEn": "Securities",
+    "level": 2,
+    "parentIcbCode": "40"
+  },
+  {
+    "icbCode": "8720",
+    "icbName": "Thép",
+    "icbNameEn": "Steel",
+    "level": 2,
+    "parentIcbCode": "17"
+  },
+  {
+    "icbCode": "8810",
+    "icbName": "Năng lượng",
+    "icbNameEn": "Energy",
+    "level": 2,
+    "parentIcbCode": "75"
+  },
+  {
+    "icbCode": "8510",
+    "icbName": "Dược phẩm",
+    "icbNameEn": "Pharmaceuticals",
+    "level": 2,
+    "parentIcbCode": "35"
+  },
+  {
+    "icbCode": "8410",
+    "icbName": "Bảo hiểm",
+    "icbNameEn": "Insurance",
+    "level": 2,
+    "parentIcbCode": "40"
+  },
+  {
+    "icbCode": "8310",
+    "icbName": "Vận tải",
+    "icbNameEn": "Transportation",
+    "level": 2,
+    "parentIcbCode": "60"
+  },
+  {
+    "icbCode": "8220",
+    "icbName": "Hóa chất",
+    "icbNameEn": "Chemicals",
+    "level": 2,
+    "parentIcbCode": "13"
+  },
+  {
+    "icbCode": "8130",
+    "icbName": "Cao su",
+    "icbNameEn": "Rubber",
+    "level": 2,
+    "parentIcbCode": "15"
+  },
+  {
+    "icbCode": "8140",
+    "icbName": "Thủy sản",
+    "icbNameEn": "Seafood",
+    "level": 2,
+    "parentIcbCode": "35"
+  },
+  {
+    "icbCode": "8110",
+    "icbName": "Dệt may",
+    "icbNameEn": "Textiles",
+    "level": 2,
+    "parentIcbCode": "35"
+  },
+  {
+    "icbCode": "8710",
+    "icbName": "Vật liệu",
+    "icbNameEn": "Materials",
+    "level": 2,
+    "parentIcbCode": "13"
+  },
+  {
+    "icbCode": "8150",
+    "icbName": "Gỗ",
+    "icbNameEn": "Wood",
+    "level": 2,
+    "parentIcbCode": "16"
+  }
+]

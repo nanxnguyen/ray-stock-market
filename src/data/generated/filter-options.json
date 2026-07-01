@@ -1,0 +1,130 @@
+{
+  "groups": [
+    {
+      "id": "WL",
+      "label": "Danh mục quan tâm",
+      "hasDropdown": false,
+      "columns": 1,
+      "options": []
+    },
+    {
+      "id": "HOSE",
+      "label": "HOSE",
+      "hasDropdown": true,
+      "columns": 2,
+      "options": [
+        { "label": "HOSE", "value": "HOSE" },
+        { "label": "VN30", "value": "VN30" },
+        { "label": "VN100", "value": "VN100" },
+        { "label": "VNMidCap", "value": "VNMidCap" },
+        { "label": "VNSmallCap", "value": "VNSmallCap" },
+        { "label": "VNAllShare", "value": "VNAllShare" },
+        { "label": "VNDiamond", "value": "VNDiamond" },
+        { "label": "VNFinLead", "value": "VNFinLead" },
+        { "label": "VNFinSelect", "value": "VNFinSelect" },
+        { "label": "VNDividend", "value": "VNDividend" },
+        { "label": "VNMiTech", "value": "VNMiTech" },
+        { "label": "ETF", "value": "ETF" },
+        { "label": "GDTT HOSE", "value": "GDTT_HOSE" },
+        { "label": "Lô lẻ HOSE", "value": "ODD_LOT_HOSE" },
+        { "label": "VN50 Growth", "value": "VN50_Growth" },
+        { "label": "VNFin", "value": "VNFin" },
+        { "label": "VNInd", "value": "VNInd" },
+        { "label": "VNMat", "value": "VNMat" },
+        { "label": "VNIT", "value": "VNIT" },
+        { "label": "VNReal", "value": "VNReal" },
+        { "label": "VNCons", "value": "VNCons" },
+        { "label": "VNEne", "value": "VNEne" },
+        { "label": "VNHeal", "value": "VNHeal" },
+        { "label": "VNSI", "value": "VNSI" },
+        { "label": "VNUti", "value": "VNUti" },
+        { "label": "VNX50", "value": "VNX50" },
+        { "label": "VNXAllShare", "value": "VNXAllShare" }
+      ]
+    },
+    {
+      "id": "HNX",
+      "label": "HNX",
+      "hasDropdown": true,
+      "columns": 1,
+      "options": [
+        { "label": "HNX", "value": "HNX" },
+        { "label": "HNX30", "value": "HNX30" },
+        { "label": "HNXCon", "value": "HNXCon" },
+        { "label": "HNXFin", "value": "HNXFin" },
+        { "label": "HNXLCap", "value": "HNXLCap" },
+        { "label": "HNXMSCap", "value": "HNXMSCap" },
+        { "label": "HNXMan", "value": "HNXMan" },
+        { "label": "GDTT HNX", "value": "GDTT_HNX" },
+        { "label": "Lô lẻ HNX", "value": "ODD_LOT_HNX" }
+      ]
+    },
+    {
+      "id": "UPCOM",
+      "label": "UPCOM",
+      "hasDropdown": true,
+      "columns": 1,
+      "options": [
+        { "label": "UPCOM", "value": "UPCOM" },
+        { "label": "GDTT UPCOM", "value": "GDTT_UPCOM" },
+        { "label": "Lô lẻ UPCOM", "value": "ODD_LOT_UPCOM" }
+      ]
+    },
+    {
+      "id": "DERIVATIVE",
+      "label": "Phái Sinh",
+      "hasDropdown": true,
+      "columns": 1,
+      "options": [
+        { "label": "HĐTL chỉ số", "value": "INDEX_FU" },
+        { "label": "HĐTL TPCP", "value": "BOND_FU" },
+        { "label": "GDTT Phái sinh", "value": "GDTT_DERIVATIVE" }
+      ]
+    },
+    {
+      "id": "CW",
+      "label": "Chứng Quyền",
+      "hasDropdown": false,
+      "columns": 1,
+      "options": []
+    },
+    {
+      "id": "SECTOR",
+      "label": "Ngành",
+      "hasDropdown": true,
+      "columns": 2,
+      "options": [
+        { "label": "Tất cả các ngành", "value": "ALL" },
+        { "label": "Dầu khí", "value": "8810" },
+        { "label": "Hóa chất", "value": "8220" },
+        { "label": "Tài nguyên Cơ bản", "value": "1710" },
+        { "label": "Xây dựng và Vật liệu", "value": "1310" },
+        { "label": "Hàng & Dịch vụ Công nghiệp", "value": "2010" },
+        { "label": "Ô tô và phụ tùng", "value": "2013" },
+        { "label": "Thực phẩm và đồ uống", "value": "3530" },
+        { "label": "Hàng cá nhân & Gia dụng", "value": "3520" },
+        { "label": "Y tế", "value": "3535" },
+        { "label": "Bán lẻ", "value": "5310" },
+        { "label": "Truyền thông", "value": "5510" },
+        { "label": "Du lịch và Giải trí", "value": "5710" },
+        { "label": "Viễn thông", "value": "5010" },
+        { "label": "Điện, nước & xăng dầu khí đốt", "value": "7510" },
+        { "label": "Ngân hàng", "value": "8350" },
+        { "label": "Bảo hiểm", "value": "8410" },
+        { "label": "Bất động sản", "value": "8770" },
+        { "label": "Dịch vụ tài chính", "value": "4010" },
+        { "label": "Công nghệ Thông tin", "value": "9510" }
+      ]
+    },
+    {
+      "id": "BOND",
+      "label": "Trái phiếu",
+      "hasDropdown": true,
+      "columns": 1,
+      "options": [
+        { "label": "TP riêng lẻ", "value": "BOND_PRIVATE" },
+        { "label": "TP niêm yết", "value": "BOND_LISTED" }
+      ]
+    }
+  ]
+}
