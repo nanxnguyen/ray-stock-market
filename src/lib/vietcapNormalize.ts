@@ -119,6 +119,8 @@ function normalizeScrapedPrice(
   meta?: VietcapSymbol,
 ): RawStock | null {
   if (!p.ref || p.ref === 0) return null
+  // Skip bonds with no real trading data (placeholder ceiling of 999999999)
+  if (p.ceil >= 999999999 && p.match === 0) return null
 
   const cl = vndToPrice(p.ceil)
   const r = vndToPrice(p.ref)
