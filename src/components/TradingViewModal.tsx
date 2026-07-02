@@ -1,3 +1,5 @@
+import { useEffect, useRef } from 'react'
+
 type Props = {
   sym: string
   tvSymbol: string
@@ -5,17 +7,62 @@ type Props = {
 }
 
 const TV_SYM_MAP: Record<string, string> = {
-  'VN-Index': 'HOSE:VNINDEX',
-  'VN30-Index': 'HOSE:VN30',
+  'VN-Index': 'VNINDEX',
+  'VN30-Index': 'VN30',
   'HNX-Index': 'HNX:HNXINDEX',
   'HNX30': 'HNX:HNX30',
-  'UPCOM': 'UPCOM:UPCOMINDEX',
+  'UPCOM': '301',
+}
+
+function getTvOpenUrl(tvSym: string): string {
+  return `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(tvSym)}&theme=dark`
 }
 
 export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
+  const containerRef = useRef<HTMLDivElement>(null)
   const tvSym = TV_SYM_MAP[sym] || tvSymbol || 'HOSE:VNINDEX'
-  const iframeUrl = `https://s.tradingview.com/widgetembed/?frameElementId=tv1&symbol=${encodeURIComponent(tvSym)}&interval=D&hidesidetoolbar=0&hidetoptoolbar=0&theme=dark&style=1&locale=vi&toolbar_bg=%23131722&enable_publishing=false&allow_symbol_change=true&save_image=false&show_popup_button=false`
-  const tvOpenUrl = `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(tvSym)}&theme=dark`
+  const tvOpenUrl = getTvOpenUrl(tvSym)
+
+  useEffect(() => {
+    if (!containerRef.current) return
+    const container = containerRef.current
+    container.innerHTML = ''
+
+    const widgetDiv = document.createElement('div')
+    widgetDiv.className = 'tradingview-widget-container'
+    widgetDiv.style.cssText = 'height:100%;width:100%'
+
+    const widgetInner = document.createElement('div')
+    widgetInner.className = 'tradingview-widget-container__widget'
+    widgetInner.style.cssText = 'height:calc(100% - 32px);width:100%'
+    widgetDiv.appendChild(widgetInner)
+
+    const config = JSON.stringify({
+      autosize: true,
+      symbol: tvSym,
+      interval: 'D',
+      timezone: 'Etc/UTC',
+      theme: 'dark',
+      style: '1',
+      locale: 'vi',
+      allow_symbol_change: true,
+      calendar: false,
+      support_host: 'https://www.tradingview.com',
+    })
+
+    const script = document.createElement('script')
+    script.type = 'text/javascript'
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js'
+    script.async = true
+    script.textContent = config
+
+    widgetDiv.appendChild(script)
+    container.appendChild(widgetDiv)
+
+    return () => {
+      container.innerHTML = ''
+    }
+  }, [tvSym])
 
   return (
     <div
@@ -76,12 +123,7 @@ export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
             </button>
           </div>
         </div>
-        <iframe
-          src={iframeUrl}
-          style={{ flex: 1, width: '100%', border: 'none', background: '#060c18' }}
-          allowTransparency
-          scrolling="no"
-        />
+        <div ref={containerRef} style={{ flex: 1, width: '100%', background: '#060c18' }} />
       </div>
     </div>
   )
