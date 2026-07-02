@@ -7,7 +7,7 @@ Ray Stock Market là ứng dụng bảng giá chứng khoán mô phỏng giao di
 - Bảng giá chứng khoán với các cột giá trần, tham chiếu, sàn, dư mua, khớp lệnh, dư bán, cao, trung bình, thấp và khối lượng.
 - Mô phỏng cập nhật giá theo thời gian thực bằng dữ liệu local.
 - Thanh chỉ số thị trường với biểu đồ mini và trạng thái tăng giảm.
-- Bộ lọc theo nhóm dữ liệu Vietcap như watchlist, chỉ số, ngành, trái phiếu và chứng quyền.
+- Bộ lọc theo nhóm dữ liệu thị trường như watchlist, chỉ số, ngành, trái phiếu và chứng quyền.
 - Tìm kiếm và thêm mã vào watchlist.
 - Modal biểu đồ trong ngày khi bấm vào mã chứng khoán hoặc chỉ số.
 - Hỗ trợ dark mode và light mode.
@@ -29,10 +29,10 @@ Ray Stock Market là ứng dụng bảng giá chứng khoán mô phỏng giao di
 ```text
 src/
   components/          Các component giao diện chính
-  data/generated/      Dữ liệu Vietcap đã được sinh sẵn
+  data/generated/      Dữ liệu thị trường đã được sinh sẵn
   data/mockMarket.ts   Dữ liệu mock chỉ số/thị trường
   lib/                 Hàm format, filter, normalize và mô phỏng giá
-  types/               TypeScript types cho priceboard và Vietcap data
+  types/               TypeScript types cho priceboard và dữ liệu thị trường
   App.tsx              Entry component của ứng dụng
   main.tsx             React bootstrap
 
@@ -99,7 +99,7 @@ VITE_BASE_URL=/ray-stock-market/ npm run build
 npm run preview
 ```
 
-## Đồng bộ dữ liệu Vietcap
+## Đồng bộ dữ liệu thị trường
 
 Dự án có script:
 
