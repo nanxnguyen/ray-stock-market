@@ -51,9 +51,6 @@ function OrderHistoryInner() {
     }
   })
 
-  const filledCount = allOrders.filter(o => o.status === 'filled').length
-  const pendingCount = allOrders.filter(o => o.status === 'pending' || o.status === 'partial').length
-
   const tabs = [
     { key: 'all', label: 'Tất cả' },
     { key: 'filled', label: 'Đã khớp' },
@@ -66,26 +63,6 @@ function OrderHistoryInner() {
       <div style={{ maxWidth: 1680, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 14 }}>
 
         <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: th.text }}>LỊCH SỬ LỆNH</h1>
-
-        {/* Summary cards */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
-          <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 10, padding: 14 }}>
-            <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Tổng lệnh hôm nay</span>
-            <div style={{ fontSize: 20, fontWeight: 800, color: th.text, fontFamily: "'JetBrains Mono', monospace", marginTop: 4 }}>{allOrders.length}</div>
-          </div>
-          <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 10, padding: 14 }}>
-            <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Đã khớp</span>
-            <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace", marginTop: 4 }}>{filledCount}</div>
-          </div>
-          <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 10, padding: 14 }}>
-            <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Chờ khớp</span>
-            <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--ds-color-warning)', fontFamily: "'JetBrains Mono', monospace", marginTop: 4 }}>{pendingCount}</div>
-          </div>
-          <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 10, padding: 14 }}>
-            <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Giá trị khớp</span>
-            <div style={{ fontSize: 20, fontWeight: 800, color: 'var(--ds-color-text-link)', fontFamily: "'JetBrains Mono', monospace", marginTop: 4 }}>186.4M</div>
-          </div>
-        </div>
 
         {/* Tabs */}
         <div style={{ display: 'flex', gap: 6 }}>

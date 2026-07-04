@@ -26,41 +26,90 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
 <div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:18px;">
 <div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:12px;">
 
-  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
-    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
-      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+  <div style="background:{{ th.headerBg }};border:1px solid {{ th.headerBorder }};border-radius:12px;overflow:visible;">
+
+    <!-- ROW 1: LOGO + INDEX SPARKLINE TICKER -->
+    <div style="display:flex;align-items:center;gap:0;padding:9px 16px;border-bottom:1px solid {{ th.headerBorder }};overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;padding-right:16px;margin-right:16px;border-right:1px solid {{ th.headerDivider }};">
         <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
         </div>
-        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+        <span style="font-size:13px;font-weight:800;color:{{ th.headerLogoText }};white-space:nowrap;">Ray <span style="color:#22c55e;">Stock Market</span></span>
       </div>
-      <div style="display:flex;flex-shrink:0;">
-        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
-          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
-          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+      <sc-for list="{{ tickerIndices }}" as="ti" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;padding:0 18px;border-right:1px solid {{ th.headerDivider }};">
+          <div style="display:flex;flex-direction:column;gap:1px;min-width:66px;">
+            <span style="font-size:9px;font-weight:700;color:{{ th.headerMuted }};letter-spacing:.3px;">{{ ti.name }}</span>
+            <span style="font-size:15px;font-weight:800;color:{{ ti.color }};font-family:'JetBrains Mono',monospace;letter-spacing:-.3px;">{{ ti.val }}</span>
+            <span style="font-size:9.5px;color:{{ ti.color }};font-weight:700;">{{ ti.chg }}</span>
+          </div>
+          <svg viewBox="0 0 80 32" preserveAspectRatio="none" style="width:80px;height:32px;flex-shrink:0;">
+            <defs>
+              <linearGradient id="{{ ti.gradId }}" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="{{ ti.color }}" stop-opacity="0.35"></stop>
+                <stop offset="100%" stop-color="{{ ti.color }}" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <path d="{{ ti.fill }}" fill="url(#{{ ti.gradId }})"></path>
+            <line x1="0" y1="{{ ti.refY }}" x2="80" y2="{{ ti.refY }}" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2 2" opacity="0.65"></line>
+            <polyline points="{{ ti.pts }}" fill="none" stroke="{{ ti.color }}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"></polyline>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:3px;min-width:64px;">
+            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:{{ th.headerMuted2 }};">Val</span><span style="font-size:9.5px;color:{{ th.headerText }};font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.val2 }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:{{ th.headerMuted2 }};">F.Val</span><span style="font-size:9.5px;color:{{ ti.fvalColor }};font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.fval }}</span></div>
+          </div>
         </div>
-        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
-          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
-          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
-        </div>
-        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
-          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
-          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
-        </div>
-      </div>
-      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+      </sc-for>
+      <span style="margin-left:auto;font-size:10px;color:{{ th.headerMuted2 }};font-family:'JetBrains Mono',monospace;flex-shrink:0;padding-left:16px;">04/07/2026 · 15:00:00</span>
     </div>
-    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
-      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
-      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
-      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
-      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
-      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
-      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
-      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
-      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
-      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
-      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+
+    <!-- ROW 2: NAV PILLS + TOOLS MEGA MENU + THEME TOGGLE -->
+    <div style="display:flex;align-items:center;gap:6px;padding:8px 14px;overflow-x:visible;position:relative;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#16457a;border:1px solid #2563eb;color:#dbeafe;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:700;white-space:nowrap;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+
+      <div onClick="{{ toggleMoreTools }}" style="cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:6px;background:{{ moreToolsBg }};border:1px solid {{ moreToolsBorder }};color:{{ moreToolsFg }};border-radius:14px;padding:5px 12px 5px 11px;font-size:10.5px;font-weight:700;transition:all .15s;white-space:nowrap;">
+        <span style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:9px;height:9px;">
+          <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
+          <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
+        </span>
+        Công cụ
+        <span style="font-size:8px;transform:{{ arrowRotate }};transition:transform .15s;">▾</span>
+      </div>
+
+      <div style="margin-left:auto;display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <div onClick="{{ toggleDark }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};border-radius:20px;padding:5px 12px;transition:all .25s;">
+          <span style="font-size:12px;">{{ toggleIcon }}</span>
+          <span style="font-size:10px;font-weight:700;color:{{ th.headerChipFg }};">{{ toggleLabel }}</span>
+        </div>
+      </div>
+
+      <sc-if value="{{ showMoreTools }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ stopProp }}" style="position:absolute;top:44px;right:14px;background:{{ th.menuBg }};border:1px solid {{ th.menuBorder }};border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
+          <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+            <sc-for list="{{ menuGroups }}" as="grp" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-size:9.5px;font-weight:800;color:{{ grp.color }};text-transform:uppercase;letter-spacing:.5px;padding:0 8px 8px;">{{ grp.title }}</span>
+                <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="5">
+                  <a href="{{ it.href }}" style="text-decoration:none;display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;transition:background .12s;" style-hover="background:#131f36;">
+                    <span style="width:28px;height:28px;border-radius:8px;background:{{ it.iconBg }};display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">{{ it.icon }}</span>
+                    <span style="display:flex;flex-direction:column;gap:1px;min-width:0;">
+                      <span style="font-size:11.5px;font-weight:700;color:#e2e8f0;white-space:nowrap;">{{ it.label }}</span>
+                      <span style="font-size:9px;color:#5b7290;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.desc }}</span>
+                    </span>
+                  </a>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-top:1px solid {{ th.menuBorder }};padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:{{ th.menuFooterBg }};">
+            <span style="font-size:9.5px;color:#3a5570;font-weight:600;">{{ toolCount }} công cụ &amp; sẽ tiếp tục mở rộng</span>
+            <a href="Bang Dien.dc.html" style="text-decoration:none;font-size:10px;font-weight:700;color:#60a5fa;">🏠 Về Trang chủ</a>
+          </div>
+        </div>
+      </sc-if>
     </div>
   </div>
 
@@ -93,6 +142,11 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
       </div>
     </div>
 
+    <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;background:{{ sessionBadge.bg }};border:1px solid {{ sessionBadge.border }};border-radius:20px;padding:5px 12px;">
+      <span style="width:6px;height:6px;border-radius:50%;background:{{ sessionBadge.dot }};animation:pulse 2s infinite;"></span>
+      <span style="font-size:10px;font-weight:700;color:{{ sessionBadge.fg }};">{{ sessionBadge.label }}</span>
+    </div>
+
     <div style="display:flex;gap:18px;margin-left:auto;flex-wrap:wrap;">
       <div style="text-align:center;"><span style="font-size:9px;color:#a855f7;display:block;font-weight:700;">TRẦN</span><span style="font-size:12.5px;font-weight:700;color:#a855f7;font-family:'JetBrains Mono',monospace;">{{ stock.ceiling }}</span></div>
       <div style="text-align:center;"><span style="font-size:9px;color:#fbbf24;display:block;font-weight:700;">TC</span><span style="font-size:12.5px;font-weight:700;color:#fbbf24;font-family:'JetBrains Mono',monospace;">{{ stock.ref }}</span></div>
@@ -114,6 +168,20 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
         <button onClick="{{ setSide }}" value="BUY" style="background:{{ sideBtn.BUY.bg }};color:{{ sideBtn.BUY.fg }};border:1px solid {{ sideBtn.BUY.border }};border-radius:8px;padding:11px;font-size:13px;font-weight:800;cursor:pointer;transition:all .15s;">MUA</button>
         <button onClick="{{ setSide }}" value="SELL" style="background:{{ sideBtn.SELL.bg }};color:{{ sideBtn.SELL.fg }};border:1px solid {{ sideBtn.SELL.border }};border-radius:8px;padding:11px;font-size:13px;font-weight:800;cursor:pointer;transition:all .15s;">BÁN</button>
       </div>
+
+      <!-- ORDER MODE TABS: THƯỜNG / ĐIỀU KIỆN -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;background:{{ th.inputBg }};border-radius:8px;padding:3px;">
+        <button onClick="{{ setOrderModeNormal }}" style="background:{{ modeTab.normal.bg }};color:{{ modeTab.normal.fg }};border:none;border-radius:6px;padding:7px;font-size:10.5px;font-weight:700;cursor:pointer;transition:all .15s;">Lệnh thường</button>
+        <button onClick="{{ setOrderModeCond }}" style="background:{{ modeTab.cond.bg }};color:{{ modeTab.cond.fg }};border:none;border-radius:6px;padding:7px;font-size:10.5px;font-weight:700;cursor:pointer;transition:all .15s;">Lệnh điều kiện</button>
+      </div>
+
+      <sc-if value="{{ isConditional }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex;flex-direction:column;gap:5px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.3);border-radius:8px;padding:9px;">
+          <label style="font-size:10px;font-weight:700;color:#f59e0b;text-transform:uppercase;">Giá kích hoạt (Trigger)</label>
+          <input type="text" value="{{ triggerPrice }}" onInput="{{ updateTriggerPrice }}" style="padding:8px 10px;border:1px solid rgba(245,158,11,.35);border-radius:6px;background:{{ th.inputBg }};color:{{ th.text }};font-size:13px;font-weight:800;font-family:'JetBrains Mono',monospace;outline:none;"/>
+          <span style="font-size:9px;color:{{ th.textMuted }};">Lệnh kích hoạt khi giá thị trường chạm mức này, sau đó đặt {{ side==='BUY' ? 'mua' : 'bán' }} theo giá bên dưới.</span>
+        </div>
+      </sc-if>
 
       <!-- ORDER TYPE CHIPS -->
       <div style="display:flex;gap:5px;flex-wrap:wrap;">
@@ -155,6 +223,14 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
             <button onClick="{{ lb.onClick }}" style="flex:1;background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:5px;padding:5px;font-size:9.5px;font-weight:700;cursor:pointer;">{{ lb.label }}</button>
           </sc-for>
         </div>
+        <div style="display:flex;flex-direction:column;gap:4px;">
+          <span style="font-size:9px;color:{{ th.textMuted }};font-weight:600;">{{ pctLabel }}</span>
+          <div style="display:flex;gap:5px;">
+            <sc-for list="{{ pctBtns }}" as="pb" hint-placeholder-count="4">
+              <button onClick="{{ pb.onClick }}" style="flex:1;background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ side==='BUY' ? '#22c55e' : '#f43f5e' }};border-radius:5px;padding:5px;font-size:9.5px;font-weight:700;cursor:pointer;">{{ pb.label }}</button>
+            </sc-for>
+          </div>
+        </div>
       </div>
 
       <!-- SUMMARY -->
@@ -192,7 +268,7 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
           <!-- BID -->
           <div style="display:flex;flex-direction:column;gap:4px;">
             <div style="display:grid;grid-template-columns:1fr 1fr;font-size:9px;color:{{ th.textMuted }};font-weight:700;padding:0 2px;"><span>GIÁ MUA</span><span style="text-align:right;">KL</span></div>
-            <sc-for list="{{ bids }}" as="b" hint-placeholder-count="3">
+            <sc-for list="{{ bids }}" as="b" hint-placeholder-count="5">
               <div onClick="{{ b.onClick }}" style="display:grid;grid-template-columns:1fr 1fr;position:relative;cursor:pointer;border-radius:5px;overflow:hidden;background:{{ th.rowBg }};">
                 <div style="position:absolute;right:0;top:0;bottom:0;width:{{ b.barW }};background:rgba(34,197,94,.18);"></div>
                 <span style="position:relative;padding:6px 8px;font-size:12px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ b.price }}</span>
@@ -203,7 +279,7 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
           <!-- ASK -->
           <div style="display:flex;flex-direction:column;gap:4px;">
             <div style="display:grid;grid-template-columns:1fr 1fr;font-size:9px;color:{{ th.textMuted }};font-weight:700;padding:0 2px;"><span>GIÁ BÁN</span><span style="text-align:right;">KL</span></div>
-            <sc-for list="{{ asks }}" as="a" hint-placeholder-count="3">
+            <sc-for list="{{ asks }}" as="a" hint-placeholder-count="5">
               <div onClick="{{ a.onClick }}" style="display:grid;grid-template-columns:1fr 1fr;position:relative;cursor:pointer;border-radius:5px;overflow:hidden;background:{{ th.rowBg }};">
                 <div style="position:absolute;left:0;top:0;bottom:0;width:{{ a.barW }};background:rgba(244,63,94,.18);"></div>
                 <span style="position:relative;padding:6px 8px;font-size:12px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">{{ a.price }}</span>
@@ -284,12 +360,17 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
+  toggleDark = () => this.setState(p => ({ darkMode: !(p.darkMode !== false) }));
+  toggleMoreTools = () => this.setState(p => ({ showMoreTools: !p.showMoreTools }));
+  stopProp = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
   state = {
     symbol: new URLSearchParams(location.search).get('symbol') || 'VCB',
     symbolInput: new URLSearchParams(location.search).get('symbol') || 'VCB',
     showSuggest: false,
     side: 'BUY',
     orderType: 'LO',
+    orderMode: 'normal',
+    triggerPrice: '',
     price: '81.50',
     qty: 100,
     orderPlaced: false,
@@ -330,34 +411,111 @@ class Component extends DCLogic {
   incQty = () => this.setState(s => ({ qty: s.qty + 100 }));
   decQty = () => this.setState(s => ({ qty: Math.max(0, s.qty - 100) }));
   setLot = (n) => this.setState({ qty: n });
+  setOrderModeNormal = () => this.setState({ orderMode: 'normal' });
+  setOrderModeCond = () => this.setState(s => ({ orderMode: 'conditional', triggerPrice: s.triggerPrice || s.price }));
+  updateTriggerPrice = (e) => this.setState({ triggerPrice: e.target.value });
+  setQtyPct = (pct) => {
+    const { symbol, side, price } = this.state;
+    const p = parseFloat(price) || 1;
+    if (side === 'BUY') {
+      const buyingPower = 45280000;
+      const raw = Math.floor((buyingPower * pct / p) / 100) * 100;
+      this.setState({ qty: Math.max(0, raw) });
+    } else {
+      const holding = (this.positionDB[symbol] || {}).qty || 0;
+      const raw = Math.floor((holding * pct) / 100) * 100;
+      this.setState({ qty: Math.max(0, raw) });
+    }
+  };
   useFloor = () => { const d = this.stockDB[this.state.symbol]; this.setState({ price: (d.ref*0.93).toFixed(2) }); };
   useRef = () => { const d = this.stockDB[this.state.symbol]; this.setState({ price: d.ref.toFixed(2) }); };
   useCeiling = () => { const d = this.stockDB[this.state.symbol]; this.setState({ price: (d.ref*1.07).toFixed(2) }); };
   pickDepthPrice = (p) => this.setState({ price: p });
 
   submitOrder = () => {
-    const { side, symbol, price, qty } = this.state;
+    const { side, symbol, price, qty, orderMode, triggerPrice } = this.state;
+    const condText = orderMode === 'conditional' ? ` (kích hoạt tại ${triggerPrice}đ)` : '';
     this.setState({
       orderPlaced: true,
-      orderConfirmText: `${side==='BUY'?'Mua':'Bán'} ${qty.toLocaleString()} ${symbol} @ ${price}đ`,
+      orderConfirmText: `${side==='BUY'?'Mua':'Bán'} ${qty.toLocaleString()} ${symbol} @ ${price}đ${condText}`,
     });
     setTimeout(() => this.setState({ orderPlaced: false }), 3500);
   };
 
   renderVals() {
-    const { symbol, symbolInput, showSuggest, side, orderType, price, qty, orderPlaced, orderConfirmText } = this.state;
+    const darkMode = this.state.darkMode !== false;
+    const showMoreTools = !!this.state.showMoreTools;
+    const dark = darkMode;
+    const { symbol, symbolInput, showSuggest, side, orderType, orderMode, triggerPrice, price, qty, orderPlaced, orderConfirmText } = this.state;
+    const isConditional = orderMode === 'conditional';
     const d = this.stockDB[symbol] || this.stockDB.VCB;
 
     const th = {
-      pageBg: '#0a0e14',
-      cardBg: '#131a24',
-      cardBorder: '#232b38',
-      inputBg: '#0f1419',
-      rowBg: '#1a212c',
-      iconBg: '#1a212c',
-      text: '#eef1f6',
-      textMuted: '#8a94a6',
+      headerBg: dark ? 'linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%)' : 'linear-gradient(90deg,#eef2f7 0%,#ffffff 60%,#eef2f7 100%)',
+      headerBorder: dark ? '#0f1e36' : '#dbe4ee',
+      headerDivider: dark ? '#14233d' : '#e2e8f0',
+      headerMuted: dark ? '#5b7290' : '#64748b',
+      headerMuted2: dark ? '#4a6080' : '#94a3b8',
+      headerText: dark ? '#94a3b8' : '#334155',
+      headerChipBg: dark ? '#0f1e36' : '#eef2f7',
+      headerChipBorder: dark ? '#1a3050' : '#dbe4ee',
+      headerChipFg: dark ? '#94a3b8' : '#475569',
+      menuBg: dark ? '#0b1424' : '#ffffff',
+      menuBorder: dark ? '#1a3050' : '#e1e8f0',
+      menuFooterBg: dark ? '#08101f' : '#f7f9fb',
+      headerLogoText: dark ? '#fff' : '#0f172a',
+      pageBg: dark ? '#0a0e14' : '#f0f4f8',
+      cardBg: dark ? '#131a24' : '#ffffff',
+      cardBorder: dark ? '#232b38' : '#e1e8f0',
+      inputBg: dark ? '#0f1419' : '#f7f9fb',
+      rowBg: dark ? '#1a212c' : '#eef2f7',
+      iconBg: dark ? '#1a212c' : '#eef2f7',
+      text: dark ? '#eef1f6' : '#1e293b',
+      textMuted: dark ? '#8a94a6' : '#64748b',
     };
+
+    const toggleDark = this.toggleDark;
+    const toggleMoreTools = this.toggleMoreTools;
+    const stopProp = this.stopProp;
+    const toggleIcon = dark ? '☀️' : '🌙';
+    const toggleLabel = dark ? 'LIGHT' : 'DARK';
+    const moreToolsBg = showMoreTools ? '#16457a' : th.headerChipBg;
+    const moreToolsBorder = showMoreTools ? '#2563eb' : th.headerChipBorder;
+    const moreToolsFg = showMoreTools ? '#dbeafe' : th.headerChipFg;
+    const arrowRotate = showMoreTools ? 'rotate(180deg)' : 'rotate(0deg)';
+    const tickerIndices = [
+      { name:'VNINDEX', val:'1,862.08', chg:'+4.27 (+0.23%)', color:'#22c55e', gradId:'tkA', pts:'0,18 13,16 27,14 40,12 53,10 67,8 80,6', fill:'M0,32 L0,18 13,16 27,14 40,12 53,10 67,8 80,6 L80,32 Z', refY:20, val2:'15,657 B', fval:'-810 B', fvalColor:'#f43f5e' },
+      { name:'HNX', val:'307.57', chg:'+0.84 (+0.27%)', color:'#22c55e', gradId:'tkB', pts:'0,20 13,18 27,15 40,13 53,11 67,9 80,7', fill:'M0,32 L0,20 13,18 27,15 40,13 53,11 67,9 80,7 L80,32 Z', refY:22, val2:'1,623 B', fval:'31 B', fvalColor:'#22c55e' },
+      { name:'UPCOM', val:'128.01', chg:'-0.66 (-0.51%)', color:'#f43f5e', gradId:'tkC', pts:'0,10 13,12 27,14 40,17 53,19 67,21 80,23', fill:'M0,32 L0,10 13,12 27,14 40,17 53,19 67,21 80,23 L80,32 Z', refY:12, val2:'384 B', fval:'-9 B', fvalColor:'#f43f5e' },
+    ];
+    const menuGroups = [
+      { title: 'Phân tích', color: '#60a5fa', items: [
+        { href:'Advanced Chart.dc.html', icon:'📈', iconBg:'rgba(96,165,250,.15)', label:'Chart nâng cao', desc:'Nến, MA, RSI, MACD, Bollinger' },
+        { href:'Market Heatmap.dc.html', icon:'🗺️', iconBg:'rgba(192,38,211,.15)', label:'Bản đồ nhiệt', desc:'Treemap toàn thị trường' },
+        { href:'Stock Comparison.dc.html', icon:'📊', iconBg:'rgba(96,165,250,.15)', label:'So sánh mã', desc:'So sánh hiệu suất 2-5 mã' },
+        { href:'Stock Screener.dc.html', icon:'🔍', iconBg:'rgba(96,165,250,.15)', label:'Screener', desc:'Lọc theo P/E, P/B, ROE...' },
+        { href:'Money Flow.dc.html', icon:'💵', iconBg:'rgba(34,197,94,.15)', label:'Dòng tiền', desc:'NN mua/bán theo ngành' },
+        { href:'Company Research.dc.html', icon:'🏢', iconBg:'rgba(168,85,247,.15)', label:'Nghiên cứu DN', desc:'BCTC & khuyến nghị CTCK' },
+        { href:'Portfolio Analytics.dc.html', icon:'📐', iconBg:'rgba(168,85,247,.15)', label:'Phân tích DM', desc:'Beta, Sharpe, Backtest' },
+      ]},
+      { title: 'Giao dịch', color: '#22c55e', items: [
+        { href:'Trading Panel.dc.html', icon:'💰', iconBg:'rgba(34,197,94,.15)', label:'Đặt lệnh', desc:'Bảng giá & khớp lệnh' },
+        { href:'Derivatives Trading.dc.html', icon:'📉', iconBg:'rgba(249,115,22,.15)', label:'Phái sinh', desc:'VN30F, margin, T+0' },
+        { href:'Order Book.dc.html', icon:'📖', iconBg:'rgba(34,197,94,.15)', label:'Sổ lệnh', desc:'Độ sâu thị trường' },
+        { href:'Order History.dc.html', icon:'📋', iconBg:'rgba(34,197,94,.15)', label:'Lịch sử lệnh', desc:'Đã khớp, chờ khớp, đã hủy' },
+        { href:'Account Statement.dc.html', icon:'🧾', iconBg:'rgba(245,158,11,.15)', label:'Sao kê TK', desc:'Nạp/rút, giao dịch tiền' },
+        { href:'Watchlists.dc.html', icon:'⭐', iconBg:'rgba(245,158,11,.15)', label:'Watchlists', desc:'Danh mục theo dõi' },
+        { href:'Alerts Management.dc.html', icon:'🔔', iconBg:'rgba(245,158,11,.15)', label:'Cảnh báo giá', desc:'Quản lý các alert đã đặt' },
+      ]},
+      { title: 'Thông tin & Tài khoản', color:'#f59e0b', items: [
+        { href:'Portfolio.dc.html', icon:'💼', iconBg:'rgba(34,197,94,.15)', label:'Danh mục đầu tư', desc:'NAV, phân bổ, lãi/lỗ' },
+        { href:'Market News.dc.html', icon:'📰', iconBg:'rgba(168,85,247,.15)', label:'Tin tức', desc:'Vĩ mô, doanh nghiệp, ngành' },
+        { href:'Event Calendar.dc.html', icon:'📅', iconBg:'rgba(168,85,247,.15)', label:'Lịch sự kiện', desc:'ĐHCĐ, cổ tức, chốt quyền' },
+        { href:'Account Settings.dc.html', icon:'⚙️', iconBg:'rgba(148,163,184,.15)', label:'Cài đặt TK', desc:'Hồ sơ, bảo mật, thông báo' },
+        { href:'Auth Flow.dc.html', icon:'🔑', iconBg:'rgba(148,163,184,.15)', label:'Đăng nhập/KYC', desc:'Đăng ký & xác thực' },
+      ]},
+    ];
+    const toolCount = menuGroups.reduce((s,g)=>s+g.items.length,0);
 
     const isUp = d.price >= d.ref;
     const color = isUp ? '#22c55e' : '#f43f5e';
@@ -379,17 +537,27 @@ class Component extends DCLogic {
     const holdingQty = (this.positionDB[symbol] || {}).qty || 0;
     const canSubmit = qty > 0 && priceValid && (side==='SELL' ? holdingQty >= qty : totalNum <= buyingPower);
 
-    // Depth ladder generation
-    const bids = [0,1,2].map(i => {
+    // Depth ladder generation (5 levels — matches HOSE/HNX market depth display)
+    const bids = [0,1,2,3,4].map(i => {
       const p = (d.price - (i+1)*parseFloat(tickSize)).toFixed(2);
       const vol = Math.floor(8000 + Math.random()*40000);
       return { price:p, vol:(vol/1000).toFixed(1)+'k', barW:`${30+Math.random()*60}%`, onClick: () => this.pickDepthPrice(p) };
     });
-    const asks = [0,1,2].map(i => {
+    const asks = [0,1,2,3,4].map(i => {
       const p = (d.price + (i+1)*parseFloat(tickSize)).toFixed(2);
       const vol = Math.floor(8000 + Math.random()*40000);
       return { price:p, vol:(vol/1000).toFixed(1)+'k', barW:`${30+Math.random()*60}%`, onClick: () => this.pickDepthPrice(p) };
     });
+
+    // Session status (VN market hours)
+    const now = new Date();
+    const hh = now.getHours(), mm = now.getMinutes(), t = hh*60+mm;
+    let sessionBadge;
+    if (t >= 9*60 && t < 9*60+15) sessionBadge = { label:'ATO', bg:'rgba(245,158,11,.12)', border:'rgba(245,158,11,.35)', fg:'#f59e0b', dot:'#f59e0b' };
+    else if (t >= 9*60+15 && t < 11*60+30) sessionBadge = { label:'Khớp lệnh liên tục', bg:'rgba(34,197,94,.12)', border:'rgba(34,197,94,.35)', fg:'#22c55e', dot:'#22c55e' };
+    else if (t >= 13*60 && t < 14*60+30) sessionBadge = { label:'Khớp lệnh liên tục', bg:'rgba(34,197,94,.12)', border:'rgba(34,197,94,.35)', fg:'#22c55e', dot:'#22c55e' };
+    else if (t >= 14*60+30 && t < 14*60+45) sessionBadge = { label:'ATC', bg:'rgba(245,158,11,.12)', border:'rgba(245,158,11,.35)', fg:'#f59e0b', dot:'#f59e0b' };
+    else sessionBadge = { label:'Đóng cửa', bg:'rgba(148,163,184,.1)', border:'rgba(148,163,184,.3)', fg:'#94a3b8', dot:'#64748b' };
 
     const matchedTrades = Array.from({length:8}).map((_,i) => {
       const up = Math.random() > 0.5;
@@ -416,6 +584,12 @@ class Component extends DCLogic {
     }));
 
     const lotBtns = [100,500,1000,2000].map(n => ({ label:n.toLocaleString(), onClick: () => this.setLot(n) }));
+    const pctBtns = [25,50,75,100].map(p => ({ label:p+'%', onClick: () => this.setQtyPct(p) }));
+    const pctLabel = side==='BUY' ? '% Sức mua khả dụng' : '% Số lượng đang có';
+    const modeTab = {
+      normal: { bg: !isConditional ? '#3b82f6' : 'transparent', fg: !isConditional ? '#fff' : th.textMuted },
+      cond: { bg: isConditional ? '#f59e0b' : 'transparent', fg: isConditional ? '#fff' : th.textMuted },
+    };
 
     const positionRaw = this.positionDB[symbol];
     let position = null;
@@ -442,7 +616,12 @@ class Component extends DCLogic {
     }));
 
     return {
-      th,
+      th, toggleDark, toggleMoreTools, stopProp, showMoreTools, toggleIcon, toggleLabel, moreToolsBg, moreToolsBorder, moreToolsFg, arrowRotate, tickerIndices, menuGroups, toolCount,
+      sessionBadge,
+      isConditional, modeTab,
+      setOrderModeNormal: this.setOrderModeNormal, setOrderModeCond: this.setOrderModeCond,
+      triggerPrice, updateTriggerPrice: this.updateTriggerPrice,
+      pctBtns, pctLabel,
       symbol, symbolInput, showSuggest, suggestions,
       updateSymbolInput: this.updateSymbolInput,
       stock: {

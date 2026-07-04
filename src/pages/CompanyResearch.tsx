@@ -6,8 +6,8 @@ const th = {
   cardBorder: 'var(--ds-color-border-default)',
   text: 'var(--ds-color-text-primary)',
   textMuted: 'var(--ds-color-text-secondary)',
-  rowBg: 'var(--ds-color-bg-nav)',
-  iconBg: 'var(--ds-color-bg-nav)',
+  rowBg: 'var(--ds-color-bg-elevated)',
+  iconBg: 'var(--ds-color-bg-elevated)',
 }
 
 const quarters = [

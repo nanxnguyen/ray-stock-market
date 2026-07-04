@@ -25,20 +25,20 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
 <div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:20px;">
 <div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:14px;">
 
-  <div style="background:linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%);border:1px solid #0f1e36;border-radius:12px;overflow:visible;">
+  <div style="background:{{ th.headerBg }};border:1px solid {{ th.headerBorder }};border-radius:12px;overflow:visible;">
 
     <!-- ROW 1: LOGO + INDEX SPARKLINE TICKER -->
-    <div style="display:flex;align-items:center;gap:0;padding:9px 16px;border-bottom:1px solid #0f1e36;overflow-x:auto;">
-      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;padding-right:16px;margin-right:16px;border-right:1px solid #14233d;">
+    <div style="display:flex;align-items:center;gap:0;padding:9px 16px;border-bottom:1px solid {{ th.headerBorder }};overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;padding-right:16px;margin-right:16px;border-right:1px solid {{ th.headerDivider }};">
         <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
           <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
         </div>
-        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock Market</span></span>
+        <span style="font-size:13px;font-weight:800;color:{{ th.headerLogoText }};white-space:nowrap;">Ray <span style="color:#22c55e;">Stock Market</span></span>
       </div>
       <sc-for list="{{ tickerIndices }}" as="ti" hint-placeholder-count="3">
-        <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;padding:0 18px;border-right:1px solid #14233d;">
+        <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;padding:0 18px;border-right:1px solid {{ th.headerDivider }};">
           <div style="display:flex;flex-direction:column;gap:1px;min-width:66px;">
-            <span style="font-size:9px;font-weight:700;color:#5b7290;letter-spacing:.3px;">{{ ti.name }}</span>
+            <span style="font-size:9px;font-weight:700;color:{{ th.headerMuted }};letter-spacing:.3px;">{{ ti.name }}</span>
             <span style="font-size:15px;font-weight:800;color:{{ ti.color }};font-family:'JetBrains Mono',monospace;letter-spacing:-.3px;">{{ ti.val }}</span>
             <span style="font-size:9.5px;color:{{ ti.color }};font-weight:700;">{{ ti.chg }}</span>
           </div>
@@ -54,20 +54,20 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
             <polyline points="{{ ti.pts }}" fill="none" stroke="{{ ti.color }}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"></polyline>
           </svg>
           <div style="display:flex;flex-direction:column;gap:3px;min-width:64px;">
-            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:#4a6080;">Val</span><span style="font-size:9.5px;color:#94a3b8;font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.val2 }}</span></div>
-            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:#4a6080;">F.Val</span><span style="font-size:9.5px;color:{{ ti.fvalColor }};font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.fval }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:{{ th.headerMuted2 }};">Val</span><span style="font-size:9.5px;color:{{ th.headerText }};font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.val2 }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:{{ th.headerMuted2 }};">F.Val</span><span style="font-size:9.5px;color:{{ ti.fvalColor }};font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.fval }}</span></div>
           </div>
         </div>
       </sc-for>
-      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;padding-left:16px;">04/07/2026 · 15:00:00</span>
+      <span style="margin-left:auto;font-size:10px;color:{{ th.headerMuted2 }};font-family:'JetBrains Mono',monospace;flex-shrink:0;padding-left:16px;">04/07/2026 · 15:00:00</span>
     </div>
 
     <!-- ROW 2: NAV PILLS + TOOLS MEGA MENU + THEME TOGGLE -->
     <div style="display:flex;align-items:center;gap:6px;padding:8px 14px;overflow-x:visible;position:relative;">
-      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#0f1e36;border:1px solid #1a3050;color:#94a3b8;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
       <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#16457a;border:1px solid #2563eb;color:#dbeafe;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:700;white-space:nowrap;">💼 Danh mục</a>
-      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#0f1e36;border:1px solid #1a3050;color:#94a3b8;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
-      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#0f1e36;border:1px solid #1a3050;color:#94a3b8;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
 
       <div onClick="{{ toggleMoreTools }}" style="cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:6px;background:{{ moreToolsBg }};border:1px solid {{ moreToolsBorder }};color:{{ moreToolsFg }};border-radius:14px;padding:5px 12px 5px 11px;font-size:10.5px;font-weight:700;transition:all .15s;white-space:nowrap;">
         <span style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:9px;height:9px;">
@@ -79,14 +79,14 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
       </div>
 
       <div style="margin-left:auto;display:flex;align-items:center;gap:6px;flex-shrink:0;">
-        <div onClick="{{ toggleDark }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:#0f1e36;border:1px solid #1a3050;border-radius:20px;padding:5px 12px;transition:all .25s;">
+        <div onClick="{{ toggleDark }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};border-radius:20px;padding:5px 12px;transition:all .25s;">
           <span style="font-size:12px;">{{ th.toggleIcon }}</span>
-          <span style="font-size:10px;font-weight:700;color:#64748b;">{{ th.toggleLabel }}</span>
+          <span style="font-size:10px;font-weight:700;color:{{ th.headerChipFg }};">{{ th.toggleLabel }}</span>
         </div>
       </div>
 
       <sc-if value="{{ showMoreTools }}" hint-placeholder-val="{{ false }}">
-        <div onClick="{{ stopProp }}" style="position:absolute;top:44px;right:14px;background:#0b1424;border:1px solid #1a3050;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
+        <div onClick="{{ stopProp }}" style="position:absolute;top:44px;right:14px;background:{{ th.menuBg }};border:1px solid {{ th.menuBorder }};border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
           <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
             <sc-for list="{{ menuGroups }}" as="grp" hint-placeholder-count="3">
               <div style="display:flex;flex-direction:column;gap:2px;">
@@ -103,7 +103,7 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
               </div>
             </sc-for>
           </div>
-          <div style="border-top:1px solid #16233b;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:#08101f;">
+          <div style="border-top:1px solid {{ th.menuBorder }};padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:{{ th.menuFooterBg }};">
             <span style="font-size:9.5px;color:#3a5570;font-weight:600;">{{ toolCount }} công cụ &amp; sẽ tiếp tục mở rộng</span>
             <a href="Bang Dien.dc.html" style="text-decoration:none;font-size:10px;font-weight:700;color:#60a5fa;">🏠 Về Trang chủ</a>
           </div>
@@ -335,6 +335,19 @@ class Component extends DCLogic {
     const { navTimeframe, darkMode, showMoreTools } = this.state;
     const dark = darkMode;
     const th = {
+      headerBg: dark ? 'linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%)' : 'linear-gradient(90deg,#eef2f7 0%,#ffffff 60%,#eef2f7 100%)',
+      headerBorder: dark ? '#0f1e36' : '#dbe4ee',
+      headerDivider: dark ? '#14233d' : '#e2e8f0',
+      headerMuted: dark ? '#5b7290' : '#64748b',
+      headerMuted2: dark ? '#4a6080' : '#94a3b8',
+      headerText: dark ? '#94a3b8' : '#334155',
+      headerChipBg: dark ? '#0f1e36' : '#eef2f7',
+      headerChipBorder: dark ? '#1a3050' : '#dbe4ee',
+      headerChipFg: dark ? '#94a3b8' : '#475569',
+      menuBg: dark ? '#0b1424' : '#ffffff',
+      menuBorder: dark ? '#1a3050' : '#e1e8f0',
+      menuFooterBg: dark ? '#08101f' : '#f7f9fb',
+      headerLogoText: dark ? '#fff' : '#0f172a',
       pageBg: dark ? '#0a0e14' : '#f0f4f8',
       cardBg: dark ? '#131a24' : '#ffffff',
       cardBorder: dark ? '#232b38' : '#e1e8f0',
@@ -390,9 +403,9 @@ class Component extends DCLogic {
       },
     ];
     const toolCount = menuGroups.reduce((s,g)=>s+g.items.length,0);
-    const moreToolsBg = showMoreTools ? '#16457a' : '#0f1e36';
-    const moreToolsBorder = showMoreTools ? '#2563eb' : '#1a3050';
-    const moreToolsFg = showMoreTools ? '#dbeafe' : '#94a3b8';
+    const moreToolsBg = showMoreTools ? '#16457a' : th.headerChipBg;
+    const moreToolsBorder = showMoreTools ? '#2563eb' : th.headerChipBorder;
+    const moreToolsFg = showMoreTools ? '#dbeafe' : th.headerChipFg;
     const arrowRotate = showMoreTools ? 'rotate(180deg)' : 'rotate(0deg)';
 
     // Header index sparkline ticker

@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 import type { ThemeTokens, MarketIndexView, ChartView, TradeHistoryItem, StockRow } from './types/priceboard'
 import type { VietcapFilterGroup, VietcapFilterState } from './types/vietcap'
 import Layout from './components/Layout'
+import SubPageLayout from './components/SubPageLayout'
 import HomePage from './pages/HomePage'
 
 const TradingPanel = lazy(() => import('./pages/TradingPanel'))
@@ -24,6 +25,7 @@ const EventCalendar = lazy(() => import('./pages/EventCalendar'))
 const AccountSettings = lazy(() => import('./pages/AccountSettings'))
 const AuthFlow = lazy(() => import('./pages/AuthFlow'))
 const StockInfo = lazy(() => import('./pages/StockInfo'))
+const AccountStatement = lazy(() => import('./pages/AccountStatement'))
 
 function PageLoader() {
   return (
@@ -84,8 +86,12 @@ export default function AppRoutes(props: AppRoutesProps) {
   return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
+        {/* HomePage: old TopBar + IndexStrip */}
         <Route element={<Layout th={props.th} toggleDark={props.toggleDark} />}>
           <Route path="/" element={<HomePage {...props} />} />
+        </Route>
+        {/* Sub-pages: new 2-row TopBar with index sparklines */}
+        <Route element={<SubPageLayout th={props.th} toggleDark={props.toggleDark} indices={props.indices} />}>
           <Route path="/trading-panel" element={<TradingPanel />} />
           <Route path="/order-book" element={<OrderBook />} />
           <Route path="/order-history" element={<OrderHistory />} />
@@ -105,6 +111,7 @@ export default function AppRoutes(props: AppRoutesProps) {
           <Route path="/account-settings" element={<AccountSettings />} />
           <Route path="/auth" element={<AuthFlow />} />
           <Route path="/stock-info" element={<StockInfo />} />
+          <Route path="/account-statement" element={<AccountStatement />} />
         </Route>
       </Routes>
     </Suspense>

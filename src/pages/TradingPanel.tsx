@@ -53,6 +53,9 @@ function TradingPanelInner() {
   const [showSuggest, setShowSuggest] = useState(false)
   const [side, setSide] = useState<'BUY' | 'SELL'>('BUY')
   const [orderType, setOrderType] = useState('LO')
+  const [orderMode, setOrderMode] = useState<'normal' | 'conditional'>('normal')
+  const [triggerPrice, setTriggerPrice] = useState('')
+  const [condition, setCondition] = useState('>=')
   const [price, setPrice] = useState(getInitialPrice)
   const [qty, setQty] = useState(100)
   const [orderPlaced, setOrderPlaced] = useState(false)
@@ -117,11 +120,24 @@ function TradingPanelInner() {
   const useRefPrice = useCallback(() => setPrice(d.ref.toFixed(2)), [d.ref])
   const useCeiling = useCallback(() => setPrice((d.ref * 1.07).toFixed(2)), [d.ref])
 
+  const setQtyPct = useCallback((pct: number) => {
+    const p = parseFloat(price) || 1
+    if (side === 'BUY') {
+      const raw = Math.floor((BUYING_POWER * pct / p) / 100) * 100
+      setQty(Math.max(0, raw))
+    } else {
+      const holding = POSITION_DB[symbol]?.qty || 0
+      const raw = Math.floor((holding * pct) / 100) * 100
+      setQty(Math.max(0, raw))
+    }
+  }, [price, side, symbol])
+
   const submitOrder = useCallback(() => {
     setOrderPlaced(true)
-    setOrderConfirmText(`${side === 'BUY' ? 'Mua' : 'Bán'} ${qty.toLocaleString()} ${symbol} @ ${price}đ`)
+    const condText = orderMode === 'conditional' ? ` (kích hoạt tại ${triggerPrice}đ)` : ''
+    setOrderConfirmText(`${side === 'BUY' ? 'Mua' : 'Bán'} ${qty.toLocaleString()} ${symbol} @ ${price}đ${condText}`)
     setTimeout(() => setOrderPlaced(false), 3500)
-  }, [side, qty, symbol, price])
+  }, [side, qty, symbol, price, orderMode, triggerPrice])
 
   const suggestions = useMemo(() =>
     Object.keys(STOCK_DB)
@@ -140,13 +156,13 @@ function TradingPanelInner() {
 
   const lotBtns = useMemo(() => [100, 500, 1000, 2000], [])
 
-  const bids = useMemo(() => [0, 1, 2].map(i => {
+  const bids = useMemo(() => [0, 1, 2, 3, 4].map(i => {
     const p = (d.price - (i + 1) * parseFloat(tickSize)).toFixed(2)
     const vol = 8000 + ((i * 7919 + 1234) % 40000)
     return { price: p, vol: (vol / 1000).toFixed(1) + 'k', barW: `${30 + ((i * 3571) % 60)}%` }
   }), [d.price, tickSize])
 
-  const asks = useMemo(() => [0, 1, 2].map(i => {
+  const asks = useMemo(() => [0, 1, 2, 3, 4].map(i => {
     const p = (d.price + (i + 1) * parseFloat(tickSize)).toFixed(2)
     const vol = 8000 + ((i * 7919 + 5432) % 40000)
     return { price: p, vol: (vol / 1000).toFixed(1) + 'k', barW: `${30 + ((i * 3571 + 2000) % 60)}%` }
@@ -159,6 +175,16 @@ function TradingPanelInner() {
     const mins = 32 - i
     return { time: `10:${String(Math.max(0, mins)).padStart(2, '0')}:0${i}`, price: p, vol: vol.toLocaleString(), color: up ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)' }
   }), [d.price, tickSize])
+
+  const sessionBadge = useMemo(() => {
+    const now = new Date()
+    const t = now.getHours() * 60 + now.getMinutes()
+    if (t >= 9 * 60 && t < 9 * 60 + 15) return { label: 'ATO', bg: 'rgba(245,158,11,.12)', border: 'rgba(245,158,11,.35)', fg: '#f59e0b', dot: '#f59e0b' }
+    if (t >= 9 * 60 + 15 && t < 11 * 60 + 30) return { label: 'Khớp lệnh liên tục', bg: 'rgba(34,197,94,.12)', border: 'rgba(34,197,94,.35)', fg: '#22c55e', dot: '#22c55e' }
+    if (t >= 13 * 60 && t < 14 * 60 + 30) return { label: 'Khớp lệnh liên tục', bg: 'rgba(34,197,94,.12)', border: 'rgba(34,197,94,.35)', fg: '#22c55e', dot: '#22c55e' }
+    if (t >= 14 * 60 + 30 && t < 14 * 60 + 45) return { label: 'ATC', bg: 'rgba(245,158,11,.12)', border: 'rgba(245,158,11,.35)', fg: '#f59e0b', dot: '#f59e0b' }
+    return { label: 'Đóng cửa', bg: 'rgba(148,163,184,.1)', border: 'rgba(148,163,184,.3)', fg: '#94a3b8', dot: '#64748b' }
+  }, [])
 
   const positionRaw = POSITION_DB[symbol]
   const position = useMemo(() => {
@@ -232,6 +258,11 @@ function TradingPanelInner() {
             </div>
           </div>
 
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0, background: sessionBadge.bg, border: `1px solid ${sessionBadge.border}`, borderRadius: 20, padding: '5px 12px' }}>
+            <span style={{ width: 6, height: 6, borderRadius: '50%', background: sessionBadge.dot, animation: 'pulse 2s infinite' }} />
+            <span style={{ fontSize: 10, fontWeight: 700, color: sessionBadge.fg }}>{sessionBadge.label}</span>
+          </div>
+
           <div style={{ display: 'flex', gap: 18, marginLeft: 'auto', flexWrap: 'wrap' }}>
             <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: 'var(--ds-color-purple-500)', display: 'block', fontWeight: 700 }}>TRẦN</span><span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--ds-color-purple-500)', fontFamily: "'JetBrains Mono', monospace" }}>{ceiling}</span></div>
             <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: 'var(--ds-color-yellow-400)', display: 'block', fontWeight: 700 }}>TC</span><span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--ds-color-yellow-400)', fontFamily: "'JetBrains Mono', monospace" }}>{d.ref.toFixed(2)}</span></div>
@@ -253,6 +284,28 @@ function TradingPanelInner() {
               <button onClick={() => handleSideChange('BUY')} style={{ background: side === 'BUY' ? 'var(--ds-color-market-up)' : th.iconBg, color: side === 'BUY' ? '#fff' : th.textMuted, border: `1px solid ${side === 'BUY' ? 'var(--ds-color-green-600)' : th.cardBorder}`, borderRadius: 8, padding: 11, fontSize: 13, fontWeight: 800, cursor: 'pointer', transition: 'all .15s' }}>MUA</button>
               <button onClick={() => handleSideChange('SELL')} style={{ background: side === 'SELL' ? 'var(--ds-color-market-down)' : th.iconBg, color: side === 'SELL' ? '#fff' : th.textMuted, border: `1px solid ${side === 'SELL' ? 'var(--ds-color-red-600)' : th.cardBorder}`, borderRadius: 8, padding: 11, fontSize: 13, fontWeight: 800, cursor: 'pointer', transition: 'all .15s' }}>BÁN</button>
             </div>
+
+            {/* ORDER MODE TABS */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 0, background: th.inputBg, borderRadius: 8, padding: 3 }}>
+              <button onClick={() => setOrderMode('normal')} style={{ background: orderMode === 'normal' ? 'var(--ds-color-blue-500)' : 'transparent', color: orderMode === 'normal' ? '#fff' : th.textMuted, border: 'none', borderRadius: 6, padding: 7, fontSize: 10.5, fontWeight: 700, cursor: 'pointer', transition: 'all .15s' }}>Lệnh thường</button>
+              <button onClick={() => { setOrderMode('conditional'); setTriggerPrice(triggerPrice || price) }} style={{ background: orderMode === 'conditional' ? '#f59e0b' : 'transparent', color: orderMode === 'conditional' ? '#fff' : th.textMuted, border: 'none', borderRadius: 6, padding: 7, fontSize: 10.5, fontWeight: 700, cursor: 'pointer', transition: 'all .15s' }}>Lệnh điều kiện</button>
+            </div>
+
+            {/* CONDITIONAL ORDER FIELDS */}
+            {orderMode === 'conditional' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 5, background: 'rgba(245,158,11,.07)', border: '1px solid rgba(245,158,11,.3)', borderRadius: 8, padding: 9 }}>
+                <label style={{ fontSize: 10, fontWeight: 700, color: '#f59e0b', textTransform: 'uppercase' }}>Giá kích hoạt (Trigger)</label>
+                <div style={{ display: 'flex', gap: 5 }}>
+                  <select value={condition} onChange={(e) => setCondition(e.target.value)} style={{ padding: '8px 6px', border: '1px solid rgba(245,158,11,.35)', borderRadius: 6, background: th.inputBg, color: th.text, fontSize: 12, fontWeight: 700, outline: 'none', cursor: 'pointer' }}>
+                    <option value=">=">Giá &ge;</option>
+                    <option value="<=">Giá &le;</option>
+                    <option value="=">Giá =</option>
+                  </select>
+                  <input type="text" value={triggerPrice} onChange={(e) => setTriggerPrice(e.target.value)} style={{ flex: 1, padding: '8px 10px', border: '1px solid rgba(245,158,11,.35)', borderRadius: 6, background: th.inputBg, color: th.text, fontSize: 13, fontWeight: 800, fontFamily: "'JetBrains Mono', monospace", outline: 'none' }} />
+                </div>
+                <span style={{ fontSize: 9, color: th.textMuted }}>Lệnh kích hoạt khi giá thị trường {condition === '>=' ? '≥' : condition === '<=' ? '≤' : '='} mức này, sau đó đặt {side === 'BUY' ? 'mua' : 'bán'} theo giá bên dưới.</span>
+              </div>
+            )}
 
             {/* ORDER TYPE CHIPS */}
             <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
@@ -293,6 +346,14 @@ function TradingPanelInner() {
                 {lotBtns.map(n => (
                   <button key={n} onClick={() => setLot(n)} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: th.textMuted, borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>{n.toLocaleString()}</button>
                 ))}
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <span style={{ fontSize: 9, color: th.textMuted, fontWeight: 600 }}>{side === 'BUY' ? '% Sức mua khả dụng' : '% Số lượng đang có'}</span>
+                <div style={{ display: 'flex', gap: 5 }}>
+                  {[25, 50, 75, 100].map(p => (
+                    <button key={p} onClick={() => setQtyPct(p)} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: side === 'BUY' ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)', borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>{p}%</button>
+                  ))}
+                </div>
               </div>
             </div>
 

@@ -20,7 +20,7 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
 </helmet>
 
 <div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
-<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:14px;">
 
   <div style="background:{{ th.headerBg }};border:1px solid {{ th.headerBorder }};border-radius:12px;overflow:visible;">
 
@@ -109,56 +109,43 @@ body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Se
     </div>
   </div>
 
-  <!-- ══ RISK METRICS ══ -->
-  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-    <sc-for list="{{ riskMetrics }}" as="rm" hint-placeholder-count="4">
-      <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px;">
-        <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">{{ rm.label }}</span>
-        <div style="font-size:19px;font-weight:800;color:{{ rm.color }};font-family:'JetBrains Mono',monospace;margin-top:4px;">{{ rm.value }}</div>
-        <span style="font-size:9px;color:{{ th.textMuted }};">{{ rm.hint }}</span>
-      </div>
-    </sc-for>
+  <!-- ══ FILTER + ACTIONS ══ -->
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;">
+    <div style="display:flex;gap:6px;">
+      <sc-for list="{{ typeFilters }}" as="tf" hint-placeholder-count="4">
+        <button onClick="{{ tf.onClick }}" style="background:{{ tf.bg }};color:{{ tf.fg }};border:1px solid {{ tf.border }};border-radius:7px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;">{{ tf.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:6px;">
+      <button style="background:#22c55e;border:none;color:#fff;border-radius:7px;padding:7px 14px;font-size:11px;font-weight:700;cursor:pointer;">💰 Nạp tiền</button>
+      <button style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.text }};border-radius:7px;padding:7px 14px;font-size:11px;font-weight:700;cursor:pointer;">💸 Rút tiền</button>
+    </div>
   </div>
 
-  <!-- ══ BACKTESTING ══ -->
-  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
-    <h3 style="margin:0 0 12px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Backtest chiến lược</h3>
-    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
-      <div style="display:flex;flex-direction:column;gap:4px;">
-        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Chiến lược</label>
-        <select value="{{ strategy }}" onChange="{{ setStrategy }}" style="padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:12px;width:220px;">
-          <option value="ma_cross">Giao cắt MA (10/50)</option>
-          <option value="rsi">RSI Oversold/Overbought</option>
-          <option value="momentum">Momentum theo quý</option>
-        </select>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:4px;">
-        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Từ ngày</label>
-        <input type="date" value="2025-01-01" style="padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:11px;"/>
-      </div>
-      <div style="display:flex;flex-direction:column;gap:4px;">
-        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Đến ngày</label>
-        <input type="date" value="2026-07-01" style="padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:11px;"/>
-      </div>
-      <button onClick="{{ runBacktest }}" style="background:#3b82f6;border:none;color:#fff;border-radius:7px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;">▶ Chạy Backtest</button>
-    </div>
-
-    <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
-      <div style="border-top:1px solid {{ th.cardBorder }};padding-top:14px;display:flex;flex-direction:column;gap:12px;">
-        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
-          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Tổng lợi nhuận</span><div style="font-size:16px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ backtestResult.totalReturn }}</div></div>
-          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Tỷ lệ thắng</span><div style="font-size:16px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ backtestResult.winRate }}</div></div>
-          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Số lệnh</span><div style="font-size:16px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ backtestResult.trades }}</div></div>
-          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Max Drawdown</span><div style="font-size:16px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">{{ backtestResult.maxDD }}</div></div>
-        </div>
-        <div>
-          <span style="font-size:10px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Đường vốn (Equity Curve)</span>
-          <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="width:100%;height:100px;display:block;margin-top:6px;">
-            <polyline points="{{ equityCurve }}" fill="none" stroke="#a78bfa" stroke-width="2"></polyline>
-          </svg>
-        </div>
-      </div>
-    </sc-if>
+  <!-- ══ TABLE ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;overflow:hidden;">
+    <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'JetBrains Mono',monospace;">
+      <thead>
+        <tr style="border-bottom:1px solid {{ th.cardBorder }};height:34px;background:{{ th.headBg }};">
+          <th style="text-align:left;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Ngày</th>
+          <th style="text-align:left;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Loại giao dịch</th>
+          <th style="text-align:left;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Diễn giải</th>
+          <th style="text-align:right;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Số tiền</th>
+          <th style="text-align:right;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Số dư sau GD</th>
+        </tr>
+      </thead>
+      <tbody>
+        <sc-for list="{{ transactions }}" as="t" hint-placeholder-count="8">
+          <tr style="border-bottom:1px solid {{ th.cardBorder }};height:38px;">
+            <td style="padding:8px 10px;color:{{ th.textMuted }};">{{ t.date }}</td>
+            <td style="padding:8px 10px;"><span style="background:{{ t.typeBg }};color:{{ t.typeColor }};padding:2px 8px;border-radius:5px;font-weight:700;font-size:9.5px;">{{ t.type }}</span></td>
+            <td style="padding:8px 10px;color:{{ th.text }};font-family:'Inter',sans-serif;font-size:10.5px;">{{ t.desc }}</td>
+            <td style="padding:8px 10px;text-align:right;color:{{ t.amountColor }};font-weight:700;">{{ t.amount }}</td>
+            <td style="padding:8px 10px;text-align:right;color:{{ th.text }};">{{ t.balance }}</td>
+          </tr>
+        </sc-for>
+      </tbody>
+    </table>
   </div>
 </div>
 </div>
@@ -168,28 +155,26 @@ class Component extends DCLogic {
   toggleDark = () => this.setState(p => ({ darkMode: !(p.darkMode !== false) }));
   toggleMoreTools = () => this.setState(p => ({ showMoreTools: !p.showMoreTools }));
   stopProp = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
-  state = { strategy: 'ma_cross', hasResult: false };
+  state = { typeFilter: 'all' };
 
-  setStrategy = (e) => this.setState({ strategy: e.target.value, hasResult: false });
-  runBacktest = () => this.setState({ hasResult: true });
+  allTx = [
+    { date:'01/07/2026', type:'deposit', desc:'Nạp tiền qua Vietcombank', amount:20000000, balance:70000000 },
+    { date:'01/07/2026', type:'buy', desc:'Mua 500 VCB @ 81.30', amount:-40650000, balance:29350000 },
+    { date:'02/07/2026', type:'sell', desc:'Bán 300 ACB @ 22.70', amount:6810000, balance:36160000 },
+    { date:'02/07/2026', type:'fee', desc:'Phí giao dịch', amount:-40650, balance:36119350 },
+    { date:'02/07/2026', type:'buy', desc:'Mua 200 FPT @ 137.00', amount:-27400000, balance:8719350 },
+    { date:'03/07/2026', type:'withdraw', desc:'Rút tiền về Vietcombank', amount:-5000000, balance:3719350 },
+    { date:'03/07/2026', type:'sell', desc:'Bán 600 TCB @ 35.10', amount:21060000, balance:24779350 },
+    { date:'03/07/2026', type:'dividend', desc:'Cổ tức tiền mặt VCB', amount:1500000, balance:26279350 },
+  ];
 
-  _genLine(n, vol, drift, seedStart) {
-    let seed = seedStart;
-    const rand = () => { seed = (seed*16807)%2147483647; return (seed-1)/2147483646; };
-    let v = 100;
-    const pts = [];
-    for (let i=0;i<n;i++){
-      v += (rand()-0.42)*vol + drift;
-      pts.push(v);
-    }
-    return pts;
-  }
+  setFilter = (f) => this.setState({ typeFilter: f });
 
   renderVals() {
     const darkMode = this.state.darkMode !== false;
     const showMoreTools = !!this.state.showMoreTools;
     const dark = darkMode;
-    const { strategy, hasResult } = this.state;
+    const { typeFilter } = this.state;
     const th = {
       headerBg: dark ? 'linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%)' : 'linear-gradient(90deg,#eef2f7 0%,#ffffff 60%,#eef2f7 100%)',
       headerBorder: dark ? '#0f1e36' : '#dbe4ee',
@@ -207,10 +192,10 @@ class Component extends DCLogic {
       pageBg: dark ? '#0a0e14' : '#f0f4f8',
       cardBg: dark ? '#131a24' : '#ffffff',
       cardBorder: dark ? '#232b38' : '#e1e8f0',
-      inputBg: dark ? '#0f1419' : '#f7f9fb',
+      headBg: dark ? '#1a212c' : '#eef2f7',
       text: dark ? '#eef1f6' : '#1e293b',
       textMuted: dark ? '#8a94a6' : '#64748b',
-      gridColor: dark ? '#1c2530' : '#e5eaf0',
+      iconBg: dark ? '#1a212c' : '#eef2f7',
     };
 
     const toggleDark = this.toggleDark;
@@ -256,47 +241,54 @@ class Component extends DCLogic {
     ];
     const toolCount = menuGroups.reduce((s,g)=>s+g.items.length,0);
 
-    const N = 60;
-    const portfolioVals = this._genLine(N, 3.2, 0.55, 11);
-    const indexVals = this._genLine(N, 2.4, 0.28, 77);
-    const allVals = [...portfolioVals, ...indexVals];
-    const maxV = Math.max(...allVals), minV = Math.min(...allVals);
-    const range = maxV - minV || 1;
-    const yOf = v => 220 - ((v-minV)/range)*220;
-    const portfolioLine = portfolioVals.map((v,i)=>`${(i/(N-1))*1000},${yOf(v)}`).join(' ');
-    const indexLine = indexVals.map((v,i)=>`${(i/(N-1))*1000},${yOf(v)}`).join(' ');
+    const typeMap = {
+      deposit: { label:'NẠP TIỀN', bg:'rgba(34,197,94,.15)', color:'#22c55e' },
+      withdraw: { label:'RÚT TIỀN', bg:'rgba(244,63,94,.15)', color:'#f43f5e' },
+      buy: { label:'MUA CK', bg:'rgba(96,165,250,.15)', color:'#60a5fa' },
+      sell: { label:'BÁN CK', bg:'rgba(168,139,250,.15)', color:'#a78bfa' },
+      fee: { label:'PHÍ', bg:'rgba(245,158,11,.15)', color:'#f59e0b' },
+      dividend: { label:'CỔ TỨC', bg:'rgba(34,197,94,.15)', color:'#22c55e' },
+    };
 
-    const pReturn = ((portfolioVals[N-1]-100)/100*100).toFixed(1);
-    const iReturn = ((indexVals[N-1]-100)/100*100).toFixed(1);
+    let filtered = this.allTx;
+    if (typeFilter === 'deposit') filtered = this.allTx.filter(t=>t.type==='deposit'||t.type==='withdraw');
+    if (typeFilter === 'trade') filtered = this.allTx.filter(t=>t.type==='buy'||t.type==='sell');
+    if (typeFilter === 'other') filtered = this.allTx.filter(t=>t.type==='fee'||t.type==='dividend');
 
-    const riskMetrics = [
-      { label:'Beta', value:'0.87', color:'#60a5fa', hint:'So với VN-Index' },
-      { label:'Sharpe Ratio', value:'1.42', color:'#22c55e', hint:'Lợi nhuận điều chỉnh rủi ro' },
-      { label:'Max Drawdown', value:'-12.4%', color:'#f43f5e', hint:'Mức sụt giảm lớn nhất' },
-      { label:'Độ biến động', value:'18.6%', color:'#f59e0b', hint:'Volatility hàng năm' },
-    ];
+    const transactions = filtered.map(t => {
+      const tm = typeMap[t.type];
+      return {
+        ...t,
+        type: tm.label,
+        typeBg: tm.bg,
+        typeColor: tm.color,
+        amount: (t.amount>=0?'+':'') + t.amount.toLocaleString() + 'đ',
+        amountColor: t.amount>=0 ? '#22c55e' : '#f43f5e',
+        balance: t.balance.toLocaleString() + 'đ',
+      };
+    });
 
-    const equityVals = this._genLine(50, 1.8, 0.42, 33);
-    const eMax = Math.max(...equityVals), eMin = Math.min(...equityVals);
-    const eRange = eMax-eMin||1;
-    const equityCurve = equityVals.map((v,i)=>`${(i/49)*1000},${100-((v-eMin)/eRange)*95}`).join(' ');
+    const typeFilters = [
+      { key:'all', label:'Tất cả' },
+      { key:'deposit', label:'Nạp/Rút' },
+      { key:'trade', label:'Giao dịch CK' },
+      { key:'other', label:'Phí & Cổ tức' },
+    ].map(t => ({
+      label: t.label,
+      onClick: () => this.setFilter(t.key),
+      bg: typeFilter===t.key ? '#2563eb' : th.iconBg,
+      border: typeFilter===t.key ? '#2563eb' : th.cardBorder,
+      fg: typeFilter===t.key ? '#fff' : th.textMuted,
+    }));
 
     return {
-      th, toggleDark, toggleMoreTools, stopProp, showMoreTools, toggleIcon, toggleLabel, moreToolsBg, moreToolsBorder, moreToolsFg, arrowRotate, tickerIndices, menuGroups, toolCount,
-      portfolioReturn: (pReturn>=0?'+':'')+pReturn+'%',
-      indexReturn: (iReturn>=0?'+':'')+iReturn+'%',
-      portfolioLine, indexLine,
-      riskMetrics,
-      strategy, setStrategy: this.setStrategy,
-      runBacktest: this.runBacktest,
-      hasResult,
-      backtestResult: {
-        totalReturn: '+34.6%',
-        winRate: '64.2%',
-        trades: '38',
-        maxDD: '-9.8%',
+      th, toggleDark, toggleMoreTools, stopProp, showMoreTools, toggleIcon, toggleLabel, moreToolsBg, moreToolsBorder, moreToolsFg, arrowRotate, tickerIndices, menuGroups, toolCount, typeFilters, transactions,
+      acc: {
+        openBal: '50,000,000đ',
+        deposit: '20,000,000đ',
+        withdraw: '5,000,000đ',
+        closeBal: '26,279,350đ',
       },
-      equityCurve,
     };
   }
 }

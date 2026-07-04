@@ -31,22 +31,6 @@ function PortfolioAnalyticsInner() {
 
   const runBacktest = () => setHasResult(true)
 
-  const N = 60
-  const portfolioVals = genLine(N, 3.2, 0.55, 11)
-  const indexVals = genLine(N, 2.4, 0.28, 77)
-  const allVals = [...portfolioVals, ...indexVals]
-  const maxV = Math.max(...allVals)
-  const minV = Math.min(...allVals)
-  const range = maxV - minV || 1
-  const yOf = (v: number) => 220 - ((v - minV) / range) * 220
-  const portfolioLine = portfolioVals.map((v, i) => `${(i / (N - 1)) * 1000},${yOf(v)}`).join(' ')
-  const indexLine = indexVals.map((v, i) => `${(i / (N - 1)) * 1000},${yOf(v)}`).join(' ')
-
-  const pReturn = ((portfolioVals[N - 1] - 100) / 100 * 100).toFixed(1)
-  const iReturn = ((indexVals[N - 1] - 100) / 100 * 100).toFixed(1)
-  const pReturnNum = parseFloat(pReturn)
-  const iReturnNum = parseFloat(iReturn)
-
   const riskMetrics = [
     { label: 'Beta', value: '0.87', color: 'var(--ds-color-text-link)', hint: 'So với VN-Index' },
     { label: 'Sharpe Ratio', value: '1.42', color: 'var(--ds-color-market-up)', hint: 'Lợi nhuận điều chỉnh rủi ro' },
@@ -67,21 +51,6 @@ function PortfolioAnalyticsInner() {
       <div style={{ maxWidth: 1680, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
 
         <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: th.text }}>PHÂN TÍCH DANH MỤC</h1>
-
-        <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 12, padding: 18 }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
-            <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, color: th.text, textTransform: 'uppercase' }}>Hiệu suất danh mục so với VN-Index (YTD)</h3>
-            <div style={{ display: 'flex', gap: 14 }}>
-              <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: 'var(--ds-color-market-up)', display: 'inline-block' }} /><span style={{ fontSize: 10, color: th.textMuted }}>Danh mục {(pReturnNum >= 0 ? '+' : '') + pReturn}%</span></div>
-              <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: 'var(--ds-color-text-link)', display: 'inline-block' }} /><span style={{ fontSize: 10, color: th.textMuted }}>VN-Index {(iReturnNum >= 0 ? '+' : '') + iReturn}%</span></div>
-            </div>
-          </div>
-          <svg viewBox="0 0 1000 220" preserveAspectRatio="none" style={{ width: '100%', height: 220, display: 'block' }}>
-            <line x1="0" y1="110" x2="1000" y2="110" stroke={th.gridColor} strokeWidth="1" strokeDasharray="4,4" />
-            <polyline points={indexLine} fill="none" stroke="var(--ds-color-text-link)" strokeWidth="1.6" opacity="0.8" />
-            <polyline points={portfolioLine} fill="none" stroke="var(--ds-color-market-up)" strokeWidth="2.2" />
-          </svg>
-        </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 10 }}>
           {riskMetrics.map((rm) => (

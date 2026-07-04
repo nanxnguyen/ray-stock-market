@@ -34,6 +34,7 @@ function genSeries(n: number, start: number, drift: number, vol: number): number
 
 function PortfolioInner() {
   const [navTimeframe, setNavTimeframe] = useState('1Y')
+  const [hoveredRow, setHoveredRow] = useState<string | null>(null)
 
   const positions = useMemo(() => {
     const result = posData.map((p) => {
@@ -291,7 +292,7 @@ function PortfolioInner() {
               </thead>
               <tbody>
                 {positions.map((pos) => (
-                  <tr key={pos.symbol} style={{ borderBottom: `1px solid ${th.cardBorder}`, height: 44 }}>
+                  <tr key={pos.symbol} style={{ borderBottom: `1px solid ${th.cardBorder}`, height: 44, background: hoveredRow === pos.symbol ? th.rowHover : 'transparent', transition: 'background .15s' }} onMouseEnter={() => setHoveredRow(pos.symbol)} onMouseLeave={() => setHoveredRow(null)}>
                     <td style={{ padding: '6px 10px', color: 'var(--ds-color-text-link)', fontWeight: 700, fontSize: 12 }}>{pos.symbol}</td>
                     <td style={{ padding: '6px 10px', textAlign: 'right', color: th.text }}>{pos.quantity}</td>
                     <td style={{ padding: '6px 10px', textAlign: 'right', color: th.textMuted }}>{pos.costPrice}</td>

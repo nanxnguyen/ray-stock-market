@@ -1,8 +1,6 @@
-import { memo, useState } from 'react'
+import { memo } from 'react'
 
 function MarketNewsInner() {
-  const [category, setCategory] = useState('all')
-
   const th = {
     pageBg: 'var(--ds-color-bg-app)',
     cardBg: 'var(--ds-color-bg-elevated)',
@@ -30,35 +28,10 @@ function MarketNewsInner() {
     { tag: 'Thị trường', symbol: '', title: 'VN-Index vượt mốc 1,860 điểm, thanh khoản cải thiện', excerpt: 'Thị trường ghi nhận phiên tăng điểm thứ 4 liên tiếp với sự dẫn dắt của nhóm cổ phiếu vốn hóa lớn.', time: '1 ngày trước', source: 'Vietstock' },
   ]
 
-  const filtered = category === 'all' ? allNews : allNews.filter(n => n.tag === category)
-
-  const categories = ['all', 'Vĩ mô', 'Doanh nghiệp', 'Ngành', 'Thị trường'].map(c => ({
-    key: c,
-    label: c === 'all' ? 'Tất cả' : c,
-    bg: category === c ? 'var(--ds-color-blue-600)' : 'var(--ds-color-bg-input)',
-    border: category === c ? 'var(--ds-color-blue-600)' : th.cardBorder,
-    fg: category === c ? '#fff' : th.textMuted,
-  }))
-
   return (
     <div style={{ width: '100%', minHeight: '100vh', background: th.pageBg, padding: 24 }}>
       <div style={{ maxWidth: 1680, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
         <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: th.text }}>TIN TỨC THỊ TRƯỜNG</h1>
-
-        {/* Filter Tabs */}
-        <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
-          {categories.map(cat => (
-            <button
-              key={cat.key}
-              onClick={() => setCategory(cat.key)}
-              style={{
-                background: cat.bg, color: cat.fg,
-                border: `1px solid ${cat.border}`,
-                borderRadius: 16, padding: '6px 14px', fontSize: 11, fontWeight: 700, cursor: 'pointer',
-              }}
-            >{cat.label}</button>
-          ))}
-        </div>
 
         {/* Featured News */}
         <div style={{
@@ -90,7 +63,7 @@ function MarketNewsInner() {
 
         {/* News List */}
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: 12 }}>
-          {filtered.map((n, i) => {
+          {allNews.map((n, i) => {
             const tc = tagColors[n.tag] || { bg: 'rgba(138,148,166,.15)', color: '#8a94a6' }
             return (
               <div

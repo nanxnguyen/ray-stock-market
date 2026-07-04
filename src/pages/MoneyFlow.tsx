@@ -17,8 +17,8 @@ const th = {
   cardBorder: 'var(--ds-color-border-default)',
   text: 'var(--ds-color-text-primary)',
   textMuted: 'var(--ds-color-text-secondary)',
-  inputBg: 'var(--ds-color-bg-input)',
-  rowBg: 'var(--ds-color-bg-row-odd)',
+  inputBg: 'var(--ds-color-bg-elevated)',
+  rowBg: 'var(--ds-color-bg-elevated)',
 }
 
 function MoneyFlowInner() {
