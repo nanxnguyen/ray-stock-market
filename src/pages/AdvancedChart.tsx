@@ -126,16 +126,15 @@ function AdvancedChartInner() {
     const yLabels = [0, 1, 2, 3, 4].map((i) => (maxP - (range / 4) * i).toFixed(1))
 
     // RSI
-    let gains = 0
-    let losses = 0
-    const rsiSeries = closes.map((c, i) => {
-      if (i === 0) return 50
+    const rsiSeries = closes.reduce<{ gains: number; losses: number; series: number[] }>((acc, c, i) => {
+      if (i === 0) return { gains: 0, losses: 0, series: [50] }
       const diff = c - closes[i - 1]
-      gains = (gains * 13 + Math.max(diff, 0)) / 14
-      losses = (losses * 13 + Math.max(-diff, 0)) / 14
+      const gains = (acc.gains * 13 + Math.max(diff, 0)) / 14
+      const losses = (acc.losses * 13 + Math.max(-diff, 0)) / 14
       const rs = losses === 0 ? 100 : gains / losses
-      return 100 - 100 / (1 + rs)
-    })
+      acc.series.push(100 - 100 / (1 + rs))
+      return { gains, losses, series: acc.series }
+    }, { gains: 0, losses: 0, series: [] }).series
     const rsiLine = rsiSeries.map((v, i) => `${i * slotW + slotW / 2},${80 - (v / 100) * 80}`).join(' ')
     const rsiVal = rsiSeries[rsiSeries.length - 1].toFixed(1)
     const rsiColor = Number(rsiVal) > 70 ? 'var(--ds-color-market-down)' : Number(rsiVal) < 30 ? 'var(--ds-color-market-up)' : 'var(--ds-color-purple-400)'

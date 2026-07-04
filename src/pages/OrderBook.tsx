@@ -23,13 +23,13 @@ function OrderBookInner() {
 
   const bids = useMemo(() => Array.from({ length: 10 }, (_, i) => {
     const price = lastPrice - i * 0.10
-    const vol = Math.floor(Math.random() * 50000) + 10000
+    const vol = 10000 + ((i * 7919 + 12345) % 50000)
     return { price: price.toFixed(2), vol: (vol / 1000).toFixed(0) + 'k', barBg: 'var(--ds-color-market-up)' }
   }), [lastPrice])
 
   const asks = useMemo(() => Array.from({ length: 10 }, (_, i) => {
     const price = lastPrice + i * 0.10
-    const vol = Math.floor(Math.random() * 50000) + 10000
+    const vol = 10000 + ((i * 7919 + 54321) % 50000)
     return { price: price.toFixed(2), vol: (vol / 1000).toFixed(0) + 'k', barBg: 'var(--ds-color-market-down)' }
   }), [lastPrice])
 
@@ -52,7 +52,7 @@ function OrderBookInner() {
 
   const depthBars = useMemo(() => Array.from({ length: 10 }, (_, i) => ({
     price: (lastPrice + (i - 4) * 0.10).toFixed(2),
-    height: `${30 + Math.random() * 50}%`,
+    height: `${30 + ((i * 3571) % 50)}%`,
     color: i < 4 ? 'var(--ds-color-market-up)' : i > 4 ? 'var(--ds-color-market-down)' : 'var(--ds-color-text-link)',
   })), [lastPrice])
 
@@ -61,49 +61,6 @@ function OrderBookInner() {
   return (
     <div style={{ width: '100%', minHeight: '100%', boxSizing: 'border-box', background: th.appBg, padding: '32px 16px', display: 'flex', justifyContent: 'center', fontFamily: "'Inter', system-ui, sans-serif" }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 12, padding: 16, background: th.navBg, borderRadius: 12, border: `1px solid ${th.cellBorder}`, maxWidth: 1680, width: '100%', margin: '0 auto', height: 'fit-content' }}>
-
-        {/* NAV BAR */}
-        <div style={{ background: 'var(--ds-color-bg-card)', border: '1px solid var(--ds-color-border-default)', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: '1px solid var(--ds-color-border-default)', overflowX: 'auto' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0 }}>
-              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg,var(--ds-color-market-up),var(--ds-color-green-600))', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff" /></svg>
-              </div>
-              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: 'var(--ds-color-market-up)' }}>Stock</span></span>
-            </div>
-            <div style={{ display: 'flex', flexShrink: 0 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-default)', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: 0.3 }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
-                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+4.27 +0.23%</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-default)', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: 0.3 }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
-                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+0.84 +0.27%</span>
-              </div>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: 0.3 }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-down)', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
-                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-down)', fontWeight: 700 }}>-0.66 -0.51%</span>
-              </div>
-            </div>
-            <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--ds-color-text-muted)', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
-          </div>
-          <div style={{ display: 'flex', gap: 6, padding: '8px 14px', overflowX: 'auto' }}>
-            {[
-              { label: '🏠 Trang chủ', active: false },
-              { label: '💼 Danh mục', active: false },
-              { label: '💰 Đặt lệnh', active: false },
-              { label: '📖 Sổ lệnh', active: true },
-              { label: '🗺️ Heatmap', active: false },
-              { label: '📊 So sánh', active: false },
-              { label: '🔍 Screener', active: false },
-              { label: '📰 Tin tức', active: false },
-              { label: '📅 Sự kiện', active: false },
-              { label: '⚙️ Cài đặt', active: false },
-            ].map((item, i) => (
-              <span key={i} style={{ flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: item.active ? 'var(--ds-color-surface-hover)' : 'var(--ds-color-bg-row-odd)', border: `1px solid ${item.active ? 'var(--ds-color-blue-600)' : 'var(--ds-color-border-default)'}`, color: item.active ? '#fff' : 'var(--ds-color-neutral-300)', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap', cursor: 'pointer' }}>{item.label}</span>
-            ))}
-          </div>
-        </div>
 
         {/* HEADER */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: `1px solid ${th.cellBorder}`, paddingBottom: 10 }}>

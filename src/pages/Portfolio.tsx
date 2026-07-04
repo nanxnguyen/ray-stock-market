@@ -26,7 +26,7 @@ function genSeries(n: number, start: number, drift: number, vol: number): number
   let v = start
   const out = [v]
   for (let i = 1; i < n; i++) {
-    v = Math.max(1, v + drift + (Math.random() - 0.48) * vol)
+    v = Math.max(1, v + drift + (((i * 7919 + 1234) % 100) / 100 - 0.48) * vol)
     out.push(v)
   }
   return out
@@ -71,8 +71,11 @@ function PortfolioInner() {
   const marginUsed = 8200000
   const nav = totalStockValue + cash
 
-  const navPoints = useMemo(() => genSeries(60, nav * 0.72, (nav * 0.28) / 60, nav * 0.012), [nav])
-  navPoints[navPoints.length - 1] = nav
+  const navPoints = useMemo(() => {
+    const pts = genSeries(60, nav * 0.72, (nav * 0.28) / 60, nav * 0.012)
+    pts[pts.length - 1] = nav
+    return pts
+  }, [nav])
   const maxNav = Math.max(...navPoints), minNav = Math.min(...navPoints)
   const rangeNav = maxNav - minNav || 1
   const yOf = (v: number) => 220 - ((v - minNav) / rangeNav) * 210 - 5
@@ -111,12 +114,11 @@ function PortfolioInner() {
     { name: 'Khác', pct: 5, color: 'var(--ds-color-neutral-500)' },
   ]
 
-  const cashFlowMonths = ['02/26', '03/26', '04/26', '05/26', '06/26', '07/26']
-  const cashFlow = useMemo(() => cashFlowMonths.map(m => ({
+  const cashFlow = ['02/26', '03/26', '04/26', '05/26', '06/26', '07/26'].map((m, i) => ({
     label: m,
-    inH: `${(5 + Math.random() * 20) / 30 * 130}px`,
-    outH: `${(4 + Math.random() * 18) / 30 * 130}px`,
-  })), [])
+    inH: `${(5 + ((i * 7919 + 1234) % 20)) / 30 * 130}px`,
+    outH: `${(4 + ((i * 3571 + 5678) % 18)) / 30 * 130}px`,
+  }))
 
   const summary = {
     nav: (nav / 1000000).toFixed(1) + 'M',

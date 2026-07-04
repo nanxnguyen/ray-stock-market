@@ -54,7 +54,7 @@ function TopMoversViewInner({ rows, th }: Props) {
       e.currentTarget.style.background = th.appBg
       e.currentTarget.style.borderColor = th.cellBorder
     },
-  }), [])
+  }), [th.appBg, th.cellBorder, th.rowHover])
 
   return (
     <div style={{ flex: 1, overflow: 'auto', background: th.appBg, display: 'flex', flexDirection: 'column' }}>

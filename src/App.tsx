@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import type {
   ThemeTokens,
   StockState,
@@ -206,10 +206,6 @@ function App() {
     [indices, handleIndexClick]
   )
 
-  // Ref to cache previous row objects for referential equality
-  const prevRowsRef = useRef<StockRow[]>([])
-  const prevWatchlistRowsRef = useRef<StockRow[] | null>(null)
-
   const allStocks = useMemo(() => {
     // Add CW data when filter is CW
     if (filter.group === 'CW') {
@@ -254,22 +250,8 @@ function App() {
       return cwRows
     }
     
-    // Filter first, then format
     const filteredStocks = filterStockStates(stocks, filter, VN30_SYMBOLS)
-    const newRows = mapStockRows(filteredStocks, darkMode, th, openChart)
-
-    // Reuse unchanged row objects from previous render for referential equality
-    const prevRows = prevRowsRef.current
-    const prevMap = new Map(prevRows.map(r => [r.sym, r]))
-    const stableRows = newRows.map(row => {
-      const prev = prevMap.get(row.sym)
-      if (prev && prev.lp === row.lp && prev.pct === row.pct && prev.bg === row.bg && prev.fbuy === row.fbuy && prev.fsell === row.fsell) {
-        return prev
-      }
-      return row
-    })
-    prevRowsRef.current = stableRows
-    return stableRows
+    return mapStockRows(filteredStocks, darkMode, th, openChart)
   }, [stocks, darkMode, th, openChart, filter])
 
   const handleFilterChange = useCallback((group: VietcapFilterGroup, value?: string) => {
@@ -290,11 +272,9 @@ function App() {
   }, [])
 
   // Advanced filter
-  const prevFilteredRef = useRef(allStocks)
   const filteredStocks = useMemo(() => {
     const hasFilter = filterPctFrom || filterPctTo || filterVolMin || filterPriceMin || filterPriceMax
     if (!hasFilter) {
-      prevFilteredRef.current = allStocks
       return allStocks
     }
     let result = allStocks
@@ -306,7 +286,6 @@ function App() {
     })
     if (filterPriceMin) result = result.filter(s => parseFloat(s.lp) >= parseFloat(filterPriceMin))
     if (filterPriceMax) result = result.filter(s => parseFloat(s.lp) <= parseFloat(filterPriceMax))
-    prevFilteredRef.current = result
     return result
   }, [allStocks, filterPctFrom, filterPctTo, filterVolMin, filterPriceMin, filterPriceMax])
 
@@ -321,21 +300,12 @@ function App() {
   }, [])
 
   // Add watchlist info to rows
-  const prevWatchlistRef = useRef(filter.watchlist)
   const stocksWithWatchlist = useMemo(() => {
-    const watchlistChanged = prevWatchlistRef.current !== filter.watchlist
-    prevWatchlistRef.current = filter.watchlist
-    if (prevWatchlistRowsRef.current && !watchlistChanged && filteredStocks === prevFilteredRef.current) {
-      // Nothing changed — return previous result for referential equality
-      return prevWatchlistRowsRef.current
-    }
-    const result = filteredStocks.map(s => ({
+    return filteredStocks.map(s => ({
       ...s,
       watchlisted: filter.watchlist.includes(s.sym),
       onToggleWatchlist: () => toggleWatchlist(s.sym),
     }))
-    prevWatchlistRowsRef.current = result
-    return result
   }, [filteredStocks, filter.watchlist, toggleWatchlist])
 
   // Reset filters

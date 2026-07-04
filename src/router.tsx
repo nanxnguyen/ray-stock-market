@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import type { ThemeTokens } from './types/priceboard'
+import type { ThemeTokens, MarketIndexView, ChartView, TradeHistoryItem, StockRow } from './types/priceboard'
+import type { VietcapFilterGroup, VietcapFilterState } from './types/vietcap'
 import Layout from './components/Layout'
 import HomePage from './pages/HomePage'
 
@@ -45,9 +46,9 @@ function PageLoader() {
 type AppRoutesProps = {
   th: ThemeTokens
   toggleDark: () => void
-  indices: any[]
-  filter: any
-  onFilterChange: (group: any, value?: string) => void
+  indices: MarketIndexView[]
+  filter: VietcapFilterState
+  onFilterChange: (group: VietcapFilterGroup, value?: string) => void
   onSymbolAdd: (symbol: string) => void
   viewMode: 'table' | 'grid' | 'heat' | 'movers'
   onViewModeChange: (mode: 'table' | 'grid' | 'heat' | 'movers') => void
@@ -71,11 +72,11 @@ type AppRoutesProps = {
   onSetPriceMin: (v: string) => void
   onSetPriceMax: (v: string) => void
   onResetFilters: () => void
-  tradeHistory: any[]
-  stocksWithWatchlist: any[]
-  chartView: any
+  tradeHistory: TradeHistoryItem[]
+  stocksWithWatchlist: (StockRow & { watchlisted: boolean; onToggleWatchlist: () => void })[]
+  chartView: ChartView | null
   onCloseChart: () => void
-  idxChart: any
+  idxChart: { open: boolean; sym: string; color: string }
   onCloseIdxChart: () => void
 }
 

@@ -43,7 +43,7 @@ const SECTOR_LIST = ['Tất cả','VN30','Ngân hàng','BĐS','Thực phẩm','C
 function FilterBarInner({
   th, filter, onFilterChange, onSymbolAdd,
   viewMode = 'table', onViewModeChange,
-  showSector, onToggleSector: _onToggleSector, activeSector = 'Tất cả', onSectorChange,
+  showSector, activeSector = 'Tất cả', onSectorChange,
   showAdvFilter, onToggleAdvFilter,
   showTradeHist, onToggleTradeHist, onExportCSV,
   filterPctFrom, filterPctTo, filterVolMin, filterPriceMin, filterPriceMax,

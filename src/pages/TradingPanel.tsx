@@ -1,4 +1,4 @@
-import { memo, useState, useMemo, useCallback, useEffect } from 'react'
+import { memo, useState, useMemo, useCallback } from 'react'
 
 type StockData = {
   name: string
@@ -37,13 +37,23 @@ const ORDERS_DB: Record<string, OrderData[]> = {
 
 const BUYING_POWER = 45280000
 
+function getInitialSymbol() {
+  const urlSym = new URLSearchParams(window.location.search).get('symbol')
+  return urlSym && STOCK_DB[urlSym] ? urlSym : 'VCB'
+}
+
+function getInitialPrice() {
+  const urlSym = new URLSearchParams(window.location.search).get('symbol')
+  return urlSym && STOCK_DB[urlSym] ? STOCK_DB[urlSym].ref.toFixed(2) : '81.50'
+}
+
 function TradingPanelInner() {
-  const [symbol, setSymbol] = useState('VCB')
-  const [symbolInput, setSymbolInput] = useState('VCB')
+  const [symbol, setSymbol] = useState(getInitialSymbol)
+  const [symbolInput, setSymbolInput] = useState(getInitialSymbol)
   const [showSuggest, setShowSuggest] = useState(false)
   const [side, setSide] = useState<'BUY' | 'SELL'>('BUY')
   const [orderType, setOrderType] = useState('LO')
-  const [price, setPrice] = useState('81.50')
+  const [price, setPrice] = useState(getInitialPrice)
   const [qty, setQty] = useState(100)
   const [orderPlaced, setOrderPlaced] = useState(false)
   const [orderConfirmText, setOrderConfirmText] = useState('')
@@ -113,15 +123,6 @@ function TradingPanelInner() {
     setTimeout(() => setOrderPlaced(false), 3500)
   }, [side, qty, symbol, price])
 
-  useEffect(() => {
-    const urlSym = new URLSearchParams(window.location.search).get('symbol')
-    if (urlSym && STOCK_DB[urlSym]) {
-      setSymbol(urlSym)
-      setSymbolInput(urlSym)
-      setPrice(STOCK_DB[urlSym].ref.toFixed(2))
-    }
-  }, [])
-
   const suggestions = useMemo(() =>
     Object.keys(STOCK_DB)
       .filter(s => s.includes(symbolInput))
@@ -141,20 +142,20 @@ function TradingPanelInner() {
 
   const bids = useMemo(() => [0, 1, 2].map(i => {
     const p = (d.price - (i + 1) * parseFloat(tickSize)).toFixed(2)
-    const vol = Math.floor(8000 + Math.random() * 40000)
-    return { price: p, vol: (vol / 1000).toFixed(1) + 'k', barW: `${30 + Math.random() * 60}%` }
+    const vol = 8000 + ((i * 7919 + 1234) % 40000)
+    return { price: p, vol: (vol / 1000).toFixed(1) + 'k', barW: `${30 + ((i * 3571) % 60)}%` }
   }), [d.price, tickSize])
 
   const asks = useMemo(() => [0, 1, 2].map(i => {
     const p = (d.price + (i + 1) * parseFloat(tickSize)).toFixed(2)
-    const vol = Math.floor(8000 + Math.random() * 40000)
-    return { price: p, vol: (vol / 1000).toFixed(1) + 'k', barW: `${30 + Math.random() * 60}%` }
+    const vol = 8000 + ((i * 7919 + 5432) % 40000)
+    return { price: p, vol: (vol / 1000).toFixed(1) + 'k', barW: `${30 + ((i * 3571 + 2000) % 60)}%` }
   }), [d.price, tickSize])
 
   const matchedTrades = useMemo(() => Array.from({ length: 8 }).map((_, i) => {
-    const up = Math.random() > 0.5
-    const p = (d.price + (Math.random() - 0.5) * parseFloat(tickSize) * 2).toFixed(2)
-    const vol = Math.floor(500 + Math.random() * 9000)
+    const up = i % 3 !== 0
+    const p = (d.price + (i * 0.05 - 0.10) * parseFloat(tickSize) * 2).toFixed(2)
+    const vol = 500 + ((i * 7919 + 9999) % 9000)
     const mins = 32 - i
     return { time: `10:${String(Math.max(0, mins)).padStart(2, '0')}:0${i}`, price: p, vol: vol.toLocaleString(), color: up ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)' }
   }), [d.price, tickSize])
