@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:14px;">
+
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px 18px;">
+    <div style="display:flex;align-items:center;gap:14px;">
+      <div>
+        <div style="display:flex;align-items:center;gap:6px;">
+          <h1 style="margin:0;font-size:18px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ contract.symbol }}</h1>
+          <span style="font-size:8px;font-weight:700;color:#fff;background:#f97316;padding:2px 6px;border-radius:4px;">FUTURES</span>
+        </div>
+        <span style="font-size:10px;color:{{ th.textMuted }};">{{ contract.name }} · Đáo hạn {{ contract.expiry }}</span>
+      </div>
+      <span style="font-size:22px;font-weight:800;color:{{ contract.color }};font-family:'JetBrains Mono',monospace;">{{ contract.price }}</span>
+      <span style="font-size:12px;font-weight:700;color:{{ contract.color }};">{{ contract.change }} ({{ contract.changePct }})</span>
+    </div>
+    <div style="display:flex;gap:16px;">
+      <div style="text-align:right;"><span style="font-size:9px;color:{{ th.textMuted }};display:block;text-transform:uppercase;">Cơ sở VN30</span><span style="font-size:13px;font-weight:700;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ contract.basis }}</span></div>
+      <div style="text-align:right;"><span style="font-size:9px;color:{{ th.textMuted }};display:block;text-transform:uppercase;">Basis</span><span style="font-size:13px;font-weight:700;color:{{ contract.basisColor }};font-family:'JetBrains Mono',monospace;">{{ contract.basisVal }}</span></div>
+      <div style="text-align:right;"><span style="font-size:9px;color:{{ th.textMuted }};display:block;text-transform:uppercase;">OI</span><span style="font-size:13px;font-weight:700;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ contract.oi }}</span></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px;align-items:start;">
+
+    <!-- ══ LEFT: POSITIONS ══ -->
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:16px;">
+        <h3 style="margin:0 0 10px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Vị thế đang mở (T+0)</h3>
+        <table style="width:100%;border-collapse:collapse;font-size:10.5px;font-family:'JetBrains Mono',monospace;">
+          <thead>
+            <tr style="border-bottom:1px solid {{ th.cardBorder }};height:26px;">
+              <th style="text-align:left;color:{{ th.textMuted }};font-weight:700;">Hợp đồng</th>
+              <th style="text-align:center;color:{{ th.textMuted }};font-weight:700;">Vị thế</th>
+              <th style="text-align:right;color:{{ th.textMuted }};font-weight:700;">SL</th>
+              <th style="text-align:right;color:{{ th.textMuted }};font-weight:700;">Giá vốn</th>
+              <th style="text-align:right;color:{{ th.textMuted }};font-weight:700;">Giá TT</th>
+              <th style="text-align:right;color:{{ th.textMuted }};font-weight:700;">Lãi/Lỗ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <sc-for list="{{ positions }}" as="p" hint-placeholder-count="2">
+              <tr style="border-bottom:1px solid {{ th.cardBorder }};height:34px;">
+                <td style="color:#60a5fa;font-weight:700;">{{ p.symbol }}</td>
+                <td style="text-align:center;"><span style="background:{{ p.sideBg }};color:{{ p.sideColor }};padding:2px 8px;border-radius:4px;font-weight:700;font-size:9.5px;">{{ p.side }}</span></td>
+                <td style="text-align:right;color:{{ th.text }};">{{ p.qty }}</td>
+                <td style="text-align:right;color:{{ th.textMuted }};">{{ p.entry }}</td>
+                <td style="text-align:right;color:{{ th.text }};">{{ p.market }}</td>
+                <td style="text-align:right;color:{{ p.pnlColor }};font-weight:700;">{{ p.pnl }}</td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- MARGIN INFO -->
+      <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:16px;">
+        <h3 style="margin:0 0 10px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Thông tin ký quỹ</h3>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;">Ký quỹ ban đầu</span><div style="font-size:14px;font-weight:700;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ margin.initial }}</div></div>
+          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;">Ký quỹ đã dùng</span><div style="font-size:14px;font-weight:700;color:#f59e0b;font-family:'JetBrains Mono',monospace;">{{ margin.used }}</div></div>
+          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;">Sức mua còn lại</span><div style="font-size:14px;font-weight:700;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ margin.available }}</div></div>
+        </div>
+        <div style="margin-top:10px;height:6px;background:{{ th.iconBg }};border-radius:3px;overflow:hidden;">
+          <div style="height:100%;width:{{ margin.usedPct }}%;background:{{ margin.barColor }};"></div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:4px;">
+          <span style="font-size:9px;color:{{ th.textMuted }};">Tỷ lệ sử dụng ký quỹ: {{ margin.usedPct }}%</span>
+          <span style="font-size:9px;color:{{ margin.barColor }};font-weight:700;">Đòn bẩy x{{ margin.leverage }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ RIGHT: ORDER FORM ══ -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;gap:6px;">
+        <button onClick="{{ toggleSide }}" style="flex:1;background:{{ sideBtn.LONG.bg }};color:{{ sideBtn.LONG.fg }};border:1px solid {{ sideBtn.LONG.border }};border-radius:6px;padding:9px;font-size:12px;font-weight:800;cursor:pointer;">LONG (MUA)</button>
+        <button onClick="{{ toggleSide }}" style="flex:1;background:{{ sideBtn.SHORT.bg }};color:{{ sideBtn.SHORT.fg }};border:1px solid {{ sideBtn.SHORT.border }};border-radius:6px;padding:9px;font-size:12px;font-weight:800;cursor:pointer;">SHORT (BÁN)</button>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Giá đặt</label>
+        <input type="text" value="{{ price }}" onInput="{{ updatePrice }}" style="padding:9px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:12px;font-family:'JetBrains Mono',monospace;"/>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:5px;">
+        <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Số lượng hợp đồng</label>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <button onClick="{{ decQty }}" style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:6px;width:30px;height:30px;cursor:pointer;">−</button>
+          <input type="number" value="{{ qty }}" onInput="{{ updateQty }}" style="flex:1;padding:9px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:12px;font-family:'JetBrains Mono',monospace;text-align:center;"/>
+          <button onClick="{{ incQty }}" style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:6px;width:30px;height:30px;cursor:pointer;">+</button>
+        </div>
+      </div>
+
+      <div style="background:{{ th.inputBg }};border-radius:7px;padding:10px;display:flex;flex-direction:column;gap:6px;">
+        <div style="display:flex;justify-content:space-between;font-size:10.5px;"><span style="color:{{ th.textMuted }};">Ký quỹ yêu cầu</span><span style="color:{{ th.text }};font-weight:700;font-family:'JetBrains Mono',monospace;">{{ requiredMargin }}</span></div>
+        <div style="display:flex;justify-content:space-between;font-size:10.5px;"><span style="color:{{ th.textMuted }};">Giá trị hợp đồng</span><span style="color:{{ th.text }};font-weight:700;font-family:'JetBrains Mono',monospace;">{{ contractValue }}</span></div>
+      </div>
+
+      <button onClick="{{ submitOrder }}" style="background:{{ submitBg }};border:none;color:#fff;border-radius:7px;padding:12px;font-size:13px;font-weight:800;cursor:pointer;box-shadow:0 8px 20px {{ submitShadow }};">{{ submitLabel }}</button>
+
+      <sc-if value="{{ orderPlaced }}" hint-placeholder-val="{{ false }}">
+        <div style="background:rgba(34,197,94,.1);border:1px solid #22c55e;border-radius:7px;padding:9px;font-size:10.5px;color:#22c55e;font-weight:700;">✓ Đã đặt lệnh {{ side }} {{ qty }} hợp đồng @ {{ price }}</div>
+      </sc-if>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    side: 'LONG',
+    price: '1,998.5',
+    qty: 2,
+    orderPlaced: false,
+  };
+
+  toggleSide = () => this.setState(s => ({ side: s.side === 'LONG' ? 'SHORT' : 'LONG' }));
+  updatePrice = (e) => this.setState({ price: e.target.value });
+  updateQty = (e) => this.setState({ qty: parseInt(e.target.value) || 0 });
+  incQty = () => this.setState(s => ({ qty: s.qty + 1 }));
+  decQty = () => this.setState(s => ({ qty: Math.max(0, s.qty - 1) }));
+  submitOrder = () => {
+    this.setState({ orderPlaced: true });
+    setTimeout(() => this.setState({ orderPlaced: false }), 3000);
+  };
+
+  renderVals() {
+    const { side, price, qty, orderPlaced } = this.state;
+    const th = {
+      pageBg: '#0a0e14',
+      cardBg: '#131a24',
+      cardBorder: '#232b38',
+      inputBg: '#0f1419',
+      text: '#eef1f6',
+      textMuted: '#8a94a6',
+      iconBg: '#1a212c',
+    };
+
+    const contractValueNum = parseFloat(price.replace(/,/g,'')) * qty * 100000;
+    const requiredMarginNum = contractValueNum * 0.175;
+
+    const positions = [
+      { symbol:'VN30F2607', side:'LONG', sideBg:'rgba(34,197,94,.15)', sideColor:'#22c55e', qty:'3', entry:'1,990.2', market:'1,998.5', pnl:'+2,490,000', pnlColor:'#22c55e' },
+      { symbol:'VN30F2608', side:'SHORT', sideBg:'rgba(244,63,94,.15)', sideColor:'#f43f5e', qty:'1', entry:'2,005.0', market:'1,998.5', pnl:'+650,000', pnlColor:'#22c55e' },
+    ];
+
+    return {
+      th,
+      contract: {
+        symbol: 'VN30F2607',
+        name: 'Hợp đồng tương lai VN30',
+        expiry: '17/07/2026',
+        price: '1,998.5',
+        color: '#22c55e',
+        change: '+4.3',
+        changePct: '+0.22%',
+        basis: '1,994.99',
+        basisVal: '+3.51',
+        basisColor: '#22c55e',
+        oi: '28,450',
+      },
+      positions,
+      margin: {
+        initial: '87,500,000đ',
+        used: '61,250,000đ',
+        available: '26,250,000đ',
+        usedPct: 70,
+        barColor: '#f59e0b',
+        leverage: '5.7',
+      },
+      side,
+      sideBtn: {
+        LONG: side==='LONG' ? { bg:'#22c55e', fg:'#fff', border:'#16a34a' } : { bg:th.iconBg, fg:th.textMuted, border:th.cardBorder },
+        SHORT: side==='SHORT' ? { bg:'#f43f5e', fg:'#fff', border:'#dc2626' } : { bg:th.iconBg, fg:th.textMuted, border:th.cardBorder },
+      },
+      toggleSide: this.toggleSide,
+      price, updatePrice: this.updatePrice,
+      qty, updateQty: this.updateQty, incQty: this.incQty, decQty: this.decQty,
+      requiredMargin: requiredMarginNum.toLocaleString() + 'đ',
+      contractValue: contractValueNum.toLocaleString() + 'đ',
+      submitBg: side==='LONG' ? '#22c55e' : '#f43f5e',
+      submitShadow: side==='LONG' ? 'rgba(34,197,94,.3)' : 'rgba(244,63,94,.3)',
+      submitLabel: side==='LONG' ? '✓ MỞ VỊ THẾ LONG' : '✓ MỞ VỊ THẾ SHORT',
+      submitOrder: this.submitOrder,
+      orderPlaced,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

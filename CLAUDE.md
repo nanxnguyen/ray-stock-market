@@ -108,3 +108,12 @@ RTK nén shell ở mọi khâu. Test fail → quay **T**.
 ##Rule
 
 Viết code type safety dễ maintan dễ mở rông
+
+viết code tối ưu perfoemce, react best practice, clean code, readable code, easy to maintain, easy to extend
+
+
+- sử dụng bigO tối ưu nhất
+
+-nguyên tắc 100% giống design 100% pêrfomece 
+
+- xây dựng bộ component core có thể reuse và mở rộng dễ dàng

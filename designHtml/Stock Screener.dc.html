@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+html,body { height:100%; }
+body { margin:0; padding:0; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#0f1419; color:#e4e6eb; }
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;box-sizing:border-box;background:{{ th.appBg }};padding:32px 16px;display:flex;justify-content:center;">
+<div style="display:flex;flex-direction:column;gap:12px;padding:16px;background:{{ th.navBg }};border-radius:12px;border:1px solid {{ th.cellBorder }};max-width:1680px;width:100%;margin:0 auto;height:fit-content;">
+  
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <div style="border-bottom:1px solid {{ th.cellBorder }};padding-bottom:10px;">
+    <h2 style="margin:0 0 8px 0;font-size:16px;font-weight:700;color:{{ th.text }};">SCREENER (LỌC CỔ PHIẾU)</h2>
+    <p style="margin:0;font-size:10px;color:{{ th.textMuted }};">Tìm cơ hội giao dịch dựa trên các tiêu chí kết hợp</p>
+  </div>
+
+  <!-- ══ FILTER PANEL ══ -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;padding:12px;background:{{ th.navBg }};border-radius:4px;border:1px solid {{ th.cellBorder }};">
+    
+    <!-- VALUATION FILTERS -->
+    <div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:{{ th.appBg }};border-radius:3px;border:1px solid {{ th.cellBorder }};">
+      <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">P/E Ratio</label>
+      <div style="display:flex;gap:4px;">
+        <input type="number" placeholder="Min" value="{{ peMin }}" onInput="{{ setPeMin }}" style="flex:1;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+        <input type="number" placeholder="Max" value="{{ peMax }}" onInput="{{ setPeMax }}" style="flex:1;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:{{ th.appBg }};border-radius:3px;border:1px solid {{ th.cellBorder }};">
+      <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">P/B Ratio</label>
+      <div style="display:flex;gap:4px;">
+        <input type="number" placeholder="Min" value="{{ pbMin }}" onInput="{{ setPbMin }}" style="flex:1;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+        <input type="number" placeholder="Max" value="{{ pbMax }}" onInput="{{ setPbMax }}" style="flex:1;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:{{ th.appBg }};border-radius:3px;border:1px solid {{ th.cellBorder }};">
+      <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">EPS (TTM)</label>
+      <input type="number" placeholder="Min EPS" value="{{ epsMin }}" onInput="{{ setEpsMin }}" style="width:100%;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+    </div>
+
+    <!-- PERFORMANCE FILTERS -->
+    <div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:{{ th.appBg }};border-radius:3px;border:1px solid {{ th.cellBorder }};">
+      <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">% Thay đổi</label>
+      <div style="display:flex;gap:4px;">
+        <input type="number" placeholder="Min" value="{{ changeMin }}" onInput="{{ setChangeMin }}" style="flex:1;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+        <input type="number" placeholder="Max" value="{{ changeMax }}" onInput="{{ setChangeMax }}" style="flex:1;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:{{ th.appBg }};border-radius:3px;border:1px solid {{ th.cellBorder }};">
+      <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Dividend Yield</label>
+      <input type="number" placeholder="Min %" value="{{ divMin }}" onInput="{{ setDivMin }}" style="width:100%;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:{{ th.appBg }};border-radius:3px;border:1px solid {{ th.cellBorder }};">
+      <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">ROE %</label>
+      <input type="number" placeholder="Min ROE" value="{{ roeMin }}" onInput="{{ setRoeMin }}" style="width:100%;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;"/>
+    </div>
+
+    <!-- SECTOR FILTER -->
+    <div style="display:flex;flex-direction:column;gap:6px;padding:10px;background:{{ th.appBg }};border-radius:3px;border:1px solid {{ th.cellBorder }};">
+      <label style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Ngành</label>
+      <select value="{{ selectedSector }}" onChange="{{ setSector }}" style="padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:3px;background:{{ th.appBg }};color:{{ th.text }};font-size:9px;">
+        <option value="">Tất cả</option>
+        <option value="banking">Ngân hàng</option>
+        <option value="tech">Công nghệ</option>
+        <option value="energy">Năng lượng</option>
+        <option value="realestate">BĐS</option>
+        <option value="consumer">Tiêu dùng</option>
+      </select>
+    </div>
+
+    <!-- ACTION BUTTONS -->
+    <div style="display:flex;gap:4px;align-items:flex-end;">
+      <button onClick="{{ runScreener }}" style="flex:1;background:#3b82f6;border:1px solid #2563eb;color:#fff;border-radius:3px;padding:6px;font-size:9px;font-weight:700;cursor:pointer;">🔍 Lọc</button>
+      <button onClick="{{ resetScreener }}" style="flex:1;background:{{ th.iconBg }};border:1px solid {{ th.cellBorder }};color:{{ th.textMuted }};border-radius:3px;padding:6px;font-size:9px;font-weight:700;cursor:pointer;">Reset</button>
+    </div>
+  </div>
+
+  <!-- ══ RESULTS ══ -->
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;">
+    <span style="font-size:10px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Kết quả: {{ resultCount }} cổ phiếu</span>
+    <div style="display:flex;gap:4px;">
+      <button style="background:{{ th.iconBg }};border:1px solid {{ th.cellBorder }};color:{{ th.textMuted }};border-radius:3px;padding:4px 8px;font-size:9px;font-weight:700;cursor:pointer;">📊 Chart</button>
+      <button onClick="{{ exportResults }}" style="background:{{ th.iconBg }};border:1px solid {{ th.cellBorder }};color:{{ th.textMuted }};border-radius:3px;padding:4px 8px;font-size:9px;font-weight:700;cursor:pointer;">⬇ CSV</button>
+    </div>
+  </div>
+
+  <!-- ══ RESULTS TABLE ══ -->
+  <div style="overflow-x:auto;border:1px solid {{ th.cellBorder }};border-radius:4px;">
+    <table style="width:100%;border-collapse:collapse;font-size:9px;font-family:'JetBrains Mono',monospace;">
+      <thead>
+        <tr style="border-bottom:1px solid {{ th.cellBorder }};height:28px;background:{{ th.navBg }};">
+          <th style="text-align:left;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Mã</th>
+          <th style="text-align:right;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Giá</th>
+          <th style="text-align:right;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">% Thay đổi</th>
+          <th style="text-align:right;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">P/E</th>
+          <th style="text-align:right;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">P/B</th>
+          <th style="text-align:right;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">EPS</th>
+          <th style="text-align:right;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Dividend</th>
+          <th style="text-align:right;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">ROE</th>
+          <th style="text-align:center;padding:6px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <sc-for list="{{ results }}" as="res" hint-placeholder-count="10">
+          <tr style="border-bottom:1px solid {{ th.cellBorder }};height:28px;">
+            <td style="padding:6px;color:{{ res.symColor }};font-weight:700;">{{ res.symbol }}</td>
+            <td style="padding:6px;text-align:right;color:{{ th.text }};">{{ res.price }}</td>
+            <td style="padding:6px;text-align:right;color:{{ res.changeColor }};font-weight:700;">{{ res.change }}</td>
+            <td style="padding:6px;text-align:right;color:{{ res.peColor }};">{{ res.pe }}</td>
+            <td style="padding:6px;text-align:right;color:{{ res.pbColor }};">{{ res.pb }}</td>
+            <td style="padding:6px;text-align:right;color:{{ th.textMuted }};">{{ res.eps }}</td>
+            <td style="padding:6px;text-align:right;color:{{ res.divColor }};">{{ res.dividend }}</td>
+            <td style="padding:6px;text-align:right;color:{{ res.roeColor }};">{{ res.roe }}</td>
+            <td style="padding:6px;text-align:center;">
+              <button onClick="{{ res.onBuy }}" style="background:rgba(34,197,94,.2);border:1px solid #22c55e;color:#22c55e;border-radius:2px;padding:2px 4px;font-size:8px;font-weight:700;cursor:pointer;text-transform:uppercase;">Mua</button>
+            </td>
+          </tr>
+        </sc-for>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    peMin: '',
+    peMax: '',
+    pbMin: '',
+    pbMax: '',
+    epsMin: '',
+    changeMin: '',
+    changeMax: '',
+    divMin: '',
+    roeMin: '',
+    selectedSector: '',
+    results: [],
+  };
+
+  allStocks = [
+    { symbol: 'VCB', price: 81.50, change: '+2.98%', pe: 11.2, pb: 1.45, eps: 7.28, dividend: '3.2%', roe: '23.5%', sector: 'banking' },
+    { symbol: 'ACB', price: 22.65, change: '-1.95%', pe: 8.9, pb: 1.12, eps: 2.54, dividend: '4.1%', roe: '21.2%', sector: 'banking' },
+    { symbol: 'FPT', price: 137.50, change: '+0.88%', pe: 18.5, pb: 3.2, eps: 7.43, dividend: '1.8%', roe: '18.5%', sector: 'tech' },
+    { symbol: 'MWG', price: 95.20, change: '+4.25%', pe: 12.8, pb: 1.85, eps: 7.43, dividend: '2.5%', roe: '15.2%', sector: 'consumer' },
+    { symbol: 'HPG', price: 24.10, change: '-1.23%', pe: 6.5, pb: 0.95, eps: 3.70, dividend: '2.5%', roe: '20.8%', sector: 'energy' },
+    { symbol: 'BID', price: 45.80, change: '+1.77%', pe: 13.2, pb: 1.68, eps: 3.47, dividend: '2.1%', roe: '16.5%', sector: 'banking' },
+    { symbol: 'VNM', price: 88.50, change: '+2.15%', pe: 22.5, pb: 4.2, eps: 3.93, dividend: '2.8%', roe: '12.5%', sector: 'consumer' },
+    { symbol: 'PVD', price: 18.50, change: '-3.45%', pe: 5.2, pb: 0.68, eps: 3.55, dividend: '3.5%', roe: '18.2%', sector: 'energy' },
+  ];
+
+  setPeMin = (e) => this.setState({ peMin: e.target.value });
+  setPeMax = (e) => this.setState({ peMax: e.target.value });
+  setPbMin = (e) => this.setState({ pbMin: e.target.value });
+  setPbMax = (e) => this.setState({ pbMax: e.target.value });
+  setEpsMin = (e) => this.setState({ epsMin: e.target.value });
+  setChangeMin = (e) => this.setState({ changeMin: e.target.value });
+  setChangeMax = (e) => this.setState({ changeMax: e.target.value });
+  setDivMin = (e) => this.setState({ divMin: e.target.value });
+  setRoeMin = (e) => this.setState({ roeMin: e.target.value });
+  setSector = (e) => this.setState({ selectedSector: e.target.value });
+
+  runScreener = () => {
+    const { peMin, peMax, pbMin, pbMax, epsMin, changeMin, changeMax, divMin, roeMin, selectedSector } = this.state;
+    
+    const filtered = this.allStocks.filter(s => {
+      if (selectedSector && s.sector !== selectedSector) return false;
+      if (peMin && s.pe < parseFloat(peMin)) return false;
+      if (peMax && s.pe > parseFloat(peMax)) return false;
+      if (pbMin && s.pb < parseFloat(pbMin)) return false;
+      if (pbMax && s.pb > parseFloat(pbMax)) return false;
+      if (epsMin && s.eps < parseFloat(epsMin)) return false;
+      if (changeMin && parseFloat(s.change) < parseFloat(changeMin)) return false;
+      if (changeMax && parseFloat(s.change) > parseFloat(changeMax)) return false;
+      if (divMin && parseFloat(s.dividend) < parseFloat(divMin)) return false;
+      if (roeMin && parseFloat(s.roe) < parseFloat(roeMin)) return false;
+      return true;
+    });
+
+    this.setState({ results: filtered });
+  };
+
+  resetScreener = () => {
+    this.setState({
+      peMin: '', peMax: '', pbMin: '', pbMax: '', epsMin: '',
+      changeMin: '', changeMax: '', divMin: '', roeMin: '', selectedSector: '',
+      results: [],
+    });
+  };
+
+  exportResults = () => {
+    const { results } = this.state;
+    const csv = ['Symbol,Price,Change,P/E,P/B,EPS,Dividend,ROE',
+      ...results.map(r => `${r.symbol},${r.price},${r.change},${r.pe},${r.pb},${r.eps},${r.dividend},${r.roe}`)
+    ].join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `screener-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+  };
+
+  renderVals() {
+    const { results } = this.state;
+    const th = {
+      appBg: '#0f1419',
+      navBg: '#1a1f26',
+      text: '#e4e6eb',
+      textMuted: '#8a92a0',
+      cellBorder: '#2a3139',
+      iconBg: '#1a1f26',
+    };
+
+    const resultsData = results.map(r => ({
+      symbol: r.symbol,
+      symColor: '#60a5fa',
+      price: r.price.toFixed(2) + 'đ',
+      change: r.change,
+      changeColor: r.change.startsWith('+') ? '#22c55e' : '#f43f5e',
+      pe: r.pe.toFixed(1) + 'x',
+      peColor: r.pe < 12 ? '#22c55e' : r.pe > 18 ? '#f43f5e' : '#f59e0b',
+      pb: r.pb.toFixed(2) + 'x',
+      pbColor: r.pb < 1.5 ? '#22c55e' : r.pb > 2.5 ? '#f43f5e' : '#f59e0b',
+      eps: r.eps.toFixed(2) + 'đ',
+      dividend: r.dividend,
+      divColor: parseFloat(r.dividend) > 3 ? '#22c55e' : '#f59e0b',
+      roe: r.roe,
+      roeColor: parseFloat(r.roe) > 18 ? '#22c55e' : '#f59e0b',
+      onBuy: () => console.log(`Buy ${r.symbol}`),
+    }));
+
+    return {
+      th,
+      peMin: this.state.peMin,
+      peMax: this.state.peMax,
+      pbMin: this.state.pbMin,
+      pbMax: this.state.pbMax,
+      epsMin: this.state.epsMin,
+      changeMin: this.state.changeMin,
+      changeMax: this.state.changeMax,
+      divMin: this.state.divMin,
+      roeMin: this.state.roeMin,
+      selectedSector: this.state.selectedSector,
+      setPeMin: this.setPeMin,
+      setPeMax: this.setPeMax,
+      setPbMin: this.setPbMin,
+      setPbMax: this.setPbMax,
+      setEpsMin: this.setEpsMin,
+      setChangeMin: this.setChangeMin,
+      setChangeMax: this.setChangeMax,
+      setDivMin: this.setDivMin,
+      setRoeMin: this.setRoeMin,
+      setSector: this.setSector,
+      runScreener: this.runScreener,
+      resetScreener: this.resetScreener,
+      exportResults: this.exportResults,
+      resultCount: resultsData.length,
+      results: resultsData,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

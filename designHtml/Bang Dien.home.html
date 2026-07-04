@@ -31,48 +31,71 @@
 
   <!-- ══ TOP BAR ══ -->
   <div style="background:linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%);display:flex;align-items:center;padding:0 16px;height:42px;flex-shrink:0;gap:10px;border-bottom:1px solid #0f1e36;">
-    <!-- Logo -->
     <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;margin-right:4px;">
       <div style="width:26px;height:26px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;">
         <svg width="14" height="12" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
       </div>
       <span style="font-size:15px;font-weight:800;color:#fff;letter-spacing:.4px;font-family:'Inter',sans-serif;">Ray <span style="color:#22c55e;">Stock Market</span></span>
     </div>
-
-    <!-- Market status -->
     <div style="display:flex;align-items:center;gap:5px;background:#0f1e36;border-radius:20px;padding:3px 10px;flex-shrink:0;">
       <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;"></div>
       <span style="font-size:10px;font-weight:600;color:#22c55e;letter-spacing:.3px;">ĐANG GIAO DỊCH</span>
     </div>
-    <!-- Clock -->
     <span style="color:#4a6080;font-size:11px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:.5px;">{{ timeStr }}</span>
-    <!-- Ticker -->
     <div style="flex:1;overflow:hidden;position:relative;height:100%;display:flex;align-items:center;min-width:0;">
       <div style="position:absolute;inset:0;left:0;width:40px;background:linear-gradient(90deg,#060c18,transparent);z-index:1;pointer-events:none;"></div>
       <span style="position:absolute;white-space:nowrap;animation:ticker 34s linear infinite;color:#94a3b8;font-size:10.5px;font-weight:500;font-family:'JetBrains Mono',monospace;">
         <span style="color:#fbbf24;">VN-Index</span> <span style="color:#4ade80;">▲1,860.01 +5.04</span> &nbsp;│&nbsp;
         <span style="color:#fbbf24;">VN30</span> <span style="color:#4ade80;">▲1,995.71 +5.06</span> &nbsp;│&nbsp;
         <span style="color:#fbbf24;">ACB</span> <span style="color:#f87171;">▼22.65 -0.25</span> &nbsp;│&nbsp;
-        <span style="color:#fbbf24;">HPG</span> <span style="color:#4ade80;">▲24.10 +0.32</span> &nbsp;│&nbsp;
-        <span style="color:#fbbf24;">VCB</span> <span style="color:#4ade80;">▲81.50 +1.13</span> &nbsp;│&nbsp;
-        <span style="color:#fbbf24;">FPT</span> <span style="color:#4ade80;">▲137.50 +1.89</span> &nbsp;│&nbsp;
-        <span style="color:#fbbf24;">DOW</span> <span style="color:#4ade80;">▲52,342 +0.31%</span>
+        <span style="color:#fbbf24;">HPG</span> <span style="color:#4ade80;">▲24.10 +0.32</span>
       </span>
       <div style="position:absolute;inset:0;right:0;left:auto;width:40px;background:linear-gradient(270deg,#060c18,transparent);z-index:1;pointer-events:none;"></div>
     </div>
-    <!-- Right controls -->
-    <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-      <!-- Dark/Light toggle -->
-      <div onClick="{{ toggleDark }}" title="{{ th.toggleTitle }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:#0f1e36;border:1px solid #1a3050;border-radius:20px;padding:4px 10px;transition:all .25s;">
-        <span style="font-size:12px;line-height:1;">{{ th.toggleIcon }}</span>
-        <span style="font-size:10px;font-weight:600;color:#64748b;letter-spacing:.3px;">{{ th.toggleLabel }}</span>
+    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;position:relative;">
+      <a href="Portfolio.dc.html" title="Danh mục đầu tư" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:#0f1e36;border:1px solid #1a3050;border-radius:14px;padding:4px 9px;color:#94a3b8;font-size:10px;font-weight:600;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" title="Đặt lệnh" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:#0f1e36;border:1px solid #1a3050;border-radius:14px;padding:4px 9px;color:#94a3b8;font-size:10px;font-weight:600;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" title="Sổ lệnh" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:#0f1e36;border:1px solid #1a3050;border-radius:14px;padding:4px 9px;color:#94a3b8;font-size:10px;font-weight:600;">📖 Sổ lệnh</a>
+      <div onClick="{{ toggleMoreTools }}" style="cursor:pointer;display:flex;align-items:center;gap:5px;background:{{ moreToolsBg }};border:1px solid {{ moreToolsBorder }};border-radius:14px;padding:4px 10px 4px 9px;color:{{ moreToolsFg }};font-size:10px;font-weight:700;transition:all .15s;">
+        <span style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:9px;height:9px;">
+          <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
+          <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
+        </span>
+        Công cụ
+        <span style="font-size:8px;transform:{{ arrowRotate }};transition:transform .15s;">▾</span>
+      </div>
+      <div style="width:1px;height:18px;background:#1a3050;"></div>
+      <div onClick="{{ toggleDark }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:#0f1e36;border:1px solid #1a3050;border-radius:20px;padding:4px 10px;transition:all .25s;">
+        <span style="font-size:12px;">{{ th.toggleIcon }}</span>
+        <span style="font-size:10px;font-weight:600;color:#64748b;">{{ th.toggleLabel }}</span>
       </div>
 
-
+      <sc-if value="{{ showMoreTools }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ stopProp }}" style="position:absolute;top:38px;right:0;background:#0b1424;border:1px solid #1a3050;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
+          <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+            <sc-for list="{{ menuGroups }}" as="grp" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-size:9.5px;font-weight:800;color:{{ grp.color }};text-transform:uppercase;letter-spacing:.5px;padding:0 8px 8px;">{{ grp.title }}</span>
+                <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="5">
+                  <a href="{{ it.href }}" style="text-decoration:none;display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;transition:background .12s;" style-hover="background:#131f36;">
+                    <span style="width:28px;height:28px;border-radius:8px;background:{{ it.iconBg }};display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">{{ it.icon }}</span>
+                    <span style="display:flex;flex-direction:column;gap:1px;min-width:0;">
+                      <span style="font-size:11.5px;font-weight:700;color:#e2e8f0;white-space:nowrap;">{{ it.label }}</span>
+                      <span style="font-size:9px;color:#5b7290;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.desc }}</span>
+                    </span>
+                  </a>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-top:1px solid #16233b;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:#08101f;">
+            <span style="font-size:9.5px;color:#3a5570;font-weight:600;">{{ toolCount }} công cụ &amp; sẽ tiếp tục mở rộng</span>
+            <a href="Bang Dien.dc.html" style="text-decoration:none;font-size:10px;font-weight:700;color:#60a5fa;">🏠 Về Trang chủ</a>
+          </div>
+        </div>
+      </sc-if>
     </div>
   </div>
-
-
 
   <!-- ══ INDEX SECTION ══ -->
   <div style="background:{{ th.navBg }};border-bottom:1px solid {{ th.navBorder }};display:flex;flex-shrink:0;height:158px;overflow:hidden;">
@@ -107,7 +130,6 @@
         </div>
       </sc-for>
     </div>
-    <!-- Global markets panel -->
     <div style="width:210px;border-left:1px solid {{ th.idxColBorder }};padding:10px 12px;flex-shrink:0;display:flex;flex-direction:column;gap:0;">
       <div style="display:flex;gap:0;margin-bottom:7px;border-bottom:1px solid {{ th.idxColBorder }};padding-bottom:5px;">
         <sc-for list="{{ globalTabs }}" as="gt" hint-placeholder-count="4">
@@ -132,14 +154,12 @@
   <!-- ══ FILTER BAR ══ -->
   <div style="background:{{ th.navBg }};border-bottom:1px solid {{ th.navBorder }};display:flex;align-items:center;padding:5px 14px;gap:5px;flex-shrink:0;height:42px;overflow-x:auto;">
     <div style="display:flex;gap:2px;flex-shrink:0;">
-      <button onClick="{{ setTableView }}" title="Dạng bảng" style="background:{{ viewBtnTable }};border:1px solid {{ th.navBorder }};width:26px;height:26px;border-radius:5px;cursor:pointer;color:{{ viewIconTable }};font-size:13px;display:flex;align-items:center;justify-content:center;">☰</button>
-      <button onClick="{{ setGridView }}" title="Dạng thẻ" style="background:{{ viewBtnGrid }};border:1px solid {{ th.navBorder }};width:26px;height:26px;border-radius:5px;cursor:pointer;color:{{ viewIconGrid }};font-size:13px;display:flex;align-items:center;justify-content:center;">⊞</button>
-      <button onClick="{{ setHeatView }}" title="Heatmap" style="background:{{ viewBtnHeat }};border:1px solid {{ th.navBorder }};width:26px;height:26px;border-radius:5px;cursor:pointer;color:{{ viewIconHeat }};font-size:13px;display:flex;align-items:center;justify-content:center;">▦</button>
+      <button onClick="{{ setTableView }}" style="background:{{ viewBtnTable }};border:1px solid {{ th.navBorder }};width:26px;height:26px;border-radius:5px;cursor:pointer;color:{{ viewIconTable }};font-size:13px;display:flex;align-items:center;justify-content:center;">☰</button>
+      <button onClick="{{ setGridView }}" style="background:{{ viewBtnGrid }};border:1px solid {{ th.navBorder }};width:26px;height:26px;border-radius:5px;cursor:pointer;color:{{ viewIconGrid }};font-size:13px;display:flex;align-items:center;justify-content:center;">⊞</button>
+      <button onClick="{{ setHeatView }}" style="background:{{ viewBtnHeat }};border:1px solid {{ th.navBorder }};width:26px;height:26px;border-radius:5px;cursor:pointer;color:{{ viewIconHeat }};font-size:13px;display:flex;align-items:center;justify-content:center;">▦</button>
+      <button onClick="{{ setMoversView }}" style="background:{{ viewBtnMovers }};border:1px solid {{ th.navBorder }};width:26px;height:26px;border-radius:5px;cursor:pointer;color:{{ viewIconMovers }};font-size:13px;display:flex;align-items:center;justify-content:center;">📊</button>
     </div>
-    <div style="border:1px solid {{ th.navBorder }};border-radius:6px;padding:4px 9px;display:flex;align-items:center;gap:5px;width:130px;flex-shrink:0;background:{{ th.appBg }};">
-      <span style="font-size:11px;color:{{ th.textMuted }};">🔍</span>
-      <span style="font-size:10.5px;color:{{ th.searchText }};">Tìm kiếm CK...</span>
-    </div>
+    <input type="text" placeholder="Tìm kiếm CK..." value="{{ searchText }}" onInput="{{ searchInput }}" style="border:1px solid {{ th.navBorder }};border-radius:6px;padding:4px 9px;width:160px;flex-shrink:0;background:{{ th.appBg }};color:{{ th.text }};font-size:11px;outline:none;font-family:'Inter',sans-serif;" style-focus="border-color:#2563eb;box-shadow:0 0 0 2px rgba(37,99,235,.1);"/>
     <div style="width:1px;height:20px;background:{{ th.navBorder }};flex-shrink:0;"></div>
     <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="8">
       <button onClick="{{ tab.onClick }}" style="background:{{ tab.bg }};color:{{ tab.fg }};border:{{ tab.border }};border-radius:6px;padding:4px 11px;font-size:11px;font-weight:{{ tab.w }};cursor:pointer;flex-shrink:0;white-space:nowrap;letter-spacing:.2px;transition:all .15s;">
@@ -147,9 +167,9 @@
       </button>
     </sc-for>
     <div style="margin-left:auto;display:flex;gap:6px;align-items:center;flex-shrink:0;">
-      <button style="background:{{ th.iconBg }};border:1px solid {{ th.navBorder }};color:{{ th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;">▶</button>
-      <button style="background:{{ th.iconBg }};border:1px solid {{ th.navBorder }};color:{{ th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;">⚙</button>
-      <button style="background:{{ th.iconBg }};border:1px solid {{ th.navBorder }};color:{{ th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;">⬇</button>
+      <button onClick="{{ toggleFilter }}" style="background:{{ showAdvFilter ? '#f97316' : th.iconBg }};border:1px solid {{ showAdvFilter ? '#ea580c' : th.navBorder }};color:{{ showAdvFilter ? '#fff' : th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;">🔍</button>
+      <button onClick="{{ toggleTradeHist }}" style="background:{{ showTradeHist ? '#f97316' : th.iconBg }};border:1px solid {{ showTradeHist ? '#ea580c' : th.navBorder }};color:{{ showTradeHist ? '#fff' : th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;">📋</button>
+      <button onClick="{{ exportCSV }}" style="background:{{ th.iconBg }};border:1px solid {{ th.navBorder }};color:{{ th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;">⬇</button>
     </div>
   </div>
 
@@ -159,6 +179,115 @@
       <sc-for list="{{ sectorBtns }}" as="sb" hint-placeholder-count="12">
         <button onClick="{{ sb.onClick }}" style="background:{{ sb.bg }};color:{{ sb.fg }};border:{{ sb.border }};border-radius:16px;padding:3px 11px;font-size:10.5px;font-weight:{{ sb.w }};cursor:pointer;white-space:nowrap;transition:all .15s;">{{ sb.label }}</button>
       </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- ══ ADVANCED FILTER PANEL ══ -->
+  <sc-if value="{{ showAdvFilter }}" hint-placeholder-val="{{ false }}">
+    <div style="background:{{ th.navBg }};border-bottom:1px solid {{ th.navBorder }};padding:10px 14px;display:flex;gap:12px;align-items:flex-end;flex-shrink:0;animation:fadeUp .15s ease;flex-wrap:wrap;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">% Thay đổi</label>
+        <div style="display:flex;gap:4px;">
+          <input type="number" placeholder="Từ" value="{{ filterPctFrom }}" onInput="{{ setPctFrom }}" style="width:60px;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:4px;background:{{ th.appBg }};color:{{ th.text }};font-size:10px;"/>
+          <span style="color:{{ th.textMuted }};padding:4px 0;">→</span>
+          <input type="number" placeholder="Đến" value="{{ filterPctTo }}" onInput="{{ setPctTo }}" style="width:60px;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:4px;background:{{ th.appBg }};color:{{ th.text }};font-size:10px;"/>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">KLGD (triệu)</label>
+        <input type="number" placeholder="Tối thiểu" value="{{ filterVolMin }}" onInput="{{ setVolMin }}" style="width:100px;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:4px;background:{{ th.appBg }};color:{{ th.text }};font-size:10px;"/>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Giá (từ-đến)</label>
+        <div style="display:flex;gap:4px;">
+          <input type="number" placeholder="Min" value="{{ filterPriceMin }}" onInput="{{ setPriceMin }}" style="width:60px;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:4px;background:{{ th.appBg }};color:{{ th.text }};font-size:10px;"/>
+          <input type="number" placeholder="Max" value="{{ filterPriceMax }}" onInput="{{ setPriceMax }}" style="width:60px;padding:4px 6px;border:1px solid {{ th.cellBorder }};border-radius:4px;background:{{ th.appBg }};color:{{ th.text }};font-size:10px;"/>
+        </div>
+      </div>
+      <button onClick="{{ resetFilters }}" style="background:{{ th.iconBg }};border:1px solid {{ th.cellBorder }};color:{{ th.textMuted }};border-radius:4px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;white-space:nowrap;">Reset</button>
+    </div>
+  </sc-if>
+
+  <!-- ══ TRADE HISTORY PANEL ══ -->
+  <sc-if value="{{ showTradeHist }}" hint-placeholder-val="{{ false }}">
+    <div style="background:{{ th.navBg }};border-bottom:1px solid {{ th.navBorder }};padding:10px 14px;display:flex;flex-direction:column;gap:6px;flex-shrink:0;animation:fadeUp .15s ease;max-height:200px;overflow-y:auto;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+        <span style="font-size:11px;font-weight:700;color:#60a5fa;letter-spacing:.5px;">LỊCH SỬ GIAO DỊCH KHỚP LỆNH</span>
+        <span style="font-size:9px;color:{{ th.textMuted }};">Realtime</span>
+      </div>
+      <sc-for list="{{ tradeHistory }}" as="th" hint-placeholder-count="8">
+        <div style="display:grid;grid-template-columns:60px 50px 60px 60px 70px;gap:8px;padding:6px;background:{{ th.appBg }};border-radius:4px;border:1px solid {{ th.cellBorder }};font-size:9px;font-family:'JetBrains Mono',monospace;">
+          <div style="font-weight:700;color:#60a5fa;">{{ th.sym }}</div>
+          <div style="color:{{ th.timeColor }};text-align:right;">{{ th.time }}</div>
+          <div style="color:{{ th.priceColor }};text-align:right;font-weight:700;">{{ th.price }}</div>
+          <div style="color:{{ th.volColor }};text-align:right;">{{ th.qty }}</div>
+          <div style="color:{{ th.sideColor }};text-align:center;font-weight:700;">{{ th.side }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </sc-if>
+
+  <!-- ══ TOP MOVERS VIEW ══ -->
+  <sc-if value="{{ isMovers }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;overflow:auto;background:{{ th.appBg }};padding:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+      <!-- Top gainers -->
+      <div style="background:{{ th.navBg }};border:1px solid {{ th.cellBorder }};border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:12px;font-weight:700;color:#22c55e;letter-spacing:.5px;text-transform:uppercase;">▲ Top Tăng Mạnh</div>
+        <sc-for list="{{ topGainers }}" as="tg" hint-placeholder-count="5">
+          <div onClick="{{ tg.onClick }}" style="background:{{ th.appBg }};border:1px solid {{ th.cellBorder }};border-radius:6px;padding:8px;cursor:pointer;transition:all .2s;" style-hover="background:{{ th.rowHover }};border-color:#2563eb;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-weight:700;color:#60a5fa;">{{ tg.sym }}</span>
+              <span style="font-size:10px;color:#22c55e;font-weight:700;">+{{ tg.pct }}%</span>
+            </div>
+            <div style="font-size:12px;color:{{ th.text }};font-family:'JetBrains Mono',monospace;font-weight:700;">{{ tg.lp }}</div>
+            <div style="font-size:9px;color:{{ th.textMuted }};margin-top:3px;">KL: {{ tg.vol }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <!-- Top losers -->
+      <div style="background:{{ th.navBg }};border:1px solid {{ th.cellBorder }};border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:12px;font-weight:700;color:#f43f5e;letter-spacing:.5px;text-transform:uppercase;">▼ Top Giảm Mạnh</div>
+        <sc-for list="{{ topLosers }}" as="tl" hint-placeholder-count="5">
+          <div onClick="{{ tl.onClick }}" style="background:{{ th.appBg }};border:1px solid {{ th.cellBorder }};border-radius:6px;padding:8px;cursor:pointer;transition:all .2s;" style-hover="background:{{ th.rowHover }};border-color:#2563eb;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-weight:700;color:#60a5fa;">{{ tl.sym }}</span>
+              <span style="font-size:10px;color:#f43f5e;font-weight:700;">{{ tl.pct }}%</span>
+            </div>
+            <div style="font-size:12px;color:{{ th.text }};font-family:'JetBrains Mono',monospace;font-weight:700;">{{ tl.lp }}</div>
+            <div style="font-size:9px;color:{{ th.textMuted }};margin-top:3px;">KL: {{ tl.vol }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <!-- Top volume -->
+      <div style="background:{{ th.navBg }};border:1px solid {{ th.cellBorder }};border-radius:8px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+        <div style="font-size:12px;font-weight:700;color:#3b82f6;letter-spacing:.5px;text-transform:uppercase;">📈 KLGD Cao Nhất</div>
+        <sc-for list="{{ topVolume }}" as="tv" hint-placeholder-count="5">
+          <div onClick="{{ tv.onClick }}" style="background:{{ th.appBg }};border:1px solid {{ th.cellBorder }};border-radius:6px;padding:8px;cursor:pointer;transition:all .2s;" style-hover="background:{{ th.rowHover }};border-color:#2563eb;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;">
+              <span style="font-weight:700;color:#60a5fa;">{{ tv.sym }}</span>
+              <span style="font-size:10px;color:{{ tv.pc }};font-weight:700;">{{ tv.pct }}</span>
+            </div>
+            <div style="font-size:11px;color:{{ th.text }};font-family:'JetBrains Mono',monospace;font-weight:700;">{{ tv.vol }}</div>
+            <div style="font-size:9px;color:{{ th.textMuted }};margin-top:3px;">{{ tv.lp }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <!-- Breadth indicators -->
+    <div style="background:{{ th.navBg }};border-top:1px solid {{ th.navBorder }};padding:10px 14px;display:flex;gap:20px;align-items:center;flex-shrink:0;">
+      <div style="display:flex;gap:16px;">
+        <sc-for list="{{ breadthData }}" as="bd" hint-placeholder-count="3">
+          <div style="display:flex;flex-direction:column;gap:4px;">
+            <span style="font-size:10px;font-weight:700;color:{{ th.textMuted }};letter-spacing:.3px;text-transform:uppercase;">{{ bd.label }}</span>
+            <div style="display:flex;gap:4px;align-items:center;">
+              <div style="width:80px;height:8px;background:{{ th.appBg }};border-radius:4px;overflow:hidden;">
+                <div style="width:{{ bd.upPct }}%;height:100%;background:{{ bd.upColor }};"></div>
+              </div>
+              <span style="font-size:11px;font-weight:700;color:{{ bd.upColor }};font-family:'JetBrains Mono',monospace;min-width:50px;">{{ bd.upCnt }}/{{ bd.total }}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
     </div>
   </sc-if>
 
@@ -184,19 +313,6 @@
           </div>
         </div>
       </sc-for>
-      <!-- Legend -->
-      <div style="display:flex;align-items:center;gap:6px;margin-top:8px;padding-top:8px;border-top:1px solid {{ th.cellBorderL }};">
-        <span style="font-size:9px;color:{{ th.textMuted }};font-family:'Inter',sans-serif;">Chú thích:</span>
-        <div style="display:flex;gap:3px;align-items:center;">
-          <div style="width:28px;height:14px;border-radius:3px;background:#7c3aed;"></div><span style="font-size:8px;color:{{ th.textMuted }};">Trần</span>
-          <div style="width:28px;height:14px;border-radius:3px;background:#166534;margin-left:4px;"></div><span style="font-size:8px;color:{{ th.textMuted }};">+4%</span>
-          <div style="width:28px;height:14px;border-radius:3px;background:#15803d;margin-left:4px;"></div><span style="font-size:8px;color:{{ th.textMuted }};">+2%</span>
-          <div style="width:28px;height:14px;border-radius:3px;background:#78350f;margin-left:4px;"></div><span style="font-size:8px;color:{{ th.textMuted }};">0%</span>
-          <div style="width:28px;height:14px;border-radius:3px;background:#991b1b;margin-left:4px;"></div><span style="font-size:8px;color:{{ th.textMuted }};">-2%</span>
-          <div style="width:28px;height:14px;border-radius:3px;background:#7f1d1d;margin-left:4px;"></div><span style="font-size:8px;color:{{ th.textMuted }};">-4%</span>
-          <div style="width:28px;height:14px;border-radius:3px;background:#1e3a8a;margin-left:4px;"></div><span style="font-size:8px;color:{{ th.textMuted }};">Sàn</span>
-        </div>
-      </div>
     </div>
   </sc-if>
 
@@ -242,6 +358,7 @@
           <th style="padding:5px 6px;text-align:right;border-right:2px solid #1a3050;min-width:48px;" rowspan="2">Thấp</th>
           <th colspan="4" style="text-align:center;padding:5px;color:#a78bfa;border-right:2px solid #1a3050;letter-spacing:.5px;">NN</th>
           <th style="padding:5px 8px;text-align:right;min-width:90px;color:#94a3b8;" rowspan="2">KLGD TT</th>
+          <th style="padding:5px 8px;text-align:center;min-width:36px;color:#60a5fa;" rowspan="2">♡</th>
         </tr>
         <tr style="background:#080f1c;color:#3a6080;font-size:9px;font-family:'Inter',sans-serif;letter-spacing:.3px;">
           <th style="background:#05111e;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;color:#3b7fc4;">Giá 3</th>
@@ -297,8 +414,9 @@
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:#22d3a5;">{{ s.fbuy }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:#f87171;">{{ s.fsell }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.fbc }};">{{ s.fbal }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:#64748b;">{{ s.room }}</td>
+            <td style="padding:3px 8px;text-align:right;color:#64748b;">{{ s.room }}</td>
             <td style="padding:3px 8px;text-align:right;color:{{ th.volColor }};">{{ s.kltt }}</td>
+            <td style="padding:3px 8px;text-align:center;cursor:pointer;font-size:13px;" style-hover="transform:scale(1.2);">{{ watchlist.includes(s.sym) ? '♥' : '♡' }}</td>
           </tr>
         </sc-for>
       </tbody>
@@ -312,9 +430,6 @@
       <span>Cơ sở: Giá ×1,000 │ KL ×1</span>
       <span style="color:#1e3a5f;">│</span>
       <span>Phái sinh: Giá ×1 │ KL ×1</span>
-    </div>
-    <div style="display:flex;gap:5px;">
-
     </div>
   </div>
 
@@ -343,7 +458,6 @@
   <sc-if value="{{ chart.open }}" hint-placeholder-val="{{ false }}">
     <div onClick="{{ closeChart }}" style="position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);">
       <div onClick="{{ stopProp }}" style="background:#080f1c;border:1px solid #1a3050;border-radius:12px;width:700px;max-width:96vw;overflow:hidden;animation:fadeUp .18s ease;box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 40px rgba(37,99,235,.1);">
-        <!-- Modal header -->
         <div style="background:linear-gradient(90deg,#060c18,#0b1628);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a3050;">
           <div style="display:flex;align-items:center;gap:12px;">
             <div style="background:#1e3a5f;border-radius:6px;padding:3px 8px;">
@@ -360,7 +474,6 @@
             <button onClick="{{ closeChart }}" style="background:#0f1e36;color:#64748b;border:1px solid #1a3050;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;" style-hover="color:#e2e8f0;background:#1a2d45;">✕</button>
           </div>
         </div>
-        <!-- Chart body -->
         <div style="padding:16px 18px 10px;background:#060c18;">
           <div style="position:relative;height:186px;">
             <svg viewBox="0 0 640 160" preserveAspectRatio="none" style="width:100%;height:160px;display:block;">
@@ -386,7 +499,6 @@
               </sc-for>
             </div>
           </div>
-          <!-- Volume bars -->
           <div style="height:44px;margin-top:4px;border-top:1px solid #0f1e36;padding-top:4px;">
             <svg viewBox="0 0 640 36" preserveAspectRatio="none" style="width:100%;height:36px;display:block;">
               <sc-for list="{{ chart.vbars }}" as="vb" hint-placeholder-count="30">
@@ -394,7 +506,6 @@
               </sc-for>
             </svg>
           </div>
-          <!-- Time axis -->
           <div style="display:flex;justify-content:space-between;padding:3px 0 2px;border-top:1px solid #0f1e36;">
             <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">09:00</span>
             <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">10:30</span>
@@ -404,7 +515,6 @@
             <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">15:00</span>
           </div>
         </div>
-        <!-- Stats row -->
         <div style="display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid #1a3050;background:#080f1c;">
           <sc-for list="{{ chart.stats }}" as="st" hint-placeholder-count="6">
             <div style="padding:10px 12px;border-right:1px solid #0f1e36;text-align:center;">
@@ -412,6 +522,11 @@
               <div style="font-size:12px;font-weight:700;color:{{ st.color }};font-family:'JetBrains Mono',monospace;">{{ st.val }}</div>
             </div>
           </sc-for>
+        </div>
+        <div style="display:flex;gap:8px;padding:12px 18px;background:#060c18;border-top:1px solid #1a3050;">
+          <a href="{{ chart.infoLink }}" style="flex:1;text-decoration:none;text-align:center;background:#0f1e36;border:1px solid #1a3050;color:#cbd5e1;border-radius:6px;padding:9px;font-size:11px;font-weight:700;">📄 Thông tin CP</a>
+          <a href="{{ chart.orderBookLink }}" style="flex:1;text-decoration:none;text-align:center;background:#0f1e36;border:1px solid #1a3050;color:#cbd5e1;border-radius:6px;padding:9px;font-size:11px;font-weight:700;">📖 Sổ lệnh</a>
+          <a href="{{ chart.tradeLink }}" style="flex:1.3;text-decoration:none;text-align:center;background:#22c55e;border:1px solid #16a34a;color:#fff;border-radius:6px;padding:9px;font-size:11px;font-weight:800;">✓ Đặt lệnh {{ chart.sym }}</a>
         </div>
       </div>
     </div>
@@ -429,10 +544,20 @@ class Component extends DCLogic {
     activeTab: 'HOSE',
     activeSector: 'Tất cả',
     showSector: false,
+    showMoreTools: false,
     activeGlobal: 'US',
     viewMode: 'table',
     idxChart: { open: false, sym: '', iframeUrl: '' },
     chart: { open: false, sym: '', range: '1D' },
+    searchText: '',
+    watchlist: JSON.parse(localStorage.getItem('watchlist')||'[]'),
+    showAdvFilter: false,
+    filterPctFrom: '',
+    filterPctTo: '',
+    filterVolMin: '',
+    filterPriceMin: '',
+    filterPriceMax: '',
+    showTradeHist: false,
   };
 
   componentDidMount() {
@@ -446,63 +571,54 @@ class Component extends DCLogic {
     clearInterval(this._c); clearInterval(this._p); clearInterval(this._i);
   }
 
+  _saveWatchlist(wl) {
+    localStorage.setItem('watchlist', JSON.stringify(wl));
+    this.setState({ watchlist: wl });
+  }
+
+  searchInput = (e) => {
+    this.setState({ searchText: e.target.value });
+  };
+
+  toggleFilter = () => this.setState(p => ({ showAdvFilter: !p.showAdvFilter }));
+  toggleTradeHist = () => this.setState(p => ({ showTradeHist: !p.showTradeHist }));
+  setPctFrom = (e) => this.setState({ filterPctFrom: e.target.value });
+  setPctTo = (e) => this.setState({ filterPctTo: e.target.value });
+  setVolMin = (e) => this.setState({ filterVolMin: e.target.value });
+  setPriceMin = (e) => this.setState({ filterPriceMin: e.target.value });
+  setPriceMax = (e) => this.setState({ filterPriceMax: e.target.value });
+  resetFilters = () => this.setState({ filterPctFrom:'', filterPctTo:'', filterVolMin:'', filterPriceMin:'', filterPriceMax:'' });
+
+  exportCSV = () => {
+    const { stocks } = this.state;
+    const headers = ['Mã CK','Giá','% Thay đổi','KLGD','Cao','Thấp','NN Mua','NN Bán'];
+    const rows = (stocks||[]).map(s => [
+      s.s, s.lp, ((s.lp-s.r)/s.r*100).toFixed(1), s.tv, s.hi, s.lo, s.fb, s.fs
+    ]);
+    const csv = [headers, ...rows].map(r => r.join(',')).join('\n');
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `bang-dien-${new Date().toISOString().split('T')[0]}.csv`;
+    a.click();
+  };
+
   _raw() {
     return [
       {s:'AAA',   ng:'Nhựa',       cl:7.84,  r:7.33,  fl:6.82,  lp:7.31,  lq:24500,  pct:-0.3,  tv:322400,   hi:7.37,  lo:7.31,  fb:5300,   fs:10030,  rm:386801253},
-      {s:'AAM',   ng:'Thủy sản',   cl:6.88,  r:6.43,  fl:5.98,  lp:6.80,  lq:1000,   pct:5.8,   tv:6700,     hi:6.81,  lo:6.64,  fb:0,      fs:0,      rm:5943605},
-      {s:'AAN',   ng:'Dược phẩm',  cl:17.15, r:16.05, fl:14.95, lp:15.95, lq:2100,   pct:-0.6,  tv:179900,   hi:16.05, lo:15.85, fb:0,      fs:0,      rm:0},
-      {s:'AAT',   ng:'Dệt may',    cl:2.97,  r:2.78,  fl:2.59,  lp:2.75,  lq:7500,   pct:-1.1,  tv:22200,    hi:2.81,  lo:2.75,  fb:0,      fs:3800,   rm:35085870},
-      {s:'ABR',   ng:'BĐS',        cl:12.80, r:12.00, fl:11.20, lp:11.60, lq:100,    pct:-3.3,  tv:4900,     hi:11.60, lo:11.20, fb:0,      fs:0,      rm:111208},
-      {s:'ABS',   ng:'Thực phẩm',  cl:3.15,  r:2.95,  fl:2.75,  lp:3.00,  lq:2000,   pct:1.7,   tv:83900,    hi:3.01,  lo:2.91,  fb:0,      fs:0,      rm:-1352},
-      {s:'ABT',   ng:'Thực phẩm',  cl:58.70, r:54.90, fl:51.10, lp:55.00, lq:1000,   pct:0.2,   tv:3100,     hi:55.00, lo:54.90, fb:0,      fs:0,      rm:6917515},
       {s:'ACB',   ng:'Ngân hàng',  cl:24.50, r:22.90, fl:21.30, lp:22.65, lq:799500, pct:-1.1,  tv:6785500,  hi:22.95, lo:22.60, fb:579100, fs:528500, rm:315438451},
-      {s:'ACC',   ng:'Vật liệu',   cl:13.10, r:12.25, fl:11.40, lp:12.00, lq:2400,   pct:-2.0,  tv:5900,     hi:12.10, lo:11.70, fb:0,      fs:0,      rm:-7846896},
-      {s:'ACG',   ng:'Gỗ',         cl:34.95, r:32.70, fl:30.45, lp:34.50, lq:15100,  pct:5.5,   tv:31300,    hi:34.60, lo:32.50, fb:10,     fs:0,      rm:17376925},
-      {s:'ADG',   ng:'Năng lượng', cl:8.82,  r:8.25,  fl:7.68,  lp:8.45,  lq:2500,   pct:2.4,   tv:8900,     hi:8.55,  lo:8.45,  fb:0,      fs:0,      rm:8334606},
-      {s:'AGG',   ng:'BĐS',        cl:12.50, r:11.70, fl:10.90, lp:11.75, lq:11200,  pct:0.4,   tv:276400,   hi:11.85, lo:11.65, fb:6200,   fs:100,    rm:79999046},
-      {s:'AGR',   ng:'Ngân hàng',  cl:15.40, r:14.40, fl:13.40, lp:14.65, lq:26100,  pct:2.1,   tv:615400,   hi:14.75, lo:14.40, fb:41500,  fs:4200,   rm:227606023},
-      {s:'ANV',   ng:'Thủy sản',   cl:23.10, r:21.60, fl:20.10, lp:21.25, lq:86000,  pct:-1.6,  tv:1005800,  hi:21.45, lo:21.15, fb:9500,   fs:177900, rm:121725896},
-      {s:'APG',   ng:'Điện tử',    cl:5.08,  r:4.75,  fl:4.42,  lp:4.73,  lq:22900,  pct:-0.2,  tv:327900,   hi:4.76,  lo:4.70,  fb:3890,   fs:15600,  rm:160273644},
-      {s:'APH',   ng:'Dược phẩm',  cl:5.89,  r:5.51,  fl:5.13,  lp:5.50,  lq:22000,  pct:-0.2,  tv:95000,    hi:5.54,  lo:5.50,  fb:0,      fs:0,      rm:175852601},
-      {s:'ASM',   ng:'BĐS',        cl:6.42,  r:6.00,  fl:5.58,  lp:6.00,  lq:16100,  pct:0,     tv:335400,   hi:6.01,  lo:5.98,  fb:9400,   fs:300,    rm:148427485},
-      {s:'ASP',   ng:'Vận tải',    cl:9.53,  r:8.91,  fl:8.29,  lp:9.03,  lq:22900,  pct:1.3,   tv:284300,   hi:9.09,  lo:8.80,  fb:4600,   fs:3600,   rm:601},
-      {s:'BAF',   ng:'Thực phẩm',  cl:31.60, r:29.55, fl:27.50, lp:29.65, lq:170900, pct:0.3,   tv:862900,   hi:29.70, lo:29.30, fb:0,      fs:74500,  rm:143405529},
-      {s:'BCG',   ng:'BĐS',        cl:7.14,  r:6.67,  fl:6.20,  lp:6.80,  lq:128000, pct:1.95,  tv:892100,   hi:6.85,  lo:6.62,  fb:15000,  fs:8500,   rm:45000000},
       {s:'BID',   ng:'Ngân hàng',  cl:48.45, r:45.28, fl:42.11, lp:45.80, lq:245000, pct:1.15,  tv:1245800,  hi:46.00, lo:45.10, fb:125000, fs:89000,  rm:1850000000},
-      {s:'BMI',   ng:'Bảo hiểm',   cl:24.70, r:23.09, fl:21.48, lp:23.20, lq:3400,   pct:0.48,  tv:16900,    hi:23.30, lo:23.00, fb:0,      fs:0,      rm:9800000},
-      {s:'BMP',   ng:'Nhựa',       cl:72.80, r:68.01, fl:63.22, lp:68.80, lq:800,    pct:1.16,  tv:4200,     hi:69.00, lo:68.00, fb:0,      fs:0,      rm:2100000},
-      {s:'BSI',   ng:'Chứng khoán',cl:25.35, r:23.69, fl:22.03, lp:23.90, lq:8900,   pct:0.89,  tv:67400,    hi:24.00, lo:23.60, fb:4500,   fs:2300,   rm:35000000},
-      {s:'BVH',   ng:'Bảo hiểm',   cl:63.70, r:59.53, fl:55.36, lp:60.20, lq:18500,  pct:1.12,  tv:185400,   hi:60.50, lo:59.20, fb:35000,  fs:18000,  rm:92000000},
       {s:'CTG',   ng:'Ngân hàng',  cl:35.80, r:33.47, fl:31.14, lp:33.90, lq:312000, pct:1.29,  tv:2156000,  hi:34.10, lo:33.40, fb:98000,  fs:45000,  rm:980000000},
-      {s:'DBC',   ng:'Thực phẩm',  cl:22.10, r:20.65, fl:19.20, lp:20.80, lq:14500,  pct:0.73,  tv:125600,   hi:21.00, lo:20.60, fb:2100,   fs:800,    rm:18400000},
-      {s:'DCM',   ng:'Hóa chất',   cl:22.95, r:21.45, fl:19.95, lp:21.60, lq:89000,  pct:0.70,  tv:756000,   hi:21.70, lo:21.40, fb:23000,  fs:11000,  rm:145000000},
-      {s:'DGW',   ng:'Điện tử',    cl:52.30, r:48.88, fl:45.46, lp:49.50, lq:7800,   pct:1.27,  tv:58400,    hi:49.80, lo:48.80, fb:4500,   fs:2100,   rm:22000000},
-      {s:'DPM',   ng:'Hóa chất',   cl:25.55, r:23.88, fl:22.21, lp:24.10, lq:45600,  pct:0.92,  tv:385000,   hi:24.20, lo:23.80, fb:9800,   fs:5400,   rm:68000000},
-      {s:'EIB',   ng:'Ngân hàng',  cl:19.50, r:18.22, fl:16.94, lp:18.50, lq:98000,  pct:1.54,  tv:745000,   hi:18.60, lo:18.20, fb:42000,  fs:28000,  rm:215000000},
       {s:'FPT',   ng:'Công nghệ',  cl:145.10,r:135.61,fl:126.12,lp:137.50,lq:45200,  pct:1.40,  tv:412000,   hi:138.00,lo:136.50,fb:85000,  fs:42000,  rm:412000000},
       {s:'GAS',   ng:'Năng lượng', cl:92.40, r:86.35, fl:80.30, lp:87.50, lq:28900,  pct:1.33,  tv:198000,   hi:88.00, lo:87.20, fb:35000,  fs:18000,  rm:185000000},
-      {s:'GVR',   ng:'Cao su',     cl:16.25, r:15.19, fl:14.13, lp:15.40, lq:56000,  pct:1.38,  tv:465000,   hi:15.50, lo:15.20, fb:28000,  fs:14000,  rm:320000000},
-      {s:'HDB',   ng:'Ngân hàng',  cl:29.10, r:27.20, fl:25.30, lp:27.60, lq:187000, pct:1.47,  tv:1254000,  hi:27.80, lo:27.40, fb:98000,  fs:54000,  rm:425000000},
       {s:'HPG',   ng:'Thép',       cl:25.45, r:23.78, fl:22.11, lp:24.10, lq:654000, pct:1.35,  tv:4562000,  hi:24.20, lo:23.90, fb:245000, fs:128000, rm:1250000000},
-      {s:'HVN',   ng:'Vận tải',    cl:16.45, r:15.37, fl:14.29, lp:15.60, lq:42000,  pct:1.49,  tv:312000,   hi:15.70, lo:15.30, fb:18000,  fs:9000,   rm:142000000},
+      {s:'HDB',   ng:'Ngân hàng',  cl:29.10, r:27.20, fl:25.30, lp:27.60, lq:187000, pct:1.47,  tv:1254000,  hi:27.80, lo:27.40, fb:98000,  fs:54000,  rm:425000000},
       {s:'MBB',   ng:'Ngân hàng',  cl:24.55, r:22.94, fl:21.33, lp:23.20, lq:425000, pct:1.14,  tv:2985000,  hi:23.30, lo:23.10, fb:185000, fs:98000,  rm:854000000},
-      {s:'MWG',   ng:'Bán lẻ',     cl:58.30, r:54.48, fl:50.66, lp:55.20, lq:38500,  pct:1.32,  tv:287000,   hi:55.50, lo:54.80, fb:65000,  fs:32000,  rm:185000000},
-      {s:'NLG',   ng:'BĐS',        cl:38.90, r:36.35, fl:33.80, lp:36.80, lq:24500,  pct:1.24,  tv:189000,   hi:37.00, lo:36.50, fb:28000,  fs:14000,  rm:95000000},
-      {s:'PDR',   ng:'BĐS',        cl:26.65, r:24.91, fl:23.17, lp:25.20, lq:89000,  pct:1.16,  tv:654000,   hi:25.40, lo:24.90, fb:45000,  fs:22000,  rm:265000000},
-      {s:'PNJ',   ng:'Bán lẻ',     cl:85.60, r:79.98, fl:74.36, lp:81.00, lq:14500,  pct:1.28,  tv:98000,    hi:81.50, lo:80.50, fb:32000,  fs:15000,  rm:68000000},
-      {s:'POW',   ng:'Năng lượng', cl:12.80, r:11.96, fl:11.12, lp:12.10, lq:125000, pct:1.17,  tv:895000,   hi:12.20, lo:12.00, fb:58000,  fs:28000,  rm:385000000},
-      {s:'SAB',   ng:'Thực phẩm',  cl:73.50, r:68.69, fl:63.88, lp:69.50, lq:8500,   pct:1.18,  tv:52000,    hi:70.00, lo:69.30, fb:18000,  fs:8500,   rm:42000000},
-      {s:'SSI',   ng:'Chứng khoán',cl:32.40, r:30.28, fl:28.16, lp:30.60, lq:156000, pct:1.06,  tv:1125000,  hi:30.80, lo:30.40, fb:85000,  fs:42000,  rm:425000000},
-      {s:'STB',   ng:'Ngân hàng',  cl:32.45, r:30.33, fl:28.21, lp:30.60, lq:285000, pct:0.89,  tv:1985000,  hi:30.80, lo:30.40, fb:125000, fs:68000,  rm:685000000},
       {s:'TCB',   ng:'Ngân hàng',  cl:38.70, r:36.17, fl:33.64, lp:36.60, lq:312000, pct:1.19,  tv:2145000,  hi:36.80, lo:36.40, fb:185000, fs:98000,  rm:895000000},
       {s:'VCB',   ng:'Ngân hàng',  cl:86.00, r:80.37, fl:74.74, lp:81.50, lq:189000, pct:1.41,  tv:1245000,  hi:82.00, lo:81.20, fb:245000, fs:125000, rm:1250000000},
-      {s:'VCI',   ng:'Chứng khoán',cl:41.65, r:38.93, fl:36.21, lp:39.40, lq:45000,  pct:1.21,  tv:325000,   hi:39.60, lo:39.20, fb:28000,  fs:14000,  rm:145000000},
-      {s:'VHM',   ng:'BĐS',        cl:46.75, r:43.69, fl:40.63, lp:44.20, lq:125000, pct:1.17,  tv:895000,   hi:44.50, lo:44.00, fb:185000, fs:95000,  rm:625000000},
-      {s:'VIC',   ng:'BĐS',        cl:41.60, r:38.88, fl:36.16, lp:39.30, lq:98000,  pct:1.08,  tv:685000,   hi:39.50, lo:39.10, fb:145000, fs:75000,  rm:485000000},
-      {s:'VJC',   ng:'Vận tải',    cl:113.30,r:105.88,fl:98.46, lp:107.00,lq:18500,  pct:1.06,  tv:128000,   hi:107.50,lo:106.50,fb:65000,  fs:32000,  rm:95000000},
       {s:'VNM',   ng:'Thực phẩm',  cl:72.60, r:67.85, fl:63.10, lp:68.60, lq:38500,  pct:1.10,  tv:265000,   hi:69.00, lo:68.40, fb:125000, fs:62000,  rm:285000000},
-      {s:'VPB',   ng:'Ngân hàng',  cl:22.90, r:21.40, fl:19.90, lp:21.60, lq:485000, pct:0.93,  tv:3254000,  hi:21.70, lo:21.40, fb:225000, fs:118000, rm:985000000},
-      {s:'VRE',   ng:'BĐS',        cl:29.10, r:27.19, fl:25.28, lp:27.50, lq:145000, pct:1.14,  tv:985000,   hi:27.60, lo:27.30, fb:125000, fs:64000,  rm:485000000},
+      {s:'VHM',   ng:'BĐS',        cl:46.75, r:43.69, fl:40.63, lp:44.20, lq:125000, pct:1.17,  tv:895000,   hi:44.50, lo:44.00, fb:185000, fs:95000,  rm:625000000},
     ];
   }
 
@@ -659,7 +775,7 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const { time, stocks, indices, darkMode, activeTab, activeSector, showSector, chart } = this.state;
+    const { time, stocks, indices, darkMode, activeTab, activeSector, showSector, showMoreTools, chart, searchText, watchlist, showAdvFilter, filterPctFrom, filterPctTo, filterVolMin, filterPriceMin, filterPriceMax, showTradeHist } = this.state;
     const dark = darkMode;
 
     const th = {
@@ -753,7 +869,6 @@ class Component extends DCLogic {
       const color = up ? '#22c55e' : '#f43f5e';
       const tvSym = tvSymMap[idx.n] || 'HOSE:VNINDEX';
       const tvOpenUrl = `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(tvSym)}&theme=dark`;
-      // build intraday chart from sparkline history
       const h = idx.h || [];
       const W=640,H=160,pad=4;
       const mn=Math.min(...h), mx=Math.max(...h), rng=mx-mn||0.01;
@@ -871,6 +986,28 @@ class Component extends DCLogic {
       };
     });
 
+    // 🔴 Search filter
+    allStocks = allStocks.filter(s => {
+      if (!searchText.trim()) return true;
+      const q = searchText.toLowerCase();
+      return s.sym.toLowerCase().includes(q) || s.ng.toLowerCase().includes(q);
+    });
+
+    // 🟡 Advanced filters
+    allStocks = allStocks.filter(s => {
+      const pct = parseFloat(s.pct);
+      if (filterPctFrom && pct < parseFloat(filterPctFrom)) return false;
+      if (filterPctTo && pct > parseFloat(filterPctTo)) return false;
+      if (filterVolMin) {
+        const vol = parseInt(s.tvol.replace(/,/g,''));
+        if (vol < parseFloat(filterVolMin) * 1000000) return false;
+      }
+      const price = parseFloat(s.lp);
+      if (filterPriceMin && price < parseFloat(filterPriceMin)) return false;
+      if (filterPriceMax && price > parseFloat(filterPriceMax)) return false;
+      return true;
+    });
+
     if (activeSector==='VN30') {
       allStocks = allStocks.filter(s => VN30.includes(s.sym));
     } else if (activeSector!=='Tất cả') {
@@ -880,6 +1017,47 @@ class Component extends DCLogic {
     const closeIdxChart = () => this.setState({ idxChart:{ open:false, sym:'', iframeUrl:'' } });
     const closeChart = () => this.setState({ chart:{...this.state.chart, open:false} });
     const stopProp   = e  => { if(e&&e.stopPropagation) e.stopPropagation(); };
+    const toggleMoreTools = () => this.setState(p => ({ showMoreTools: !p.showMoreTools }));
+
+    const menuGroups = [
+      {
+        title: 'Phân tích',
+        color: '#60a5fa',
+        items: [
+          { href:'Advanced Chart.dc.html', icon:'📈', iconBg:'rgba(96,165,250,.15)', label:'Chart nâng cao', desc:'Nến, MA, RSI, MACD, Bollinger' },
+          { href:'Market Heatmap.dc.html', icon:'🗺️', iconBg:'rgba(192,38,211,.15)', label:'Bản đồ nhiệt', desc:'Treemap toàn thị trường' },
+          { href:'Stock Comparison.dc.html', icon:'📊', iconBg:'rgba(96,165,250,.15)', label:'So sánh mã', desc:'So sánh hiệu suất 2-5 mã' },
+          { href:'Stock Screener.dc.html', icon:'🔍', iconBg:'rgba(96,165,250,.15)', label:'Screener', desc:'Lọc theo P/E, P/B, ROE...' },
+          { href:'Money Flow.dc.html', icon:'💵', iconBg:'rgba(34,197,94,.15)', label:'Dòng tiền', desc:'NN mua/bán theo ngành' },
+          { href:'Company Research.dc.html', icon:'🏢', iconBg:'rgba(168,85,247,.15)', label:'Nghiên cứu DN', desc:'BCTC & khuyến nghị CTCK' },
+          { href:'Portfolio Analytics.dc.html', icon:'📐', iconBg:'rgba(168,85,247,.15)', label:'Phân tích DM', desc:'Beta, Sharpe, Backtest' },
+        ],
+      },
+      {
+        title: 'Giao dịch',
+        color: '#22c55e',
+        items: [
+          { href:'Trading Panel.dc.html', icon:'💰', iconBg:'rgba(34,197,94,.15)', label:'Đặt lệnh', desc:'Bảng giá & khớp lệnh' },
+          { href:'Derivatives Trading.dc.html', icon:'📉', iconBg:'rgba(249,115,22,.15)', label:'Phái sinh', desc:'VN30F, margin, T+0' },
+          { href:'Order Book.dc.html', icon:'📖', iconBg:'rgba(34,197,94,.15)', label:'Sổ lệnh', desc:'Độ sâu thị trường' },
+          { href:'Order History.dc.html', icon:'📋', iconBg:'rgba(34,197,94,.15)', label:'Lịch sử lệnh', desc:'Đã khớp, chờ khớp, đã hủy' },
+          { href:'Account Statement.dc.html', icon:'🧾', iconBg:'rgba(245,158,11,.15)', label:'Sao kê TK', desc:'Nạp/rút, giao dịch tiền' },
+          { href:'Watchlists.dc.html', icon:'⭐', iconBg:'rgba(245,158,11,.15)', label:'Watchlists', desc:'Danh mục theo dõi' },
+          { href:'Alerts Management.dc.html', icon:'🔔', iconBg:'rgba(245,158,11,.15)', label:'Cảnh báo giá', desc:'Quản lý các alert đã đặt' },
+        ],
+      },
+      {
+        title: 'Thông tin & Tài khoản',
+        color:'#f59e0b',
+        items: [
+          { href:'Portfolio.dc.html', icon:'💼', iconBg:'rgba(34,197,94,.15)', label:'Danh mục đầu tư', desc:'NAV, phân bổ, lãi/lỗ' },
+          { href:'Market News.dc.html', icon:'📰', iconBg:'rgba(168,85,247,.15)', label:'Tin tức', desc:'Vĩ mô, doanh nghiệp, ngành' },
+          { href:'Event Calendar.dc.html', icon:'📅', iconBg:'rgba(168,85,247,.15)', label:'Lịch sự kiện', desc:'ĐHCĐ, cổ tức, chốt quyền' },
+          { href:'Account Settings.dc.html', icon:'⚙️', iconBg:'rgba(148,163,184,.15)', label:'Cài đặt TK', desc:'Hồ sơ, bảo mật, thông báo' },
+          { href:'Auth Flow.dc.html', icon:'🔑', iconBg:'rgba(148,163,184,.15)', label:'Đăng nhập/KYC', desc:'Đăng ký & xác thực' },
+        ],
+      },
+    ];
 
     let chartOut = { open:false };
     if (chart.open && chart.sym) {
@@ -890,9 +1068,13 @@ class Component extends DCLogic {
           bg:     r===chart.range ? '#2563eb' : '#0f1e36',
           fg:     r===chart.range ? '#fff'    : '#4a7090',
           border: r===chart.range ? '#2563eb' : '#1a3050',
-          onClick: () => this.setState(p => ({ chart:{...p.chart, range:r} })),
+          onClick: ((rng) => () => this.setState(p => ({ chart:{...p.chart, range:rng} })))(r),
         }));
-        chartOut = { open:true, ...cd, ranges };
+        chartOut = { open:true, ...cd, ranges,
+          infoLink: `Stock Info.dc.html?symbol=${encodeURIComponent(chart.sym)}`,
+          orderBookLink: `Order Book.dc.html?symbol=${encodeURIComponent(chart.sym)}`,
+          tradeLink: `Trading Panel.dc.html?symbol=${encodeURIComponent(chart.sym)}`,
+        };
       }
     }
 
@@ -900,15 +1082,46 @@ class Component extends DCLogic {
     const isGrid  = viewMode === 'grid';
     const isTable = viewMode === 'table';
     const isHeat  = viewMode === 'heat';
+    const isMovers = viewMode === 'movers';
     const setTableView = () => this.setState({ viewMode:'table' });
     const setGridView  = () => this.setState({ viewMode:'grid' });
     const setHeatView  = () => this.setState({ viewMode:'heat' });
+    const setMoversView = () => this.setState({ viewMode:'movers' });
     const viewBtnTable = isTable ? '#2563eb' : th.iconBg;
     const viewIconTable= isTable ? '#fff'    : th.textMuted;
     const viewBtnGrid  = isGrid  ? '#2563eb' : th.iconBg;
     const viewIconGrid = isGrid  ? '#fff'    : th.textMuted;
     const viewBtnHeat  = isHeat  ? '#2563eb' : th.iconBg;
     const viewIconHeat = isHeat  ? '#fff'    : th.textMuted;
+    const viewBtnMovers = isMovers ? '#2563eb' : th.iconBg;
+    const viewIconMovers = isMovers ? '#fff' : th.textMuted;
+
+    // 🟡 Top movers
+    const topGainers = [...allStocks].sort((a,b)=>parseFloat(b.pct)-parseFloat(a.pct)).slice(0,5).map(s => ({
+      sym:s.sym, pct:s.pct.replace('+','').replace('%',''), lp:s.lp, vol:s.tvol,
+      onClick: () => this.setState({ chart:{open:true, sym:s.sym, range:'1D'} })
+    }));
+    const topLosers = [...allStocks].sort((a,b)=>parseFloat(a.pct)-parseFloat(b.pct)).slice(0,5).map(s => ({
+      sym:s.sym, pct:s.pct.replace('%',''), lp:s.lp, vol:s.tvol,
+      onClick: () => this.setState({ chart:{open:true, sym:s.sym, range:'1D'} })
+    }));
+    const topVolume = [...allStocks].sort((a,b)=>{
+      const av=parseInt(a.tvol.replace(/,/g,'')), bv=parseInt(b.tvol.replace(/,/g,''));
+      return bv-av;
+    }).slice(0,5).map(s => ({
+      sym:s.sym, vol:s.tvol, lp:s.lp, pct:s.pct, pc:s.pc,
+      onClick: () => this.setState({ chart:{open:true, sym:s.sym, range:'1D'} })
+    }));
+
+    // 🟡 Breadth indicators
+    const upCount = allStocks.filter(s=>parseFloat(s.pct)>0).length;
+    const dnCount = allStocks.filter(s=>parseFloat(s.pct)<0).length;
+    const ncCount = allStocks.length - upCount - dnCount;
+    const breadthData = [
+      {label:'Tăng', upCount, upCnt:upCount, total:allStocks.length, upPct:(upCount/allStocks.length*100), upColor:'#22c55e'},
+      {label:'Giảm', upCount:dnCount, upCnt:dnCount, total:allStocks.length, upPct:(dnCount/allStocks.length*100), upColor:'#f43f5e'},
+      {label:'Đứng', upCount:ncCount, upCnt:ncCount, total:allStocks.length, upPct:(ncCount/allStocks.length*100), upColor:'#fbbf24'},
+    ];
 
     // build heatmap sectors
     const sectorOrder = ['Ngân hàng','BĐS','Thực phẩm','Chứng khoán','Thép','Năng lượng','Công nghệ','Dược phẩm','Bảo hiểm','Bán lẻ','Vận tải','Hóa chất','Cao su','Thủy sản','Nhựa','Dệt may','Điện tử','Gỗ','Vật liệu'];
@@ -941,20 +1154,60 @@ class Component extends DCLogic {
     const gridStocks = allStocks.map(s => {
       const raw = (stocks||[]).find(r=>r.s===s.sym);
       const ipts = raw ? (raw.ipts||[]) : [];
+      const pct = parseFloat(s.pct);
+      let priceBg, pctBg;
+      if (pct > 3) {
+        priceBg = 'rgba(34,197,94,.3)';
+        pctBg = 'rgba(34,197,94,.25)';
+      } else if (pct > 0) {
+        priceBg = 'rgba(34,197,94,.15)';
+        pctBg = 'rgba(34,197,94,.12)';
+      } else if (pct > -3) {
+        priceBg = 'rgba(244,63,94,.15)';
+        pctBg = 'rgba(244,63,94,.12)';
+      } else {
+        priceBg = 'rgba(244,63,94,.3)';
+        pctBg = 'rgba(244,63,94,.25)';
+      }
       return { ...s,
         sparkPts: this._pts(ipts,100,24),
         sparkFill: this._fill(ipts,100,24),
-        pcBg: s.pct.startsWith('+') ? 'rgba(34,197,94,.15)' : s.pct.startsWith('-') ? 'rgba(244,63,94,.15)' : 'rgba(251,191,36,.15)',
+        priceBg,
+        pctBg,
       };
     });
+
+    // 🟢 Trade history (mocked realtime)
+    const tradeHistory = [
+      {sym:'ACB', time:'15:29', price:'22.65', qty:'5,200', side:'SELL', sideColor:'#f43f5e', priceColor:'#f43f5e', timeColor:'#94a3b8', volColor:'#3a5570'},
+      {sym:'VCB', time:'15:28', price:'81.50', qty:'1,800', side:'BUY', sideColor:'#22c55e', priceColor:'#22c55e', timeColor:'#94a3b8', volColor:'#3a5570'},
+      {sym:'FPT', time:'15:27', price:'137.50', qty:'3,400', side:'BUY', sideColor:'#22c55e', priceColor:'#22c55e', timeColor:'#94a3b8', volColor:'#3a5570'},
+      {sym:'HPG', time:'15:26', price:'24.10', qty:'8,900', side:'SELL', sideColor:'#f43f5e', priceColor:'#f43f5e', timeColor:'#94a3b8', volColor:'#3a5570'},
+      {sym:'BID', time:'15:25', price:'45.80', qty:'2,100', side:'BUY', sideColor:'#22c55e', priceColor:'#22c55e', timeColor:'#94a3b8', volColor:'#3a5570'},
+    ];
 
     const idxChart = this.state.idxChart || { open:false };
     return { th, toggleDark, timeStr, navItems, tabs, indices:idxOut, globals, globalTabs,
       stocks: isGrid ? gridStocks : allStocks,
       showSector, sectorBtns, chart:chartOut, closeChart, stopProp,
+      showMoreTools, toggleMoreTools,
+      moreToolsBg: showMoreTools ? '#16457a' : '#0f1e36',
+      moreToolsBorder: showMoreTools ? '#2563eb' : '#1a3050',
+      moreToolsFg: showMoreTools ? '#dbeafe' : '#94a3b8',
+      arrowRotate: showMoreTools ? 'rotate(180deg)' : 'rotate(0deg)',
+      toolCount: menuGroups.reduce((s,g)=>s+g.items.length,0),
+      menuGroups,
       idxChart, closeIdxChart, heatSectors,
-      isGrid, isTable, isHeat, setTableView, setGridView, setHeatView,
-      viewBtnTable, viewIconTable, viewBtnGrid, viewIconGrid, viewBtnHeat, viewIconHeat };
+      isGrid, isTable, isHeat, isMovers, setTableView, setGridView, setHeatView, setMoversView,
+      viewBtnTable, viewIconTable, viewBtnGrid, viewIconGrid, viewBtnHeat, viewIconHeat, viewBtnMovers, viewIconMovers,
+      searchText, searchInput: this.searchInput, watchlist,
+      topGainers, topLosers, topVolume, breadthData,
+      showAdvFilter, toggleFilter: this.toggleFilter,
+      filterPctFrom, filterPctTo, filterVolMin, filterPriceMin, filterPriceMax,
+      setPctFrom: this.setPctFrom, setPctTo: this.setPctTo, setVolMin: this.setVolMin,
+      setPriceMin: this.setPriceMin, setPriceMax: this.setPriceMax, resetFilters: this.resetFilters,
+      showTradeHist, toggleTradeHist: this.toggleTradeHist, tradeHistory,
+      exportCSV: this.exportCSV };
   }
 }
 </script>

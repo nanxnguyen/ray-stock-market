@@ -6,7 +6,7 @@ type Props = { indices: MarketIndexView[]; th: ThemeTokens }
 
 function IndexStripInner({ indices, th }: Props) {
   return (
-    <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', flexShrink: 0, height: 152, overflow: 'hidden' }}>
+    <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', flexShrink: 0, height: 158, overflow: 'hidden' }}>
       <div style={{ display: 'flex', flex: 1, minWidth: 0, overflow: 'hidden' }}>
         {indices.map((idx) => (
           <div

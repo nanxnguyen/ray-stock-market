@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+    <h1 style="margin:0;font-size:18px;font-weight:800;color:{{ th.text }};">NGHIÊN CỨU DOANH NGHIỆP — {{ symbol }}</h1>
+    <div style="display:flex;gap:4px;">
+      <sc-for list="{{ quickSyms }}" as="qs" hint-placeholder-count="4">
+        <button onClick="{{ qs.onClick }}" style="background:{{ qs.bg }};border:1px solid {{ qs.border }};color:{{ qs.fg }};border-radius:6px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;">{{ qs.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ══ REVENUE / PROFIT CHART ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="margin:0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Doanh thu & Lợi nhuận theo quý</h3>
+      <div style="display:flex;gap:12px;">
+        <div style="display:flex;gap:5px;align-items:center;"><span style="width:9px;height:9px;border-radius:2px;background:#3b82f6;"></span><span style="font-size:10px;color:{{ th.textMuted }};">Doanh thu</span></div>
+        <div style="display:flex;gap:5px;align-items:center;"><span style="width:9px;height:9px;border-radius:2px;background:#22c55e;"></span><span style="font-size:10px;color:{{ th.textMuted }};">LNST</span></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:flex-end;justify-content:space-around;gap:16px;height:180px;">
+      <sc-for list="{{ quarters }}" as="q" hint-placeholder-count="8">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;">
+          <div style="display:flex;align-items:flex-end;gap:3px;height:150px;">
+            <div style="width:16px;height:{{ q.revH }};background:#3b82f6;border-radius:3px 3px 0 0;"></div>
+            <div style="width:16px;height:{{ q.profitH }};background:#22c55e;border-radius:3px 3px 0 0;"></div>
+          </div>
+          <span style="font-size:9px;color:{{ th.textMuted }};font-weight:700;">{{ q.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+    <!-- ══ KEY RATIOS ══ -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+      <h3 style="margin:0 0 12px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Chỉ số tài chính</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <sc-for list="{{ ratios }}" as="r" hint-placeholder-count="6">
+          <div style="display:flex;justify-content:space-between;padding:8px 10px;background:{{ th.rowBg }};border-radius:7px;">
+            <span style="font-size:10.5px;color:{{ th.textMuted }};font-weight:600;">{{ r.label }}</span>
+            <span style="font-size:11px;color:{{ th.text }};font-weight:700;font-family:'JetBrains Mono',monospace;">{{ r.value }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- ══ YOY GROWTH ══ -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+      <h3 style="margin:0 0 12px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Tăng trưởng so với cùng kỳ (YoY)</h3>
+      <div style="display:flex;flex-direction:column;gap:10px;">
+        <sc-for list="{{ growth }}" as="g" hint-placeholder-count="4">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <span style="font-size:10.5px;color:{{ th.textMuted }};font-weight:600;">{{ g.label }}</span>
+              <span style="font-size:11px;font-weight:700;color:{{ g.color }};font-family:'JetBrains Mono',monospace;">{{ g.value }}</span>
+            </div>
+            <div style="height:5px;background:{{ th.rowBg }};border-radius:3px;overflow:hidden;">
+              <div style="height:100%;width:{{ g.barPct }}%;background:{{ g.color }};"></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ANALYST RECOMMENDATIONS ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+    <h3 style="margin:0 0 12px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Khuyến nghị từ công ty chứng khoán</h3>
+    <table style="width:100%;border-collapse:collapse;font-size:11px;">
+      <thead>
+        <tr style="border-bottom:1px solid {{ th.cardBorder }};height:28px;">
+          <th style="text-align:left;color:{{ th.textMuted }};font-weight:700;">CTCK</th>
+          <th style="text-align:center;color:{{ th.textMuted }};font-weight:700;">Khuyến nghị</th>
+          <th style="text-align:right;color:{{ th.textMuted }};font-weight:700;">Giá mục tiêu</th>
+          <th style="text-align:right;color:{{ th.textMuted }};font-weight:700;">Upside</th>
+          <th style="text-align:right;color:{{ th.textMuted }};font-weight:700;">Ngày</th>
+        </tr>
+      </thead>
+      <tbody>
+        <sc-for list="{{ recommendations }}" as="rec" hint-placeholder-count="5">
+          <tr style="border-bottom:1px solid {{ th.cardBorder }};height:36px;">
+            <td style="color:{{ th.text }};font-weight:600;">{{ rec.firm }}</td>
+            <td style="text-align:center;"><span style="background:{{ rec.ratingBg }};color:{{ rec.ratingColor }};padding:2px 10px;border-radius:5px;font-weight:700;font-size:10px;">{{ rec.rating }}</span></td>
+            <td style="text-align:right;color:{{ th.text }};font-weight:700;font-family:'JetBrains Mono',monospace;">{{ rec.target }}</td>
+            <td style="text-align:right;color:{{ rec.upsideColor }};font-weight:700;font-family:'JetBrains Mono',monospace;">{{ rec.upside }}</td>
+            <td style="text-align:right;color:{{ th.textMuted }};font-family:'JetBrains Mono',monospace;">{{ rec.date }}</td>
+          </tr>
+        </sc-for>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { symbol: new URLSearchParams(location.search).get('symbol') || 'VCB' };
+
+  renderVals() {
+    const { symbol } = this.state;
+    const th = {
+      pageBg: '#0a0e14',
+      cardBg: '#131a24',
+      cardBorder: '#232b38',
+      rowBg: '#1a212c',
+      text: '#eef1f6',
+      textMuted: '#8a94a6',
+      iconBg: '#1a212c',
+    };
+
+    const quarters = [
+      { label:'Q3/24', rev:8200, profit:2800 },
+      { label:'Q4/24', rev:9100, profit:3200 },
+      { label:'Q1/25', rev:8700, profit:2950 },
+      { label:'Q2/25', rev:9800, profit:3600 },
+      { label:'Q3/25', rev:10200, profit:3800 },
+      { label:'Q4/25', rev:11500, profit:4200 },
+      { label:'Q1/26', rev:11000, profit:4050 },
+      { label:'Q2/26', rev:12500, profit:4700 },
+    ];
+    const maxRev = Math.max(...quarters.map(q=>q.rev));
+    const quartersOut = quarters.map(q => ({
+      label: q.label,
+      revH: `${(q.rev/maxRev)*150}px`,
+      profitH: `${(q.profit/maxRev)*150}px`,
+    }));
+
+    const ratios = [
+      { label:'P/E', value:'11.2x' },
+      { label:'P/B', value:'1.45x' },
+      { label:'ROE', value:'23.5%' },
+      { label:'ROA', value:'2.1%' },
+      { label:'Biên LN gộp', value:'42.3%' },
+      { label:'Nợ/Vốn CSH', value:'8.2%' },
+    ];
+
+    const growth = [
+      { label:'Doanh thu', value:'+13.6%', color:'#22c55e', barPct:68 },
+      { label:'Lợi nhuận sau thuế', value:'+19.4%', color:'#22c55e', barPct:78 },
+      { label:'Tổng tài sản', value:'+8.2%', color:'#60a5fa', barPct:41 },
+      { label:'Chi phí hoạt động', value:'+4.5%', color:'#f59e0b', barPct:22 },
+    ];
+
+    const recommendations = [
+      { firm:'SSI Research', rating:'MUA', target:'95,000đ', upside:'+16.6%', date:'28/06/2026' },
+      { firm:'VNDirect', rating:'MUA', target:'92,500đ', upside:'+13.5%', date:'25/06/2026' },
+      { firm:'HSC', rating:'GIỮ', target:'85,000đ', upside:'+4.3%', date:'20/06/2026' },
+      { firm:'VCSC', rating:'MUA', target:'98,000đ', upside:'+20.2%', date:'15/06/2026' },
+      { firm:'MBS', rating:'GIỮ', target:'83,000đ', upside:'+1.8%', date:'10/06/2026' },
+    ].map(r => ({
+      ...r,
+      ratingBg: r.rating==='MUA' ? 'rgba(34,197,94,.15)' : r.rating==='BÁN' ? 'rgba(244,63,94,.15)' : 'rgba(245,158,11,.15)',
+      ratingColor: r.rating==='MUA' ? '#22c55e' : r.rating==='BÁN' ? '#f43f5e' : '#f59e0b',
+      upsideColor: r.upside.startsWith('+') ? '#22c55e' : '#f43f5e',
+    }));
+
+    const quickSyms = ['VCB','ACB','FPT','HPG'].map(s => ({
+      label: s,
+      onClick: () => this.setState({ symbol: s }),
+      bg: s===symbol ? '#2563eb' : th.iconBg,
+      border: s===symbol ? '#2563eb' : th.cardBorder,
+      fg: s===symbol ? '#fff' : th.textMuted,
+    }));
+
+    return { th, symbol, quickSyms, quarters: quartersOut, ratios, growth, recommendations };
+  }
+}
+
+</script>
+</body>
+</html>

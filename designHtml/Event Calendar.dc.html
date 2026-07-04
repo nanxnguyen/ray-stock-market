@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+  <h1 style="margin:0;font-size:18px;font-weight:800;color:{{ th.text }};">LỊCH SỰ KIỆN DOANH NGHIỆP</h1>
+
+  <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start;">
+
+    <!-- ══ CALENDAR GRID ══ -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+        <span style="font-size:14px;font-weight:800;color:{{ th.text }};">Tháng 7, 2026</span>
+        <div style="display:flex;gap:4px;">
+          <button style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;">‹</button>
+          <button style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:5px;width:26px;height:26px;cursor:pointer;">›</button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px;">
+        <sc-for list="{{ weekdays }}" as="wd" hint-placeholder-count="7">
+          <span style="font-size:9.5px;font-weight:700;color:{{ th.textMuted }};text-align:center;text-transform:uppercase;">{{ wd }}</span>
+        </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:4px;">
+        <sc-for list="{{ calDays }}" as="d" hint-placeholder-count="35">
+          <div onClick="{{ d.onClick }}" style="aspect-ratio:1;border-radius:7px;background:{{ d.bg }};border:1px solid {{ d.border }};display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;opacity:{{ d.opacity }};">
+            <span style="font-size:11px;font-weight:{{ d.fw }};color:{{ d.fg }};">{{ d.num }}</span>
+            <sc-if value="{{ d.hasEvent }}" hint-placeholder-val="{{ false }}">
+              <span style="width:5px;height:5px;border-radius:50%;background:{{ d.dotColor }};"></span>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:12px;margin-top:14px;padding-top:12px;border-top:1px solid {{ th.cardBorder }};">
+        <div style="display:flex;gap:5px;align-items:center;"><span style="width:8px;height:8px;border-radius:50%;background:#a78bfa;"></span><span style="font-size:9.5px;color:{{ th.textMuted }};">ĐHCĐ</span></div>
+        <div style="display:flex;gap:5px;align-items:center;"><span style="width:8px;height:8px;border-radius:50%;background:#22c55e;"></span><span style="font-size:9.5px;color:{{ th.textMuted }};">Cổ tức</span></div>
+        <div style="display:flex;gap:5px;align-items:center;"><span style="width:8px;height:8px;border-radius:50%;background:#f59e0b;"></span><span style="font-size:9.5px;color:{{ th.textMuted }};">Chốt quyền</span></div>
+      </div>
+    </div>
+
+    <!-- ══ UPCOMING EVENTS LIST ══ -->
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <h3 style="margin:0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Sự kiện sắp tới</h3>
+      <sc-for list="{{ events }}" as="ev" hint-placeholder-count="6">
+        <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-left:3px solid {{ ev.color }};border-radius:8px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
+          <div style="display:flex;flex-direction:column;gap:3px;">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="font-size:11px;font-weight:700;color:#60a5fa;font-family:'JetBrains Mono',monospace;">{{ ev.symbol }}</span>
+              <span style="font-size:8.5px;font-weight:700;color:{{ ev.color }};background:{{ ev.bg }};padding:2px 6px;border-radius:4px;text-transform:uppercase;">{{ ev.type }}</span>
+            </div>
+            <span style="font-size:11px;color:{{ th.text }};font-weight:600;">{{ ev.desc }}</span>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-size:11px;font-weight:700;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ ev.date }}</div>
+            <div style="font-size:9px;color:{{ th.textMuted }};">Còn {{ ev.daysLeft }} ngày</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {};
+
+  eventDays = { 8: 'divs', 12: 'agm', 15: 'divs', 18: 'rights', 22: 'agm', 25: 'rights', 29: 'divs' };
+  colorMap = { agm: '#a78bfa', divs: '#22c55e', rights: '#f59e0b' };
+
+  renderVals() {
+    const th = {
+      pageBg: '#0a0e14',
+      cardBg: '#131a24',
+      cardBorder: '#232b38',
+      text: '#eef1f6',
+      textMuted: '#8a94a6',
+      iconBg: '#1a212c',
+    };
+
+    const weekdays = ['T2','T3','T4','T5','T6','T7','CN'];
+    const today = 3;
+    // July 2026 starts on Wednesday
+    const startOffset = 2; // Mon=0..Sun=6, July 1 2026 is Wednesday -> offset 2
+    const daysInMonth = 31;
+    const calDays = [];
+    for (let i = 0; i < startOffset; i++) calDays.push({ num:'', bg:'transparent', border:'transparent', fg:'transparent', opacity:0, hasEvent:false, fw:'400', onClick:()=>{} });
+    for (let d = 1; d <= daysInMonth; d++) {
+      const isToday = d === today;
+      const evType = this.eventDays[d];
+      calDays.push({
+        num: d,
+        bg: isToday ? '#2563eb' : th.iconBg,
+        border: isToday ? '#2563eb' : th.cardBorder,
+        fg: isToday ? '#fff' : th.text,
+        fw: isToday ? '800' : '500',
+        opacity: 1,
+        hasEvent: !!evType,
+        dotColor: evType ? this.colorMap[evType] : 'transparent',
+        onClick: () => {},
+      });
+    }
+
+    const eventsRaw = [
+      { symbol:'VCB', type:'Cổ tức', typeKey:'divs', desc:'Chi trả cổ tức tiền mặt 12%/năm', date:'08/07/2026', days:5 },
+      { symbol:'FPT', type:'ĐHCĐ', typeKey:'agm', desc:'Đại hội cổ đông thường niên 2026', date:'12/07/2026', days:9 },
+      { symbol:'HPG', type:'Chốt quyền', typeKey:'rights', desc:'Chốt DS cổ đông phát hành thêm CP', date:'18/07/2026', days:15 },
+      { symbol:'ACB', type:'ĐHCĐ', typeKey:'agm', desc:'Đại hội cổ đông thường niên 2026', date:'22/07/2026', days:19 },
+      { symbol:'MWG', type:'Chốt quyền', typeKey:'rights', desc:'Chốt quyền nhận cổ phiếu thưởng', date:'25/07/2026', days:22 },
+      { symbol:'VNM', type:'Cổ tức', typeKey:'divs', desc:'Tạm ứng cổ tức đợt 2/2026', date:'29/07/2026', days:26 },
+    ];
+
+    const events = eventsRaw.map(e => ({
+      ...e,
+      color: this.colorMap[e.typeKey],
+      bg: this.colorMap[e.typeKey] + '26',
+      daysLeft: e.days,
+    }));
+
+    return { th, weekdays, calDays, events };
+  }
+}
+
+</script>
+</body>
+</html>

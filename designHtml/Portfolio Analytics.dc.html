@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+  <h1 style="margin:0;font-size:18px;font-weight:800;color:{{ th.text }};">PHÂN TÍCH DANH MỤC</h1>
+
+  <!-- ══ PERFORMANCE VS VN-INDEX ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="margin:0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Hiệu suất danh mục so với VN-Index (YTD)</h3>
+      <div style="display:flex;gap:14px;">
+        <div style="display:flex;gap:5px;align-items:center;"><span style="width:9px;height:9px;border-radius:2px;background:#22c55e;"></span><span style="font-size:10px;color:{{ th.textMuted }};">Danh mục {{ portfolioReturn }}</span></div>
+        <div style="display:flex;gap:5px;align-items:center;"><span style="width:9px;height:9px;border-radius:2px;background:#60a5fa;"></span><span style="font-size:10px;color:{{ th.textMuted }};">VN-Index {{ indexReturn }}</span></div>
+      </div>
+    </div>
+    <svg viewBox="0 0 1000 220" preserveAspectRatio="none" style="width:100%;height:220px;display:block;">
+      <line x1="0" y1="110" x2="1000" y2="110" stroke="{{ th.gridColor }}" stroke-width="1" stroke-dasharray="4,4"></line>
+      <polyline points="{{ indexLine }}" fill="none" stroke="#60a5fa" stroke-width="1.6" opacity="0.8"></polyline>
+      <polyline points="{{ portfolioLine }}" fill="none" stroke="#22c55e" stroke-width="2.2"></polyline>
+    </svg>
+  </div>
+
+  <!-- ══ RISK METRICS ══ -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+    <sc-for list="{{ riskMetrics }}" as="rm" hint-placeholder-count="4">
+      <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px;">
+        <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">{{ rm.label }}</span>
+        <div style="font-size:19px;font-weight:800;color:{{ rm.color }};font-family:'JetBrains Mono',monospace;margin-top:4px;">{{ rm.value }}</div>
+        <span style="font-size:9px;color:{{ th.textMuted }};">{{ rm.hint }}</span>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- ══ BACKTESTING ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+    <h3 style="margin:0 0 12px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Backtest chiến lược</h3>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;margin-bottom:14px;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Chiến lược</label>
+        <select value="{{ strategy }}" onChange="{{ setStrategy }}" style="padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:12px;width:220px;">
+          <option value="ma_cross">Giao cắt MA (10/50)</option>
+          <option value="rsi">RSI Oversold/Overbought</option>
+          <option value="momentum">Momentum theo quý</option>
+        </select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Từ ngày</label>
+        <input type="date" value="2025-01-01" style="padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:11px;"/>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Đến ngày</label>
+        <input type="date" value="2026-07-01" style="padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:11px;"/>
+      </div>
+      <button onClick="{{ runBacktest }}" style="background:#3b82f6;border:none;color:#fff;border-radius:7px;padding:9px 20px;font-size:12px;font-weight:700;cursor:pointer;">▶ Chạy Backtest</button>
+    </div>
+
+    <sc-if value="{{ hasResult }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid {{ th.cardBorder }};padding-top:14px;display:flex;flex-direction:column;gap:12px;">
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Tổng lợi nhuận</span><div style="font-size:16px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ backtestResult.totalReturn }}</div></div>
+          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Tỷ lệ thắng</span><div style="font-size:16px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ backtestResult.winRate }}</div></div>
+          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Số lệnh</span><div style="font-size:16px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ backtestResult.trades }}</div></div>
+          <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Max Drawdown</span><div style="font-size:16px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">{{ backtestResult.maxDD }}</div></div>
+        </div>
+        <div>
+          <span style="font-size:10px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Đường vốn (Equity Curve)</span>
+          <svg viewBox="0 0 1000 100" preserveAspectRatio="none" style="width:100%;height:100px;display:block;margin-top:6px;">
+            <polyline points="{{ equityCurve }}" fill="none" stroke="#a78bfa" stroke-width="2"></polyline>
+          </svg>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { strategy: 'ma_cross', hasResult: false };
+
+  setStrategy = (e) => this.setState({ strategy: e.target.value, hasResult: false });
+  runBacktest = () => this.setState({ hasResult: true });
+
+  _genLine(n, vol, drift, seedStart) {
+    let seed = seedStart;
+    const rand = () => { seed = (seed*16807)%2147483647; return (seed-1)/2147483646; };
+    let v = 100;
+    const pts = [];
+    for (let i=0;i<n;i++){
+      v += (rand()-0.42)*vol + drift;
+      pts.push(v);
+    }
+    return pts;
+  }
+
+  renderVals() {
+    const { strategy, hasResult } = this.state;
+    const th = {
+      pageBg: '#0a0e14',
+      cardBg: '#131a24',
+      cardBorder: '#232b38',
+      inputBg: '#0f1419',
+      text: '#eef1f6',
+      textMuted: '#8a94a6',
+      gridColor: '#1c2530',
+    };
+
+    const N = 60;
+    const portfolioVals = this._genLine(N, 3.2, 0.55, 11);
+    const indexVals = this._genLine(N, 2.4, 0.28, 77);
+    const allVals = [...portfolioVals, ...indexVals];
+    const maxV = Math.max(...allVals), minV = Math.min(...allVals);
+    const range = maxV - minV || 1;
+    const yOf = v => 220 - ((v-minV)/range)*220;
+    const portfolioLine = portfolioVals.map((v,i)=>`${(i/(N-1))*1000},${yOf(v)}`).join(' ');
+    const indexLine = indexVals.map((v,i)=>`${(i/(N-1))*1000},${yOf(v)}`).join(' ');
+
+    const pReturn = ((portfolioVals[N-1]-100)/100*100).toFixed(1);
+    const iReturn = ((indexVals[N-1]-100)/100*100).toFixed(1);
+
+    const riskMetrics = [
+      { label:'Beta', value:'0.87', color:'#60a5fa', hint:'So với VN-Index' },
+      { label:'Sharpe Ratio', value:'1.42', color:'#22c55e', hint:'Lợi nhuận điều chỉnh rủi ro' },
+      { label:'Max Drawdown', value:'-12.4%', color:'#f43f5e', hint:'Mức sụt giảm lớn nhất' },
+      { label:'Độ biến động', value:'18.6%', color:'#f59e0b', hint:'Volatility hàng năm' },
+    ];
+
+    const equityVals = this._genLine(50, 1.8, 0.42, 33);
+    const eMax = Math.max(...equityVals), eMin = Math.min(...equityVals);
+    const eRange = eMax-eMin||1;
+    const equityCurve = equityVals.map((v,i)=>`${(i/49)*1000},${100-((v-eMin)/eRange)*95}`).join(' ');
+
+    return {
+      th,
+      portfolioReturn: (pReturn>=0?'+':'')+pReturn+'%',
+      indexReturn: (iReturn>=0?'+':'')+iReturn+'%',
+      portfolioLine, indexLine,
+      riskMetrics,
+      strategy, setStrategy: this.setStrategy,
+      runBacktest: this.runBacktest,
+      hasResult,
+      backtestResult: {
+        totalReturn: '+34.6%',
+        winRate: '64.2%',
+        trades: '38',
+        maxDD: '-9.8%',
+      },
+      equityCurve,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

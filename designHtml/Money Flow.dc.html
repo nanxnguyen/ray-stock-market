@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@keyframes slideIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+html,body { height:100%; }
+body { margin:0; padding:0; font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; background:#0f1419; color:#e4e6eb; }
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;box-sizing:border-box;background:{{ th.appBg }};padding:32px 16px;display:flex;justify-content:center;">
+<div style="display:flex;flex-direction:column;gap:12px;padding:16px;background:{{ th.navBg }};border-radius:12px;border:1px solid {{ th.cellBorder }};max-width:1680px;width:100%;margin:0 auto;height:fit-content;">
+  
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <div style="border-bottom:1px solid {{ th.cellBorder }};padding-bottom:10px;">
+    <h2 style="margin:0 0 8px 0;font-size:16px;font-weight:700;color:{{ th.text }};">DÒNG TIỀN NHÀ NƯỚC THEO NGÀNH</h2>
+    <div style="display:flex;gap:12px;align-items:center;font-size:10px;">
+      <div style="display:flex;gap:4px;align-items:center;">
+        <span style="background:#22c55e;width:12px;height:8px;border-radius:2px;"></span>
+        <span style="color:{{ th.text }};">Mua NN</span>
+      </div>
+      <div style="display:flex;gap:4px;align-items:center;">
+        <span style="background:#f43f5e;width:12px;height:8px;border-radius:2px;"></span>
+        <span style="color:{{ th.text }};">Bán NN</span>
+      </div>
+      <span style="margin-left:auto;color:{{ th.textMuted }};font-weight:700;">Dữ liệu realtime | Tính bằng tỷ VNĐ</span>
+    </div>
+  </div>
+
+  <!-- ══ NET FLOW CHART ══ -->
+  <div style="background:{{ th.navBg }};border:1px solid {{ th.cellBorder }};border-radius:4px;padding:16px;height:250px;display:flex;flex-direction:column;gap:12px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <span style="font-size:11px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Dòng tiền ròng (Net Flow)</span>
+      <div style="display:flex;gap:4px;">
+        <button style="background:{{ th.iconBg }};border:1px solid {{ th.cellBorder }};color:{{ th.textMuted }};border-radius:3px;padding:3px 8px;font-size:9px;font-weight:700;cursor:pointer;">1D</button>
+        <button style="background:#3b82f6;border:1px solid #2563eb;color:#fff;border-radius:3px;padding:3px 8px;font-size:9px;font-weight:700;cursor:pointer;">1W</button>
+        <button style="background:{{ th.iconBg }};border:1px solid {{ th.cellBorder }};color:{{ th.textMuted }};border-radius:3px;padding:3px 8px;font-size:9px;font-weight:700;cursor:pointer;">1M</button>
+      </div>
+    </div>
+    
+    <!-- BAR CHART -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-around;gap:8px;flex:1;">
+      <sc-for list="{{ netFlowBars }}" as="bar" hint-placeholder-count="8">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;">
+          <div style="width:100%;height:{{ bar.height }};background:{{ bar.color }};border-radius:2px;opacity:0.8;transition:all .3s;"></div>
+          <span style="font-size:9px;color:{{ th.textMuted }};text-align:center;word-break:break-word;">{{ bar.sector }}</span>
+          <span style="font-size:9px;font-weight:700;color:{{ bar.color }};font-family:'JetBrains Mono',monospace;">{{ bar.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ══ BUY vs SELL ══ -->
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+    
+    <!-- FOREIGN BUY -->
+    <div style="background:{{ th.navBg }};border:1px solid {{ th.cellBorder }};border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+      <h3 style="margin:0;font-size:11px;font-weight:700;color:#22c55e;text-transform:uppercase;">💰 Mua NN</h3>
+      <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:3px;">
+        <sc-for list="{{ buyData }}" as="buy" hint-placeholder-count="6">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px;background:rgba(34,197,94,.1);border-radius:3px;font-size:9px;border-left:2px solid #22c55e;">
+            <span style="color:{{ th.text }};font-weight:700;">{{ buy.sector }}</span>
+            <span style="color:#22c55e;font-weight:700;font-family:'JetBrains Mono',monospace;">+{{ buy.value }}T</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- FOREIGN SELL -->
+    <div style="background:{{ th.navBg }};border:1px solid {{ th.cellBorder }};border-radius:4px;padding:12px;display:flex;flex-direction:column;gap:8px;">
+      <h3 style="margin:0;font-size:11px;font-weight:700;color:#f43f5e;text-transform:uppercase;">📉 Bán NN</h3>
+      <div style="flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:3px;">
+        <sc-for list="{{ sellData }}" as="sell" hint-placeholder-count="6">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:6px;background:rgba(244,63,94,.1);border-radius:3px;font-size:9px;border-left:2px solid #f43f5e;">
+            <span style="color:{{ th.text }};font-weight:700;">{{ sell.sector }}</span>
+            <span style="color:#f43f5e;font-weight:700;font-family:'JetBrains Mono',monospace;">-{{ sell.value }}T</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SECTOR SUMMARY TABLE ══ -->
+  <div style="border-top:1px solid {{ th.cellBorder }};padding-top:10px;">
+    <h3 style="margin:0 0 8px 0;font-size:11px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Tóm tắt theo ngành</h3>
+    <div style="overflow-x:auto;border:1px solid {{ th.cellBorder }};border-radius:4px;">
+      <table style="width:100%;border-collapse:collapse;font-size:9px;font-family:'JetBrains Mono',monospace;">
+        <thead>
+          <tr style="border-bottom:1px solid {{ th.cellBorder }};height:24px;background:{{ th.iconBg }};">
+            <th style="text-align:left;padding:4px 6px;color:{{ th.textMuted }};font-weight:700;">Ngành</th>
+            <th style="text-align:right;padding:4px 6px;color:{{ th.textMuted }};font-weight:700;">Mua (T)</th>
+            <th style="text-align:right;padding:4px 6px;color:{{ th.textMuted }};font-weight:700;">Bán (T)</th>
+            <th style="text-align:right;padding:4px 6px;color:{{ th.textMuted }};font-weight:700;">Net (T)</th>
+            <th style="text-align:right;padding:4px 6px;color:{{ th.textMuted }};font-weight:700;">% Net</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ sectorSummary }}" as="sum" hint-placeholder-count="8">
+            <tr style="border-bottom:1px solid {{ th.cellBorder }};height:24px;">
+              <td style="padding:4px 6px;color:{{ th.text }};font-weight:700;">{{ sum.sector }}</td>
+              <td style="padding:4px 6px;text-align:right;color:#22c55e;">{{ sum.buy }}</td>
+              <td style="padding:4px 6px;text-align:right;color:#f43f5e;">{{ sum.sell }}</td>
+              <td style="padding:4px 6px;text-align:right;color:{{ sum.netColor }};font-weight:700;">{{ sum.net }}</td>
+              <td style="padding:4px 6px;text-align:right;color:{{ sum.netColor }};font-weight:700;">{{ sum.pct }}</td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    timeframe: '1W',
+  };
+
+  flowData = [
+    { sector: 'Ngân hàng', buy: 450, sell: 380, net: 70 },
+    { sector: 'Công nghệ', buy: 120, sell: 95, net: 25 },
+    { sector: 'BĐS', buy: 85, sell: 120, net: -35 },
+    { sector: 'Năng lượng', buy: 45, sell: 65, net: -20 },
+    { sector: 'Tiêu dùng', buy: 110, sell: 88, net: 22 },
+    { sector: 'Y tế', buy: 75, sell: 55, net: 20 },
+    { sector: 'Vật liệu', buy: 38, sell: 52, net: -14 },
+    { sector: 'Viễn thông', buy: 28, sell: 35, net: -7 },
+  ];
+
+  renderVals() {
+    const th = {
+      appBg: '#0f1419',
+      navBg: '#1a1f26',
+      text: '#e4e6eb',
+      textMuted: '#8a92a0',
+      cellBorder: '#2a3139',
+      iconBg: '#1a1f26',
+    };
+
+    const maxFlow = Math.max(...this.flowData.map(d => Math.abs(d.net)));
+
+    const netFlowBars = this.flowData.map(d => ({
+      sector: d.sector,
+      value: (d.net > 0 ? '+' : '') + d.net + 'T',
+      color: d.net > 0 ? '#22c55e' : '#f43f5e',
+      height: `${(Math.abs(d.net) / maxFlow) * 100}%`,
+    }));
+
+    const buyData = this.flowData
+      .sort((a, b) => b.buy - a.buy)
+      .slice(0, 6)
+      .map(d => ({ sector: d.sector, value: d.buy }));
+
+    const sellData = this.flowData
+      .sort((a, b) => b.sell - a.sell)
+      .slice(0, 6)
+      .map(d => ({ sector: d.sector, value: d.sell }));
+
+    const sectorSummary = this.flowData.map(d => ({
+      sector: d.sector,
+      buy: d.buy + 'T',
+      sell: d.sell + 'T',
+      net: (d.net > 0 ? '+' : '') + d.net + 'T',
+      netColor: d.net > 0 ? '#22c55e' : '#f43f5e',
+      pct: (d.net > 0 ? '+' : '') + ((d.net / (d.buy + d.sell)) * 100).toFixed(1) + '%',
+    }));
+
+    return {
+      th,
+      netFlowBars,
+      buyData,
+      sellData,
+      sectorSummary,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

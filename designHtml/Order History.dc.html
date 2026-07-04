@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:14px;">
+
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+
+  <h1 style="margin:0;font-size:18px;font-weight:800;color:{{ th.text }};">LỊCH SỬ LỆNH</h1>
+
+  <!-- ══ SUMMARY ══ -->
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;">
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px;">
+      <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Tổng lệnh hôm nay</span>
+      <div style="font-size:20px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;margin-top:4px;">{{ summary.total }}</div>
+    </div>
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px;">
+      <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Đã khớp</span>
+      <div style="font-size:20px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;margin-top:4px;">{{ summary.filled }}</div>
+    </div>
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px;">
+      <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Chờ khớp</span>
+      <div style="font-size:20px;font-weight:800;color:#f59e0b;font-family:'JetBrains Mono',monospace;margin-top:4px;">{{ summary.pending }}</div>
+    </div>
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px;">
+      <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Giá trị khớp</span>
+      <div style="font-size:20px;font-weight:800;color:#60a5fa;font-family:'JetBrains Mono',monospace;margin-top:4px;">{{ summary.value }}</div>
+    </div>
+  </div>
+
+  <!-- ══ TABS ══ -->
+  <div style="display:flex;gap:6px;">
+    <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="3">
+      <button onClick="{{ tab.onClick }}" style="background:{{ tab.bg }};color:{{ tab.fg }};border:1px solid {{ tab.border }};border-radius:7px;padding:7px 16px;font-size:11.5px;font-weight:700;cursor:pointer;">{{ tab.label }}</button>
+    </sc-for>
+  </div>
+
+  <!-- ══ TABLE ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;overflow:hidden;">
+    <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'JetBrains Mono',monospace;">
+      <thead>
+        <tr style="border-bottom:1px solid {{ th.cardBorder }};height:34px;background:{{ th.headBg }};">
+          <th style="text-align:left;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Thời gian</th>
+          <th style="text-align:left;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Mã CK</th>
+          <th style="text-align:center;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Lệnh</th>
+          <th style="text-align:right;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Giá đặt</th>
+          <th style="text-align:right;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">KL đặt</th>
+          <th style="text-align:right;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">KL khớp</th>
+          <th style="text-align:center;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Trạng thái</th>
+          <th style="text-align:center;padding:8px 10px;color:{{ th.textMuted }};font-weight:700;">Thao tác</th>
+        </tr>
+      </thead>
+      <tbody>
+        <sc-for list="{{ orders }}" as="o" hint-placeholder-count="8">
+          <tr style="border-bottom:1px solid {{ th.cardBorder }};height:38px;">
+            <td style="padding:8px 10px;color:{{ th.textMuted }};">{{ o.time }}</td>
+            <td style="padding:8px 10px;color:#60a5fa;font-weight:700;">{{ o.symbol }}</td>
+            <td style="padding:8px 10px;text-align:center;"><span style="background:{{ o.sideBg }};color:{{ o.sideColor }};padding:2px 8px;border-radius:5px;font-weight:700;font-size:10px;">{{ o.side }}</span></td>
+            <td style="padding:8px 10px;text-align:right;color:{{ th.text }};">{{ o.price }}</td>
+            <td style="padding:8px 10px;text-align:right;color:{{ th.text }};">{{ o.qty }}</td>
+            <td style="padding:8px 10px;text-align:right;color:{{ th.text }};">{{ o.filled }}</td>
+            <td style="padding:8px 10px;text-align:center;"><span style="background:{{ o.statusBg }};color:{{ o.statusColor }};padding:2px 8px;border-radius:5px;font-weight:700;font-size:9.5px;">{{ o.status }}</span></td>
+            <td style="padding:8px 10px;text-align:center;">
+              <sc-if value="{{ o.canEdit }}" hint-placeholder-val="{{ false }}">
+                <div style="display:flex;gap:4px;justify-content:center;">
+                  <button onClick="{{ o.onEdit }}" style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:#60a5fa;border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;cursor:pointer;">Sửa</button>
+                  <button onClick="{{ o.onCancel }}" style="background:rgba(244,63,94,.15);border:1px solid #f43f5e;color:#f43f5e;border-radius:4px;padding:2px 7px;font-size:9px;font-weight:700;cursor:pointer;">Hủy</button>
+                </div>
+              </sc-if>
+            </td>
+          </tr>
+        </sc-for>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { filterTab: 'all' };
+
+  allOrders = [
+    { time:'09:32:15', symbol:'VCB', side:'MUA', price:'81.30', qty:'500', filled:'500', status:'filled' },
+    { time:'09:45:22', symbol:'ACB', side:'BÁN', price:'22.70', qty:'1,000', filled:'1,000', status:'filled' },
+    { time:'10:12:08', symbol:'FPT', side:'MUA', price:'137.00', qty:'200', filled:'0', status:'pending' },
+    { time:'10:30:44', symbol:'HPG', side:'BÁN', price:'24.20', qty:'800', filled:'350', status:'partial' },
+    { time:'11:05:19', symbol:'BID', side:'MUA', price:'45.60', qty:'300', filled:'300', status:'filled' },
+    { time:'11:20:31', symbol:'MWG', side:'MUA', price:'94.50', qty:'150', filled:'0', status:'pending' },
+    { time:'13:41:07', symbol:'VNM', side:'BÁN', price:'88.20', qty:'400', filled:'0', status:'cancelled' },
+    { time:'14:02:53', symbol:'TCB', side:'MUA', price:'35.10', qty:'600', filled:'600', status:'filled' },
+  ];
+
+  setFilter = (f) => this.setState({ filterTab: f });
+  editOrder = (sym) => console.log('Edit order', sym);
+  cancelOrder = (sym) => console.log('Cancel order', sym);
+
+  renderVals() {
+    const { filterTab } = this.state;
+    const th = {
+      pageBg: '#0a0e14',
+      cardBg: '#131a24',
+      cardBorder: '#232b38',
+      headBg: '#1a212c',
+      text: '#eef1f6',
+      textMuted: '#8a94a6',
+      iconBg: '#1a212c',
+    };
+
+    const statusMap = {
+      filled: { label:'ĐÃ KHỚP', bg:'rgba(34,197,94,.15)', color:'#22c55e' },
+      pending: { label:'CHỜ KHỚP', bg:'rgba(245,158,11,.15)', color:'#f59e0b' },
+      partial: { label:'KHỚP 1 PHẦN', bg:'rgba(96,165,250,.15)', color:'#60a5fa' },
+      cancelled: { label:'ĐÃ HỦY', bg:'rgba(138,148,166,.15)', color:'#8a94a6' },
+    };
+
+    let filtered = this.allOrders;
+    if (filterTab === 'filled') filtered = this.allOrders.filter(o=>o.status==='filled');
+    if (filterTab === 'pending') filtered = this.allOrders.filter(o=>o.status==='pending'||o.status==='partial');
+    if (filterTab === 'cancelled') filtered = this.allOrders.filter(o=>o.status==='cancelled');
+
+    const orders = filtered.map(o => {
+      const st = statusMap[o.status];
+      return {
+        ...o,
+        sideBg: o.side==='MUA' ? 'rgba(34,197,94,.15)' : 'rgba(244,63,94,.15)',
+        sideColor: o.side==='MUA' ? '#22c55e' : '#f43f5e',
+        status: st.label,
+        statusBg: st.bg,
+        statusColor: st.color,
+        canEdit: o.status==='pending'||o.status==='partial',
+        onEdit: () => this.editOrder(o.symbol),
+        onCancel: () => this.cancelOrder(o.symbol),
+      };
+    });
+
+    const tabs = [
+      { key:'all', label:'Tất cả' },
+      { key:'filled', label:'Đã khớp' },
+      { key:'pending', label:'Chờ khớp' },
+      { key:'cancelled', label:'Đã hủy' },
+    ].map(t => ({
+      label: t.label,
+      onClick: () => this.setFilter(t.key),
+      bg: filterTab===t.key ? '#2563eb' : th.iconBg,
+      border: filterTab===t.key ? '#2563eb' : th.cardBorder,
+      fg: filterTab===t.key ? '#fff' : th.textMuted,
+    }));
+
+    const filledCount = this.allOrders.filter(o=>o.status==='filled').length;
+    const pendingCount = this.allOrders.filter(o=>o.status==='pending'||o.status==='partial').length;
+
+    return {
+      th, tabs, orders,
+      summary: {
+        total: this.allOrders.length,
+        filled: filledCount,
+        pending: pendingCount,
+        value: '186.4M',
+      },
+    };
+  }
+}
+
+</script>
+</body>
+</html>

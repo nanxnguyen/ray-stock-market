@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#232b38;border-radius:6px}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:14px;">
+
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+
+  <!-- ══ HEADER ══ -->
+  <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <h1 style="margin:0;font-size:22px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ symbol }}</h1>
+      <span style="font-size:20px;font-weight:800;color:{{ priceColor }};font-family:'JetBrains Mono',monospace;">{{ lastPrice }}</span>
+      <span style="font-size:12px;font-weight:700;color:{{ priceColor }};background:{{ priceBg }};padding:3px 9px;border-radius:6px;">{{ change }} ({{ changePct }})</span>
+    </div>
+    <div style="display:flex;gap:4px;flex-wrap:wrap;">
+      <sc-for list="{{ quickSyms }}" as="qs" hint-placeholder-count="5">
+        <button onClick="{{ qs.onClick }}" style="background:{{ qs.bg }};border:1px solid {{ qs.border }};color:{{ qs.fg }};border-radius:6px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;">{{ qs.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ══ TOOLBAR ══ -->
+  <div style="display:flex;justify-content:space-between;align-items:center;background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:8px 12px;flex-wrap:wrap;gap:8px;">
+    <div style="display:flex;gap:4px;">
+      <sc-for list="{{ timeframes }}" as="tf" hint-placeholder-count="6">
+        <button onClick="{{ tf.onClick }}" style="background:{{ tf.bg }};color:{{ tf.fg }};border:1px solid {{ tf.border }};border-radius:5px;padding:5px 11px;font-size:11px;font-weight:700;cursor:pointer;">{{ tf.label }}</button>
+      </sc-for>
+    </div>
+    <div style="display:flex;gap:6px;align-items:center;">
+      <span style="font-size:10px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Vẽ:</span>
+      <button style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:5px;width:28px;height:28px;cursor:pointer;font-size:13px;" title="Trendline">📐</button>
+      <button style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:5px;width:28px;height:28px;cursor:pointer;font-size:13px;" title="Fibonacci">🌀</button>
+      <button style="background:{{ th.iconBg }};border:1px solid {{ th.cardBorder }};color:{{ th.textMuted }};border-radius:5px;width:28px;height:28px;cursor:pointer;font-size:13px;" title="Xóa vẽ">🗑</button>
+      <div style="width:1px;height:18px;background:{{ th.cardBorder }};"></div>
+      <button onClick="{{ toggleMA }}" style="background:{{ maOn ? '#3b82f6' : th.iconBg }};border:1px solid {{ maOn ? '#2563eb' : th.cardBorder }};color:{{ maOn ? '#fff' : th.textMuted }};border-radius:5px;padding:5px 10px;font-size:10.5px;font-weight:700;cursor:pointer;">MA</button>
+    </div>
+  </div>
+
+  <!-- ══ MAIN CANDLESTICK CHART ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:14px;">
+    <svg viewBox="0 0 1000 340" preserveAspectRatio="none" style="width:100%;height:340px;display:block;">
+      <sc-for list="{{ gridLines }}" as="gl" hint-placeholder-count="5">
+        <line x1="0" y1="{{ gl.y }}" x2="1000" y2="{{ gl.y }}" stroke="{{ th.gridColor }}" stroke-width="1"></line>
+      </sc-for>
+      <sc-for list="{{ candles }}" as="c" hint-placeholder-count="60">
+        <line x1="{{ c.x }}" y1="{{ c.wickTop }}" x2="{{ c.x }}" y2="{{ c.wickBot }}" stroke="{{ c.color }}" stroke-width="1"></line>
+        <rect x="{{ c.bodyX }}" y="{{ c.bodyY }}" width="{{ c.bodyW }}" height="{{ c.bodyH }}" fill="{{ c.color }}"></rect>
+      </sc-for>
+      <sc-if value="{{ maOn }}" hint-placeholder-val="{{ true }}">
+        <polyline points="{{ maLine }}" fill="none" stroke="#fbbf24" stroke-width="1.6" opacity="0.9"></polyline>
+      </sc-if>
+    </svg>
+    <div style="display:flex;justify-content:space-between;margin-top:4px;">
+      <sc-for list="{{ yLabels }}" as="yl" hint-placeholder-count="5"><span></span></sc-for>
+      <span style="font-size:9px;color:{{ th.textMuted }};font-family:'JetBrains Mono',monospace;">{{ dateRange.from }}</span>
+      <span style="font-size:9px;color:{{ th.textMuted }};font-family:'JetBrains Mono',monospace;">{{ dateRange.to }}</span>
+    </div>
+  </div>
+
+  <!-- ══ VOLUME CHART ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:10px 14px;">
+    <span style="font-size:10px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Khối lượng</span>
+    <svg viewBox="0 0 1000 70" preserveAspectRatio="none" style="width:100%;height:70px;display:block;margin-top:4px;">
+      <sc-for list="{{ volBars }}" as="vb" hint-placeholder-count="60">
+        <rect x="{{ vb.x }}" y="{{ vb.y }}" width="{{ vb.w }}" height="{{ vb.h }}" fill="{{ vb.color }}" opacity="0.7"></rect>
+      </sc-for>
+    </svg>
+  </div>
+
+  <!-- ══ INDICATOR TABS ══ -->
+  <div style="display:flex;gap:6px;">
+    <sc-for list="{{ indicatorTabs }}" as="it" hint-placeholder-count="3">
+      <button onClick="{{ it.onClick }}" style="background:{{ it.bg }};color:{{ it.fg }};border:1px solid {{ it.border }};border-radius:6px;padding:6px 14px;font-size:11px;font-weight:700;cursor:pointer;">{{ it.label }}</button>
+    </sc-for>
+  </div>
+
+  <!-- ══ RSI PANEL ══ -->
+  <sc-if value="{{ showRSI }}" hint-placeholder-val="{{ false }}">
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:10px 14px;">
+      <div style="display:flex;justify-content:space-between;"><span style="font-size:10px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">RSI (14)</span><span style="font-size:11px;font-weight:700;color:{{ rsiColor }};font-family:'JetBrains Mono',monospace;">{{ rsiVal }}</span></div>
+      <svg viewBox="0 0 1000 80" preserveAspectRatio="none" style="width:100%;height:80px;display:block;margin-top:4px;">
+        <line x1="0" y1="24" x2="1000" y2="24" stroke="#f43f5e" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"></line>
+        <line x1="0" y1="56" x2="1000" y2="56" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"></line>
+        <polyline points="{{ rsiLine }}" fill="none" stroke="#a78bfa" stroke-width="1.6"></polyline>
+      </svg>
+    </div>
+  </sc-if>
+
+  <!-- ══ MACD PANEL ══ -->
+  <sc-if value="{{ showMACD }}" hint-placeholder-val="{{ false }}">
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:10px 14px;">
+      <span style="font-size:10px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">MACD (12,26,9)</span>
+      <svg viewBox="0 0 1000 80" preserveAspectRatio="none" style="width:100%;height:80px;display:block;margin-top:4px;">
+        <line x1="0" y1="40" x2="1000" y2="40" stroke="{{ th.gridColor }}" stroke-width="1"></line>
+        <sc-for list="{{ macdBars }}" as="mb" hint-placeholder-count="60">
+          <rect x="{{ mb.x }}" y="{{ mb.y }}" width="{{ mb.w }}" height="{{ mb.h }}" fill="{{ mb.color }}" opacity="0.7"></rect>
+        </sc-for>
+        <polyline points="{{ macdLine }}" fill="none" stroke="#60a5fa" stroke-width="1.4"></polyline>
+        <polyline points="{{ signalLine }}" fill="none" stroke="#fbbf24" stroke-width="1.4"></polyline>
+      </svg>
+    </div>
+  </sc-if>
+
+  <!-- ══ BOLLINGER INFO ══ -->
+  <sc-if value="{{ showBB }}" hint-placeholder-val="{{ false }}">
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:10px 14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Upper Band</span><div style="font-size:14px;font-weight:700;color:#f43f5e;font-family:'JetBrains Mono',monospace;">{{ bbUpper }}</div></div>
+      <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Middle (MA20)</span><div style="font-size:14px;font-weight:700;color:#fbbf24;font-family:'JetBrains Mono',monospace;">{{ bbMid }}</div></div>
+      <div><span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Lower Band</span><div style="font-size:14px;font-weight:700;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ bbLower }}</div></div>
+    </div>
+  </sc-if>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    symbol: new URLSearchParams(location.search).get('symbol') || 'VCB',
+    timeframe: '1D',
+    maOn: true,
+    indicator: 'RSI',
+  };
+
+  seed = 42;
+  _rand() { this.seed = (this.seed * 16807) % 2147483647; return (this.seed - 1) / 2147483646; }
+
+  _genCandles(base, n) {
+    let price = base;
+    const out = [];
+    for (let i = 0; i < n; i++) {
+      const open = price;
+      const vol = (this._rand() - 0.48) * base * 0.025;
+      const close = Math.max(base * 0.7, open + vol);
+      const high = Math.max(open, close) + this._rand() * base * 0.008;
+      const low = Math.min(open, close) - this._rand() * base * 0.008;
+      out.push({ open, close, high, low, vol: 50000 + this._rand() * 500000 });
+      price = close;
+    }
+    return out;
+  }
+
+  toggleMA = () => this.setState(s => ({ maOn: !s.maOn }));
+  setIndicator = (ind) => this.setState(s => ({ indicator: s.indicator === ind ? null : ind }));
+
+  renderVals() {
+    const { symbol, timeframe, maOn, indicator } = this.state;
+    this.seed = symbol.split('').reduce((a,c)=>a+c.charCodeAt(0),0) + 42;
+
+    const th = {
+      pageBg: '#0a0e14',
+      cardBg: '#131a24',
+      cardBorder: '#232b38',
+      text: '#eef1f6',
+      textMuted: '#8a94a6',
+      iconBg: '#1a212c',
+      gridColor: '#1c2530',
+    };
+
+    const priceMap = { VCB:81.5, ACB:22.65, FPT:137.5, HPG:24.1, BID:45.8 };
+    const basePrice = priceMap[symbol] || 50;
+    const N = 60;
+    const raw = this._genCandles(basePrice, N);
+
+    const closes = raw.map(c=>c.close);
+    const highs = raw.map(c=>c.high);
+    const lows = raw.map(c=>c.low);
+    const maxP = Math.max(...highs) * 1.01;
+    const minP = Math.min(...lows) * 0.99;
+    const range = maxP - minP || 1;
+    const chartH = 340, chartW = 1000;
+    const slotW = chartW / N;
+
+    const yOf = p => chartH - ((p - minP) / range) * chartH;
+
+    const candles = raw.map((c, i) => {
+      const x = i * slotW + slotW / 2;
+      const up = c.close >= c.open;
+      const color = up ? '#22c55e' : '#f43f5e';
+      const bodyTop = yOf(Math.max(c.open, c.close));
+      const bodyBot = yOf(Math.min(c.open, c.close));
+      return {
+        x,
+        wickTop: yOf(c.high),
+        wickBot: yOf(c.low),
+        bodyX: x - slotW * 0.32,
+        bodyY: bodyTop,
+        bodyW: slotW * 0.64,
+        bodyH: Math.max(1.5, bodyBot - bodyTop),
+        color,
+      };
+    });
+
+    // Moving average (10-period)
+    const maVals = closes.map((_, i) => {
+      const s = Math.max(0, i - 9);
+      const slice = closes.slice(s, i + 1);
+      return slice.reduce((a,b)=>a+b,0) / slice.length;
+    });
+    const maLine = maVals.map((v,i) => `${i*slotW+slotW/2},${yOf(v)}`).join(' ');
+
+    // Volume bars
+    const maxVol = Math.max(...raw.map(c=>c.vol));
+    const volBars = raw.map((c,i) => {
+      const x = i * slotW + slotW*0.18;
+      const h = (c.vol / maxVol) * 68;
+      return { x, y: 70 - h, w: slotW*0.64, h, color: c.close>=c.open ? '#22c55e' : '#f43f5e' };
+    });
+
+    const gridLines = [0,1,2,3,4].map(i => ({ y: (chartH/4)*i }));
+    const yLabels = [0,1,2,3,4].map(i => (maxP - (range/4)*i).toFixed(1));
+
+    // RSI calc (simplified)
+    let gains=0, losses=0;
+    const rsiSeries = closes.map((c,i)=>{
+      if (i===0) return 50;
+      const diff = c - closes[i-1];
+      gains = (gains*13 + Math.max(diff,0))/14;
+      losses = (losses*13 + Math.max(-diff,0))/14;
+      const rs = losses===0?100:gains/losses;
+      return 100 - 100/(1+rs);
+    });
+    const rsiLine = rsiSeries.map((v,i)=>`${i*slotW+slotW/2},${80-(v/100)*80}`).join(' ');
+    const rsiVal = rsiSeries[rsiSeries.length-1].toFixed(1);
+    const rsiColor = rsiVal>70?'#f43f5e':rsiVal<30?'#22c55e':'#a78bfa';
+
+    // MACD (simplified EMA-based)
+    const ema = (arr,period) => {
+      const k = 2/(period+1);
+      let prev = arr[0];
+      return arr.map((v,i)=> i===0? v : (prev = v*k + prev*(1-k)));
+    };
+    const ema12 = ema(closes,12), ema26 = ema(closes,26);
+    const macdArr = ema12.map((v,i)=>v-ema26[i]);
+    const signalArr = ema(macdArr,9);
+    const histArr = macdArr.map((v,i)=>v-signalArr[i]);
+    const maxMacd = Math.max(...macdArr.map(Math.abs), ...histArr.map(Math.abs), 0.01);
+    const macdLine = macdArr.map((v,i)=>`${i*slotW+slotW/2},${40-(v/maxMacd)*36}`).join(' ');
+    const signalLine = signalArr.map((v,i)=>`${i*slotW+slotW/2},${40-(v/maxMacd)*36}`).join(' ');
+    const macdBars = histArr.map((v,i)=>{
+      const h = Math.abs(v/maxMacd)*36;
+      return { x: i*slotW+slotW*0.3, y: v>=0?40-h:40, w: slotW*0.4, h, color: v>=0?'#22c55e':'#f43f5e' };
+    });
+
+    // Bollinger
+    const period=20;
+    const lastSlice = closes.slice(-period);
+    const mid = lastSlice.reduce((a,b)=>a+b,0)/lastSlice.length;
+    const variance = lastSlice.reduce((a,b)=>a+(b-mid)**2,0)/lastSlice.length;
+    const sd = Math.sqrt(variance);
+
+    const lastClose = closes[closes.length-1];
+    const firstClose = closes[0];
+    const isUp = lastClose >= firstClose;
+    const priceColor = isUp ? '#22c55e' : '#f43f5e';
+    const changeVal = lastClose - firstClose;
+    const changePctVal = (changeVal/firstClose*100);
+
+    const quickSyms = ['VCB','ACB','FPT','HPG','BID'].map(s => ({
+      label: s,
+      onClick: () => this.setState({ symbol: s }),
+      bg: s===symbol ? '#2563eb' : th.iconBg,
+      border: s===symbol ? '#2563eb' : th.cardBorder,
+      fg: s===symbol ? '#fff' : th.textMuted,
+    }));
+
+    const timeframes = ['1D','1W','1M','3M','1Y','5Y'].map(t => ({
+      label: t,
+      onClick: () => this.setState({ timeframe: t }),
+      bg: t===timeframe ? '#2563eb' : 'transparent',
+      border: t===timeframe ? '#2563eb' : th.cardBorder,
+      fg: t===timeframe ? '#fff' : th.textMuted,
+    }));
+
+    const indicatorTabs = [
+      { key:'RSI', label:'RSI' },
+      { key:'MACD', label:'MACD' },
+      { key:'BB', label:'Bollinger Bands' },
+    ].map(t => ({
+      label: t.label,
+      onClick: () => this.setIndicator(t.key),
+      bg: indicator===t.key ? '#3b82f6' : th.iconBg,
+      border: indicator===t.key ? '#2563eb' : th.cardBorder,
+      fg: indicator===t.key ? '#fff' : th.textMuted,
+    }));
+
+    return {
+      th,
+      symbol,
+      lastPrice: lastClose.toFixed(2)+'đ',
+      priceColor,
+      priceBg: isUp ? 'rgba(34,197,94,.15)' : 'rgba(244,63,94,.15)',
+      change: (changeVal>=0?'+':'')+changeVal.toFixed(2),
+      changePct: (changePctVal>=0?'+':'')+changePctVal.toFixed(2)+'%',
+      quickSyms, timeframes,
+      maOn, toggleMA: this.toggleMA,
+      candles, maLine, gridLines, yLabels,
+      dateRange: { from: '01/06/2026', to: '03/07/2026' },
+      volBars,
+      indicatorTabs,
+      showRSI: indicator==='RSI', rsiLine, rsiVal, rsiColor,
+      showMACD: indicator==='MACD', macdLine, signalLine, macdBars,
+      showBB: indicator==='BB',
+      bbUpper: (mid+2*sd).toFixed(2)+'đ',
+      bbMid: mid.toFixed(2)+'đ',
+      bbLower: (mid-2*sd).toFixed(2)+'đ',
+    };
+  }
+}
+
+</script>
+</body>
+</html>

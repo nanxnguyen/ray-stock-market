@@ -7,6 +7,52 @@ type Props = { rows: StockRow[]; th: ThemeTokens }
 const ROW_HEIGHT = 26
 const OVERSCAN = 20
 
+const StockTableRow = memo(function StockTableRow({ s, th }: { s: StockRow; th: ThemeTokens }) {
+  return (
+    <tr
+      onMouseEnter={(e) => { e.currentTarget.style.background = th.rowHover }}
+      onMouseLeave={(e) => { e.currentTarget.style.background = s.bg }}
+      style={{ background: s.bg, borderBottom: `1px solid ${th.rowBorder}`, height: ROW_HEIGHT, transition: 'background .5s' }}
+    >
+      <td onClick={s.onChart} style={{ position: 'sticky', left: 0, zIndex: 5, background: s.bg, padding: '3px 8px', textAlign: 'center', borderRight: `1px solid ${th.cellBorder}`, fontWeight: 700, fontSize: '11.5px', color: '#60a5fa', cursor: 'pointer', letterSpacing: '.3px', fontFamily: "'Inter', sans-serif" }}>{s.sym}</td>
+      <td style={{ position: 'sticky', left: 58, zIndex: 5, background: s.bg, padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorder}`, color: '#b07ef8' }}>{s.ceil}</td>
+      <td style={{ position: 'sticky', left: 106, zIndex: 5, background: s.bg, padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorder}`, color: '#fbbf24' }}>{s.tc}</td>
+      <td style={{ position: 'sticky', left: 154, zIndex: 5, background: s.bg, padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: '#38bdf8' }}>{s.floor}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b3c, opacity: .75 }}>{s.b3p}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b3c, opacity: .75 }}>{s.b3q}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b2c, opacity: .85 }}>{s.b2p}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b2c, opacity: .85 }}>{s.b2q}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b1c }}>{s.b1p}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: s.b1c }}>{s.b1q}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, fontWeight: 700, fontSize: 12, color: s.lc }}>{s.lp}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.lc, opacity: .9 }}>{s.lq}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, fontWeight: 700, color: s.pc }}>{s.pct}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.pc }}>{s.chg}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: th.volColor }}>{s.tvol}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a1c }}>{s.a1p}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a1c }}>{s.a1q}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a2c, opacity: .85 }}>{s.a2p}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a2c, opacity: .85 }}>{s.a2q}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a3c, opacity: .75 }}>{s.a3p}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: s.a3c, opacity: .75 }}>{s.a3q}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.hc }}>{s.hi}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.ac, opacity: .7 }}>{s.avg}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: s.oc }}>{s.lo}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: '#22d3a5' }}>{s.fbuy}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: '#f87171' }}>{s.fsell}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.fbc }}>{s.fbal}</td>
+      <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: '#64748b' }}>{s.room}</td>
+      <td style={{ padding: '3px 8px', textAlign: 'right', color: th.volColor }}>{s.kltt}</td>
+      <td
+        onClick={(e) => { e.stopPropagation(); s.onToggleWatchlist?.() }}
+        style={{ padding: '3px 8px', textAlign: 'center', cursor: 'pointer', fontSize: 13 }}
+      >
+        {s.watchlisted ? '\u2665' : '\u2661'}
+      </td>
+    </tr>
+  )
+})
+
 function StockTableInner({ rows, th }: Props) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [scrollTop, setScrollTop] = useState(0)
@@ -52,6 +98,7 @@ function StockTableInner({ rows, th }: Props) {
             <th style={{ padding: '5px 6px', textAlign: 'right', borderRight: '2px solid #1a3050', minWidth: 48 }} rowSpan={2}>Thấp</th>
             <th colSpan={4} style={{ textAlign: 'center', padding: 5, color: '#a78bfa', borderRight: '2px solid #1a3050', letterSpacing: '.5px' }}>NN</th>
             <th style={{ padding: '5px 8px', textAlign: 'right', minWidth: 90, color: '#94a3b8' }} rowSpan={2}>KLGD TT</th>
+            <th style={{ padding: '5px 8px', textAlign: 'center', minWidth: 36, color: '#60a5fa' }} rowSpan={2}>{'\u2661'}</th>
           </tr>
           <tr style={{ background: '#080f1c', color: '#3a6080', fontSize: 9, fontFamily: "'Inter', sans-serif", letterSpacing: '.3px' }}>
             <th style={{ background: '#05111e', padding: '3px 6px', textAlign: 'right', borderRight: '1px solid #0f1e36', minWidth: 46, color: '#3b7fc4' }}>Giá 3</th>
@@ -80,50 +127,15 @@ function StockTableInner({ rows, th }: Props) {
         <tbody>
           {topSpacerHeight > 0 && (
             <tr aria-hidden="true" style={{ height: topSpacerHeight }}>
-              <td colSpan={29} style={{ padding: 0, border: 'none' }} />
+              <td colSpan={30} style={{ padding: 0, border: 'none' }} />
             </tr>
           )}
           {visibleRows.map((s) => (
-            <tr
-              key={s.sym}
-              onMouseEnter={(e) => { e.currentTarget.style.background = th.rowHover }}
-              onMouseLeave={(e) => { e.currentTarget.style.background = s.bg }}
-              style={{ background: s.bg, borderBottom: `1px solid ${th.rowBorder}`, height: ROW_HEIGHT, transition: 'background .5s' }}
-            >
-              <td onClick={s.onChart} style={{ position: 'sticky', left: 0, zIndex: 5, background: s.bg, padding: '3px 8px', textAlign: 'center', borderRight: `1px solid ${th.cellBorder}`, fontWeight: 700, fontSize: '11.5px', color: '#60a5fa', cursor: 'pointer', letterSpacing: '.3px', fontFamily: "'Inter', sans-serif" }}>{s.sym}</td>
-              <td style={{ position: 'sticky', left: 58, zIndex: 5, background: s.bg, padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorder}`, color: '#b07ef8' }}>{s.ceil}</td>
-              <td style={{ position: 'sticky', left: 106, zIndex: 5, background: s.bg, padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorder}`, color: '#fbbf24' }}>{s.tc}</td>
-              <td style={{ position: 'sticky', left: 154, zIndex: 5, background: s.bg, padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: '#38bdf8' }}>{s.floor}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b3c, opacity: .75 }}>{s.b3p}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b3c, opacity: .75 }}>{s.b3q}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b2c, opacity: .85 }}>{s.b2p}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b2c, opacity: .85 }}>{s.b2q}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.b1c }}>{s.b1p}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: s.b1c }}>{s.b1q}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, fontWeight: 700, fontSize: 12, color: s.lc }}>{s.lp}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.lc, opacity: .9 }}>{s.lq}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, fontWeight: 700, color: s.pc }}>{s.pct}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.pc }}>{s.chg}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: th.volColor }}>{s.tvol}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a1c }}>{s.a1p}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a1c }}>{s.a1q}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a2c, opacity: .85 }}>{s.a2p}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a2c, opacity: .85 }}>{s.a2q}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.a3c, opacity: .75 }}>{s.a3p}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: s.a3c, opacity: .75 }}>{s.a3q}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.hc }}>{s.hi}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.ac, opacity: .7 }}>{s.avg}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: s.oc }}>{s.lo}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: '#22d3a5' }}>{s.fbuy}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: '#f87171' }}>{s.fsell}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `1px solid ${th.cellBorderL}`, color: s.fbc }}>{s.fbal}</td>
-              <td style={{ padding: '3px 6px', textAlign: 'right', borderRight: `2px solid ${th.cellBorder}`, color: '#64748b' }}>{s.room}</td>
-              <td style={{ padding: '3px 8px', textAlign: 'right', color: th.volColor }}>{s.kltt}</td>
-            </tr>
+            <StockTableRow key={s.sym} s={s} th={th} />
           ))}
           {bottomSpacerHeight > 0 && (
             <tr aria-hidden="true" style={{ height: bottomSpacerHeight }}>
-              <td colSpan={29} style={{ padding: 0, border: 'none' }} />
+              <td colSpan={30} style={{ padding: 0, border: 'none' }} />
             </tr>
           )}
         </tbody>

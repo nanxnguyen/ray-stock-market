@@ -185,6 +185,13 @@ export default function IntradayChartModal({ chart, onClose }: Props) {
             </div>
           ))}
         </div>
+
+        {/* Action buttons */}
+        <div style={{ display: 'flex', gap: 8, padding: '12px 18px', background: '#060c18', borderTop: '1px solid #1a3050' }}>
+          <a href="#" style={{ flex: 1, textDecoration: 'none', textAlign: 'center', background: '#0f1e36', border: '1px solid #1a3050', color: '#cbd5e1', borderRadius: 6, padding: 9, fontSize: 11, fontWeight: 700 }}>{'\u{1F4C4}'} Thông tin CP</a>
+          <a href="#" style={{ flex: 1, textDecoration: 'none', textAlign: 'center', background: '#0f1e36', border: '1px solid #1a3050', color: '#cbd5e1', borderRadius: 6, padding: 9, fontSize: 11, fontWeight: 700 }}>{'\u{1F4D6}'} Sổ lệnh</a>
+          <a href="#" style={{ flex: 1.3, textDecoration: 'none', textAlign: 'center', background: '#22c55e', border: '1px solid #16a34a', color: '#fff', borderRadius: 6, padding: 9, fontSize: 11, fontWeight: 800 }}>{'\u2713'} Đặt lệnh {chart.sym}</a>
+        </div>
       </div>
     </div>
   )

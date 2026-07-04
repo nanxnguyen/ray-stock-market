@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#232b38;border-radius:6px}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:20px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:14px;">
+
+  <div style="background:linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%);border:1px solid #0f1e36;border-radius:12px;overflow:visible;">
+
+    <!-- ROW 1: LOGO + INDEX SPARKLINE TICKER -->
+    <div style="display:flex;align-items:center;gap:0;padding:9px 16px;border-bottom:1px solid #0f1e36;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;padding-right:16px;margin-right:16px;border-right:1px solid #14233d;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock Market</span></span>
+      </div>
+      <sc-for list="{{ tickerIndices }}" as="ti" hint-placeholder-count="3">
+        <div style="display:flex;align-items:center;gap:12px;flex-shrink:0;padding:0 18px;border-right:1px solid #14233d;">
+          <div style="display:flex;flex-direction:column;gap:1px;min-width:66px;">
+            <span style="font-size:9px;font-weight:700;color:#5b7290;letter-spacing:.3px;">{{ ti.name }}</span>
+            <span style="font-size:15px;font-weight:800;color:{{ ti.color }};font-family:'JetBrains Mono',monospace;letter-spacing:-.3px;">{{ ti.val }}</span>
+            <span style="font-size:9.5px;color:{{ ti.color }};font-weight:700;">{{ ti.chg }}</span>
+          </div>
+          <svg viewBox="0 0 80 32" preserveAspectRatio="none" style="width:80px;height:32px;flex-shrink:0;">
+            <defs>
+              <linearGradient id="{{ ti.gradId }}" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="{{ ti.color }}" stop-opacity="0.35"></stop>
+                <stop offset="100%" stop-color="{{ ti.color }}" stop-opacity="0"></stop>
+              </linearGradient>
+            </defs>
+            <path d="{{ ti.fill }}" fill="url(#{{ ti.gradId }})"></path>
+            <line x1="0" y1="{{ ti.refY }}" x2="80" y2="{{ ti.refY }}" stroke="#fbbf24" stroke-width="1" stroke-dasharray="2 2" opacity="0.65"></line>
+            <polyline points="{{ ti.pts }}" fill="none" stroke="{{ ti.color }}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"></polyline>
+          </svg>
+          <div style="display:flex;flex-direction:column;gap:3px;min-width:64px;">
+            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:#4a6080;">Val</span><span style="font-size:9.5px;color:#94a3b8;font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.val2 }}</span></div>
+            <div style="display:flex;justify-content:space-between;gap:6px;"><span style="font-size:9px;color:#4a6080;">F.Val</span><span style="font-size:9.5px;color:{{ ti.fvalColor }};font-weight:600;font-family:'JetBrains Mono',monospace;">{{ ti.fval }}</span></div>
+          </div>
+        </div>
+      </sc-for>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;padding-left:16px;">04/07/2026 · 15:00:00</span>
+    </div>
+
+    <!-- ROW 2: NAV PILLS + TOOLS MEGA MENU + THEME TOGGLE -->
+    <div style="display:flex;align-items:center;gap:6px;padding:8px 14px;overflow-x:visible;position:relative;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#0f1e36;border:1px solid #1a3050;color:#94a3b8;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#16457a;border:1px solid #2563eb;color:#dbeafe;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:700;white-space:nowrap;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#0f1e36;border:1px solid #1a3050;color:#94a3b8;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#0f1e36;border:1px solid #1a3050;color:#94a3b8;border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+
+      <div onClick="{{ toggleMoreTools }}" style="cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:6px;background:{{ moreToolsBg }};border:1px solid {{ moreToolsBorder }};color:{{ moreToolsFg }};border-radius:14px;padding:5px 12px 5px 11px;font-size:10.5px;font-weight:700;transition:all .15s;white-space:nowrap;">
+        <span style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:9px;height:9px;">
+          <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
+          <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
+        </span>
+        Công cụ
+        <span style="font-size:8px;transform:{{ arrowRotate }};transition:transform .15s;">▾</span>
+      </div>
+
+      <div style="margin-left:auto;display:flex;align-items:center;gap:6px;flex-shrink:0;">
+        <div onClick="{{ toggleDark }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:#0f1e36;border:1px solid #1a3050;border-radius:20px;padding:5px 12px;transition:all .25s;">
+          <span style="font-size:12px;">{{ th.toggleIcon }}</span>
+          <span style="font-size:10px;font-weight:700;color:#64748b;">{{ th.toggleLabel }}</span>
+        </div>
+      </div>
+
+      <sc-if value="{{ showMoreTools }}" hint-placeholder-val="{{ false }}">
+        <div onClick="{{ stopProp }}" style="position:absolute;top:44px;right:14px;background:#0b1424;border:1px solid #1a3050;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
+          <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
+            <sc-for list="{{ menuGroups }}" as="grp" hint-placeholder-count="3">
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <span style="font-size:9.5px;font-weight:800;color:{{ grp.color }};text-transform:uppercase;letter-spacing:.5px;padding:0 8px 8px;">{{ grp.title }}</span>
+                <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="5">
+                  <a href="{{ it.href }}" style="text-decoration:none;display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;transition:background .12s;" style-hover="background:#131f36;">
+                    <span style="width:28px;height:28px;border-radius:8px;background:{{ it.iconBg }};display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">{{ it.icon }}</span>
+                    <span style="display:flex;flex-direction:column;gap:1px;min-width:0;">
+                      <span style="font-size:11.5px;font-weight:700;color:#e2e8f0;white-space:nowrap;">{{ it.label }}</span>
+                      <span style="font-size:9px;color:#5b7290;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.desc }}</span>
+                    </span>
+                  </a>
+                </sc-for>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-top:1px solid #16233b;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:#08101f;">
+            <span style="font-size:9.5px;color:#3a5570;font-weight:600;">{{ toolCount }} công cụ &amp; sẽ tiếp tục mở rộng</span>
+            <a href="Bang Dien.dc.html" style="text-decoration:none;font-size:10px;font-weight:700;color:#60a5fa;">🏠 Về Trang chủ</a>
+          </div>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- ══ HEADER: NAV SUMMARY ══ -->
+  <div style="background:{{ th.heroGradient }};border:1px solid {{ th.cardBorder }};border-radius:14px;padding:22px 26px;display:flex;flex-wrap:wrap;gap:28px;align-items:center;position:relative;overflow:hidden;">
+    <div style="position:absolute;top:-60px;right:-40px;width:220px;height:220px;border-radius:50%;background:{{ th.glowColor }};filter:blur(60px);opacity:.28;pointer-events:none;"></div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:4px;">
+      <span style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;letter-spacing:.4px;">Tổng tài sản (NAV)</span>
+      <span style="font-size:32px;font-weight:800;color:#fff;font-family:'JetBrains Mono',monospace;letter-spacing:-.5px;">{{ summary.nav }}</span>
+      <div style="display:flex;gap:10px;align-items:center;">
+        <span style="font-size:13px;font-weight:700;color:{{ summary.dayColor }};">{{ summary.dayChange }} ({{ summary.dayPct }}) hôm nay</span>
+      </div>
+    </div>
+    <div style="width:1px;align-self:stretch;background:{{ th.cardBorder }};position:relative;"></div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:4px;">
+      <span style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Lãi/Lỗ toàn danh mục</span>
+      <span style="font-size:20px;font-weight:800;color:{{ summary.plColor }};font-family:'JetBrains Mono',monospace;">{{ summary.totalPL }}</span>
+      <span style="font-size:11px;font-weight:700;color:{{ summary.plColor }};">ROI {{ summary.roi }}</span>
+    </div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:4px;">
+      <span style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Tiền mặt</span>
+      <span style="font-size:18px;font-weight:800;color:#60a5fa;font-family:'JetBrains Mono',monospace;">{{ summary.cash }}</span>
+    </div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:4px;">
+      <span style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Giá trị CK</span>
+      <span style="font-size:18px;font-weight:800;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ summary.stockValue }}</span>
+    </div>
+    <div style="position:relative;display:flex;flex-direction:column;gap:4px;">
+      <span style="font-size:10px;font-weight:700;color:{{ th.textMuted }};text-transform:uppercase;">Tỷ lệ ký quỹ</span>
+      <span style="font-size:18px;font-weight:800;color:{{ summary.marginColor }};font-family:'JetBrains Mono',monospace;">{{ summary.marginPct }}</span>
+    </div>
+  </div>
+
+  <!-- ══ ROW: NAV CHART + ALLOCATION DONUT ══ -->
+  <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:14px;align-items:stretch;">
+
+    <!-- NAV GROWTH CHART -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="margin:0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Tăng trưởng tài sản (NAV)</h3>
+        <div style="display:flex;gap:4px;">
+          <sc-for list="{{ navTimeframes }}" as="tf" hint-placeholder-count="4">
+            <button onClick="{{ tf.onClick }}" style="background:{{ tf.bg }};color:{{ tf.fg }};border:1px solid {{ tf.border }};border-radius:5px;padding:4px 10px;font-size:10px;font-weight:700;cursor:pointer;">{{ tf.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <svg viewBox="0 0 1000 220" preserveAspectRatio="none" style="width:100%;height:220px;display:block;">
+        <defs>
+          <linearGradient id="navFill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#22c55e" stop-opacity="0.28"></stop>
+            <stop offset="100%" stop-color="#22c55e" stop-opacity="0"></stop>
+          </linearGradient>
+        </defs>
+        <sc-for list="{{ navGridLines }}" as="gl" hint-placeholder-count="4">
+          <line x1="0" y1="{{ gl.y }}" x2="1000" y2="{{ gl.y }}" stroke="{{ th.gridColor }}" stroke-width="1"></line>
+        </sc-for>
+        <path d="{{ navFillPath }}" fill="url(#navFill)"></path>
+        <polyline points="{{ navLine }}" fill="none" stroke="#22c55e" stroke-width="2.2"></polyline>
+      </svg>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;">
+        <span style="font-size:9px;color:{{ th.textMuted }};font-family:'JetBrains Mono',monospace;">{{ navDateRange.from }}</span>
+        <span style="font-size:9px;color:{{ th.textMuted }};font-family:'JetBrains Mono',monospace;">{{ navDateRange.to }}</span>
+      </div>
+    </div>
+
+    <!-- ASSET ALLOCATION DONUT -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;display:flex;flex-direction:column;">
+      <h3 style="margin:0 0 10px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Phân bổ tài sản</h3>
+      <div style="display:flex;align-items:center;gap:16px;flex:1;">
+        <svg viewBox="0 0 120 120" style="width:120px;height:120px;flex-shrink:0;">
+          <sc-for list="{{ donutSegments }}" as="seg" hint-placeholder-count="3">
+            <circle cx="60" cy="60" r="46" fill="none" stroke="{{ seg.color }}" stroke-width="18" stroke-dasharray="{{ seg.dash }}" stroke-dashoffset="{{ seg.offset }}" transform="rotate(-90 60 60)"></circle>
+          </sc-for>
+          <text x="60" y="56" text-anchor="middle" font-size="15" font-weight="800" fill="#eef1f6" font-family="JetBrains Mono, monospace">{{ summary.nav }}</text>
+          <text x="60" y="72" text-anchor="middle" font-size="8" fill="#8a94a6">TỔNG NAV</text>
+        </svg>
+        <div style="display:flex;flex-direction:column;gap:9px;flex:1;">
+          <sc-for list="{{ allocationLegend }}" as="al" hint-placeholder-count="3">
+            <div style="display:flex;flex-direction:column;gap:2px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <div style="display:flex;gap:6px;align-items:center;"><span style="width:9px;height:9px;border-radius:2px;background:{{ al.color }};"></span><span style="font-size:11px;color:{{ th.text }};font-weight:600;">{{ al.label }}</span></div>
+                <span style="font-size:11px;font-weight:700;color:{{ th.text }};font-family:'JetBrains Mono',monospace;">{{ al.pct }}%</span>
+              </div>
+              <span style="font-size:9.5px;color:{{ th.textMuted }};margin-left:15px;">{{ al.value }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ ROW: SECTOR ALLOCATION + CASH FLOW ══ -->
+  <div style="display:grid;grid-template-columns:1fr 1.3fr;gap:14px;">
+
+    <!-- SECTOR ALLOCATION BARS -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+      <h3 style="margin:0 0 12px 0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Phân bổ theo ngành</h3>
+      <div style="display:flex;flex-direction:column;gap:11px;">
+        <sc-for list="{{ sectorAlloc }}" as="sec" hint-placeholder-count="5">
+          <div>
+            <div style="display:flex;justify-content:space-between;margin-bottom:4px;">
+              <span style="font-size:11px;color:{{ th.text }};font-weight:600;">{{ sec.name }}</span>
+              <span style="font-size:11px;font-weight:700;color:{{ sec.color }};font-family:'JetBrains Mono',monospace;">{{ sec.pct }}%</span>
+            </div>
+            <div style="width:100%;height:7px;background:{{ th.iconBg }};border-radius:4px;overflow:hidden;">
+              <div style="height:100%;width:{{ sec.pct }}%;background:{{ sec.color }};border-radius:4px;"></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <!-- CASH FLOW CHART -->
+    <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+        <h3 style="margin:0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Dòng tiền theo tháng</h3>
+        <div style="display:flex;gap:12px;">
+          <div style="display:flex;gap:5px;align-items:center;"><span style="width:9px;height:9px;border-radius:2px;background:#22c55e;"></span><span style="font-size:9.5px;color:{{ th.textMuted }};">Nạp/Bán</span></div>
+          <div style="display:flex;gap:5px;align-items:center;"><span style="width:9px;height:9px;border-radius:2px;background:#f43f5e;"></span><span style="font-size:9.5px;color:{{ th.textMuted }};">Rút/Mua</span></div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-around;gap:10px;height:170px;">
+        <sc-for list="{{ cashFlow }}" as="cf" hint-placeholder-count="6">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:6px;flex:1;height:100%;justify-content:flex-end;">
+            <div style="display:flex;align-items:flex-end;gap:3px;height:130px;">
+              <div style="width:14px;height:{{ cf.inH }};background:#22c55e;border-radius:2px 2px 0 0;"></div>
+              <div style="width:14px;height:{{ cf.outH }};background:#f43f5e;border-radius:2px 2px 0 0;"></div>
+            </div>
+            <span style="font-size:9px;color:{{ th.textMuted }};font-weight:700;">{{ cf.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HOLDINGS TABLE ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:18px;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <h3 style="margin:0;font-size:12px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Danh mục nắm giữ</h3>
+      <span style="font-size:10px;color:{{ th.textMuted }};">{{ positions.length }} mã cổ phiếu</span>
+    </div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;font-size:11px;font-family:'JetBrains Mono',monospace;">
+        <thead>
+          <tr style="border-bottom:1px solid {{ th.cardBorder }};height:30px;">
+            <th style="text-align:left;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Mã CK</th>
+            <th style="text-align:right;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Số lượng</th>
+            <th style="text-align:right;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Giá vốn</th>
+            <th style="text-align:right;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Giá hiện tại</th>
+            <th style="text-align:center;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Xu hướng</th>
+            <th style="text-align:right;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Giá trị</th>
+            <th style="text-align:right;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Tỷ trọng</th>
+            <th style="text-align:right;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Lãi/Lỗ</th>
+            <th style="text-align:center;padding:6px 10px;color:{{ th.textMuted }};font-weight:700;">Thao tác</th>
+          </tr>
+        </thead>
+        <tbody>
+          <sc-for list="{{ positions }}" as="pos" hint-placeholder-count="6">
+            <tr style="border-bottom:1px solid {{ th.cardBorder }};height:44px;" style-hover="background:{{ th.rowHover }};">
+              <td style="padding:6px 10px;color:#60a5fa;font-weight:700;font-size:12px;">{{ pos.symbol }}</td>
+              <td style="padding:6px 10px;text-align:right;color:{{ th.text }};">{{ pos.quantity }}</td>
+              <td style="padding:6px 10px;text-align:right;color:{{ th.textMuted }};">{{ pos.costPrice }}</td>
+              <td style="padding:6px 10px;text-align:right;color:{{ pos.currentPrice.color }};font-weight:700;">{{ pos.currentPrice.value }}</td>
+              <td style="padding:6px 10px;text-align:center;">
+                <svg viewBox="0 0 60 20" preserveAspectRatio="none" style="width:60px;height:20px;display:inline-block;">
+                  <polyline points="{{ pos.sparkline }}" fill="none" stroke="{{ pos.plColor }}" stroke-width="1.6"></polyline>
+                </svg>
+              </td>
+              <td style="padding:6px 10px;text-align:right;color:{{ th.text }};font-weight:700;">{{ pos.value }}</td>
+              <td style="padding:6px 10px;text-align:right;">
+                <div style="display:flex;align-items:center;gap:6px;justify-content:flex-end;">
+                  <div style="width:36px;height:5px;background:{{ th.iconBg }};border-radius:3px;overflow:hidden;"><div style="height:100%;width:{{ pos.weightPct }}%;background:#60a5fa;"></div></div>
+                  <span style="color:{{ th.textMuted }};width:32px;">{{ pos.weightPct }}%</span>
+                </div>
+              </td>
+              <td style="padding:6px 10px;text-align:right;">
+                <div style="color:{{ pos.plColor }};font-weight:700;">{{ pos.pl }}</div>
+                <div style="color:{{ pos.plColor }};font-size:9.5px;">{{ pos.plPct }}</div>
+              </td>
+              <td style="padding:6px 10px;text-align:center;">
+                <div style="display:flex;gap:4px;justify-content:center;">
+                  <button onClick="{{ pos.onBuy }}" style="background:rgba(34,197,94,.15);border:1px solid #22c55e;color:#22c55e;border-radius:4px;padding:3px 8px;font-size:9px;font-weight:700;cursor:pointer;">Mua</button>
+                  <button onClick="{{ pos.onSell }}" style="background:rgba(244,63,94,.15);border:1px solid #f43f5e;color:#f43f5e;border-radius:4px;padding:3px 8px;font-size:9px;font-weight:700;cursor:pointer;">Bán</button>
+                </div>
+              </td>
+            </tr>
+          </sc-for>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { navTimeframe: '1Y', darkMode: true, showMoreTools: false };
+
+  posData = [
+    { symbol: 'VCB', qty: 500, cost: 79.50, current: 83.90 },
+    { symbol: 'ACB', qty: 800, cost: 23.20, current: 22.65 },
+    { symbol: 'FPT', qty: 200, cost: 135.00, current: 137.50 },
+    { symbol: 'HPG', qty: 1200, cost: 24.50, current: 24.10 },
+    { symbol: 'BID', qty: 400, cost: 44.80, current: 45.80 },
+    { symbol: 'MWG', qty: 150, cost: 90.20, current: 94.50 },
+  ];
+
+  seed = 7;
+  _rand() { this.seed = (this.seed*16807)%2147483647; return (this.seed-1)/2147483646; }
+  _genSeries(n, start, drift, vol) {
+    let v = start; const out=[v];
+    for (let i=1;i<n;i++){ v = Math.max(1, v + drift + (this._rand()-0.48)*vol); out.push(v); }
+    return out;
+  }
+
+  setNavTimeframe = (tf) => this.setState({ navTimeframe: tf });
+  toggleDark = () => this.setState(p => ({ darkMode: !p.darkMode }));
+  toggleMoreTools = () => this.setState(p => ({ showMoreTools: !p.showMoreTools }));
+  stopProp = (e) => { if (e && e.stopPropagation) e.stopPropagation(); };
+
+  _idxSeries(n, start, drift, vol) { return this._genSeries(n, start, drift, vol); }
+
+  renderVals() {
+    const { navTimeframe, darkMode, showMoreTools } = this.state;
+    const dark = darkMode;
+    const th = {
+      pageBg: dark ? '#0a0e14' : '#f0f4f8',
+      cardBg: dark ? '#131a24' : '#ffffff',
+      cardBorder: dark ? '#232b38' : '#e1e8f0',
+      rowHover: dark ? '#1a212c' : '#f4f7fb',
+      iconBg: dark ? '#1a212c' : '#eef2f7',
+      gridColor: dark ? '#1c2530' : '#e5eaf0',
+      text: dark ? '#eef1f6' : '#1e293b',
+      textMuted: dark ? '#8a94a6' : '#64748b',
+      heroGradient: dark ? 'linear-gradient(135deg,#0d1f16 0%,#12222e 55%,#131a24 100%)' : 'linear-gradient(135deg,#e7f7ee 0%,#eaf1fb 55%,#ffffff 100%)',
+      glowColor: '#22c55e',
+      toggleIcon: dark ? '☀️' : '🌙',
+      toggleLabel: dark ? 'LIGHT' : 'DARK',
+    };
+
+    const toggleMoreTools = this.toggleMoreTools;
+    const toggleDark = this.toggleDark;
+    const stopProp = this.stopProp;
+
+    const menuGroups = [
+      {
+        title: 'Phân tích', color: '#60a5fa',
+        items: [
+          { href:'Advanced Chart.dc.html', icon:'📈', iconBg:'rgba(96,165,250,.15)', label:'Chart nâng cao', desc:'Nến, MA, RSI, MACD, Bollinger' },
+          { href:'Market Heatmap.dc.html', icon:'🗺️', iconBg:'rgba(192,38,211,.15)', label:'Bản đồ nhiệt', desc:'Treemap toàn thị trường' },
+          { href:'Stock Comparison.dc.html', icon:'📊', iconBg:'rgba(96,165,250,.15)', label:'So sánh mã', desc:'So sánh hiệu suất 2-5 mã' },
+          { href:'Stock Screener.dc.html', icon:'🔍', iconBg:'rgba(96,165,250,.15)', label:'Screener', desc:'Lọc theo P/E, P/B, ROE...' },
+          { href:'Money Flow.dc.html', icon:'💵', iconBg:'rgba(34,197,94,.15)', label:'Dòng tiền', desc:'NN mua/bán theo ngành' },
+          { href:'Company Research.dc.html', icon:'🏢', iconBg:'rgba(168,85,247,.15)', label:'Nghiên cứu DN', desc:'BCTC & khuyến nghị CTCK' },
+          { href:'Portfolio Analytics.dc.html', icon:'📐', iconBg:'rgba(168,85,247,.15)', label:'Phân tích DM', desc:'Beta, Sharpe, Backtest' },
+        ],
+      },
+      {
+        title: 'Giao dịch', color: '#22c55e',
+        items: [
+          { href:'Trading Panel.dc.html', icon:'💰', iconBg:'rgba(34,197,94,.15)', label:'Đặt lệnh', desc:'Bảng giá & khớp lệnh' },
+          { href:'Derivatives Trading.dc.html', icon:'📉', iconBg:'rgba(249,115,22,.15)', label:'Phái sinh', desc:'VN30F, margin, T+0' },
+          { href:'Order Book.dc.html', icon:'📖', iconBg:'rgba(34,197,94,.15)', label:'Sổ lệnh', desc:'Độ sâu thị trường' },
+          { href:'Order History.dc.html', icon:'📋', iconBg:'rgba(34,197,94,.15)', label:'Lịch sử lệnh', desc:'Đã khớp, chờ khớp, đã hủy' },
+          { href:'Account Statement.dc.html', icon:'🧾', iconBg:'rgba(245,158,11,.15)', label:'Sao kê TK', desc:'Nạp/rút, giao dịch tiền' },
+          { href:'Watchlists.dc.html', icon:'⭐', iconBg:'rgba(245,158,11,.15)', label:'Watchlists', desc:'Danh mục theo dõi' },
+          { href:'Alerts Management.dc.html', icon:'🔔', iconBg:'rgba(245,158,11,.15)', label:'Cảnh báo giá', desc:'Quản lý các alert đã đặt' },
+        ],
+      },
+      {
+        title: 'Thông tin & Tài khoản', color:'#f59e0b',
+        items: [
+          { href:'Portfolio.dc.html', icon:'💼', iconBg:'rgba(34,197,94,.15)', label:'Danh mục đầu tư', desc:'NAV, phân bổ, lãi/lỗ' },
+          { href:'Market News.dc.html', icon:'📰', iconBg:'rgba(168,85,247,.15)', label:'Tin tức', desc:'Vĩ mô, doanh nghiệp, ngành' },
+          { href:'Event Calendar.dc.html', icon:'📅', iconBg:'rgba(168,85,247,.15)', label:'Lịch sự kiện', desc:'ĐHCĐ, cổ tức, chốt quyền' },
+          { href:'Account Settings.dc.html', icon:'⚙️', iconBg:'rgba(148,163,184,.15)', label:'Cài đặt TK', desc:'Hồ sơ, bảo mật, thông báo' },
+          { href:'Auth Flow.dc.html', icon:'🔑', iconBg:'rgba(148,163,184,.15)', label:'Đăng nhập/KYC', desc:'Đăng ký & xác thực' },
+        ],
+      },
+    ];
+    const toolCount = menuGroups.reduce((s,g)=>s+g.items.length,0);
+    const moreToolsBg = showMoreTools ? '#16457a' : '#0f1e36';
+    const moreToolsBorder = showMoreTools ? '#2563eb' : '#1a3050';
+    const moreToolsFg = showMoreTools ? '#dbeafe' : '#94a3b8';
+    const arrowRotate = showMoreTools ? 'rotate(180deg)' : 'rotate(0deg)';
+
+    // Header index sparkline ticker
+    const tickerDefs = [
+      { name:'VNINDEX', base: 1858, cur: 1862.08, chgAbs: '+4.27', chgPct: '+0.23%', val2: '15,657 B', fval: '-810 B', up: true },
+      { name:'HNX', base: 306.7, cur: 307.57, chgAbs: '+0.84', chgPct: '+0.27%', val2: '1,623 B', fval: '31 B', up: true },
+      { name:'UPCOM', base: 128.7, cur: 128.01, chgAbs: '-0.66', chgPct: '-0.51%', val2: '384 B', fval: '-9 B', up: false },
+    ];
+    const tickerIndices = tickerDefs.map((t, i) => {
+      const color = t.up ? '#22c55e' : '#f43f5e';
+      const series = this._idxSeries(24, t.base, (t.cur-t.base)/24, Math.abs(t.cur-t.base)*0.5 + t.base*0.0015);
+      series[series.length-1] = t.cur;
+      const maxV = Math.max(...series, t.base), minV = Math.min(...series, t.base);
+      const rangeV = maxV-minV || 1;
+      const yOf = v => 30 - ((v-minV)/rangeV)*26 - 2;
+      const pts = series.map((v,idx)=>`${(idx/(series.length-1))*80},${yOf(v)}`).join(' ');
+      const fill = `M0,32 L${series.map((v,idx)=>`${(idx/(series.length-1))*80},${yOf(v)}`).join(' L')} L80,32 Z`;
+      return {
+        name: t.name, val: t.cur.toLocaleString(undefined,{minimumFractionDigits:2,maximumFractionDigits:2}),
+        chg: `${t.chgAbs} (${t.chgPct})`, color, gradId: `tick${i}`, pts, fill,
+        refY: yOf(t.base), val2: t.val2, fval: t.fval, fvalColor: t.fval.trim().startsWith('-') ? '#f43f5e' : '#22c55e',
+      };
+    });
+
+    const positions = this.posData.map((p, i) => {
+      const value = p.qty * p.current * 1000;
+      const cost = p.qty * p.cost * 1000;
+      const pl = value - cost;
+      const plPct = (pl/cost*100);
+      const spark = this._genSeries(12, p.cost, (p.current-p.cost)/12, Math.abs(p.current-p.cost)*0.4 + 0.3);
+      const maxS = Math.max(...spark), minS = Math.min(...spark);
+      const rangeS = maxS-minS || 1;
+      const sparkline = spark.map((v,i)=>`${(i/11)*60},${20-((v-minS)/rangeS)*18}`).join(' ');
+      return {
+        symbol: p.symbol,
+        quantity: p.qty.toLocaleString(),
+        costPrice: p.cost.toFixed(2)+'đ',
+        currentPrice: { value: p.current.toFixed(2)+'đ', color: p.current>=p.cost?'#22c55e':'#f43f5e' },
+        value: value.toLocaleString()+'đ',
+        rawValue: value,
+        pl: (pl>=0?'+':'')+pl.toLocaleString(undefined,{maximumFractionDigits:0})+'đ',
+        plPct: (pl>=0?'+':'')+plPct.toFixed(1)+'%',
+        plColor: pl>=0?'#22c55e':'#f43f5e',
+        sparkline,
+        onBuy: () => location.href = `Trading Panel.dc.html?symbol=${p.symbol}`,
+        onSell: () => location.href = `Trading Panel.dc.html?symbol=${p.symbol}`,
+      };
+    });
+
+    const totalStockValue = positions.reduce((s,p)=>s+p.rawValue,0);
+    positions.forEach(p => { p.weightPct = ((p.rawValue/totalStockValue)*100).toFixed(1); });
+
+    const totalCost = this.posData.reduce((s,p)=>s+p.qty*p.cost*1000,0);
+    const totalPL = totalStockValue - totalCost;
+    const cash = 24650000;
+    const marginUsed = 8200000;
+    const nav = totalStockValue + cash;
+
+    const navPoints = this._genSeries(60, nav*0.72, (nav*0.28)/60, nav*0.012);
+    navPoints[navPoints.length-1] = nav;
+    const maxNav = Math.max(...navPoints), minNav = Math.min(...navPoints);
+    const rangeNav = maxNav-minNav || 1;
+    const yOf = v => 220 - ((v-minNav)/rangeNav)*210 - 5;
+    const navLine = navPoints.map((v,i)=>`${(i/59)*1000},${yOf(v)}`).join(' ');
+    const navFillPath = `M0,220 L${navPoints.map((v,i)=>`${(i/59)*1000},${yOf(v)}`).join(' L')} L1000,220 Z`;
+    const navGridLines = [0,1,2,3].map(i=>({y:(220/3)*i}));
+
+    const navTimeframes = ['1M','3M','6M','1Y'].map(t => ({
+      label: t, onClick: () => this.setNavTimeframe(t),
+      bg: navTimeframe===t ? '#2563eb' : th.iconBg,
+      border: navTimeframe===t ? '#2563eb' : th.cardBorder,
+      fg: navTimeframe===t ? '#fff' : th.textMuted,
+    }));
+
+    // Asset allocation donut
+    const allocData = [
+      { label: 'Cổ phiếu', value: totalStockValue, color: '#3b82f6' },
+      { label: 'Tiền mặt', value: cash, color: '#22c55e' },
+      { label: 'Ký quỹ (Margin)', value: marginUsed, color: '#f59e0b' },
+    ];
+    const allocTotal = allocData.reduce((s,a)=>s+a.value,0);
+    const circumference = 2*Math.PI*46;
+    let cumOffset = 0;
+    const donutSegments = allocData.map(a => {
+      const pct = a.value/allocTotal;
+      const dashLen = pct*circumference;
+      const seg = { color: a.color, dash: `${dashLen} ${circumference-dashLen}`, offset: -cumOffset };
+      cumOffset += dashLen;
+      return seg;
+    });
+    const allocationLegend = allocData.map(a => ({
+      label: a.label, color: a.color,
+      pct: ((a.value/allocTotal)*100).toFixed(1),
+      value: a.value.toLocaleString()+'đ',
+    }));
+
+    const sectorAlloc = [
+      { name: 'Ngân hàng', pct: 52, color: '#3b82f6' },
+      { name: 'Công nghệ', pct: 18, color: '#8b5cf6' },
+      { name: 'Thép & Vật liệu', pct: 16, color: '#f59e0b' },
+      { name: 'Bán lẻ', pct: 9, color: '#ec4899' },
+      { name: 'Khác', pct: 5, color: '#6b7280' },
+    ];
+
+    const months = ['02/26','03/26','04/26','05/26','06/26','07/26'];
+    const cashFlow = months.map(m => {
+      const inflow = 5 + this._rand()*20;
+      const outflow = 4 + this._rand()*18;
+      const maxCF = 30;
+      return {
+        label: m,
+        inH: `${(inflow/maxCF)*130}px`,
+        outH: `${(outflow/maxCF)*130}px`,
+      };
+    });
+
+    return {
+      th, toggleMoreTools, toggleDark, stopProp, showMoreTools, menuGroups, toolCount,
+      moreToolsBg, moreToolsBorder, moreToolsFg, arrowRotate, tickerIndices,
+      summary: {
+        nav: (nav/1000000).toFixed(1)+'M',
+        dayChange: '+1,240,000đ',
+        dayColor: '#22c55e',
+        dayPct: '+0.85%',
+        totalPL: (totalPL>=0?'+':'')+totalPL.toLocaleString(undefined,{maximumFractionDigits:0})+'đ',
+        plColor: totalPL>=0?'#22c55e':'#f43f5e',
+        roi: (totalPL>=0?'+':'')+(totalPL/totalCost*100).toFixed(1)+'%',
+        cash: cash.toLocaleString()+'đ',
+        stockValue: totalStockValue.toLocaleString()+'đ',
+        marginPct: (marginUsed/nav*100).toFixed(1)+'%',
+        marginColor: '#f59e0b',
+      },
+      navTimeframes,
+      navLine, navFillPath, navGridLines,
+      navDateRange: { from: '01/07/2025', to: '03/07/2026' },
+      donutSegments, allocationLegend,
+      sectorAlloc,
+      cashFlow,
+      positions,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

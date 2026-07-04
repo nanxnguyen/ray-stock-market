@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import type {
   ThemeTokens,
   StockState,
@@ -7,6 +7,7 @@ import type {
   MarketIndexView,
   ChartState,
   ChartView,
+  TradeHistoryItem,
 } from './types/priceboard'
 import type { VietcapFilterGroup } from './types/vietcap'
 import { VN30_SYMBOLS, createInitialIndices } from './data/mockMarket'
@@ -14,15 +15,7 @@ import { createInitialStocks, tickStocks, tickIndices } from './lib/marketSimula
 import { formatPrice, formatQuantity, priceColor, toPolylinePoints, toAreaPath, minMaxRange } from './lib/marketFormat'
 import { filterStockStates } from './lib/filterStocks'
 import { getAllCoveredWarrants } from './lib/vietcapNormalize'
-import TopBar from './components/TopBar'
-import IndexStrip from './components/IndexStrip'
-import FilterBar from './components/FilterBar'
-import StockTable from './components/StockTable'
-import FooterBar from './components/FooterBar'
-import GridView from './components/GridView'
-import HeatmapView from './components/HeatmapView'
-import IntradayChartModal from './components/IntradayChartModal'
-import TradingViewModal from './components/TradingViewModal'
+import AppRoutes from './router'
 import './App.css'
 
 function getTheme(dark: boolean): ThemeTokens {
@@ -155,10 +148,17 @@ function App() {
     return { group, value, searchText: '', watchlist: [] }
   })
   const [chart, setChart] = useState<ChartState>({ open: false, sym: '', range: '1Đ' })
-  const [viewMode, setViewMode] = useState<'table' | 'grid' | 'heat'>('table')
+  const [viewMode, setViewMode] = useState<'table' | 'grid' | 'heat' | 'movers'>('table')
   const [idxChart, setIdxChart] = useState<{ open: boolean; sym: string; color: string }>({ open: false, sym: '', color: '' })
   const [showSector, setShowSector] = useState(false)
   const [activeSector, setActiveSector] = useState('Tất cả')
+  const [showAdvFilter, setShowAdvFilter] = useState(false)
+  const [showTradeHist, setShowTradeHist] = useState(false)
+  const [filterPctFrom, setFilterPctFrom] = useState('')
+  const [filterPctTo, setFilterPctTo] = useState('')
+  const [filterVolMin, setFilterVolMin] = useState('')
+  const [filterPriceMin, setFilterPriceMin] = useState('')
+  const [filterPriceMax, setFilterPriceMax] = useState('')
 
   const th = useMemo(() => getTheme(darkMode), [darkMode])
 
@@ -194,7 +194,25 @@ function App() {
     window.history.replaceState({}, '', newUrl)
   }, [filter.group, filter.value])
 
-  const toggleDark = () => setDarkMode((p) => !p)
+  const toggleDark = useCallback(() => setDarkMode((p) => !p), [])
+
+  const handleIndexClick = useCallback((sym: string, color: string) => {
+    setIdxChart({ open: true, sym, color })
+  }, [])
+
+  const onToggleSector = useCallback(() => setShowSector(p => !p), [])
+  const onToggleAdvFilter = useCallback(() => setShowAdvFilter(p => !p), [])
+  const onToggleTradeHist = useCallback(() => setShowTradeHist(p => !p), [])
+  const onCloseIdxChart = useCallback(() => setIdxChart({ open: false, sym: '', color: '' }), [])
+
+  const indexViews = useMemo(
+    () => mapIndexViews(indices, handleIndexClick),
+    [indices, handleIndexClick]
+  )
+
+  // Ref to cache previous row objects for referential equality
+  const prevRowsRef = useRef<StockRow[]>([])
+  const prevWatchlistRowsRef = useRef<StockRow[] | null>(null)
 
   const allStocks = useMemo(() => {
     // Add CW data when filter is CW
@@ -242,7 +260,20 @@ function App() {
     
     // Filter first, then format
     const filteredStocks = filterStockStates(stocks, filter, VN30_SYMBOLS)
-    return mapStockRows(filteredStocks, darkMode, th, openChart)
+    const newRows = mapStockRows(filteredStocks, darkMode, th, openChart)
+
+    // Reuse unchanged row objects from previous render for referential equality
+    const prevRows = prevRowsRef.current
+    const prevMap = new Map(prevRows.map(r => [r.sym, r]))
+    const stableRows = newRows.map(row => {
+      const prev = prevMap.get(row.sym)
+      if (prev && prev.lp === row.lp && prev.pct === row.pct && prev.bg === row.bg && prev.fbuy === row.fbuy && prev.fsell === row.fsell) {
+        return prev
+      }
+      return row
+    })
+    prevRowsRef.current = stableRows
+    return stableRows
   }, [stocks, darkMode, th, openChart, filter])
 
   const handleFilterChange = useCallback((group: VietcapFilterGroup, value?: string) => {
@@ -261,6 +292,88 @@ function App() {
       watchlist: [...new Set([...prev.watchlist, symbol])],
     }))
   }, [])
+
+  // Advanced filter
+  const prevFilteredRef = useRef(allStocks)
+  const filteredStocks = useMemo(() => {
+    const hasFilter = filterPctFrom || filterPctTo || filterVolMin || filterPriceMin || filterPriceMax
+    if (!hasFilter) {
+      prevFilteredRef.current = allStocks
+      return allStocks
+    }
+    let result = allStocks
+    if (filterPctFrom) result = result.filter(s => parseFloat(s.pct) >= parseFloat(filterPctFrom))
+    if (filterPctTo) result = result.filter(s => parseFloat(s.pct) <= parseFloat(filterPctTo))
+    if (filterVolMin) result = result.filter(s => {
+      const vol = parseInt(s.tvol.replace(/,/g, '')) || 0
+      return vol >= parseFloat(filterVolMin) * 1000000
+    })
+    if (filterPriceMin) result = result.filter(s => parseFloat(s.lp) >= parseFloat(filterPriceMin))
+    if (filterPriceMax) result = result.filter(s => parseFloat(s.lp) <= parseFloat(filterPriceMax))
+    prevFilteredRef.current = result
+    return result
+  }, [allStocks, filterPctFrom, filterPctTo, filterVolMin, filterPriceMin, filterPriceMax])
+
+  // Watchlist toggle
+  const toggleWatchlist = useCallback((sym: string) => {
+    setFilter(prev => ({
+      ...prev,
+      watchlist: prev.watchlist.includes(sym)
+        ? prev.watchlist.filter(s => s !== sym)
+        : [...prev.watchlist, sym],
+    }))
+  }, [])
+
+  // Add watchlist info to rows
+  const prevWatchlistRef = useRef(filter.watchlist)
+  const stocksWithWatchlist = useMemo(() => {
+    const watchlistChanged = prevWatchlistRef.current !== filter.watchlist
+    prevWatchlistRef.current = filter.watchlist
+    if (prevWatchlistRowsRef.current && !watchlistChanged && filteredStocks === prevFilteredRef.current) {
+      // Nothing changed — return previous result for referential equality
+      return prevWatchlistRowsRef.current
+    }
+    const result = filteredStocks.map(s => ({
+      ...s,
+      watchlisted: filter.watchlist.includes(s.sym),
+      onToggleWatchlist: () => toggleWatchlist(s.sym),
+    }))
+    prevWatchlistRowsRef.current = result
+    return result
+  }, [filteredStocks, filter.watchlist, toggleWatchlist])
+
+  // Reset filters
+  const resetFilters = useCallback(() => {
+    setFilterPctFrom('')
+    setFilterPctTo('')
+    setFilterVolMin('')
+    setFilterPriceMin('')
+    setFilterPriceMax('')
+  }, [])
+
+  // CSV export
+  const exportCSV = useCallback(() => {
+    const headers = ['Mã CK', 'Giá', '% Thay đổi', 'KLGD', 'Cao', 'Thấp', 'NN Mua', 'NN Bán']
+    const rows = stocksWithWatchlist.map(s => [
+      s.sym, s.lp, s.pct, s.tvol, s.hi, s.lo, s.fbuy, s.fsell,
+    ])
+    const csv = [headers, ...rows].map(r => r.join(',')).join('\n')
+    const blob = new Blob([csv], { type: 'text/csv' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `bang-dien-${new Date().toISOString().split('T')[0]}.csv`
+    a.click()
+  }, [stocksWithWatchlist])
+
+  // Trade history (mock)
+  const tradeHistory = useMemo<TradeHistoryItem[]>(() => [
+    { sym: 'ACB', time: '15:29', price: '22.65', qty: '5,200', side: 'SELL', sideColor: '#f43f5e', priceColor: '#f43f5e', timeColor: '#94a3b8', volColor: '#3a5570' },
+    { sym: 'VCB', time: '15:28', price: '81.50', qty: '1,800', side: 'BUY', sideColor: '#22c55e', priceColor: '#22c55e', timeColor: '#94a3b8', volColor: '#3a5570' },
+    { sym: 'FPT', time: '15:27', price: '137.50', qty: '3,400', side: 'BUY', sideColor: '#22c55e', priceColor: '#22c55e', timeColor: '#94a3b8', volColor: '#3a5570' },
+    { sym: 'HPG', time: '15:26', price: '24.10', qty: '8,900', side: 'SELL', sideColor: '#f43f5e', priceColor: '#f43f5e', timeColor: '#94a3b8', volColor: '#3a5570' },
+    { sym: 'BID', time: '15:25', price: '45.80', qty: '2,100', side: 'BUY', sideColor: '#22c55e', priceColor: '#22c55e', timeColor: '#94a3b8', volColor: '#3a5570' },
+  ], [])
 
   const chartStock = useMemo(() => {
     if (!chart.open || !chart.sym) return null
@@ -333,43 +446,42 @@ function App() {
   }, [chartStock, chart.range, th])
 
   return (
-    <div style={{
-      display: 'flex', flexDirection: 'column', height: '100vh',
-      fontFamily: "'Inter', system-ui, sans-serif", color: th.text,
-      overflow: 'hidden', background: th.appBg,
-    }}>
-      <TopBar th={th} toggleDark={toggleDark} />
-      <IndexStrip
-        indices={mapIndexViews(indices, (sym, color) => setIdxChart({ open: true, sym, color }))}
-        th={th}
-      />
-      <FilterBar
-        th={th}
-        filter={filter}
-        onFilterChange={handleFilterChange}
-        onSymbolAdd={handleSymbolAdd}
-        viewMode={viewMode}
-        onViewModeChange={setViewMode}
-        showSector={showSector}
-        onToggleSector={() => setShowSector(p => !p)}
-        activeSector={activeSector}
-        onSectorChange={setActiveSector}
-      />
-      {viewMode === 'table' && <StockTable rows={allStocks} th={th} />}
-      {viewMode === 'grid' && <GridView rows={allStocks} th={th} />}
-      {viewMode === 'heat' && <HeatmapView rows={allStocks} th={th} />}
-      <FooterBar />
-      {chartView && (
-        <IntradayChartModal chart={chartView} onClose={closeChart} />
-      )}
-      {idxChart.open && (
-        <TradingViewModal
-          sym={idxChart.sym}
-          tvSymbol={idxChart.sym}
-          onClose={() => setIdxChart({ open: false, sym: '', color: '' })}
-        />
-      )}
-    </div>
+    <AppRoutes
+      th={th}
+      toggleDark={toggleDark}
+      indices={indexViews}
+      filter={filter}
+      onFilterChange={handleFilterChange}
+      onSymbolAdd={handleSymbolAdd}
+      viewMode={viewMode}
+      onViewModeChange={setViewMode}
+      showSector={showSector}
+      onToggleSector={onToggleSector}
+      activeSector={activeSector}
+      onSectorChange={setActiveSector}
+      showAdvFilter={showAdvFilter}
+      onToggleAdvFilter={onToggleAdvFilter}
+      showTradeHist={showTradeHist}
+      onToggleTradeHist={onToggleTradeHist}
+      onExportCSV={exportCSV}
+      filterPctFrom={filterPctFrom}
+      filterPctTo={filterPctTo}
+      filterVolMin={filterVolMin}
+      filterPriceMin={filterPriceMin}
+      filterPriceMax={filterPriceMax}
+      onSetPctFrom={setFilterPctFrom}
+      onSetPctTo={setFilterPctTo}
+      onSetVolMin={setFilterVolMin}
+      onSetPriceMin={setFilterPriceMin}
+      onSetPriceMax={setFilterPriceMax}
+      onResetFilters={resetFilters}
+      tradeHistory={tradeHistory}
+      stocksWithWatchlist={stocksWithWatchlist}
+      chartView={chartView}
+      onCloseChart={closeChart}
+      idxChart={idxChart}
+      onCloseIdxChart={onCloseIdxChart}
+    />
   )
 }
 

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{margin:0;padding:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0a0e14;color:#eef1f6;}
+</style>
+</helmet>
+
+<div style="width:100%;min-height:100vh;background:{{ th.pageBg }};padding:24px;">
+<div style="max-width:1680px;margin:0 auto;display:flex;flex-direction:column;gap:16px;">
+
+  <div style="background:#0d1420;border:1px solid #1c2534;border-radius:12px;overflow:hidden;">
+    <div style="display:flex;align-items:center;gap:22px;padding:10px 18px;border-bottom:1px solid #1c2534;overflow-x:auto;">
+      <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;">
+        <div style="width:24px;height:24px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
+        </div>
+        <span style="font-size:13px;font-weight:800;color:#fff;white-space:nowrap;">Ray <span style="color:#22c55e;">Stock</span></span>
+      </div>
+      <div style="display:flex;flex-shrink:0;">
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">VNINDEX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">1,862.08</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+4.27 +0.23%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;border-right:1px solid #1c2534;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">HNX</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">307.57</span></div>
+          <span style="font-size:9.5px;color:#22c55e;font-weight:700;">+0.84 +0.27%</span>
+        </div>
+        <div style="display:flex;flex-direction:column;padding:0 16px;min-width:118px;">
+          <div style="display:flex;align-items:baseline;gap:7px;"><span style="font-size:9.5px;font-weight:700;color:#8a94a6;letter-spacing:.3px;">UPCOM</span><span style="font-size:13px;font-weight:800;color:#f43f5e;font-family:'JetBrains Mono',monospace;">128.01</span></div>
+          <span style="font-size:9.5px;color:#f43f5e;font-weight:700;">-0.66 -0.51%</span>
+        </div>
+      </div>
+      <span style="margin-left:auto;font-size:10px;color:#4a6080;font-family:'JetBrains Mono',monospace;flex-shrink:0;">04/07/2026 · 15:00:00</span>
+    </div>
+    <div style="display:flex;gap:6px;padding:8px 14px;overflow-x:auto;">
+      <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
+      <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
+      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
+      <a href="Market Heatmap.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🗺️ Heatmap</a>
+      <a href="Stock Comparison.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📊 So sánh</a>
+      <a href="Stock Screener.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🔍 Screener</a>
+      <a href="Market News.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📰 Tin tức</a>
+      <a href="Event Calendar.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📅 Sự kiện</a>
+      <a href="Account Settings.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:#141d2e;border:1px solid #1c2534;color:#c3ccd9;border-radius:7px;padding:6px 12px;font-size:11px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">⚙️ Cài đặt</a>
+    </div>
+  </div>
+  <h1 style="margin:0;font-size:18px;font-weight:800;color:{{ th.text }};">QUẢN LÝ CẢNH BÁO GIÁ</h1>
+
+  <!-- ══ ADD NEW ALERT ══ -->
+  <div style="background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:12px;padding:16px;">
+    <h3 style="margin:0 0 10px 0;font-size:11px;font-weight:700;color:{{ th.text }};text-transform:uppercase;">Đặt cảnh báo mới</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end;">
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Mã CK</label>
+        <input type="text" value="{{ newSymbol }}" onInput="{{ setNewSymbol }}" placeholder="VCB" style="width:90px;padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:12px;"/>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Điều kiện</label>
+        <select value="{{ newCondition }}" onChange="{{ setNewCondition }}" style="padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:12px;">
+          <option value="above">Giá lên trên</option>
+          <option value="below">Giá xuống dưới</option>
+          <option value="pct_up">Tăng &gt;= %</option>
+          <option value="pct_down">Giảm &gt;= %</option>
+        </select>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:4px;">
+        <label style="font-size:9px;color:{{ th.textMuted }};font-weight:700;text-transform:uppercase;">Giá trị</label>
+        <input type="text" value="{{ newValue }}" onInput="{{ setNewValue }}" placeholder="85.0" style="width:100px;padding:8px 10px;border:1px solid {{ th.cardBorder }};border-radius:7px;background:{{ th.inputBg }};color:{{ th.text }};font-size:12px;"/>
+      </div>
+      <button onClick="{{ addAlert }}" style="background:#3b82f6;border:none;color:#fff;border-radius:7px;padding:9px 18px;font-size:12px;font-weight:700;cursor:pointer;">+ Thêm cảnh báo</button>
+    </div>
+  </div>
+
+  <!-- ══ SUMMARY ══ -->
+  <div style="display:flex;gap:10px;">
+    <div style="flex:1;background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:12px 16px;">
+      <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Đang hoạt động</span>
+      <div style="font-size:18px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ activeCount }}</div>
+    </div>
+    <div style="flex:1;background:{{ th.cardBg }};border:1px solid {{ th.cardBorder }};border-radius:10px;padding:12px 16px;">
+      <span style="font-size:9px;color:{{ th.textMuted }};text-transform:uppercase;font-weight:700;">Đã kích hoạt hôm nay</span>
+      <div style="font-size:18px;font-weight:800;color:#f59e0b;font-family:'JetBrains Mono',monospace;">{{ triggeredCount }}</div>
+    </div>
+  </div>
+
+  <!-- ══ ALERTS LIST ══ -->
+  <div style="display:flex;flex-direction:column;gap:8px;">
+    <sc-for list="{{ alerts }}" as="a" hint-placeholder-count="6">
+      <div style="background:{{ th.cardBg }};border:1px solid {{ a.borderColor }};border-radius:10px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;gap:10px;">
+        <div style="display:flex;align-items:center;gap:12px;">
+          <span style="font-size:13px;font-weight:700;color:#60a5fa;font-family:'JetBrains Mono',monospace;width:44px;">{{ a.symbol }}</span>
+          <div style="display:flex;flex-direction:column;gap:2px;">
+            <span style="font-size:11.5px;color:{{ th.text }};font-weight:600;">{{ a.condition }}</span>
+            <span style="font-size:9.5px;color:{{ th.textMuted }};">Tạo lúc {{ a.createdAt }}{{ a.triggeredAt }}</span>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span style="font-size:9px;font-weight:700;color:{{ a.statusColor }};background:{{ a.statusBg }};padding:3px 9px;border-radius:12px;">{{ a.statusLabel }}</span>
+          <div onClick="{{ a.onToggle }}" style="width:36px;height:20px;border-radius:10px;background:{{ a.toggleBg }};position:relative;cursor:pointer;transition:background .2s;">
+            <div style="width:16px;height:16px;border-radius:50%;background:#fff;position:absolute;top:2px;left:{{ a.toggleLeft }};transition:left .2s;"></div>
+          </div>
+          <button onClick="{{ a.onDelete }}" style="background:transparent;border:none;color:{{ th.textMuted }};cursor:pointer;font-size:15px;padding:2px;">🗑</button>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    newSymbol: '', newCondition: 'above', newValue: '',
+    alerts: [
+      { id:1, symbol:'VCB', condition:'Giá lên trên 85.00đ', createdAt:'01/07 09:00', active:true, triggered:false },
+      { id:2, symbol:'ACB', condition:'Giá xuống dưới 21.00đ', createdAt:'01/07 09:15', active:true, triggered:false },
+      { id:3, symbol:'FPT', condition:'Tăng ≥ 5% trong phiên', createdAt:'30/06 14:20', active:true, triggered:true, triggeredAt:'10:32 hôm nay' },
+      { id:4, symbol:'HPG', condition:'Giá xuống dưới 22.50đ', createdAt:'29/06 11:00', active:false, triggered:false },
+      { id:5, symbol:'MWG', condition:'Giá lên trên 100.00đ', createdAt:'28/06 16:45', active:true, triggered:false },
+      { id:6, symbol:'VNM', condition:'Giảm ≥ 3% trong phiên', createdAt:'27/06 08:30', active:true, triggered:true, triggeredAt:'09:48 hôm nay' },
+    ],
+  };
+
+  setNewSymbol = (e) => this.setState({ newSymbol: e.target.value.toUpperCase() });
+  setNewCondition = (e) => this.setState({ newCondition: e.target.value });
+  setNewValue = (e) => this.setState({ newValue: e.target.value });
+  addAlert = () => {
+    const { newSymbol, newCondition, newValue, alerts } = this.state;
+    if (!newSymbol || !newValue) return;
+    const condLabel = { above:'Giá lên trên', below:'Giá xuống dưới', pct_up:'Tăng ≥', pct_down:'Giảm ≥' }[newCondition];
+    const suffix = newCondition.startsWith('pct') ? '%' : 'đ';
+    this.setState({
+      alerts: [{ id: Date.now(), symbol:newSymbol, condition:`${condLabel} ${newValue}${suffix}`, createdAt:'Vừa xong', active:true, triggered:false }, ...alerts],
+      newSymbol: '', newValue: '',
+    });
+  };
+  toggleAlert = (id) => this.setState(s => ({ alerts: s.alerts.map(a => a.id===id ? {...a, active:!a.active} : a) }));
+  deleteAlert = (id) => this.setState(s => ({ alerts: s.alerts.filter(a => a.id!==id) }));
+
+  renderVals() {
+    const { newSymbol, newCondition, newValue, alerts } = this.state;
+    const th = {
+      pageBg: '#0a0e14',
+      cardBg: '#131a24',
+      cardBorder: '#232b38',
+      inputBg: '#0f1419',
+      text: '#eef1f6',
+      textMuted: '#8a94a6',
+    };
+
+    const alertsOut = alerts.map(a => ({
+      ...a,
+      borderColor: a.triggered ? '#f59e0b' : th.cardBorder,
+      statusLabel: a.triggered ? 'ĐÃ KÍCH HOẠT' : a.active ? 'ĐANG THEO DÕI' : 'TẠM DỪNG',
+      statusColor: a.triggered ? '#f59e0b' : a.active ? '#22c55e' : th.textMuted,
+      statusBg: a.triggered ? 'rgba(245,158,11,.15)' : a.active ? 'rgba(34,197,94,.15)' : 'rgba(138,148,166,.15)',
+      toggleBg: a.active ? '#22c55e' : '#2a3340',
+      toggleLeft: a.active ? '18px' : '2px',
+      triggeredAt: a.triggeredAt ? ` · Kích hoạt ${a.triggeredAt}` : '',
+      onToggle: () => this.toggleAlert(a.id),
+      onDelete: () => this.deleteAlert(a.id),
+    }));
+
+    return {
+      th,
+      newSymbol, newCondition, newValue,
+      setNewSymbol: this.setNewSymbol, setNewCondition: this.setNewCondition, setNewValue: this.setNewValue,
+      addAlert: this.addAlert,
+      alerts: alertsOut,
+      activeCount: alerts.filter(a=>a.active).length,
+      triggeredCount: alerts.filter(a=>a.triggered).length,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

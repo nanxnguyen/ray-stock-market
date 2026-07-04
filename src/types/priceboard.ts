@@ -114,6 +114,8 @@ export type StockRow = {
   sparkPts: string
   sparkFill: string
   onChart: () => void
+  watchlisted?: boolean
+  onToggleWatchlist?: () => void
 }
 
 export type MarketIndexState = {
@@ -163,4 +165,33 @@ export type ChartView = {
   vbars: { x: string; y: string; w: string; h: string; c: string }[]
   stats: { label: string; val: string; color: string }[]
   ranges: { label: string; bg: string; fg: string; border: string; onClick: () => void }[]
+}
+
+export type TopMoverItem = {
+  sym: string
+  pct: string
+  lp: string
+  vol: string
+  pc: string
+  onChart: () => void
+}
+
+export type TradeHistoryItem = {
+  sym: string
+  time: string
+  price: string
+  qty: string
+  side: string
+  sideColor: string
+  priceColor: string
+  timeColor: string
+  volColor: string
+}
+
+export type BreadthData = {
+  label: string
+  upCnt: number
+  total: number
+  upPct: number
+  upColor: string
 }
