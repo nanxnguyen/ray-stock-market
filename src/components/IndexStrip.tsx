@@ -28,11 +28,11 @@ function IndexStripInner({ indices, th }: Props) {
             </div>
             <div style={{ fontSize: 20, fontWeight: 700, color: idx.color, fontFamily: "'JetBrains Mono', monospace", fontVariantNumeric: 'tabular-nums', lineHeight: 1.15 }}>{idx.val}</div>
             <div style={{ fontSize: 10, color: idx.color, fontWeight: 600 }}>{idx.chg}</div>
-            <div style={{ fontSize: 9, color: '#64748b' }}>KL: {idx.vol}</div>
+            <div style={{ fontSize: 9, color: 'var(--ds-color-text-muted)' }}>KL: {idx.vol}</div>
             <div style={{ display: 'flex', gap: 5, fontSize: 9, fontWeight: 700, marginTop: 1 }}>
-              <span style={{ color: '#4ade80' }}>▲{idx.up}</span>
-              <span style={{ color: '#f87171' }}>▼{idx.dn}</span>
-              <span style={{ color: '#94a3b8' }}>──{idx.nc}</span>
+              <span style={{ color: 'var(--ds-color-green-400)' }}>▲{idx.up}</span>
+              <span style={{ color: 'var(--ds-color-red-400)' }}>▼{idx.dn}</span>
+              <span style={{ color: 'var(--ds-color-text-secondary)' }}>──{idx.nc}</span>
             </div>
             <svg viewBox="0 0 100 22" preserveAspectRatio="none" style={{ width: '100%', height: 20, display: 'block', marginTop: 2 }}>
               <defs>

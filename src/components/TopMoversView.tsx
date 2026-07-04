@@ -37,9 +37,9 @@ function TopMoversViewInner({ rows, th }: Props) {
     const ncCount = rows.length - upCount - dnCount
     const total = rows.length || 1
     const breadth = [
-      { label: 'Tăng', upCnt: upCount, total, upPct: (upCount / total) * 100, upColor: '#22c55e' },
-      { label: 'Giảm', upCnt: dnCount, total, upPct: (dnCount / total) * 100, upColor: '#f43f5e' },
-      { label: 'Đứng', upCnt: ncCount, total, upPct: (ncCount / total) * 100, upColor: '#fbbf24' },
+      { label: 'Tăng', upCnt: upCount, total, upPct: (upCount / total) * 100, upColor: 'var(--ds-color-market-up)' },
+      { label: 'Giảm', upCnt: dnCount, total, upPct: (dnCount / total) * 100, upColor: 'var(--ds-color-market-down)' },
+      { label: 'Đứng', upCnt: ncCount, total, upPct: (ncCount / total) * 100, upColor: 'var(--ds-color-yellow-400)' },
     ]
 
     return { topGainers: gainers, topLosers: losers, topVolume: volume, breadthData: breadth }
@@ -48,7 +48,7 @@ function TopMoversViewInner({ rows, th }: Props) {
   const cardHoverHandlers = useMemo(() => ({
     onMouseEnter: (e: React.MouseEvent<HTMLDivElement>) => {
       e.currentTarget.style.background = th.rowHover
-      e.currentTarget.style.borderColor = '#2563eb'
+      e.currentTarget.style.borderColor = 'var(--ds-color-blue-600)'
     },
     onMouseLeave: (e: React.MouseEvent<HTMLDivElement>) => {
       e.currentTarget.style.background = th.appBg
@@ -61,7 +61,7 @@ function TopMoversViewInner({ rows, th }: Props) {
       <div style={{ padding: 14, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, flex: 1 }}>
         {/* Top gainers */}
         <div style={{ background: th.navBg, border: `1px solid ${th.cellBorder}`, borderRadius: 8, padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: '#22c55e', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u25B2'} Top Tăng Mạnh</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ds-color-market-up)', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u25B2'} Top Tăng Mạnh</div>
           {topGainers.map((tg) => (
             <div
               key={tg.sym}
@@ -70,8 +70,8 @@ function TopMoversViewInner({ rows, th }: Props) {
               style={{ background: th.appBg, border: `1px solid ${th.cellBorder}`, borderRadius: 6, padding: 8, cursor: 'pointer', transition: 'all .2s' }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <span style={{ fontWeight: 700, color: '#60a5fa' }}>{tg.sym}</span>
-                <span style={{ fontSize: 10, color: '#22c55e', fontWeight: 700 }}>+{tg.pct}%</span>
+                <span style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{tg.sym}</span>
+                <span style={{ fontSize: 10, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+{tg.pct}%</span>
               </div>
               <div style={{ fontSize: 12, color: th.text, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>{tg.lp}</div>
               <div style={{ fontSize: 9, color: th.textMuted, marginTop: 3 }}>KL: {tg.vol}</div>
@@ -81,7 +81,7 @@ function TopMoversViewInner({ rows, th }: Props) {
 
         {/* Top losers */}
         <div style={{ background: th.navBg, border: `1px solid ${th.cellBorder}`, borderRadius: 8, padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: '#f43f5e', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u25BC'} Top Giảm Mạnh</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ds-color-market-down)', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u25BC'} Top Giảm Mạnh</div>
           {topLosers.map((tl) => (
             <div
               key={tl.sym}
@@ -90,8 +90,8 @@ function TopMoversViewInner({ rows, th }: Props) {
               style={{ background: th.appBg, border: `1px solid ${th.cellBorder}`, borderRadius: 6, padding: 8, cursor: 'pointer', transition: 'all .2s' }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <span style={{ fontWeight: 700, color: '#60a5fa' }}>{tl.sym}</span>
-                <span style={{ fontSize: 10, color: '#f43f5e', fontWeight: 700 }}>{tl.pct}%</span>
+                <span style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{tl.sym}</span>
+                <span style={{ fontSize: 10, color: 'var(--ds-color-market-down)', fontWeight: 700 }}>{tl.pct}%</span>
               </div>
               <div style={{ fontSize: 12, color: th.text, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>{tl.lp}</div>
               <div style={{ fontSize: 9, color: th.textMuted, marginTop: 3 }}>KL: {tl.vol}</div>
@@ -101,7 +101,7 @@ function TopMoversViewInner({ rows, th }: Props) {
 
         {/* Top volume */}
         <div style={{ background: th.navBg, border: `1px solid ${th.cellBorder}`, borderRadius: 8, padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: '#3b82f6', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u{1F4C8}'} KLGD Cao Nhất</div>
+          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ds-color-blue-500)', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u{1F4C8}'} KLGD Cao Nhất</div>
           {topVolume.map((tv) => (
             <div
               key={tv.sym}
@@ -110,7 +110,7 @@ function TopMoversViewInner({ rows, th }: Props) {
               style={{ background: th.appBg, border: `1px solid ${th.cellBorder}`, borderRadius: 6, padding: 8, cursor: 'pointer', transition: 'all .2s' }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <span style={{ fontWeight: 700, color: '#60a5fa' }}>{tv.sym}</span>
+                <span style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{tv.sym}</span>
                 <span style={{ fontSize: 10, color: tv.pc, fontWeight: 700 }}>{tv.pct}</span>
               </div>
               <div style={{ fontSize: 11, color: th.text, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>{tv.vol}</div>

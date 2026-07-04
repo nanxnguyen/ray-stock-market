@@ -1,13 +1,13 @@
 import { memo, useState } from 'react'
 
 const th = {
-  pageBg: '#060c18',
-  cardBg: '#0d1420',
-  cardBorder: '#1a3050',
-  text: '#d4e0ee',
-  textMuted: '#8a94a6',
-  rowBg: '#141d2e',
-  iconBg: '#141d2e',
+  pageBg: 'var(--ds-color-bg-app)',
+  cardBg: 'var(--ds-color-bg-card)',
+  cardBorder: 'var(--ds-color-border-default)',
+  text: 'var(--ds-color-text-primary)',
+  textMuted: 'var(--ds-color-text-secondary)',
+  rowBg: 'var(--ds-color-bg-nav)',
+  iconBg: 'var(--ds-color-bg-nav)',
 }
 
 const quarters = [
@@ -38,10 +38,10 @@ const ratios = [
 ]
 
 const growthData = [
-  { label: 'Doanh thu', value: '+13.6%', color: '#22c55e', barPct: 68 },
-  { label: 'Lợi nhuận sau thuế', value: '+19.4%', color: '#22c55e', barPct: 78 },
-  { label: 'Tổng tài sản', value: '+8.2%', color: '#60a5fa', barPct: 41 },
-  { label: 'Chi phí hoạt động', value: '+4.5%', color: '#f59e0b', barPct: 22 },
+  { label: 'Doanh thu', value: '+13.6%', color: 'var(--ds-color-market-up)', barPct: 68 },
+  { label: 'Lợi nhuận sau thuế', value: '+19.4%', color: 'var(--ds-color-market-up)', barPct: 78 },
+  { label: 'Tổng tài sản', value: '+8.2%', color: 'var(--ds-color-text-link)', barPct: 41 },
+  { label: 'Chi phí hoạt động', value: '+4.5%', color: 'var(--ds-color-warning)', barPct: 22 },
 ]
 
 const recommendationsData = [
@@ -53,9 +53,9 @@ const recommendationsData = [
 ]
 
 function getRatingStyle(rating: string) {
-  if (rating === 'MUA') return { bg: 'rgba(34,197,94,.15)', color: '#22c55e' }
-  if (rating === 'BÁN') return { bg: 'rgba(244,63,94,.15)', color: '#f43f5e' }
-  return { bg: 'rgba(245,158,11,.15)', color: '#f59e0b' }
+  if (rating === 'MUA') return { bg: 'rgba(34,197,94,.15)', color: 'var(--ds-color-market-up)' }
+  if (rating === 'BÁN') return { bg: 'rgba(244,63,94,.15)', color: 'var(--ds-color-market-down)' }
+  return { bg: 'rgba(245,158,11,.15)', color: 'var(--ds-color-warning)' }
 }
 
 function CompanyResearchInner() {
@@ -69,30 +69,30 @@ function CompanyResearchInner() {
         <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 12, overflow: 'hidden' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: `1px solid ${th.cardBorder}`, overflowX: 'auto' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0 }}>
-              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg, #22c55e, #16a34a)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg, var(--ds-color-market-up), var(--ds-color-green-600))', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff" /></svg>
               </div>
-              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: '#22c55e' }}>Stock</span></span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: 'var(--ds-color-market-up)' }}>Stock</span></span>
             </div>
             <div style={{ display: 'flex', flexShrink: 0 }}>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: `1px solid ${th.cardBorder}`, minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: th.textMuted, letterSpacing: 0.3 }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+4.27 +0.23%</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: th.textMuted, letterSpacing: 0.3 }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+4.27 +0.23%</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: `1px solid ${th.cardBorder}`, minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: th.textMuted, letterSpacing: 0.3 }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+0.84 +0.27%</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: th.textMuted, letterSpacing: 0.3 }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+0.84 +0.27%</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: th.textMuted, letterSpacing: 0.3 }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: '#f43f5e', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
-                <span style={{ fontSize: 9.5, color: '#f43f5e', fontWeight: 700 }}>-0.66 -0.51%</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: th.textMuted, letterSpacing: 0.3 }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-down)', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-down)', fontWeight: 700 }}>-0.66 -0.51%</span>
               </div>
             </div>
-            <span style={{ marginLeft: 'auto', fontSize: 10, color: '#4a6080', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
+            <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--ds-color-text-muted)', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
           </div>
           <div style={{ display: 'flex', gap: 6, padding: '8px 14px', overflowX: 'auto' }}>
             {['🏠 Trang chủ', '💼 Danh mục', '💰 Đặt lệnh', '📖 Sổ lệnh', '🗺️ Heatmap', '📊 So sánh', '🔍 Screener', '📰 Tin tức', '📅 Sự kiện', '⚙️ Cài đặt'].map((label) => (
-              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: th.rowBg, border: `1px solid ${th.cardBorder}`, color: '#c3ccd9', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
+              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: th.rowBg, border: `1px solid ${th.cardBorder}`, color: 'var(--ds-color-text-secondary)', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
             ))}
           </div>
         </div>
@@ -101,7 +101,7 @@ function CompanyResearchInner() {
           <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: th.text }}>NGHIÊN CỨU DOANH NGHIỆP — {symbol}</h1>
           <div style={{ display: 'flex', gap: 4 }}>
             {quickSyms.map((s) => (
-              <button key={s} onClick={() => setSymbol(s)} style={{ background: s === symbol ? '#2563eb' : th.iconBg, border: s === symbol ? '1px solid #2563eb' : `1px solid ${th.cardBorder}`, color: s === symbol ? '#fff' : th.textMuted, borderRadius: 6, padding: '5px 11px', fontSize: 11, fontWeight: 700, cursor: 'pointer' }}>{s}</button>
+              <button key={s} onClick={() => setSymbol(s)} style={{ background: s === symbol ? 'var(--ds-color-blue-600)' : th.iconBg, border: s === symbol ? '1px solid var(--ds-color-blue-600)' : `1px solid ${th.cardBorder}`, color: s === symbol ? '#fff' : th.textMuted, borderRadius: 6, padding: '5px 11px', fontSize: 11, fontWeight: 700, cursor: 'pointer' }}>{s}</button>
             ))}
           </div>
         </div>
@@ -110,16 +110,16 @@ function CompanyResearchInner() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
             <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, color: th.text, textTransform: 'uppercase' }}>Doanh thu & Lợi nhuận theo quý</h3>
             <div style={{ display: 'flex', gap: 12 }}>
-              <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: '#3b82f6', display: 'inline-block' }} /><span style={{ fontSize: 10, color: th.textMuted }}>Doanh thu</span></div>
-              <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: '#22c55e', display: 'inline-block' }} /><span style={{ fontSize: 10, color: th.textMuted }}>LNST</span></div>
+              <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: 'var(--ds-color-blue-500)', display: 'inline-block' }} /><span style={{ fontSize: 10, color: th.textMuted }}>Doanh thu</span></div>
+              <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: 'var(--ds-color-market-up)', display: 'inline-block' }} /><span style={{ fontSize: 10, color: th.textMuted }}>LNST</span></div>
             </div>
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', gap: 16, height: 180 }}>
             {quartersOut.map((q) => (
               <div key={q.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flex: 1 }}>
                 <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 150 }}>
-                  <div style={{ width: 16, height: q.revH, background: '#3b82f6', borderRadius: '3px 3px 0 0' }} />
-                  <div style={{ width: 16, height: q.profitH, background: '#22c55e', borderRadius: '3px 3px 0 0' }} />
+                  <div style={{ width: 16, height: q.revH, background: 'var(--ds-color-blue-500)', borderRadius: '3px 3px 0 0' }} />
+                  <div style={{ width: 16, height: q.profitH, background: 'var(--ds-color-market-up)', borderRadius: '3px 3px 0 0' }} />
                 </div>
                 <span style={{ fontSize: 9, color: th.textMuted, fontWeight: 700 }}>{q.label}</span>
               </div>
@@ -178,7 +178,7 @@ function CompanyResearchInner() {
                     <td style={{ color: th.text, fontWeight: 600 }}>{rec.firm}</td>
                     <td style={{ textAlign: 'center' }}><span style={{ background: rs.bg, color: rs.color, padding: '2px 10px', borderRadius: 5, fontWeight: 700, fontSize: 10 }}>{rec.rating}</span></td>
                     <td style={{ textAlign: 'right', color: th.text, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{rec.target}</td>
-                    <td style={{ textAlign: 'right', color: rec.upside.startsWith('+') ? '#22c55e' : '#f43f5e', fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{rec.upside}</td>
+                    <td style={{ textAlign: 'right', color: rec.upside.startsWith('+') ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)', fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{rec.upside}</td>
                     <td style={{ textAlign: 'right', color: th.textMuted, fontFamily: "'JetBrains Mono', monospace" }}>{rec.date}</td>
                   </tr>
                 )

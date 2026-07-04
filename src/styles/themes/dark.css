@@ -1,0 +1,27 @@
+/* Dark theme overrides (default — matches :root defaults) */
+[data-theme="dark"] {
+  --ds-color-bg-app: #060c18;
+  --ds-color-bg-nav: #0b1628;
+  --ds-color-bg-card: #0d1420;
+  --ds-color-bg-elevated: #131a24;
+  --ds-color-bg-input: #0a1018;
+  --ds-color-bg-table: #060c18;
+  --ds-color-bg-row-odd: #0b1628;
+  --ds-color-bg-row-even: #08101e;
+  --ds-color-bg-row-hover: #102040;
+
+  --ds-color-text-primary: #d4e0ee;
+  --ds-color-text-secondary: #94a3b8;
+  --ds-color-text-muted: #4a6080;
+  --ds-color-text-inverse: #ffffff;
+  --ds-color-text-link: #60a5fa;
+
+  --ds-color-border-default: #1a3050;
+  --ds-color-border-subtle: #0f1e36;
+  --ds-color-border-strong: #232b38;
+
+  --ds-shadow-sm: 0 1px 2px rgba(0,0,0,.3);
+  --ds-shadow-md: 0 4px 12px rgba(0,0,0,.4);
+  --ds-shadow-lg: 0 12px 30px rgba(0,0,0,.5);
+  --ds-shadow-xl: 0 24px 60px rgba(0,0,0,.55);
+}

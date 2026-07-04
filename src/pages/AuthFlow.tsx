@@ -1,13 +1,13 @@
 import { memo, useState } from 'react'
 
 const th = {
-  pageBg: '#060c18',
-  cardBg: '#131a24',
-  cardBorder: '#232b38',
-  inputBg: '#0f1419',
-  text: '#eef1f6',
-  textMuted: '#8a94a6',
-  iconBg: '#1a212c',
+  pageBg: 'var(--ds-color-bg-app)',
+  cardBg: 'var(--ds-color-bg-elevated)',
+  cardBorder: 'var(--ds-color-border-strong)',
+  inputBg: 'var(--ds-color-bg-input)',
+  text: 'var(--ds-color-text-primary)',
+  textMuted: 'var(--ds-color-text-secondary)',
+  iconBg: 'var(--ds-color-bg-elevated)',
 }
 
 function AuthFlowInner() {
@@ -21,9 +21,9 @@ function AuthFlowInner() {
   const steps = stepLabels.map((label, i) => ({
     n: i + 1,
     label,
-    bg: i <= stepIndex ? '#22c55e' : th.iconBg,
+    bg: i <= stepIndex ? 'var(--ds-color-market-up)' : th.iconBg,
     fg: i <= stepIndex ? '#fff' : th.textMuted,
-    border: i <= stepIndex ? '#22c55e' : th.cardBorder,
+    border: i <= stepIndex ? 'var(--ds-color-market-up)' : th.cardBorder,
     labelColor: i <= stepIndex ? th.text : th.textMuted,
   }))
 
@@ -35,10 +35,10 @@ function AuthFlowInner() {
 
         {/* Logo */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-          <div style={{ width: 32, height: 32, background: 'linear-gradient(135deg,#22c55e,#16a34a)', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: 32, height: 32, background: 'linear-gradient(135deg,var(--ds-color-market-up),var(--ds-color-green-600))', borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
             <svg width="16" height="14" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff" /></svg>
           </div>
-          <span style={{ fontSize: 19, fontWeight: 800, color: '#fff' }}>Ray <span style={{ color: '#22c55e' }}>Stock Market</span></span>
+          <span style={{ fontSize: 19, fontWeight: 800, color: '#fff' }}>Ray <span style={{ color: 'var(--ds-color-market-up)' }}>Stock Market</span></span>
         </div>
 
         {/* Stepper */}
@@ -70,9 +70,9 @@ function AuthFlowInner() {
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <label style={{ display: 'flex', alignItems: 'center', gap: 6, fontSize: 11, color: th.textMuted }}><input type="checkbox" /> Ghi nhớ đăng nhập</label>
-                  <a href="#" style={{ fontSize: 11, color: '#60a5fa', textDecoration: 'none', fontWeight: 600 }}>Quên mật khẩu?</a>
+                  <a href="#" style={{ fontSize: 11, color: 'var(--ds-color-text-link)', textDecoration: 'none', fontWeight: 600 }}>Quên mật khẩu?</a>
                 </div>
-                <button onClick={() => setStep('login')} style={{ background: '#22c55e', border: 'none', color: '#fff', borderRadius: 8, padding: 12, fontSize: 13, fontWeight: 800, cursor: 'pointer', boxShadow: '0 8px 20px rgba(34,197,94,.3)' }}>Đăng nhập</button>
+                <button onClick={() => setStep('login')} style={{ background: 'var(--ds-color-market-up)', border: 'none', color: '#fff', borderRadius: 8, padding: 12, fontSize: 13, fontWeight: 800, cursor: 'pointer', boxShadow: '0 8px 20px rgba(34,197,94,.3)' }}>Đăng nhập</button>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 10, margin: '2px 0' }}>
                   <div style={{ flex: 1, height: 1, background: th.cardBorder }} />
                   <span style={{ fontSize: 10, color: th.textMuted }}>HOẶC</span>
@@ -97,7 +97,7 @@ function AuthFlowInner() {
                   <label style={{ fontSize: 10, fontWeight: 700, color: th.textMuted, textTransform: 'uppercase' }}>Số điện thoại</label>
                   <div style={{ display: 'flex', gap: 6 }}>
                     <input type="text" placeholder="0912 345 678" style={{ flex: 1, padding: '11px 12px', border: `1px solid ${th.cardBorder}`, borderRadius: 8, background: th.inputBg, color: th.text, fontSize: 13, outline: 'none' }} />
-                    <button style={{ background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: '#60a5fa', borderRadius: 8, padding: '0 14px', fontSize: 11, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>Gửi OTP</button>
+                    <button style={{ background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: 'var(--ds-color-text-link)', borderRadius: 8, padding: '0 14px', fontSize: 11, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>Gửi OTP</button>
                   </div>
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
@@ -109,7 +109,7 @@ function AuthFlowInner() {
                   <input type="password" placeholder="Tối thiểu 8 ký tự" style={{ padding: '11px 12px', border: `1px solid ${th.cardBorder}`, borderRadius: 8, background: th.inputBg, color: th.text, fontSize: 13, outline: 'none' }} />
                 </div>
                 <label style={{ display: 'flex', alignItems: 'flex-start', gap: 6, fontSize: 10.5, color: th.textMuted }}><input type="checkbox" style={{ marginTop: 2 }} /> Tôi đồng ý với Điều khoản dịch vụ và Chính sách bảo mật</label>
-                <button onClick={() => setStep('kyc')} style={{ background: '#22c55e', border: 'none', color: '#fff', borderRadius: 8, padding: 12, fontSize: 13, fontWeight: 800, cursor: 'pointer', boxShadow: '0 8px 20px rgba(34,197,94,.3)' }}>Tiếp tục</button>
+                <button onClick={() => setStep('kyc')} style={{ background: 'var(--ds-color-market-up)', border: 'none', color: '#fff', borderRadius: 8, padding: 12, fontSize: 13, fontWeight: 800, cursor: 'pointer', boxShadow: '0 8px 20px rgba(34,197,94,.3)' }}>Tiếp tục</button>
                 <button onClick={() => setStep('login')} style={{ background: 'transparent', border: 'none', color: th.textMuted, fontSize: 11, fontWeight: 600, cursor: 'pointer', textAlign: 'center' }}>← Đã có tài khoản? Đăng nhập</button>
               </div>
             </>
@@ -122,20 +122,20 @@ function AuthFlowInner() {
               <p style={{ margin: '0 0 18px 0', fontSize: 11, color: th.textMuted }}>Chụp ảnh CCCD để hoàn tất mở tài khoản</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
-                  <div onClick={() => setFrontUploaded(true)} style={{ aspectRatio: '1.58', border: `2px dashed ${frontUploaded ? '#22c55e' : th.cardBorder}`, borderRadius: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', background: th.inputBg }}>
+                  <div onClick={() => setFrontUploaded(true)} style={{ aspectRatio: '1.58', border: `2px dashed ${frontUploaded ? 'var(--ds-color-market-up)' : th.cardBorder}`, borderRadius: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', background: th.inputBg }}>
                     <span style={{ fontSize: 22 }}>{frontUploaded ? '✅' : '🪪'}</span>
                     <span style={{ fontSize: 10, color: th.textMuted, fontWeight: 700, textAlign: 'center' }}>{frontUploaded ? 'Mặt trước đã tải' : 'Tải mặt trước CCCD'}</span>
                   </div>
-                  <div onClick={() => setBackUploaded(true)} style={{ aspectRatio: '1.58', border: `2px dashed ${backUploaded ? '#22c55e' : th.cardBorder}`, borderRadius: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', background: th.inputBg }}>
+                  <div onClick={() => setBackUploaded(true)} style={{ aspectRatio: '1.58', border: `2px dashed ${backUploaded ? 'var(--ds-color-market-up)' : th.cardBorder}`, borderRadius: 10, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', background: th.inputBg }}>
                     <span style={{ fontSize: 22 }}>{backUploaded ? '✅' : '🪪'}</span>
                     <span style={{ fontSize: 10, color: th.textMuted, fontWeight: 700, textAlign: 'center' }}>{backUploaded ? 'Mặt sau đã tải' : 'Tải mặt sau CCCD'}</span>
                   </div>
                 </div>
-                <div onClick={() => setSelfieUploaded(true)} style={{ border: `2px dashed ${selfieUploaded ? '#22c55e' : th.cardBorder}`, borderRadius: 10, padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', background: th.inputBg }}>
+                <div onClick={() => setSelfieUploaded(true)} style={{ border: `2px dashed ${selfieUploaded ? 'var(--ds-color-market-up)' : th.cardBorder}`, borderRadius: 10, padding: 16, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: 6, cursor: 'pointer', background: th.inputBg }}>
                   <span style={{ fontSize: 22 }}>{selfieUploaded ? '✅' : '🤳'}</span>
                   <span style={{ fontSize: 10, color: th.textMuted, fontWeight: 700 }}>{selfieUploaded ? 'Ảnh chân dung đã tải' : 'Chụp ảnh chân dung (Selfie)'}</span>
                 </div>
-                <button onClick={() => { if (allUploaded) setStep('done') }} style={{ background: allUploaded ? '#22c55e' : th.iconBg, border: 'none', color: allUploaded ? '#fff' : th.textMuted, borderRadius: 8, padding: 12, fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Hoàn tất đăng ký</button>
+                <button onClick={() => { if (allUploaded) setStep('done') }} style={{ background: allUploaded ? 'var(--ds-color-market-up)' : th.iconBg, border: 'none', color: allUploaded ? '#fff' : th.textMuted, borderRadius: 8, padding: 12, fontSize: 13, fontWeight: 800, cursor: 'pointer' }}>Hoàn tất đăng ký</button>
               </div>
             </>
           )}
@@ -146,7 +146,7 @@ function AuthFlowInner() {
               <div style={{ width: 56, height: 56, borderRadius: '50%', background: 'rgba(34,197,94,.15)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 28 }}>✓</div>
               <h2 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: th.text }}>Đăng ký thành công!</h2>
               <p style={{ margin: 0, fontSize: 12, color: th.textMuted }}>Tài khoản của bạn đang được xét duyệt. Chúng tôi sẽ thông báo qua email trong 24h.</p>
-              <a href="#" style={{ marginTop: 8, textDecoration: 'none', background: '#22c55e', color: '#fff', borderRadius: 8, padding: '11px 20px', fontSize: 12, fontWeight: 800 }}>Về Bảng điện</a>
+              <a href="#" style={{ marginTop: 8, textDecoration: 'none', background: 'var(--ds-color-market-up)', color: '#fff', borderRadius: 8, padding: '11px 20px', fontSize: 12, fontWeight: 800 }}>Về Bảng điện</a>
             </div>
           )}
         </div>

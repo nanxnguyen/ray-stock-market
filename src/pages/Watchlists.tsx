@@ -46,44 +46,44 @@ function WatchlistsInner() {
 
   return (
     <div style={{
-      width: '100%', minHeight: '100vh', background: '#060c18',
+      width: '100%', minHeight: '100vh', background: 'var(--ds-color-bg-app)',
       padding: 24, boxSizing: 'border-box',
     }}>
       <div style={{ maxWidth: 1680, margin: '0 auto', display: 'flex', flexDirection: 'column', gap: 16 }}>
 
         {/* Navigation Header */}
-        <div style={{ background: '#0d1420', border: '1px solid #1c2534', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: '1px solid #1c2534', overflowX: 'auto' }}>
+        <div style={{ background: 'var(--ds-color-bg-nav)', border: '1px solid var(--ds-color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: '1px solid var(--ds-color-border-subtle)', overflowX: 'auto' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0 }}>
-              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg, #22c55e, #16a34a)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg, var(--ds-color-market-up), var(--ds-color-green-600))', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff" /></svg>
               </div>
-              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: '#22c55e' }}>Stock</span></span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: 'var(--ds-color-market-up)' }}>Stock</span></span>
             </div>
             <div style={{ display: 'flex', flexShrink: 0 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid #1c2534', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: '.3px' }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+4.27 +0.23%</span>
+              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-subtle)', minWidth: 118 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: '.3px' }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+4.27 +0.23%</span>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid #1c2534', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: '.3px' }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+0.84 +0.27%</span>
+              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-subtle)', minWidth: 118 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: '.3px' }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+0.84 +0.27%</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: '.3px' }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: '#f43f5e', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
-                <span style={{ fontSize: 9.5, color: '#f43f5e', fontWeight: 700 }}>-0.66 -0.51%</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: '.3px' }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-down)', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-down)', fontWeight: 700 }}>-0.66 -0.51%</span>
               </div>
             </div>
-            <span style={{ marginLeft: 'auto', fontSize: 10, color: '#4a6080', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
+            <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--ds-color-text-muted)', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
           </div>
           <div style={{ display: 'flex', gap: 6, padding: '8px 14px', overflowX: 'auto' }}>
             {['🏠 Trang chủ', '💼 Danh mục', '💰 Đặt lệnh', '📖 Sổ lệnh', '🗺️ Heatmap', '📊 So sánh', '🔍 Screener', '📰 Tin tức', '📅 Sự kiện', '⚙️ Cài đặt'].map((label) => (
-              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: '#141d2e', border: '1px solid #1c2534', color: '#c3ccd9', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
+              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: 'var(--ds-color-bg-card)', border: '1px solid var(--ds-color-border-subtle)', color: 'var(--ds-color-text-secondary)', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
             ))}
           </div>
         </div>
 
-        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: '#d4e0ee' }}>DANH MỤC THEO DÕI</h1>
+        <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: 'var(--ds-color-text-primary)' }}>DANH MỤC THEO DÕI</h1>
 
         {/* Watchlist Tabs */}
         <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -92,9 +92,9 @@ function WatchlistsInner() {
               key={l.key}
               onClick={() => setActiveList(l.key)}
               style={{
-                background: l.active ? '#2563eb' : '#1a212c',
-                color: l.active ? '#fff' : '#8a94a6',
-                border: `1px solid ${l.active ? '#2563eb' : '#232b38'}`,
+                background: l.active ? 'var(--ds-color-blue-600)' : 'var(--ds-color-bg-input)',
+                color: l.active ? '#fff' : 'var(--ds-color-text-secondary)',
+                border: `1px solid ${l.active ? 'var(--ds-color-blue-600)' : 'var(--ds-color-border-strong)'}`,
                 borderRadius: 8, padding: '8px 14px', fontSize: 11.5, fontWeight: 700, cursor: 'pointer',
                 display: 'flex', alignItems: 'center', gap: 6,
               }}
@@ -103,34 +103,34 @@ function WatchlistsInner() {
               <span style={{ fontSize: 9, opacity: 0.7 }}>({l.count})</span>
             </button>
           ))}
-          <button style={{ background: 'transparent', border: '1px dashed #232b38', color: '#8a94a6', borderRadius: 8, padding: '8px 14px', fontSize: 11.5, fontWeight: 700, cursor: 'pointer' }}>+ Danh mục mới</button>
+          <button style={{ background: 'transparent', border: '1px dashed var(--ds-color-border-strong)', color: 'var(--ds-color-text-secondary)', borderRadius: 8, padding: '8px 14px', fontSize: 11.5, fontWeight: 700, cursor: 'pointer' }}>+ Danh mục mới</button>
         </div>
 
         {/* Table */}
-        <div style={{ background: '#131a24', border: '1px solid #232b38', borderRadius: 12, overflow: 'hidden' }}>
+        <div style={{ background: 'var(--ds-color-bg-elevated)', border: '1px solid var(--ds-color-border-strong)', borderRadius: 12, overflow: 'hidden' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #232b38', height: 34, background: '#1a212c' }}>
-                <th style={{ textAlign: 'left', padding: '8px 12px', color: '#8a94a6', fontWeight: 700 }}>⠿</th>
-                <th style={{ textAlign: 'left', padding: '8px 12px', color: '#8a94a6', fontWeight: 700 }}>Mã CK</th>
-                <th style={{ textAlign: 'right', padding: '8px 12px', color: '#8a94a6', fontWeight: 700 }}>Giá</th>
-                <th style={{ textAlign: 'right', padding: '8px 12px', color: '#8a94a6', fontWeight: 700 }}>% Thay đổi</th>
-                <th style={{ textAlign: 'right', padding: '8px 12px', color: '#8a94a6', fontWeight: 700 }}>KLGD</th>
-                <th style={{ textAlign: 'right', padding: '8px 12px', color: '#8a94a6', fontWeight: 700 }}>Vốn hóa</th>
-                <th style={{ textAlign: 'center', padding: '8px 12px', color: '#8a94a6', fontWeight: 700 }}>Thao tác</th>
+              <tr style={{ borderBottom: '1px solid var(--ds-color-border-strong)', height: 34, background: 'var(--ds-color-bg-input)' }}>
+                <th style={{ textAlign: 'left', padding: '8px 12px', color: 'var(--ds-color-text-secondary)', fontWeight: 700 }}>⠿</th>
+                <th style={{ textAlign: 'left', padding: '8px 12px', color: 'var(--ds-color-text-secondary)', fontWeight: 700 }}>Mã CK</th>
+                <th style={{ textAlign: 'right', padding: '8px 12px', color: 'var(--ds-color-text-secondary)', fontWeight: 700 }}>Giá</th>
+                <th style={{ textAlign: 'right', padding: '8px 12px', color: 'var(--ds-color-text-secondary)', fontWeight: 700 }}>% Thay đổi</th>
+                <th style={{ textAlign: 'right', padding: '8px 12px', color: 'var(--ds-color-text-secondary)', fontWeight: 700 }}>KLGD</th>
+                <th style={{ textAlign: 'right', padding: '8px 12px', color: 'var(--ds-color-text-secondary)', fontWeight: 700 }}>Vốn hóa</th>
+                <th style={{ textAlign: 'center', padding: '8px 12px', color: 'var(--ds-color-text-secondary)', fontWeight: 700 }}>Thao tác</th>
               </tr>
             </thead>
             <tbody>
               {items.map((it) => (
-                <tr key={it.symbol} style={{ borderBottom: '1px solid #232b38', height: 38 }}>
-                  <td style={{ padding: '8px 12px', color: '#8a94a6', cursor: 'grab' }}>⠿</td>
-                  <td style={{ padding: '8px 12px', color: '#60a5fa', fontWeight: 700 }}>{it.symbol}</td>
-                  <td style={{ padding: '8px 12px', textAlign: 'right', color: '#d4e0ee', fontWeight: 700 }}>{it.price}</td>
+                <tr key={it.symbol} style={{ borderBottom: '1px solid var(--ds-color-border-strong)', height: 38 }}>
+                  <td style={{ padding: '8px 12px', color: 'var(--ds-color-text-secondary)', cursor: 'grab' }}>⠿</td>
+                  <td style={{ padding: '8px 12px', color: 'var(--ds-color-text-link)', fontWeight: 700 }}>{it.symbol}</td>
+                  <td style={{ padding: '8px 12px', textAlign: 'right', color: 'var(--ds-color-text-primary)', fontWeight: 700 }}>{it.price}</td>
                   <td style={{ padding: '8px 12px', textAlign: 'right', color: it.changeColor, fontWeight: 700 }}>{it.change}</td>
-                  <td style={{ padding: '8px 12px', textAlign: 'right', color: '#8a94a6' }}>{it.volume}</td>
-                  <td style={{ padding: '8px 12px', textAlign: 'right', color: '#8a94a6' }}>{it.cap}</td>
+                  <td style={{ padding: '8px 12px', textAlign: 'right', color: 'var(--ds-color-text-secondary)' }}>{it.volume}</td>
+                  <td style={{ padding: '8px 12px', textAlign: 'right', color: 'var(--ds-color-text-secondary)' }}>{it.cap}</td>
                   <td style={{ padding: '8px 12px', textAlign: 'center' }}>
-                    <button style={{ background: 'transparent', border: 'none', color: '#8a94a6', cursor: 'pointer', fontSize: 13 }}>✕</button>
+                    <button style={{ background: 'transparent', border: 'none', color: 'var(--ds-color-text-secondary)', cursor: 'pointer', fontSize: 13 }}>✕</button>
                   </td>
                 </tr>
               ))}

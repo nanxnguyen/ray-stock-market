@@ -4,13 +4,13 @@ const FONT = "'Inter', system-ui, sans-serif"
 const MONO = "'JetBrains Mono', monospace"
 
 const th = {
-  pageBg: '#0a0e14',
-  cardBg: '#131a24',
-  cardBorder: '#232b38',
-  inputBg: '#0f1419',
-  text: '#eef1f6',
-  textMuted: '#8a94a6',
-  iconBg: '#1a212c',
+  pageBg: 'var(--ds-color-bg-app)',
+  cardBg: 'var(--ds-color-bg-elevated)',
+  cardBorder: 'var(--ds-color-border-strong)',
+  inputBg: 'var(--ds-color-bg-input)',
+  text: 'var(--ds-color-text-primary)',
+  textMuted: 'var(--ds-color-text-secondary)',
+  iconBg: 'var(--ds-color-bg-input)',
 }
 
 const POSITIONS_DATA = [
@@ -40,8 +40,8 @@ function DerivativesTradingInner() {
     return {
       contractValue: contractValue.toLocaleString() + 'đ',
       requiredMargin: requiredMargin.toLocaleString() + 'đ',
-      submitBg: side === 'LONG' ? '#22c55e' : '#f43f5e',
-      submitShadow: side === 'LONG' ? 'rgba(34,197,94,.3)' : 'rgba(244,63,94,.3)',
+    submitBg: side === 'LONG' ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)',
+    submitShadow: side === 'LONG' ? 'rgba(34,197,94,.3)' : 'rgba(244,63,94,.3)',
       submitLabel: side === 'LONG' ? '✓ MỞ VỊ THẾ LONG' : '✓ MỞ VỊ THẾ SHORT',
     }
   }, [price, qty, side])
@@ -49,14 +49,14 @@ function DerivativesTradingInner() {
   const sideBtnStyles = useMemo(
     () => ({
       LONG: {
-        bg: side === 'LONG' ? '#22c55e' : th.iconBg,
+        bg: side === 'LONG' ? 'var(--ds-color-market-up)' : th.iconBg,
         fg: side === 'LONG' ? '#fff' : th.textMuted,
-        border: side === 'LONG' ? '#16a34a' : th.cardBorder,
+        border: side === 'LONG' ? 'var(--ds-color-green-600)' : th.cardBorder,
       },
       SHORT: {
-        bg: side === 'SHORT' ? '#f43f5e' : th.iconBg,
+        bg: side === 'SHORT' ? 'var(--ds-color-market-down)' : th.iconBg,
         fg: side === 'SHORT' ? '#fff' : th.textMuted,
-        border: side === 'SHORT' ? '#dc2626' : th.cardBorder,
+        border: side === 'SHORT' ? 'var(--ds-color-red-600)' : th.cardBorder,
       },
     }),
     [side],
@@ -72,12 +72,12 @@ function DerivativesTradingInner() {
             <div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                 <h1 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: th.text, fontFamily: MONO }}>VN30F2607</h1>
-                <span style={{ fontSize: 8, fontWeight: 700, color: '#fff', background: '#f97316', padding: '2px 6px', borderRadius: 4 }}>FUTURES</span>
+                <span style={{ fontSize: 8, fontWeight: 700, color: '#fff', background: 'var(--ds-color-orange-500)', padding: '2px 6px', borderRadius: 4 }}>FUTURES</span>
               </div>
               <span style={{ fontSize: 10, color: th.textMuted }}>Hợp đồng tương lai VN30 · Đáo hạn 17/07/2026</span>
             </div>
-            <span style={{ fontSize: 22, fontWeight: 800, color: '#22c55e', fontFamily: MONO }}>1,998.5</span>
-            <span style={{ fontSize: 12, fontWeight: 700, color: '#22c55e' }}>+4.3 (+0.22%)</span>
+            <span style={{ fontSize: 22, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: MONO }}>1,998.5</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: 'var(--ds-color-market-up)' }}>+4.3 (+0.22%)</span>
           </div>
           <div style={{ display: 'flex', gap: 16 }}>
             <div style={{ textAlign: 'right' }}>
@@ -86,7 +86,7 @@ function DerivativesTradingInner() {
             </div>
             <div style={{ textAlign: 'right' }}>
               <span style={{ fontSize: 9, color: th.textMuted, display: 'block', textTransform: 'uppercase' }}>Basis</span>
-              <span style={{ fontSize: 13, fontWeight: 700, color: '#22c55e', fontFamily: MONO }}>+3.51</span>
+              <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ds-color-market-up)', fontFamily: MONO }}>+3.51</span>
             </div>
             <div style={{ textAlign: 'right' }}>
               <span style={{ fontSize: 9, color: th.textMuted, display: 'block', textTransform: 'uppercase' }}>OI</span>
@@ -115,7 +115,7 @@ function DerivativesTradingInner() {
                 <tbody>
                   {POSITIONS_DATA.map((p, i) => (
                     <tr key={i} style={{ borderBottom: `1px solid ${th.cardBorder}`, height: 34 }}>
-                      <td style={{ color: '#60a5fa', fontWeight: 700 }}>{p.symbol}</td>
+                      <td style={{ color: 'var(--ds-color-text-link)', fontWeight: 700 }}>{p.symbol}</td>
                       <td style={{ textAlign: 'center' }}>
                         <span style={{ background: p.sideBg, color: p.sideColor, padding: '2px 8px', borderRadius: 4, fontWeight: 700, fontSize: 9.5 }}>{p.side}</span>
                       </td>
@@ -139,19 +139,19 @@ function DerivativesTradingInner() {
                 </div>
                 <div>
                   <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase' }}>Ký quỹ đã dùng</span>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: '#f59e0b', fontFamily: MONO }}>61,250,000đ</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--ds-color-warning)', fontFamily: MONO }}>61,250,000đ</div>
                 </div>
                 <div>
                   <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase' }}>Sức mua còn lại</span>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: '#22c55e', fontFamily: MONO }}>26,250,000đ</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--ds-color-market-up)', fontFamily: MONO }}>26,250,000đ</div>
                 </div>
               </div>
               <div style={{ marginTop: 10, height: 6, background: th.iconBg, borderRadius: 3, overflow: 'hidden' }}>
-                <div style={{ height: '100%', width: '70%', background: '#f59e0b' }} />
+                <div style={{ height: '100%', width: '70%', background: 'var(--ds-color-warning)' }} />
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
                 <span style={{ fontSize: 9, color: th.textMuted }}>Tỷ lệ sử dụng ký quỹ: 70%</span>
-                <span style={{ fontSize: 9, color: '#f59e0b', fontWeight: 700 }}>Đòn bẩy x5.7</span>
+                <span style={{ fontSize: 9, color: 'var(--ds-color-warning)', fontWeight: 700 }}>Đòn bẩy x5.7</span>
               </div>
             </div>
           </div>
@@ -256,7 +256,7 @@ function DerivativesTradingInner() {
             </button>
 
             {orderPlaced && (
-              <div style={{ background: 'rgba(34,197,94,.1)', border: '1px solid #22c55e', borderRadius: 7, padding: 9, fontSize: 10.5, color: '#22c55e', fontWeight: 700 }}>
+              <div style={{ background: 'rgba(34,197,94,.1)', border: '1px solid var(--ds-color-market-up)', borderRadius: 7, padding: 9, fontSize: 10.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>
                 ✓ Đã đặt lệnh {side} {qty} hợp đồng @ {price}
               </div>
             )}

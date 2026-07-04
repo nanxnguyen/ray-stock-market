@@ -4,15 +4,15 @@ import type { ThemeTokens, StockRow } from '../types/priceboard'
 type Props = { rows: StockRow[]; th: ThemeTokens }
 
 function heatColor(pct: number): string {
-  if (pct >= 6.5) return '#7c3aed'
-  if (pct >= 4)   return '#14532d'
-  if (pct >= 2)   return '#166534'
-  if (pct >= 0.5) return '#15803d'
-  if (pct > -0.5) return '#78350f'
-  if (pct > -2)   return '#7f1d1d'
-  if (pct > -4)   return '#991b1b'
-  if (pct > -6.5) return '#b91c1c'
-  return '#1e3a8a'
+  if (pct >= 6.5) return 'var(--ds-color-purple-700)'
+  if (pct >= 4)   return 'var(--ds-color-market-flash-up)'
+  if (pct >= 2)   return 'var(--ds-color-green-600)'
+  if (pct >= 0.5) return 'var(--ds-color-green-500)'
+  if (pct > -0.5) return 'var(--ds-color-yellow-500)'
+  if (pct > -2)   return 'var(--ds-color-red-500)'
+  if (pct > -4)   return 'var(--ds-color-red-500)'
+  if (pct > -6.5) return 'var(--ds-color-red-500)'
+  return 'var(--ds-color-blue-700)'
 }
 
 function parsePct(pct: string): number {
@@ -42,7 +42,7 @@ function HeatmapViewInner({ rows, th }: Props) {
         return bv - av
       }),
       totalPct,
-      totalColor: totalPct >= 0 ? '#22c55e' : '#f43f5e',
+      totalColor: totalPct >= 0 ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)',
       totalPctStr: (totalPct >= 0 ? '+' : '') + totalPct.toFixed(1) + '%',
     }))
   }, [rows])
@@ -52,7 +52,7 @@ function HeatmapViewInner({ rows, th }: Props) {
       {sectors.map(({ sec, cells, totalColor, totalPctStr }) => (
         <div key={sec} style={{ marginBottom: 14 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
-            <span style={{ fontSize: 10, fontWeight: 700, color: '#60a5fa', letterSpacing: 0.8, textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>{sec}</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--ds-color-blue-400)', letterSpacing: 0.8, textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>{sec}</span>
             <div style={{ flex: 1, height: 1, background: th.cellBorderL }} />
             <span style={{ fontSize: 9, color: totalColor, fontWeight: 600 }}>{totalPctStr}</span>
           </div>
@@ -86,13 +86,13 @@ function HeatmapViewInner({ rows, th }: Props) {
       }}>
         <span style={{ fontSize: 9, color: th.textMuted, fontFamily: "'Inter', sans-serif" }}>Chú thích:</span>
         <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: '#7c3aed' }} /><span style={{ fontSize: 8, color: th.textMuted }}>Trần</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: '#166534', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+4%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: '#15803d', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+2%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: '#78350f', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>0%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: '#991b1b', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-2%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: '#7f1d1d', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-4%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: '#1e3a8a', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>Sàn</span>
+          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-purple-700)' }} /><span style={{ fontSize: 8, color: th.textMuted }}>Trần</span>
+          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-green-600)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+4%</span>
+          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-green-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+2%</span>
+          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-yellow-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>0%</span>
+          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-red-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-2%</span>
+          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-red-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-4%</span>
+          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-blue-700)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>Sàn</span>
         </div>
       </div>
     </div>

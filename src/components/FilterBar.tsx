@@ -53,8 +53,8 @@ function FilterBarInner({
   const displayGroup = resolveTopGroup(filter.group)
 
   const tabStyle = useMemo(() => (active: boolean): React.CSSProperties => ({
-    background: active ? '#2563eb' : 'transparent',
-    color: active ? '#fff' : th.tabFg,
+    background: active ? 'var(--ds-color-blue-600)' : 'transparent',
+    color: active ? 'var(--ds-color-text-inverse)' : th.tabFg,
     border: active ? 'none' : th.tabBorder,
     borderRadius: 6,
     padding: '4px 11px',
@@ -68,9 +68,9 @@ function FilterBarInner({
   }), [th.tabFg, th.tabBorder])
 
   const iconBtn = useMemo(() => (active: boolean): React.CSSProperties => ({
-    background: active ? '#f97316' : th.iconBg,
+    background: active ? 'var(--ds-color-orange-500)' : th.iconBg,
     border: `1px solid ${active ? '#ea580c' : th.navBorder}`,
-    color: active ? '#fff' : th.textMuted,
+    color: active ? 'var(--ds-color-text-inverse)' : th.textMuted,
     borderRadius: 5,
     width: 26,
     height: 26,
@@ -87,10 +87,10 @@ function FilterBarInner({
       <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', alignItems: 'center', padding: '5px 14px', gap: 5, flexShrink: 0, height: 42, overflowX: 'auto' }}>
         {/* View mode buttons */}
         <div style={{ display: 'flex', gap: 2, flexShrink: 0 }}>
-          <button onClick={() => onViewModeChange?.('table')} style={{ background: viewMode === 'table' ? '#2563eb' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'table' ? '#fff' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u2630'}</button>
-          <button onClick={() => onViewModeChange?.('grid')} style={{ background: viewMode === 'grid' ? '#2563eb' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'grid' ? '#fff' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u229E'}</button>
-          <button onClick={() => onViewModeChange?.('heat')} style={{ background: viewMode === 'heat' ? '#2563eb' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'heat' ? '#fff' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u25A6'}</button>
-          <button onClick={() => onViewModeChange?.('movers')} style={{ background: viewMode === 'movers' ? '#2563eb' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'movers' ? '#fff' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u{1F4CA}'}</button>
+          <button onClick={() => onViewModeChange?.('table')} style={{ background: viewMode === 'table' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'table' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u2630'}</button>
+          <button onClick={() => onViewModeChange?.('grid')} style={{ background: viewMode === 'grid' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'grid' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u229E'}</button>
+          <button onClick={() => onViewModeChange?.('heat')} style={{ background: viewMode === 'heat' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'heat' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u25A6'}</button>
+          <button onClick={() => onViewModeChange?.('movers')} style={{ background: viewMode === 'movers' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'movers' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u{1F4CA}'}</button>
         </div>
 
         {/* Search */}
@@ -152,9 +152,9 @@ function FilterBarInner({
               key={sec}
               onClick={() => onSectorChange?.(sec)}
               style={{
-                background: activeSector === sec ? '#2563eb' : th.iconBg,
-                color: activeSector === sec ? '#fff' : th.textMuted,
-                border: `1px solid ${activeSector === sec ? '#2563eb' : th.navBorder}`,
+                background: activeSector === sec ? 'var(--ds-color-blue-600)' : th.iconBg,
+                color: activeSector === sec ? 'var(--ds-color-text-inverse)' : th.textMuted,
+                border: `1px solid ${activeSector === sec ? 'var(--ds-color-blue-600)' : th.navBorder}`,
                 borderRadius: 16, padding: '3px 11px', fontSize: 10.5,
                 fontWeight: activeSector === sec ? 700 : 400,
                 cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s',
@@ -196,12 +196,12 @@ function FilterBarInner({
       {showTradeHist && (
         <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '10px 14px', display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0, animation: 'fadeUp .15s ease', maxHeight: 200, overflowY: 'auto' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: '#60a5fa', letterSpacing: 0.5 }}>LỊCH SỬ GIAO DỊCH KHỚP LỆNH</span>
+            <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ds-color-blue-400)', letterSpacing: 0.5 }}>LỊCH SỬ GIAO DỊCH KHỚP LỆNH</span>
             <span style={{ fontSize: 9, color: th.textMuted }}>Realtime</span>
           </div>
           {(tradeHistory || []).map((item, i) => (
             <div key={i} style={{ display: 'grid', gridTemplateColumns: '60px 50px 60px 60px 70px', gap: 8, padding: 6, background: th.appBg, borderRadius: 4, border: `1px solid ${th.cellBorder}`, fontSize: 9, fontFamily: "'JetBrains Mono', monospace" }}>
-              <div style={{ fontWeight: 700, color: '#60a5fa' }}>{item.sym}</div>
+              <div style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{item.sym}</div>
               <div style={{ color: item.timeColor, textAlign: 'right' }}>{item.time}</div>
               <div style={{ color: item.priceColor, textAlign: 'right', fontWeight: 700 }}>{item.price}</div>
               <div style={{ color: item.volColor, textAlign: 'right' }}>{item.qty}</div>

@@ -2,12 +2,12 @@ import { memo } from 'react'
 
 function EventCalendarInner() {
   const th = {
-    pageBg: '#0a0e14',
-    cardBg: '#131a24',
-    cardBorder: '#232b38',
-    text: '#eef1f6',
-    textMuted: '#8a94a6',
-    iconBg: '#1a212c',
+    pageBg: 'var(--ds-color-bg-app)',
+    cardBg: 'var(--ds-color-bg-elevated)',
+    cardBorder: 'var(--ds-color-border-strong)',
+    text: 'var(--ds-color-text-primary)',
+    textMuted: 'var(--ds-color-text-secondary)',
+    iconBg: 'var(--ds-color-bg-elevated)',
   }
 
   const weekdays = ['T2', 'T3', 'T4', 'T5', 'T6', 'T7', 'CN']
@@ -16,7 +16,7 @@ function EventCalendarInner() {
   const daysInMonth = 31
 
   const eventDays: Record<number, string> = { 8: 'divs', 12: 'agm', 15: 'divs', 18: 'rights', 22: 'agm', 25: 'rights', 29: 'divs' }
-  const colorMap: Record<string, string> = { agm: '#a78bfa', divs: '#22c55e', rights: '#f59e0b' }
+  const colorMap: Record<string, string> = { agm: 'var(--ds-color-purple-400)', divs: 'var(--ds-color-market-up)', rights: 'var(--ds-color-warning)' }
 
   const calDays: { num: number | string; bg: string; border: string; fg: string; fw: string; opacity: number; hasEvent: boolean; dotColor: string }[] = []
   for (let i = 0; i < startOffset; i++) {
@@ -27,8 +27,8 @@ function EventCalendarInner() {
     const evType = eventDays[d]
     calDays.push({
       num: d,
-      bg: isToday ? '#2563eb' : th.iconBg,
-      border: isToday ? '#2563eb' : th.cardBorder,
+      bg: isToday ? 'var(--ds-color-blue-600)' : th.iconBg,
+      border: isToday ? 'var(--ds-color-blue-600)' : th.cardBorder,
       fg: isToday ? '#fff' : th.text,
       fw: isToday ? '800' : '500',
       opacity: 1,
@@ -100,15 +100,15 @@ function EventCalendarInner() {
             </div>
             <div style={{ display: 'flex', gap: 12, marginTop: 14, paddingTop: 12, borderTop: `1px solid ${th.cardBorder}` }}>
               <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#a78bfa' }} />
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--ds-color-purple-400)' }} />
                 <span style={{ fontSize: 9.5, color: th.textMuted }}>ĐHCĐ</span>
               </div>
               <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#22c55e' }} />
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--ds-color-market-up)' }} />
                 <span style={{ fontSize: 9.5, color: th.textMuted }}>Cổ tức</span>
               </div>
               <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#f59e0b' }} />
+                <span style={{ width: 8, height: 8, borderRadius: '50%', background: 'var(--ds-color-warning)' }} />
                 <span style={{ fontSize: 9.5, color: th.textMuted }}>Chốt quyền</span>
               </div>
             </div>
@@ -126,7 +126,7 @@ function EventCalendarInner() {
               }}>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: '#60a5fa', fontFamily: "'JetBrains Mono', monospace" }}>{ev.symbol}</span>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ds-color-text-link)', fontFamily: "'JetBrains Mono', monospace" }}>{ev.symbol}</span>
                     <span style={{
                       fontSize: 8.5, fontWeight: 700, color: ev.color, background: ev.bg,
                       padding: '2px 6px', borderRadius: 4, textTransform: 'uppercase',

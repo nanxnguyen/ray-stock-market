@@ -63,8 +63,8 @@ export default function GlobalMarketsPanel({ th }: { th: ThemeTokens }) {
             onClick={() => setActive(t.id)}
             style={{
               fontSize: 10, fontWeight: t.id === active ? 700 : 400,
-              color: t.id === active ? '#3b82f6' : th.textMuted,
-              borderBottom: t.id === active ? '2px solid #3b82f6' : 'none',
+              color: t.id === active ? 'var(--ds-color-blue-500)' : th.textMuted,
+              borderBottom: t.id === active ? '2px solid var(--ds-color-blue-500)' : 'none',
               paddingBottom: 3, paddingRight: 8, cursor: 'pointer', whiteSpace: 'nowrap',
             }}
           >
@@ -73,7 +73,7 @@ export default function GlobalMarketsPanel({ th }: { th: ThemeTokens }) {
         ))}
       </div>
       {items.map((g) => {
-        const color = g.pct >= 0 ? '#22c55e' : '#f43f5e'
+        const color = g.pct >= 0 ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
         return (
           <div key={g.name} style={{
             display: 'flex', justifyContent: 'space-between', alignItems: 'center',

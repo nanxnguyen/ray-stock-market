@@ -76,7 +76,7 @@ export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
       <div
         onClick={(e) => e.stopPropagation()}
         style={{
-          background: '#060c18', border: '1px solid #1a3050', borderRadius: 12,
+          background: 'var(--ds-color-bg-app)', border: '1px solid var(--ds-color-border-default)', borderRadius: 12,
           width: 980, height: 640, maxWidth: '97vw', maxHeight: '93vh',
           overflow: 'hidden', animation: 'fadeUp .18s ease',
           boxShadow: '0 32px 80px rgba(0,0,0,.7), 0 0 40px rgba(37,99,235,.12)',
@@ -84,17 +84,17 @@ export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
         }}
       >
         <div style={{
-          background: '#0b1628', padding: '10px 18px',
+          background: 'var(--ds-color-bg-nav)', padding: '10px 18px',
           display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          borderBottom: '1px solid #1a3050', flexShrink: 0,
+          borderBottom: '1px solid var(--ds-color-border-default)', flexShrink: 0,
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ background: '#1e3a5f', borderRadius: 6, padding: '3px 10px' }}>
-              <span style={{ fontSize: 13, fontWeight: 800, color: '#60a5fa', fontFamily: "'Inter', sans-serif", letterSpacing: 0.5 }}>
+            <div style={{ background: 'var(--ds-color-surface-elevated)', borderRadius: 6, padding: '3px 10px' }}>
+              <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-blue-400)', fontFamily: "'Inter', sans-serif", letterSpacing: 0.5 }}>
                 {sym}
               </span>
             </div>
-            <span style={{ fontSize: 10, color: '#3a5570' }}>
+            <span style={{ fontSize: 10, color: 'var(--ds-color-label-muted)' }}>
               Biểu đồ TradingView - Thời gian thực
             </span>
           </div>
@@ -104,7 +104,7 @@ export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                background: '#1e3a5f', color: '#60a5fa', border: '1px solid #2563eb',
+                background: 'var(--ds-color-surface-elevated)', color: 'var(--ds-color-blue-400)', border: '1px solid var(--ds-color-blue-600)',
                 borderRadius: 6, padding: '4px 10px', fontSize: 10, fontWeight: 700,
                 cursor: 'pointer', textDecoration: 'none',
               }}
@@ -114,7 +114,7 @@ export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
             <button
               onClick={onClose}
               style={{
-                background: '#0f1e36', color: '#64748b', border: '1px solid #1a3050',
+                background: 'var(--ds-color-border-subtle)', color: 'var(--ds-color-text-muted)', border: '1px solid var(--ds-color-border-default)',
                 borderRadius: 6, width: 28, height: 28, cursor: 'pointer', fontSize: 14,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
               }}
@@ -123,7 +123,7 @@ export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
             </button>
           </div>
         </div>
-        <div ref={containerRef} style={{ flex: 1, width: '100%', background: '#060c18' }} />
+        <div ref={containerRef} style={{ flex: 1, width: '100%', background: 'var(--ds-color-bg-app)' }} />
       </div>
     </div>
   )

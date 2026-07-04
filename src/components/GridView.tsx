@@ -12,7 +12,7 @@ const GridCard = memo(function GridCard({ s, th }: { s: StockRow; th: ThemeToken
     <div
       onClick={s.onChart}
       onMouseEnter={(e) => {
-        e.currentTarget.style.borderColor = '#2563eb'
+        e.currentTarget.style.borderColor = 'var(--ds-color-blue-600)'
         e.currentTarget.style.background = th.rowHover
       }}
       onMouseLeave={(e) => {
@@ -26,7 +26,7 @@ const GridCard = memo(function GridCard({ s, th }: { s: StockRow; th: ThemeToken
       }}
     >
       <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: s.lc, opacity: 0.7 }} />
-      <div style={{ fontSize: 12, fontWeight: 800, color: '#60a5fa', fontFamily: "'Inter', sans-serif", letterSpacing: 0.4, marginBottom: 4 }}>
+      <div style={{ fontSize: 12, fontWeight: 800, color: 'var(--ds-color-blue-400)', fontFamily: "'Inter', sans-serif", letterSpacing: 0.4, marginBottom: 4 }}>
         {s.sym}
       </div>
       <div style={{

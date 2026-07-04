@@ -1,13 +1,13 @@
 import { memo, useState } from 'react'
 
 const th = {
-  pageBg: '#060c18',
-  cardBg: '#151b24',
-  cardBorder: '#232b38',
-  rowBg: '#1c2430',
-  trackBg: '#232b38',
-  text: '#eef1f6',
-  textMuted: '#8a94a6',
+  pageBg: 'var(--ds-color-bg-app)',
+  cardBg: 'var(--ds-color-bg-card)',
+  cardBorder: 'var(--ds-color-border-strong)',
+  rowBg: 'var(--ds-color-bg-row-odd)',
+  trackBg: 'var(--ds-color-border-strong)',
+  text: 'var(--ds-color-text-primary)',
+  textMuted: 'var(--ds-color-text-secondary)',
 }
 
 const stockData: Record<string, {
@@ -45,25 +45,25 @@ function StockInfoInner() {
   const data = stockData[symbol] || stockData['VCB']
 
   const isUp = data.change.startsWith('+')
-  const priceColor = isUp ? '#22c55e' : '#f43f5e'
+  const priceColor = isUp ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
   const trendIcon = isUp ? '▲' : '▼'
   const heroGradient = isUp
     ? 'linear-gradient(135deg,#0d2818 0%,#122d1c 45%,#151b24 100%)'
     : 'linear-gradient(135deg,#2d1216 0%,#2d151a 45%,#151b24 100%)'
-  const glowColor = isUp ? '#22c55e' : '#f43f5e'
+  const glowColor = isUp ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
   const exchBadgeBg = isUp ? 'rgba(34,197,94,.35)' : 'rgba(244,63,94,.35)'
 
-  const peColor = data.pe < data.peAvg ? '#22c55e' : data.pe > data.peAvg * 1.2 ? '#f43f5e' : '#f59e0b'
+  const peColor = data.pe < data.peAvg ? 'var(--ds-color-market-up)' : data.pe > data.peAvg * 1.2 ? 'var(--ds-color-market-down)' : 'var(--ds-color-warning)'
   const peStatus = data.pe < data.peAvg ? 'RẺ' : data.pe > data.peAvg * 1.2 ? 'ĐẮT' : 'HỢP LÝ'
   const peBarPct = Math.min(100, (data.pe / (data.peAvg * 1.5)) * 100)
 
-  const pbColor = data.pb < data.pbAvg ? '#22c55e' : data.pb > data.pbAvg * 1.2 ? '#f43f5e' : '#f59e0b'
+  const pbColor = data.pb < data.pbAvg ? 'var(--ds-color-market-up)' : data.pb > data.pbAvg * 1.2 ? 'var(--ds-color-market-down)' : 'var(--ds-color-warning)'
   const pbStatus = data.pb < data.pbAvg ? 'RẺ' : data.pb > data.pbAvg * 1.2 ? 'ĐẮT' : 'HỢP LÝ'
   const pbBarPct = Math.min(100, (data.pb / (data.pbAvg * 1.5)) * 100)
 
-  const debtColor = parseFloat(data.debtRatio) < 10 ? '#22c55e' : parseFloat(data.debtRatio) < 20 ? '#f59e0b' : '#f43f5e'
-  const priceTargetColor = parseFloat(data.priceTarget) > data.price ? '#22c55e' : '#f43f5e'
-  const epsYoyColor = data.epsYoY.startsWith('+') ? '#22c55e' : '#f43f5e'
+  const debtColor = parseFloat(data.debtRatio) < 10 ? 'var(--ds-color-market-up)' : parseFloat(data.debtRatio) < 20 ? 'var(--ds-color-warning)' : 'var(--ds-color-market-down)'
+  const priceTargetColor = parseFloat(data.priceTarget) > data.price ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
+  const epsYoyColor = data.epsYoY.startsWith('+') ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
 
   const total = data.ratingBuy + data.ratingHold + data.ratingSell
   const ratingBar = {
@@ -71,40 +71,40 @@ function StockInfoInner() {
     hold: (data.ratingHold / total * 100).toFixed(0),
     sell: (data.ratingSell / total * 100).toFixed(0),
   }
-  const recommendationBg = data.recommendation === 'MUA' ? '#22c55e' : data.recommendation === 'GIỮ' ? '#f59e0b' : '#f43f5e'
+  const recommendationBg = data.recommendation === 'MUA' ? 'var(--ds-color-market-up)' : data.recommendation === 'GIỮ' ? 'var(--ds-color-warning)' : 'var(--ds-color-market-down)'
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0, padding: 28, background: th.pageBg, minHeight: '100vh', fontFamily: "'Inter', system-ui, sans-serif" }}>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 16, maxWidth: 1200, margin: 'auto', width: '100%' }}>
 
         {/* Header bar */}
-        <div style={{ background: '#0d1420', border: '1px solid #1c2534', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: '1px solid #1c2534', overflowX: 'auto' }}>
+        <div style={{ background: 'var(--ds-color-bg-card)', border: '1px solid var(--ds-color-border-default)', borderRadius: 12, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: '1px solid var(--ds-color-border-default)', overflowX: 'auto' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0 }}>
-              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg,#22c55e,#16a34a)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg,var(--ds-color-market-up),var(--ds-color-green-600))', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff" /></svg>
               </div>
-              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: '#22c55e' }}>Stock</span></span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: 'var(--ds-color-market-up)' }}>Stock</span></span>
             </div>
             <div style={{ display: 'flex', flexShrink: 0 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid #1c2534', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: 0.3 }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+4.27 +0.23%</span>
+              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-default)', minWidth: 118 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: 0.3 }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+4.27 +0.23%</span>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid #1c2534', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: 0.3 }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+0.84 +0.27%</span>
+              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-default)', minWidth: 118 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: 0.3 }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+0.84 +0.27%</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: 0.3 }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: '#f43f5e', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
-                <span style={{ fontSize: 9.5, color: '#f43f5e', fontWeight: 700 }}>-0.66 -0.51%</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: 0.3 }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-down)', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-down)', fontWeight: 700 }}>-0.66 -0.51%</span>
               </div>
             </div>
-            <span style={{ marginLeft: 'auto', fontSize: 10, color: '#4a6080', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
+            <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--ds-color-text-muted)', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
           </div>
           <div style={{ display: 'flex', gap: 6, padding: '8px 14px', overflowX: 'auto' }}>
             {['🏠 Trang chủ', '💼 Danh mục', '💰 Đặt lệnh', '📖 Sổ lệnh', '🗺️ Heatmap', '📊 So sánh', '🔍 Screener', '📰 Tin tức', '📅 Sự kiện', '⚙️ Cài đặt'].map(label => (
-              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: '#141d2e', border: '1px solid #1c2534', color: '#c3ccd9', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
+              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: 'var(--ds-color-bg-row-odd)', border: '1px solid var(--ds-color-border-default)', color: 'var(--ds-color-neutral-300)', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
             ))}
           </div>
         </div>
@@ -128,7 +128,7 @@ function StockInfoInner() {
                 <span style={{ fontSize: 13, fontWeight: 700, color: priceColor }}>{data.change} ({data.changePct})</span>
               </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: 4, justifyContent: 'flex-end', marginTop: 2 }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', animation: 'pulse 2s infinite' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--ds-color-market-up)', animation: 'pulse 2s infinite' }} />
                 <span style={{ fontSize: 9, color: 'rgba(255,255,255,.5)', fontWeight: 600, letterSpacing: 0.3 }}>CẬP NHẬT REALTIME</span>
               </div>
             </div>
@@ -167,13 +167,13 @@ function StockInfoInner() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: 16, background: th.cardBg, borderRadius: 12, border: `1px solid ${th.cardBorder}` }}>
             <span style={{ fontSize: 10, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700, letterSpacing: 0.4 }}>EPS (TTM)</span>
-            <span style={{ fontSize: 22, fontWeight: 800, color: '#60a5fa', fontFamily: "'JetBrains Mono', monospace" }}>{data.eps.toFixed(2)}đ</span>
+            <span style={{ fontSize: 22, fontWeight: 800, color: 'var(--ds-color-text-link)', fontFamily: "'JetBrains Mono', monospace" }}>{data.eps.toFixed(2)}đ</span>
             <span style={{ fontSize: 10, color: epsYoyColor, fontWeight: 700 }}>↗ {data.epsYoY} so với năm trước</span>
           </div>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: 8, padding: 16, background: th.cardBg, borderRadius: 12, border: `1px solid ${th.cardBorder}` }}>
             <span style={{ fontSize: 10, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700, letterSpacing: 0.4 }}>Dividend Yield</span>
-            <span style={{ fontSize: 22, fontWeight: 800, color: '#f59e0b', fontFamily: "'JetBrains Mono', monospace" }}>{data.dividend}</span>
+            <span style={{ fontSize: 22, fontWeight: 800, color: 'var(--ds-color-warning)', fontFamily: "'JetBrains Mono', monospace" }}>{data.dividend}</span>
             <span style={{ fontSize: 10, color: th.textMuted, fontWeight: 600 }}>Chi trả gần nhất: {data.dividendDate}</span>
           </div>
         </div>
@@ -200,7 +200,7 @@ function StockInfoInner() {
         {/* Financial highlights */}
         <div style={{ background: th.cardBg, borderRadius: 12, border: `1px solid ${th.cardBorder}`, padding: 18 }}>
           <h3 style={{ margin: '0 0 12px 0', fontSize: 12, fontWeight: 700, color: th.text, textTransform: 'uppercase', letterSpacing: 0.4, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 3, height: 12, background: '#60a5fa', borderRadius: 2, display: 'inline-block' }} />
+            <span style={{ width: 3, height: 12, background: 'var(--ds-color-text-link)', borderRadius: 2, display: 'inline-block' }} />
             Tổng quan tài chính
           </h3>
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
@@ -226,27 +226,27 @@ function StockInfoInner() {
         {/* Analyst rating */}
         <div style={{ background: th.cardBg, borderRadius: 12, border: `1px solid ${th.cardBorder}`, padding: 18 }}>
           <h3 style={{ margin: '0 0 12px 0', fontSize: 12, fontWeight: 700, color: th.text, textTransform: 'uppercase', letterSpacing: 0.4, display: 'flex', alignItems: 'center', gap: 6 }}>
-            <span style={{ width: 3, height: 12, background: '#f59e0b', borderRadius: 2, display: 'inline-block' }} />
+            <span style={{ width: 3, height: 12, background: 'var(--ds-color-warning)', borderRadius: 2, display: 'inline-block' }} />
             Đánh giá nhà phân tích
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
             <div style={{ display: 'flex', height: 8, borderRadius: 4, overflow: 'hidden' }}>
-              <div style={{ width: `${ratingBar.buy}%`, background: '#22c55e' }} />
-              <div style={{ width: `${ratingBar.hold}%`, background: '#f59e0b' }} />
-              <div style={{ width: `${ratingBar.sell}%`, background: '#f43f5e' }} />
+              <div style={{ width: `${ratingBar.buy}%`, background: 'var(--ds-color-market-up)' }} />
+              <div style={{ width: `${ratingBar.hold}%`, background: 'var(--ds-color-warning)' }} />
+              <div style={{ width: `${ratingBar.sell}%`, background: 'var(--ds-color-market-down)' }} />
             </div>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <div style={{ display: 'flex', gap: 14 }}>
                 <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                  <span style={{ background: '#22c55e', width: 8, height: 8, borderRadius: '50%' }} />
+                  <span style={{ background: 'var(--ds-color-market-up)', width: 8, height: 8, borderRadius: '50%' }} />
                   <span style={{ fontSize: 10, color: th.text, fontWeight: 600 }}><strong>{data.ratingBuy}</strong> Mua</span>
                 </div>
                 <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                  <span style={{ background: '#f59e0b', width: 8, height: 8, borderRadius: '50%' }} />
+                  <span style={{ background: 'var(--ds-color-warning)', width: 8, height: 8, borderRadius: '50%' }} />
                   <span style={{ fontSize: 10, color: th.text, fontWeight: 600 }}><strong>{data.ratingHold}</strong> Giữ</span>
                 </div>
                 <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}>
-                  <span style={{ background: '#f43f5e', width: 8, height: 8, borderRadius: '50%' }} />
+                  <span style={{ background: 'var(--ds-color-market-down)', width: 8, height: 8, borderRadius: '50%' }} />
                   <span style={{ fontSize: 10, color: th.text, fontWeight: 600 }}><strong>{data.ratingSell}</strong> Bán</span>
                 </div>
               </div>
@@ -263,7 +263,7 @@ function StockInfoInner() {
           <button style={{ flex: 1, background: th.cardBg, border: `1px solid ${th.cardBorder}`, color: th.text, borderRadius: 10, padding: 13, fontSize: 11, fontWeight: 700, cursor: 'pointer', transition: 'all .2s', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
             <span>🔔</span> Alert
           </button>
-          <button style={{ flex: 1.3, background: 'linear-gradient(135deg,#22c55e,#16a34a)', border: 'none', color: '#fff', borderRadius: 10, padding: 13, fontSize: 11, fontWeight: 800, cursor: 'pointer', transition: 'all .2s', boxShadow: '0 6px 20px rgba(34,197,94,.35)', letterSpacing: 0.3 }}>
+          <button style={{ flex: 1.3, background: 'linear-gradient(135deg,var(--ds-color-market-up),var(--ds-color-green-600))', border: 'none', color: '#fff', borderRadius: 10, padding: 13, fontSize: 11, fontWeight: 800, cursor: 'pointer', transition: 'all .2s', boxShadow: '0 6px 20px rgba(34,197,94,.35)', letterSpacing: 0.3 }}>
             ✓ MUA NGAY
           </button>
         </div>

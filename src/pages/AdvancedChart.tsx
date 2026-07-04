@@ -4,12 +4,12 @@ const FONT = "'Inter', system-ui, sans-serif"
 const MONO = "'JetBrains Mono', monospace"
 
 const th = {
-  pageBg: '#0a0e14',
-  cardBg: '#131a24',
-  cardBorder: '#232b38',
-  text: '#eef1f6',
-  textMuted: '#8a94a6',
-  iconBg: '#1a212c',
+  pageBg: 'var(--ds-color-bg-app)',
+  cardBg: 'var(--ds-color-bg-elevated)',
+  cardBorder: 'var(--ds-color-border-strong)',
+  text: 'var(--ds-color-text-primary)',
+  textMuted: 'var(--ds-color-text-secondary)',
+  iconBg: 'var(--ds-color-bg-input)',
   gridColor: '#1c2530',
 }
 
@@ -93,7 +93,7 @@ function AdvancedChartInner() {
     const candles = raw.map((c, i) => {
       const x = i * slotW + slotW / 2
       const up = c.close >= c.open
-      const color = up ? '#22c55e' : '#f43f5e'
+      const color = up ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
       const bodyTop = yOf(Math.max(c.open, c.close))
       const bodyBot = yOf(Math.min(c.open, c.close))
       return {
@@ -119,7 +119,7 @@ function AdvancedChartInner() {
     const volBars = raw.map((c, i) => {
       const x = i * slotW + slotW * 0.18
       const h = (c.vol / maxVol) * 68
-      return { x, y: 70 - h, w: slotW * 0.64, h, color: c.close >= c.open ? '#22c55e' : '#f43f5e' }
+      return { x, y: 70 - h, w: slotW * 0.64, h, color: c.close >= c.open ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)' }
     })
 
     const gridLines = [0, 1, 2, 3, 4].map((i) => ({ y: (chartH / 4) * i }))
@@ -138,7 +138,7 @@ function AdvancedChartInner() {
     })
     const rsiLine = rsiSeries.map((v, i) => `${i * slotW + slotW / 2},${80 - (v / 100) * 80}`).join(' ')
     const rsiVal = rsiSeries[rsiSeries.length - 1].toFixed(1)
-    const rsiColor = Number(rsiVal) > 70 ? '#f43f5e' : Number(rsiVal) < 30 ? '#22c55e' : '#a78bfa'
+    const rsiColor = Number(rsiVal) > 70 ? 'var(--ds-color-market-down)' : Number(rsiVal) < 30 ? 'var(--ds-color-market-up)' : 'var(--ds-color-purple-400)'
 
     // MACD
     const ema12 = calcEMA(closes, 12)
@@ -151,7 +151,7 @@ function AdvancedChartInner() {
     const signalLinePoints = signalArr.map((v, i) => `${i * slotW + slotW / 2},${40 - (v / maxMacd) * 36}`).join(' ')
     const macdBars = histArr.map((v, i) => {
       const h = Math.abs((v / maxMacd) * 36)
-      return { x: i * slotW + slotW * 0.3, y: v >= 0 ? 40 - h : 40, w: slotW * 0.4, h, color: v >= 0 ? '#22c55e' : '#f43f5e' }
+      return { x: i * slotW + slotW * 0.3, y: v >= 0 ? 40 - h : 40, w: slotW * 0.4, h, color: v >= 0 ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)' }
     })
 
     // Bollinger
@@ -164,7 +164,7 @@ function AdvancedChartInner() {
     const lastClose = closes[closes.length - 1]
     const firstClose = closes[0]
     const isUp = lastClose >= firstClose
-    const priceColor = isUp ? '#22c55e' : '#f43f5e'
+    const priceColor = isUp ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
     const changeVal = lastClose - firstClose
     const changePctVal = (changeVal / firstClose) * 100
 
@@ -212,8 +212,8 @@ function AdvancedChartInner() {
                 key={s}
                 onClick={() => setSymbol(s)}
                 style={{
-                  background: s === symbol ? '#2563eb' : th.iconBg,
-                  border: `1px solid ${s === symbol ? '#2563eb' : th.cardBorder}`,
+                  background: s === symbol ? 'var(--ds-color-blue-600)' : th.iconBg,
+                  border: `1px solid ${s === symbol ? 'var(--ds-color-blue-600)' : th.cardBorder}`,
                   color: s === symbol ? '#fff' : th.textMuted,
                   borderRadius: 6,
                   padding: '5px 11px',
@@ -236,9 +236,9 @@ function AdvancedChartInner() {
                 key={t}
                 onClick={() => setTimeframe(t)}
                 style={{
-                  background: t === timeframe ? '#2563eb' : 'transparent',
+                  background: t === timeframe ? 'var(--ds-color-blue-600)' : 'transparent',
                   color: t === timeframe ? '#fff' : th.textMuted,
-                  border: `1px solid ${t === timeframe ? '#2563eb' : th.cardBorder}`,
+                  border: `1px solid ${t === timeframe ? 'var(--ds-color-blue-600)' : th.cardBorder}`,
                   borderRadius: 5,
                   padding: '5px 11px',
                   fontSize: 11,
@@ -259,8 +259,8 @@ function AdvancedChartInner() {
             <button
               onClick={toggleMA}
               style={{
-                background: maOn ? '#3b82f6' : th.iconBg,
-                border: `1px solid ${maOn ? '#2563eb' : th.cardBorder}`,
+                background: maOn ? 'var(--ds-color-blue-500)' : th.iconBg,
+                border: `1px solid ${maOn ? 'var(--ds-color-blue-600)' : th.cardBorder}`,
                 color: maOn ? '#fff' : th.textMuted,
                 borderRadius: 5,
                 padding: '5px 10px',
@@ -316,9 +316,9 @@ function AdvancedChartInner() {
               key={it.key}
               onClick={() => setIndicatorTab(it.key)}
               style={{
-                background: indicator === it.key ? '#3b82f6' : th.iconBg,
+                background: indicator === it.key ? 'var(--ds-color-blue-500)' : th.iconBg,
                 color: indicator === it.key ? '#fff' : th.textMuted,
-                border: `1px solid ${indicator === it.key ? '#2563eb' : th.cardBorder}`,
+                border: `1px solid ${indicator === it.key ? 'var(--ds-color-blue-600)' : th.cardBorder}`,
                 borderRadius: 6,
                 padding: '6px 14px',
                 fontSize: 11,
@@ -339,9 +339,9 @@ function AdvancedChartInner() {
               <span style={{ fontSize: 11, fontWeight: 700, color: chartData.rsiColor, fontFamily: MONO }}>{chartData.rsiVal}</span>
             </div>
             <svg viewBox="0 0 1000 80" preserveAspectRatio="none" style={{ width: '100%', height: 80, display: 'block', marginTop: 4 }}>
-              <line x1={0} y1={24} x2={1000} y2={24} stroke="#f43f5e" strokeWidth={1} strokeDasharray="4,4" opacity={0.5} />
-              <line x1={0} y1={56} x2={1000} y2={56} stroke="#22c55e" strokeWidth={1} strokeDasharray="4,4" opacity={0.5} />
-              <polyline points={chartData.rsiLine} fill="none" stroke="#a78bfa" strokeWidth={1.6} />
+              <line x1={0} y1={24} x2={1000} y2={24} stroke="var(--ds-color-market-down)" strokeWidth={1} strokeDasharray="4,4" opacity={0.5} />
+              <line x1={0} y1={56} x2={1000} y2={56} stroke="var(--ds-color-market-up)" strokeWidth={1} strokeDasharray="4,4" opacity={0.5} />
+              <polyline points={chartData.rsiLine} fill="none" stroke="var(--ds-color-purple-400)" strokeWidth={1.6} />
             </svg>
           </div>
         )}
@@ -355,8 +355,8 @@ function AdvancedChartInner() {
               {chartData.macdBars.map((mb, i) => (
                 <rect key={i} x={mb.x} y={mb.y} width={mb.w} height={mb.h} fill={mb.color} opacity={0.7} />
               ))}
-              <polyline points={chartData.macdLinePoints} fill="none" stroke="#60a5fa" strokeWidth={1.4} />
-              <polyline points={chartData.signalLinePoints} fill="none" stroke="#fbbf24" strokeWidth={1.4} />
+              <polyline points={chartData.macdLinePoints} fill="none" stroke="var(--ds-color-text-link)" strokeWidth={1.4} />
+              <polyline points={chartData.signalLinePoints} fill="none" stroke="var(--ds-color-yellow-400)" strokeWidth={1.4} />
             </svg>
           </div>
         )}
@@ -366,15 +366,15 @@ function AdvancedChartInner() {
           <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 10, padding: '10px 14px', display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: 10 }}>
             <div>
               <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Upper Band</span>
-              <div style={{ fontSize: 14, fontWeight: 700, color: '#f43f5e', fontFamily: MONO }}>{chartData.bbUpper}đ</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--ds-color-market-down)', fontFamily: MONO }}>{chartData.bbUpper}đ</div>
             </div>
             <div>
               <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Middle (MA20)</span>
-              <div style={{ fontSize: 14, fontWeight: 700, color: '#fbbf24', fontFamily: MONO }}>{chartData.bbMid}đ</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--ds-color-yellow-400)', fontFamily: MONO }}>{chartData.bbMid}đ</div>
             </div>
             <div>
               <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Lower Band</span>
-              <div style={{ fontSize: 14, fontWeight: 700, color: '#22c55e', fontFamily: MONO }}>{chartData.bbLower}đ</div>
+              <div style={{ fontSize: 14, fontWeight: 700, color: 'var(--ds-color-market-up)', fontFamily: MONO }}>{chartData.bbLower}đ</div>
             </div>
           </div>
         )}

@@ -1,3 +1,4 @@
+/** @deprecated Use CSS variables instead */
 export type ThemeTokens = {
   appBg: string
   navBg: string

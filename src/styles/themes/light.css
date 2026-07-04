@@ -1,0 +1,27 @@
+/* Light theme overrides */
+[data-theme="light"] {
+  --ds-color-bg-app: #f0f4f8;
+  --ds-color-bg-nav: #ffffff;
+  --ds-color-bg-card: #ffffff;
+  --ds-color-bg-elevated: #f8fafd;
+  --ds-color-bg-input: #f0f4f8;
+  --ds-color-bg-table: #f4f7fb;
+  --ds-color-bg-row-odd: #ffffff;
+  --ds-color-bg-row-even: #f8fafd;
+  --ds-color-bg-row-hover: #eef4ff;
+
+  --ds-color-text-primary: #1e293b;
+  --ds-color-text-secondary: #64748b;
+  --ds-color-text-muted: #94a3b8;
+  --ds-color-text-inverse: #ffffff;
+  --ds-color-text-link: #2563eb;
+
+  --ds-color-border-default: #e1e8f0;
+  --ds-color-border-subtle: #f0f5fb;
+  --ds-color-border-strong: #cbd5e1;
+
+  --ds-shadow-sm: 0 1px 2px rgba(0,0,0,.08);
+  --ds-shadow-md: 0 4px 12px rgba(0,0,0,.1);
+  --ds-shadow-lg: 0 12px 30px rgba(0,0,0,.12);
+  --ds-shadow-xl: 0 24px 60px rgba(0,0,0,.15);
+}

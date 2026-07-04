@@ -1,16 +1,16 @@
 import { memo, useState, useMemo } from 'react'
 
 const th = {
-  pageBg: '#060c18',
-  cardBg: '#131a24',
-  cardBorder: '#232b38',
-  rowHover: '#1a212c',
-  iconBg: '#1a212c',
-  gridColor: '#1c2530',
-  text: '#eef1f6',
-  textMuted: '#8a94a6',
-  heroGradient: 'linear-gradient(135deg,#0d1f16 0%,#12222e 55%,#131a24 100%)',
-  glowColor: '#22c55e',
+  pageBg: 'var(--ds-color-bg-app)',
+  cardBg: 'var(--ds-color-bg-elevated)',
+  cardBorder: 'var(--ds-color-border-strong)',
+  rowHover: 'var(--ds-color-bg-row-hover)',
+  iconBg: 'var(--ds-color-bg-elevated)',
+  gridColor: 'var(--ds-color-border-default)',
+  text: 'var(--ds-color-text-primary)',
+  textMuted: 'var(--ds-color-text-secondary)',
+  heroGradient: 'linear-gradient(135deg,var(--ds-color-market-flash-up) 0%,var(--ds-color-bg-nav) 55%,var(--ds-color-bg-elevated) 100%)',
+  glowColor: 'var(--ds-color-market-up)',
 }
 
 const posData = [
@@ -49,12 +49,12 @@ function PortfolioInner() {
         symbol: p.symbol,
         quantity: p.qty.toLocaleString(),
         costPrice: p.cost.toFixed(2) + 'đ',
-        currentPrice: { value: p.current.toFixed(2) + 'đ', color: p.current >= p.cost ? '#22c55e' : '#f43f5e' },
+        currentPrice: { value: p.current.toFixed(2) + 'đ', color: p.current >= p.cost ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)' },
         value: value.toLocaleString() + 'đ',
         rawValue: value,
         pl: (pl >= 0 ? '+' : '') + pl.toLocaleString(undefined, { maximumFractionDigits: 0 }) + 'đ',
         plPct: (pl >= 0 ? '+' : '') + plPct.toFixed(1) + '%',
-        plColor: pl >= 0 ? '#22c55e' : '#f43f5e',
+        plColor: pl >= 0 ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)',
         sparkline,
         weightPct: 0,
       }
@@ -83,9 +83,9 @@ function PortfolioInner() {
   const navTimeframes = ['1M', '3M', '6M', '1Y']
 
   const allocData = [
-    { label: 'Cổ phiếu', value: totalStockValue, color: '#3b82f6' },
-    { label: 'Tiền mặt', value: cash, color: '#22c55e' },
-    { label: 'Ký quỹ (Margin)', value: marginUsed, color: '#f59e0b' },
+    { label: 'Cổ phiếu', value: totalStockValue, color: 'var(--ds-color-blue-500)' },
+    { label: 'Tiền mặt', value: cash, color: 'var(--ds-color-market-up)' },
+    { label: 'Ký quỹ (Margin)', value: marginUsed, color: 'var(--ds-color-warning)' },
   ]
   const allocTotal = allocData.reduce((s, a) => s + a.value, 0)
   const circumference = 2 * Math.PI * 46
@@ -104,11 +104,11 @@ function PortfolioInner() {
   }))
 
   const sectorAlloc = [
-    { name: 'Ngân hàng', pct: 52, color: '#3b82f6' },
-    { name: 'Công nghệ', pct: 18, color: '#8b5cf6' },
-    { name: 'Thép & Vật liệu', pct: 16, color: '#f59e0b' },
+    { name: 'Ngân hàng', pct: 52, color: 'var(--ds-color-blue-500)' },
+    { name: 'Công nghệ', pct: 18, color: 'var(--ds-color-purple-400)' },
+    { name: 'Thép & Vật liệu', pct: 16, color: 'var(--ds-color-warning)' },
     { name: 'Bán lẻ', pct: 9, color: '#ec4899' },
-    { name: 'Khác', pct: 5, color: '#6b7280' },
+    { name: 'Khác', pct: 5, color: 'var(--ds-color-neutral-500)' },
   ]
 
   const cashFlowMonths = ['02/26', '03/26', '04/26', '05/26', '06/26', '07/26']
@@ -121,15 +121,15 @@ function PortfolioInner() {
   const summary = {
     nav: (nav / 1000000).toFixed(1) + 'M',
     dayChange: '+1,240,000đ',
-    dayColor: '#22c55e',
+    dayColor: 'var(--ds-color-market-up)',
     dayPct: '+0.85%',
     totalPL: (totalPL >= 0 ? '+' : '') + totalPL.toLocaleString(undefined, { maximumFractionDigits: 0 }) + 'đ',
-    plColor: totalPL >= 0 ? '#22c55e' : '#f43f5e',
+    plColor: totalPL >= 0 ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)',
     roi: (totalPL >= 0 ? '+' : '') + (totalPL / totalCost * 100).toFixed(1) + '%',
     cash: cash.toLocaleString() + 'đ',
     stockValue: totalStockValue.toLocaleString() + 'đ',
     marginPct: (marginUsed / nav * 100).toFixed(1) + '%',
-    marginColor: '#f59e0b',
+    marginColor: 'var(--ds-color-warning)',
   }
 
   return (
@@ -154,7 +154,7 @@ function PortfolioInner() {
           </div>
           <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 4 }}>
             <span style={{ fontSize: 10, fontWeight: 700, color: th.textMuted, textTransform: 'uppercase' }}>Tiền mặt</span>
-            <span style={{ fontSize: 18, fontWeight: 800, color: '#60a5fa', fontFamily: "'JetBrains Mono', monospace" }}>{summary.cash}</span>
+            <span style={{ fontSize: 18, fontWeight: 800, color: 'var(--ds-color-text-link)', fontFamily: "'JetBrains Mono', monospace" }}>{summary.cash}</span>
           </div>
           <div style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: 4 }}>
             <span style={{ fontSize: 10, fontWeight: 700, color: th.textMuted, textTransform: 'uppercase' }}>Giá trị CK</span>
@@ -174,22 +174,22 @@ function PortfolioInner() {
               <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, color: th.text, textTransform: 'uppercase' }}>Tăng trưởng tài sản (NAV)</h3>
               <div style={{ display: 'flex', gap: 4 }}>
                 {navTimeframes.map(t => (
-                  <button key={t} onClick={() => setNavTimeframe(t)} style={{ background: navTimeframe === t ? '#2563eb' : th.iconBg, color: navTimeframe === t ? '#fff' : th.textMuted, border: `1px solid ${navTimeframe === t ? '#2563eb' : th.cardBorder}`, borderRadius: 5, padding: '4px 10px', fontSize: 10, fontWeight: 700, cursor: 'pointer' }}>{t}</button>
+                  <button key={t} onClick={() => setNavTimeframe(t)} style={{ background: navTimeframe === t ? 'var(--ds-color-blue-600)' : th.iconBg, color: navTimeframe === t ? '#fff' : th.textMuted, border: `1px solid ${navTimeframe === t ? 'var(--ds-color-blue-600)' : th.cardBorder}`, borderRadius: 5, padding: '4px 10px', fontSize: 10, fontWeight: 700, cursor: 'pointer' }}>{t}</button>
                 ))}
               </div>
             </div>
             <svg viewBox="0 0 1000 220" preserveAspectRatio="none" style={{ width: '100%', height: 220, display: 'block' }}>
               <defs>
                 <linearGradient id="navFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#22c55e" stopOpacity={0.28} />
-                  <stop offset="100%" stopColor="#22c55e" stopOpacity={0} />
+                  <stop offset="0%" stopColor="var(--ds-color-market-up)" stopOpacity={0.28} />
+                  <stop offset="100%" stopColor="var(--ds-color-market-up)" stopOpacity={0} />
                 </linearGradient>
               </defs>
               {navGridLines.map((gl, i) => (
                 <line key={i} x1="0" y1={gl.y} x2="1000" y2={gl.y} stroke={th.gridColor} strokeWidth="1" />
               ))}
               <path d={navFillPath} fill="url(#navFill)" />
-              <polyline points={navLine} fill="none" stroke="#22c55e" strokeWidth="2.2" />
+              <polyline points={navLine} fill="none" stroke="var(--ds-color-market-up)" strokeWidth="2.2" />
             </svg>
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4 }}>
               <span style={{ fontSize: 9, color: th.textMuted, fontFamily: "'JetBrains Mono', monospace" }}>01/07/2025</span>
@@ -205,8 +205,8 @@ function PortfolioInner() {
                 {donutSegments.map((seg, i) => (
                   <circle key={i} cx="60" cy="60" r="46" fill="none" stroke={seg.color} strokeWidth="18" strokeDasharray={seg.dash} strokeDashoffset={seg.offset} transform="rotate(-90 60 60)" />
                 ))}
-                <text x="60" y="56" textAnchor="middle" fontSize="15" fontWeight="800" fill="#eef1f6" fontFamily="JetBrains Mono, monospace">{summary.nav}</text>
-                <text x="60" y="72" textAnchor="middle" fontSize="8" fill="#8a94a6">TỔNG NAV</text>
+                <text x="60" y="56" textAnchor="middle" fontSize="15" fontWeight="800" fill="var(--ds-color-text-primary)" fontFamily="JetBrains Mono, monospace">{summary.nav}</text>
+                <text x="60" y="72" textAnchor="middle" fontSize="8" fill="var(--ds-color-text-secondary)">TỔNG NAV</text>
               </svg>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 9, flex: 1 }}>
                 {allocationLegend.map((al, i) => (
@@ -248,16 +248,16 @@ function PortfolioInner() {
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
               <h3 style={{ margin: 0, fontSize: 12, fontWeight: 700, color: th.text, textTransform: 'uppercase' }}>Dòng tiền theo tháng</h3>
               <div style={{ display: 'flex', gap: 12 }}>
-                <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: '#22c55e' }} /><span style={{ fontSize: 9.5, color: th.textMuted }}>Nạp/Bán</span></div>
-                <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: '#f43f5e' }} /><span style={{ fontSize: 9.5, color: th.textMuted }}>Rút/Mua</span></div>
+                <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: 'var(--ds-color-market-up)' }} /><span style={{ fontSize: 9.5, color: th.textMuted }}>Nạp/Bán</span></div>
+                <div style={{ display: 'flex', gap: 5, alignItems: 'center' }}><span style={{ width: 9, height: 9, borderRadius: 2, background: 'var(--ds-color-market-down)' }} /><span style={{ fontSize: 9.5, color: th.textMuted }}>Rút/Mua</span></div>
               </div>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-around', gap: 10, height: 170 }}>
               {cashFlow.map((cf, i) => (
                 <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 6, flex: 1, height: '100%', justifyContent: 'flex-end' }}>
                   <div style={{ display: 'flex', alignItems: 'flex-end', gap: 3, height: 130 }}>
-                    <div style={{ width: 14, height: cf.inH, background: '#22c55e', borderRadius: '2px 2px 0 0' }} />
-                    <div style={{ width: 14, height: cf.outH, background: '#f43f5e', borderRadius: '2px 2px 0 0' }} />
+                    <div style={{ width: 14, height: cf.inH, background: 'var(--ds-color-market-up)', borderRadius: '2px 2px 0 0' }} />
+                    <div style={{ width: 14, height: cf.outH, background: 'var(--ds-color-market-down)', borderRadius: '2px 2px 0 0' }} />
                   </div>
                   <span style={{ fontSize: 9, color: th.textMuted, fontWeight: 700 }}>{cf.label}</span>
                 </div>
@@ -290,7 +290,7 @@ function PortfolioInner() {
               <tbody>
                 {positions.map((pos) => (
                   <tr key={pos.symbol} style={{ borderBottom: `1px solid ${th.cardBorder}`, height: 44 }}>
-                    <td style={{ padding: '6px 10px', color: '#60a5fa', fontWeight: 700, fontSize: 12 }}>{pos.symbol}</td>
+                    <td style={{ padding: '6px 10px', color: 'var(--ds-color-text-link)', fontWeight: 700, fontSize: 12 }}>{pos.symbol}</td>
                     <td style={{ padding: '6px 10px', textAlign: 'right', color: th.text }}>{pos.quantity}</td>
                     <td style={{ padding: '6px 10px', textAlign: 'right', color: th.textMuted }}>{pos.costPrice}</td>
                     <td style={{ padding: '6px 10px', textAlign: 'right', color: pos.currentPrice.color, fontWeight: 700 }}>{pos.currentPrice.value}</td>
@@ -302,7 +302,7 @@ function PortfolioInner() {
                     <td style={{ padding: '6px 10px', textAlign: 'right', color: th.text, fontWeight: 700 }}>{pos.value}</td>
                     <td style={{ padding: '6px 10px', textAlign: 'right' }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: 6, justifyContent: 'flex-end' }}>
-                        <div style={{ width: 36, height: 5, background: th.iconBg, borderRadius: 3, overflow: 'hidden' }}><div style={{ height: '100%', width: `${pos.weightPct}%`, background: '#60a5fa' }} /></div>
+                        <div style={{ width: 36, height: 5, background: th.iconBg, borderRadius: 3, overflow: 'hidden' }}><div style={{ height: '100%', width: `${pos.weightPct}%`, background: 'var(--ds-color-text-link)' }} /></div>
                         <span style={{ color: th.textMuted, width: 32 }}>{pos.weightPct}%</span>
                       </div>
                     </td>
@@ -312,8 +312,8 @@ function PortfolioInner() {
                     </td>
                     <td style={{ padding: '6px 10px', textAlign: 'center' }}>
                       <div style={{ display: 'flex', gap: 4, justifyContent: 'center' }}>
-                        <button style={{ background: 'rgba(34,197,94,.15)', border: '1px solid #22c55e', color: '#22c55e', borderRadius: 4, padding: '3px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer' }}>Mua</button>
-                        <button style={{ background: 'rgba(244,63,94,.15)', border: '1px solid #f43f5e', color: '#f43f5e', borderRadius: 4, padding: '3px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer' }}>Bán</button>
+                        <button style={{ background: 'rgba(34,197,94,.15)', border: '1px solid var(--ds-color-market-up)', color: 'var(--ds-color-market-up)', borderRadius: 4, padding: '3px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer' }}>Mua</button>
+                        <button style={{ background: 'rgba(244,63,94,.15)', border: '1px solid var(--ds-color-market-down)', color: 'var(--ds-color-market-down)', borderRadius: 4, padding: '3px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer' }}>Bán</button>
                       </div>
                     </td>
                   </tr>

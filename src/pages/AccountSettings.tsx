@@ -7,13 +7,13 @@ function AccountSettingsInner() {
   const [notif, setNotif] = useState({ price: true, news: true, order: true, promo: false })
 
   const th = {
-    pageBg: '#0a0e14',
-    cardBg: '#131a24',
-    cardBorder: '#232b38',
-    inputBg: '#0f1419',
-    disabledBg: '#0c1017',
-    text: '#eef1f6',
-    textMuted: '#8a94a6',
+    pageBg: 'var(--ds-color-bg-app)',
+    cardBg: 'var(--ds-color-bg-elevated)',
+    cardBorder: 'var(--ds-color-border-strong)',
+    inputBg: 'var(--ds-color-bg-input)',
+    disabledBg: 'var(--ds-color-bg-input)',
+    text: 'var(--ds-color-text-primary)',
+    textMuted: 'var(--ds-color-text-secondary)',
   }
 
   const sections = [
@@ -45,8 +45,8 @@ function AccountSettingsInner() {
                 onClick={() => setSection(s.key)}
                 style={{
                   textAlign: 'left',
-                  background: section === s.key ? '#1a2536' : 'transparent',
-                  color: section === s.key ? '#60a5fa' : th.textMuted,
+                  background: section === s.key ? 'var(--ds-color-surface-hover)' : 'transparent',
+                  color: section === s.key ? 'var(--ds-color-text-link)' : th.textMuted,
                   border: 'none',
                   borderRadius: 8,
                   padding: '10px 12px',
@@ -67,7 +67,7 @@ function AccountSettingsInner() {
                 <div style={{ display: 'flex', gap: 16, alignItems: 'center', marginBottom: 18 }}>
                   <div style={{
                     width: 64, height: 64, borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #3b82f6, #2563eb)',
+                    background: 'linear-gradient(135deg, var(--ds-color-blue-500), var(--ds-color-blue-600))',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     fontSize: 24, fontWeight: 800, color: '#fff',
                   }}>NA</div>
@@ -94,7 +94,7 @@ function AccountSettingsInner() {
                     <input type="text" defaultValue="069C123456" disabled style={{ padding: '9px 10px', border: `1px solid ${th.cardBorder}`, borderRadius: 7, background: th.disabledBg, color: th.textMuted, fontSize: 12 }} />
                   </div>
                 </div>
-                <button style={{ marginTop: 16, background: '#22c55e', border: 'none', color: '#fff', borderRadius: 7, padding: '10px 20px', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>Lưu thay đổi</button>
+                <button style={{ marginTop: 16, background: 'var(--ds-color-market-up)', border: 'none', color: '#fff', borderRadius: 7, padding: '10px 20px', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>Lưu thay đổi</button>
               </div>
             )}
 
@@ -111,7 +111,7 @@ function AccountSettingsInner() {
                     <input type="password" style={{ padding: '9px 10px', border: `1px solid ${th.cardBorder}`, borderRadius: 7, background: th.inputBg, color: th.text, fontSize: 12 }} />
                   </div>
                 </div>
-                <button style={{ background: '#3b82f6', border: 'none', color: '#fff', borderRadius: 7, padding: '10px 20px', fontSize: 12, fontWeight: 700, cursor: 'pointer', marginBottom: 18 }}>Đổi mật khẩu</button>
+                <button style={{ background: 'var(--ds-color-blue-500)', border: 'none', color: '#fff', borderRadius: 7, padding: '10px 20px', fontSize: 12, fontWeight: 700, cursor: 'pointer', marginBottom: 18 }}>Đổi mật khẩu</button>
                 <div style={{ borderTop: `1px solid ${th.cardBorder}`, paddingTop: 16, display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <div>
                     <span style={{ fontSize: 12, fontWeight: 700, color: th.text }}>Xác thực 2 lớp (2FA)</span>
@@ -121,7 +121,7 @@ function AccountSettingsInner() {
                     onClick={() => setTwoFA(!twoFA)}
                     style={{
                       width: 40, height: 22, borderRadius: 11,
-                      background: twoFA ? '#22c55e' : '#2a3340',
+                      background: twoFA ? 'var(--ds-color-market-up)' : 'var(--ds-color-neutral-700)',
                       position: 'relative', cursor: 'pointer',
                     }}
                   >
@@ -149,7 +149,7 @@ function AccountSettingsInner() {
                         onClick={() => toggleNotif(nt.key)}
                         style={{
                           width: 40, height: 22, borderRadius: 11,
-                          background: notif[nt.key] ? '#22c55e' : '#2a3340',
+                          background: notif[nt.key] ? 'var(--ds-color-market-up)' : 'var(--ds-color-neutral-700)',
                           position: 'relative', cursor: 'pointer', flexShrink: 0,
                         }}
                       >
@@ -175,18 +175,18 @@ function AccountSettingsInner() {
                       <button
                         onClick={() => setTheme('dark')}
                         style={{
-                          background: theme === 'dark' ? '#2563eb' : th.inputBg,
+                          background: theme === 'dark' ? 'var(--ds-color-blue-600)' : th.inputBg,
                           color: theme === 'dark' ? '#fff' : th.textMuted,
-                          border: `1px solid ${theme === 'dark' ? '#2563eb' : th.cardBorder}`,
+                          border: `1px solid ${theme === 'dark' ? 'var(--ds-color-blue-600)' : th.cardBorder}`,
                           borderRadius: 7, padding: '8px 16px', fontSize: 11.5, fontWeight: 700, cursor: 'pointer',
                         }}
                       >🌙 Tối</button>
                       <button
                         onClick={() => setTheme('light')}
                         style={{
-                          background: theme === 'light' ? '#2563eb' : th.inputBg,
+                          background: theme === 'light' ? 'var(--ds-color-blue-600)' : th.inputBg,
                           color: theme === 'light' ? '#fff' : th.textMuted,
-                          border: `1px solid ${theme === 'light' ? '#2563eb' : th.cardBorder}`,
+                          border: `1px solid ${theme === 'light' ? 'var(--ds-color-blue-600)' : th.cardBorder}`,
                           borderRadius: 7, padding: '8px 16px', fontSize: 11.5, fontWeight: 700, cursor: 'pointer',
                         }}
                       >☀️ Sáng</button>

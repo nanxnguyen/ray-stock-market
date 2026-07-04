@@ -62,8 +62,8 @@ export default function FilterDropdown({ th, label, items, activeValue, onSelect
         ref={btnRef}
         onClick={() => setOpen((p) => !p)}
         style={{
-          background: isActive ? '#2563eb' : 'transparent',
-          color: isActive ? '#fff' : th.tabFg,
+          background: isActive ? 'var(--ds-color-blue-600)' : 'transparent',
+          color: isActive ? 'var(--ds-color-text-inverse)' : th.tabFg,
           border: isActive ? 'none' : th.tabBorder,
           borderRadius: 5,
           padding: '3px 8px',
@@ -106,8 +106,8 @@ export default function FilterDropdown({ th, label, items, activeValue, onSelect
                     padding: '6px 10px',
                     cursor: 'pointer',
                     fontSize: 11,
-                    color: item.value === activeValue ? '#fff' : th.text,
-                    background: item.value === activeValue ? '#2563eb' : 'transparent',
+                    color: item.value === activeValue ? 'var(--ds-color-text-inverse)' : th.text,
+                    background: item.value === activeValue ? 'var(--ds-color-blue-600)' : 'transparent',
                   }}
                 >
                   {item.label}

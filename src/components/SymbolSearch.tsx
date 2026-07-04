@@ -84,7 +84,7 @@ export default function SymbolSearch({ th, onSelect, placeholder = 'Thêm mã ..
         gap: 4,
         background: th.appBg,
       }}>
-        <span style={{ fontSize: 10, color: '#94a3b8' }}>🔍</span>
+        <span style={{ fontSize: 10, color: 'var(--ds-color-text-secondary)' }}>🔍</span>
         <input
           ref={inputRef}
           type="text"
@@ -126,8 +126,8 @@ export default function SymbolSearch({ th, onSelect, placeholder = 'Thêm mã ..
                 padding: '6px 10px',
                 cursor: 'pointer',
                 fontSize: 11,
-                color: i === highlightIdx ? '#fff' : th.text,
-                background: i === highlightIdx ? '#2563eb' : 'transparent',
+                color: i === highlightIdx ? 'var(--ds-color-text-inverse)' : th.text,
+                background: i === highlightIdx ? 'var(--ds-color-blue-600)' : 'transparent',
                 display: 'flex',
                 justifyContent: 'space-between',
                 alignItems: 'center',

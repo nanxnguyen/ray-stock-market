@@ -18,11 +18,11 @@ export function formatQuantity(v: number): string {
 }
 
 export function priceColor(price: number, reference: number, ceiling: number, floor: number): string {
-  if (+price >= +ceiling) return '#c084fc'
-  if (+price <= +floor) return '#38bdf8'
-  if (+price > +reference) return '#4ade80'
-  if (+price < +reference) return '#f87171'
-  return '#facc15'
+  if (+price >= +ceiling) return 'var(--ds-color-market-ceiling)'
+  if (+price <= +floor) return 'var(--ds-color-market-floor)'
+  if (+price > +reference) return 'var(--ds-color-market-up)'
+  if (+price < +reference) return 'var(--ds-color-market-down)'
+  return 'var(--ds-color-market-flat)'
 }
 
 export function toPolylinePoints(history: number[], w = 100, ht = 22, range?: [number, number, number]): string {

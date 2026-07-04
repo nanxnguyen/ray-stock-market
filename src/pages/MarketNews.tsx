@@ -4,11 +4,11 @@ function MarketNewsInner() {
   const [category, setCategory] = useState('all')
 
   const th = {
-    pageBg: '#0a0e14',
-    cardBg: '#131a24',
-    cardBorder: '#232b38',
-    text: '#eef1f6',
-    textMuted: '#8a94a6',
+    pageBg: 'var(--ds-color-bg-app)',
+    cardBg: 'var(--ds-color-bg-elevated)',
+    cardBorder: 'var(--ds-color-border-strong)',
+    text: 'var(--ds-color-text-primary)',
+    textMuted: 'var(--ds-color-text-secondary)',
   }
 
   const tagColors: Record<string, { bg: string; color: string }> = {
@@ -35,8 +35,8 @@ function MarketNewsInner() {
   const categories = ['all', 'Vĩ mô', 'Doanh nghiệp', 'Ngành', 'Thị trường'].map(c => ({
     key: c,
     label: c === 'all' ? 'Tất cả' : c,
-    bg: category === c ? '#2563eb' : '#1a212c',
-    border: category === c ? '#2563eb' : th.cardBorder,
+    bg: category === c ? 'var(--ds-color-blue-600)' : 'var(--ds-color-bg-input)',
+    border: category === c ? 'var(--ds-color-blue-600)' : th.cardBorder,
     fg: category === c ? '#fff' : th.textMuted,
   }))
 
@@ -74,7 +74,7 @@ function MarketNewsInner() {
           </div>
           <div style={{ padding: 20, display: 'flex', flexDirection: 'column', gap: 8, justifyContent: 'center' }}>
             <span style={{
-              fontSize: 9, fontWeight: 700, color: '#22c55e',
+              fontSize: 9, fontWeight: 700, color: 'var(--ds-color-market-up)',
               background: 'rgba(34,197,94,.15)', padding: '3px 8px', borderRadius: 5,
               width: 'fit-content', textTransform: 'uppercase',
             }}>Nổi bật</span>
@@ -117,7 +117,7 @@ function MarketNewsInner() {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 2 }}>
                   <span style={{ fontSize: 9.5, color: th.textMuted }}>{n.source}</span>
                   {n.symbol && (
-                    <span style={{ fontSize: 9.5, fontWeight: 700, color: '#60a5fa', fontFamily: "'JetBrains Mono', monospace" }}>{n.symbol}</span>
+                    <span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-link)', fontFamily: "'JetBrains Mono', monospace" }}>{n.symbol}</span>
                   )}
                 </div>
               </div>

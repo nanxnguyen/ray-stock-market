@@ -70,49 +70,49 @@ function StockComparisonInner() {
   return (
     <div style={{
       width: '100%', minHeight: '100vh', boxSizing: 'border-box',
-      background: '#060c18', padding: '32px 16px', display: 'flex', justifyContent: 'center',
+      background: 'var(--ds-color-bg-app)', padding: '32px 16px', display: 'flex', justifyContent: 'center',
     }}>
       <div style={{
         display: 'flex', flexDirection: 'column', gap: 12, padding: 16,
-        background: '#1a1f26', borderRadius: 12, border: '1px solid #2a3139',
+        background: 'var(--ds-color-bg-elevated)', borderRadius: 12, border: '1px solid var(--ds-color-border-strong)',
         maxWidth: 1680, width: '100%', margin: '0 auto', height: 'fit-content',
       }}>
 
         {/* Navigation Header */}
-        <div style={{ background: '#0d1420', border: '1px solid #1c2534', borderRadius: 12, overflow: 'hidden' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: '1px solid #1c2534', overflowX: 'auto' }}>
+        <div style={{ background: 'var(--ds-color-bg-nav)', border: '1px solid var(--ds-color-border-subtle)', borderRadius: 12, overflow: 'hidden' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 22, padding: '10px 18px', borderBottom: '1px solid var(--ds-color-border-subtle)', overflowX: 'auto' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0 }}>
-              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg, #22c55e, #16a34a)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg, var(--ds-color-market-up), var(--ds-color-green-600))', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
                 <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff" /></svg>
               </div>
-              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: '#22c55e' }}>Stock</span></span>
+              <span style={{ fontSize: 13, fontWeight: 800, color: '#fff', whiteSpace: 'nowrap' }}>Ray <span style={{ color: 'var(--ds-color-market-up)' }}>Stock</span></span>
             </div>
             <div style={{ display: 'flex', flexShrink: 0 }}>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid #1c2534', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: '.3px' }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+4.27 +0.23%</span>
+              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-subtle)', minWidth: 118 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: '.3px' }}>VNINDEX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>1,862.08</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+4.27 +0.23%</span>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid #1c2534', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: '.3px' }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
-                <span style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>+0.84 +0.27%</span>
+              <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', borderRight: '1px solid var(--ds-color-border-subtle)', minWidth: 118 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: '.3px' }}>HNX</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>307.57</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+0.84 +0.27%</span>
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', padding: '0 16px', minWidth: 118 }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: '#8a94a6', letterSpacing: '.3px' }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: '#f43f5e', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
-                <span style={{ fontSize: 9.5, color: '#f43f5e', fontWeight: 700 }}>-0.66 -0.51%</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 7 }}><span style={{ fontSize: 9.5, fontWeight: 700, color: 'var(--ds-color-text-secondary)', letterSpacing: '.3px' }}>UPCOM</span><span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-market-down)', fontFamily: "'JetBrains Mono', monospace" }}>128.01</span></div>
+                <span style={{ fontSize: 9.5, color: 'var(--ds-color-market-down)', fontWeight: 700 }}>-0.66 -0.51%</span>
               </div>
             </div>
-            <span style={{ marginLeft: 'auto', fontSize: 10, color: '#4a6080', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
+            <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--ds-color-text-muted)', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0 }}>04/07/2026 · 15:00:00</span>
           </div>
           <div style={{ display: 'flex', gap: 6, padding: '8px 14px', overflowX: 'auto' }}>
             {['🏠 Trang chủ', '💼 Danh mục', '💰 Đặt lệnh', '📖 Sổ lệnh', '🗺️ Heatmap', '📊 So sánh', '🔍 Screener', '📰 Tin tức', '📅 Sự kiện', '⚙️ Cài đặt'].map((label) => (
-              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: '#141d2e', border: '1px solid #1c2534', color: '#c3ccd9', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
+              <a key={label} href="#" style={{ textDecoration: 'none', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5, background: 'var(--ds-color-bg-card)', border: '1px solid var(--ds-color-border-subtle)', color: 'var(--ds-color-text-secondary)', borderRadius: 7, padding: '6px 12px', fontSize: 11, fontWeight: 600, whiteSpace: 'nowrap' }}>{label}</a>
             ))}
           </div>
         </div>
 
         {/* Header */}
         <div style={{ borderBottom: '1px solid #2a3139', paddingBottom: 10 }}>
-          <h2 style={{ margin: '0 0 8px 0', fontSize: 16, fontWeight: 700, color: '#e4e6eb' }}>SO SÁNH CỔ PHIẾU</h2>
+          <h2 style={{ margin: '0 0 8px 0', fontSize: 16, fontWeight: 700, color: 'var(--ds-color-text-primary)' }}>SO SÁNH CỔ PHIẾU</h2>
           <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
             {selectedData.map((stock) => (
               <div key={stock.symbol} style={{ display: 'flex', alignItems: 'center', gap: 6, background: `rgba(${parseInt(stock.color.slice(1, 3), 16)}, ${parseInt(stock.color.slice(3, 5), 16)}, ${parseInt(stock.color.slice(5, 7), 16)}, 0.1)`, padding: '6px 10px', borderRadius: 4, border: `1px solid ${stock.color}` }}>
@@ -121,23 +121,23 @@ function StockComparisonInner() {
               </div>
             ))}
             {selectedStocks.length < 5 && (
-              <button onClick={() => setShowAddStock(!showAddStock)} style={{ background: '#1a1f26', border: '1px solid #2a3139', color: '#8a92a0', borderRadius: 4, padding: '6px 10px', fontSize: 11, fontWeight: 700, cursor: 'pointer' }}>+ Thêm</button>
+              <button onClick={() => setShowAddStock(!showAddStock)} style={{ background: 'var(--ds-color-bg-elevated)', border: '1px solid var(--ds-color-border-strong)', color: 'var(--ds-color-text-secondary)', borderRadius: 4, padding: '6px 10px', fontSize: 11, fontWeight: 700, cursor: 'pointer' }}>+ Thêm</button>
             )}
           </div>
         </div>
 
         {/* Add Stock Dropdown */}
         {showAddStock && (
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, padding: 10, background: '#1a1f26', borderRadius: 4, border: '1px solid #2a3139' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4, padding: 10, background: 'var(--ds-color-bg-elevated)', borderRadius: 4, border: '1px solid var(--ds-color-border-strong)' }}>
             {availableStocks.map((astk) => (
-              <button key={astk.symbol} onClick={() => addStock(astk.symbol)} style={{ background: '#1a1f26', border: '1px solid #2a3139', color: '#8a92a0', borderRadius: 4, padding: '4px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>{astk.symbol}</button>
+              <button key={astk.symbol} onClick={() => addStock(astk.symbol)} style={{ background: 'var(--ds-color-bg-elevated)', border: '1px solid var(--ds-color-border-strong)', color: 'var(--ds-color-text-secondary)', borderRadius: 4, padding: '4px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>{astk.symbol}</button>
             ))}
           </div>
         )}
 
         {/* Price Chart */}
-        <div style={{ background: '#1a1f26', border: '1px solid #2a3139', borderRadius: 4, padding: 12, height: 200, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', gap: 2, position: 'relative' }}>
-          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 8, pointerEvents: 'none', fontSize: 9, color: '#8a92a0' }}>
+        <div style={{ background: 'var(--ds-color-bg-elevated)', border: '1px solid var(--ds-color-border-strong)', borderRadius: 4, padding: 12, height: 200, display: 'flex', alignItems: 'flex-end', justifyContent: 'space-around', gap: 2, position: 'relative' }}>
+          <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: 8, pointerEvents: 'none', fontSize: 9, color: 'var(--ds-color-text-secondary)' }}>
             <span>{maxPrice}</span>
             <span>{midPrice}</span>
             <span>{minPrice}</span>
@@ -155,13 +155,13 @@ function StockComparisonInner() {
             {selectedData.map((leg) => (
               <div key={leg.symbol} style={{ display: 'flex', alignItems: 'center', gap: 4, fontSize: 10 }}>
                 <span style={{ width: 8, height: 8, background: leg.color, borderRadius: 2 }} />
-                <span style={{ color: '#e4e6eb', fontWeight: 700 }}>{leg.symbol}</span>
+                <span style={{ color: 'var(--ds-color-text-primary)', fontWeight: 700 }}>{leg.symbol}</span>
               </div>
             ))}
           </div>
           <div style={{ display: 'flex', gap: 4 }}>
             {timeframes.map((tf) => (
-              <button key={tf} onClick={() => setTimeframe(tf)} style={{ background: timeframe === tf ? '#3b82f6' : '#1a1f26', border: timeframe === tf ? '1px solid #3b82f6' : '1px solid #2a3139', color: timeframe === tf ? '#fff' : '#8a92a0', borderRadius: 3, padding: '4px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer' }}>{tf}</button>
+              <button key={tf} onClick={() => setTimeframe(tf)} style={{ background: timeframe === tf ? 'var(--ds-color-blue-500)' : 'var(--ds-color-bg-elevated)', border: timeframe === tf ? '1px solid var(--ds-color-blue-500)' : '1px solid var(--ds-color-border-strong)', color: timeframe === tf ? '#fff' : 'var(--ds-color-text-secondary)', borderRadius: 3, padding: '4px 8px', fontSize: 9, fontWeight: 700, cursor: 'pointer' }}>{tf}</button>
             ))}
           </div>
         </div>
@@ -170,28 +170,28 @@ function StockComparisonInner() {
         <div style={{ overflowX: 'auto' }}>
           <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 10, fontFamily: "'JetBrains Mono', monospace" }}>
             <thead>
-              <tr style={{ borderBottom: '1px solid #2a3139', height: 28, background: '#1a1f26' }}>
-                <th style={{ textAlign: 'left', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase', minWidth: 80 }}>Mã CK</th>
-                <th style={{ textAlign: 'right', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase' }}>Giá</th>
-                <th style={{ textAlign: 'right', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase' }}>% Thay đổi</th>
-                <th style={{ textAlign: 'right', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase' }}>P/E</th>
-                <th style={{ textAlign: 'right', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase' }}>P/B</th>
-                <th style={{ textAlign: 'right', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase' }}>Dividend</th>
-                <th style={{ textAlign: 'right', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase' }}>52W High</th>
-                <th style={{ textAlign: 'right', padding: 6, color: '#8a92a0', fontWeight: 700, textTransform: 'uppercase' }}>52W Low</th>
+              <tr style={{ borderBottom: '1px solid var(--ds-color-border-strong)', height: 28, background: 'var(--ds-color-bg-elevated)' }}>
+                <th style={{ textAlign: 'left', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase', minWidth: 80 }}>Mã CK</th>
+                <th style={{ textAlign: 'right', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase' }}>Giá</th>
+                <th style={{ textAlign: 'right', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase' }}>% Thay đổi</th>
+                <th style={{ textAlign: 'right', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase' }}>P/E</th>
+                <th style={{ textAlign: 'right', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase' }}>P/B</th>
+                <th style={{ textAlign: 'right', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase' }}>Dividend</th>
+                <th style={{ textAlign: 'right', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase' }}>52W High</th>
+                <th style={{ textAlign: 'right', padding: 6, color: 'var(--ds-color-text-secondary)', fontWeight: 700, textTransform: 'uppercase' }}>52W Low</th>
               </tr>
             </thead>
             <tbody>
               {comparisonData.map((cmp) => (
-                <tr key={cmp.symbol} style={{ borderBottom: '1px solid #2a3139', height: 32 }}>
+                <tr key={cmp.symbol} style={{ borderBottom: '1px solid var(--ds-color-border-strong)', height: 32 }}>
                   <td style={{ padding: 6, color: cmp.symbolColor, fontWeight: 700 }}>{cmp.symbol}</td>
                   <td style={{ padding: 6, textAlign: 'right', color: cmp.priceColor, fontWeight: 700 }}>{cmp.price}</td>
                   <td style={{ padding: 6, textAlign: 'right', color: cmp.changeColor, fontWeight: 700 }}>{cmp.change}</td>
-                  <td style={{ padding: 6, textAlign: 'right', color: '#e4e6eb' }}>{cmp.pe}</td>
-                  <td style={{ padding: 6, textAlign: 'right', color: '#e4e6eb' }}>{cmp.pb}</td>
+                  <td style={{ padding: 6, textAlign: 'right', color: 'var(--ds-color-text-primary)' }}>{cmp.pe}</td>
+                  <td style={{ padding: 6, textAlign: 'right', color: 'var(--ds-color-text-primary)' }}>{cmp.pb}</td>
                   <td style={{ padding: 6, textAlign: 'right', color: cmp.dividendColor }}>{cmp.dividend}</td>
-                  <td style={{ padding: 6, textAlign: 'right', color: '#8a92a0' }}>{cmp.h52}</td>
-                  <td style={{ padding: 6, textAlign: 'right', color: '#8a92a0' }}>{cmp.l52}</td>
+                  <td style={{ padding: 6, textAlign: 'right', color: 'var(--ds-color-text-secondary)' }}>{cmp.h52}</td>
+                  <td style={{ padding: 6, textAlign: 'right', color: 'var(--ds-color-text-secondary)' }}>{cmp.l52}</td>
                 </tr>
               ))}
             </tbody>
@@ -199,21 +199,21 @@ function StockComparisonInner() {
         </div>
 
         {/* Performance Stats */}
-        <div style={{ borderTop: '1px solid #2a3139', paddingTop: 10, marginTop: 6 }}>
-          <h3 style={{ margin: '0 0 8px 0', fontSize: 11, fontWeight: 700, color: '#e4e6eb', textTransform: 'uppercase' }}>So sánh hiệu suất (từ đầu năm)</h3>
+        <div style={{ borderTop: '1px solid var(--ds-color-border-strong)', paddingTop: 10, marginTop: 6 }}>
+          <h3 style={{ margin: '0 0 8px 0', fontSize: 11, fontWeight: 700, color: 'var(--ds-color-text-primary)', textTransform: 'uppercase' }}>So sánh hiệu suất (từ đầu năm)</h3>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 8 }}>
             {selectedData.map((stock) => {
               const ytdVal = parseFloat(stock.ytd)
               const ytdColor = stock.ytd.startsWith('+') ? '#22c55e' : '#f43f5e'
               const ytdBar = Math.abs(ytdVal) > 0 ? Math.min(100, Math.abs(ytdVal) * 2) : 0
               return (
-                <div key={stock.symbol} style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: 10, background: '#1a1f26', borderRadius: 4, border: '1px solid #2a3139' }}>
+                <div key={stock.symbol} style={{ display: 'flex', flexDirection: 'column', gap: 4, padding: 10, background: 'var(--ds-color-bg-elevated)', borderRadius: 4, border: '1px solid var(--ds-color-border-strong)' }}>
                   <span style={{ fontSize: 10, fontWeight: 700, color: stock.color }}>{stock.symbol}</span>
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: 4 }}>
                     <span style={{ fontSize: 14, fontWeight: 700, color: ytdColor, fontFamily: "'JetBrains Mono', monospace" }}>{stock.ytd}</span>
-                    <span style={{ fontSize: 9, color: '#8a92a0' }}>YTD</span>
+                    <span style={{ fontSize: 9, color: 'var(--ds-color-text-secondary)' }}>YTD</span>
                   </div>
-                  <div style={{ width: '100%', height: 4, background: '#1a1f26', borderRadius: 2, overflow: 'hidden' }}>
+                  <div style={{ width: '100%', height: 4, background: 'var(--ds-color-bg-elevated)', borderRadius: 2, overflow: 'hidden' }}>
                     <div style={{ height: '100%', width: `${ytdBar}%`, background: ytdColor, borderRadius: 2 }} />
                   </div>
                 </div>

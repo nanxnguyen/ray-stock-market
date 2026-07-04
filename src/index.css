@@ -1,3 +1,7 @@
+@import './styles/design-system.css';
+@import './styles/themes/dark.css';
+@import './styles/themes/light.css';
+
 * {
   box-sizing: border-box;
   margin: 0;

@@ -24,12 +24,12 @@ function AlertsManagementInner() {
   ])
 
   const th = {
-    pageBg: '#0a0e14',
-    cardBg: '#131a24',
-    cardBorder: '#232b38',
-    inputBg: '#0f1419',
-    text: '#eef1f6',
-    textMuted: '#8a94a6',
+    pageBg: 'var(--ds-color-bg-app)',
+    cardBg: 'var(--ds-color-bg-elevated)',
+    cardBorder: 'var(--ds-color-border-strong)',
+    inputBg: 'var(--ds-color-bg-input)',
+    text: 'var(--ds-color-text-primary)',
+    textMuted: 'var(--ds-color-text-secondary)',
   }
 
   const addAlert = () => {
@@ -92,7 +92,7 @@ function AlertsManagementInner() {
                 style={{ width: 100, padding: '8px 10px', border: `1px solid ${th.cardBorder}`, borderRadius: 7, background: th.inputBg, color: th.text, fontSize: 12 }}
               />
             </div>
-            <button onClick={addAlert} style={{ background: '#3b82f6', border: 'none', color: '#fff', borderRadius: 7, padding: '9px 18px', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>+ Thêm cảnh báo</button>
+            <button onClick={addAlert} style={{ background: 'var(--ds-color-blue-500)', border: 'none', color: '#fff', borderRadius: 7, padding: '9px 18px', fontSize: 12, fontWeight: 700, cursor: 'pointer' }}>+ Thêm cảnh báo</button>
           </div>
         </div>
 
@@ -100,22 +100,22 @@ function AlertsManagementInner() {
         <div style={{ display: 'flex', gap: 10 }}>
           <div style={{ flex: 1, background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 10, padding: '12px 16px' }}>
             <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Đang hoạt động</span>
-            <div style={{ fontSize: 18, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>{activeCount}</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>{activeCount}</div>
           </div>
           <div style={{ flex: 1, background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 10, padding: '12px 16px' }}>
             <span style={{ fontSize: 9, color: th.textMuted, textTransform: 'uppercase', fontWeight: 700 }}>Đã kích hoạt hôm nay</span>
-            <div style={{ fontSize: 18, fontWeight: 800, color: '#f59e0b', fontFamily: "'JetBrains Mono', monospace" }}>{triggeredCount}</div>
+            <div style={{ fontSize: 18, fontWeight: 800, color: 'var(--ds-color-warning)', fontFamily: "'JetBrains Mono', monospace" }}>{triggeredCount}</div>
           </div>
         </div>
 
         {/* Alerts List */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
           {alerts.map(a => {
-            const borderColor = a.triggered ? '#f59e0b' : th.cardBorder
+            const borderColor = a.triggered ? 'var(--ds-color-warning)' : th.cardBorder
             const statusLabel = a.triggered ? 'ĐÃ KÍCH HOẠT' : a.active ? 'ĐANG THEO DÕI' : 'TẠM DỪNG'
-            const statusColor = a.triggered ? '#f59e0b' : a.active ? '#22c55e' : th.textMuted
+            const statusColor = a.triggered ? 'var(--ds-color-warning)' : a.active ? 'var(--ds-color-market-up)' : th.textMuted
             const statusBg = a.triggered ? 'rgba(245,158,11,.15)' : a.active ? 'rgba(34,197,94,.15)' : 'rgba(138,148,166,.15)'
-            const toggleBg = a.active ? '#22c55e' : '#2a3340'
+            const toggleBg = a.active ? 'var(--ds-color-market-up)' : 'var(--ds-color-bg-input)'
             const toggleLeft = a.active ? 18 : 2
             const triggeredAt = a.triggeredAt ? ` · Kích hoạt ${a.triggeredAt}` : ''
 
@@ -126,7 +126,7 @@ function AlertsManagementInner() {
                 display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 10,
               }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                  <span style={{ fontSize: 13, fontWeight: 700, color: '#60a5fa', fontFamily: "'JetBrains Mono', monospace", width: 44 }}>{a.symbol}</span>
+                  <span style={{ fontSize: 13, fontWeight: 700, color: 'var(--ds-color-text-link)', fontFamily: "'JetBrains Mono', monospace", width: 44 }}>{a.symbol}</span>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                     <span style={{ fontSize: 11.5, color: th.text, fontWeight: 600 }}>{a.condition}</span>
                     <span style={{ fontSize: 9.5, color: th.textMuted }}>Tạo lúc {a.createdAt}{triggeredAt}</span>

@@ -18,41 +18,6 @@ import { getAllCoveredWarrants } from './lib/vietcapNormalize'
 import AppRoutes from './router'
 import './App.css'
 
-function getTheme(dark: boolean): ThemeTokens {
-  return {
-    appBg:       dark ? '#060c18' : '#f0f4f8',
-    navBg:       dark ? '#0b1628' : '#ffffff',
-    navBorder:   dark ? '#1a3050' : '#e1e8f0',
-    navItemColor:dark ? '#8098b4' : '#374151',
-    idxColBorder:dark ? '#1a3050' : '#e4ecf5',
-    idxTitle:    dark ? '#d4e0ee' : '#1e293b',
-    glItemBorder:dark ? '#132035' : '#f0f5fb',
-    glNameColor: dark ? '#b0c4d8' : '#334155',
-    filterBorder:dark ? '#1a3050' : '#e1e8f0',
-    searchText:  dark ? '#3a5570' : '#94a3b8',
-    tabFg:       dark ? '#8098b4' : '#374151',
-    tabBorder:   dark ? '1px solid #1a3050' : '1px solid #e1e8f0',
-    tableBg:     dark ? '#060c18' : '#f4f7fb',
-    rowOdd:      dark ? '#0b1628' : '#ffffff',
-    rowEven:     dark ? '#08101e' : '#f8fafd',
-    rowBorder:   dark ? '#0d1a2e' : '#eaf0f8',
-    rowHover:    dark ? '#102040' : '#eef4ff',
-    cellBorder:  dark ? '#1a3050' : '#dce8f5',
-    cellBorderL: dark ? '#0d1a2e' : '#eaf0f8',
-    symColor:    dark ? '#60a5fa' : '#1d4ed8',
-    volColor:    dark ? '#4a7090' : '#64748b',
-    iconBg:      dark ? '#0f1e36' : '#f0f5fb',
-    iconColor:   dark ? '#4a6080' : '#64748b',
-    text:        dark ? '#d4e0ee' : '#1e293b',
-    textMuted:   dark ? '#3a5570' : '#94a3b8',
-    toggleBg:    dark ? '#2563eb' : '#475569',
-    togglePos:   dark ? '22px' : '2px',
-    toggleLabel: dark ? 'LIGHT' : 'DARK',
-    toggleIcon:  dark ? '\u2600' : '\uD83C\uDF19',
-    toggleTitle: dark ? 'Chuyển Light mode' : 'Chuyển Dark mode',
-  }
-}
-
 function mapStockRows(
   stocks: StockState[],
   dark: boolean,
@@ -64,8 +29,8 @@ function mapStockRows(
     const fl = s.fl_ && now - s.fts < 800
     const bg = fl
       ? s.fl_ === 'u'
-        ? dark ? '#14532d' : '#dcfce7'
-        : dark ? '#450a0a' : '#fee2e2'
+        ? dark ? 'var(--ds-color-market-flash-up)' : '#dcfce7'
+        : dark ? 'var(--ds-color-market-flash-down)' : '#fee2e2'
       : i % 2 === 0
         ? th.rowOdd
         : th.rowEven
@@ -160,7 +125,38 @@ function App() {
   const [filterPriceMin, setFilterPriceMin] = useState('')
   const [filterPriceMax, setFilterPriceMax] = useState('')
 
-  const th = useMemo(() => getTheme(darkMode), [darkMode])
+  const th = useMemo(() => ({
+    appBg: 'var(--ds-color-bg-app)',
+    navBg: 'var(--ds-color-bg-nav)',
+    navBorder: 'var(--ds-color-border-default)',
+    navItemColor: 'var(--ds-color-text-secondary)',
+    idxColBorder: 'var(--ds-color-border-default)',
+    idxTitle: 'var(--ds-color-text-primary)',
+    glItemBorder: 'var(--ds-color-border-subtle)',
+    glNameColor: 'var(--ds-color-text-secondary)',
+    filterBorder: 'var(--ds-color-border-default)',
+    searchText: 'var(--ds-color-text-muted)',
+    tabFg: 'var(--ds-color-text-secondary)',
+    tabBorder: `1px solid var(--ds-color-border-default)`,
+    tableBg: 'var(--ds-color-bg-table)',
+    rowOdd: 'var(--ds-color-bg-row-odd)',
+    rowEven: 'var(--ds-color-bg-row-even)',
+    rowBorder: 'var(--ds-color-border-subtle)',
+    rowHover: 'var(--ds-color-bg-row-hover)',
+    cellBorder: 'var(--ds-color-border-default)',
+    cellBorderL: 'var(--ds-color-border-subtle)',
+    symColor: 'var(--ds-color-text-link)',
+    volColor: 'var(--ds-color-text-muted)',
+    iconBg: 'var(--ds-color-bg-elevated)',
+    iconColor: 'var(--ds-color-text-muted)',
+    text: 'var(--ds-color-text-primary)',
+    textMuted: 'var(--ds-color-text-muted)',
+    toggleBg: 'var(--ds-color-blue-600)',
+    togglePos: darkMode ? '22px' : '2px',
+    toggleLabel: darkMode ? 'LIGHT' : 'DARK',
+    toggleIcon: darkMode ? '\u2600' : '\uD83C\uDF19',
+    toggleTitle: darkMode ? 'Chuyển Light mode' : 'Chuyển Dark mode',
+  }), [darkMode])
 
   const openChart = useCallback((sym: string) => {
     setChart({ open: true, sym, range: '1Đ' })

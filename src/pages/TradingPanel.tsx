@@ -51,18 +51,18 @@ function TradingPanelInner() {
   const d = STOCK_DB[symbol] || STOCK_DB.VCB
 
   const th = useMemo(() => ({
-    pageBg: '#060c18',
-    cardBg: '#0d1520',
-    cardBorder: '#1a3050',
-    inputBg: '#0a1018',
-    rowBg: '#141e2c',
-    iconBg: '#141e2c',
-    text: '#d4e0ee',
-    textMuted: '#7a8a9e',
+    pageBg: 'var(--ds-color-bg-app)',
+    cardBg: 'var(--ds-color-bg-nav)',
+    cardBorder: 'var(--ds-color-border-default)',
+    inputBg: 'var(--ds-color-bg-input)',
+    rowBg: 'var(--ds-color-bg-row-odd)',
+    iconBg: 'var(--ds-color-bg-elevated)',
+    text: 'var(--ds-color-text-primary)',
+    textMuted: 'var(--ds-color-text-muted)',
   }), [])
 
   const isUp = d.price >= d.ref
-  const color = isUp ? '#22c55e' : '#f43f5e'
+  const color = isUp ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
   const change = d.price - d.ref
   const changePct = (change / d.ref) * 100
   const ceiling = (d.ref * 1.07).toFixed(2)
@@ -156,7 +156,7 @@ function TradingPanelInner() {
     const p = (d.price + (Math.random() - 0.5) * parseFloat(tickSize) * 2).toFixed(2)
     const vol = Math.floor(500 + Math.random() * 9000)
     const mins = 32 - i
-    return { time: `10:${String(Math.max(0, mins)).padStart(2, '0')}:0${i}`, price: p, vol: vol.toLocaleString(), color: up ? '#22c55e' : '#f43f5e' }
+    return { time: `10:${String(Math.max(0, mins)).padStart(2, '0')}:0${i}`, price: p, vol: vol.toLocaleString(), color: up ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)' }
   }), [d.price, tickSize])
 
   const positionRaw = POSITION_DB[symbol]
@@ -171,7 +171,7 @@ function TradingPanelInner() {
       marketValue: mv.toLocaleString() + 'đ',
       pl: (pl >= 0 ? '+' : '') + pl.toLocaleString() + 'đ',
       plPct: (pl >= 0 ? '+' : '') + (pl / cost * 100).toFixed(1) + '%',
-      plColor: pl >= 0 ? '#22c55e' : '#f43f5e',
+      plColor: pl >= 0 ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)',
     }
   }, [positionRaw, d.price])
 
@@ -179,8 +179,8 @@ function TradingPanelInner() {
     const raw = ORDERS_DB[symbol] || []
     return raw.map(o => ({
       ...o,
-      sideColor: o.side === 'MUA' ? '#22c55e' : '#f43f5e',
-      statusColor: o.filled ? '#22c55e' : '#f59e0b',
+      sideColor: o.side === 'MUA' ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)',
+      statusColor: o.filled ? 'var(--ds-color-market-up)' : 'var(--ds-color-warning)',
       statusBg: o.filled ? 'rgba(34,197,94,.15)' : 'rgba(245,158,11,.15)',
     }))
   }, [symbol])
@@ -207,10 +207,10 @@ function TradingPanelInner() {
               onBlur={() => setTimeout(() => setShowSuggest(false), 150)}
             />
             {showSuggest && suggestions.length > 0 && (
-              <div style={{ position: 'absolute', top: 38, left: 0, background: '#0f1720', border: `1px solid ${th.cardBorder}`, borderRadius: 8, overflow: 'hidden', zIndex: 50, width: 180, boxShadow: '0 12px 30px rgba(0,0,0,.5)' }}>
+              <div style={{ position: 'absolute', top: 38, left: 0, background: 'var(--ds-color-bg-input)', border: `1px solid ${th.cardBorder}`, borderRadius: 8, overflow: 'hidden', zIndex: 50, width: 180, boxShadow: '0 12px 30px rgba(0,0,0,.5)' }}>
                 {suggestions.map(sg => (
                   <div key={sg.symbol} onMouseDown={() => pickSymbol(sg.symbol)} style={{ padding: '8px 12px', cursor: 'pointer', display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: 11.5, fontWeight: 700, color: '#60a5fa', fontFamily: "'JetBrains Mono', monospace" }}>{sg.symbol}</span>
+                    <span style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--ds-color-text-link)', fontFamily: "'JetBrains Mono', monospace" }}>{sg.symbol}</span>
                     <span style={{ fontSize: 10, color: th.textMuted }}>{sg.name}</span>
                   </div>
                 ))}
@@ -232,9 +232,9 @@ function TradingPanelInner() {
           </div>
 
           <div style={{ display: 'flex', gap: 18, marginLeft: 'auto', flexWrap: 'wrap' }}>
-            <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: '#a855f7', display: 'block', fontWeight: 700 }}>TRẦN</span><span style={{ fontSize: 12.5, fontWeight: 700, color: '#a855f7', fontFamily: "'JetBrains Mono', monospace" }}>{ceiling}</span></div>
-            <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: '#fbbf24', display: 'block', fontWeight: 700 }}>TC</span><span style={{ fontSize: 12.5, fontWeight: 700, color: '#fbbf24', fontFamily: "'JetBrains Mono', monospace" }}>{d.ref.toFixed(2)}</span></div>
-            <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: '#38bdf8', display: 'block', fontWeight: 700 }}>SÀN</span><span style={{ fontSize: 12.5, fontWeight: 700, color: '#38bdf8', fontFamily: "'JetBrains Mono', monospace" }}>{floor}</span></div>
+            <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: 'var(--ds-color-purple-500)', display: 'block', fontWeight: 700 }}>TRẦN</span><span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--ds-color-purple-500)', fontFamily: "'JetBrains Mono', monospace" }}>{ceiling}</span></div>
+            <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: 'var(--ds-color-yellow-400)', display: 'block', fontWeight: 700 }}>TC</span><span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--ds-color-yellow-400)', fontFamily: "'JetBrains Mono', monospace" }}>{d.ref.toFixed(2)}</span></div>
+            <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: 'var(--ds-color-cyan-400)', display: 'block', fontWeight: 700 }}>SÀN</span><span style={{ fontSize: 12.5, fontWeight: 700, color: 'var(--ds-color-cyan-400)', fontFamily: "'JetBrains Mono', monospace" }}>{floor}</span></div>
             <div style={{ width: 1, background: th.cardBorder }} />
             <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: th.textMuted, display: 'block', fontWeight: 700 }}>TỔNG KL</span><span style={{ fontSize: 12.5, fontWeight: 700, color: th.text, fontFamily: "'JetBrains Mono', monospace" }}>{d.totalVol}</span></div>
             <div style={{ textAlign: 'center' }}><span style={{ fontSize: 9, color: th.textMuted, display: 'block', fontWeight: 700 }}>CAO/THẤP</span><span style={{ fontSize: 12.5, fontWeight: 700, color: th.text, fontFamily: "'JetBrains Mono', monospace" }}>{d.high.toFixed(2)}/{d.low.toFixed(2)}</span></div>
@@ -249,14 +249,14 @@ function TradingPanelInner() {
           <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 12, padding: 16, display: 'flex', flexDirection: 'column', gap: 12 }}>
             {/* BUY/SELL buttons */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 6 }}>
-              <button onClick={() => handleSideChange('BUY')} style={{ background: side === 'BUY' ? '#22c55e' : th.iconBg, color: side === 'BUY' ? '#fff' : th.textMuted, border: `1px solid ${side === 'BUY' ? '#16a34a' : th.cardBorder}`, borderRadius: 8, padding: 11, fontSize: 13, fontWeight: 800, cursor: 'pointer', transition: 'all .15s' }}>MUA</button>
-              <button onClick={() => handleSideChange('SELL')} style={{ background: side === 'SELL' ? '#f43f5e' : th.iconBg, color: side === 'SELL' ? '#fff' : th.textMuted, border: `1px solid ${side === 'SELL' ? '#dc2626' : th.cardBorder}`, borderRadius: 8, padding: 11, fontSize: 13, fontWeight: 800, cursor: 'pointer', transition: 'all .15s' }}>BÁN</button>
+              <button onClick={() => handleSideChange('BUY')} style={{ background: side === 'BUY' ? 'var(--ds-color-market-up)' : th.iconBg, color: side === 'BUY' ? '#fff' : th.textMuted, border: `1px solid ${side === 'BUY' ? 'var(--ds-color-green-600)' : th.cardBorder}`, borderRadius: 8, padding: 11, fontSize: 13, fontWeight: 800, cursor: 'pointer', transition: 'all .15s' }}>MUA</button>
+              <button onClick={() => handleSideChange('SELL')} style={{ background: side === 'SELL' ? 'var(--ds-color-market-down)' : th.iconBg, color: side === 'SELL' ? '#fff' : th.textMuted, border: `1px solid ${side === 'SELL' ? 'var(--ds-color-red-600)' : th.cardBorder}`, borderRadius: 8, padding: 11, fontSize: 13, fontWeight: 800, cursor: 'pointer', transition: 'all .15s' }}>BÁN</button>
             </div>
 
             {/* ORDER TYPE CHIPS */}
             <div style={{ display: 'flex', gap: 5, flexWrap: 'wrap' }}>
               {orderTypes.map(ot => (
-                <button key={ot.key} onClick={() => setOrderType(ot.key)} style={{ background: orderType === ot.key ? '#3b82f6' : th.iconBg, color: orderType === ot.key ? '#fff' : th.textMuted, border: `1px solid ${orderType === ot.key ? '#2563eb' : th.cardBorder}`, borderRadius: 6, padding: '5px 10px', fontSize: 10.5, fontWeight: 700, cursor: 'pointer' }}>{ot.label}</button>
+                <button key={ot.key} onClick={() => setOrderType(ot.key)} style={{ background: orderType === ot.key ? 'var(--ds-color-blue-500)' : th.iconBg, color: orderType === ot.key ? '#fff' : th.textMuted, border: `1px solid ${orderType === ot.key ? 'var(--ds-color-blue-600)' : th.cardBorder}`, borderRadius: 6, padding: '5px 10px', fontSize: 10.5, fontWeight: 700, cursor: 'pointer' }}>{ot.label}</button>
               ))}
             </div>
 
@@ -269,13 +269,13 @@ function TradingPanelInner() {
                 </div>
                 <div style={{ display: 'flex', alignItems: 'stretch', gap: 0, border: `1px solid ${th.cardBorder}`, borderRadius: 8, overflow: 'hidden' }}>
                   <button onClick={decPrice} style={{ width: 36, background: th.iconBg, border: 'none', borderRight: `1px solid ${th.cardBorder}`, color: th.text, cursor: 'pointer', fontSize: 16, fontWeight: 700 }}>−</button>
-                  <input type="text" value={price} onChange={handlePriceChange} style={{ flex: 1, textAlign: 'center', padding: '9px 4px', border: 'none', background: th.inputBg, color: priceValid ? th.text : '#f43f5e', fontSize: 15, fontWeight: 800, fontFamily: "'JetBrains Mono', monospace", outline: 'none' }} />
+                  <input type="text" value={price} onChange={handlePriceChange} style={{ flex: 1, textAlign: 'center', padding: '9px 4px', border: 'none', background: th.inputBg, color: priceValid ? th.text : 'var(--ds-color-market-down)', fontSize: 15, fontWeight: 800, fontFamily: "'JetBrains Mono', monospace", outline: 'none' }} />
                   <button onClick={incPrice} style={{ width: 36, background: th.iconBg, border: 'none', borderLeft: `1px solid ${th.cardBorder}`, color: th.text, cursor: 'pointer', fontSize: 16, fontWeight: 700 }}>+</button>
                 </div>
                 <div style={{ display: 'flex', gap: 5 }}>
-                  <button onClick={useFloor} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: '#38bdf8', borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>Sàn {floor}</button>
-                  <button onClick={useRefPrice} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: '#fbbf24', borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>TC {d.ref.toFixed(2)}</button>
-                  <button onClick={useCeiling} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: '#a855f7', borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>Trần {ceiling}</button>
+                  <button onClick={useFloor} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: 'var(--ds-color-cyan-400)', borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>Sàn {floor}</button>
+                  <button onClick={useRefPrice} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: 'var(--ds-color-yellow-400)', borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>TC {d.ref.toFixed(2)}</button>
+                  <button onClick={useCeiling} style={{ flex: 1, background: th.iconBg, border: `1px solid ${th.cardBorder}`, color: 'var(--ds-color-purple-500)', borderRadius: 5, padding: 5, fontSize: 9.5, fontWeight: 700, cursor: 'pointer' }}>Trần {ceiling}</button>
                 </div>
               </div>
             )}
@@ -298,22 +298,22 @@ function TradingPanelInner() {
             {/* SUMMARY */}
             <div style={{ background: th.inputBg, borderRadius: 8, padding: 11, display: 'flex', flexDirection: 'column', gap: 6 }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11 }}><span style={{ color: th.textMuted }}>Giá trị lệnh</span><span style={{ color: th.text, fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{orderValueNum.toLocaleString()}đ</span></div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11 }}><span style={{ color: th.textMuted }}>Phí giao dịch (0.15%)</span><span style={{ color: '#f59e0b', fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{feeNum.toLocaleString(undefined, { maximumFractionDigits: 0 })}đ</span></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11 }}><span style={{ color: th.textMuted }}>Phí giao dịch (0.15%)</span><span style={{ color: 'var(--ds-color-warning)', fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{feeNum.toLocaleString(undefined, { maximumFractionDigits: 0 })}đ</span></div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 11.5, borderTop: `1px solid ${th.cardBorder}`, paddingTop: 6 }}><span style={{ color: th.text, fontWeight: 700 }}>{side === 'BUY' ? 'Tổng thanh toán' : 'Tổng nhận về'}</span><span style={{ color, fontWeight: 800, fontFamily: "'JetBrains Mono', monospace" }}>{totalNum.toLocaleString(undefined, { maximumFractionDigits: 0 })}đ</span></div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10 }}><span style={{ color: th.textMuted }}>{side === 'BUY' ? 'Sức mua khả dụng' : 'Số lượng khả dụng'}</span><span style={{ color: side === 'BUY' ? (totalNum <= BUYING_POWER ? '#22c55e' : '#f43f5e') : (qty <= holdingQty ? '#22c55e' : '#f43f5e'), fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{side === 'BUY' ? BUYING_POWER.toLocaleString() + 'đ' : holdingQty.toLocaleString() + ' CP'}</span></div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 10 }}><span style={{ color: th.textMuted }}>{side === 'BUY' ? 'Sức mua khả dụng' : 'Số lượng khả dụng'}</span><span style={{ color: side === 'BUY' ? (totalNum <= BUYING_POWER ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)') : (qty <= holdingQty ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'), fontWeight: 700, fontFamily: "'JetBrains Mono', monospace" }}>{side === 'BUY' ? BUYING_POWER.toLocaleString() + 'đ' : holdingQty.toLocaleString() + ' CP'}</span></div>
             </div>
 
             {/* SUBMIT BUTTON */}
-            <button onClick={submitOrder} disabled={!canSubmit} style={{ background: !canSubmit ? '#2a3340' : side === 'BUY' ? '#22c55e' : '#f43f5e', border: 'none', color: '#fff', borderRadius: 9, padding: 13, fontSize: 14, fontWeight: 800, cursor: canSubmit ? 'pointer' : 'not-allowed', boxShadow: `0 8px 22px ${side === 'BUY' ? 'rgba(34,197,94,.3)' : 'rgba(244,63,94,.3)'}`, letterSpacing: 0.3 }}>
+            <button onClick={submitOrder} disabled={!canSubmit} style={{ background: !canSubmit ? 'var(--ds-color-neutral-800)' : side === 'BUY' ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)', border: 'none', color: '#fff', borderRadius: 9, padding: 13, fontSize: 14, fontWeight: 800, cursor: canSubmit ? 'pointer' : 'not-allowed', boxShadow: `0 8px 22px ${side === 'BUY' ? 'rgba(34,197,94,.3)' : 'rgba(244,63,94,.3)'}`, letterSpacing: 0.3 }}>
               {side === 'BUY' ? `✓ ĐẶT MUA ${symbol}` : `✓ ĐẶT BÁN ${symbol}`}
             </button>
 
             {/* ORDER CONFIRMATION */}
             {orderPlaced && (
-              <div style={{ background: 'rgba(34,197,94,.1)', border: '1px solid #22c55e', borderRadius: 8, padding: 10, display: 'flex', gap: 8, alignItems: 'flex-start' }}>
+              <div style={{ background: 'rgba(34,197,94,.1)', border: '1px solid var(--ds-color-market-up)', borderRadius: 8, padding: 10, display: 'flex', gap: 8, alignItems: 'flex-start' }}>
                 <span style={{ fontSize: 14 }}>✓</span>
                 <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span style={{ fontSize: 11, fontWeight: 700, color: '#22c55e' }}>Đặt lệnh thành công</span>
+                  <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ds-color-market-up)' }}>Đặt lệnh thành công</span>
                   <span style={{ fontSize: 10, color: th.textMuted }}>{orderConfirmText}</span>
                 </div>
               </div>
@@ -326,7 +326,7 @@ function TradingPanelInner() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
                 <h3 style={{ margin: 0, fontSize: 11, fontWeight: 700, color: th.text, textTransform: 'uppercase' }}>Sổ lệnh thị trường (Order Book)</h3>
                 <div style={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#22c55e', animation: 'pulse 2s infinite' }} />
+                  <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--ds-color-market-up)', animation: 'pulse 2s infinite' }} />
                   <span style={{ fontSize: 9, color: th.textMuted, fontWeight: 700 }}>LIVE</span>
                 </div>
               </div>
@@ -337,7 +337,7 @@ function TradingPanelInner() {
                   {bids.map((b, i) => (
                     <div key={i} onClick={() => setPrice(b.price)} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', position: 'relative', cursor: 'pointer', borderRadius: 5, overflow: 'hidden', background: th.rowBg }}>
                       <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: b.barW, background: 'rgba(34,197,94,.18)' }} />
-                      <span style={{ position: 'relative', padding: '6px 8px', fontSize: 12, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>{b.price}</span>
+                      <span style={{ position: 'relative', padding: '6px 8px', fontSize: 12, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>{b.price}</span>
                       <span style={{ position: 'relative', padding: '6px 8px', textAlign: 'right', fontSize: 11, color: th.text, fontFamily: "'JetBrains Mono', monospace" }}>{b.vol}</span>
                     </div>
                   ))}
@@ -348,15 +348,15 @@ function TradingPanelInner() {
                   {asks.map((a, i) => (
                     <div key={i} onClick={() => setPrice(a.price)} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', position: 'relative', cursor: 'pointer', borderRadius: 5, overflow: 'hidden', background: th.rowBg }}>
                       <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: a.barW, background: 'rgba(244,63,94,.18)' }} />
-                      <span style={{ position: 'relative', padding: '6px 8px', fontSize: 12, fontWeight: 800, color: '#f43f5e', fontFamily: "'JetBrains Mono', monospace" }}>{a.price}</span>
+                      <span style={{ position: 'relative', padding: '6px 8px', fontSize: 12, fontWeight: 800, color: 'var(--ds-color-market-down)', fontFamily: "'JetBrains Mono', monospace" }}>{a.price}</span>
                       <span style={{ position: 'relative', padding: '6px 8px', textAlign: 'right', fontSize: 11, color: th.text, fontFamily: "'JetBrains Mono', monospace" }}>{a.vol}</span>
                     </div>
                   ))}
                 </div>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 10, paddingTop: 10, borderTop: `1px solid ${th.cardBorder}` }}>
-                <span style={{ fontSize: 9.5, color: th.textMuted }}>Tổng dư mua: <b style={{ color: '#22c55e' }}>{totalBidVol}</b></span>
-                <span style={{ fontSize: 9.5, color: th.textMuted }}>Tổng dư bán: <b style={{ color: '#f43f5e' }}>{totalAskVol}</b></span>
+                <span style={{ fontSize: 9.5, color: th.textMuted }}>Tổng dư mua: <b style={{ color: 'var(--ds-color-market-up)' }}>{totalBidVol}</b></span>
+                <span style={{ fontSize: 9.5, color: th.textMuted }}>Tổng dư bán: <b style={{ color: 'var(--ds-color-market-down)' }}>{totalAskVol}</b></span>
               </div>
             </div>
 
@@ -380,12 +380,12 @@ function TradingPanelInner() {
             <div style={{ background: th.cardBg, border: `1px solid ${th.cardBorder}`, borderRadius: 12, padding: 16 }}>
               <h3 style={{ margin: '0 0 10px 0', fontSize: 11, fontWeight: 700, color: th.text, textTransform: 'uppercase' }}>Tài khoản 069C123456</h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 10.5, color: th.textMuted }}>Sức mua</span><span style={{ fontSize: 12, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>{BUYING_POWER.toLocaleString()}đ</span></div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 10.5, color: th.textMuted }}>Sức mua</span><span style={{ fontSize: 12, fontWeight: 800, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>{BUYING_POWER.toLocaleString()}đ</span></div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 10.5, color: th.textMuted }}>Tiền mặt</span><span style={{ fontSize: 11.5, fontWeight: 700, color: th.text, fontFamily: "'JetBrains Mono', monospace" }}>18,450,000đ</span></div>
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 10.5, color: th.textMuted }}>Giá trị CK</span><span style={{ fontSize: 11.5, fontWeight: 700, color: th.text, fontFamily: "'JetBrains Mono', monospace" }}>62,300,000đ</span></div>
                 <div style={{ height: 1, background: th.cardBorder, margin: '2px 0' }} />
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 10.5, color: th.textMuted }}>Tỷ lệ ký quỹ</span><span style={{ fontSize: 11.5, fontWeight: 700, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>14%</span></div>
-                <div style={{ height: 5, background: th.iconBg, borderRadius: 3, overflow: 'hidden' }}><div style={{ height: '100%', width: '14%', background: '#22c55e' }} /></div>
+                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 10.5, color: th.textMuted }}>Tỷ lệ ký quỹ</span><span style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--ds-color-market-up)', fontFamily: "'JetBrains Mono', monospace" }}>14%</span></div>
+                <div style={{ height: 5, background: th.iconBg, borderRadius: 3, overflow: 'hidden' }}><div style={{ height: '100%', width: '14%', background: 'var(--ds-color-market-up)' }} /></div>
               </div>
             </div>
 
@@ -416,7 +416,7 @@ function TradingPanelInner() {
                   <span style={{ fontSize: 10.5, color: th.textMuted, textAlign: 'center', padding: '10px 0' }}>Chưa có lệnh nào hôm nay</span>
                 )}
               </div>
-              <div style={{ display: 'block', textAlign: 'center', marginTop: 10, fontSize: 10, color: '#60a5fa', fontWeight: 700, cursor: 'pointer' }}>Xem tất cả lịch sử lệnh →</div>
+              <div style={{ display: 'block', textAlign: 'center', marginTop: 10, fontSize: 10, color: 'var(--ds-color-text-link)', fontWeight: 700, cursor: 'pointer' }}>Xem tất cả lịch sử lệnh →</div>
             </div>
           </div>
         </div>
