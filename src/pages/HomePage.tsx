@@ -5,6 +5,9 @@ import type {
   MarketIndexView,
   ChartView,
   TradeHistoryItem,
+  AlertModalState,
+  SortKey,
+  SortDir,
 } from '../types/priceboard'
 import type { VietcapFilterGroup } from '../types/vietcap'
 import IndexStrip from '../components/IndexStrip'
@@ -12,9 +15,10 @@ import FilterBar from '../components/FilterBar'
 import StockTable from '../components/stock-table/StockTableAGGrid'
 import GridView from '../components/GridView'
 import HeatmapView from '../components/HeatmapView'
-import IntradayChartModal from '../components/IntradayChartModal'
 import TradingViewModal from '../components/TradingViewModal'
 import TopMoversView from '../components/TopMoversView'
+import AlertModal from '../components/AlertModal'
+import CompareBar from '../components/CompareBar'
 
 type Props = {
   th: ThemeTokens
@@ -50,6 +54,15 @@ type Props = {
   onCloseChart: () => void
   idxChart: { open: boolean; sym: string; color: string }
   onCloseIdxChart: () => void
+  selectedCompare: string[]
+  onToggleCompare: (sym: string) => void
+  onClearCompare: () => void
+  alertModal: AlertModalState
+  onCloseAlertModal: () => void
+  onSaveAlert: (sym: string, threshold: number, direction: 'above' | 'below') => void
+  sortKey: SortKey
+  sortDir: SortDir
+  onSort: (key: SortKey) => void
 }
 
 function HomePageInner({
@@ -60,7 +73,9 @@ function HomePageInner({
   filterVolMin, filterPriceMin, filterPriceMax, onSetPctFrom,
   onSetPctTo, onSetVolMin, onSetPriceMin, onSetPriceMax,
   onResetFilters, tradeHistory, stocksWithWatchlist,
-  chartView, onCloseChart, idxChart, onCloseIdxChart,
+  chartView: _chartView, onCloseChart: _onCloseChart, idxChart, onCloseIdxChart,
+  selectedCompare, onToggleCompare, onClearCompare,
+  alertModal, onCloseAlertModal, onSaveAlert,
 }: Props) {
   return (
     <div className="home-page-shell">
@@ -103,9 +118,25 @@ function HomePageInner({
         {viewMode === 'heat' && <HeatmapView rows={stocksWithWatchlist} th={th} />}
         {viewMode === 'movers' && <TopMoversView rows={stocksWithWatchlist} th={th} />}
       </div>
-      {chartView && (
-        <IntradayChartModal chart={chartView} onClose={onCloseChart} />
+
+      {/* Compare floating bar */}
+      <CompareBar
+        selected={selectedCompare}
+        onRemove={onToggleCompare}
+        onClear={onClearCompare}
+        onCompare={() => {}}
+      />
+
+      {/* Alert modal */}
+      {alertModal.open && (
+        <AlertModal
+          alert={alertModal}
+          onClose={onCloseAlertModal}
+          onSave={onSaveAlert}
+        />
       )}
+
+      {/* TradingView index modal */}
       {idxChart.open && (
         <TradingViewModal
           sym={idxChart.sym}
