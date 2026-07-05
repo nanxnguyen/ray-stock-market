@@ -142,8 +142,8 @@ function App() {
     watchlist: string[]
   }>(() => {
     const params = new URLSearchParams(window.location.search)
-    const group = (params.get('filter-group') || 'WL') as VietcapFilterGroup
-    const value = params.get('filter-value') || group
+    const group = (params.get('filter-group') || 'HOSE') as VietcapFilterGroup
+    const value = params.get('filter-value') || 'VN30'
     return { group, value, searchText: '', watchlist: [] }
   })
   const [chart, setChart] = useState<ChartState>({ open: false, sym: '', range: '1Đ' })
