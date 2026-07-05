@@ -111,12 +111,26 @@ export type StockRow = {
   fbal: string
   fbc: string
   room: string
+  roomPct?: number
   kltt: string
   sparkPts: string
   sparkFill: string
   onChart: () => void
   watchlisted?: boolean
   onToggleWatchlist?: () => void
+  isSelected?: boolean
+  onToggleCompare?: () => void
+  onOpenAlert?: () => void
+  flashPrice?: string
+  flashB1q?: string
+  flashB2q?: string
+  flashB3q?: string
+  flashA1q?: string
+  flashA2q?: string
+  flashA3q?: string
+  flashVol?: string
+  flashRoom?: string
+  focusOutline?: string
 }
 
 export type MarketIndexState = {
@@ -151,6 +165,7 @@ export type ChartState = {
   open: boolean
   sym: string
   range: string
+  stock?: StockState
 }
 
 export type ChartView = {
@@ -196,3 +211,13 @@ export type BreadthData = {
   upPct: number
   upColor: string
 }
+
+export type AlertModalState = {
+  open: boolean
+  sym: string
+  threshold: string
+  direction: 'above' | 'below'
+}
+
+export type SortKey = 'lp' | 'pct' | 'tv' | null
+export type SortDir = 'asc' | 'desc'
