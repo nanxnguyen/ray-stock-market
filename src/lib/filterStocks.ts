@@ -135,9 +135,7 @@ export function filterStocks(
   const topGroup = resolveTopGroup(filter.group)
 
   if (filter.group === 'WL') {
-    if (filter.watchlist.length > 0) {
-      result = result.filter((r) => filter.watchlist.includes(r.sym))
-    }
+    result = result.filter((r) => filter.watchlist.includes(r.sym))
   } else if (topGroup === 'SECTOR') {
     // Sector data not available from Vietcap priceboard API - show all stocks
   } else {
@@ -268,9 +266,7 @@ export function filterStockStates(
   const topGroup = resolveTopGroup(filter.group)
 
   if (filter.group === 'WL') {
-    if (filter.watchlist.length > 0) {
-      result = result.filter((s) => filter.watchlist.includes(s.s))
-    }
+    result = result.filter((s) => filter.watchlist.includes(s.s))
   } else if (topGroup === 'SECTOR') {
     // Sector data not available from Vietcap priceboard API - show all stocks
   } else {
