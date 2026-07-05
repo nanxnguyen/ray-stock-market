@@ -1,0 +1,327 @@
+- generic [ref=f5e3]:
+  - generic [ref=f5e5]:
+    - link "Ray Stock Market" [ref=f5e6] [cursor=pointer]:
+      - /url: /
+      - img [ref=f5e8]
+      - generic [ref=f5e10]: Ray Stock Market
+    - generic [ref=f5e11]: 05/07/2026 23:46:38
+    - generic [ref=f5e13]:
+      - text: VN-Index
+      - generic [ref=f5e14]: ▲1,860.01 +5.04
+      - text: │VN30
+      - generic [ref=f5e15]: ▲1,995.71 +5.06
+      - text: │ACB
+      - generic [ref=f5e16]: ▼22.65 -0.25
+      - text: │HPG
+      - generic [ref=f5e17]: ▲24.10 +0.32
+      - text: │VCB
+      - generic [ref=f5e18]: ▲81.50 +1.13
+      - text: │FPT
+      - generic [ref=f5e19]: ▲137.50 +1.89
+      - text: │DOW
+      - generic [ref=f5e20]: ▲52,342 +0.31%
+    - generic [ref=f5e21]:
+      - link "💼 Danh mục" [ref=f5e22] [cursor=pointer]:
+        - /url: /portfolio
+      - link "💰 Đặt lệnh" [ref=f5e23] [cursor=pointer]:
+        - /url: /trading-panel
+      - link "📖 Sổ lệnh" [ref=f5e24] [cursor=pointer]:
+        - /url: /order-book
+      - generic [ref=f5e25] [cursor=pointer]:
+        - text: Công cụ
+        - generic [ref=f5e31]: ▾
+      - generic "Chuyển Light mode" [ref=f5e33] [cursor=pointer]:
+        - generic [ref=f5e34]: ☀
+        - generic [ref=f5e35]: LIGHT
+  - generic [ref=f5e37]:
+    - generic [ref=f5e38]:
+      - generic [ref=f5e39]:
+        - generic [ref=f5e40] [cursor=pointer]:
+          - generic [ref=f5e42]:
+            - generic [ref=f5e43]: VN-Index
+            - generic [ref=f5e44]: LIVE
+          - generic [ref=f5e45]: 1,860.01
+          - generic [ref=f5e46]: +5.04 (+0.27%)
+          - generic [ref=f5e47]: "KL: 692,765,051"
+          - generic [ref=f5e48]:
+            - generic [ref=f5e49]: ▲146
+            - generic [ref=f5e50]: ▼74
+            - generic [ref=f5e51]: ──148
+          - img [ref=f5e52]
+        - generic [ref=f5e55] [cursor=pointer]:
+          - generic [ref=f5e57]:
+            - generic [ref=f5e58]: VN30-Index
+            - generic [ref=f5e59]: LIVE
+          - generic [ref=f5e60]: 1,995.71
+          - generic [ref=f5e61]: +5.06 (+0.25%)
+          - generic [ref=f5e62]: "KL: 312,451,165"
+          - generic [ref=f5e63]:
+            - generic [ref=f5e64]: ▲14
+            - generic [ref=f5e65]: ▼2
+            - generic [ref=f5e66]: ──14
+          - img [ref=f5e67]
+        - generic [ref=f5e70] [cursor=pointer]:
+          - generic [ref=f5e72]:
+            - generic [ref=f5e73]: HNX-Index
+            - generic [ref=f5e74]: LIVE
+          - generic [ref=f5e75]: "313.16"
+          - generic [ref=f5e76]: "-8.58 (-0.43%)"
+          - generic [ref=f5e77]: "KL: 41,602,865"
+          - generic [ref=f5e78]:
+            - generic [ref=f5e79]: ▲61
+            - generic [ref=f5e80]: ▼68
+            - generic [ref=f5e81]: ──63
+          - img [ref=f5e82]
+        - generic [ref=f5e85] [cursor=pointer]:
+          - generic [ref=f5e87]:
+            - generic [ref=f5e88]: HNX30
+            - generic [ref=f5e89]: LIVE
+          - generic [ref=f5e90]: "513.44"
+          - generic [ref=f5e91]: +0.14 (+0.03%)
+          - generic [ref=f5e92]: "KL: 26,266,277"
+          - generic [ref=f5e93]:
+            - generic [ref=f5e94]: ▲15
+            - generic [ref=f5e95]: ▼6
+            - generic [ref=f5e96]: ──9
+          - img [ref=f5e97]
+        - generic [ref=f5e100] [cursor=pointer]:
+          - generic [ref=f5e102]:
+            - generic [ref=f5e103]: UPCOM
+            - generic [ref=f5e104]: LIVE
+          - generic [ref=f5e105]: "129.94"
+          - generic [ref=f5e106]: +0.62 (+0.48%)
+          - generic [ref=f5e107]: "KL: 21,599,770"
+          - generic [ref=f5e108]:
+            - generic [ref=f5e109]: ▲121
+            - generic [ref=f5e110]: ▼90
+            - generic [ref=f5e111]: ──81
+          - img [ref=f5e112]
+      - generic [ref=f5e115]:
+        - generic [ref=f5e116]:
+          - generic [ref=f5e117] [cursor=pointer]: Mỹ
+          - generic [ref=f5e118] [cursor=pointer]: Châu Âu
+          - generic [ref=f5e119] [cursor=pointer]: Châu Á
+          - generic [ref=f5e120] [cursor=pointer]: Hàng hoá
+        - generic [ref=f5e121]:
+          - generic [ref=f5e122]:
+            - generic [ref=f5e123]: Dow Jones
+            - generic [ref=f5e124]: 42,587.50
+          - generic [ref=f5e125]:
+            - generic [ref=f5e126]: "+132.45"
+            - generic [ref=f5e127]: +0.31%
+        - generic [ref=f5e128]:
+          - generic [ref=f5e129]:
+            - generic [ref=f5e130]: S&P 500
+            - generic [ref=f5e131]: 5,862.13
+          - generic [ref=f5e132]:
+            - generic [ref=f5e133]: "+14.62"
+            - generic [ref=f5e134]: +0.25%
+        - generic [ref=f5e135]:
+          - generic [ref=f5e136]:
+            - generic [ref=f5e137]: Nasdaq
+            - generic [ref=f5e138]: 19,169.95
+          - generic [ref=f5e139]:
+            - generic [ref=f5e140]: "+256.34"
+            - generic [ref=f5e141]: +1.35%
+        - generic [ref=f5e142]:
+          - generic [ref=f5e143]:
+            - generic [ref=f5e144]: Russell 2000
+            - generic [ref=f5e145]: 2,026.97
+          - generic [ref=f5e146]:
+            - generic [ref=f5e147]: "+11.15"
+            - generic [ref=f5e148]: +0.55%
+        - generic [ref=f5e149]:
+          - generic [ref=f5e150]:
+            - generic [ref=f5e151]: VIX
+            - generic [ref=f5e152]: "14.82"
+          - generic [ref=f5e153]:
+            - generic [ref=f5e154]: "-0.34"
+            - generic [ref=f5e155]: "-2.24%"
+    - generic [ref=f5e157]:
+      - generic [ref=f5e158]:
+        - button "☰" [ref=f5e159]
+        - button "⊞" [ref=f5e160]
+        - button "▦" [ref=f5e161]
+        - button "📊" [ref=f5e162]
+      - generic [ref=f5e164]:
+        - generic [ref=f5e165]: 🔍
+        - textbox "Thêm mã ..." [ref=f5e166]
+      - separator [ref=f5e167]
+      - generic [ref=f5e168]:
+        - button "Danh mục quan tâm" [ref=f5e169]
+        - button "HOSE ▾" [ref=f5e170] [cursor=pointer]:
+          - text: HOSE
+          - generic [ref=f5e171]: ▾
+        - button "HNX ▾" [ref=f5e172] [cursor=pointer]:
+          - text: HNX
+          - generic [ref=f5e173]: ▾
+        - button "UPCOM ▾" [ref=f5e174] [cursor=pointer]:
+          - text: UPCOM
+          - generic [ref=f5e175]: ▾
+        - button "Phái Sinh ▾" [ref=f5e176] [cursor=pointer]:
+          - text: Phái Sinh
+          - generic [ref=f5e177]: ▾
+        - button "Chứng Quyền" [ref=f5e178]
+        - button "Ngành ▾" [ref=f5e179] [cursor=pointer]:
+          - text: Ngành
+          - generic [ref=f5e180]: ▾
+        - button "Trái phiếu ▾" [ref=f5e181] [cursor=pointer]:
+          - text: Trái phiếu
+          - generic [ref=f5e182]: ▾
+      - generic [ref=f5e183]:
+        - button "🔍" [ref=f5e184]
+        - button "📋" [ref=f5e185]
+        - button "⬇" [ref=f5e186]
+    - generic [ref=f5e190]:
+      - treegrid [ref=f5e192]:
+        - rowgroup [ref=f5e193]:
+          - row [ref=f5e194]:          
+          - row "Mã CK Trần TC Sàn" [ref=f5e195]:
+            - columnheader [ref=f5e196]:
+              - text: 
+              - text:     
+            - columnheader "Mã CK" [ref=f5e198]:
+              - text: 
+              - generic [ref=f5e200] [cursor=pointer]: Mã CK
+              - text:     
+            - columnheader "Trần" [ref=f5e201]:
+              - text: 
+              - generic [ref=f5e203] [cursor=pointer]: Trần
+              - text:     
+            - columnheader "TC" [ref=f5e204]:
+              - text: 
+              - generic [ref=f5e206] [cursor=pointer]: TC
+              - text:     
+            - columnheader "Sàn" [ref=f5e207]:
+              - text: 
+              - generic [ref=f5e209] [cursor=pointer]: Sàn
+              - text:     
+        - rowgroup [ref=f5e210]:
+          - row "── DƯ MUA ── KHỚP LỆNH ── DƯ BÁN ── NN" [ref=f5e211]:
+            - columnheader "── DƯ MUA ──" [ref=f5e212]: ── DƯ MUA ──  
+            - columnheader "KHỚP LỆNH" [ref=f5e214]: KHỚP LỆNH  
+            - columnheader "── DƯ BÁN ──" [ref=f5e216]: ── DƯ BÁN ──  
+            - text:      
+            - columnheader "NN" [ref=f5e218]: NN  
+            - text:    
+          - row "Giá 3 KL 3 Giá 2 KL 2 Giá 1 KL 1 Giá KL % ↕ KLGD Xu hướng Giá 1 KL 1 Giá 2 KL 2 Giá 3 KL 3 Cao TB Thấp Mua Bán ↕ Room KLGD TT ♡" [ref=f5e220]:
+            - columnheader "Giá 3" [ref=f5e221]:
+              - text: 
+              - generic [ref=f5e223] [cursor=pointer]: Giá 3
+              - text:     
+            - columnheader "KL 3" [ref=f5e224]:
+              - text: 
+              - generic [ref=f5e226] [cursor=pointer]: KL 3
+              - text:     
+            - columnheader "Giá 2" [ref=f5e227]:
+              - text: 
+              - generic [ref=f5e229] [cursor=pointer]: Giá 2
+              - text:     
+            - columnheader "KL 2" [ref=f5e230]:
+              - text: 
+              - generic [ref=f5e232] [cursor=pointer]: KL 2
+              - text:     
+            - columnheader "Giá 1" [ref=f5e233]:
+              - text: 
+              - generic [ref=f5e235] [cursor=pointer]: Giá 1
+              - text:     
+            - columnheader "KL 1" [ref=f5e236]:
+              - text: 
+              - generic [ref=f5e238] [cursor=pointer]: KL 1
+              - text:     
+            - columnheader "Giá" [ref=f5e239]:
+              - text: 
+              - generic [ref=f5e241] [cursor=pointer]: Giá
+              - text:     
+            - columnheader "KL" [ref=f5e242]:
+              - text: 
+              - generic [ref=f5e244] [cursor=pointer]: KL
+              - text:     
+            - columnheader "%" [ref=f5e245]:
+              - text: 
+              - generic [ref=f5e247] [cursor=pointer]: "%"
+              - text:     
+            - columnheader "↕" [ref=f5e248]:
+              - text: 
+              - generic [ref=f5e250] [cursor=pointer]: ↕
+              - text:     
+            - columnheader "KLGD" [ref=f5e251]:
+              - text: 
+              - generic [ref=f5e253] [cursor=pointer]: KLGD
+              - text:     
+            - columnheader "Xu hướng" [ref=f5e254]:
+              - text: 
+              - generic [ref=f5e256] [cursor=pointer]: Xu hướng
+              - text:     
+            - columnheader "Giá 1" [ref=f5e257]:
+              - text: 
+              - generic [ref=f5e259] [cursor=pointer]: Giá 1
+              - text:     
+            - columnheader "KL 1" [ref=f5e260]:
+              - text: 
+              - generic [ref=f5e262] [cursor=pointer]: KL 1
+              - text:     
+            - columnheader "Giá 2" [ref=f5e263]:
+              - text: 
+              - generic [ref=f5e265] [cursor=pointer]: Giá 2
+              - text:     
+            - columnheader "KL 2" [ref=f5e266]:
+              - text: 
+              - generic [ref=f5e268] [cursor=pointer]: KL 2
+              - text:     
+            - columnheader "Giá 3" [ref=f5e269]:
+              - text: 
+              - generic [ref=f5e271] [cursor=pointer]: Giá 3
+              - text:     
+            - columnheader "KL 3" [ref=f5e272]:
+              - text: 
+              - generic [ref=f5e274] [cursor=pointer]: KL 3
+              - text:     
+            - columnheader "Cao" [ref=f5e275]:
+              - text: 
+              - generic [ref=f5e277] [cursor=pointer]: Cao
+              - text:     
+            - columnheader "TB" [ref=f5e278]:
+              - text: 
+              - generic [ref=f5e280] [cursor=pointer]: TB
+              - text:     
+            - columnheader "Thấp" [ref=f5e281]:
+              - text: 
+              - generic [ref=f5e283] [cursor=pointer]: Thấp
+              - text:     
+            - columnheader "Mua" [ref=f5e284]:
+              - text: 
+              - generic [ref=f5e286] [cursor=pointer]: Mua
+              - text:     
+            - columnheader "Bán" [ref=f5e287]:
+              - text: 
+              - generic [ref=f5e289] [cursor=pointer]: Bán
+              - text:     
+            - columnheader "↕" [ref=f5e290]:
+              - text: 
+              - generic [ref=f5e292] [cursor=pointer]: ↕
+              - text:     
+            - columnheader "Room" [ref=f5e293]:
+              - text: 
+              - generic [ref=f5e295] [cursor=pointer]: Room
+              - text:     
+            - columnheader "KLGD TT" [ref=f5e296]:
+              - text: 
+              - generic [ref=f5e298] [cursor=pointer]: KLGD TT
+              - text:     
+            - columnheader "♡" [ref=f5e299]:
+              - text: 
+              - generic [ref=f5e301] [cursor=pointer]: ♡
+              - text:     
+        - rowgroup [ref=f5e302]
+        - rowgroup [ref=f5e303]
+        - rowgroup
+        - rowgroup
+        - rowgroup [ref=f5e304]
+        - rowgroup
+        - generic: No Rows To Show
+      - text:    
+  - generic [ref=f5e306]:
+    - generic [ref=f5e307]: "Cơ sở: Giá ×1,000 │ KL ×1"
+    - generic [ref=f5e308]: │
+    - generic [ref=f5e309]: "Phái sinh: Giá ×1 │ KL ×1"

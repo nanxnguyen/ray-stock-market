@@ -79,24 +79,24 @@ function SubPageTopBar({ th, toggleDark, indices }: Props) {
   const toolCount = MENU_GROUPS.reduce((s, g) => s + g.items.length, 0)
 
   return (
-    <div style={{ background: 'var(--ds-color-bg-card)', border: '1px solid var(--ds-color-border-subtle)', borderRadius: 12, overflow: 'visible', flexShrink: 0 }}>
+    <div className="bg-card border border-line-subtle rounded-xl overflow-visible shrink-0">
       {/* ROW 1: LOGO + INDEX SPARKLINES + CLOCK */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 0, padding: '9px 16px', borderBottom: '1px solid var(--ds-color-border-subtle)', overflowX: 'auto' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0, paddingRight: 16, marginRight: 16, borderRight: '1px solid var(--ds-color-border-muted)' }}>
-          <div style={{ width: 24, height: 24, background: 'linear-gradient(135deg,#22c55e,#16a34a)', borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-            <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff" /></svg>
+      <div className="flex items-center gap-0 py-[9px] px-4 border-b border-line-subtle overflow-x-auto">
+        <div className="flex items-center gap-[7px] shrink-0 pr-4 mr-4 border-r border-line-subtle">
+          <div className="w-6 h-6 bg-gradient-to-br from-[#22c55e] to-[#16a34a] rounded-md flex items-center justify-center shrink-0">
+            <svg width="12" height="10" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="var(--ds-color-text-inverse)" /></svg>
           </div>
-          <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-text-primary)', whiteSpace: 'nowrap' }}>Ray <span style={{ color: '#22c55e' }}>Stock Market</span></span>
+          <span className="text-[13px] font-extrabold text-txt-primary whitespace-nowrap">Ray <span className="text-market-up">Stock Market</span></span>
         </div>
 
         {indices.map((idx) => (
-          <div key={idx.name} onClick={idx.onClick} style={{ display: 'flex', alignItems: 'center', gap: 12, flexShrink: 0, padding: '0 18px', borderRight: '1px solid var(--ds-color-border-muted)', cursor: 'pointer' }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 66 }}>
-              <span style={{ fontSize: 9, fontWeight: 700, color: 'var(--ds-color-text-muted)', letterSpacing: 0.3 }}>{idx.name}</span>
-              <span style={{ fontSize: 15, fontWeight: 800, color: idx.color, fontFamily: "'JetBrains Mono', monospace", letterSpacing: -0.3 }}>{idx.val}</span>
-              <span style={{ fontSize: 9.5, color: idx.color, fontWeight: 700 }}>{idx.chg}</span>
+          <div key={idx.name} onClick={idx.onClick} className="flex items-center gap-3 shrink-0 px-[18px] border-r border-line-subtle cursor-pointer">
+            <div className="flex flex-col gap-[1px] min-w-[66px]">
+              <span className="text-[9px] font-bold text-txt-muted tracking-[0.3px]">{idx.name}</span>
+              <span className="text-[15px] font-extrabold font-mono tracking-[-0.3px]" style={{ color: idx.color }}>{idx.val}</span>
+              <span className="text-[9.5px] font-bold" style={{ color: idx.color }}>{idx.chg}</span>
             </div>
-            <svg viewBox="0 0 80 32" preserveAspectRatio="none" style={{ width: 80, height: 32, flexShrink: 0 }}>
+            <svg viewBox="0 0 80 32" preserveAspectRatio="none" className="w-20 h-8 shrink-0">
               <defs>
                 <linearGradient id={idx.gradId} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor={idx.color} stopOpacity={0.35} />
@@ -106,32 +106,29 @@ function SubPageTopBar({ th, toggleDark, indices }: Props) {
               <path d={idx.fill} fill={`url(#${idx.gradId})`} />
               <polyline points={idx.pts} fill="none" stroke={idx.color} strokeWidth={1.6} strokeLinejoin="round" strokeLinecap="round" />
             </svg>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 3, minWidth: 64 }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 6 }}><span style={{ fontSize: 9, color: 'var(--ds-color-text-muted)' }}>Val</span><span style={{ fontSize: 9.5, color: 'var(--ds-color-text-primary)', fontWeight: 600, fontFamily: "'JetBrains Mono', monospace" }}>{idx.vol}</span></div>
-              <div style={{ display: 'flex', justifyContent: 'space-between', gap: 6 }}><span style={{ fontSize: 9, color: 'var(--ds-color-text-muted)' }}>F.Val</span><span style={{ fontSize: 9.5, color: idx.color, fontWeight: 600, fontFamily: "'JetBrains Mono', monospace" }}>{idx.vol}</span></div>
+            <div className="flex flex-col gap-[3px] min-w-[64px]">
+              <div className="flex justify-between gap-1.5"><span className="text-[9px] text-txt-muted">Val</span><span className="text-[9.5px] text-txt-primary font-semibold font-mono">{idx.vol}</span></div>
+              <div className="flex justify-between gap-1.5"><span className="text-[9px] text-txt-muted">F.Val</span><span className="text-[9.5px] font-semibold font-mono" style={{ color: idx.color }}>{idx.vol}</span></div>
             </div>
           </div>
         ))}
 
-        <span style={{ marginLeft: 'auto', fontSize: 10, color: 'var(--ds-color-text-muted)', fontFamily: "'JetBrains Mono', monospace", flexShrink: 0, paddingLeft: 16 }}>{timeStr}</span>
+        <span className="ml-auto text-[10px] text-txt-muted font-mono shrink-0 pl-4">{timeStr}</span>
       </div>
 
       {/* ROW 2: NAV PILLS + TOOLS MEGA MENU + THEME TOGGLE */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '8px 14px', overflowX: 'visible', position: 'relative' }}>
+      <div className="flex items-center gap-1.5 py-2 px-[14px] overflow-x-visible relative">
         {NAV_LINKS.map((link) => {
           const isActive = location.pathname === link.path
           return (
             <button
               key={link.path}
               onClick={() => navigate(link.path)}
-              style={{
-                flexShrink: 0, display: 'flex', alignItems: 'center', gap: 5,
-                background: isActive ? 'rgba(37,99,235,.25)' : 'var(--ds-color-bg-elevated)',
-                border: `1px solid ${isActive ? '#2563eb' : 'var(--ds-color-border-subtle)'}`,
-                color: isActive ? '#dbeafe' : 'var(--ds-color-text-secondary)',
-                borderRadius: 14, padding: '5px 12px', fontSize: 10.5,
-                fontWeight: isActive ? 700 : 600, whiteSpace: 'nowrap', cursor: 'pointer',
-              }}
+              className={`shrink-0 flex items-center gap-[5px] rounded-[14px] py-[5px] px-3 text-[10.5px] whitespace-nowrap cursor-pointer border transition-colors ${
+                isActive
+                  ? 'bg-[rgba(37,99,235,.25)] border-blue-600 text-blue-100 font-bold'
+                  : 'bg-elevated border-line-subtle text-txt-secondary font-semibold'
+              }`}
             >
               {link.icon} {link.label}
             </button>
@@ -141,54 +138,49 @@ function SubPageTopBar({ th, toggleDark, indices }: Props) {
         <div
           ref={toolsRef}
           onClick={() => setShowMoreTools(!showMoreTools)}
-          style={{
-            cursor: 'pointer', flexShrink: 0, display: 'flex', alignItems: 'center', gap: 6,
-            background: showMoreTools ? 'rgba(37,99,235,.25)' : 'var(--ds-color-bg-elevated)',
-            border: `1px solid ${showMoreTools ? '#2563eb' : 'var(--ds-color-border-subtle)'}`,
-            color: showMoreTools ? '#dbeafe' : 'var(--ds-color-text-secondary)',
-            borderRadius: 14, padding: '5px 12px 5px 11px', fontSize: 10.5, fontWeight: 700,
-            transition: 'all .15s', whiteSpace: 'nowrap',
-          }}
+          className={`shrink-0 flex items-center gap-1.5 rounded-[14px] py-[5px] px-3 pl-[11px] text-[10.5px] font-bold transition-all whitespace-nowrap cursor-pointer border ${
+            showMoreTools
+              ? 'bg-[rgba(37,99,235,.25)] border-blue-600 text-blue-100'
+              : 'bg-elevated border-line-subtle text-txt-secondary'
+          }`}
         >
-          <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, width: 9, height: 9 }}>
-            <span style={{ background: 'currentColor', borderRadius: 1 }} /><span style={{ background: 'currentColor', borderRadius: 1 }} />
-            <span style={{ background: 'currentColor', borderRadius: 1 }} /><span style={{ background: 'currentColor', borderRadius: 1 }} />
+          <span className="grid grid-cols-2 gap-[2px] w-[9px] h-[9px]">
+            <span className="bg-current rounded-[1px]" /><span className="bg-current rounded-[1px]" />
+            <span className="bg-current rounded-[1px]" /><span className="bg-current rounded-[1px]" />
           </span>
           Công cụ
-          <span style={{ fontSize: 8, transform: showMoreTools ? 'rotate(180deg)' : 'rotate(0)', transition: 'transform .15s' }}>▾</span>
+          <span className={`text-[8px] transition-transform ${showMoreTools ? 'rotate-180' : 'rotate-0'}`}>▾</span>
         </div>
 
-        <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 6, flexShrink: 0 }}>
-          <div onClick={toggleDark} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, background: 'var(--ds-color-bg-elevated)', border: '1px solid var(--ds-color-border-subtle)', borderRadius: 20, padding: '5px 12px', transition: 'all .25s' }}>
-            <span style={{ fontSize: 12 }}>{th.toggleIcon}</span>
-            <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--ds-color-text-secondary)' }}>{th.toggleLabel}</span>
+        <div className="ml-auto flex items-center gap-1.5 shrink-0">
+          <div onClick={toggleDark} className="cursor-pointer flex items-center gap-1.5 bg-elevated border border-line-subtle rounded-full py-[5px] px-3 transition-all">
+            <span className="text-xs leading-none">{th.toggleIcon}</span>
+            <span className="text-[10px] font-bold text-txt-secondary">{th.toggleLabel}</span>
           </div>
         </div>
 
         {showMoreTools && (
-          <div style={{ position: 'absolute', top: 44, right: 14, background: 'var(--ds-color-bg-card)', border: '1px solid var(--ds-color-border-subtle)', borderRadius: 14, boxShadow: '0 24px 60px rgba(0,0,0,.55)', zIndex: 300, width: 660, maxWidth: '88vw', overflow: 'hidden', animation: 'fadeUp .15s ease' }}>
-            <div style={{ padding: '16px 20px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22 }}>
+          <div className="absolute top-[44px] right-[14px] bg-card border border-line-subtle rounded-[14px] shadow-[0_24px_60px_rgba(0,0,0,.55)] z-[300] w-[660px] max-w-[88vw] overflow-hidden animate-[fadeUp_0.15s_ease]">
+            <div className="p-4 px-5 grid grid-cols-3 gap-[22px]">
               {MENU_GROUPS.map((grp) => (
-                <div key={grp.title} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                  <span style={{ fontSize: 9.5, fontWeight: 800, color: grp.color, textTransform: 'uppercase', letterSpacing: 0.5, padding: '0 8px 8px' }}>{grp.title}</span>
+                <div key={grp.title} className="flex flex-col gap-[2px]">
+                  <span className="text-[9.5px] font-extrabold uppercase tracking-[0.5px] px-2 pb-2" style={{ color: grp.color }}>{grp.title}</span>
                   {grp.items.map((it) => (
-                    <button key={it.href} onClick={() => { navigate(it.href); setShowMoreTools(false) }} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10, padding: '7px 8px', borderRadius: 8, background: 'transparent', border: 'none', cursor: 'pointer', width: '100%', textAlign: 'left' }}
-                      onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--ds-color-bg-elevated)' }}
-                      onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.background = 'transparent' }}
+                    <button key={it.href} onClick={() => { navigate(it.href); setShowMoreTools(false) }} className="no-underline flex items-center gap-2.5 py-[7px] px-2 rounded-lg bg-transparent border-none cursor-pointer w-full text-left hover:bg-elevated transition-colors"
                     >
-                      <span style={{ width: 28, height: 28, borderRadius: 8, background: it.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0 }}>{it.icon}</span>
-                      <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0 }}>
-                        <span style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--ds-color-text-primary)', whiteSpace: 'nowrap' }}>{it.label}</span>
-                        <span style={{ fontSize: 9, color: 'var(--ds-color-text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{it.desc}</span>
+                      <span className="w-7 h-7 rounded-lg flex items-center justify-center text-[13px] shrink-0" style={{ background: it.iconBg }}>{it.icon}</span>
+                      <span className="flex flex-col gap-[1px] min-w-0">
+                        <span className="text-[11.5px] font-bold text-txt-primary whitespace-nowrap">{it.label}</span>
+                        <span className="text-[9px] text-txt-muted whitespace-nowrap overflow-hidden text-ellipsis">{it.desc}</span>
                       </span>
                     </button>
                   ))}
                 </div>
               ))}
             </div>
-            <div style={{ borderTop: '1px solid var(--ds-color-border-subtle)', padding: '10px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--ds-color-bg-elevated)' }}>
-              <span style={{ fontSize: 9.5, color: 'var(--ds-color-text-muted)', fontWeight: 600 }}>{toolCount} công cụ & sẽ tiếp tục mở rộng</span>
-              <button onClick={() => { navigate('/'); setShowMoreTools(false) }} style={{ textDecoration: 'none', fontSize: 10, fontWeight: 700, color: 'var(--ds-color-blue-400)', background: 'none', border: 'none', cursor: 'pointer' }}>{'\u{1F3E0}'} Về Trang chủ</button>
+            <div className="border-t border-line-subtle py-2.5 px-5 flex justify-between items-center bg-elevated">
+              <span className="text-[9.5px] text-txt-muted font-semibold">{toolCount} công cụ & sẽ tiếp tục mở rộng</span>
+              <button onClick={() => { navigate('/'); setShowMoreTools(false) }} className="no-underline text-[10px] font-bold text-blue-400 bg-transparent border-none cursor-pointer">{'\u{1F3E0}'} Về Trang chủ</button>
             </div>
           </div>
         )}
@@ -205,13 +197,9 @@ const MemoizedSubPageTopBar = memo(SubPageTopBar)
 
 export default function SubPageLayout({ th, toggleDark, indices }: Props) {
   return (
-    <div style={{
-      display: 'flex', flexDirection: 'column', height: '100vh',
-      fontFamily: "'Inter', system-ui, sans-serif", color: th.text,
-      overflow: 'hidden', background: th.appBg,
-    }}>
+    <div className="flex flex-col h-screen font-sans overflow-hidden bg-app" style={{ color: th.text }}>
       <MemoizedSubPageTopBar th={th} toggleDark={toggleDark} indices={indices} />
-      <div style={{ flex: 1, overflow: 'auto' }}>
+      <div className="flex-1 overflow-auto">
         <Outlet />
       </div>
       <FooterBar />

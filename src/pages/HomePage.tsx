@@ -26,6 +26,7 @@ type Props = {
   indices: MarketIndexView[]
   filter: { group: VietcapFilterGroup; value: string; searchText: string; watchlist: string[] }
   onFilterChange: (group: VietcapFilterGroup, value?: string) => void
+  onSearchTextChange: (text: string) => void
   onSymbolAdd: (symbol: string) => void
   viewMode: 'table' | 'grid' | 'heat' | 'movers'
   onViewModeChange: (mode: 'table' | 'grid' | 'heat' | 'movers') => void
@@ -67,7 +68,7 @@ type Props = {
 }
 
 function HomePageInner({
-  th, indices, filter, onFilterChange, onSymbolAdd,
+  th, indices, filter, onFilterChange, onSearchTextChange, onSymbolAdd,
   viewMode, onViewModeChange, showSector, onToggleSector, activeSector,
   onSectorChange, showAdvFilter, onToggleAdvFilter, showTradeHist,
   onToggleTradeHist, onExportCSV, filterPctFrom, filterPctTo,
@@ -88,6 +89,7 @@ function HomePageInner({
         th={th}
         filter={filter}
         onFilterChange={onFilterChange}
+        onSearchTextChange={onSearchTextChange}
         onSymbolAdd={onSymbolAdd}
         viewMode={viewMode}
         onViewModeChange={onViewModeChange}

@@ -19,36 +19,37 @@ const GridCard = memo(function GridCard({ s, th }: { s: StockRow; th: ThemeToken
         e.currentTarget.style.borderColor = th.cellBorder
         e.currentTarget.style.background = s.bg
       }}
-      style={{
-        background: s.bg, border: `1px solid ${th.cellBorder}`, borderRadius: 8,
-        padding: '10px 12px', cursor: 'pointer', transition: 'all .4s',
-        position: 'relative', overflow: 'hidden',
-      }}
+      className="relative cursor-pointer overflow-hidden rounded-lg p-2.5 transition-all"
+      style={{ background: s.bg, border: `1px solid ${th.cellBorder}` }}
     >
-      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: s.lc, opacity: 0.7 }} />
-      <div style={{ fontSize: 12, fontWeight: 800, color: 'var(--ds-color-blue-400)', fontFamily: "'Inter', sans-serif", letterSpacing: 0.4, marginBottom: 4 }}>
+      <div className="absolute top-0 left-0 right-0 h-0.5 opacity-70" style={{ background: s.lc }} />
+      <div className="mb-1 text-xs font-extrabold tracking-wide text-blue-400">
         {s.sym}
       </div>
-      <div style={{
-        fontSize: 17, fontWeight: 700, color: s.lc, fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.1,
-        background: s.pct.startsWith('+') ? (parseFloat(s.pct) > 3 ? 'rgba(34,197,94,.3)' : 'rgba(34,197,94,.15)') : s.pct.startsWith('-') ? (parseFloat(s.pct) < -3 ? 'rgba(244,63,94,.3)' : 'rgba(244,63,94,.15)') : 'transparent',
-        padding: '2px 4px', borderRadius: 4,
-      }}>
+      <div
+        className="rounded py-0.5 px-1 font-mono text-lg font-bold leading-tight"
+        style={{
+          color: s.lc,
+          background: s.pct.startsWith('+') ? (parseFloat(s.pct) > 3 ? 'rgba(34,197,94,.3)' : 'rgba(34,197,94,.15)') : s.pct.startsWith('-') ? (parseFloat(s.pct) < -3 ? 'rgba(244,63,94,.3)' : 'rgba(244,63,94,.15)') : 'transparent',
+        }}
+      >
         {s.lp}
       </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 3 }}>
-        <span style={{
-          fontSize: 10, fontWeight: 700, color: s.pc,
-          background: s.pct.startsWith('+') ? 'rgba(34,197,94,.25)' : s.pct.startsWith('-') ? 'rgba(244,63,94,.25)' : 'rgba(251,191,36,.15)',
-          padding: '1px 5px', borderRadius: 4,
-        }}>
+      <div className="mt-0.5 flex items-center justify-between">
+        <span
+          className="rounded px-1.5 py-px text-[10px] font-bold"
+          style={{
+            color: s.pc,
+            background: s.pct.startsWith('+') ? 'rgba(34,197,94,.25)' : s.pct.startsWith('-') ? 'rgba(244,63,94,.25)' : 'rgba(251,191,36,.15)',
+          }}
+        >
           {s.pct}
         </span>
-        <span style={{ fontSize: 9, color: th.textMuted }}>{s.chg}</span>
+        <span className="text-[9px] text-txt-muted">{s.chg}</span>
       </div>
-      <div style={{ fontSize: 9, color: th.textMuted, marginTop: 4 }}>KL: {s.tvol}</div>
+      <div className="mt-1 text-[9px] text-txt-muted">KL: {s.tvol}</div>
       {s.sparkPts && (
-        <svg viewBox="0 0 100 24" preserveAspectRatio="none" style={{ width: '100%', height: 22, marginTop: 5, display: 'block' }}>
+        <svg viewBox="0 0 100 24" preserveAspectRatio="none" className="mt-1.5 block h-[22px] w-full">
           <path d={s.sparkFill} fill={s.lc} opacity={0.12} />
           <polyline points={s.sparkPts} fill="none" stroke={s.lc} strokeWidth={1.5} strokeLinejoin="round" strokeLinecap="round" />
         </svg>
@@ -101,18 +102,14 @@ function GridViewInner({ rows, th }: Props) {
     <div
       ref={containerRef}
       onScroll={handleScroll}
-      style={{ flex: 1, overflow: 'auto', background: th.tableBg, padding: 14 }}
+      className="flex-1 overflow-auto p-3.5"
+      style={{ background: th.tableBg }}
     >
       <div style={{ height: totalHeight, position: 'relative' }}>
         <div
+          className="absolute top-0 left-0 right-0 grid gap-2.5"
           style={{
-            display: 'grid',
             gridTemplateColumns: `repeat(${cols}, 1fr)`,
-            gap: GAP,
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
             transform: `translateY(${offsetY}px)`,
           }}
         >

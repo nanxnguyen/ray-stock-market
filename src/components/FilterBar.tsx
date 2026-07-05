@@ -17,7 +17,7 @@ type Props = {
   th: ThemeTokens
   filter: { group: VietcapFilterGroup; value: string; searchText: string }
   onFilterChange: (group: VietcapFilterGroup, value?: string) => void
-  onSymbolAdd: (symbol: string) => void
+  onSearchTextChange: (text: string) => void
   viewMode?: 'table' | 'grid' | 'heat' | 'movers'
   onViewModeChange?: (mode: 'table' | 'grid' | 'heat' | 'movers') => void
   showSector?: boolean
@@ -53,7 +53,7 @@ const VIEW_ICONS: Record<string, string> = {
 }
 
 function FilterBarInner({
-  th, filter, onFilterChange, onSymbolAdd,
+  th, filter, onFilterChange, onSearchTextChange, onSymbolAdd,
   viewMode = 'table', onViewModeChange,
   showSector, activeSector = 'Tất cả', onSectorChange,
   showAdvFilter, onToggleAdvFilter,
@@ -65,15 +65,14 @@ function FilterBarInner({
   const displayGroup = resolveTopGroup(filter.group)
 
   const inputCls = useMemo(() => cn(
-    'h-7 w-[60px] rounded-md border text-center',
+    'h-7 w-[60px] rounded border',
   ), [])
 
   return (
     <div>
       {/* Main filter bar */}
       <div
-        className="flex items-center gap-1 overflow-x-auto shrink-0"
-        style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '5px 14px', height: 42 }}
+        className="flex items-center gap-1 overflow-x-auto shrink-0 bg-nav border-b border-line px-3.5 py-[5px] h-[42px]"
       >
         {/* View mode buttons */}
         <div className="flex gap-0.5 shrink-0">
@@ -84,12 +83,11 @@ function FilterBarInner({
               size="icon-xs"
               onClick={() => onViewModeChange?.(mode)}
               className={cn(
-                'shrink-0 transition-all',
+                'shrink-0 transition-all w-[26px] h-[26px] rounded-[5px] border border-line',
                 viewMode === mode
-                  ? 'bg-[var(--ds-color-blue-600)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-blue-700)]'
-                  : 'hover:bg-[var(--ds-color-surface-hover)]',
+                  ? 'bg-blue-600 text-txt-inverse hover:bg-blue-700 border-blue-600'
+                  : 'hover:bg-row-hover',
               )}
-              style={{ width: 26, height: 26, border: `1px solid ${th.navBorder}`, borderRadius: 5 }}
             >
               {VIEW_ICONS[mode]}
             </Button>
@@ -97,9 +95,9 @@ function FilterBarInner({
         </div>
 
         {/* Search */}
-        <SymbolSearch th={th} onSelect={onSymbolAdd} />
+        <SymbolSearch th={th} value={filter.searchText} onChange={onSearchTextChange} />
 
-        <Separator orientation="vertical" className="shrink-0" style={{ height: 20, background: th.navBorder }} />
+        <Separator orientation="vertical" className="shrink-0 h-5 bg-line" />
 
         {/* Filter tabs */}
         <div className="flex gap-1 items-center overflow-x-auto flex-1 min-w-0">
@@ -113,12 +111,11 @@ function FilterBarInner({
                   size="xs"
                   onClick={() => onFilterChange(group.id as VietcapFilterGroup)}
                   className={cn(
-                    'shrink-0 transition-all',
+                    'shrink-0 transition-all rounded-[6px] border',
                     isActive
-                      ? 'bg-[var(--ds-color-blue-600)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-blue-700)] font-bold'
-                      : 'font-medium hover:bg-[var(--ds-color-surface-hover)]',
+                      ? 'bg-blue-600 text-txt-inverse hover:bg-blue-700 font-bold border-blue-600'
+                      : 'font-medium hover:bg-row-hover border-line',
                   )}
-                  style={{ border: isActive ? 'none' : th.tabBorder, borderRadius: 6 }}
                 >
                   {group.label}
                 </Button>
@@ -152,12 +149,11 @@ function FilterBarInner({
             onClick={onToggleAdvFilter}
             title="Bộ lọc nâng cao"
             className={cn(
-              'shrink-0 transition-all',
+              'shrink-0 transition-all w-[26px] h-[26px] rounded-[5px] border border-line',
               showAdvFilter
-                ? 'bg-[var(--ds-color-orange-500)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-orange-400)]'
-                : 'hover:bg-[var(--ds-color-surface-hover)]',
+                ? 'bg-orange-500 text-txt-inverse hover:bg-orange-400 border-orange-500'
+                : 'hover:bg-row-hover',
             )}
-            style={{ width: 26, height: 26, border: `1px solid ${showAdvFilter ? '#ea580c' : th.navBorder}`, borderRadius: 5 }}
           >
             {'\u{1F50D}'}
           </Button>
@@ -167,12 +163,11 @@ function FilterBarInner({
             onClick={onToggleTradeHist}
             title="Lịch sử giao dịch"
             className={cn(
-              'shrink-0 transition-all',
+              'shrink-0 transition-all w-[26px] h-[26px] rounded-[5px] border border-line',
               showTradeHist
-                ? 'bg-[var(--ds-color-orange-500)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-orange-400)]'
-                : 'hover:bg-[var(--ds-color-surface-hover)]',
+                ? 'bg-orange-500 text-txt-inverse hover:bg-orange-400 border-orange-500'
+                : 'hover:bg-row-hover',
             )}
-            style={{ width: 26, height: 26, border: `1px solid ${showTradeHist ? '#ea580c' : th.navBorder}`, borderRadius: 5 }}
           >
             {'\u{1F4CB}'}
           </Button>
@@ -181,8 +176,7 @@ function FilterBarInner({
             size="icon-xs"
             onClick={onExportCSV}
             title="Xuất CSV"
-            className="shrink-0 hover:bg-[var(--ds-color-surface-hover)] transition-all"
-            style={{ width: 26, height: 26, border: `1px solid ${th.navBorder}`, borderRadius: 5, background: th.iconBg, color: th.textMuted }}
+            className="shrink-0 hover:bg-row-hover transition-all w-[26px] h-[26px] rounded-[5px] border border-line bg-nav text-txt-muted"
           >
             {'\u2B07'}
           </Button>
@@ -192,8 +186,7 @@ function FilterBarInner({
       {/* Sector filter panel */}
       {showSector && (
         <div
-          className="flex flex-wrap gap-1.5 shrink-0"
-          style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '7px 14px', animation: 'fadeUp .15s ease' }}
+          className="flex flex-wrap gap-1.5 shrink-0 bg-nav border-b border-line px-3.5 py-[7px] animate-[fadeUp_0.15s_ease]"
         >
           {SECTOR_LIST.map((sec) => (
             <Badge
@@ -202,18 +195,11 @@ function FilterBarInner({
               render={<button />}
               onClick={() => onSectorChange?.(sec)}
               className={cn(
-                'cursor-pointer rounded-full transition-all text-[10.5px] px-2.5 py-0.5',
+                'cursor-pointer rounded-full transition-all text-[10.5px] px-2.5 py-0.5 border',
                 activeSector === sec
-                  ? 'bg-[var(--ds-color-blue-600)] text-[var(--ds-color-text-inverse)] border-[var(--ds-color-blue-600)] font-bold'
-                  : 'hover:bg-[var(--ds-color-surface-hover)]',
+                  ? 'bg-blue-600 text-txt-inverse border-blue-600 font-bold'
+                  : 'bg-nav text-txt-muted border-line hover:bg-row-hover',
               )}
-              style={{
-                background: activeSector === sec ? 'var(--ds-color-blue-600)' : th.iconBg,
-                color: activeSector === sec ? 'var(--ds-color-text-inverse)' : th.textMuted,
-                borderColor: activeSector === sec ? 'var(--ds-color-blue-600)' : th.navBorder,
-                fontWeight: activeSector === sec ? 700 : 400,
-                borderRadius: 16,
-              }}
             >
               {sec}
             </Badge>
@@ -224,60 +210,54 @@ function FilterBarInner({
       {/* Advanced filter panel */}
       {showAdvFilter && (
         <div
-          className="flex gap-3 items-end shrink-0 flex-wrap"
-          style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '10px 14px', animation: 'fadeUp .15s ease' }}
+          className="flex gap-3 items-end shrink-0 flex-wrap bg-nav border-b border-line px-3.5 py-[10px] animate-[fadeUp_0.15s_ease]"
         >
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-bold uppercase" style={{ color: th.textMuted }}>% Thay đổi</label>
+            <label className="text-[9px] font-bold uppercase text-txt-muted">% Thay đổi</label>
             <div className="flex gap-1 items-center">
               <Input
                 type="number"
                 placeholder="Từ"
                 value={filterPctFrom || ''}
                 onChange={(e) => onSetPctFrom?.(e.target.value)}
-                className={inputCls}
-                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+                className={cn(inputCls, 'bg-app text-txt-primary text-[10px] w-[60px]')}
               />
-              <span style={{ color: th.textMuted, padding: '4px 0' }}>{'\u2192'}</span>
+              <span className="text-txt-muted py-1 px-0">{'\u2192'}</span>
               <Input
                 type="number"
                 placeholder="Đến"
                 value={filterPctTo || ''}
                 onChange={(e) => onSetPctTo?.(e.target.value)}
-                className={inputCls}
-                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+                className={cn(inputCls, 'bg-app text-txt-primary text-[10px] w-[60px]')}
               />
             </div>
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-bold uppercase" style={{ color: th.textMuted }}>KLGD (triệu)</label>
+            <label className="text-[9px] font-bold uppercase text-txt-muted">KLGD (triệu)</label>
             <Input
               type="number"
               placeholder="Tối thiểu"
               value={filterVolMin || ''}
               onChange={(e) => onSetVolMin?.(e.target.value)}
-              className={cn(inputCls, 'w-[100px]')}
-              style={{ background: th.appBg, color: th.text, fontSize: 10, width: 100 }}
+              className={cn(inputCls, 'w-[100px] bg-app text-txt-primary text-[10px]')}
             />
           </div>
           <div className="flex flex-col gap-1">
-            <label className="text-[9px] font-bold uppercase" style={{ color: th.textMuted }}>Giá (từ-đến)</label>
+            <label className="text-[9px] font-bold uppercase text-txt-muted">Giá (từ-đến)</label>
             <div className="flex gap-1">
               <Input
                 type="number"
                 placeholder="Min"
                 value={filterPriceMin || ''}
                 onChange={(e) => onSetPriceMin?.(e.target.value)}
-                className={inputCls}
-                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+                className={cn(inputCls, 'bg-app text-txt-primary text-[10px] w-[60px]')}
               />
               <Input
                 type="number"
                 placeholder="Max"
                 value={filterPriceMax || ''}
                 onChange={(e) => onSetPriceMax?.(e.target.value)}
-                className={inputCls}
-                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+                className={cn(inputCls, 'bg-app text-txt-primary text-[10px] w-[60px]')}
               />
             </div>
           </div>
@@ -285,8 +265,7 @@ function FilterBarInner({
             variant="outline"
             size="xs"
             onClick={onResetFilters}
-            className="shrink-0 font-bold"
-            style={{ color: th.textMuted, fontSize: 10 }}
+            className="shrink-0 font-bold text-txt-muted text-[10px]"
           >
             Reset
           </Button>
@@ -296,25 +275,22 @@ function FilterBarInner({
       {/* Trade history panel */}
       {showTradeHist && (
         <div
-          className="flex flex-col gap-1.5 shrink-0 overflow-y-auto"
-          style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '10px 14px', animation: 'fadeUp .15s ease', maxHeight: 200 }}
+          className="flex flex-col gap-1.5 shrink-0 overflow-y-auto bg-nav border-b border-line px-3.5 py-[10px] animate-[fadeUp_0.15s_ease] max-h-[200px]"
         >
           <div className="flex justify-between items-center mb-1">
-            <span className="text-[11px] font-bold tracking-wider" style={{ color: 'var(--ds-color-blue-400)' }}>LỊCH SỬ GIAO DỊCH KHỚP LỆNH</span>
-            <span className="text-[9px]" style={{ color: th.textMuted }}>Realtime</span>
+            <span className="text-[11px] font-bold tracking-wider text-blue-400">LỊCH SỬ GIAO DỊCH KHỚP LỆNH</span>
+            <span className="text-[9px] text-txt-muted">Realtime</span>
           </div>
           {(tradeHistory || []).map((item, i) => (
             <div
               key={i}
-              className="grid gap-2 py-1.5 px-1.5 rounded text-[9px]"
+              className="grid gap-2 py-1.5 px-1.5 rounded text-[9px] bg-app border border-line"
               style={{
                 gridTemplateColumns: '60px 50px 60px 60px 70px',
-                background: th.appBg,
-                border: `1px solid ${th.cellBorder}`,
                 fontFamily: "var(--ds-font-mono)",
               }}
             >
-              <div className="font-bold" style={{ color: 'var(--ds-color-blue-400)' }}>{item.sym}</div>
+              <div className="font-bold text-blue-400">{item.sym}</div>
               <div className="text-right" style={{ color: item.timeColor }}>{item.time}</div>
               <div className="text-right font-bold" style={{ color: item.priceColor }}>{item.price}</div>
               <div className="text-right" style={{ color: item.volColor }}>{item.qty}</div>

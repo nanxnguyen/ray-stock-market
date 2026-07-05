@@ -57,80 +57,83 @@ function TopMoversViewInner({ rows, th }: Props) {
   }), [th.appBg, th.cellBorder, th.rowHover])
 
   return (
-    <div style={{ flex: 1, overflow: 'auto', background: th.appBg, display: 'flex', flexDirection: 'column' }}>
-      <div style={{ padding: 14, display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, flex: 1 }}>
+    <div className="flex flex-1 flex-col overflow-auto" style={{ background: th.appBg }}>
+      <div className="grid flex-1 grid-cols-3 gap-3.5 p-3.5">
         {/* Top gainers */}
-        <div style={{ background: th.navBg, border: `1px solid ${th.cellBorder}`, borderRadius: 8, padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ds-color-market-up)', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u25B2'} Top Tăng Mạnh</div>
+        <div className="flex flex-col gap-2 rounded-lg border border-line bg-nav p-3">
+          <div className="text-xs font-bold uppercase tracking-wider text-market-up">▲ Top Tăng Mạnh</div>
           {topGainers.map((tg) => (
             <div
               key={tg.sym}
               onClick={tg.onChart}
               {...cardHoverHandlers}
-              style={{ background: th.appBg, border: `1px solid ${th.cellBorder}`, borderRadius: 6, padding: 8, cursor: 'pointer', transition: 'all .2s' }}
+              className="cursor-pointer rounded-md border border-line p-2 transition-all"
+              style={{ background: th.appBg }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <span style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{tg.sym}</span>
-                <span style={{ fontSize: 10, color: 'var(--ds-color-market-up)', fontWeight: 700 }}>+{tg.pct}%</span>
+              <div className="mb-1 flex items-center justify-between">
+                <span className="font-bold text-blue-400">{tg.sym}</span>
+                <span className="text-[10px] font-bold text-market-up">+{tg.pct}%</span>
               </div>
-              <div style={{ fontSize: 12, color: th.text, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>{tg.lp}</div>
-              <div style={{ fontSize: 9, color: th.textMuted, marginTop: 3 }}>KL: {tg.vol}</div>
+              <div className="text-xs font-bold text-txt-primary font-mono">{tg.lp}</div>
+              <div className="mt-0.5 text-[9px] text-txt-muted">KL: {tg.vol}</div>
             </div>
           ))}
         </div>
 
         {/* Top losers */}
-        <div style={{ background: th.navBg, border: `1px solid ${th.cellBorder}`, borderRadius: 8, padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ds-color-market-down)', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u25BC'} Top Giảm Mạnh</div>
+        <div className="flex flex-col gap-2 rounded-lg border border-line bg-nav p-3">
+          <div className="text-xs font-bold uppercase tracking-wider text-market-down">▼ Top Giảm Mạnh</div>
           {topLosers.map((tl) => (
             <div
               key={tl.sym}
               onClick={tl.onChart}
               {...cardHoverHandlers}
-              style={{ background: th.appBg, border: `1px solid ${th.cellBorder}`, borderRadius: 6, padding: 8, cursor: 'pointer', transition: 'all .2s' }}
+              className="cursor-pointer rounded-md border border-line p-2 transition-all"
+              style={{ background: th.appBg }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <span style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{tl.sym}</span>
-                <span style={{ fontSize: 10, color: 'var(--ds-color-market-down)', fontWeight: 700 }}>{tl.pct}%</span>
+              <div className="mb-1 flex items-center justify-between">
+                <span className="font-bold text-blue-400">{tl.sym}</span>
+                <span className="text-[10px] font-bold text-market-down">{tl.pct}%</span>
               </div>
-              <div style={{ fontSize: 12, color: th.text, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>{tl.lp}</div>
-              <div style={{ fontSize: 9, color: th.textMuted, marginTop: 3 }}>KL: {tl.vol}</div>
+              <div className="text-xs font-bold text-txt-primary font-mono">{tl.lp}</div>
+              <div className="mt-0.5 text-[9px] text-txt-muted">KL: {tl.vol}</div>
             </div>
           ))}
         </div>
 
         {/* Top volume */}
-        <div style={{ background: th.navBg, border: `1px solid ${th.cellBorder}`, borderRadius: 8, padding: 12, display: 'flex', flexDirection: 'column', gap: 8 }}>
-          <div style={{ fontSize: 12, fontWeight: 700, color: 'var(--ds-color-blue-500)', letterSpacing: 0.5, textTransform: 'uppercase' }}>{'\u{1F4C8}'} KLGD Cao Nhất</div>
+        <div className="flex flex-col gap-2 rounded-lg border border-line bg-nav p-3">
+          <div className="text-xs font-bold uppercase tracking-wider text-blue-500">📈 KLGD Cao Nhất</div>
           {topVolume.map((tv) => (
             <div
               key={tv.sym}
               onClick={tv.onChart}
               {...cardHoverHandlers}
-              style={{ background: th.appBg, border: `1px solid ${th.cellBorder}`, borderRadius: 6, padding: 8, cursor: 'pointer', transition: 'all .2s' }}
+              className="cursor-pointer rounded-md border border-line p-2 transition-all"
+              style={{ background: th.appBg }}
             >
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-                <span style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{tv.sym}</span>
-                <span style={{ fontSize: 10, color: tv.pc, fontWeight: 700 }}>{tv.pct}</span>
+              <div className="mb-1 flex items-center justify-between">
+                <span className="font-bold text-blue-400">{tv.sym}</span>
+                <span className="text-[10px] font-bold" style={{ color: tv.pc }}>{tv.pct}</span>
               </div>
-              <div style={{ fontSize: 11, color: th.text, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>{tv.vol}</div>
-              <div style={{ fontSize: 9, color: th.textMuted, marginTop: 3 }}>{tv.lp}</div>
+              <div className="text-[11px] font-bold text-txt-primary font-mono">{tv.vol}</div>
+              <div className="mt-0.5 text-[9px] text-txt-muted">{tv.lp}</div>
             </div>
           ))}
         </div>
       </div>
 
       {/* Breadth indicators */}
-      <div style={{ background: th.navBg, borderTop: `1px solid ${th.navBorder}`, padding: '10px 14px', display: 'flex', gap: 20, alignItems: 'center', flexShrink: 0 }}>
-        <div style={{ display: 'flex', gap: 16 }}>
+      <div className="flex shrink-0 items-center gap-5 border-t border-line-subtle bg-nav px-3.5 py-2.5">
+        <div className="flex gap-4">
           {breadthData.map((bd) => (
-            <div key={bd.label} style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-              <span style={{ fontSize: 10, fontWeight: 700, color: th.textMuted, letterSpacing: 0.3, textTransform: 'uppercase' }}>{bd.label}</span>
-              <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
-                <div style={{ width: 80, height: 8, background: th.appBg, borderRadius: 4, overflow: 'hidden' }}>
-                  <div style={{ width: `${bd.upPct}%`, height: '100%', background: bd.upColor }} />
+            <div key={bd.label} className="flex flex-col gap-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-txt-muted">{bd.label}</span>
+              <div className="flex items-center gap-1">
+                <div className="h-2 w-20 overflow-hidden rounded bg-app">
+                  <div className="h-full" style={{ width: `${bd.upPct}%`, background: bd.upColor }} />
                 </div>
-                <span style={{ fontSize: 11, fontWeight: 700, color: bd.upColor, fontFamily: "'JetBrains Mono', monospace", minWidth: 50 }}>{bd.upCnt}/{bd.total}</span>
+                <span className="min-w-[50px] text-[11px] font-bold font-mono" style={{ color: bd.upColor }}>{bd.upCnt}/{bd.total}</span>
               </div>
             </div>
           ))}

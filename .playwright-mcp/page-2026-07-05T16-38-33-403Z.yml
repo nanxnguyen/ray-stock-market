@@ -1,0 +1,1729 @@
+- generic [ref=f2e3]:
+  - generic [ref=f2e5]:
+    - link "Ray Stock Market" [ref=f2e6] [cursor=pointer]:
+      - /url: /
+      - img [ref=f2e8]
+      - generic [ref=f2e10]: Ray Stock Market
+    - generic [ref=f2e11]: 05/07/2026 23:38:32
+    - generic [ref=f2e13]:
+      - text: VN-Index
+      - generic [ref=f2e14]: ▲1,860.01 +5.04
+      - text: │VN30
+      - generic [ref=f2e15]: ▲1,995.71 +5.06
+      - text: │ACB
+      - generic [ref=f2e16]: ▼22.65 -0.25
+      - text: │HPG
+      - generic [ref=f2e17]: ▲24.10 +0.32
+      - text: │VCB
+      - generic [ref=f2e18]: ▲81.50 +1.13
+      - text: │FPT
+      - generic [ref=f2e19]: ▲137.50 +1.89
+      - text: │DOW
+      - generic [ref=f2e20]: ▲52,342 +0.31%
+    - generic [ref=f2e21]:
+      - link "💼 Danh mục" [ref=f2e22] [cursor=pointer]:
+        - /url: /portfolio
+      - link "💰 Đặt lệnh" [ref=f2e23] [cursor=pointer]:
+        - /url: /trading-panel
+      - link "📖 Sổ lệnh" [ref=f2e24] [cursor=pointer]:
+        - /url: /order-book
+      - generic [ref=f2e25] [cursor=pointer]:
+        - text: Công cụ
+        - generic [ref=f2e31]: ▾
+      - generic "Chuyển Light mode" [ref=f2e33] [cursor=pointer]:
+        - generic [ref=f2e34]: ☀
+        - generic [ref=f2e35]: LIGHT
+  - generic [ref=f2e37]:
+    - generic [ref=f2e38]:
+      - generic [ref=f2e39]:
+        - generic [ref=f2e40] [cursor=pointer]:
+          - generic [ref=f2e42]:
+            - generic [ref=f2e43]: VN-Index
+            - generic [ref=f2e44]: LIVE
+          - generic [ref=f2e45]: 1,860.01
+          - generic [ref=f2e46]: +5.04 (+0.27%)
+          - generic [ref=f2e47]: "KL: 692,765,051"
+          - generic [ref=f2e48]:
+            - generic [ref=f2e49]: ▲146
+            - generic [ref=f2e50]: ▼74
+            - generic [ref=f2e51]: ──148
+          - img [ref=f2e52]
+        - generic [ref=f2e55] [cursor=pointer]:
+          - generic [ref=f2e57]:
+            - generic [ref=f2e58]: VN30-Index
+            - generic [ref=f2e59]: LIVE
+          - generic [ref=f2e60]: 1,995.71
+          - generic [ref=f2e61]: +5.06 (+0.25%)
+          - generic [ref=f2e62]: "KL: 312,451,165"
+          - generic [ref=f2e63]:
+            - generic [ref=f2e64]: ▲14
+            - generic [ref=f2e65]: ▼2
+            - generic [ref=f2e66]: ──14
+          - img [ref=f2e67]
+        - generic [ref=f2e70] [cursor=pointer]:
+          - generic [ref=f2e72]:
+            - generic [ref=f2e73]: HNX-Index
+            - generic [ref=f2e74]: LIVE
+          - generic [ref=f2e75]: "313.16"
+          - generic [ref=f2e76]: "-8.58 (-0.43%)"
+          - generic [ref=f2e77]: "KL: 41,602,865"
+          - generic [ref=f2e78]:
+            - generic [ref=f2e79]: ▲61
+            - generic [ref=f2e80]: ▼68
+            - generic [ref=f2e81]: ──63
+          - img [ref=f2e82]
+        - generic [ref=f2e85] [cursor=pointer]:
+          - generic [ref=f2e87]:
+            - generic [ref=f2e88]: HNX30
+            - generic [ref=f2e89]: LIVE
+          - generic [ref=f2e90]: "513.44"
+          - generic [ref=f2e91]: +0.14 (+0.03%)
+          - generic [ref=f2e92]: "KL: 26,266,277"
+          - generic [ref=f2e93]:
+            - generic [ref=f2e94]: ▲15
+            - generic [ref=f2e95]: ▼6
+            - generic [ref=f2e96]: ──9
+          - img [ref=f2e97]
+        - generic [ref=f2e100] [cursor=pointer]:
+          - generic [ref=f2e102]:
+            - generic [ref=f2e103]: UPCOM
+            - generic [ref=f2e104]: LIVE
+          - generic [ref=f2e105]: "129.94"
+          - generic [ref=f2e106]: +0.62 (+0.48%)
+          - generic [ref=f2e107]: "KL: 21,599,770"
+          - generic [ref=f2e108]:
+            - generic [ref=f2e109]: ▲121
+            - generic [ref=f2e110]: ▼90
+            - generic [ref=f2e111]: ──81
+          - img [ref=f2e112]
+      - generic [ref=f2e115]:
+        - generic [ref=f2e116]:
+          - generic [ref=f2e117] [cursor=pointer]: Mỹ
+          - generic [ref=f2e118] [cursor=pointer]: Châu Âu
+          - generic [ref=f2e119] [cursor=pointer]: Châu Á
+          - generic [ref=f2e120] [cursor=pointer]: Hàng hoá
+        - generic [ref=f2e121]:
+          - generic [ref=f2e122]:
+            - generic [ref=f2e123]: Dow Jones
+            - generic [ref=f2e124]: 42,587.50
+          - generic [ref=f2e125]:
+            - generic [ref=f2e126]: "+132.45"
+            - generic [ref=f2e127]: +0.31%
+        - generic [ref=f2e128]:
+          - generic [ref=f2e129]:
+            - generic [ref=f2e130]: S&P 500
+            - generic [ref=f2e131]: 5,862.13
+          - generic [ref=f2e132]:
+            - generic [ref=f2e133]: "+14.62"
+            - generic [ref=f2e134]: +0.25%
+        - generic [ref=f2e135]:
+          - generic [ref=f2e136]:
+            - generic [ref=f2e137]: Nasdaq
+            - generic [ref=f2e138]: 19,169.95
+          - generic [ref=f2e139]:
+            - generic [ref=f2e140]: "+256.34"
+            - generic [ref=f2e141]: +1.35%
+        - generic [ref=f2e142]:
+          - generic [ref=f2e143]:
+            - generic [ref=f2e144]: Russell 2000
+            - generic [ref=f2e145]: 2,026.97
+          - generic [ref=f2e146]:
+            - generic [ref=f2e147]: "+11.15"
+            - generic [ref=f2e148]: +0.55%
+        - generic [ref=f2e149]:
+          - generic [ref=f2e150]:
+            - generic [ref=f2e151]: VIX
+            - generic [ref=f2e152]: "14.82"
+          - generic [ref=f2e153]:
+            - generic [ref=f2e154]: "-0.34"
+            - generic [ref=f2e155]: "-2.24%"
+    - generic [ref=f2e157]:
+      - generic [ref=f2e158]:
+        - button "☰" [ref=f2e159]
+        - button "⊞" [ref=f2e160]
+        - button "▦" [ref=f2e161]
+        - button "📊" [ref=f2e162]
+      - generic [ref=f2e164]:
+        - generic [ref=f2e165]: 🔍
+        - textbox "Thêm mã ..." [ref=f2e166]
+      - separator [ref=f2e167]
+      - generic [ref=f2e168]:
+        - button "Danh mục quan tâm" [ref=f2e169]
+        - button "HOSE ▾" [ref=f2e170] [cursor=pointer]:
+          - text: HOSE
+          - generic [ref=f2e171]: ▾
+        - button "HNX ▾" [ref=f2e172] [cursor=pointer]:
+          - text: HNX
+          - generic [ref=f2e173]: ▾
+        - button "UPCOM ▾" [ref=f2e174] [cursor=pointer]:
+          - text: UPCOM
+          - generic [ref=f2e175]: ▾
+        - button "Phái Sinh ▾" [ref=f2e176] [cursor=pointer]:
+          - text: Phái Sinh
+          - generic [ref=f2e177]: ▾
+        - button "Chứng Quyền" [ref=f2e178]
+        - button "Ngành ▾" [ref=f2e179] [cursor=pointer]:
+          - text: Ngành
+          - generic [ref=f2e180]: ▾
+        - button "Trái phiếu ▾" [ref=f2e181] [cursor=pointer]:
+          - text: Trái phiếu
+          - generic [ref=f2e182]: ▾
+      - generic [ref=f2e183]:
+        - button "🔍" [ref=f2e184]
+        - button "📋" [ref=f2e185]
+        - button "⬇" [ref=f2e186]
+    - generic [ref=f2e190]:
+      - treegrid [ref=f2e192]:
+        - rowgroup [ref=f2e193]:
+          - row [ref=f2e194]:          
+          - row "Mã CK Trần TC Sàn" [ref=f2e195]:
+            - columnheader [ref=f2e196]:
+              - text: 
+              - text:     
+            - columnheader "Mã CK" [ref=f2e198]:
+              - text: 
+              - generic [ref=f2e200] [cursor=pointer]: Mã CK
+              - text:     
+            - columnheader "Trần" [ref=f2e201]:
+              - text: 
+              - generic [ref=f2e203] [cursor=pointer]: Trần
+              - text:     
+            - columnheader "TC" [ref=f2e204]:
+              - text: 
+              - generic [ref=f2e206] [cursor=pointer]: TC
+              - text:     
+            - columnheader "Sàn" [ref=f2e207]:
+              - text: 
+              - generic [ref=f2e209] [cursor=pointer]: Sàn
+              - text:     
+        - rowgroup [ref=f2e210]:
+          - row "── DƯ MUA ── KHỚP LỆNH ── DƯ BÁN ── NN" [ref=f2e211]:
+            - columnheader "── DƯ MUA ──" [ref=f2e212]: ── DƯ MUA ──  
+            - columnheader "KHỚP LỆNH" [ref=f2e214]: KHỚP LỆNH  
+            - columnheader "── DƯ BÁN ──" [ref=f2e216]: ── DƯ BÁN ──  
+            - text:      
+            - columnheader "NN" [ref=f2e218]: NN  
+            - text:    
+          - row "Giá 3 KL 3 Giá 2 KL 2 Giá 1 KL 1 Giá KL % ↕ KLGD Xu hướng Giá 1 KL 1 Giá 2 KL 2 Giá 3 KL 3 Cao TB Thấp Mua Bán ↕ Room KLGD TT" [ref=f2e220]:
+            - columnheader "Giá 3" [ref=f2e221]:
+              - text: 
+              - generic [ref=f2e223] [cursor=pointer]: Giá 3
+              - text:     
+            - columnheader "KL 3" [ref=f2e224]:
+              - text: 
+              - generic [ref=f2e226] [cursor=pointer]: KL 3
+              - text:     
+            - columnheader "Giá 2" [ref=f2e227]:
+              - text: 
+              - generic [ref=f2e229] [cursor=pointer]: Giá 2
+              - text:     
+            - columnheader "KL 2" [ref=f2e230]:
+              - text: 
+              - generic [ref=f2e232] [cursor=pointer]: KL 2
+              - text:     
+            - columnheader "Giá 1" [ref=f2e233]:
+              - text: 
+              - generic [ref=f2e235] [cursor=pointer]: Giá 1
+              - text:     
+            - columnheader "KL 1" [ref=f2e236]:
+              - text: 
+              - generic [ref=f2e238] [cursor=pointer]: KL 1
+              - text:     
+            - columnheader "Giá" [ref=f2e239]:
+              - text: 
+              - generic [ref=f2e241] [cursor=pointer]: Giá
+              - text:     
+            - columnheader "KL" [ref=f2e242]:
+              - text: 
+              - generic [ref=f2e244] [cursor=pointer]: KL
+              - text:     
+            - columnheader "%" [ref=f2e245]:
+              - text: 
+              - generic [ref=f2e247] [cursor=pointer]: "%"
+              - text:     
+            - columnheader "↕" [ref=f2e248]:
+              - text: 
+              - generic [ref=f2e250] [cursor=pointer]: ↕
+              - text:     
+            - columnheader "KLGD" [ref=f2e251]:
+              - text: 
+              - generic [ref=f2e253] [cursor=pointer]: KLGD
+              - text:     
+            - columnheader "Xu hướng" [ref=f2e254]:
+              - text: 
+              - generic [ref=f2e256] [cursor=pointer]: Xu hướng
+              - text:     
+            - columnheader "Giá 1" [ref=f2e257]:
+              - text: 
+              - generic [ref=f2e259] [cursor=pointer]: Giá 1
+              - text:     
+            - columnheader "KL 1" [ref=f2e260]:
+              - text: 
+              - generic [ref=f2e262] [cursor=pointer]: KL 1
+              - text:     
+            - columnheader "Giá 2" [ref=f2e263]:
+              - text: 
+              - generic [ref=f2e265] [cursor=pointer]: Giá 2
+              - text:     
+            - columnheader "KL 2" [ref=f2e266]:
+              - text: 
+              - generic [ref=f2e268] [cursor=pointer]: KL 2
+              - text:     
+            - columnheader "Giá 3" [ref=f2e269]:
+              - text: 
+              - generic [ref=f2e271] [cursor=pointer]: Giá 3
+              - text:     
+            - columnheader "KL 3" [ref=f2e272]:
+              - text: 
+              - generic [ref=f2e274] [cursor=pointer]: KL 3
+              - text:     
+            - columnheader "Cao" [ref=f2e275]:
+              - text: 
+              - generic [ref=f2e277] [cursor=pointer]: Cao
+              - text:     
+            - columnheader "TB" [ref=f2e278]:
+              - text: 
+              - generic [ref=f2e280] [cursor=pointer]: TB
+              - text:     
+            - columnheader "Thấp" [ref=f2e281]:
+              - text: 
+              - generic [ref=f2e283] [cursor=pointer]: Thấp
+              - text:     
+            - columnheader "Mua" [ref=f2e284]:
+              - text: 
+              - generic [ref=f2e286] [cursor=pointer]: Mua
+              - text:     
+            - columnheader "Bán" [ref=f2e287]:
+              - text: 
+              - generic [ref=f2e289] [cursor=pointer]: Bán
+              - text:     
+            - columnheader "↕" [ref=f2e290]:
+              - text: 
+              - generic [ref=f2e292] [cursor=pointer]: ↕
+              - text:     
+            - columnheader "Room" [ref=f2e293]:
+              - text: 
+              - generic [ref=f2e295] [cursor=pointer]: Room
+              - text:     
+            - columnheader "KLGD TT" [ref=f2e296]:
+              - text: 
+              - generic [ref=f2e298] [cursor=pointer]: KLGD TT
+              - text:     
+            - columnheader [ref=f2e299]:
+              - text: 
+              - text:     
+        - rowgroup [ref=f2e301]:
+          - row "VN30F1M 21.50 20.10 18.69" [ref=f2e302]:
+            - gridcell [ref=f2e303]:
+              - checkbox [ref=f2e304] [cursor=pointer]
+            - gridcell "VN30F1M" [ref=f2e305] [cursor=pointer]
+            - gridcell "21.50" [ref=f2e306]
+            - gridcell "20.10" [ref=f2e307]
+            - gridcell "18.69" [ref=f2e308]
+          - row "VN30F1M 21.53 20.12 18.71" [ref=f2e309]:
+            - gridcell [ref=f2e310]:
+              - checkbox [ref=f2e311] [cursor=pointer]
+            - gridcell "VN30F1M" [ref=f2e312] [cursor=pointer]
+            - gridcell "21.53" [ref=f2e313]
+            - gridcell "20.12" [ref=f2e314]
+            - gridcell "18.71" [ref=f2e315]
+          - row "VN30F1M 21.53 20.12 18.71" [ref=f2e316]:
+            - gridcell [ref=f2e317]:
+              - checkbox [ref=f2e318] [cursor=pointer]
+            - gridcell "VN30F1M" [ref=f2e319] [cursor=pointer]
+            - gridcell "21.53" [ref=f2e320]
+            - gridcell "20.12" [ref=f2e321]
+            - gridcell "18.71" [ref=f2e322]
+          - row "VN30F1M 21.52 20.11 18.70" [ref=f2e323]:
+            - gridcell [ref=f2e324]:
+              - checkbox [ref=f2e325] [cursor=pointer]
+            - gridcell "VN30F1M" [ref=f2e326] [cursor=pointer]
+            - gridcell "21.52" [ref=f2e327]
+            - gridcell "20.11" [ref=f2e328]
+            - gridcell "18.70" [ref=f2e329]
+          - row "VN30F2M 20.78 19.42 18.07" [ref=f2e330]:
+            - gridcell [ref=f2e331]:
+              - checkbox [ref=f2e332] [cursor=pointer]
+            - gridcell "VN30F2M" [ref=f2e333] [cursor=pointer]
+            - gridcell "20.78" [ref=f2e334]
+            - gridcell "19.42" [ref=f2e335]
+            - gridcell "18.07" [ref=f2e336]
+          - row "VN30F2M 20.78 19.42 18.06" [ref=f2e337]:
+            - gridcell [ref=f2e338]:
+              - checkbox [ref=f2e339] [cursor=pointer]
+            - gridcell "VN30F2M" [ref=f2e340] [cursor=pointer]
+            - gridcell "20.78" [ref=f2e341]
+            - gridcell "19.42" [ref=f2e342]
+            - gridcell "18.06" [ref=f2e343]
+          - row "VN30F2M 20.75 19.39 18.03" [ref=f2e344]:
+            - gridcell [ref=f2e345]:
+              - checkbox [ref=f2e346] [cursor=pointer]
+            - gridcell "VN30F2M" [ref=f2e347] [cursor=pointer]
+            - gridcell "20.75" [ref=f2e348]
+            - gridcell "19.39" [ref=f2e349]
+            - gridcell "18.03" [ref=f2e350]
+          - row "VN30F2M 20.72 19.36 18.01" [ref=f2e351]:
+            - gridcell [ref=f2e352]:
+              - checkbox [ref=f2e353] [cursor=pointer]
+            - gridcell "VN30F2M" [ref=f2e354] [cursor=pointer]
+            - gridcell "20.72" [ref=f2e355]
+            - gridcell "19.36" [ref=f2e356]
+            - gridcell "18.01" [ref=f2e357]
+          - row "A32 0.34 0.29 0.25" [ref=f2e358]:
+            - gridcell [ref=f2e359]:
+              - checkbox [ref=f2e360] [cursor=pointer]
+            - gridcell "A32" [ref=f2e361] [cursor=pointer]
+            - gridcell "0.34" [ref=f2e362]
+            - gridcell "0.29" [ref=f2e363]
+            - gridcell "0.25" [ref=f2e364]
+          - row "AAA 0.08 0.07 0.07" [ref=f2e365]:
+            - gridcell [ref=f2e366]:
+              - checkbox [ref=f2e367] [cursor=pointer]
+            - gridcell "AAA" [ref=f2e368] [cursor=pointer]
+            - gridcell "0.08" [ref=f2e369]
+            - gridcell "0.07" [ref=f2e370]
+            - gridcell "0.07" [ref=f2e371]
+          - row "AAH 0.03 0.03 0.02" [ref=f2e372]:
+            - gridcell [ref=f2e373]:
+              - checkbox [ref=f2e374] [cursor=pointer]
+            - gridcell "AAH" [ref=f2e375] [cursor=pointer]
+            - gridcell "0.03" [ref=f2e376]
+            - gridcell "0.03" [ref=f2e377]
+            - gridcell "0.02" [ref=f2e378]
+          - row "AAM 0.07 0.07 0.06" [ref=f2e379]:
+            - gridcell [ref=f2e380]:
+              - checkbox [ref=f2e381] [cursor=pointer]
+            - gridcell "AAM" [ref=f2e382] [cursor=pointer]
+            - gridcell "0.07" [ref=f2e383]
+            - gridcell "0.07" [ref=f2e384]
+            - gridcell "0.06" [ref=f2e385]
+          - row "AAN 0.17 0.16 0.15" [ref=f2e386]:
+            - gridcell [ref=f2e387]:
+              - checkbox [ref=f2e388] [cursor=pointer]
+            - gridcell "AAN" [ref=f2e389] [cursor=pointer]
+            - gridcell "0.17" [ref=f2e390]
+            - gridcell "0.16" [ref=f2e391]
+            - gridcell "0.15" [ref=f2e392]
+          - row "AAS 0.10 0.09 0.07" [ref=f2e393]:
+            - gridcell [ref=f2e394]:
+              - checkbox [ref=f2e395] [cursor=pointer]
+            - gridcell "AAS" [ref=f2e396] [cursor=pointer]
+            - gridcell "0.10" [ref=f2e397]
+            - gridcell "0.09" [ref=f2e398]
+            - gridcell "0.07" [ref=f2e399]
+          - row "AAT 0.03 0.03 0.03" [ref=f2e400]:
+            - gridcell [ref=f2e401]:
+              - checkbox [ref=f2e402] [cursor=pointer]
+            - gridcell "AAT" [ref=f2e403] [cursor=pointer]
+            - gridcell "0.03" [ref=f2e404]
+            - gridcell "0.03" [ref=f2e405]
+            - gridcell "0.03" [ref=f2e406]
+          - row "AAV 0.08 0.07 0.06" [ref=f2e407]:
+            - gridcell [ref=f2e408]:
+              - checkbox [ref=f2e409] [cursor=pointer]
+            - gridcell "AAV" [ref=f2e410] [cursor=pointer]
+            - gridcell "0.08" [ref=f2e411]
+            - gridcell "0.07" [ref=f2e412]
+            - gridcell "0.06" [ref=f2e413]
+          - row "ABB 0.21 0.18 0.16" [ref=f2e414]:
+            - gridcell [ref=f2e415]:
+              - checkbox [ref=f2e416] [cursor=pointer]
+            - gridcell "ABB" [ref=f2e417] [cursor=pointer]
+            - gridcell "0.21" [ref=f2e418]
+            - gridcell "0.18" [ref=f2e419]
+            - gridcell "0.16" [ref=f2e420]
+          - row "ABC 0.12 0.10 0.09" [ref=f2e421]:
+            - gridcell [ref=f2e422]:
+              - checkbox [ref=f2e423] [cursor=pointer]
+            - gridcell "ABC" [ref=f2e424] [cursor=pointer]
+            - gridcell "0.12" [ref=f2e425]
+            - gridcell "0.10" [ref=f2e426]
+            - gridcell "0.09" [ref=f2e427]
+          - row "ABI 0.22 0.19 0.17" [ref=f2e428]:
+            - gridcell [ref=f2e429]:
+              - checkbox [ref=f2e430] [cursor=pointer]
+            - gridcell "ABI" [ref=f2e431] [cursor=pointer]
+            - gridcell "0.22" [ref=f2e432]
+            - gridcell "0.19" [ref=f2e433]
+            - gridcell "0.17" [ref=f2e434]
+          - row "ABR 0.12 0.12 0.11" [ref=f2e435]:
+            - gridcell [ref=f2e436]:
+              - checkbox [ref=f2e437] [cursor=pointer]
+            - gridcell "ABR" [ref=f2e438] [cursor=pointer]
+            - gridcell "0.12" [ref=f2e439]
+            - gridcell "0.12" [ref=f2e440]
+            - gridcell "0.11" [ref=f2e441]
+          - row "ABS 0.03 0.03 0.03" [ref=f2e442]:
+            - gridcell [ref=f2e443]:
+              - checkbox [ref=f2e444] [cursor=pointer]
+            - gridcell "ABS" [ref=f2e445] [cursor=pointer]
+            - gridcell "0.03" [ref=f2e446]
+            - gridcell "0.03" [ref=f2e447]
+            - gridcell "0.03" [ref=f2e448]
+          - row "ABT 0.58 0.54 0.50" [ref=f2e449]:
+            - gridcell [ref=f2e450]:
+              - checkbox [ref=f2e451] [cursor=pointer]
+            - gridcell "ABT" [ref=f2e452] [cursor=pointer]
+            - gridcell "0.58" [ref=f2e453]
+            - gridcell "0.54" [ref=f2e454]
+            - gridcell "0.50" [ref=f2e455]
+          - row "ABW 0.15 0.13 0.11" [ref=f2e456]:
+            - gridcell [ref=f2e457]:
+              - checkbox [ref=f2e458] [cursor=pointer]
+            - gridcell "ABW" [ref=f2e459] [cursor=pointer]
+            - gridcell "0.15" [ref=f2e460]
+            - gridcell "0.13" [ref=f2e461]
+            - gridcell "0.11" [ref=f2e462]
+          - row "ACB 0.24 0.23 0.21" [ref=f2e463]:
+            - gridcell [ref=f2e464]:
+              - checkbox [ref=f2e465] [cursor=pointer]
+            - gridcell "ACB" [ref=f2e466] [cursor=pointer]
+            - gridcell "0.24" [ref=f2e467]
+            - gridcell "0.23" [ref=f2e468]
+            - gridcell "0.21" [ref=f2e469]
+          - row "ACC 0.12 0.11 0.11" [ref=f2e470]:
+            - gridcell [ref=f2e471]:
+              - checkbox [ref=f2e472] [cursor=pointer]
+            - gridcell "ACC" [ref=f2e473] [cursor=pointer]
+            - gridcell "0.12" [ref=f2e474]
+            - gridcell "0.11" [ref=f2e475]
+            - gridcell "0.11" [ref=f2e476]
+          - row "ACE 0.41 0.36 0.30" [ref=f2e477]:
+            - gridcell [ref=f2e478]:
+              - checkbox [ref=f2e479] [cursor=pointer]
+            - gridcell "ACE" [ref=f2e480] [cursor=pointer]
+            - gridcell "0.41" [ref=f2e481]
+            - gridcell "0.36" [ref=f2e482]
+            - gridcell "0.30" [ref=f2e483]
+          - row "ACG 0.35 0.33 0.31" [ref=f2e484]:
+            - gridcell [ref=f2e485]:
+              - checkbox [ref=f2e486] [cursor=pointer]
+            - gridcell "ACG" [ref=f2e487] [cursor=pointer]
+            - gridcell "0.35" [ref=f2e488]
+            - gridcell "0.33" [ref=f2e489]
+            - gridcell "0.31" [ref=f2e490]
+          - row "ACL 0.14 0.13 0.12" [ref=f2e491]:
+            - gridcell [ref=f2e492]:
+              - checkbox [ref=f2e493] [cursor=pointer]
+            - gridcell "ACL" [ref=f2e494] [cursor=pointer]
+            - gridcell "0.14" [ref=f2e495]
+            - gridcell "0.13" [ref=f2e496]
+            - gridcell "0.12" [ref=f2e497]
+          - row "ACM 0.01 0.01 0.00" [ref=f2e498]:
+            - gridcell [ref=f2e499]:
+              - checkbox [ref=f2e500] [cursor=pointer]
+            - gridcell "ACM" [ref=f2e501] [cursor=pointer]
+            - gridcell "0.01" [ref=f2e502]
+            - gridcell "0.01" [ref=f2e503]
+            - gridcell "0.00" [ref=f2e504]
+          - row "ACS 0.06 0.05 0.05" [ref=f2e505]:
+            - gridcell [ref=f2e506]:
+              - checkbox [ref=f2e507] [cursor=pointer]
+            - gridcell "ACS" [ref=f2e508] [cursor=pointer]
+            - gridcell "0.06" [ref=f2e509]
+            - gridcell "0.05" [ref=f2e510]
+            - gridcell "0.05" [ref=f2e511]
+          - row "ACV 0.50 0.44 0.37" [ref=f2e512]:
+            - gridcell [ref=f2e513]:
+              - checkbox [ref=f2e514] [cursor=pointer]
+            - gridcell "ACV" [ref=f2e515] [cursor=pointer]
+            - gridcell "0.50" [ref=f2e516]
+            - gridcell "0.44" [ref=f2e517]
+            - gridcell "0.37" [ref=f2e518]
+          - row "ADC 0.19 0.17 0.16" [ref=f2e519]:
+            - gridcell [ref=f2e520]:
+              - checkbox [ref=f2e521] [cursor=pointer]
+            - gridcell "ADC" [ref=f2e522] [cursor=pointer]
+            - gridcell "0.19" [ref=f2e523]
+            - gridcell "0.17" [ref=f2e524]
+            - gridcell "0.16" [ref=f2e525]
+          - row "ADG 0.09 0.09 0.08" [ref=f2e526]:
+            - gridcell [ref=f2e527]:
+              - checkbox [ref=f2e528] [cursor=pointer]
+            - gridcell "ADG" [ref=f2e529] [cursor=pointer]
+            - gridcell "0.09" [ref=f2e530]
+            - gridcell "0.09" [ref=f2e531]
+            - gridcell "0.08" [ref=f2e532]
+          - row "ADP 0.25 0.23 0.22" [ref=f2e533]:
+            - gridcell [ref=f2e534]:
+              - checkbox [ref=f2e535] [cursor=pointer]
+            - gridcell "ADP" [ref=f2e536] [cursor=pointer]
+            - gridcell "0.25" [ref=f2e537]
+            - gridcell "0.23" [ref=f2e538]
+            - gridcell "0.22" [ref=f2e539]
+          - row "ADS 0.09 0.09 0.08" [ref=f2e540]:
+            - gridcell [ref=f2e541]:
+              - checkbox [ref=f2e542] [cursor=pointer]
+            - gridcell "ADS" [ref=f2e543] [cursor=pointer]
+            - gridcell "0.09" [ref=f2e544]
+            - gridcell "0.09" [ref=f2e545]
+            - gridcell "0.08" [ref=f2e546]
+          - row "AFX 0.11 0.10 0.09" [ref=f2e547]:
+            - gridcell [ref=f2e548]:
+              - checkbox [ref=f2e549] [cursor=pointer]
+            - gridcell "AFX" [ref=f2e550] [cursor=pointer]
+            - gridcell "0.11" [ref=f2e551]
+            - gridcell "0.10" [ref=f2e552]
+            - gridcell "0.09" [ref=f2e553]
+        - rowgroup [ref=f2e554]:
+          - row "20.09 24 20.09 7 20.09 7 20.09 4,869 +0.0% -0.01 147,578 20.09 3 20.09 34 20.09 33 20.16 20.09 20.01 7,233 6,959 +274 147,578 🔔 ♡" [ref=f2e555]:
+            - gridcell "20.09" [ref=f2e556]
+            - gridcell "24" [ref=f2e557]
+            - gridcell "20.09" [ref=f2e558]
+            - gridcell "7" [ref=f2e559]
+            - gridcell "20.09" [ref=f2e560]
+            - gridcell "7" [ref=f2e561]
+            - gridcell "20.09" [ref=f2e562]
+            - gridcell "4,869" [ref=f2e563]
+            - gridcell "+0.0%" [ref=f2e564]
+            - gridcell "-0.01" [ref=f2e565]
+            - gridcell "147,578" [ref=f2e566]
+            - gridcell [ref=f2e567]:
+              - img [ref=f2e568]
+            - gridcell "20.09" [ref=f2e571]
+            - gridcell "3" [ref=f2e572]
+            - gridcell "20.09" [ref=f2e573]
+            - gridcell "34" [ref=f2e574]
+            - gridcell "20.09" [ref=f2e575]
+            - gridcell "33" [ref=f2e576]
+            - gridcell "20.16" [ref=f2e577]
+            - gridcell "20.09" [ref=f2e578]
+            - gridcell "20.01" [ref=f2e579]
+            - gridcell "7,233" [ref=f2e580]
+            - gridcell "6,959" [ref=f2e581]
+            - gridcell "+274" [ref=f2e582]
+            - gridcell [ref=f2e583]
+            - gridcell "147,578" [ref=f2e587]
+            - gridcell "🔔 ♡" [ref=f2e588] [cursor=pointer]:
+              - generic [ref=f2e589]:
+                - generic "Đặt cảnh báo giá" [ref=f2e590]: 🔔
+                - generic [ref=f2e591]: ♡
+          - row "20.04 1 20.05 3 20.06 2 20.11 7 +0.0% -0.01 346 20.11 2 20.12 2 20.13 2 20.15 20.09 20.01 141 2 +139 346 🔔 ♡" [ref=f2e592]:
+            - gridcell "20.04" [ref=f2e593]
+            - gridcell "1" [ref=f2e594]
+            - gridcell "20.05" [ref=f2e595]
+            - gridcell "3" [ref=f2e596]
+            - gridcell "20.06" [ref=f2e597]
+            - gridcell "2" [ref=f2e598]
+            - gridcell "20.11" [ref=f2e599]
+            - gridcell "7" [ref=f2e600]
+            - gridcell "+0.0%" [ref=f2e601]
+            - gridcell "-0.01" [ref=f2e602]
+            - gridcell "346" [ref=f2e603]
+            - gridcell [ref=f2e604]:
+              - img [ref=f2e605]
+            - gridcell "20.11" [ref=f2e608]
+            - gridcell "2" [ref=f2e609]
+            - gridcell "20.12" [ref=f2e610]
+            - gridcell "2" [ref=f2e611]
+            - gridcell "20.13" [ref=f2e612]
+            - gridcell "2" [ref=f2e613]
+            - gridcell "20.15" [ref=f2e614]
+            - gridcell "20.09" [ref=f2e615]
+            - gridcell "20.01" [ref=f2e616]
+            - gridcell "141" [ref=f2e617]
+            - gridcell "2" [ref=f2e618]
+            - gridcell "+139" [ref=f2e619]
+            - gridcell [ref=f2e620]
+            - gridcell "346" [ref=f2e624]
+            - gridcell "🔔 ♡" [ref=f2e625] [cursor=pointer]:
+              - generic [ref=f2e626]:
+                - generic "Đặt cảnh báo giá" [ref=f2e627]: 🔔
+                - generic [ref=f2e628]: ♡
+          - row "20.04 1 20.05 1 20.09 1 20.11 6 +0.0% -0.01 132 20.11 1 20.12 1 20.12 1 20.15 20.09 20.02 7 40 33 132 🔔 ♡" [ref=f2e629]:
+            - gridcell "20.04" [ref=f2e630]
+            - gridcell "1" [ref=f2e631]
+            - gridcell "20.05" [ref=f2e632]
+            - gridcell "1" [ref=f2e633]
+            - gridcell "20.09" [ref=f2e634]
+            - gridcell "1" [ref=f2e635]
+            - gridcell "20.11" [ref=f2e636]
+            - gridcell "6" [ref=f2e637]
+            - gridcell "+0.0%" [ref=f2e638]
+            - gridcell "-0.01" [ref=f2e639]
+            - gridcell "132" [ref=f2e640]
+            - gridcell [ref=f2e641]:
+              - img [ref=f2e642]
+            - gridcell "20.11" [ref=f2e645]
+            - gridcell "1" [ref=f2e646]
+            - gridcell "20.12" [ref=f2e647]
+            - gridcell "1" [ref=f2e648]
+            - gridcell "20.12" [ref=f2e649]
+            - gridcell "1" [ref=f2e650]
+            - gridcell "20.15" [ref=f2e651]
+            - gridcell "20.09" [ref=f2e652]
+            - gridcell "20.02" [ref=f2e653]
+            - gridcell "7" [ref=f2e654]
+            - gridcell "40" [ref=f2e655]
+            - gridcell "33" [ref=f2e656]
+            - gridcell [ref=f2e657]
+            - gridcell "132" [ref=f2e661]
+            - gridcell "🔔 ♡" [ref=f2e662] [cursor=pointer]:
+              - generic [ref=f2e663]:
+                - generic "Đặt cảnh báo giá" [ref=f2e664]: 🔔
+                - generic [ref=f2e665]: ♡
+          - row "20.04 1 20.05 1 20.05 1 20.05 3 -0.3% -0.06 99 20.11 1 20.12 1 20.13 3 20.14 20.07 20.02 1 49 48 99 🔔 ♡" [ref=f2e666]:
+            - gridcell "20.04" [ref=f2e667]
+            - gridcell "1" [ref=f2e668]
+            - gridcell "20.05" [ref=f2e669]
+            - gridcell "1" [ref=f2e670]
+            - gridcell "20.05" [ref=f2e671]
+            - gridcell "1" [ref=f2e672]
+            - gridcell "20.05" [ref=f2e673]
+            - gridcell "3" [ref=f2e674]
+            - gridcell "-0.3%" [ref=f2e675]
+            - gridcell "-0.06" [ref=f2e676]
+            - gridcell "99" [ref=f2e677]
+            - gridcell [ref=f2e678]:
+              - img [ref=f2e679]
+            - gridcell "20.11" [ref=f2e682]
+            - gridcell "1" [ref=f2e683]
+            - gridcell "20.12" [ref=f2e684]
+            - gridcell "1" [ref=f2e685]
+            - gridcell "20.13" [ref=f2e686]
+            - gridcell "3" [ref=f2e687]
+            - gridcell "20.14" [ref=f2e688]
+            - gridcell "20.07" [ref=f2e689]
+            - gridcell "20.02" [ref=f2e690]
+            - gridcell "1" [ref=f2e691]
+            - gridcell "49" [ref=f2e692]
+            - gridcell "48" [ref=f2e693]
+            - gridcell [ref=f2e694]
+            - gridcell "99" [ref=f2e698]
+            - gridcell "🔔 ♡" [ref=f2e699] [cursor=pointer]:
+              - generic [ref=f2e700]:
+                - generic "Đặt cảnh báo giá" [ref=f2e701]: 🔔
+                - generic [ref=f2e702]: ♡
+          - row "19.30 1 19.33 1 19.36 1 19.39 1 -0.2% -0.03 20 19.43 1 19.43 1 19.46 1 19.43 19.37 19.30 20 🔔 ♡" [ref=f2e703]:
+            - gridcell "19.30" [ref=f2e704]
+            - gridcell "1" [ref=f2e705]
+            - gridcell "19.33" [ref=f2e706]
+            - gridcell "1" [ref=f2e707]
+            - gridcell "19.36" [ref=f2e708]
+            - gridcell "1" [ref=f2e709]
+            - gridcell "19.39" [ref=f2e710]
+            - gridcell "1" [ref=f2e711]
+            - gridcell "-0.2%" [ref=f2e712]
+            - gridcell "-0.03" [ref=f2e713]
+            - gridcell "20" [ref=f2e714]
+            - gridcell [ref=f2e715]:
+              - img [ref=f2e716]
+            - gridcell "19.43" [ref=f2e719]
+            - gridcell "1" [ref=f2e720]
+            - gridcell "19.43" [ref=f2e721]
+            - gridcell "1" [ref=f2e722]
+            - gridcell "19.46" [ref=f2e723]
+            - gridcell "1" [ref=f2e724]
+            - gridcell "19.43" [ref=f2e725]
+            - gridcell "19.37" [ref=f2e726]
+            - gridcell "19.30" [ref=f2e727]
+            - gridcell [ref=f2e728]
+            - gridcell [ref=f2e729]
+            - gridcell [ref=f2e730]
+            - gridcell [ref=f2e731]
+            - gridcell "20" [ref=f2e735]
+            - gridcell "🔔 ♡" [ref=f2e736] [cursor=pointer]:
+              - generic [ref=f2e737]:
+                - generic "Đặt cảnh báo giá" [ref=f2e738]: 🔔
+                - generic [ref=f2e739]: ♡
+          - row "19.15 1 19.26 1 19.27 1 19.38 1 -0.2% -0.04 1 19.49 1 19.49 1 19.50 2 19.38 19.38 19.38 1 🔔 ♡" [ref=f2e740]:
+            - gridcell "19.15" [ref=f2e741]
+            - gridcell "1" [ref=f2e742]
+            - gridcell "19.26" [ref=f2e743]
+            - gridcell "1" [ref=f2e744]
+            - gridcell "19.27" [ref=f2e745]
+            - gridcell "1" [ref=f2e746]
+            - gridcell "19.38" [ref=f2e747]
+            - gridcell "1" [ref=f2e748]
+            - gridcell "-0.2%" [ref=f2e749]
+            - gridcell "-0.04" [ref=f2e750]
+            - gridcell "1" [ref=f2e751]
+            - gridcell [ref=f2e752]:
+              - img [ref=f2e753]
+            - gridcell "19.49" [ref=f2e756]
+            - gridcell "1" [ref=f2e757]
+            - gridcell "19.49" [ref=f2e758]
+            - gridcell "1" [ref=f2e759]
+            - gridcell "19.50" [ref=f2e760]
+            - gridcell "2" [ref=f2e761]
+            - gridcell "19.38" [ref=f2e762]
+            - gridcell "19.38" [ref=f2e763]
+            - gridcell "19.38" [ref=f2e764]
+            - gridcell [ref=f2e765]
+            - gridcell [ref=f2e766]
+            - gridcell [ref=f2e767]
+            - gridcell [ref=f2e768]
+            - gridcell "1" [ref=f2e772]
+            - gridcell "🔔 ♡" [ref=f2e773] [cursor=pointer]:
+              - generic [ref=f2e774]:
+                - generic "Đặt cảnh báo giá" [ref=f2e775]: 🔔
+                - generic [ref=f2e776]: ♡
+          - row "19.16 1 19.22 1 19.23 1 19.36 1 -0.2% -0.03 4 19.36 1 19.36 1 19.37 1 19.36 19.31 19.21 4 🔔 ♡" [ref=f2e777]:
+            - gridcell "19.16" [ref=f2e778]
+            - gridcell "1" [ref=f2e779]
+            - gridcell "19.22" [ref=f2e780]
+            - gridcell "1" [ref=f2e781]
+            - gridcell "19.23" [ref=f2e782]
+            - gridcell "1" [ref=f2e783]
+            - gridcell "19.36" [ref=f2e784]
+            - gridcell "1" [ref=f2e785]
+            - gridcell "-0.2%" [ref=f2e786]
+            - gridcell "-0.03" [ref=f2e787]
+            - gridcell "4" [ref=f2e788]
+            - gridcell [ref=f2e789]:
+              - img [ref=f2e790]
+            - gridcell "19.36" [ref=f2e793]
+            - gridcell "1" [ref=f2e794]
+            - gridcell "19.36" [ref=f2e795]
+            - gridcell "1" [ref=f2e796]
+            - gridcell "19.37" [ref=f2e797]
+            - gridcell "1" [ref=f2e798]
+            - gridcell "19.36" [ref=f2e799]
+            - gridcell "19.31" [ref=f2e800]
+            - gridcell "19.21" [ref=f2e801]
+            - gridcell [ref=f2e802]
+            - gridcell [ref=f2e803]
+            - gridcell [ref=f2e804]
+            - gridcell [ref=f2e805]
+            - gridcell "4" [ref=f2e809]
+            - gridcell "🔔 ♡" [ref=f2e810] [cursor=pointer]:
+              - generic [ref=f2e811]:
+                - generic "Đặt cảnh báo giá" [ref=f2e812]: 🔔
+                - generic [ref=f2e813]: ♡
+          - row "18.80 1 19.01 1 19.02 1 0.00 -100.0% -19.36 19.49 1 19.55 1 19.60 1 0.00 0.00 0.00 🔔 ♡" [ref=f2e814]:
+            - gridcell "18.80" [ref=f2e815]
+            - gridcell "1" [ref=f2e816]
+            - gridcell "19.01" [ref=f2e817]
+            - gridcell "1" [ref=f2e818]
+            - gridcell "19.02" [ref=f2e819]
+            - gridcell "1" [ref=f2e820]
+            - gridcell "0.00" [ref=f2e821]
+            - gridcell [ref=f2e822]
+            - gridcell "-100.0%" [ref=f2e823]
+            - gridcell "-19.36" [ref=f2e824]
+            - gridcell [ref=f2e825]
+            - gridcell [ref=f2e826]:
+              - img [ref=f2e827]
+            - gridcell "19.49" [ref=f2e830]
+            - gridcell "1" [ref=f2e831]
+            - gridcell "19.55" [ref=f2e832]
+            - gridcell "1" [ref=f2e833]
+            - gridcell "19.60" [ref=f2e834]
+            - gridcell "1" [ref=f2e835]
+            - gridcell "0.00" [ref=f2e836]
+            - gridcell "0.00" [ref=f2e837]
+            - gridcell "0.00" [ref=f2e838]
+            - gridcell [ref=f2e839]
+            - gridcell [ref=f2e840]
+            - gridcell [ref=f2e841]
+            - gridcell [ref=f2e842]
+            - gridcell [ref=f2e846]
+            - gridcell "🔔 ♡" [ref=f2e847] [cursor=pointer]:
+              - generic [ref=f2e848]:
+                - generic "Đặt cảnh báo giá" [ref=f2e849]: 🔔
+                - generic [ref=f2e850]: ♡
+          - row "0.28 100 0.28 100 0.29 100 0.00 -100.0% -0.29 0.31 500 0.31 100 0.31 100 0.00 0.00 0.00 🔔 ♡" [ref=f2e851]:
+            - gridcell "0.28" [ref=f2e852]
+            - gridcell "100" [ref=f2e853]
+            - gridcell "0.28" [ref=f2e854]
+            - gridcell "100" [ref=f2e855]
+            - gridcell "0.29" [ref=f2e856]
+            - gridcell "100" [ref=f2e857]
+            - gridcell "0.00" [ref=f2e858]
+            - gridcell [ref=f2e859]
+            - gridcell "-100.0%" [ref=f2e860]
+            - gridcell "-0.29" [ref=f2e861]
+            - gridcell [ref=f2e862]
+            - gridcell [ref=f2e863]:
+              - img [ref=f2e864]
+            - gridcell "0.31" [ref=f2e867]
+            - gridcell "500" [ref=f2e868]
+            - gridcell "0.31" [ref=f2e869]
+            - gridcell "100" [ref=f2e870]
+            - gridcell "0.31" [ref=f2e871]
+            - gridcell "100" [ref=f2e872]
+            - gridcell "0.00" [ref=f2e873]
+            - gridcell "0.00" [ref=f2e874]
+            - gridcell "0.00" [ref=f2e875]
+            - gridcell [ref=f2e876]
+            - gridcell [ref=f2e877]
+            - gridcell [ref=f2e878]
+            - gridcell [ref=f2e879]
+            - gridcell [ref=f2e883]
+            - gridcell "🔔 ♡" [ref=f2e884] [cursor=pointer]:
+              - generic [ref=f2e885]:
+                - generic "Đặt cảnh báo giá" [ref=f2e886]: 🔔
+                - generic [ref=f2e887]: ♡
+          - row "0.07 7,800 0.07 12,200 0.07 5,600 0.07 56,000 +0.0% +0.00 714,000 0.07 6,800 0.07 15,200 0.07 3,200 0.07 0.07 0.07 94,100 23,200 +70,900 714,000 🔔 ♡" [ref=f2e888]:
+            - gridcell "0.07" [ref=f2e889]
+            - gridcell "7,800" [ref=f2e890]
+            - gridcell "0.07" [ref=f2e891]
+            - gridcell "12,200" [ref=f2e892]
+            - gridcell "0.07" [ref=f2e893]
+            - gridcell "5,600" [ref=f2e894]
+            - gridcell "0.07" [ref=f2e895]
+            - gridcell "56,000" [ref=f2e896]
+            - gridcell "+0.0%" [ref=f2e897]
+            - gridcell "+0.00" [ref=f2e898]
+            - gridcell "714,000" [ref=f2e899]
+            - gridcell [ref=f2e900]:
+              - img [ref=f2e901]
+            - gridcell "0.07" [ref=f2e903]
+            - gridcell "6,800" [ref=f2e904]
+            - gridcell "0.07" [ref=f2e905]
+            - gridcell "15,200" [ref=f2e906]
+            - gridcell "0.07" [ref=f2e907]
+            - gridcell "3,200" [ref=f2e908]
+            - gridcell "0.07" [ref=f2e909]
+            - gridcell "0.07" [ref=f2e910]
+            - gridcell "0.07" [ref=f2e911]
+            - gridcell "94,100" [ref=f2e912]
+            - gridcell "23,200" [ref=f2e913]
+            - gridcell "+70,900" [ref=f2e914]
+            - gridcell [ref=f2e915]
+            - gridcell "714,000" [ref=f2e919]
+            - gridcell "🔔 ♡" [ref=f2e920] [cursor=pointer]:
+              - generic [ref=f2e921]:
+                - generic "Đặt cảnh báo giá" [ref=f2e922]: 🔔
+                - generic [ref=f2e923]: ♡
+          - row "0.02 63,500 0.02 192,300 0.03 2,700 0.03 200 +0.0% +0.00 616,100 0.03 253,200 0.03 343,300 0.03 303,500 0.03 0.03 0.02 616,100 🔔 ♡" [ref=f2e924]:
+            - gridcell "0.02" [ref=f2e925]
+            - gridcell "63,500" [ref=f2e926]
+            - gridcell "0.02" [ref=f2e927]
+            - gridcell "192,300" [ref=f2e928]
+            - gridcell "0.03" [ref=f2e929]
+            - gridcell "2,700" [ref=f2e930]
+            - gridcell "0.03" [ref=f2e931]
+            - gridcell "200" [ref=f2e932]
+            - gridcell "+0.0%" [ref=f2e933]
+            - gridcell "+0.00" [ref=f2e934]
+            - gridcell "616,100" [ref=f2e935]
+            - gridcell [ref=f2e936]:
+              - img [ref=f2e937]
+            - gridcell "0.03" [ref=f2e939]
+            - gridcell "253,200" [ref=f2e940]
+            - gridcell "0.03" [ref=f2e941]
+            - gridcell "343,300" [ref=f2e942]
+            - gridcell "0.03" [ref=f2e943]
+            - gridcell "303,500" [ref=f2e944]
+            - gridcell "0.03" [ref=f2e945]
+            - gridcell "0.03" [ref=f2e946]
+            - gridcell "0.02" [ref=f2e947]
+            - gridcell [ref=f2e948]
+            - gridcell [ref=f2e949]
+            - gridcell [ref=f2e950]
+            - gridcell [ref=f2e951]
+            - gridcell "616,100" [ref=f2e955]
+            - gridcell "🔔 ♡" [ref=f2e956] [cursor=pointer]:
+              - generic [ref=f2e957]:
+                - generic "Đặt cảnh báo giá" [ref=f2e958]: 🔔
+                - generic [ref=f2e959]: ♡
+          - row "0.06 1,200 0.07 200 0.07 400 0.07 100 +0.0% +0.00 4,400 0.07 1,000 0.07 1,000 0.07 1,200 0.07 0.07 0.06 4,400 🔔 ♡" [ref=f2e960]:
+            - gridcell "0.06" [ref=f2e961]
+            - gridcell "1,200" [ref=f2e962]
+            - gridcell "0.07" [ref=f2e963]
+            - gridcell "200" [ref=f2e964]
+            - gridcell "0.07" [ref=f2e965]
+            - gridcell "400" [ref=f2e966]
+            - gridcell "0.07" [ref=f2e967]
+            - gridcell "100" [ref=f2e968]
+            - gridcell "+0.0%" [ref=f2e969]
+            - gridcell "+0.00" [ref=f2e970]
+            - gridcell "4,400" [ref=f2e971]
+            - gridcell [ref=f2e972]:
+              - img [ref=f2e973]
+            - gridcell "0.07" [ref=f2e975]
+            - gridcell "1,000" [ref=f2e976]
+            - gridcell "0.07" [ref=f2e977]
+            - gridcell "1,000" [ref=f2e978]
+            - gridcell "0.07" [ref=f2e979]
+            - gridcell "1,200" [ref=f2e980]
+            - gridcell "0.07" [ref=f2e981]
+            - gridcell "0.07" [ref=f2e982]
+            - gridcell "0.06" [ref=f2e983]
+            - gridcell [ref=f2e984]
+            - gridcell [ref=f2e985]
+            - gridcell [ref=f2e986]
+            - gridcell [ref=f2e987]
+            - gridcell "4,400" [ref=f2e991]
+            - gridcell "🔔 ♡" [ref=f2e992] [cursor=pointer]:
+              - generic [ref=f2e993]:
+                - generic "Đặt cảnh báo giá" [ref=f2e994]: 🔔
+                - generic [ref=f2e995]: ♡
+          - row "0.16 18,100 0.16 21,600 0.16 23,100 0.16 17,500 +0.0% +0.00 155,300 0.16 11,300 0.16 7,000 0.16 15,800 0.16 0.16 0.16 155,300 🔔 ♡" [ref=f2e996]:
+            - gridcell "0.16" [ref=f2e997]
+            - gridcell "18,100" [ref=f2e998]
+            - gridcell "0.16" [ref=f2e999]
+            - gridcell "21,600" [ref=f2e1000]
+            - gridcell "0.16" [ref=f2e1001]
+            - gridcell "23,100" [ref=f2e1002]
+            - gridcell "0.16" [ref=f2e1003]
+            - gridcell "17,500" [ref=f2e1004]
+            - gridcell "+0.0%" [ref=f2e1005]
+            - gridcell "+0.00" [ref=f2e1006]
+            - gridcell "155,300" [ref=f2e1007]
+            - gridcell [ref=f2e1008]:
+              - img [ref=f2e1009]
+            - gridcell "0.16" [ref=f2e1011]
+            - gridcell "11,300" [ref=f2e1012]
+            - gridcell "0.16" [ref=f2e1013]
+            - gridcell "7,000" [ref=f2e1014]
+            - gridcell "0.16" [ref=f2e1015]
+            - gridcell "15,800" [ref=f2e1016]
+            - gridcell "0.16" [ref=f2e1017]
+            - gridcell "0.16" [ref=f2e1018]
+            - gridcell "0.16" [ref=f2e1019]
+            - gridcell [ref=f2e1020]
+            - gridcell [ref=f2e1021]
+            - gridcell [ref=f2e1022]
+            - gridcell [ref=f2e1023]
+            - gridcell "155,300" [ref=f2e1027]
+            - gridcell "🔔 ♡" [ref=f2e1028] [cursor=pointer]:
+              - generic [ref=f2e1029]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1030]: 🔔
+                - generic [ref=f2e1031]: ♡
+          - row "0.09 116,000 0.09 272,600 0.09 5,900 0.09 100 +0.0% +0.00 6,189,200 0.09 160,600 0.10 259,400 0.10 186,000 0.09 0.09 0.09 31,000 31,000 6,189,200 🔔 ♡" [ref=f2e1032]:
+            - gridcell "0.09" [ref=f2e1033]
+            - gridcell "116,000" [ref=f2e1034]
+            - gridcell "0.09" [ref=f2e1035]
+            - gridcell "272,600" [ref=f2e1036]
+            - gridcell "0.09" [ref=f2e1037]
+            - gridcell "5,900" [ref=f2e1038]
+            - gridcell "0.09" [ref=f2e1039]
+            - gridcell "100" [ref=f2e1040]
+            - gridcell "+0.0%" [ref=f2e1041]
+            - gridcell "+0.00" [ref=f2e1042]
+            - gridcell "6,189,200" [ref=f2e1043]
+            - gridcell [ref=f2e1044]:
+              - img [ref=f2e1045]
+            - gridcell "0.09" [ref=f2e1047]
+            - gridcell "160,600" [ref=f2e1048]
+            - gridcell "0.10" [ref=f2e1049]
+            - gridcell "259,400" [ref=f2e1050]
+            - gridcell "0.10" [ref=f2e1051]
+            - gridcell "186,000" [ref=f2e1052]
+            - gridcell "0.09" [ref=f2e1053]
+            - gridcell "0.09" [ref=f2e1054]
+            - gridcell "0.09" [ref=f2e1055]
+            - gridcell [ref=f2e1056]
+            - gridcell "31,000" [ref=f2e1057]
+            - gridcell "31,000" [ref=f2e1058]
+            - gridcell [ref=f2e1059]
+            - gridcell "6,189,200" [ref=f2e1063]
+            - gridcell "🔔 ♡" [ref=f2e1064] [cursor=pointer]:
+              - generic [ref=f2e1065]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1066]: 🔔
+                - generic [ref=f2e1067]: ♡
+          - row "0.03 12,000 0.03 800 0.03 100 0.03 200 +0.0% +0.00 5,600 0.03 14,700 0.03 6,900 0.03 16,500 0.03 0.03 0.03 5,600 🔔 ♡" [ref=f2e1068]:
+            - gridcell "0.03" [ref=f2e1069]
+            - gridcell "12,000" [ref=f2e1070]
+            - gridcell "0.03" [ref=f2e1071]
+            - gridcell "800" [ref=f2e1072]
+            - gridcell "0.03" [ref=f2e1073]
+            - gridcell "100" [ref=f2e1074]
+            - gridcell "0.03" [ref=f2e1075]
+            - gridcell "200" [ref=f2e1076]
+            - gridcell "+0.0%" [ref=f2e1077]
+            - gridcell "+0.00" [ref=f2e1078]
+            - gridcell "5,600" [ref=f2e1079]
+            - gridcell [ref=f2e1080]:
+              - img [ref=f2e1081]
+            - gridcell "0.03" [ref=f2e1083]
+            - gridcell "14,700" [ref=f2e1084]
+            - gridcell "0.03" [ref=f2e1085]
+            - gridcell "6,900" [ref=f2e1086]
+            - gridcell "0.03" [ref=f2e1087]
+            - gridcell "16,500" [ref=f2e1088]
+            - gridcell "0.03" [ref=f2e1089]
+            - gridcell "0.03" [ref=f2e1090]
+            - gridcell "0.03" [ref=f2e1091]
+            - gridcell [ref=f2e1092]
+            - gridcell [ref=f2e1093]
+            - gridcell [ref=f2e1094]
+            - gridcell [ref=f2e1095]
+            - gridcell "5,600" [ref=f2e1099]
+            - gridcell "🔔 ♡" [ref=f2e1100] [cursor=pointer]:
+              - generic [ref=f2e1101]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1102]: 🔔
+                - generic [ref=f2e1103]: ♡
+          - row "0.07 37,500 0.07 41,600 0.07 7,300 0.07 1,200 +0.0% +0.00 773,500 0.07 108,300 0.07 52,500 0.07 73,800 0.07 0.07 0.07 100 100 773,500 🔔 ♡" [ref=f2e1104]:
+            - gridcell "0.07" [ref=f2e1105]
+            - gridcell "37,500" [ref=f2e1106]
+            - gridcell "0.07" [ref=f2e1107]
+            - gridcell "41,600" [ref=f2e1108]
+            - gridcell "0.07" [ref=f2e1109]
+            - gridcell "7,300" [ref=f2e1110]
+            - gridcell "0.07" [ref=f2e1111]
+            - gridcell "1,200" [ref=f2e1112]
+            - gridcell "+0.0%" [ref=f2e1113]
+            - gridcell "+0.00" [ref=f2e1114]
+            - gridcell "773,500" [ref=f2e1115]
+            - gridcell [ref=f2e1116]:
+              - img [ref=f2e1117]
+            - gridcell "0.07" [ref=f2e1119]
+            - gridcell "108,300" [ref=f2e1120]
+            - gridcell "0.07" [ref=f2e1121]
+            - gridcell "52,500" [ref=f2e1122]
+            - gridcell "0.07" [ref=f2e1123]
+            - gridcell "73,800" [ref=f2e1124]
+            - gridcell "0.07" [ref=f2e1125]
+            - gridcell "0.07" [ref=f2e1126]
+            - gridcell "0.07" [ref=f2e1127]
+            - gridcell [ref=f2e1128]
+            - gridcell "100" [ref=f2e1129]
+            - gridcell "100" [ref=f2e1130]
+            - gridcell [ref=f2e1131]
+            - gridcell "773,500" [ref=f2e1135]
+            - gridcell "🔔 ♡" [ref=f2e1136] [cursor=pointer]:
+              - generic [ref=f2e1137]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1138]: 🔔
+                - generic [ref=f2e1139]: ♡
+          - row "0.18 248,500 0.19 148,300 0.19 246,800 0.19 400 +5.6% +0.01 1,084,700 0.19 20,600 0.19 108,500 0.19 427,000 0.19 0.19 0.18 7,300 500 +6,800 1,084,700 🔔 ♡" [ref=f2e1140]:
+            - gridcell "0.18" [ref=f2e1141]
+            - gridcell "248,500" [ref=f2e1142]
+            - gridcell "0.19" [ref=f2e1143]
+            - gridcell "148,300" [ref=f2e1144]
+            - gridcell "0.19" [ref=f2e1145]
+            - gridcell "246,800" [ref=f2e1146]
+            - gridcell "0.19" [ref=f2e1147]
+            - gridcell "400" [ref=f2e1148]
+            - gridcell "+5.6%" [ref=f2e1149]
+            - gridcell "+0.01" [ref=f2e1150]
+            - gridcell "1,084,700" [ref=f2e1151]
+            - gridcell [ref=f2e1152]:
+              - img [ref=f2e1153]
+            - gridcell "0.19" [ref=f2e1156]
+            - gridcell "20,600" [ref=f2e1157]
+            - gridcell "0.19" [ref=f2e1158]
+            - gridcell "108,500" [ref=f2e1159]
+            - gridcell "0.19" [ref=f2e1160]
+            - gridcell "427,000" [ref=f2e1161]
+            - gridcell "0.19" [ref=f2e1162]
+            - gridcell "0.19" [ref=f2e1163]
+            - gridcell "0.18" [ref=f2e1164]
+            - gridcell "7,300" [ref=f2e1165]
+            - gridcell "500" [ref=f2e1166]
+            - gridcell "+6,800" [ref=f2e1167]
+            - gridcell [ref=f2e1168]
+            - gridcell "1,084,700" [ref=f2e1172]
+            - gridcell "🔔 ♡" [ref=f2e1173] [cursor=pointer]:
+              - generic [ref=f2e1174]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1175]: 🔔
+                - generic [ref=f2e1176]: ♡
+          - row "0.10 1,800 0.10 8,500 0.10 1,100 0.10 200 +0.0% +0.00 5,700 0.10 3,300 0.10 3,300 0.11 2,000 0.10 0.10 0.10 5,700 🔔 ♡" [ref=f2e1177]:
+            - gridcell "0.10" [ref=f2e1178]
+            - gridcell "1,800" [ref=f2e1179]
+            - gridcell "0.10" [ref=f2e1180]
+            - gridcell "8,500" [ref=f2e1181]
+            - gridcell "0.10" [ref=f2e1182]
+            - gridcell "1,100" [ref=f2e1183]
+            - gridcell "0.10" [ref=f2e1184]
+            - gridcell "200" [ref=f2e1185]
+            - gridcell "+0.0%" [ref=f2e1186]
+            - gridcell "+0.00" [ref=f2e1187]
+            - gridcell "5,700" [ref=f2e1188]
+            - gridcell [ref=f2e1189]:
+              - img [ref=f2e1190]
+            - gridcell "0.10" [ref=f2e1192]
+            - gridcell "3,300" [ref=f2e1193]
+            - gridcell "0.10" [ref=f2e1194]
+            - gridcell "3,300" [ref=f2e1195]
+            - gridcell "0.11" [ref=f2e1196]
+            - gridcell "2,000" [ref=f2e1197]
+            - gridcell "0.10" [ref=f2e1198]
+            - gridcell "0.10" [ref=f2e1199]
+            - gridcell "0.10" [ref=f2e1200]
+            - gridcell [ref=f2e1201]
+            - gridcell [ref=f2e1202]
+            - gridcell [ref=f2e1203]
+            - gridcell [ref=f2e1204]
+            - gridcell "5,700" [ref=f2e1208]
+            - gridcell "🔔 ♡" [ref=f2e1209] [cursor=pointer]:
+              - generic [ref=f2e1210]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1211]: 🔔
+                - generic [ref=f2e1212]: ♡
+          - row "0.19 11,200 0.19 2,200 0.19 300 0.19 4,700 +0.0% +0.00 10,900 0.19 13,800 0.20 5,900 0.20 5,000 0.19 0.19 0.19 800 800 10,900 🔔 ♡" [ref=f2e1213]:
+            - gridcell "0.19" [ref=f2e1214]
+            - gridcell "11,200" [ref=f2e1215]
+            - gridcell "0.19" [ref=f2e1216]
+            - gridcell "2,200" [ref=f2e1217]
+            - gridcell "0.19" [ref=f2e1218]
+            - gridcell "300" [ref=f2e1219]
+            - gridcell "0.19" [ref=f2e1220]
+            - gridcell "4,700" [ref=f2e1221]
+            - gridcell "+0.0%" [ref=f2e1222]
+            - gridcell "+0.00" [ref=f2e1223]
+            - gridcell "10,900" [ref=f2e1224]
+            - gridcell [ref=f2e1225]:
+              - img [ref=f2e1226]
+            - gridcell "0.19" [ref=f2e1228]
+            - gridcell "13,800" [ref=f2e1229]
+            - gridcell "0.20" [ref=f2e1230]
+            - gridcell "5,900" [ref=f2e1231]
+            - gridcell "0.20" [ref=f2e1232]
+            - gridcell "5,000" [ref=f2e1233]
+            - gridcell "0.19" [ref=f2e1234]
+            - gridcell "0.19" [ref=f2e1235]
+            - gridcell "0.19" [ref=f2e1236]
+            - gridcell [ref=f2e1237]
+            - gridcell "800" [ref=f2e1238]
+            - gridcell "800" [ref=f2e1239]
+            - gridcell [ref=f2e1240]
+            - gridcell "10,900" [ref=f2e1244]
+            - gridcell "🔔 ♡" [ref=f2e1245] [cursor=pointer]:
+              - generic [ref=f2e1246]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1247]: 🔔
+                - generic [ref=f2e1248]: ♡
+          - row "0.11 600 0.11 1,000 0.11 200 0.00 -100.0% -0.12 0.12 700 0.12 100 0.12 100 0.00 0.00 0.00 🔔 ♡" [ref=f2e1249]:
+            - gridcell "0.11" [ref=f2e1250]
+            - gridcell "600" [ref=f2e1251]
+            - gridcell "0.11" [ref=f2e1252]
+            - gridcell "1,000" [ref=f2e1253]
+            - gridcell "0.11" [ref=f2e1254]
+            - gridcell "200" [ref=f2e1255]
+            - gridcell "0.00" [ref=f2e1256]
+            - gridcell [ref=f2e1257]
+            - gridcell "-100.0%" [ref=f2e1258]
+            - gridcell "-0.12" [ref=f2e1259]
+            - gridcell [ref=f2e1260]
+            - gridcell [ref=f2e1261]:
+              - img [ref=f2e1262]
+            - gridcell "0.12" [ref=f2e1265]
+            - gridcell "700" [ref=f2e1266]
+            - gridcell "0.12" [ref=f2e1267]
+            - gridcell "100" [ref=f2e1268]
+            - gridcell "0.12" [ref=f2e1269]
+            - gridcell "100" [ref=f2e1270]
+            - gridcell "0.00" [ref=f2e1271]
+            - gridcell "0.00" [ref=f2e1272]
+            - gridcell "0.00" [ref=f2e1273]
+            - gridcell [ref=f2e1274]
+            - gridcell [ref=f2e1275]
+            - gridcell [ref=f2e1276]
+            - gridcell [ref=f2e1277]
+            - gridcell [ref=f2e1281]
+            - gridcell "🔔 ♡" [ref=f2e1282] [cursor=pointer]:
+              - generic [ref=f2e1283]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1284]: 🔔
+                - generic [ref=f2e1285]: ♡
+          - row "0.03 11,000 0.03 3,400 0.03 1,000 0.03 3,300 +0.0% +0.00 215,400 0.03 5,000 0.03 15,000 0.03 5,300 0.03 0.03 0.03 215,400 🔔 ♡" [ref=f2e1286]:
+            - gridcell "0.03" [ref=f2e1287]
+            - gridcell "11,000" [ref=f2e1288]
+            - gridcell "0.03" [ref=f2e1289]
+            - gridcell "3,400" [ref=f2e1290]
+            - gridcell "0.03" [ref=f2e1291]
+            - gridcell "1,000" [ref=f2e1292]
+            - gridcell "0.03" [ref=f2e1293]
+            - gridcell "3,300" [ref=f2e1294]
+            - gridcell "+0.0%" [ref=f2e1295]
+            - gridcell "+0.00" [ref=f2e1296]
+            - gridcell "215,400" [ref=f2e1297]
+            - gridcell [ref=f2e1298]:
+              - img [ref=f2e1299]
+            - gridcell "0.03" [ref=f2e1301]
+            - gridcell "5,000" [ref=f2e1302]
+            - gridcell "0.03" [ref=f2e1303]
+            - gridcell "15,000" [ref=f2e1304]
+            - gridcell "0.03" [ref=f2e1305]
+            - gridcell "5,300" [ref=f2e1306]
+            - gridcell "0.03" [ref=f2e1307]
+            - gridcell "0.03" [ref=f2e1308]
+            - gridcell "0.03" [ref=f2e1309]
+            - gridcell [ref=f2e1310]
+            - gridcell [ref=f2e1311]
+            - gridcell [ref=f2e1312]
+            - gridcell [ref=f2e1313]
+            - gridcell "215,400" [ref=f2e1317]
+            - gridcell "🔔 ♡" [ref=f2e1318] [cursor=pointer]:
+              - generic [ref=f2e1319]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1320]: 🔔
+                - generic [ref=f2e1321]: ♡
+          - row "0.53 1,100 0.54 200 0.54 100 0.54 200 +0.0% +0.00 1,300 0.54 400 0.55 400 0.55 200 0.54 0.54 0.54 1,100 +1,100 1,300 🔔 ♡" [ref=f2e1322]:
+            - gridcell "0.53" [ref=f2e1323]
+            - gridcell "1,100" [ref=f2e1324]
+            - gridcell "0.54" [ref=f2e1325]
+            - gridcell "200" [ref=f2e1326]
+            - gridcell "0.54" [ref=f2e1327]
+            - gridcell "100" [ref=f2e1328]
+            - gridcell "0.54" [ref=f2e1329]
+            - gridcell "200" [ref=f2e1330]
+            - gridcell "+0.0%" [ref=f2e1331]
+            - gridcell "+0.00" [ref=f2e1332]
+            - gridcell "1,300" [ref=f2e1333]
+            - gridcell [ref=f2e1334]:
+              - img [ref=f2e1335]
+            - gridcell "0.54" [ref=f2e1337]
+            - gridcell "400" [ref=f2e1338]
+            - gridcell "0.55" [ref=f2e1339]
+            - gridcell "400" [ref=f2e1340]
+            - gridcell "0.55" [ref=f2e1341]
+            - gridcell "200" [ref=f2e1342]
+            - gridcell "0.54" [ref=f2e1343]
+            - gridcell "0.54" [ref=f2e1344]
+            - gridcell "0.54" [ref=f2e1345]
+            - gridcell "1,100" [ref=f2e1346]
+            - gridcell [ref=f2e1347]
+            - gridcell "+1,100" [ref=f2e1348]
+            - gridcell [ref=f2e1349]
+            - gridcell "1,300" [ref=f2e1353]
+            - gridcell "🔔 ♡" [ref=f2e1354] [cursor=pointer]:
+              - generic [ref=f2e1355]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1356]: 🔔
+                - generic [ref=f2e1357]: ♡
+          - row "0.13 31,300 0.13 28,300 0.13 68,500 0.14 100 +7.7% +0.01 1,122,800 0.14 9,800 0.14 17,300 0.14 40,000 0.14 0.14 0.13 200 200 1,122,800 🔔 ♡" [ref=f2e1358]:
+            - gridcell "0.13" [ref=f2e1359]
+            - gridcell "31,300" [ref=f2e1360]
+            - gridcell "0.13" [ref=f2e1361]
+            - gridcell "28,300" [ref=f2e1362]
+            - gridcell "0.13" [ref=f2e1363]
+            - gridcell "68,500" [ref=f2e1364]
+            - gridcell "0.14" [ref=f2e1365]
+            - gridcell "100" [ref=f2e1366]
+            - gridcell "+7.7%" [ref=f2e1367]
+            - gridcell "+0.01" [ref=f2e1368]
+            - gridcell "1,122,800" [ref=f2e1369]
+            - gridcell [ref=f2e1370]:
+              - img [ref=f2e1371]
+            - gridcell "0.14" [ref=f2e1374]
+            - gridcell "9,800" [ref=f2e1375]
+            - gridcell "0.14" [ref=f2e1376]
+            - gridcell "17,300" [ref=f2e1377]
+            - gridcell "0.14" [ref=f2e1378]
+            - gridcell "40,000" [ref=f2e1379]
+            - gridcell "0.14" [ref=f2e1380]
+            - gridcell "0.14" [ref=f2e1381]
+            - gridcell "0.13" [ref=f2e1382]
+            - gridcell [ref=f2e1383]
+            - gridcell "200" [ref=f2e1384]
+            - gridcell "200" [ref=f2e1385]
+            - gridcell [ref=f2e1386]
+            - gridcell "1,122,800" [ref=f2e1390]
+            - gridcell "🔔 ♡" [ref=f2e1391] [cursor=pointer]:
+              - generic [ref=f2e1392]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1393]: 🔔
+                - generic [ref=f2e1394]: ♡
+          - row "0.23 175,200 0.23 141,000 0.23 240,900 0.23 455,100 +0.0% +0.00 10,682,700 0.23 204,700 0.23 213,600 0.23 182,100 0.23 0.23 0.22 124,400 2,080,822 1,956,422 10,682,700 🔔 ♡" [ref=f2e1395]:
+            - gridcell "0.23" [ref=f2e1396]
+            - gridcell "175,200" [ref=f2e1397]
+            - gridcell "0.23" [ref=f2e1398]
+            - gridcell "141,000" [ref=f2e1399]
+            - gridcell "0.23" [ref=f2e1400]
+            - gridcell "240,900" [ref=f2e1401]
+            - gridcell "0.23" [ref=f2e1402]
+            - gridcell "455,100" [ref=f2e1403]
+            - gridcell "+0.0%" [ref=f2e1404]
+            - gridcell "+0.00" [ref=f2e1405]
+            - gridcell "10,682,700" [ref=f2e1406]
+            - gridcell [ref=f2e1407]:
+              - img [ref=f2e1408]
+            - gridcell "0.23" [ref=f2e1410]
+            - gridcell "204,700" [ref=f2e1411]
+            - gridcell "0.23" [ref=f2e1412]
+            - gridcell "213,600" [ref=f2e1413]
+            - gridcell "0.23" [ref=f2e1414]
+            - gridcell "182,100" [ref=f2e1415]
+            - gridcell "0.23" [ref=f2e1416]
+            - gridcell "0.23" [ref=f2e1417]
+            - gridcell "0.22" [ref=f2e1418]
+            - gridcell "124,400" [ref=f2e1419]
+            - gridcell "2,080,822" [ref=f2e1420]
+            - gridcell "1,956,422" [ref=f2e1421]
+            - gridcell [ref=f2e1422]
+            - gridcell "10,682,700" [ref=f2e1426]
+            - gridcell "🔔 ♡" [ref=f2e1427] [cursor=pointer]:
+              - generic [ref=f2e1428]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1429]: 🔔
+                - generic [ref=f2e1430]: ♡
+          - row "0.11 100 0.11 100 0.11 1,000 0.11 4,600 +0.0% +0.00 50,600 0.11 2,000 0.11 100 0.11 7,000 0.11 0.11 0.11 50,600 🔔 ♡" [ref=f2e1431]:
+            - gridcell "0.11" [ref=f2e1432]
+            - gridcell "100" [ref=f2e1433]
+            - gridcell "0.11" [ref=f2e1434]
+            - gridcell "100" [ref=f2e1435]
+            - gridcell "0.11" [ref=f2e1436]
+            - gridcell "1,000" [ref=f2e1437]
+            - gridcell "0.11" [ref=f2e1438]
+            - gridcell "4,600" [ref=f2e1439]
+            - gridcell "+0.0%" [ref=f2e1440]
+            - gridcell "+0.00" [ref=f2e1441]
+            - gridcell "50,600" [ref=f2e1442]
+            - gridcell [ref=f2e1443]:
+              - img [ref=f2e1444]
+            - gridcell "0.11" [ref=f2e1446]
+            - gridcell "2,000" [ref=f2e1447]
+            - gridcell "0.11" [ref=f2e1448]
+            - gridcell "100" [ref=f2e1449]
+            - gridcell "0.11" [ref=f2e1450]
+            - gridcell "7,000" [ref=f2e1451]
+            - gridcell "0.11" [ref=f2e1452]
+            - gridcell "0.11" [ref=f2e1453]
+            - gridcell "0.11" [ref=f2e1454]
+            - gridcell [ref=f2e1455]
+            - gridcell [ref=f2e1456]
+            - gridcell [ref=f2e1457]
+            - gridcell [ref=f2e1458]
+            - gridcell "50,600" [ref=f2e1462]
+            - gridcell "🔔 ♡" [ref=f2e1463] [cursor=pointer]:
+              - generic [ref=f2e1464]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1465]: 🔔
+                - generic [ref=f2e1466]: ♡
+          - row "0.35 100 0.36 300 0.36 200 0.36 100 +0.0% +0.00 800 0.36 200 0.37 300 0.37 600 0.37 0.36 0.36 800 🔔 ♡" [ref=f2e1467]:
+            - gridcell "0.35" [ref=f2e1468]
+            - gridcell "100" [ref=f2e1469]
+            - gridcell "0.36" [ref=f2e1470]
+            - gridcell "300" [ref=f2e1471]
+            - gridcell "0.36" [ref=f2e1472]
+            - gridcell "200" [ref=f2e1473]
+            - gridcell "0.36" [ref=f2e1474]
+            - gridcell "100" [ref=f2e1475]
+            - gridcell "+0.0%" [ref=f2e1476]
+            - gridcell "+0.00" [ref=f2e1477]
+            - gridcell "800" [ref=f2e1478]
+            - gridcell [ref=f2e1479]:
+              - img [ref=f2e1480]
+            - gridcell "0.36" [ref=f2e1482]
+            - gridcell "200" [ref=f2e1483]
+            - gridcell "0.37" [ref=f2e1484]
+            - gridcell "300" [ref=f2e1485]
+            - gridcell "0.37" [ref=f2e1486]
+            - gridcell "600" [ref=f2e1487]
+            - gridcell "0.37" [ref=f2e1488]
+            - gridcell "0.36" [ref=f2e1489]
+            - gridcell "0.36" [ref=f2e1490]
+            - gridcell [ref=f2e1491]
+            - gridcell [ref=f2e1492]
+            - gridcell [ref=f2e1493]
+            - gridcell [ref=f2e1494]
+            - gridcell "800" [ref=f2e1498]
+            - gridcell "🔔 ♡" [ref=f2e1499] [cursor=pointer]:
+              - generic [ref=f2e1500]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1501]: 🔔
+                - generic [ref=f2e1502]: ♡
+          - row "0.33 7,000 0.33 100 0.33 100 0.33 6,000 +0.0% +0.00 16,400 0.33 500 0.34 200 0.34 2,700 0.33 0.33 0.33 400 +400 16,400 🔔 ♡" [ref=f2e1503]:
+            - gridcell "0.33" [ref=f2e1504]
+            - gridcell "7,000" [ref=f2e1505]
+            - gridcell "0.33" [ref=f2e1506]
+            - gridcell "100" [ref=f2e1507]
+            - gridcell "0.33" [ref=f2e1508]
+            - gridcell "100" [ref=f2e1509]
+            - gridcell "0.33" [ref=f2e1510]
+            - gridcell "6,000" [ref=f2e1511]
+            - gridcell "+0.0%" [ref=f2e1512]
+            - gridcell "+0.00" [ref=f2e1513]
+            - gridcell "16,400" [ref=f2e1514]
+            - gridcell [ref=f2e1515]:
+              - img [ref=f2e1516]
+            - gridcell "0.33" [ref=f2e1518]
+            - gridcell "500" [ref=f2e1519]
+            - gridcell "0.34" [ref=f2e1520]
+            - gridcell "200" [ref=f2e1521]
+            - gridcell "0.34" [ref=f2e1522]
+            - gridcell "2,700" [ref=f2e1523]
+            - gridcell "0.33" [ref=f2e1524]
+            - gridcell "0.33" [ref=f2e1525]
+            - gridcell "0.33" [ref=f2e1526]
+            - gridcell "400" [ref=f2e1527]
+            - gridcell [ref=f2e1528]
+            - gridcell "+400" [ref=f2e1529]
+            - gridcell [ref=f2e1530]
+            - gridcell "16,400" [ref=f2e1534]
+            - gridcell "🔔 ♡" [ref=f2e1535] [cursor=pointer]:
+              - generic [ref=f2e1536]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1537]: 🔔
+                - generic [ref=f2e1538]: ♡
+          - row "0.00 0.12 1,000 0.12 200 0.13 1,000 +0.0% +0.00 7,300 0.13 4,000 0.13 5,000 0.13 6,000 0.13 0.13 0.12 6,098 6,098 7,300 🔔 ♡" [ref=f2e1539]:
+            - gridcell "0.00" [ref=f2e1540]
+            - gridcell [ref=f2e1541]
+            - gridcell "0.12" [ref=f2e1542]
+            - gridcell "1,000" [ref=f2e1543]
+            - gridcell "0.12" [ref=f2e1544]
+            - gridcell "200" [ref=f2e1545]
+            - gridcell "0.13" [ref=f2e1546]
+            - gridcell "1,000" [ref=f2e1547]
+            - gridcell "+0.0%" [ref=f2e1548]
+            - gridcell "+0.00" [ref=f2e1549]
+            - gridcell "7,300" [ref=f2e1550]
+            - gridcell [ref=f2e1551]:
+              - img [ref=f2e1552]
+            - gridcell "0.13" [ref=f2e1554]
+            - gridcell "4,000" [ref=f2e1555]
+            - gridcell "0.13" [ref=f2e1556]
+            - gridcell "5,000" [ref=f2e1557]
+            - gridcell "0.13" [ref=f2e1558]
+            - gridcell "6,000" [ref=f2e1559]
+            - gridcell "0.13" [ref=f2e1560]
+            - gridcell "0.13" [ref=f2e1561]
+            - gridcell "0.12" [ref=f2e1562]
+            - gridcell [ref=f2e1563]
+            - gridcell "6,098" [ref=f2e1564]
+            - gridcell "6,098" [ref=f2e1565]
+            - gridcell [ref=f2e1566]
+            - gridcell "7,300" [ref=f2e1570]
+            - gridcell "🔔 ♡" [ref=f2e1571] [cursor=pointer]:
+              - generic [ref=f2e1572]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1573]: 🔔
+                - generic [ref=f2e1574]: ♡
+          - row "0.00 0.00 985,900 0.01 4,800 0.01 100 +0.0% +0.00 445,300 0.01 2,352,800 0.00 0.00 0.01 0.01 0.01 445,300 🔔 ♡" [ref=f2e1575]:
+            - gridcell "0.00" [ref=f2e1576]
+            - gridcell [ref=f2e1577]
+            - gridcell "0.00" [ref=f2e1578]
+            - gridcell "985,900" [ref=f2e1579]
+            - gridcell "0.01" [ref=f2e1580]
+            - gridcell "4,800" [ref=f2e1581]
+            - gridcell "0.01" [ref=f2e1582]
+            - gridcell "100" [ref=f2e1583]
+            - gridcell "+0.0%" [ref=f2e1584]
+            - gridcell "+0.00" [ref=f2e1585]
+            - gridcell "445,300" [ref=f2e1586]
+            - gridcell [ref=f2e1587]:
+              - img [ref=f2e1588]
+            - gridcell "0.01" [ref=f2e1590]
+            - gridcell "2,352,800" [ref=f2e1591]
+            - gridcell "0.00" [ref=f2e1592]
+            - gridcell [ref=f2e1593]
+            - gridcell "0.00" [ref=f2e1594]
+            - gridcell [ref=f2e1595]
+            - gridcell "0.01" [ref=f2e1596]
+            - gridcell "0.01" [ref=f2e1597]
+            - gridcell "0.01" [ref=f2e1598]
+            - gridcell [ref=f2e1599]
+            - gridcell [ref=f2e1600]
+            - gridcell [ref=f2e1601]
+            - gridcell [ref=f2e1602]
+            - gridcell "445,300" [ref=f2e1606]
+            - gridcell "🔔 ♡" [ref=f2e1607] [cursor=pointer]:
+              - generic [ref=f2e1608]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1609]: 🔔
+                - generic [ref=f2e1610]: ♡
+          - row "0.00 0.00 0.05 100 0.00 -100.0% -0.05 0.06 1,000 0.06 100 0.06 200 0.00 0.00 0.00 🔔 ♡" [ref=f2e1611]:
+            - gridcell "0.00" [ref=f2e1612]
+            - gridcell [ref=f2e1613]
+            - gridcell "0.00" [ref=f2e1614]
+            - gridcell [ref=f2e1615]
+            - gridcell "0.05" [ref=f2e1616]
+            - gridcell "100" [ref=f2e1617]
+            - gridcell "0.00" [ref=f2e1618]
+            - gridcell [ref=f2e1619]
+            - gridcell "-100.0%" [ref=f2e1620]
+            - gridcell "-0.05" [ref=f2e1621]
+            - gridcell [ref=f2e1622]
+            - gridcell [ref=f2e1623]:
+              - img [ref=f2e1624]
+            - gridcell "0.06" [ref=f2e1627]
+            - gridcell "1,000" [ref=f2e1628]
+            - gridcell "0.06" [ref=f2e1629]
+            - gridcell "100" [ref=f2e1630]
+            - gridcell "0.06" [ref=f2e1631]
+            - gridcell "200" [ref=f2e1632]
+            - gridcell "0.00" [ref=f2e1633]
+            - gridcell "0.00" [ref=f2e1634]
+            - gridcell "0.00" [ref=f2e1635]
+            - gridcell [ref=f2e1636]
+            - gridcell [ref=f2e1637]
+            - gridcell [ref=f2e1638]
+            - gridcell [ref=f2e1639]
+            - gridcell [ref=f2e1643]
+            - gridcell "🔔 ♡" [ref=f2e1644] [cursor=pointer]:
+              - generic [ref=f2e1645]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1646]: 🔔
+                - generic [ref=f2e1647]: ♡
+          - row "0.43 47,800 0.43 110,600 0.44 14,200 0.44 1,000 +0.0% +0.00 717,400 0.44 12,000 0.44 26,500 0.44 36,900 0.44 0.44 0.43 5,000 194,040 189,040 717,400 🔔 ♡" [ref=f2e1648]:
+            - gridcell "0.43" [ref=f2e1649]
+            - gridcell "47,800" [ref=f2e1650]
+            - gridcell "0.43" [ref=f2e1651]
+            - gridcell "110,600" [ref=f2e1652]
+            - gridcell "0.44" [ref=f2e1653]
+            - gridcell "14,200" [ref=f2e1654]
+            - gridcell "0.44" [ref=f2e1655]
+            - gridcell "1,000" [ref=f2e1656]
+            - gridcell "+0.0%" [ref=f2e1657]
+            - gridcell "+0.00" [ref=f2e1658]
+            - gridcell "717,400" [ref=f2e1659]
+            - gridcell [ref=f2e1660]:
+              - img [ref=f2e1661]
+            - gridcell "0.44" [ref=f2e1663]
+            - gridcell "12,000" [ref=f2e1664]
+            - gridcell "0.44" [ref=f2e1665]
+            - gridcell "26,500" [ref=f2e1666]
+            - gridcell "0.44" [ref=f2e1667]
+            - gridcell "36,900" [ref=f2e1668]
+            - gridcell "0.44" [ref=f2e1669]
+            - gridcell "0.44" [ref=f2e1670]
+            - gridcell "0.43" [ref=f2e1671]
+            - gridcell "5,000" [ref=f2e1672]
+            - gridcell "194,040" [ref=f2e1673]
+            - gridcell "189,040" [ref=f2e1674]
+            - gridcell [ref=f2e1675]
+            - gridcell "717,400" [ref=f2e1679]
+            - gridcell "🔔 ♡" [ref=f2e1680] [cursor=pointer]:
+              - generic [ref=f2e1681]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1682]: 🔔
+                - generic [ref=f2e1683]: ♡
+          - row "0.00 0.16 100 0.17 100 0.00 -100.0% -0.17 0.19 900 0.19 200 0.00 0.00 0.00 0.00 🔔 ♡" [ref=f2e1684]:
+            - gridcell "0.00" [ref=f2e1685]
+            - gridcell [ref=f2e1686]
+            - gridcell "0.16" [ref=f2e1687]
+            - gridcell "100" [ref=f2e1688]
+            - gridcell "0.17" [ref=f2e1689]
+            - gridcell "100" [ref=f2e1690]
+            - gridcell "0.00" [ref=f2e1691]
+            - gridcell [ref=f2e1692]
+            - gridcell "-100.0%" [ref=f2e1693]
+            - gridcell "-0.17" [ref=f2e1694]
+            - gridcell [ref=f2e1695]
+            - gridcell [ref=f2e1696]:
+              - img [ref=f2e1697]
+            - gridcell "0.19" [ref=f2e1700]
+            - gridcell "900" [ref=f2e1701]
+            - gridcell "0.19" [ref=f2e1702]
+            - gridcell "200" [ref=f2e1703]
+            - gridcell "0.00" [ref=f2e1704]
+            - gridcell [ref=f2e1705]
+            - gridcell "0.00" [ref=f2e1706]
+            - gridcell "0.00" [ref=f2e1707]
+            - gridcell "0.00" [ref=f2e1708]
+            - gridcell [ref=f2e1709]
+            - gridcell [ref=f2e1710]
+            - gridcell [ref=f2e1711]
+            - gridcell [ref=f2e1712]
+            - gridcell [ref=f2e1716]
+            - gridcell "🔔 ♡" [ref=f2e1717] [cursor=pointer]:
+              - generic [ref=f2e1718]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1719]: 🔔
+                - generic [ref=f2e1720]: ♡
+          - row "0.08 2,100 0.08 200 0.08 100 0.09 300 +0.0% +0.00 1,000 0.09 5,200 0.09 100 0.09 10,100 0.09 0.09 0.08 1,000 🔔 ♡" [ref=f2e1721]:
+            - gridcell "0.08" [ref=f2e1722]
+            - gridcell "2,100" [ref=f2e1723]
+            - gridcell "0.08" [ref=f2e1724]
+            - gridcell "200" [ref=f2e1725]
+            - gridcell "0.08" [ref=f2e1726]
+            - gridcell "100" [ref=f2e1727]
+            - gridcell "0.09" [ref=f2e1728]
+            - gridcell "300" [ref=f2e1729]
+            - gridcell "+0.0%" [ref=f2e1730]
+            - gridcell "+0.00" [ref=f2e1731]
+            - gridcell "1,000" [ref=f2e1732]
+            - gridcell [ref=f2e1733]:
+              - img [ref=f2e1734]
+            - gridcell "0.09" [ref=f2e1736]
+            - gridcell "5,200" [ref=f2e1737]
+            - gridcell "0.09" [ref=f2e1738]
+            - gridcell "100" [ref=f2e1739]
+            - gridcell "0.09" [ref=f2e1740]
+            - gridcell "10,100" [ref=f2e1741]
+            - gridcell "0.09" [ref=f2e1742]
+            - gridcell "0.09" [ref=f2e1743]
+            - gridcell "0.08" [ref=f2e1744]
+            - gridcell [ref=f2e1745]
+            - gridcell [ref=f2e1746]
+            - gridcell [ref=f2e1747]
+            - gridcell [ref=f2e1748]
+            - gridcell "1,000" [ref=f2e1752]
+            - gridcell "🔔 ♡" [ref=f2e1753] [cursor=pointer]:
+              - generic [ref=f2e1754]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1755]: 🔔
+                - generic [ref=f2e1756]: ♡
+          - row "0.23 100 0.23 500 0.23 100 0.23 100 +0.0% +0.00 17,200 0.23 5,000 0.23 1,300 0.23 1,400 0.23 0.23 0.23 17,100 17,100 17,200 🔔 ♡" [ref=f2e1757]:
+            - gridcell "0.23" [ref=f2e1758]
+            - gridcell "100" [ref=f2e1759]
+            - gridcell "0.23" [ref=f2e1760]
+            - gridcell "500" [ref=f2e1761]
+            - gridcell "0.23" [ref=f2e1762]
+            - gridcell "100" [ref=f2e1763]
+            - gridcell "0.23" [ref=f2e1764]
+            - gridcell "100" [ref=f2e1765]
+            - gridcell "+0.0%" [ref=f2e1766]
+            - gridcell "+0.00" [ref=f2e1767]
+            - gridcell "17,200" [ref=f2e1768]
+            - gridcell [ref=f2e1769]:
+              - img [ref=f2e1770]
+            - gridcell "0.23" [ref=f2e1772]
+            - gridcell "5,000" [ref=f2e1773]
+            - gridcell "0.23" [ref=f2e1774]
+            - gridcell "1,300" [ref=f2e1775]
+            - gridcell "0.23" [ref=f2e1776]
+            - gridcell "1,400" [ref=f2e1777]
+            - gridcell "0.23" [ref=f2e1778]
+            - gridcell "0.23" [ref=f2e1779]
+            - gridcell "0.23" [ref=f2e1780]
+            - gridcell [ref=f2e1781]
+            - gridcell "17,100" [ref=f2e1782]
+            - gridcell "17,100" [ref=f2e1783]
+            - gridcell [ref=f2e1784]
+            - gridcell "17,200" [ref=f2e1788]
+            - gridcell "🔔 ♡" [ref=f2e1789] [cursor=pointer]:
+              - generic [ref=f2e1790]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1791]: 🔔
+                - generic [ref=f2e1792]: ♡
+          - row "0.08 200 0.08 23,300 0.08 17,700 0.08 10,400 -11.1% -0.01 265,200 0.08 200 0.08 3,000 0.08 2,100 0.09 0.08 0.08 9,300 9,300 265,200 🔔 ♡" [ref=f2e1793]:
+            - gridcell "0.08" [ref=f2e1794]
+            - gridcell "200" [ref=f2e1795]
+            - gridcell "0.08" [ref=f2e1796]
+            - gridcell "23,300" [ref=f2e1797]
+            - gridcell "0.08" [ref=f2e1798]
+            - gridcell "17,700" [ref=f2e1799]
+            - gridcell "0.08" [ref=f2e1800]
+            - gridcell "10,400" [ref=f2e1801]
+            - gridcell "-11.1%" [ref=f2e1802]
+            - gridcell "-0.01" [ref=f2e1803]
+            - gridcell "265,200" [ref=f2e1804]
+            - gridcell [ref=f2e1805]:
+              - img [ref=f2e1806]
+            - gridcell "0.08" [ref=f2e1809]
+            - gridcell "200" [ref=f2e1810]
+            - gridcell "0.08" [ref=f2e1811]
+            - gridcell "3,000" [ref=f2e1812]
+            - gridcell "0.08" [ref=f2e1813]
+            - gridcell "2,100" [ref=f2e1814]
+            - gridcell "0.09" [ref=f2e1815]
+            - gridcell "0.08" [ref=f2e1816]
+            - gridcell "0.08" [ref=f2e1817]
+            - gridcell [ref=f2e1818]
+            - gridcell "9,300" [ref=f2e1819]
+            - gridcell "9,300" [ref=f2e1820]
+            - gridcell [ref=f2e1821]
+            - gridcell "265,200" [ref=f2e1825]
+            - gridcell "🔔 ♡" [ref=f2e1826] [cursor=pointer]:
+              - generic [ref=f2e1827]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1828]: 🔔
+                - generic [ref=f2e1829]: ♡
+          - row "0.10 200 0.10 100 0.10 100 0.10 4,000 +0.0% +0.00 77,600 0.10 14,500 0.10 8,500 0.10 2,000 0.10 0.10 0.10 77,600 🔔 ♡" [ref=f2e1830]:
+            - gridcell "0.10" [ref=f2e1831]
+            - gridcell "200" [ref=f2e1832]
+            - gridcell "0.10" [ref=f2e1833]
+            - gridcell "100" [ref=f2e1834]
+            - gridcell "0.10" [ref=f2e1835]
+            - gridcell "100" [ref=f2e1836]
+            - gridcell "0.10" [ref=f2e1837]
+            - gridcell "4,000" [ref=f2e1838]
+            - gridcell "+0.0%" [ref=f2e1839]
+            - gridcell "+0.00" [ref=f2e1840]
+            - gridcell "77,600" [ref=f2e1841]
+            - gridcell [ref=f2e1842]:
+              - img [ref=f2e1843]
+            - gridcell "0.10" [ref=f2e1845]
+            - gridcell "14,500" [ref=f2e1846]
+            - gridcell "0.10" [ref=f2e1847]
+            - gridcell "8,500" [ref=f2e1848]
+            - gridcell "0.10" [ref=f2e1849]
+            - gridcell "2,000" [ref=f2e1850]
+            - gridcell "0.10" [ref=f2e1851]
+            - gridcell "0.10" [ref=f2e1852]
+            - gridcell "0.10" [ref=f2e1853]
+            - gridcell [ref=f2e1854]
+            - gridcell [ref=f2e1855]
+            - gridcell [ref=f2e1856]
+            - gridcell [ref=f2e1857]
+            - gridcell "77,600" [ref=f2e1861]
+            - gridcell "🔔 ♡" [ref=f2e1862] [cursor=pointer]:
+              - generic [ref=f2e1863]:
+                - generic "Đặt cảnh báo giá" [ref=f2e1864]: 🔔
+                - generic [ref=f2e1865]: ♡
+        - rowgroup
+        - rowgroup
+        - rowgroup [ref=f2e1869]
+        - rowgroup
+      - text:    
+  - generic [ref=f2e1871]:
+    - generic [ref=f2e1872]: "Cơ sở: Giá ×1,000 │ KL ×1"
+    - generic [ref=f2e1873]: │
+    - generic [ref=f2e1874]: "Phái sinh: Giá ×1 │ KL ×1"

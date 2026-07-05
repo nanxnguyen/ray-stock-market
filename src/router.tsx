@@ -26,6 +26,7 @@ const AccountSettings = lazy(() => import('./pages/AccountSettings'))
 const AuthFlow = lazy(() => import('./pages/AuthFlow'))
 const StockInfo = lazy(() => import('./pages/StockInfo'))
 const AccountStatement = lazy(() => import('./pages/AccountStatement'))
+const DevComponents = lazy(() => import('./pages/DevComponents'))
 
 function PageLoader() {
   return (
@@ -51,6 +52,7 @@ type AppRoutesProps = {
   indices: MarketIndexView[]
   filter: VietcapFilterState
   onFilterChange: (group: VietcapFilterGroup, value?: string) => void
+  onSearchTextChange: (text: string) => void
   onSymbolAdd: (symbol: string) => void
   viewMode: 'table' | 'grid' | 'heat' | 'movers'
   onViewModeChange: (mode: 'table' | 'grid' | 'heat' | 'movers') => void
@@ -122,6 +124,7 @@ export default function AppRoutes(props: AppRoutesProps) {
           <Route path="/stock-info" element={<StockInfo />} />
           <Route path="/account-statement" element={<AccountStatement />} />
         </Route>
+        <Route path="/dev/components" element={<DevComponents />} />
       </Routes>
     </Suspense>
   )

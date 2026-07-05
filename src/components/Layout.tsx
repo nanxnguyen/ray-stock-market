@@ -7,13 +7,9 @@ type Props = { th: ThemeTokens; toggleDark: () => void }
 
 export default function Layout({ th, toggleDark }: Props) {
   return (
-    <div style={{
-      display: 'flex', flexDirection: 'column', height: '100vh',
-      fontFamily: "'Inter', system-ui, sans-serif", color: th.text,
-      overflow: 'hidden', background: th.appBg,
-    }}>
+    <div className="flex flex-col h-screen font-sans overflow-hidden bg-app" style={{ color: th.text }}>
       <TopBar th={th} toggleDark={toggleDark} />
-      <div style={{ flex: 1, overflow: 'auto' }}>
+      <div className="flex-1 overflow-auto">
         <Outlet />
       </div>
       <FooterBar />

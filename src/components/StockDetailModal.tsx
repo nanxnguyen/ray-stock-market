@@ -191,7 +191,6 @@ export default function StockDetailModal({ stock, onClose }: Props) {
     })
   }, [mkChart])
 
-  // Render charts when tab/data change
   useEffect(() => {
     const key = [tab, statSub, finSub, finPeriod, sentPeriod, ovRange, ovPanel, sym].join('|')
     if (key === prevKeyRef.current) return
@@ -572,160 +571,142 @@ export default function StockDetailModal({ stock, onClose }: Props) {
   return (
     <div
       onClick={onClose}
-      style={{
-        position: 'fixed', inset: 0, zIndex: 400,
-        background: 'rgba(4,8,14,.72)', backdropFilter: 'blur(3px)',
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        fontFamily: "'Inter', -apple-system, sans-serif",
-      }}
+      className="fixed inset-0 z-[500] flex items-center justify-center bg-black/60 backdrop-blur-sm font-sans"
     >
       <div
         onClick={e => e.stopPropagation()}
-        style={{
-          width: 'min(1560px, 97vw)', height: '93vh', background: '#0b1420',
-          border: '1px solid #1e2c3d', borderRadius: 12,
-          display: 'flex', flexDirection: 'column', overflow: 'hidden',
-          boxShadow: '0 40px 120px rgba(0,0,0,.7)',
-          animation: 'sdIn .2s ease',
-        }}
+        className="flex flex-col overflow-hidden rounded-xl border border-line bg-card shadow-2xl w-[min(1560px,97vw)] h-[93vh] [animation:sdIn_.2s_ease]"
       >
         {/* TITLE BAR */}
-        <div style={{
-          flexShrink: 0, height: 52,
-          background: 'linear-gradient(180deg, #243347, #1b2838)',
-          borderBottom: '1px solid #1e2c3d',
-          display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 20px',
-        }}>
-          <span style={{ fontSize: 16, fontWeight: 700, color: '#eef3f9', letterSpacing: '.2px' }}>Phân tích chuyên sâu cổ phiếu</span>
-          <div onClick={onClose} style={{ cursor: 'pointer', width: 30, height: 30, borderRadius: 7, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#93a4b8', fontSize: 18 }}>✕</div>
+        <div className="flex shrink-0 items-center justify-between h-[52px] px-5 bg-gradient-to-b from-[#243347] to-[#1b2838] border-b border-line">
+          <span className="text-[16px] font-bold text-txt-primary tracking-[0.2px]">Phân tích chuyên sâu cổ phiếu</span>
+          <div onClick={onClose} className="sd-close-btn flex items-center justify-center w-[30px] h-[30px] rounded-[7px] cursor-pointer text-txt-secondary text-[18px] transition-all">✕</div>
         </div>
 
         {/* SYMBOL ROW */}
-        <div style={{ flexShrink: 0, padding: '12px 20px 10px', display: 'flex', alignItems: 'center', gap: 18, borderBottom: '1px solid #14202e' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#111c29', border: '1px solid #24344a', borderRadius: 7, padding: '7px 12px', minWidth: 120 }}>
-            <span style={{ fontSize: 15, fontWeight: 800, color: '#eef3f9', fontFamily: "'JetBrains Mono', monospace", letterSpacing: '.5px' }}>{sym}</span>
+        <div className="flex shrink-0 items-center gap-[18px] px-5 py-3 border-b border-line-subtle">
+          <div className="flex items-center gap-1.5 bg-[#111c29] border border-[#24344a] rounded-[7px] py-[7px] px-3 min-w-[120px]">
+            <span className="text-[15px] font-extrabold text-txt-primary font-mono tracking-[0.5px]">{sym}</span>
           </div>
-          <span style={{ fontSize: 26, fontWeight: 800, color: col, fontFamily: "'JetBrains Mono', monospace" }}>{lp.toFixed(2)}</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: col, fontFamily: "'JetBrains Mono', monospace" }}>{chg >= 0 ? '+' : ''}{chg.toFixed(2)}</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: col, fontFamily: "'JetBrains Mono', monospace" }}>{pct >= 0 ? '+' : ''}{pct.toFixed(2)}%</span>
-          <span style={{ fontSize: 13, color: '#8fa1b4', fontWeight: 500 }}>{company} <span style={{ color: '#5f7488' }}>(HOSE)</span></span>
-          <div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 14, color: '#6b7d92', fontSize: 16 }}>
-            <span style={{ cursor: 'pointer' }}>🔔</span>
-            <span onClick={() => setStarred(p => !p)} style={{ cursor: 'pointer', color: starred ? '#fbbf24' : '#6b7d92' }}>{starred ? '★' : '☆'}</span>
+          <span className="text-[26px] font-extrabold font-mono" style={{ color: col }}>{lp.toFixed(2)}</span>
+          <span className="text-sm font-bold font-mono" style={{ color: col }}>{chg >= 0 ? '+' : ''}{chg.toFixed(2)}</span>
+          <span className="text-sm font-bold font-mono" style={{ color: col }}>{pct >= 0 ? '+' : ''}{pct.toFixed(2)}%</span>
+          <span className="text-[13px] text-txt-secondary font-medium">{company} <span className="text-txt-muted">(HOSE)</span></span>
+          <div className="ml-auto flex items-center gap-3.5 text-txt-muted text-base">
+            <span className="sd-bell cursor-pointer transition-colors">{'\u{1F514}'}</span>
+            <span onClick={() => setStarred(p => !p)} className="sd-star cursor-pointer transition-colors" style={{ color: starred ? '#fbbf24' : undefined }}>{starred ? '\u2605' : '\u2606'}</span>
           </div>
         </div>
 
         {/* TABS */}
-        <div style={{ flexShrink: 0, display: 'flex', alignItems: 'stretch', gap: 2, padding: '0 20px', borderBottom: '1px solid #1a2736', background: '#0b1420' }}>
+        <div className="flex shrink-0 items-stretch gap-0.5 px-5 border-b border-line bg-card">
           {tabDefs.map(([k, label]) => (
-            <div key={k} onClick={() => setTab(k)} style={{ cursor: 'pointer', padding: '12px 4px', marginRight: 22, fontSize: 13.5, fontWeight: tab === k ? 700 : 500, color: tab === k ? '#fff' : '#8296ab', borderBottom: tab === k ? '2px solid #2f7fff' : '2px solid transparent', transition: 'color .12s', whiteSpace: 'nowrap' }}>{label}</div>
+            <div key={k} onClick={() => setTab(k)} className={`cursor-pointer py-3 mr-[22px] text-[13.5px] whitespace-nowrap transition-colors border-b-2 ${tab === k ? 'font-bold text-white border-blue-500' : 'font-medium text-txt-muted border-transparent hover:text-txt-primary'}`}>{label}</div>
           ))}
         </div>
 
         {/* BODY */}
-        <div id="sdScroll" style={{ flex: 1, overflowY: 'auto', background: '#08111b', padding: '16px 20px 22px' }}>
+        <div id="sdScroll" className="flex-1 overflow-y-auto bg-app px-5 pt-4 pb-[22px]">
 
           {/* ═══ OVERVIEW ═══ */}
           {tab === 'overview' && (
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 356px', gap: 14, alignItems: 'start', animation: 'sdFade .2s ease' }}>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 14, minWidth: 0 }}>
-                <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px 10px' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#e2e8f0' }}>Biến động giá</span>
-                    <span style={{ fontSize: 11, color: '#f43f5e' }}>●</span>
+            <div className="grid grid-cols-[1fr_356px] gap-3.5 items-start [animation:sdFade_.2s_ease]">
+              <div className="flex flex-col gap-3.5 min-w-0">
+                <div className="bg-card border border-line rounded-[10px] px-4 pt-3.5 pb-2.5">
+                  <div className="flex justify-between items-center mb-1.5">
+                    <span className="text-[13px] font-bold text-txt-primary">Biến động giá</span>
+                    <span className="text-[11px] text-market-down">●</span>
                   </div>
-                  <div id="sdPrice" style={{ width: '100%', height: 320 }} />
-                  <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 6, marginTop: 10 }}>
+                  <div id="sdPrice" className="w-full h-[320px]" />
+                  <div className="grid grid-cols-7 gap-1.5 mt-2.5">
                     {rangeDefs.map(([k, label, pctVal]) => {
                       const active = ovRange === k
                       const pos = pctVal[0] === '+'
                       return (
-                        <div key={k} onClick={() => setOvRange(k)} style={{ cursor: 'pointer', textAlign: 'center', background: active ? '#182b42' : '#101c29', border: '1px solid ' + (active ? '#2f5f9a' : '#1b2838'), borderRadius: 7, padding: '8px 4px' }}>
-                          <div style={{ fontSize: 11.5, fontWeight: 700, color: active ? '#fff' : '#cbd5e1' }}>{label}</div>
-                          <div style={{ fontSize: 11, fontWeight: 700, color: pos ? '#22c55e' : '#f43f5e', marginTop: 2 }}>{pctVal}</div>
+                        <div key={k} onClick={() => setOvRange(k)} className={`cursor-pointer text-center rounded-[7px] py-2 px-1 border ${active ? 'bg-[#182b42] border-[#2f5f9a]' : 'bg-[#101c29] border-line'}`}>
+                          <div className={`text-[11.5px] font-bold ${active ? 'text-white' : 'text-neutral-300'}`}>{label}</div>
+                          <div className={`text-[11px] font-bold mt-0.5 ${pos ? 'text-market-up' : 'text-market-down'}`}>{pctVal}</div>
                         </div>
                       )
                     })}
                   </div>
                 </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '12px 14px' }}>
-                    <span style={{ fontSize: 12.5, fontWeight: 700, color: '#e2e8f0' }}>Thanh khoản</span>
-                    <div id="sdLiq" style={{ width: '100%', height: 170, marginTop: 6 }} />
-                    <div style={{ display: 'flex', gap: 12, justifyContent: 'center', fontSize: 9.5, color: '#7d90a5', marginTop: 4 }}>
-                      <span style={{ color: '#3b82f6' }}>● Hôm nay</span><span style={{ color: '#94a3b8' }}>● Hôm qua</span><span style={{ color: '#eab308' }}>● 1 Tuần</span>
+                <div className="grid grid-cols-3 gap-3.5">
+                  <div className="bg-card border border-line rounded-[10px] px-3.5 py-3">
+                    <span className="text-[12.5px] font-bold text-txt-primary">Thanh khoản</span>
+                    <div id="sdLiq" className="w-full h-[170px] mt-1.5" />
+                    <div className="flex gap-3 justify-center text-[9.5px] text-txt-secondary mt-1">
+                      <span className="text-blue-500">● Hôm nay</span><span className="text-neutral-400">● Hôm qua</span><span className="text-yellow-500">● 1 Tuần</span>
                     </div>
                   </div>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '12px 14px' }}>
-                    <span style={{ fontSize: 12.5, fontWeight: 700, color: '#e2e8f0' }}>Khối ngoại</span>
-                    <div id="sdForeign" style={{ width: '100%', height: 170, marginTop: 6 }} />
-                    <div style={{ display: 'flex', gap: 12, justifyContent: 'center', fontSize: 9.5, color: '#7d90a5', marginTop: 4 }}>
-                      <span style={{ color: '#22c55e' }}>● Mua</span><span style={{ color: '#f43f5e' }}>● Bán</span><span style={{ color: '#94a3b8' }}>● Hôm qua</span>
+                  <div className="bg-card border border-line rounded-[10px] px-3.5 py-3">
+                    <span className="text-[12.5px] font-bold text-txt-primary">Khối ngoại</span>
+                    <div id="sdForeign" className="w-full h-[170px] mt-1.5" />
+                    <div className="flex gap-3 justify-center text-[9.5px] text-txt-secondary mt-1">
+                      <span className="text-market-up">● Mua</span><span className="text-market-down">● Bán</span><span className="text-neutral-400">● Hôm qua</span>
                     </div>
                   </div>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '12px 14px' }}>
-                    <span style={{ fontSize: 12.5, fontWeight: 700, color: '#e2e8f0' }}>Tâm lý kỹ thuật</span>
-                    <div id="sdSentiment" style={{ width: '100%', height: 150, marginTop: 6 }} />
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', textAlign: 'center', marginTop: 2 }}>
-                      <div><div style={{ fontSize: 9.5, color: '#f43f5e', fontWeight: 700 }}>Tiêu cực</div><div style={{ fontSize: 13, fontWeight: 800, color: '#e2e8f0' }}>{sent.neg}</div></div>
-                      <div><div style={{ fontSize: 9.5, color: '#94a3b8', fontWeight: 700 }}>Trung lập</div><div style={{ fontSize: 13, fontWeight: 800, color: '#e2e8f0' }}>{sent.neu}</div></div>
-                      <div><div style={{ fontSize: 9.5, color: '#22c55e', fontWeight: 700 }}>Tích cực</div><div style={{ fontSize: 13, fontWeight: 800, color: '#e2e8f0' }}>{sent.pos}</div></div>
+                  <div className="bg-card border border-line rounded-[10px] px-3.5 py-3">
+                    <span className="text-[12.5px] font-bold text-txt-primary">Tâm lý kỹ thuật</span>
+                    <div id="sdSentiment" className="w-full h-[150px] mt-1.5" />
+                    <div className="grid grid-cols-3 text-center mt-0.5">
+                      <div><div className="text-[9.5px] text-market-down font-bold">Tiêu cực</div><div className="text-[13px] font-extrabold text-txt-primary">{sent.neg}</div></div>
+                      <div><div className="text-[9.5px] text-neutral-400 font-bold">Trung lập</div><div className="text-[13px] font-extrabold text-txt-primary">{sent.neu}</div></div>
+                      <div><div className="text-[9.5px] text-market-up font-bold">Tích cực</div><div className="text-[13px] font-extrabold text-txt-primary">{sent.pos}</div></div>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* RIGHT SIDEBAR */}
-              <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 12, display: 'flex', flexDirection: 'column', gap: 12 }}>
-                <div style={{ display: 'flex', gap: 6 }}>
-                  <div onClick={() => setOvPanel('keymetrics')} style={{ cursor: 'pointer', flex: 1, textAlign: 'center', padding: 6, borderRadius: 7, fontSize: 11.5, fontWeight: 700, background: ovPanel === 'keymetrics' ? '#2f7fff' : '#101c29', color: ovPanel === 'keymetrics' ? '#fff' : '#8296ab' }}>Chỉ số chính</div>
-                  <div onClick={() => setOvPanel('timesales')} style={{ cursor: 'pointer', flex: 1, textAlign: 'center', padding: 6, borderRadius: 7, fontSize: 11.5, fontWeight: 700, background: ovPanel === 'timesales' ? '#2f7fff' : '#101c29', color: ovPanel === 'timesales' ? '#fff' : '#8296ab' }}>Khớp lệnh</div>
+              <div className="bg-card border border-line rounded-[10px] p-3 flex flex-col gap-3">
+                <div className="flex gap-1.5">
+                  <div onClick={() => setOvPanel('keymetrics')} className={`cursor-pointer flex-1 text-center py-1.5 rounded-[7px] text-[11.5px] font-bold ${ovPanel === 'keymetrics' ? 'bg-blue-500 text-white' : 'bg-[#101c29] text-txt-muted'}`}>Chỉ số chính</div>
+                  <div onClick={() => setOvPanel('timesales')} className={`cursor-pointer flex-1 text-center py-1.5 rounded-[7px] text-[11.5px] font-bold ${ovPanel === 'timesales' ? 'bg-blue-500 text-white' : 'bg-[#101c29] text-txt-muted'}`}>Khớp lệnh</div>
                 </div>
 
                 {ovPanel === 'keymetrics' && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                  <div className="flex flex-col gap-0.5">
                     {keyMetrics.map((km, i) => (
-                      <div key={i} style={{ display: 'flex', justifyContent: 'space-between', padding: '8px 6px', borderBottom: '1px solid #14202e' }}>
-                        <span style={{ fontSize: 11, color: '#8296ab' }}>{km.k}</span>
-                        <span style={{ fontSize: 11.5, fontWeight: 700, color: km.c, fontFamily: "'JetBrains Mono', monospace" }}>{km.v}</span>
+                      <div key={i} className="flex justify-between py-2 px-1.5 border-b border-line-subtle">
+                        <span className="text-[11px] text-txt-muted">{km.k}</span>
+                        <span className="text-[11.5px] font-bold font-mono" style={{ color: km.c }}>{km.v}</span>
                       </div>
                     ))}
                   </div>
                 )}
 
                 {ovPanel === 'timesales' && (
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+                  <div className="flex flex-col gap-[5px]">
                     {depthRows.map((d, i) => (
-                      <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', borderRadius: 5, overflow: 'hidden', fontFamily: "'JetBrains Mono', monospace", fontSize: 11.5 }}>
-                        <span style={{ background: 'rgba(34,197,94,.16)', padding: '7px 8px', color: '#cbd5e1' }}>{d.bv}</span>
-                        <span style={{ background: 'rgba(34,197,94,.16)', padding: '7px 8px', textAlign: 'right', color: '#22c55e', fontWeight: 700 }}>{d.bp}</span>
-                        <span style={{ background: 'rgba(244,63,94,.16)', padding: '7px 8px', color: '#f43f5e', fontWeight: 700 }}>{d.ap}</span>
-                        <span style={{ background: 'rgba(244,63,94,.16)', padding: '7px 8px', textAlign: 'right', color: '#cbd5e1' }}>{d.av}</span>
+                      <div key={i} className="grid grid-cols-4 rounded-[5px] overflow-hidden font-mono text-[11.5px]">
+                        <span className="bg-market-up/16 py-[7px] px-2 text-neutral-300">{d.bv}</span>
+                        <span className="bg-market-up/16 py-[7px] px-2 text-right text-market-up font-bold">{d.bp}</span>
+                        <span className="bg-market-down/16 py-[7px] px-2 text-left text-market-down font-bold">{d.ap}</span>
+                        <span className="bg-market-down/16 py-[7px] px-2 text-right text-neutral-300">{d.av}</span>
                       </div>
                     ))}
                     <div>
-                      <span style={{ fontSize: 12, fontWeight: 700, color: '#e2e8f0' }}>Nhật ký khớp lệnh</span>
-                      <div className="sdSb" style={{ marginTop: 6, maxHeight: 280, overflowY: 'auto', display: 'flex', flexDirection: 'column' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 18px', padding: '2px 6px', fontSize: 10, color: '#5f7488', fontWeight: 700, position: 'sticky', top: 0, background: '#0d1826' }}>
-                          <span>Giờ</span><span style={{ textAlign: 'right' }}>Giá</span><span style={{ textAlign: 'right' }}>KL</span><span></span>
-                        </div>
+                      <span className="text-xs font-bold text-txt-primary">Nhật ký khớp lệnh</span>
+                      <div className="sdSb mt-1.5 max-h-[280px] overflow-y-auto flex flex-col">
+                        <div className="grid grid-cols-[1fr_1fr_1fr_18px] py-0.5 px-1.5 text-[10px] text-txt-muted font-bold sticky top-0 bg-card"><span>Giờ</span><span className="text-right">Giá</span><span className="text-right">KL</span><span></span></div>
                         {tradeLog.map((tl, i) => (
-                          <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 18px', padding: '5px 6px', fontSize: 11, fontFamily: "'JetBrains Mono', monospace", borderBottom: '1px solid #101c29' }}>
-                            <span style={{ color: '#8296ab' }}>{tl.time}</span>
-                            <span style={{ textAlign: 'right', color: tl.pc }}>{tl.price}</span>
-                            <span style={{ textAlign: 'right', color: '#cbd5e1' }}>{tl.vol}</span>
-                            <span style={{ textAlign: 'center', color: tl.sc, fontWeight: 700, fontSize: 9.5 }}>{tl.side}</span>
+                          <div key={i} className="grid grid-cols-[1fr_1fr_1fr_18px] py-[5px] px-1.5 text-[11px] font-mono border-b border-[#101c29]">
+                            <span className="text-txt-muted">{tl.time}</span>
+                            <span className="text-right" style={{ color: tl.pc }}>{tl.price}</span>
+                            <span className="text-right text-neutral-300">{tl.vol}</span>
+                            <span className="text-center font-bold text-[9.5px]" style={{ color: tl.sc }}>{tl.side}</span>
                           </div>
                         ))}
                       </div>
                     </div>
-                    <div style={{ background: '#0f2033', border: '1px solid #1c3450', borderRadius: 8, padding: 10 }}>
-                      <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', fontSize: 10, color: '#7d90a5', fontWeight: 700, paddingBottom: 6 }}><span></span><span style={{ textAlign: 'right' }}>Khối lượng</span><span style={{ textAlign: 'right' }}>Giá trị</span></div>
+                    <div className="bg-[#0f2033] border border-[#1c3450] rounded-lg p-2.5">
+                      <div className="grid grid-cols-[1.4fr_1fr_1fr] text-[10px] text-txt-secondary font-bold pb-1.5"><span></span><span className="text-right">Khối lượng</span><span className="text-right">Giá trị</span></div>
                       {aggr.map((a, i) => (
-                        <div key={i} style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr 1fr', padding: '4px 0', fontSize: 11, fontFamily: "'JetBrains Mono', monospace" }}>
-                          <span style={{ color: a.c, fontWeight: 600 }}>{a.k}</span>
-                          <span style={{ textAlign: 'right', color: '#cbd5e1' }}>{a.vol}</span>
-                          <span style={{ textAlign: 'right', color: '#cbd5e1' }}>{a.val}</span>
+                        <div key={i} className="grid grid-cols-[1.4fr_1fr_1fr] py-1 text-[11px] font-mono">
+                          <span className="font-semibold" style={{ color: a.c }}>{a.k}</span>
+                          <span className="text-right text-neutral-300">{a.vol}</span>
+                          <span className="text-right text-neutral-300">{a.val}</span>
                         </div>
                       ))}
                     </div>
@@ -737,34 +718,34 @@ export default function StockDetailModal({ stock, onClose }: Props) {
 
           {/* ═══ STATISTICS ═══ */}
           {tab === 'stats' && (
-            <div style={{ animation: 'sdFade .2s ease' }}>
-              <div style={{ display: 'flex', gap: 6, marginBottom: 14 }}>
+            <div className="[animation:sdFade_.2s_ease]">
+              <div className="flex gap-1.5 mb-3.5">
                 {statSubDefs.map(([k, label]) => (
-                  <div key={k} onClick={() => setStatSub(k)} style={{ cursor: 'pointer', padding: '6px 14px', borderRadius: 7, fontSize: 12, fontWeight: 700, background: statSub === k ? '#2f7fff' : 'transparent', color: statSub === k ? '#fff' : '#8296ab' }}>{label}</div>
+                  <div key={k} onClick={() => setStatSub(k)} className={`cursor-pointer py-1.5 px-3.5 rounded-[7px] text-xs font-bold ${statSub === k ? 'bg-blue-500 text-white' : 'text-txt-muted'}`}>{label}</div>
                 ))}
               </div>
 
               {statSub === 'stats' && (
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, alignItems: 'start' }}>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px' }}>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#e2e8f0' }}>Thanh khoản</span>
-                    <div id="sdStatLiq" style={{ width: '100%', height: 440, marginTop: 8 }} />
+                <div className="grid grid-cols-2 gap-3.5 items-start">
+                  <div className="bg-card border border-line rounded-[10px] px-4 py-3.5">
+                    <span className="text-[13px] font-bold text-txt-primary">Thanh khoản</span>
+                    <div id="sdStatLiq" className="w-full h-[440px] mt-2" />
                   </div>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: 13, fontWeight: 700, color: '#e2e8f0' }}>Nhật ký khớp lệnh</span>
-                      <span style={{ fontSize: 12, color: '#8296ab' }}>Giá TB (VWAP): <b style={{ color: '#e2e8f0' }}>{data.vwap.toFixed(3)}</b></span>
+                  <div className="bg-card border border-line rounded-[10px] px-4 py-3.5">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] font-bold text-txt-primary">Nhật ký khớp lệnh</span>
+                      <span className="text-xs text-txt-muted">Giá TB (VWAP): <b className="text-txt-primary">{data.vwap.toFixed(3)}</b></span>
                     </div>
-                    <div style={{ display: 'grid', gridTemplateColumns: '1.15fr .85fr', gap: 8, marginTop: 8 }}>
-                      <div id="sdDepth" style={{ width: '100%', height: 400 }} />
-                      <div className="sdSb" style={{ maxHeight: 400, overflowY: 'auto' }}>
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 16px', padding: '2px 4px', fontSize: 9.5, color: '#5f7488', fontWeight: 700, position: 'sticky', top: 0, background: '#0d1826' }}><span></span><span style={{ textAlign: 'right' }}>Giá</span><span style={{ textAlign: 'right' }}>KL</span><span></span></div>
+                    <div className="grid grid-cols-[1.15fr_.85fr] gap-2 mt-2">
+                      <div id="sdDepth" className="w-full h-[400px]" />
+                      <div className="sdSb max-h-[400px] overflow-y-auto">
+                        <div className="grid grid-cols-[1fr_1fr_1fr_16px] py-0.5 px-1 text-[9.5px] text-txt-muted font-bold sticky top-0 bg-card"><span></span><span className="text-right">Giá</span><span className="text-right">KL</span><span></span></div>
                         {tradeLog.map((tl, i) => (
-                          <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 16px', padding: 4, fontSize: 10.5, fontFamily: "'JetBrains Mono', monospace", borderBottom: '1px solid #101c29' }}>
-                            <span style={{ color: '#8296ab' }}>{tl.time}</span>
-                            <span style={{ textAlign: 'right', color: tl.pc }}>{tl.price}</span>
-                            <span style={{ textAlign: 'right', color: '#cbd5e1' }}>{tl.vol}</span>
-                            <span style={{ textAlign: 'center', color: tl.sc, fontWeight: 700, fontSize: 9 }}>{tl.side}</span>
+                          <div key={i} className="grid grid-cols-[1fr_1fr_1fr_16px] p-1 text-[10.5px] font-mono border-b border-[#101c29]">
+                            <span className="text-txt-muted">{tl.time}</span>
+                            <span className="text-right" style={{ color: tl.pc }}>{tl.price}</span>
+                            <span className="text-right text-neutral-300">{tl.vol}</span>
+                            <span className="text-center font-bold text-[9px]" style={{ color: tl.sc }}>{tl.side}</span>
                           </div>
                         ))}
                       </div>
@@ -774,38 +755,38 @@ export default function StockDetailModal({ stock, onClose }: Props) {
               )}
 
               {statSub === 'foreign' && (
-                <div style={{ display: 'grid', gridTemplateColumns: '270px 1fr', gap: 14, alignItems: 'start' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 14, display: 'flex', flexDirection: 'column', gap: 9 }}>
-                      {fxValue.map((f, i) => (<div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 12, color: '#8296ab' }}>{f.k}</span><span style={{ fontSize: 12.5, fontWeight: 700, color: f.c, fontFamily: "'JetBrains Mono', monospace" }}>{f.v}</span></div>))}
+                <div className="grid grid-cols-[270px_1fr] gap-3.5 items-start">
+                  <div className="flex flex-col gap-3">
+                    <div className="bg-card border border-line rounded-[10px] p-3.5 flex flex-col gap-[9px]">
+                      {fxValue.map((f, i) => (<div key={i} className="flex justify-between"><span className="text-xs text-txt-muted">{f.k}</span><span className="text-[12.5px] font-bold font-mono" style={{ color: f.c }}>{f.v}</span></div>))}
                     </div>
-                    <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 14, display: 'flex', flexDirection: 'column', gap: 9 }}>
-                      {fxVol.map((f, i) => (<div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 12, color: '#8296ab' }}>{f.k}</span><span style={{ fontSize: 12.5, fontWeight: 700, color: f.c, fontFamily: "'JetBrains Mono', monospace" }}>{f.v}</span></div>))}
+                    <div className="bg-card border border-line rounded-[10px] p-3.5 flex flex-col gap-[9px]">
+                      {fxVol.map((f, i) => (<div key={i} className="flex justify-between"><span className="text-xs text-txt-muted">{f.k}</span><span className="text-[12.5px] font-bold font-mono" style={{ color: f.c }}>{f.v}</span></div>))}
                     </div>
-                    <div style={{ background: '#0f2033', border: '1px solid #1c3450', borderRadius: 10, padding: '12px 14px', display: 'flex', justifyContent: 'space-between' }}>
-                      <span style={{ fontSize: 12, fontWeight: 700, color: '#60a5fa' }}>Room NN</span>
-                      <span style={{ fontSize: 12.5, fontWeight: 700, color: '#e2e8f0', fontFamily: "'JetBrains Mono', monospace" }}>2.4 B (47.91%)</span>
+                    <div className="bg-[#0f2033] border border-[#1c3450] rounded-[10px] px-3.5 py-3 flex justify-between">
+                      <span className="text-xs font-bold text-blue-400">Room NN</span>
+                      <span className="text-[12.5px] font-bold text-txt-primary font-mono">2.4 B (47.91%)</span>
                     </div>
                   </div>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px' }}>
-                    <div id="sdFxArea" style={{ width: '100%', height: 440 }} />
+                  <div className="bg-card border border-line rounded-[10px] px-4 py-3.5">
+                    <div id="sdFxArea" className="w-full h-[440px]" />
                   </div>
                 </div>
               )}
 
               {statSub === 'proprietary' && (
-                <div style={{ display: 'grid', gridTemplateColumns: '270px 1fr', gap: 14, alignItems: 'start' }}>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-                    <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 14, display: 'flex', flexDirection: 'column', gap: 9 }}>
-                      {propValue.map((f, i) => (<div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 12, color: '#8296ab' }}>{f.k}</span><span style={{ fontSize: 12.5, fontWeight: 700, color: f.c, fontFamily: "'JetBrains Mono', monospace" }}>{f.v}</span></div>))}
+                <div className="grid grid-cols-[270px_1fr] gap-3.5 items-start">
+                  <div className="flex flex-col gap-3">
+                    <div className="bg-card border border-line rounded-[10px] p-3.5 flex flex-col gap-[9px]">
+                      {propValue.map((f, i) => (<div key={i} className="flex justify-between"><span className="text-xs text-txt-muted">{f.k}</span><span className="text-[12.5px] font-bold font-mono" style={{ color: f.c }}>{f.v}</span></div>))}
                     </div>
-                    <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 14, display: 'flex', flexDirection: 'column', gap: 9 }}>
-                      {propVol.map((f, i) => (<div key={i} style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 12, color: '#8296ab' }}>{f.k}</span><span style={{ fontSize: 12.5, fontWeight: 700, color: f.c, fontFamily: "'JetBrains Mono', monospace" }}>{f.v}</span></div>))}
+                    <div className="bg-card border border-line rounded-[10px] p-3.5 flex flex-col gap-[9px]">
+                      {propVol.map((f, i) => (<div key={i} className="flex justify-between"><span className="text-xs text-txt-muted">{f.k}</span><span className="text-[12.5px] font-bold font-mono" style={{ color: f.c }}>{f.v}</span></div>))}
                     </div>
                   </div>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px' }}>
-                    <div id="sdPropBar" style={{ width: '100%', height: 440 }} />
-                    <div style={{ display: 'flex', gap: 20, justifyContent: 'center', fontSize: 10, color: '#7d90a5', marginTop: 4 }}><span style={{ color: '#22c55e' }}>● Mua ròng</span><span style={{ color: '#f43f5e' }}>● Bán ròng</span></div>
+                  <div className="bg-card border border-line rounded-[10px] px-4 py-3.5">
+                    <div id="sdPropBar" className="w-full h-[440px]" />
+                    <div className="flex gap-5 justify-center text-[10px] text-txt-secondary mt-1"><span className="text-market-up">● Mua ròng</span><span className="text-market-down">● Bán ròng</span></div>
                   </div>
                 </div>
               )}
@@ -814,65 +795,65 @@ export default function StockDetailModal({ stock, onClose }: Props) {
 
           {/* ═══ TECHNICAL CHART ═══ */}
           {tab === 'tech' && (
-            <div style={{ animation: 'sdFade .2s ease', background: '#0b1219', border: '1px solid #1b2838', borderRadius: 10, overflow: 'hidden' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '10px 14px', borderBottom: '1px solid #16222f' }}>
-                <span style={{ fontSize: 12.5, fontWeight: 700, color: '#e2e8f0' }}>Biểu đồ kỹ thuật — {sym}</span>
-                <span style={{ fontSize: 10.5, color: '#5f7488' }}>Nguồn: TradingView · Thời gian thực</span>
-                <a href={tvOpenUrl} target="_blank" rel="noreferrer" style={{ marginLeft: 'auto', textDecoration: 'none', background: '#182b42', border: '1px solid #2f5f9a', color: '#93c5fd', borderRadius: 6, padding: '5px 12px', fontSize: 11, fontWeight: 700 }}>Mở trên TradingView ↗</a>
+            <div className="[animation:sdFade_.2s_ease] bg-[#0b1219] border border-line rounded-[10px] overflow-hidden">
+              <div className="flex items-center gap-3 px-3.5 py-2.5 border-b border-line-subtle">
+                <span className="text-[12.5px] font-bold text-txt-primary">Biểu đồ kỹ thuật — {sym}</span>
+                <span className="text-[10.5px] text-txt-muted">Nguồn: TradingView · Thời gian thực</span>
+                <a href={tvOpenUrl} target="_blank" rel="noreferrer" className="ml-auto no-underline bg-[#182b42] border border-[#2f5f9a] text-blue-300 rounded-[6px] py-[5px] px-3 text-[11px] font-bold">Mở trên TradingView ↗</a>
               </div>
-              <iframe src={tvIframeUrl} style={{ width: '100%', height: 640, border: 'none', background: '#0b1219' }} allowTransparency scrolling="no" title="TradingView chart" />
+              <iframe src={tvIframeUrl} className="w-full h-[640px] border-none bg-[#0b1219]" allowTransparency scrolling="no" title="TradingView chart" />
             </div>
           )}
 
           {/* ═══ TECHNICAL SENTIMENT ═══ */}
           {tab === 'sentiment' && (
-            <div style={{ animation: 'sdFade .2s ease' }}>
-              <div style={{ display: 'flex', gap: 6, marginBottom: 16 }}>
+            <div className="[animation:sdFade_.2s_ease]">
+              <div className="flex gap-1.5 mb-4">
                 {sentPeriods.map(p => (
-                  <div key={p} onClick={() => setSentPeriod(p)} style={{ cursor: 'pointer', padding: '5px 14px', borderRadius: 7, fontSize: 12, fontWeight: 700, background: sentPeriod === p ? '#2f7fff' : 'transparent', color: sentPeriod === p ? '#fff' : '#8296ab' }}>{p}</div>
+                  <div key={p} onClick={() => setSentPeriod(p)} className={`cursor-pointer py-[5px] px-3.5 rounded-[7px] text-xs font-bold ${sentPeriod === p ? 'bg-blue-500 text-white' : 'text-txt-muted'}`}>{p}</div>
                 ))}
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 460px', gap: 16, alignItems: 'start' }}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 16 }}>
-                    <div style={{ textAlign: 'center', fontSize: 14, fontWeight: 700, color: '#e2e8f0', marginBottom: 4 }}>Tổng quan</div>
-                    <div id="sdSum" style={{ width: '100%', height: 200 }} />
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', textAlign: 'center' }}>
-                      <div><div style={{ fontSize: 11, color: '#f43f5e', fontWeight: 700 }}>Tiêu cực</div><div style={{ fontSize: 16, fontWeight: 800, color: '#e2e8f0' }}>{sent.neg}</div></div>
-                      <div><div style={{ fontSize: 11, color: '#94a3b8', fontWeight: 700 }}>Trung lập</div><div style={{ fontSize: 16, fontWeight: 800, color: '#e2e8f0' }}>{sent.neu}</div></div>
-                      <div><div style={{ fontSize: 11, color: '#22c55e', fontWeight: 700 }}>Tích cực</div><div style={{ fontSize: 16, fontWeight: 800, color: '#e2e8f0' }}>{sent.pos}</div></div>
+              <div className="grid grid-cols-[1fr_460px] gap-4 items-start">
+                <div className="flex flex-col gap-4">
+                  <div className="bg-card border border-line rounded-[10px] p-4">
+                    <div className="text-center text-sm font-bold text-txt-primary mb-1">Tổng quan</div>
+                    <div id="sdSum" className="w-full h-[200px]" />
+                    <div className="grid grid-cols-3 text-center">
+                      <div><div className="text-[11px] text-market-down font-bold">Tiêu cực</div><div className="text-[16px] font-extrabold text-txt-primary">{sent.neg}</div></div>
+                      <div><div className="text-[11px] text-neutral-400 font-bold">Trung lập</div><div className="text-[16px] font-extrabold text-txt-primary">{sent.neu}</div></div>
+                      <div><div className="text-[11px] text-market-up font-bold">Tích cực</div><div className="text-[16px] font-extrabold text-txt-primary">{sent.pos}</div></div>
                     </div>
-                    <div style={{ borderTop: '1px solid #182634', marginTop: 12, paddingTop: 12, display: 'flex', flexDirection: 'column', gap: 6, fontSize: 11.5 }}>
-                      <div style={{ display: 'flex', gap: 10 }}><span style={{ color: '#7d90a5', minWidth: 140 }}>Khuyến nghị:</span><span style={{ color: '#cbd5e1' }}>{sentTxt.rec}</span></div>
-                      <div style={{ display: 'flex', gap: 10 }}><span style={{ color: '#7d90a5', minWidth: 140 }}>Tỷ lệ giải ngân:</span><span style={{ color: '#cbd5e1' }}>{sentTxt.disb}</span></div>
-                      <div style={{ display: 'flex', gap: 10 }}><span style={{ color: '#7d90a5', minWidth: 140 }}>Gợi ý chiến lược:</span><span style={{ color: '#cbd5e1' }}>{sentTxt.strat}</span></div>
+                    <div className="border-t border-line mt-3 pt-3 flex flex-col gap-1.5 text-[11.5px]">
+                      <div className="flex gap-2.5"><span className="text-txt-secondary min-w-[140px]">Khuyến nghị:</span><span className="text-neutral-300">{sentTxt.rec}</span></div>
+                      <div className="flex gap-2.5"><span className="text-txt-secondary min-w-[140px]">Tỷ lệ giải ngân:</span><span className="text-neutral-300">{sentTxt.disb}</span></div>
+                      <div className="flex gap-2.5"><span className="text-txt-secondary min-w-[140px]">Gợi ý chiến lược:</span><span className="text-neutral-300">{sentTxt.strat}</span></div>
                     </div>
                   </div>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 14 }}>
+                  <div className="grid grid-cols-3 gap-3.5">
                     {gaugeCards.map(g => (
-                      <div key={g.id} style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 12 }}>
-                        <div style={{ textAlign: 'center', fontSize: 12.5, fontWeight: 700, color: '#e2e8f0' }}>{g.title}</div>
-                        <div id={g.id} style={{ width: '100%', height: 150 }} />
-                        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', textAlign: 'center', fontSize: 10 }}>
-                          <div><div style={{ color: '#f43f5e', fontWeight: 700 }}>Tiêu cực</div><div style={{ color: '#e2e8f0', fontWeight: 800 }}>{g.neg}</div></div>
-                          <div><div style={{ color: '#94a3b8', fontWeight: 700 }}>Trung lập</div><div style={{ color: '#e2e8f0', fontWeight: 800 }}>{g.neu}</div></div>
-                          <div><div style={{ color: '#22c55e', fontWeight: 700 }}>Tích cực</div><div style={{ color: '#e2e8f0', fontWeight: 800 }}>{g.pos}</div></div>
+                      <div key={g.id} className="bg-card border border-line rounded-[10px] p-3">
+                        <div className="text-center text-[12.5px] font-bold text-txt-primary">{g.title}</div>
+                        <div id={g.id} className="w-full h-[150px]" />
+                        <div className="grid grid-cols-3 text-center text-[10px]">
+                          <div><div className="text-market-down font-bold">Tiêu cực</div><div className="text-txt-primary font-extrabold">{g.neg}</div></div>
+                          <div><div className="text-neutral-400 font-bold">Trung lập</div><div className="text-txt-primary font-extrabold">{g.neu}</div></div>
+                          <div><div className="text-market-up font-bold">Tích cực</div><div className="text-txt-primary font-extrabold">{g.pos}</div></div>
                         </div>
-                        <div style={{ textAlign: 'center', fontSize: 10, color: '#7d90a5', marginTop: 6 }}>{g.note}</div>
+                        <div className="text-center text-[10px] text-txt-secondary mt-1.5">{g.note}</div>
                       </div>
                     ))}
                   </div>
                 </div>
-                <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, overflow: 'hidden' }}>
-                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 70px', padding: '11px 14px', borderBottom: '1px solid #182634', fontSize: 11.5, fontWeight: 700, color: '#8296ab' }}><span>Chỉ báo</span><span style={{ textAlign: 'right' }}>Tín hiệu</span></div>
-                  <div className="sdSb" style={{ maxHeight: 560, overflowY: 'auto' }}>
+                <div className="bg-card border border-line rounded-[10px] overflow-hidden">
+                  <div className="grid grid-cols-[1fr_70px] px-3.5 py-[11px] border-b border-line text-[11.5px] font-bold text-txt-muted"><span>Chỉ báo</span><span className="text-right">Tín hiệu</span></div>
+                  <div className="sdSb max-h-[560px] overflow-y-auto">
                     {indGroups.map((grp, gi) => (
                       <div key={gi}>
-                        <div style={{ padding: '8px 14px', background: '#111c29', fontSize: 11, fontWeight: 800, color: '#cbd5e1' }}>{grp.title}</div>
+                        <div className="px-3.5 py-2 bg-[#111c29] text-[11px] font-extrabold text-neutral-300">{grp.title}</div>
                         {grp.rows.map((row, ri) => (
-                          <div key={ri} style={{ display: 'grid', gridTemplateColumns: '1fr 70px', padding: '9px 14px', borderBottom: '1px solid #101c29', fontSize: 11.5 }}>
-                            <span style={{ color: '#b9c6d4' }}>{row.name}</span>
-                            <span style={{ textAlign: 'right', fontWeight: 700, color: row.c }}>{row.action}</span>
+                          <div key={ri} className="grid grid-cols-[1fr_70px] py-[9px] px-3.5 border-b border-[#101c29] text-[11.5px]">
+                            <span className="text-[#b9c6d4]">{row.name}</span>
+                            <span className="text-right font-bold" style={{ color: row.c }}>{row.action}</span>
                           </div>
                         ))}
                       </div>
@@ -885,57 +866,57 @@ export default function StockDetailModal({ stock, onClose }: Props) {
 
           {/* ═══ FINANCIALS ═══ */}
           {tab === 'fin' && (
-            <div style={{ animation: 'sdFade .2s ease' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 14 }}>
-                <div style={{ display: 'flex', gap: 6 }}>
+            <div className="[animation:sdFade_.2s_ease]">
+              <div className="flex justify-between items-center mb-3.5">
+                <div className="flex gap-1.5">
                   {finSubDefs.map(([k, label]) => (
-                    <div key={k} onClick={() => setFinSub(k)} style={{ cursor: 'pointer', padding: '6px 14px', borderRadius: 7, fontSize: 12, fontWeight: 700, background: finSub === k ? '#2f7fff' : 'transparent', color: finSub === k ? '#fff' : '#8296ab' }}>{label}</div>
+                    <div key={k} onClick={() => setFinSub(k)} className={`cursor-pointer py-1.5 px-3.5 rounded-[7px] text-xs font-bold ${finSub === k ? 'bg-blue-500 text-white' : 'text-txt-muted'}`}>{label}</div>
                   ))}
                 </div>
-                <div style={{ display: 'flex', gap: 4 }}>
+                <div className="flex gap-1">
                   {finPeriodDefs.map(([k, label]) => (
-                    <div key={k} onClick={() => setFinPeriod(k)} style={{ cursor: 'pointer', padding: '6px 12px', fontSize: 12, fontWeight: 700, color: finPeriod === k ? '#fff' : '#8296ab', borderBottom: '2px solid ' + (finPeriod === k ? '#2f7fff' : 'transparent') }}>{label}</div>
+                    <div key={k} onClick={() => setFinPeriod(k)} className={`cursor-pointer py-1.5 px-3 text-xs font-bold border-b-2 ${finPeriod === k ? 'text-white border-blue-500' : 'text-txt-muted border-transparent'}`}>{label}</div>
                   ))}
                 </div>
               </div>
 
               {finSub === 'overview' && (
-                <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px' }}>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#e2e8f0' }}>Định giá</span>
-                    <div id="sdValuation" style={{ width: '100%', height: 300, marginTop: 6 }} />
-                    <div style={{ display: 'flex', gap: 24, justifyContent: 'center', fontSize: 11, color: '#7d90a5' }}><span style={{ color: '#3b82f6' }}>● P/E TTM</span><span style={{ color: '#eab308' }}>● P/B TTM</span></div>
+                <div className="flex flex-col gap-3.5">
+                  <div className="bg-card border border-line rounded-[10px] px-4 py-3.5">
+                    <span className="text-[13px] font-bold text-txt-primary">Định giá</span>
+                    <div id="sdValuation" className="w-full h-[300px] mt-1.5" />
+                    <div className="flex gap-6 justify-center text-[11px] text-txt-secondary"><span className="text-blue-500">● P/E TTM</span><span className="text-yellow-500">● P/B TTM</span></div>
                   </div>
-                  <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px' }}>
-                    <span style={{ fontSize: 13, fontWeight: 700, color: '#e2e8f0' }}>Kết quả kinh doanh</span>
-                    <div id="sdPerf" style={{ width: '100%', height: 320, marginTop: 6 }} />
-                    <div style={{ display: 'flex', gap: 20, justifyContent: 'center', flexWrap: 'wrap', fontSize: 10.5, color: '#7d90a5' }}>
-                      <span style={{ color: '#3b82f6' }}>● Doanh thu thuần (tỷ VND)</span>
-                      <span style={{ color: '#22c55e' }}>● Lợi nhuận thuần (tỷ VND)</span>
-                      <span style={{ color: '#eab308' }}>● Tăng trưởng DT theo quý</span>
-                      <span style={{ color: '#cbd5e1' }}>● Tăng trưởng LN theo quý</span>
+                  <div className="bg-card border border-line rounded-[10px] px-4 py-3.5">
+                    <span className="text-[13px] font-bold text-txt-primary">Kết quả kinh doanh</span>
+                    <div id="sdPerf" className="w-full h-[320px] mt-1.5" />
+                    <div className="flex gap-5 justify-center flex-wrap text-[10.5px] text-txt-secondary">
+                      <span className="text-blue-500">● Doanh thu thuần (tỷ VND)</span>
+                      <span className="text-market-up">● Lợi nhuận thuần (tỷ VND)</span>
+                      <span className="text-yellow-500">● Tăng trưởng DT theo quý</span>
+                      <span className="text-neutral-300">● Tăng trưởng LN theo quý</span>
                     </div>
                   </div>
                 </div>
               )}
 
               {finSub === 'indicators' && (
-                <div className="sdSb" style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, overflow: 'auto', maxHeight: 620 }}>
-                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 11.5, whiteSpace: 'nowrap' }}>
+                <div className="sdSb bg-card border border-line rounded-[10px] overflow-auto max-h-[620px]">
+                  <table className="w-full border-collapse text-[11.5px] whitespace-nowrap">
                     <thead>
-                      <tr style={{ position: 'sticky', top: 0, background: '#152234', zIndex: 2 }}>
-                        <th style={{ textAlign: 'left', padding: '10px 14px', color: '#8296ab', fontWeight: 700, position: 'sticky', left: 0, background: '#152234', minWidth: 190 }}></th>
+                      <tr className="sticky top-0 z-[2]" style={{ background: '#152234' }}>
+                        <th className="text-left py-2.5 px-3.5 text-txt-muted font-bold sticky left-0 min-w-[190px]" style={{ background: '#152234' }}></th>
                         {finColsRaw.map((c, i) => (
-                          <th key={i} style={{ textAlign: 'right', padding: '10px 14px', color: '#b9c6d4', fontWeight: 700 }}>{c}</th>
+                          <th key={i} className="text-right py-2.5 px-3.5 text-[#b9c6d4] font-bold">{c}</th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
                       {finTable.map((r, ri) => (
-                        <tr key={ri} style={{ background: r.rowBg, borderBottom: '1px solid #101c29' }}>
-                          <td style={{ textAlign: 'left', padding: '9px 14px', color: r.labelColor, fontWeight: r.labelWeight, position: 'sticky', left: 0, background: r.rowBg }}>{r.label}</td>
+                        <tr key={ri} className="border-b border-[#101c29]" style={{ background: r.rowBg }}>
+                          <td className="text-left py-[9px] px-3.5 sticky left-0" style={{ color: r.labelColor, fontWeight: r.labelWeight, background: r.rowBg }}>{r.label}</td>
                           {r.cells.map((v, ci) => (
-                            <td key={ci} style={{ textAlign: 'right', padding: '9px 14px', color: '#cbd5e1', fontFamily: "'JetBrains Mono', monospace" }}>{v}</td>
+                            <td key={ci} className="text-right py-[9px] px-3.5 text-neutral-300 font-mono">{v}</td>
                           ))}
                         </tr>
                       ))}
@@ -948,25 +929,25 @@ export default function StockDetailModal({ stock, onClose }: Props) {
 
           {/* ═══ RESEARCH ═══ */}
           {tab === 'research' && (
-            <div style={{ animation: 'sdFade .2s ease', display: 'grid', gridTemplateColumns: '280px 1fr', gap: 14, alignItems: 'start' }}>
-              <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: 16, display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <div style={{ textAlign: 'center' }}>
-                  <div style={{ fontSize: 11, color: '#7d90a5', fontWeight: 700 }}>Khuyến nghị</div>
-                  <div style={{ fontSize: 22, fontWeight: 800, color: research.ratingColor, marginTop: 4 }}>{research.rating}</div>
+            <div className="[animation:sdFade_.2s_ease] grid grid-cols-[280px_1fr] gap-3.5 items-start">
+              <div className="bg-card border border-line rounded-[10px] p-4 flex flex-col gap-3.5">
+                <div className="text-center">
+                  <div className="text-[11px] text-txt-secondary font-bold">Khuyến nghị</div>
+                  <div className="text-[22px] font-extrabold mt-1" style={{ color: research.ratingColor }}>{research.rating}</div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderTop: '1px solid #182634', paddingTop: 10 }}><span style={{ fontSize: 12, color: '#8296ab' }}>Giá mục tiêu</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>{research.target}</span></div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 12, color: '#8296ab' }}>Tiềm năng tăng giá</span><span style={{ fontSize: 13, fontWeight: 800, color: '#22c55e', fontFamily: "'JetBrains Mono', monospace" }}>{research.upside}</span></div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}><span style={{ fontSize: 12, color: '#8296ab' }}>Giá hiện tại</span><span style={{ fontSize: 13, fontWeight: 700, color: '#e2e8f0', fontFamily: "'JetBrains Mono', monospace" }}>{lp.toFixed(2)}</span></div>
+                <div className="flex justify-between border-t border-line pt-2.5"><span className="text-xs text-txt-muted">Giá mục tiêu</span><span className="text-[13px] font-extrabold text-market-up font-mono">{research.target}</span></div>
+                <div className="flex justify-between"><span className="text-xs text-txt-muted">Tiềm năng tăng giá</span><span className="text-[13px] font-extrabold text-market-up font-mono">{research.upside}</span></div>
+                <div className="flex justify-between"><span className="text-xs text-txt-muted">Giá hiện tại</span><span className="text-[13px] font-bold text-txt-primary font-mono">{lp.toFixed(2)}</span></div>
               </div>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+              <div className="flex flex-col gap-2.5">
                 {reports.map((rp, i) => (
-                  <div key={i} style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, padding: '14px 16px', cursor: 'pointer' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: 13, fontWeight: 700, color: '#e2e8f0' }}>{rp.title}</span>
-                      <span style={{ fontSize: 10, fontWeight: 700, color: rp.tagColor, background: rp.tagBg, padding: '3px 9px', borderRadius: 10 }}>{rp.tag}</span>
+                  <div key={i} className="sd-report-card bg-card border border-line rounded-[10px] px-4 py-3.5 cursor-pointer transition-colors">
+                    <div className="flex justify-between items-center">
+                      <span className="text-[13px] font-bold text-txt-primary">{rp.title}</span>
+                      <span className="text-[10px] font-bold rounded-[10px] py-[3px] px-[9px]" style={{ color: rp.tagColor, background: rp.tagBg }}>{rp.tag}</span>
                     </div>
-                    <p style={{ margin: '8px 0 0', fontSize: 11.5, color: '#8296ab', lineHeight: 1.6 }}>{rp.summary}</p>
-                    <div style={{ marginTop: 8, fontSize: 10.5, color: '#5f7488' }}>{rp.date} · Ray Research</div>
+                    <p className="mt-2 text-[11.5px] text-txt-muted leading-relaxed">{rp.summary}</p>
+                    <div className="mt-2 text-[10.5px] text-txt-muted">{rp.date} · Ray Research</div>
                   </div>
                 ))}
               </div>
@@ -975,19 +956,19 @@ export default function StockDetailModal({ stock, onClose }: Props) {
 
           {/* ═══ EVENTS ═══ */}
           {tab === 'events' && (
-            <div style={{ animation: 'sdFade .2s ease' }}>
-              <div style={{ display: 'flex', gap: 6, marginBottom: 14 }}>
+            <div className="[animation:sdFade_.2s_ease]">
+              <div className="flex gap-1.5 mb-3.5">
                 {eventSubDefs.map(([k, label]) => (
-                  <div key={k} onClick={() => setEventSub(k)} style={{ cursor: 'pointer', padding: '6px 14px', borderRadius: 7, fontSize: 12, fontWeight: 700, background: eventSub === k ? '#2f7fff' : 'transparent', color: eventSub === k ? '#fff' : '#8296ab' }}>{label}</div>
+                  <div key={k} onClick={() => setEventSub(k)} className={`cursor-pointer py-1.5 px-3.5 rounded-[7px] text-xs font-bold ${eventSub === k ? 'bg-blue-500 text-white' : 'text-txt-muted'}`}>{label}</div>
                 ))}
               </div>
-              <div style={{ background: '#0d1826', border: '1px solid #1b2838', borderRadius: 10, overflow: 'hidden' }}>
-                <div style={{ display: 'grid', gridTemplateColumns: '150px 1fr 220px', padding: '11px 16px', borderBottom: '1px solid #182634', fontSize: 11.5, fontWeight: 700, color: '#8296ab' }}><span>Ngày công bố</span><span>Tiêu đề</span><span>Loại</span></div>
+              <div className="bg-card border border-line rounded-[10px] overflow-hidden">
+                <div className="grid grid-cols-[150px_1fr_220px] px-4 py-[11px] border-b border-line text-[11.5px] font-bold text-txt-muted"><span>Ngày công bố</span><span>Tiêu đề</span><span>Loại</span></div>
                 {events.map((ev, i) => (
-                  <div key={i} style={{ display: 'grid', gridTemplateColumns: '150px 1fr 220px', padding: '11px 16px', borderBottom: '1px solid #101c29', fontSize: 12 }}>
-                    <span style={{ color: '#8296ab', fontFamily: "'JetBrains Mono', monospace" }}>{ev.date}</span>
-                    <span style={{ color: '#dbe3ec' }}>{ev.title}</span>
-                    <span style={{ color: '#8296ab' }}>{ev.type}</span>
+                  <div key={i} className="sd-event-row grid grid-cols-[150px_1fr_220px] px-4 py-[11px] border-b border-[#101c29] text-xs transition-colors">
+                    <span className="text-txt-muted font-mono">{ev.date}</span>
+                    <span className="text-neutral-200">{ev.title}</span>
+                    <span className="text-txt-muted">{ev.type}</span>
                   </div>
                 ))}
               </div>

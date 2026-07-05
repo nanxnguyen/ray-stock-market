@@ -49,53 +49,45 @@ export default function GlobalMarketsPanel({ th }: { th: ThemeTokens }) {
   const items = DATA[active] || []
 
   return (
-    <div style={{
-      width: 210, borderLeft: `1px solid ${th.idxColBorder}`,
-      padding: '10px 12px', flexShrink: 0, display: 'flex', flexDirection: 'column', gap: 0,
-    }}>
-      <div style={{
-        display: 'flex', gap: 0, marginBottom: 7,
-        borderBottom: `1px solid ${th.idxColBorder}`, paddingBottom: 5,
-      }}>
+    <div
+      className="w-[210px] border-l border-line p-[10px_12px] shrink-0 flex flex-col gap-0"
+    >
+      <div className="flex gap-0 mb-[7px] border-b border-line pb-[5px]">
         {TABS.map((t) => (
           <span
             key={t.id}
             onClick={() => setActive(t.id)}
-            style={{
-              fontSize: 10, fontWeight: t.id === active ? 700 : 400,
-              color: t.id === active ? 'var(--ds-color-blue-500)' : th.textMuted,
-              borderBottom: t.id === active ? '2px solid var(--ds-color-blue-500)' : 'none',
-              paddingBottom: 3, paddingRight: 8, cursor: 'pointer', whiteSpace: 'nowrap',
-            }}
+            className={`text-[10px] cursor-pointer whitespace-nowrap pr-2 pb-[3px] ${
+              t.id === active
+                ? 'font-bold text-blue-500 border-b-2 border-blue-500'
+                : 'font-normal text-txt-muted'
+            }`}
           >
             {t.label}
           </span>
         ))}
       </div>
-      {items.map((g) => {
-        const color = g.pct >= 0 ? 'var(--ds-color-market-up)' : 'var(--ds-color-market-down)'
-        return (
-          <div key={g.name} style={{
-            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-            padding: '4px 0', borderBottom: `1px solid ${th.glItemBorder}`,
-          }}>
-            <div>
-              <div style={{ fontSize: 11, color: th.glNameColor, fontWeight: 500 }}>{g.name}</div>
-              <div style={{ fontSize: 9, color: th.textMuted }}>
-                {fmt(g.v)}{g.unit ? ' ' + g.unit : ''}
-              </div>
-            </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontSize: 11, color, fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>
-                {g.chg >= 0 ? '+' : ''}{g.chg.toFixed(2)}
-              </div>
-              <div style={{ fontSize: 9, color, fontWeight: 600 }}>
-                {g.pct >= 0 ? '+' : ''}{g.pct.toFixed(2)}%
-              </div>
+      {items.map((g) => (
+        <div
+          key={g.name}
+          className="flex justify-between items-center py-[4px] border-b border-line"
+        >
+          <div>
+            <div className="text-[11px] text-txt-secondary font-medium">{g.name}</div>
+            <div className="text-[9px] text-txt-muted">
+              {fmt(g.v)}{g.unit ? ' ' + g.unit : ''}
             </div>
           </div>
-        )
-      })}
+          <div className="text-right">
+            <div className={`text-[11px] font-bold font-mono ${g.pct >= 0 ? 'text-market-up' : 'text-market-down'}`}>
+              {g.chg >= 0 ? '+' : ''}{g.chg.toFixed(2)}
+            </div>
+            <div className={`text-[9px] font-semibold ${g.pct >= 0 ? 'text-market-up' : 'text-market-down'}`}>
+              {g.pct >= 0 ? '+' : ''}{g.pct.toFixed(2)}%
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

@@ -6,35 +6,35 @@ type Props = { indices: MarketIndexView[]; th: ThemeTokens }
 
 function IndexStripInner({ indices, th }: Props) {
   return (
-    <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', flexShrink: 0, height: 158, overflow: 'hidden' }}>
-      <div style={{ display: 'flex', flex: 1, minWidth: 0, overflow: 'hidden' }}>
+    <div className="flex shrink-0 h-[158px] overflow-hidden" style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}` }}>
+      <div className="flex flex-1 min-w-0 overflow-hidden">
         {indices.map((idx) => (
           <div
             key={idx.name}
             onClick={idx.onClick}
             onMouseEnter={(e) => { e.currentTarget.style.background = th.rowHover }}
             onMouseLeave={(e) => { e.currentTarget.style.background = '' }}
-            style={{ flex: 1, padding: '8px 10px', borderRight: `1px solid ${th.idxColBorder}`, display: 'flex', flexDirection: 'column', gap: 1, minWidth: 160, overflow: 'hidden', cursor: 'pointer', position: 'relative' }}
+            className="flex-1 py-2 px-[10px] border-r border-line flex flex-col gap-[1px] min-w-[160px] overflow-hidden cursor-pointer relative"
           >
-            <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: idx.color, opacity: 0.8 }} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: 5 }}>
-              <span style={{ fontSize: 11, fontWeight: 700, color: th.idxTitle }}>{idx.name}</span>
+            <div className="absolute top-0 left-0 right-0 h-[2px] opacity-80" style={{ background: idx.color }} />
+            <div className="flex items-center gap-[5px]">
+              <span className="text-[11px] font-bold text-txt-secondary">{idx.name}</span>
               {idx.statusBg && (
-                <span style={{
-                  fontSize: 8, fontWeight: 700, color: '#fff', background: idx.statusBg,
-                  borderRadius: 4, padding: '1px 5px', letterSpacing: 0.3,
-                }}>LIVE</span>
+                <span
+                  className="text-[8px] font-bold text-white rounded px-[5px] py-px tracking-[0.3px]"
+                  style={{ background: idx.statusBg }}
+                >LIVE</span>
               )}
             </div>
-            <div style={{ fontSize: 20, fontWeight: 700, color: idx.color, fontFamily: "'JetBrains Mono', monospace", fontVariantNumeric: 'tabular-nums', lineHeight: 1.15 }}>{idx.val}</div>
-            <div style={{ fontSize: 10, color: idx.color, fontWeight: 600 }}>{idx.chg}</div>
-            <div style={{ fontSize: 9, color: 'var(--ds-color-text-muted)' }}>KL: {idx.vol}</div>
-            <div style={{ display: 'flex', gap: 5, fontSize: 9, fontWeight: 700, marginTop: 1 }}>
-              <span style={{ color: 'var(--ds-color-green-400)' }}>▲{idx.up}</span>
-              <span style={{ color: 'var(--ds-color-red-400)' }}>▼{idx.dn}</span>
-              <span style={{ color: 'var(--ds-color-text-secondary)' }}>──{idx.nc}</span>
+            <div className="text-xl font-bold font-mono tabular-nums leading-[1.15]" style={{ color: idx.color }}>{idx.val}</div>
+            <div className="text-[10px] font-semibold" style={{ color: idx.color }}>{idx.chg}</div>
+            <div className="text-[9px] text-txt-muted">KL: {idx.vol}</div>
+            <div className="flex gap-[5px] text-[9px] font-bold mt-px">
+              <span className="text-green-500">▲{idx.up}</span>
+              <span className="text-red-400">▼{idx.dn}</span>
+              <span className="text-txt-secondary">──{idx.nc}</span>
             </div>
-            <svg viewBox="0 0 100 22" preserveAspectRatio="none" style={{ width: '100%', height: 20, display: 'block', marginTop: 2 }}>
+            <svg viewBox="0 0 100 22" preserveAspectRatio="none" className="w-full h-5 block mt-[2px]">
               <defs>
                 <linearGradient id={idx.gradId} x1="0" y1="0" x2="0" y2="1">
                   <stop offset="0%" stopColor={idx.color} stopOpacity={0.25} />
