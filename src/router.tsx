@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import type { ThemeTokens, MarketIndexView, ChartView, TradeHistoryItem, StockRow } from './types/priceboard'
+import type { ThemeTokens, MarketIndexView, StockState, TradeHistoryItem, StockRow, AlertModalState, SortKey, SortDir } from './types/priceboard'
 import type { VietcapFilterGroup, VietcapFilterState } from './types/vietcap'
 import Layout from './components/Layout'
 import SubPageLayout from './components/SubPageLayout'
@@ -75,11 +75,20 @@ type AppRoutesProps = {
   onSetPriceMax: (v: string) => void
   onResetFilters: () => void
   tradeHistory: TradeHistoryItem[]
-  stocksWithWatchlist: (StockRow & { watchlisted: boolean; onToggleWatchlist: () => void })[]
-  chartView: ChartView | null
+  stocksWithWatchlist: StockRow[]
+  chartStock: StockState | null
   onCloseChart: () => void
   idxChart: { open: boolean; sym: string; color: string }
   onCloseIdxChart: () => void
+  selectedCompare: string[]
+  onToggleCompare: (sym: string) => void
+  onClearCompare: () => void
+  alertModal: AlertModalState
+  onCloseAlertModal: () => void
+  onSaveAlert: (sym: string, threshold: number, direction: 'above' | 'below') => void
+  sortKey: SortKey
+  sortDir: SortDir
+  onSort: (key: SortKey) => void
 }
 
 export default function AppRoutes(props: AppRoutesProps) {

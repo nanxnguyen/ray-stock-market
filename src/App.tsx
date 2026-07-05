@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useMemo } from 'react'
+import { useState, useEffect, useCallback, useMemo, useRef } from 'react'
 import type {
   ThemeTokens,
   StockState,
@@ -6,8 +6,10 @@ import type {
   MarketIndexState,
   MarketIndexView,
   ChartState,
-  ChartView,
   TradeHistoryItem,
+  AlertModalState,
+  SortKey,
+  SortDir,
 } from './types/priceboard'
 import type { VietcapFilterGroup } from './types/vietcap'
 import { VN30_SYMBOLS, createInitialIndices } from './data/mockMarket'
@@ -23,8 +25,13 @@ function mapStockRows(
   dark: boolean,
   th: ThemeTokens,
   openChart: (sym: string) => void,
+  selectedCompare: string[],
+  toggleCompare: (sym: string) => void,
+  openAlertModal: (sym: string, price: number) => void,
+  focusedIndex: number,
 ): StockRow[] {
   const now = Date.now()
+  const maxRoom = stocks.reduce((m, s) => Math.max(m, Math.abs(s.rm || 0)), 1)
   return stocks.map((s, i) => {
     const fl = s.fl_ && now - s.fts < 900
     const bg = fl
@@ -39,6 +46,24 @@ function mapStockRows(
     const fbal = s.fb - s.fs
     const avg = +((s.hi + s.lo + s.lp) / 3).toFixed(2)
     const sparkRange = s.ipts.length > 1 ? minMaxRange(s.ipts) : undefined
+
+    // Flash effects
+    const flashPrice = fl ? (s.fl_ === 'u' ? 'flashUp 0.8s ease' : 'flashDn 0.8s ease') : 'none'
+    const flashVol = fl ? 'flashUp 0.8s ease' : 'none'
+    const flashB1q = 'none'
+    const flashB2q = 'none'
+    const flashB3q = 'none'
+    const flashA1q = 'none'
+    const flashA2q = 'none'
+    const flashA3q = 'none'
+    const flashRoom = 'none'
+
+    // Room progress bar
+    const roomPct = Math.max(2, Math.round(Math.abs(s.rm || 0) / maxRoom * 100))
+
+    // Focus outline for keyboard nav
+    const focusOutline = i === focusedIndex ? '2px solid #3b82f6' : 'none'
+
     return {
       sym: s.s,
       ng: s.ng,
@@ -65,10 +90,19 @@ function mapStockRows(
       fbal: fbal ? ((fbal > 0 ? '+' : '') + formatQuantity(Math.abs(fbal))) : '',
       fbc: fbal >= 0 ? 'var(--ds-color-market-foreign-buy)' : 'var(--ds-color-red-400)',
       room: s.rm ? formatQuantity(Math.abs(s.rm)) : '',
+      roomPct,
       kltt: formatQuantity(Math.abs(s.rm) || s.tv),
       sparkPts: sparkRange ? toPolylinePoints(s.ipts, 100, 22, sparkRange) : '',
       sparkFill: sparkRange ? toAreaPath(s.ipts, 100, 22, sparkRange) : '',
       onChart: () => openChart(s.s),
+      isSelected: selectedCompare.includes(s.s),
+      onToggleCompare: () => toggleCompare(s.s),
+      onOpenAlert: () => openAlertModal(s.s, s.lp),
+      flashPrice,
+      flashB1q, flashB2q, flashB3q,
+      flashA1q, flashA2q, flashA3q,
+      flashVol, flashRoom,
+      focusOutline,
     }
   })
 }
@@ -124,6 +158,20 @@ function App() {
   const [filterVolMin, setFilterVolMin] = useState('')
   const [filterPriceMin, setFilterPriceMin] = useState('')
   const [filterPriceMax, setFilterPriceMax] = useState('')
+
+  // Compare state
+  const [selectedCompare, setSelectedCompare] = useState<string[]>([])
+
+  // Alert modal state
+  const [alertModal, setAlertModal] = useState<AlertModalState>({ open: false, sym: '', threshold: '', direction: 'above' })
+
+  // Sorting state
+  const [sortKey, setSortKey] = useState<SortKey>(null)
+  const [sortDir, setSortDir] = useState<SortDir>('desc')
+
+  // Keyboard navigation
+  const [focusedIndex, setFocusedIndex] = useState(-1)
+  const visibleStocksRef = useRef<StockRow[]>([])
 
   const th = useMemo(() => ({
     appBg: 'var(--ds-color-bg-app)',
@@ -190,6 +238,28 @@ function App() {
     window.history.replaceState({}, '', newUrl)
   }, [filter.group, filter.value])
 
+  // Keyboard navigation
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      const tag = (e.target as HTMLElement)?.tagName
+      if (tag === 'INPUT' || tag === 'TEXTAREA') return
+      const list = visibleStocksRef.current
+      if (e.key === 'ArrowDown') {
+        e.preventDefault()
+        setFocusedIndex(prev => Math.min((prev ?? -1) + 1, list.length - 1))
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault()
+        setFocusedIndex(prev => Math.max((prev ?? 0) - 1, 0))
+      } else if (e.key === 'Enter') {
+        if (focusedIndex >= 0 && list[focusedIndex]) {
+          openChart(list[focusedIndex].sym)
+        }
+      }
+    }
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [focusedIndex, openChart])
+
   const toggleDark = useCallback(() => setDarkMode((p) => !p), [])
 
   const handleIndexClick = useCallback((sym: string, color: string) => {
@@ -200,6 +270,46 @@ function App() {
   const onToggleAdvFilter = useCallback(() => setShowAdvFilter(p => !p), [])
   const onToggleTradeHist = useCallback(() => setShowTradeHist(p => !p), [])
   const onCloseIdxChart = useCallback(() => setIdxChart({ open: false, sym: '', color: '' }), [])
+
+  // Compare handlers
+  const toggleCompare = useCallback((sym: string) => {
+    setSelectedCompare(prev => {
+      const has = prev.includes(sym)
+      if (has) return prev.filter(s => s !== sym)
+      if (prev.length >= 5) return prev
+      return [...prev, sym]
+    })
+  }, [])
+
+  const clearCompare = useCallback(() => setSelectedCompare([]), [])
+
+  // Alert handlers
+  const openAlertModal = useCallback((sym: string, price: number) => {
+    setAlertModal({ open: true, sym, threshold: String(price), direction: 'above' })
+  }, [])
+
+  const closeAlertModal = useCallback(() => {
+    setAlertModal(prev => ({ ...prev, open: false }))
+  }, [])
+
+  const saveAlert = useCallback((sym: string, threshold: number, direction: 'above' | 'below') => {
+    const alerts = JSON.parse(localStorage.getItem('priceAlerts') || '[]')
+    alerts.push({ id: Date.now(), sym, threshold, direction, createdAt: new Date().toISOString(), active: true })
+    localStorage.setItem('priceAlerts', JSON.stringify(alerts))
+    setAlertModal({ open: false, sym: '', threshold: '', direction: 'above' })
+  }, [])
+
+  // Sort handler
+  const handleSort = useCallback((key: SortKey) => {
+    setSortKey(prev => {
+      if (prev === key) {
+        setSortDir(d => d === 'desc' ? 'asc' : 'desc')
+        return key
+      }
+      setSortDir('desc')
+      return key
+    })
+  }, [])
 
   const indexViews = useMemo(
     () => mapIndexViews(indices, handleIndexClick),
@@ -251,8 +361,8 @@ function App() {
     }
     
     const filteredStocks = filterStockStates(stocks, filter, VN30_SYMBOLS)
-    return mapStockRows(filteredStocks, darkMode, th, openChart)
-  }, [stocks, darkMode, th, openChart, filter])
+    return mapStockRows(filteredStocks, darkMode, th, openChart, selectedCompare, toggleCompare, openAlertModal, focusedIndex)
+  }, [stocks, darkMode, th, openChart, filter, selectedCompare, toggleCompare, openAlertModal, focusedIndex])
 
   const handleFilterChange = useCallback((group: VietcapFilterGroup, value?: string) => {
     setFilter((prev) => ({
@@ -308,6 +418,28 @@ function App() {
     }))
   }, [filteredStocks, filter.watchlist, toggleWatchlist])
 
+  // Sort or pin-recent
+  const sortedStocks = useMemo(() => {
+    if (!sortKey) return stocksWithWatchlist
+    return [...stocksWithWatchlist].sort((a, b) => {
+      let av: number, bv: number
+      if (sortKey === 'lp') {
+        av = parseFloat(a.lp.replace(/,/g, ''))
+        bv = parseFloat(b.lp.replace(/,/g, ''))
+      } else if (sortKey === 'pct') {
+        av = parseFloat(a.pct)
+        bv = parseFloat(b.pct)
+      } else {
+        av = parseInt(a.tvol.replace(/,/g, ''))
+        bv = parseInt(b.tvol.replace(/,/g, ''))
+      }
+      return sortDir === 'asc' ? av - bv : bv - av
+    })
+  }, [stocksWithWatchlist, sortKey, sortDir])
+
+  // Update visible stocks ref for keyboard nav
+  visibleStocksRef.current = sortedStocks
+
   // Reset filters
   const resetFilters = useCallback(() => {
     setFilterPctFrom('')
@@ -346,71 +478,6 @@ function App() {
     return stocks.find((x) => x.s === chart.sym) ?? null
   }, [chart.open, chart.sym, stocks])
 
-  const chartView = useMemo<ChartView | null>(() => {
-    if (!chartStock) return null
-    const s = chartStock
-    const pts = s.ipts || []
-    const W = 640, H = 160, pad = 4
-    const mn = Math.min(...pts), mx = Math.max(...pts), rng = mx - mn || 0.01
-    const px = (_v: number, i: number) => ((i / (pts.length - 1)) * W).toFixed(1)
-    const py = (v: number) => (H - pad - ((v - mn) / rng) * (H - pad * 2)).toFixed(1)
-    const linePts = pts.map((v, i) => `${px(v, i)},${py(v)}`).join(' ')
-    const fillPath = `M 0,${H} L ${pts.map((v, i) => `${px(v, i)},${py(v)}`).join(' L ')} L ${W},${H} Z`
-    const refY = +(H - pad - ((s.r - mn) / rng) * (H - pad * 2)).toFixed(1)
-    const n = 5
-    const yLabels = Array.from({ length: n }, (_, i) => formatPrice(mn + (mx - mn) * (n - 1 - i) / (n - 1)))
-    const nbars = 30, bw = W / nbars
-    const vols = Array.from({ length: nbars }, (_, i) => {
-      const base = s.tv / nbars
-      const seed = (s.tv * 0.0001 + i * 0.37) % 1
-      return base * (0.5 + seed)
-    })
-    const maxV = Math.max(...vols)
-    const vbars = vols.map((v, i) => {
-      const h = Math.max(2, (v / maxV) * 36)
-      const pi = Math.floor(i / (nbars / pts.length))
-      const pv = pts[Math.min(pi, pts.length - 1)]
-      return {
-        x: (i * bw).toFixed(1),
-        y: (40 - h).toFixed(1),
-        w: (bw - 1).toFixed(1),
-        h: h.toFixed(1),
-        c: pv >= s.r ? '#4ade80' : '#f87171',
-      }
-    })
-    const color = priceColor(s.lp, s.r, s.cl, s.fl)
-    const chgVal = +(s.lp - s.r).toFixed(2)
-    const ranges = ['1Đ', '5Đ', '15Đ', '1T'].map((r) => ({
-      label: r,
-      bg: r === chart.range ? '#2563eb' : th.iconBg,
-      fg: r === chart.range ? '#fff' : th.navItemColor,
-      border: r === chart.range ? '#2563eb' : th.navBorder,
-      onClick: () => setChart((prev) => ({ ...prev, range: r })),
-    }))
-    const chgBg = s.pct >= 0 ? 'rgba(34,197,94,.15)' : 'rgba(244,63,94,.15)'
-    return {
-      sym: s.s,
-      lp: formatPrice(s.lp),
-      lc: color,
-      chg: (chgVal >= 0 ? '+' : '') + formatPrice(chgVal) + ' (' + (s.pct >= 0 ? '+' : '') + s.pct.toFixed(1) + '%)',
-      chgBg,
-      linePts,
-      fillPath,
-      refY,
-      yLabels,
-      vbars,
-      stats: [
-        { label: 'Tham chiếu', val: formatPrice(s.r), color: '#facc15' },
-        { label: 'Cao', val: formatPrice(s.hi), color: '#4ade80' },
-        { label: 'Thấp', val: formatPrice(s.lo), color: '#f87171' },
-        { label: 'KLGD', val: formatQuantity(s.tv), color: '#94a3b8' },
-        { label: 'NN Mua', val: formatQuantity(s.fb), color: '#4ade80' },
-        { label: 'NN Bán', val: formatQuantity(s.fs), color: '#f87171' },
-      ],
-      ranges,
-    }
-  }, [chartStock, chart.range, th])
-
   return (
     <AppRoutes
       th={th}
@@ -442,11 +509,20 @@ function App() {
       onSetPriceMax={setFilterPriceMax}
       onResetFilters={resetFilters}
       tradeHistory={tradeHistory}
-      stocksWithWatchlist={stocksWithWatchlist}
-      chartView={chartView}
+      stocksWithWatchlist={sortedStocks}
+      chartStock={chartStock}
       onCloseChart={closeChart}
       idxChart={idxChart}
       onCloseIdxChart={onCloseIdxChart}
+      selectedCompare={selectedCompare}
+      onToggleCompare={toggleCompare}
+      onClearCompare={clearCompare}
+      alertModal={alertModal}
+      onCloseAlertModal={closeAlertModal}
+      onSaveAlert={saveAlert}
+      sortKey={sortKey}
+      sortDir={sortDir}
+      onSort={handleSort}
     />
   )
 }

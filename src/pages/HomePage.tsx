@@ -3,7 +3,7 @@ import type {
   ThemeTokens,
   StockRow,
   MarketIndexView,
-  ChartView,
+  StockState,
   TradeHistoryItem,
   AlertModalState,
   SortKey,
@@ -19,6 +19,7 @@ import TradingViewModal from '../components/TradingViewModal'
 import TopMoversView from '../components/TopMoversView'
 import AlertModal from '../components/AlertModal'
 import CompareBar from '../components/CompareBar'
+import StockDetailModal from '../components/StockDetailModal'
 
 type Props = {
   th: ThemeTokens
@@ -50,7 +51,7 @@ type Props = {
   onResetFilters: () => void
   tradeHistory: TradeHistoryItem[]
   stocksWithWatchlist: StockRow[]
-  chartView: ChartView | null
+  chartStock: StockState | null
   onCloseChart: () => void
   idxChart: { open: boolean; sym: string; color: string }
   onCloseIdxChart: () => void
@@ -73,7 +74,7 @@ function HomePageInner({
   filterVolMin, filterPriceMin, filterPriceMax, onSetPctFrom,
   onSetPctTo, onSetVolMin, onSetPriceMin, onSetPriceMax,
   onResetFilters, tradeHistory, stocksWithWatchlist,
-  chartView: _chartView, onCloseChart: _onCloseChart, idxChart, onCloseIdxChart,
+  chartStock, onCloseChart, idxChart, onCloseIdxChart,
   selectedCompare, onToggleCompare, onClearCompare,
   alertModal, onCloseAlertModal, onSaveAlert,
 }: Props) {
@@ -143,6 +144,11 @@ function HomePageInner({
           tvSymbol={idxChart.sym}
           onClose={onCloseIdxChart}
         />
+      )}
+
+      {/* Stock detail modal */}
+      {chartStock && (
+        <StockDetailModal stock={chartStock} onClose={onCloseChart} />
       )}
     </div>
   )
