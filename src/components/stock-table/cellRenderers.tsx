@@ -44,13 +44,13 @@ function WatchlistCellRendererInner(props: ICellRendererParams<StockRow>) {
   if (!data) return null
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 6 }}>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
       <span
         onClick={(e) => {
           e.stopPropagation()
           data.onOpenAlert?.()
         }}
-        style={{ cursor: 'pointer', fontSize: 11, color: 'var(--ds-color-text-muted)' }}
+        style={{ cursor: 'pointer', fontSize: 13, lineHeight: 1, color: '#f59e0b' }}
         title="Đặt cảnh báo giá"
       >
         {'\u{1F514}'}
@@ -60,7 +60,7 @@ function WatchlistCellRendererInner(props: ICellRendererParams<StockRow>) {
           e.stopPropagation()
           data.onToggleWatchlist?.()
         }}
-        style={{ cursor: 'pointer', fontSize: 13, color: data.watchlisted ? 'var(--ds-color-red-400)' : 'var(--ds-color-blue-400)' }}
+        style={{ cursor: 'pointer', fontSize: 14, lineHeight: 1, color: data.watchlisted ? '#f87171' : '#60a5fa' }}
       >
         {data.watchlisted ? '\u2665' : '\u2661'}
       </span>

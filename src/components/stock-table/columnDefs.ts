@@ -5,20 +5,20 @@ import { SymbolCellRenderer, WatchlistCellRenderer, SparklineCellRenderer, RoomC
 type CellStyleParams = { data?: StockRow }
 
 const WIDTH = {
-  compare: 30,
-  symbol: 72,
-  pinnedPrice: 60,
-  orderBookPrice: 60,
-  matchedPrice: 64,
-  orderBookVolume: 62,
-  matchedVolume: 64,
-  narrowMetric: 54,
-  tradedVolume: 74,
-  sparkline: 70,
-  foreignVolume: 74,
-  room: 90,
-  marketVolume: 90,
-  watchlist: 52,
+  compare: 28,
+  symbol: 68,
+  pinnedPrice: 56,
+  orderBookPrice: 54,
+  matchedPrice: 58,
+  orderBookVolume: 56,
+  matchedVolume: 58,
+  narrowMetric: 48,
+  tradedVolume: 68,
+  sparkline: 62,
+  foreignVolume: 68,
+  room: 82,
+  marketVolume: 82,
+  watchlist: 48,
 } as const
 
 const cellStyle = (colorField?: string) => (params: CellStyleParams): Record<string, string | number> => {
@@ -447,7 +447,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
     cellStyle: volumeCellStyle,
   },
   {
-    headerName: '',
+    headerName: '♡',
     colId: 'watchlist',
     width: WIDTH.watchlist,
     minWidth: WIDTH.watchlist,
