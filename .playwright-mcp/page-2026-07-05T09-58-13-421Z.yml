@@ -1,0 +1,1407 @@
+- generic [ref=f3e3]:
+  - generic [ref=f3e5]:
+    - link "Ray Stock Market" [ref=f3e6] [cursor=pointer]:
+      - /url: /
+      - img [ref=f3e8]
+      - generic [ref=f3e10]: Ray Stock Market
+    - generic [ref=f3e11]: 05/07/2026 16:58:13
+    - generic [ref=f3e13]:
+      - text: VN-Index
+      - generic [ref=f3e14]: ▲1,860.01 +5.04
+      - text: │VN30
+      - generic [ref=f3e15]: ▲1,995.71 +5.06
+      - text: │ACB
+      - generic [ref=f3e16]: ▼22.65 -0.25
+      - text: │HPG
+      - generic [ref=f3e17]: ▲24.10 +0.32
+      - text: │VCB
+      - generic [ref=f3e18]: ▲81.50 +1.13
+      - text: │FPT
+      - generic [ref=f3e19]: ▲137.50 +1.89
+      - text: │DOW
+      - generic [ref=f3e20]: ▲52,342 +0.31%
+    - generic [ref=f3e21]:
+      - link "💼 Danh mục" [ref=f3e22] [cursor=pointer]:
+        - /url: /portfolio
+      - link "💰 Đặt lệnh" [ref=f3e23] [cursor=pointer]:
+        - /url: /trading-panel
+      - link "📖 Sổ lệnh" [ref=f3e24] [cursor=pointer]:
+        - /url: /order-book
+      - generic [ref=f3e25] [cursor=pointer]:
+        - text: Công cụ
+        - generic [ref=f3e31]: ▾
+      - generic "Chuyển Light mode" [ref=f3e33] [cursor=pointer]:
+        - generic [ref=f3e34]: ☀
+        - generic [ref=f3e35]: LIGHT
+  - generic [ref=f3e37]:
+    - generic [ref=f3e38]:
+      - generic [ref=f3e39]:
+        - generic [ref=f3e40] [cursor=pointer]:
+          - generic [ref=f3e42]:
+            - generic [ref=f3e43]: VN-Index
+            - generic [ref=f3e44]: LIVE
+          - generic [ref=f3e45]: 1,860.01
+          - generic [ref=f3e46]: +5.04 (+0.27%)
+          - generic [ref=f3e47]: "KL: 692,765,051"
+          - generic [ref=f3e48]:
+            - generic [ref=f3e49]: ▲146
+            - generic [ref=f3e50]: ▼74
+            - generic [ref=f3e51]: ──148
+          - img [ref=f3e52]
+        - generic [ref=f3e55] [cursor=pointer]:
+          - generic [ref=f3e57]:
+            - generic [ref=f3e58]: VN30-Index
+            - generic [ref=f3e59]: LIVE
+          - generic [ref=f3e60]: 1,995.71
+          - generic [ref=f3e61]: +5.06 (+0.25%)
+          - generic [ref=f3e62]: "KL: 312,451,165"
+          - generic [ref=f3e63]:
+            - generic [ref=f3e64]: ▲14
+            - generic [ref=f3e65]: ▼2
+            - generic [ref=f3e66]: ──14
+          - img [ref=f3e67]
+        - generic [ref=f3e70] [cursor=pointer]:
+          - generic [ref=f3e72]:
+            - generic [ref=f3e73]: HNX-Index
+            - generic [ref=f3e74]: LIVE
+          - generic [ref=f3e75]: "313.16"
+          - generic [ref=f3e76]: "-8.58 (-0.43%)"
+          - generic [ref=f3e77]: "KL: 41,602,865"
+          - generic [ref=f3e78]:
+            - generic [ref=f3e79]: ▲61
+            - generic [ref=f3e80]: ▼68
+            - generic [ref=f3e81]: ──63
+          - img [ref=f3e82]
+        - generic [ref=f3e85] [cursor=pointer]:
+          - generic [ref=f3e87]:
+            - generic [ref=f3e88]: HNX30
+            - generic [ref=f3e89]: LIVE
+          - generic [ref=f3e90]: "513.44"
+          - generic [ref=f3e91]: +0.14 (+0.03%)
+          - generic [ref=f3e92]: "KL: 26,266,277"
+          - generic [ref=f3e93]:
+            - generic [ref=f3e94]: ▲15
+            - generic [ref=f3e95]: ▼6
+            - generic [ref=f3e96]: ──9
+          - img [ref=f3e97]
+        - generic [ref=f3e100] [cursor=pointer]:
+          - generic [ref=f3e102]:
+            - generic [ref=f3e103]: UPCOM
+            - generic [ref=f3e104]: LIVE
+          - generic [ref=f3e105]: "129.94"
+          - generic [ref=f3e106]: +0.62 (+0.48%)
+          - generic [ref=f3e107]: "KL: 21,599,770"
+          - generic [ref=f3e108]:
+            - generic [ref=f3e109]: ▲121
+            - generic [ref=f3e110]: ▼90
+            - generic [ref=f3e111]: ──81
+          - img [ref=f3e112]
+      - generic [ref=f3e115]:
+        - generic [ref=f3e116]:
+          - generic [ref=f3e117] [cursor=pointer]: Mỹ
+          - generic [ref=f3e118] [cursor=pointer]: Châu Âu
+          - generic [ref=f3e119] [cursor=pointer]: Châu Á
+          - generic [ref=f3e120] [cursor=pointer]: Hàng hoá
+        - generic [ref=f3e121]:
+          - generic [ref=f3e122]:
+            - generic [ref=f3e123]: Dow Jones
+            - generic [ref=f3e124]: 42,587.50
+          - generic [ref=f3e125]:
+            - generic [ref=f3e126]: "+132.45"
+            - generic [ref=f3e127]: +0.31%
+        - generic [ref=f3e128]:
+          - generic [ref=f3e129]:
+            - generic [ref=f3e130]: S&P 500
+            - generic [ref=f3e131]: 5,862.13
+          - generic [ref=f3e132]:
+            - generic [ref=f3e133]: "+14.62"
+            - generic [ref=f3e134]: +0.25%
+        - generic [ref=f3e135]:
+          - generic [ref=f3e136]:
+            - generic [ref=f3e137]: Nasdaq
+            - generic [ref=f3e138]: 19,169.95
+          - generic [ref=f3e139]:
+            - generic [ref=f3e140]: "+256.34"
+            - generic [ref=f3e141]: +1.35%
+        - generic [ref=f3e142]:
+          - generic [ref=f3e143]:
+            - generic [ref=f3e144]: Russell 2000
+            - generic [ref=f3e145]: 2,026.97
+          - generic [ref=f3e146]:
+            - generic [ref=f3e147]: "+11.15"
+            - generic [ref=f3e148]: +0.55%
+        - generic [ref=f3e149]:
+          - generic [ref=f3e150]:
+            - generic [ref=f3e151]: VIX
+            - generic [ref=f3e152]: "14.82"
+          - generic [ref=f3e153]:
+            - generic [ref=f3e154]: "-0.34"
+            - generic [ref=f3e155]: "-2.24%"
+    - generic [ref=f3e157]:
+      - generic [ref=f3e158]:
+        - button "☰" [ref=f3e159]
+        - button "⊞" [ref=f3e160]
+        - button "▦" [ref=f3e161]
+        - button "📊" [ref=f3e162]
+      - generic [ref=f3e164]:
+        - generic [ref=f3e165]: 🔍
+        - textbox "Thêm mã ..." [ref=f3e166]
+      - separator [ref=f3e167]
+      - generic [ref=f3e168]:
+        - button "Danh mục quan tâm" [ref=f3e169]
+        - button "HOSE ▾" [ref=f3e170] [cursor=pointer]:
+          - text: HOSE
+          - generic [ref=f3e171]: ▾
+        - button "HNX ▾" [ref=f3e172] [cursor=pointer]:
+          - text: HNX
+          - generic [ref=f3e173]: ▾
+        - button "UPCOM ▾" [ref=f3e174] [cursor=pointer]:
+          - text: UPCOM
+          - generic [ref=f3e175]: ▾
+        - button "Phái Sinh ▾" [ref=f3e176] [cursor=pointer]:
+          - text: Phái Sinh
+          - generic [ref=f3e177]: ▾
+        - button "Chứng Quyền" [ref=f3e178]
+        - button "Ngân hàng ▾" [ref=f3e179] [cursor=pointer]:
+          - text: Ngân hàng
+          - generic [ref=f3e180]: ▾
+        - button "Trái phiếu ▾" [ref=f3e181] [cursor=pointer]:
+          - text: Trái phiếu
+          - generic [ref=f3e182]: ▾
+      - generic [ref=f3e183]:
+        - button "🔍" [ref=f3e184]
+        - button "📋" [ref=f3e185]
+        - button "⬇" [ref=f3e186]
+    - generic [ref=f3e190]:
+      - treegrid [ref=f3e192]:
+        - rowgroup [ref=f3e193]:
+          - row [ref=f3e194]:        
+          - row "Mã CK Trần TC Sàn" [ref=f3e195]:
+            - columnheader "Mã CK" [ref=f3e196]:
+              - text: 
+              - generic [ref=f3e198] [cursor=pointer]: Mã CK
+              - text:     
+            - columnheader "Trần" [ref=f3e199]:
+              - text: 
+              - generic [ref=f3e201] [cursor=pointer]: Trần
+              - text:     
+            - columnheader "TC" [ref=f3e202]:
+              - text: 
+              - generic [ref=f3e204] [cursor=pointer]: TC
+              - text:     
+            - columnheader "Sàn" [ref=f3e205]:
+              - text: 
+              - generic [ref=f3e207] [cursor=pointer]: Sàn
+              - text:     
+        - rowgroup [ref=f3e208]:
+          - row "── DƯ MUA ── KHỚP LỆNH ── DƯ BÁN ── NN" [ref=f3e209]:
+            - columnheader "── DƯ MUA ──" [ref=f3e210]: ── DƯ MUA ──  
+            - columnheader "KHỚP LỆNH" [ref=f3e212]: KHỚP LỆNH  
+            - columnheader "── DƯ BÁN ──" [ref=f3e214]: ── DƯ BÁN ──  
+            - text:      
+            - columnheader "NN" [ref=f3e216]: NN  
+            - text:    
+          - row "Giá 3 KL 3 Giá 2 KL 2 Giá 1 KL 1 Giá KL % ↕ KLGD Giá 1 KL 1 Giá 2 KL 2 Giá 3 KL 3 Cao TB Thấp Mua Bán ↕ Room KLGD TT ♡" [ref=f3e218]:
+            - columnheader "Giá 3" [ref=f3e219]:
+              - text: 
+              - generic [ref=f3e221] [cursor=pointer]: Giá 3
+              - text:     
+            - columnheader "KL 3" [ref=f3e222]:
+              - text: 
+              - generic [ref=f3e224] [cursor=pointer]: KL 3
+              - text:     
+            - columnheader "Giá 2" [ref=f3e225]:
+              - text: 
+              - generic [ref=f3e227] [cursor=pointer]: Giá 2
+              - text:     
+            - columnheader "KL 2" [ref=f3e228]:
+              - text: 
+              - generic [ref=f3e230] [cursor=pointer]: KL 2
+              - text:     
+            - columnheader "Giá 1" [ref=f3e231]:
+              - text: 
+              - generic [ref=f3e233] [cursor=pointer]: Giá 1
+              - text:     
+            - columnheader "KL 1" [ref=f3e234]:
+              - text: 
+              - generic [ref=f3e236] [cursor=pointer]: KL 1
+              - text:     
+            - columnheader "Giá" [ref=f3e237]:
+              - text: 
+              - generic [ref=f3e239] [cursor=pointer]: Giá
+              - text:     
+            - columnheader "KL" [ref=f3e240]:
+              - text: 
+              - generic [ref=f3e242] [cursor=pointer]: KL
+              - text:     
+            - columnheader "%" [ref=f3e243]:
+              - text: 
+              - generic [ref=f3e245] [cursor=pointer]: "%"
+              - text:     
+            - columnheader "↕" [ref=f3e246]:
+              - text: 
+              - generic [ref=f3e248] [cursor=pointer]: ↕
+              - text:     
+            - columnheader "KLGD" [ref=f3e249]:
+              - text: 
+              - generic [ref=f3e251] [cursor=pointer]: KLGD
+              - text:     
+            - columnheader "Giá 1" [ref=f3e252]:
+              - text: 
+              - generic [ref=f3e254] [cursor=pointer]: Giá 1
+              - text:     
+            - columnheader "KL 1" [ref=f3e255]:
+              - text: 
+              - generic [ref=f3e257] [cursor=pointer]: KL 1
+              - text:     
+            - columnheader "Giá 2" [ref=f3e258]:
+              - text: 
+              - generic [ref=f3e260] [cursor=pointer]: Giá 2
+              - text:     
+            - columnheader "KL 2" [ref=f3e261]:
+              - text: 
+              - generic [ref=f3e263] [cursor=pointer]: KL 2
+              - text:     
+            - columnheader "Giá 3" [ref=f3e264]:
+              - text: 
+              - generic [ref=f3e266] [cursor=pointer]: Giá 3
+              - text:     
+            - columnheader "KL 3" [ref=f3e267]:
+              - text: 
+              - generic [ref=f3e269] [cursor=pointer]: KL 3
+              - text:     
+            - columnheader "Cao" [ref=f3e270]:
+              - text: 
+              - generic [ref=f3e272] [cursor=pointer]: Cao
+              - text:     
+            - columnheader "TB" [ref=f3e273]:
+              - text: 
+              - generic [ref=f3e275] [cursor=pointer]: TB
+              - text:     
+            - columnheader "Thấp" [ref=f3e276]:
+              - text: 
+              - generic [ref=f3e278] [cursor=pointer]: Thấp
+              - text:     
+            - columnheader "Mua" [ref=f3e279]:
+              - text: 
+              - generic [ref=f3e281] [cursor=pointer]: Mua
+              - text:     
+            - columnheader "Bán" [ref=f3e282]:
+              - text: 
+              - generic [ref=f3e284] [cursor=pointer]: Bán
+              - text:     
+            - columnheader "↕" [ref=f3e285]:
+              - text: 
+              - generic [ref=f3e287] [cursor=pointer]: ↕
+              - text:     
+            - columnheader "Room" [ref=f3e288]:
+              - text: 
+              - generic [ref=f3e290] [cursor=pointer]: Room
+              - text:     
+            - columnheader "KLGD TT" [ref=f3e291]:
+              - text: 
+              - generic [ref=f3e293] [cursor=pointer]: KLGD TT
+              - text:     
+            - columnheader "♡" [ref=f3e294]:
+              - text: 
+              - generic [ref=f3e296] [cursor=pointer]: ♡
+              - text:     
+        - rowgroup [ref=f3e297]:
+          - row "41I1G7000 21.50 20.10 18.69" [ref=f3e298]:
+            - gridcell "41I1G7000" [ref=f3e299] [cursor=pointer]
+            - gridcell "21.50" [ref=f3e300]
+            - gridcell "20.10" [ref=f3e301]
+            - gridcell "18.69" [ref=f3e302]
+          - row "41I1G8000 21.53 20.12 18.71" [ref=f3e303]:
+            - gridcell "41I1G8000" [ref=f3e304] [cursor=pointer]
+            - gridcell "21.53" [ref=f3e305]
+            - gridcell "20.12" [ref=f3e306]
+            - gridcell "18.71" [ref=f3e307]
+          - row "41I1G9000 21.53 20.12 18.71" [ref=f3e308]:
+            - gridcell "41I1G9000" [ref=f3e309] [cursor=pointer]
+            - gridcell "21.53" [ref=f3e310]
+            - gridcell "20.12" [ref=f3e311]
+            - gridcell "18.71" [ref=f3e312]
+          - row "41I1GC000 21.52 20.11 18.70" [ref=f3e313]:
+            - gridcell "41I1GC000" [ref=f3e314] [cursor=pointer]
+            - gridcell "21.52" [ref=f3e315]
+            - gridcell "20.11" [ref=f3e316]
+            - gridcell "18.70" [ref=f3e317]
+          - row "41I2G7000 20.78 19.42 18.07" [ref=f3e318]:
+            - gridcell "41I2G7000" [ref=f3e319] [cursor=pointer]
+            - gridcell "20.78" [ref=f3e320]
+            - gridcell "19.42" [ref=f3e321]
+            - gridcell "18.07" [ref=f3e322]
+          - row "41I2G8000 20.78 19.42 18.06" [ref=f3e323]:
+            - gridcell "41I2G8000" [ref=f3e324] [cursor=pointer]
+            - gridcell "20.78" [ref=f3e325]
+            - gridcell "19.42" [ref=f3e326]
+            - gridcell "18.06" [ref=f3e327]
+          - row "41I2G9000 20.75 19.39 18.03" [ref=f3e328]:
+            - gridcell "41I2G9000" [ref=f3e329] [cursor=pointer]
+            - gridcell "20.75" [ref=f3e330]
+            - gridcell "19.39" [ref=f3e331]
+            - gridcell "18.03" [ref=f3e332]
+          - row "41I2GC000 20.72 19.36 18.01" [ref=f3e333]:
+            - gridcell "41I2GC000" [ref=f3e334] [cursor=pointer]
+            - gridcell "20.72" [ref=f3e335]
+            - gridcell "19.36" [ref=f3e336]
+            - gridcell "18.01" [ref=f3e337]
+          - row "A32 0.34 0.29 0.25" [ref=f3e338]:
+            - gridcell "A32" [ref=f3e339] [cursor=pointer]
+            - gridcell "0.34" [ref=f3e340]
+            - gridcell "0.29" [ref=f3e341]
+            - gridcell "0.25" [ref=f3e342]
+          - row "AAA 0.08 0.07 0.07" [ref=f3e343]:
+            - gridcell "AAA" [ref=f3e344] [cursor=pointer]
+            - gridcell "0.08" [ref=f3e345]
+            - gridcell "0.07" [ref=f3e346]
+            - gridcell "0.07" [ref=f3e347]
+          - row "AAH 0.03 0.03 0.02" [ref=f3e348]:
+            - gridcell "AAH" [ref=f3e349] [cursor=pointer]
+            - gridcell "0.03" [ref=f3e350]
+            - gridcell "0.03" [ref=f3e351]
+            - gridcell "0.02" [ref=f3e352]
+          - row "AAM 0.07 0.07 0.06" [ref=f3e353]:
+            - gridcell "AAM" [ref=f3e354] [cursor=pointer]
+            - gridcell "0.07" [ref=f3e355]
+            - gridcell "0.07" [ref=f3e356]
+            - gridcell "0.06" [ref=f3e357]
+          - row "AAN 0.17 0.16 0.15" [ref=f3e358]:
+            - gridcell "AAN" [ref=f3e359] [cursor=pointer]
+            - gridcell "0.17" [ref=f3e360]
+            - gridcell "0.16" [ref=f3e361]
+            - gridcell "0.15" [ref=f3e362]
+          - row "AAS 0.10 0.09 0.07" [ref=f3e363]:
+            - gridcell "AAS" [ref=f3e364] [cursor=pointer]
+            - gridcell "0.10" [ref=f3e365]
+            - gridcell "0.09" [ref=f3e366]
+            - gridcell "0.07" [ref=f3e367]
+          - row "AAT 0.03 0.03 0.03" [ref=f3e368]:
+            - gridcell "AAT" [ref=f3e369] [cursor=pointer]
+            - gridcell "0.03" [ref=f3e370]
+            - gridcell "0.03" [ref=f3e371]
+            - gridcell "0.03" [ref=f3e372]
+          - row "AAV 0.08 0.07 0.06" [ref=f3e373]:
+            - gridcell "AAV" [ref=f3e374] [cursor=pointer]
+            - gridcell "0.08" [ref=f3e375]
+            - gridcell "0.07" [ref=f3e376]
+            - gridcell "0.06" [ref=f3e377]
+          - row "ABB 0.21 0.18 0.16" [ref=f3e378]:
+            - gridcell "ABB" [ref=f3e379] [cursor=pointer]
+            - gridcell "0.21" [ref=f3e380]
+            - gridcell "0.18" [ref=f3e381]
+            - gridcell "0.16" [ref=f3e382]
+          - row "ABC 0.12 0.10 0.09" [ref=f3e383]:
+            - gridcell "ABC" [ref=f3e384] [cursor=pointer]
+            - gridcell "0.12" [ref=f3e385]
+            - gridcell "0.10" [ref=f3e386]
+            - gridcell "0.09" [ref=f3e387]
+          - row "ABI 0.22 0.19 0.17" [ref=f3e388]:
+            - gridcell "ABI" [ref=f3e389] [cursor=pointer]
+            - gridcell "0.22" [ref=f3e390]
+            - gridcell "0.19" [ref=f3e391]
+            - gridcell "0.17" [ref=f3e392]
+          - row "ABR 0.12 0.12 0.11" [ref=f3e393]:
+            - gridcell "ABR" [ref=f3e394] [cursor=pointer]
+            - gridcell "0.12" [ref=f3e395]
+            - gridcell "0.12" [ref=f3e396]
+            - gridcell "0.11" [ref=f3e397]
+          - row "ABS 0.03 0.03 0.03" [ref=f3e398]:
+            - gridcell "ABS" [ref=f3e399] [cursor=pointer]
+            - gridcell "0.03" [ref=f3e400]
+            - gridcell "0.03" [ref=f3e401]
+            - gridcell "0.03" [ref=f3e402]
+          - row "ABT 0.58 0.54 0.50" [ref=f3e403]:
+            - gridcell "ABT" [ref=f3e404] [cursor=pointer]
+            - gridcell "0.58" [ref=f3e405]
+            - gridcell "0.54" [ref=f3e406]
+            - gridcell "0.50" [ref=f3e407]
+          - row "ABW 0.15 0.13 0.11" [ref=f3e408]:
+            - gridcell "ABW" [ref=f3e409] [cursor=pointer]
+            - gridcell "0.15" [ref=f3e410]
+            - gridcell "0.13" [ref=f3e411]
+            - gridcell "0.11" [ref=f3e412]
+          - row "ACB 0.24 0.23 0.21" [ref=f3e413]:
+            - gridcell "ACB" [ref=f3e414] [cursor=pointer]
+            - gridcell "0.24" [ref=f3e415]
+            - gridcell "0.23" [ref=f3e416]
+            - gridcell "0.21" [ref=f3e417]
+          - row "ACC 0.12 0.11 0.11" [ref=f3e418]:
+            - gridcell "ACC" [ref=f3e419] [cursor=pointer]
+            - gridcell "0.12" [ref=f3e420]
+            - gridcell "0.11" [ref=f3e421]
+            - gridcell "0.11" [ref=f3e422]
+          - row "ACE 0.41 0.36 0.30" [ref=f3e423]:
+            - gridcell "ACE" [ref=f3e424] [cursor=pointer]
+            - gridcell "0.41" [ref=f3e425]
+            - gridcell "0.36" [ref=f3e426]
+            - gridcell "0.30" [ref=f3e427]
+          - row "ACG 0.35 0.33 0.31" [ref=f3e428]:
+            - gridcell "ACG" [ref=f3e429] [cursor=pointer]
+            - gridcell "0.35" [ref=f3e430]
+            - gridcell "0.33" [ref=f3e431]
+            - gridcell "0.31" [ref=f3e432]
+          - row "ACL 0.14 0.13 0.12" [ref=f3e433]:
+            - gridcell "ACL" [ref=f3e434] [cursor=pointer]
+            - gridcell "0.14" [ref=f3e435]
+            - gridcell "0.13" [ref=f3e436]
+            - gridcell "0.12" [ref=f3e437]
+          - row "ACM 0.01 0.01 0.00" [ref=f3e438]:
+            - gridcell "ACM" [ref=f3e439] [cursor=pointer]
+            - gridcell "0.01" [ref=f3e440]
+            - gridcell "0.01" [ref=f3e441]
+            - gridcell "0.00" [ref=f3e442]
+          - row "ACS 0.06 0.05 0.05" [ref=f3e443]:
+            - gridcell "ACS" [ref=f3e444] [cursor=pointer]
+            - gridcell "0.06" [ref=f3e445]
+            - gridcell "0.05" [ref=f3e446]
+            - gridcell "0.05" [ref=f3e447]
+          - row "ACV 0.50 0.44 0.37" [ref=f3e448]:
+            - gridcell "ACV" [ref=f3e449] [cursor=pointer]
+            - gridcell "0.50" [ref=f3e450]
+            - gridcell "0.44" [ref=f3e451]
+            - gridcell "0.37" [ref=f3e452]
+          - row "ADC 0.19 0.17 0.16" [ref=f3e453]:
+            - gridcell "ADC" [ref=f3e454] [cursor=pointer]
+            - gridcell "0.19" [ref=f3e455]
+            - gridcell "0.17" [ref=f3e456]
+            - gridcell "0.16" [ref=f3e457]
+          - row "ADG 0.09 0.09 0.08" [ref=f3e458]:
+            - gridcell "ADG" [ref=f3e459] [cursor=pointer]
+            - gridcell "0.09" [ref=f3e460]
+            - gridcell "0.09" [ref=f3e461]
+            - gridcell "0.08" [ref=f3e462]
+          - row "ADP 0.25 0.23 0.22" [ref=f3e463]:
+            - gridcell "ADP" [ref=f3e464] [cursor=pointer]
+            - gridcell "0.25" [ref=f3e465]
+            - gridcell "0.23" [ref=f3e466]
+            - gridcell "0.22" [ref=f3e467]
+        - rowgroup [ref=f3e468]:
+          - row "20.09 24 20.09 7 20.09 7 20.09 4,869 +0.0% -0.01 147,578 20.09 3 20.09 34 20.09 33 20.16 20.09 20.01 7,233 6,959 +274 147,578 ♡" [ref=f3e469]:
+            - gridcell "20.09" [ref=f3e470]
+            - gridcell "24" [ref=f3e471]
+            - gridcell "20.09" [ref=f3e472]
+            - gridcell "7" [ref=f3e473]
+            - gridcell "20.09" [ref=f3e474]
+            - gridcell "7" [ref=f3e475]
+            - gridcell "20.09" [ref=f3e476]
+            - gridcell "4,869" [ref=f3e477]
+            - gridcell "+0.0%" [ref=f3e478]
+            - gridcell "-0.01" [ref=f3e479]
+            - gridcell "147,578" [ref=f3e480]
+            - gridcell "20.09" [ref=f3e481]
+            - gridcell "3" [ref=f3e482]
+            - gridcell "20.09" [ref=f3e483]
+            - gridcell "34" [ref=f3e484]
+            - gridcell "20.09" [ref=f3e485]
+            - gridcell "33" [ref=f3e486]
+            - gridcell "20.16" [ref=f3e487]
+            - gridcell "20.09" [ref=f3e488]
+            - gridcell "20.01" [ref=f3e489]
+            - gridcell "7,233" [ref=f3e490]
+            - gridcell "6,959" [ref=f3e491]
+            - gridcell "+274" [ref=f3e492]
+            - gridcell [ref=f3e493]
+            - gridcell "147,578" [ref=f3e494]
+            - gridcell "♡" [ref=f3e495] [cursor=pointer]
+          - row "20.04 1 20.05 3 20.06 2 20.11 7 +0.0% -0.01 346 20.11 2 20.12 2 20.13 2 20.15 20.09 20.01 141 2 +139 346 ♡" [ref=f3e496]:
+            - gridcell "20.04" [ref=f3e497]
+            - gridcell "1" [ref=f3e498]
+            - gridcell "20.05" [ref=f3e499]
+            - gridcell "3" [ref=f3e500]
+            - gridcell "20.06" [ref=f3e501]
+            - gridcell "2" [ref=f3e502]
+            - gridcell "20.11" [ref=f3e503]
+            - gridcell "7" [ref=f3e504]
+            - gridcell "+0.0%" [ref=f3e505]
+            - gridcell "-0.01" [ref=f3e506]
+            - gridcell "346" [ref=f3e507]
+            - gridcell "20.11" [ref=f3e508]
+            - gridcell "2" [ref=f3e509]
+            - gridcell "20.12" [ref=f3e510]
+            - gridcell "2" [ref=f3e511]
+            - gridcell "20.13" [ref=f3e512]
+            - gridcell "2" [ref=f3e513]
+            - gridcell "20.15" [ref=f3e514]
+            - gridcell "20.09" [ref=f3e515]
+            - gridcell "20.01" [ref=f3e516]
+            - gridcell "141" [ref=f3e517]
+            - gridcell "2" [ref=f3e518]
+            - gridcell "+139" [ref=f3e519]
+            - gridcell [ref=f3e520]
+            - gridcell "346" [ref=f3e521]
+            - gridcell "♡" [ref=f3e522] [cursor=pointer]
+          - row "20.04 1 20.05 1 20.09 1 20.11 6 +0.0% -0.01 132 20.11 1 20.12 1 20.12 1 20.15 20.09 20.02 7 40 33 132 ♡" [ref=f3e523]:
+            - gridcell "20.04" [ref=f3e524]
+            - gridcell "1" [ref=f3e525]
+            - gridcell "20.05" [ref=f3e526]
+            - gridcell "1" [ref=f3e527]
+            - gridcell "20.09" [ref=f3e528]
+            - gridcell "1" [ref=f3e529]
+            - gridcell "20.11" [ref=f3e530]
+            - gridcell "6" [ref=f3e531]
+            - gridcell "+0.0%" [ref=f3e532]
+            - gridcell "-0.01" [ref=f3e533]
+            - gridcell "132" [ref=f3e534]
+            - gridcell "20.11" [ref=f3e535]
+            - gridcell "1" [ref=f3e536]
+            - gridcell "20.12" [ref=f3e537]
+            - gridcell "1" [ref=f3e538]
+            - gridcell "20.12" [ref=f3e539]
+            - gridcell "1" [ref=f3e540]
+            - gridcell "20.15" [ref=f3e541]
+            - gridcell "20.09" [ref=f3e542]
+            - gridcell "20.02" [ref=f3e543]
+            - gridcell "7" [ref=f3e544]
+            - gridcell "40" [ref=f3e545]
+            - gridcell "33" [ref=f3e546]
+            - gridcell [ref=f3e547]
+            - gridcell "132" [ref=f3e548]
+            - gridcell "♡" [ref=f3e549] [cursor=pointer]
+          - row "20.04 1 20.05 1 20.05 1 20.05 3 -0.3% -0.06 99 20.11 1 20.12 1 20.13 3 20.14 20.07 20.02 1 49 48 99 ♡" [ref=f3e550]:
+            - gridcell "20.04" [ref=f3e551]
+            - gridcell "1" [ref=f3e552]
+            - gridcell "20.05" [ref=f3e553]
+            - gridcell "1" [ref=f3e554]
+            - gridcell "20.05" [ref=f3e555]
+            - gridcell "1" [ref=f3e556]
+            - gridcell "20.05" [ref=f3e557]
+            - gridcell "3" [ref=f3e558]
+            - gridcell "-0.3%" [ref=f3e559]
+            - gridcell "-0.06" [ref=f3e560]
+            - gridcell "99" [ref=f3e561]
+            - gridcell "20.11" [ref=f3e562]
+            - gridcell "1" [ref=f3e563]
+            - gridcell "20.12" [ref=f3e564]
+            - gridcell "1" [ref=f3e565]
+            - gridcell "20.13" [ref=f3e566]
+            - gridcell "3" [ref=f3e567]
+            - gridcell "20.14" [ref=f3e568]
+            - gridcell "20.07" [ref=f3e569]
+            - gridcell "20.02" [ref=f3e570]
+            - gridcell "1" [ref=f3e571]
+            - gridcell "49" [ref=f3e572]
+            - gridcell "48" [ref=f3e573]
+            - gridcell [ref=f3e574]
+            - gridcell "99" [ref=f3e575]
+            - gridcell "♡" [ref=f3e576] [cursor=pointer]
+          - row "19.30 1 19.33 1 19.36 1 19.39 1 -0.2% -0.03 20 19.43 1 19.43 1 19.46 1 19.43 19.37 19.30 20 ♡" [ref=f3e577]:
+            - gridcell "19.30" [ref=f3e578]
+            - gridcell "1" [ref=f3e579]
+            - gridcell "19.33" [ref=f3e580]
+            - gridcell "1" [ref=f3e581]
+            - gridcell "19.36" [ref=f3e582]
+            - gridcell "1" [ref=f3e583]
+            - gridcell "19.39" [ref=f3e584]
+            - gridcell "1" [ref=f3e585]
+            - gridcell "-0.2%" [ref=f3e586]
+            - gridcell "-0.03" [ref=f3e587]
+            - gridcell "20" [ref=f3e588]
+            - gridcell "19.43" [ref=f3e589]
+            - gridcell "1" [ref=f3e590]
+            - gridcell "19.43" [ref=f3e591]
+            - gridcell "1" [ref=f3e592]
+            - gridcell "19.46" [ref=f3e593]
+            - gridcell "1" [ref=f3e594]
+            - gridcell "19.43" [ref=f3e595]
+            - gridcell "19.37" [ref=f3e596]
+            - gridcell "19.30" [ref=f3e597]
+            - gridcell [ref=f3e598]
+            - gridcell [ref=f3e599]
+            - gridcell [ref=f3e600]
+            - gridcell [ref=f3e601]
+            - gridcell "20" [ref=f3e602]
+            - gridcell "♡" [ref=f3e603] [cursor=pointer]
+          - row "19.15 1 19.26 1 19.27 1 19.38 1 -0.2% -0.04 1 19.49 1 19.49 1 19.50 2 19.38 19.38 19.38 1 ♡" [ref=f3e604]:
+            - gridcell "19.15" [ref=f3e605]
+            - gridcell "1" [ref=f3e606]
+            - gridcell "19.26" [ref=f3e607]
+            - gridcell "1" [ref=f3e608]
+            - gridcell "19.27" [ref=f3e609]
+            - gridcell "1" [ref=f3e610]
+            - gridcell "19.38" [ref=f3e611]
+            - gridcell "1" [ref=f3e612]
+            - gridcell "-0.2%" [ref=f3e613]
+            - gridcell "-0.04" [ref=f3e614]
+            - gridcell "1" [ref=f3e615]
+            - gridcell "19.49" [ref=f3e616]
+            - gridcell "1" [ref=f3e617]
+            - gridcell "19.49" [ref=f3e618]
+            - gridcell "1" [ref=f3e619]
+            - gridcell "19.50" [ref=f3e620]
+            - gridcell "2" [ref=f3e621]
+            - gridcell "19.38" [ref=f3e622]
+            - gridcell "19.38" [ref=f3e623]
+            - gridcell "19.38" [ref=f3e624]
+            - gridcell [ref=f3e625]
+            - gridcell [ref=f3e626]
+            - gridcell [ref=f3e627]
+            - gridcell [ref=f3e628]
+            - gridcell "1" [ref=f3e629]
+            - gridcell "♡" [ref=f3e630] [cursor=pointer]
+          - row "19.16 1 19.22 1 19.23 1 19.36 1 -0.2% -0.03 4 19.36 1 19.36 1 19.37 1 19.36 19.31 19.21 4 ♡" [ref=f3e631]:
+            - gridcell "19.16" [ref=f3e632]
+            - gridcell "1" [ref=f3e633]
+            - gridcell "19.22" [ref=f3e634]
+            - gridcell "1" [ref=f3e635]
+            - gridcell "19.23" [ref=f3e636]
+            - gridcell "1" [ref=f3e637]
+            - gridcell "19.36" [ref=f3e638]
+            - gridcell "1" [ref=f3e639]
+            - gridcell "-0.2%" [ref=f3e640]
+            - gridcell "-0.03" [ref=f3e641]
+            - gridcell "4" [ref=f3e642]
+            - gridcell "19.36" [ref=f3e643]
+            - gridcell "1" [ref=f3e644]
+            - gridcell "19.36" [ref=f3e645]
+            - gridcell "1" [ref=f3e646]
+            - gridcell "19.37" [ref=f3e647]
+            - gridcell "1" [ref=f3e648]
+            - gridcell "19.36" [ref=f3e649]
+            - gridcell "19.31" [ref=f3e650]
+            - gridcell "19.21" [ref=f3e651]
+            - gridcell [ref=f3e652]
+            - gridcell [ref=f3e653]
+            - gridcell [ref=f3e654]
+            - gridcell [ref=f3e655]
+            - gridcell "4" [ref=f3e656]
+            - gridcell "♡" [ref=f3e657] [cursor=pointer]
+          - row "18.80 1 19.01 1 19.02 1 0.00 -100.0% -19.36 19.49 1 19.55 1 19.60 1 0.00 0.00 0.00 ♡" [ref=f3e658]:
+            - gridcell "18.80" [ref=f3e659]
+            - gridcell "1" [ref=f3e660]
+            - gridcell "19.01" [ref=f3e661]
+            - gridcell "1" [ref=f3e662]
+            - gridcell "19.02" [ref=f3e663]
+            - gridcell "1" [ref=f3e664]
+            - gridcell "0.00" [ref=f3e665]
+            - gridcell [ref=f3e666]
+            - gridcell "-100.0%" [ref=f3e667]
+            - gridcell "-19.36" [ref=f3e668]
+            - gridcell [ref=f3e669]
+            - gridcell "19.49" [ref=f3e670]
+            - gridcell "1" [ref=f3e671]
+            - gridcell "19.55" [ref=f3e672]
+            - gridcell "1" [ref=f3e673]
+            - gridcell "19.60" [ref=f3e674]
+            - gridcell "1" [ref=f3e675]
+            - gridcell "0.00" [ref=f3e676]
+            - gridcell "0.00" [ref=f3e677]
+            - gridcell "0.00" [ref=f3e678]
+            - gridcell [ref=f3e679]
+            - gridcell [ref=f3e680]
+            - gridcell [ref=f3e681]
+            - gridcell [ref=f3e682]
+            - gridcell [ref=f3e683]
+            - gridcell "♡" [ref=f3e684] [cursor=pointer]
+          - row "0.28 100 0.28 100 0.29 100 0.00 -100.0% -0.29 0.31 500 0.31 100 0.31 100 0.00 0.00 0.00 ♡" [ref=f3e685]:
+            - gridcell "0.28" [ref=f3e686]
+            - gridcell "100" [ref=f3e687]
+            - gridcell "0.28" [ref=f3e688]
+            - gridcell "100" [ref=f3e689]
+            - gridcell "0.29" [ref=f3e690]
+            - gridcell "100" [ref=f3e691]
+            - gridcell "0.00" [ref=f3e692]
+            - gridcell [ref=f3e693]
+            - gridcell "-100.0%" [ref=f3e694]
+            - gridcell "-0.29" [ref=f3e695]
+            - gridcell [ref=f3e696]
+            - gridcell "0.31" [ref=f3e697]
+            - gridcell "500" [ref=f3e698]
+            - gridcell "0.31" [ref=f3e699]
+            - gridcell "100" [ref=f3e700]
+            - gridcell "0.31" [ref=f3e701]
+            - gridcell "100" [ref=f3e702]
+            - gridcell "0.00" [ref=f3e703]
+            - gridcell "0.00" [ref=f3e704]
+            - gridcell "0.00" [ref=f3e705]
+            - gridcell [ref=f3e706]
+            - gridcell [ref=f3e707]
+            - gridcell [ref=f3e708]
+            - gridcell [ref=f3e709]
+            - gridcell [ref=f3e710]
+            - gridcell "♡" [ref=f3e711] [cursor=pointer]
+          - row "0.07 7,800 0.07 12,200 0.07 5,600 0.07 56,000 +0.0% +0.00 714,000 0.07 6,800 0.07 15,200 0.07 3,200 0.07 0.07 0.07 94,100 23,200 +70,900 714,000 ♡" [ref=f3e712]:
+            - gridcell "0.07" [ref=f3e713]
+            - gridcell "7,800" [ref=f3e714]
+            - gridcell "0.07" [ref=f3e715]
+            - gridcell "12,200" [ref=f3e716]
+            - gridcell "0.07" [ref=f3e717]
+            - gridcell "5,600" [ref=f3e718]
+            - gridcell "0.07" [ref=f3e719]
+            - gridcell "56,000" [ref=f3e720]
+            - gridcell "+0.0%" [ref=f3e721]
+            - gridcell "+0.00" [ref=f3e722]
+            - gridcell "714,000" [ref=f3e723]
+            - gridcell "0.07" [ref=f3e724]
+            - gridcell "6,800" [ref=f3e725]
+            - gridcell "0.07" [ref=f3e726]
+            - gridcell "15,200" [ref=f3e727]
+            - gridcell "0.07" [ref=f3e728]
+            - gridcell "3,200" [ref=f3e729]
+            - gridcell "0.07" [ref=f3e730]
+            - gridcell "0.07" [ref=f3e731]
+            - gridcell "0.07" [ref=f3e732]
+            - gridcell "94,100" [ref=f3e733]
+            - gridcell "23,200" [ref=f3e734]
+            - gridcell "+70,900" [ref=f3e735]
+            - gridcell [ref=f3e736]
+            - gridcell "714,000" [ref=f3e737]
+            - gridcell "♡" [ref=f3e738] [cursor=pointer]
+          - row "0.02 63,500 0.02 192,300 0.03 2,700 0.03 200 +0.0% +0.00 616,100 0.03 253,200 0.03 343,300 0.03 303,500 0.03 0.03 0.02 616,100 ♡" [ref=f3e739]:
+            - gridcell "0.02" [ref=f3e740]
+            - gridcell "63,500" [ref=f3e741]
+            - gridcell "0.02" [ref=f3e742]
+            - gridcell "192,300" [ref=f3e743]
+            - gridcell "0.03" [ref=f3e744]
+            - gridcell "2,700" [ref=f3e745]
+            - gridcell "0.03" [ref=f3e746]
+            - gridcell "200" [ref=f3e747]
+            - gridcell "+0.0%" [ref=f3e748]
+            - gridcell "+0.00" [ref=f3e749]
+            - gridcell "616,100" [ref=f3e750]
+            - gridcell "0.03" [ref=f3e751]
+            - gridcell "253,200" [ref=f3e752]
+            - gridcell "0.03" [ref=f3e753]
+            - gridcell "343,300" [ref=f3e754]
+            - gridcell "0.03" [ref=f3e755]
+            - gridcell "303,500" [ref=f3e756]
+            - gridcell "0.03" [ref=f3e757]
+            - gridcell "0.03" [ref=f3e758]
+            - gridcell "0.02" [ref=f3e759]
+            - gridcell [ref=f3e760]
+            - gridcell [ref=f3e761]
+            - gridcell [ref=f3e762]
+            - gridcell [ref=f3e763]
+            - gridcell "616,100" [ref=f3e764]
+            - gridcell "♡" [ref=f3e765] [cursor=pointer]
+          - row "0.06 1,200 0.07 200 0.07 400 0.07 100 +0.0% +0.00 4,400 0.07 1,000 0.07 1,000 0.07 1,200 0.07 0.07 0.06 4,400 ♡" [ref=f3e766]:
+            - gridcell "0.06" [ref=f3e767]
+            - gridcell "1,200" [ref=f3e768]
+            - gridcell "0.07" [ref=f3e769]
+            - gridcell "200" [ref=f3e770]
+            - gridcell "0.07" [ref=f3e771]
+            - gridcell "400" [ref=f3e772]
+            - gridcell "0.07" [ref=f3e773]
+            - gridcell "100" [ref=f3e774]
+            - gridcell "+0.0%" [ref=f3e775]
+            - gridcell "+0.00" [ref=f3e776]
+            - gridcell "4,400" [ref=f3e777]
+            - gridcell "0.07" [ref=f3e778]
+            - gridcell "1,000" [ref=f3e779]
+            - gridcell "0.07" [ref=f3e780]
+            - gridcell "1,000" [ref=f3e781]
+            - gridcell "0.07" [ref=f3e782]
+            - gridcell "1,200" [ref=f3e783]
+            - gridcell "0.07" [ref=f3e784]
+            - gridcell "0.07" [ref=f3e785]
+            - gridcell "0.06" [ref=f3e786]
+            - gridcell [ref=f3e787]
+            - gridcell [ref=f3e788]
+            - gridcell [ref=f3e789]
+            - gridcell [ref=f3e790]
+            - gridcell "4,400" [ref=f3e791]
+            - gridcell "♡" [ref=f3e792] [cursor=pointer]
+          - row "0.16 18,100 0.16 21,600 0.16 23,100 0.16 17,500 +0.0% +0.00 155,300 0.16 11,300 0.16 7,000 0.16 15,800 0.16 0.16 0.16 155,300 ♡" [ref=f3e793]:
+            - gridcell "0.16" [ref=f3e794]
+            - gridcell "18,100" [ref=f3e795]
+            - gridcell "0.16" [ref=f3e796]
+            - gridcell "21,600" [ref=f3e797]
+            - gridcell "0.16" [ref=f3e798]
+            - gridcell "23,100" [ref=f3e799]
+            - gridcell "0.16" [ref=f3e800]
+            - gridcell "17,500" [ref=f3e801]
+            - gridcell "+0.0%" [ref=f3e802]
+            - gridcell "+0.00" [ref=f3e803]
+            - gridcell "155,300" [ref=f3e804]
+            - gridcell "0.16" [ref=f3e805]
+            - gridcell "11,300" [ref=f3e806]
+            - gridcell "0.16" [ref=f3e807]
+            - gridcell "7,000" [ref=f3e808]
+            - gridcell "0.16" [ref=f3e809]
+            - gridcell "15,800" [ref=f3e810]
+            - gridcell "0.16" [ref=f3e811]
+            - gridcell "0.16" [ref=f3e812]
+            - gridcell "0.16" [ref=f3e813]
+            - gridcell [ref=f3e814]
+            - gridcell [ref=f3e815]
+            - gridcell [ref=f3e816]
+            - gridcell [ref=f3e817]
+            - gridcell "155,300" [ref=f3e818]
+            - gridcell "♡" [ref=f3e819] [cursor=pointer]
+          - row "0.09 116,000 0.09 272,600 0.09 5,900 0.09 100 +0.0% +0.00 6,189,200 0.09 160,600 0.10 259,400 0.10 186,000 0.09 0.09 0.09 31,000 31,000 6,189,200 ♡" [ref=f3e820]:
+            - gridcell "0.09" [ref=f3e821]
+            - gridcell "116,000" [ref=f3e822]
+            - gridcell "0.09" [ref=f3e823]
+            - gridcell "272,600" [ref=f3e824]
+            - gridcell "0.09" [ref=f3e825]
+            - gridcell "5,900" [ref=f3e826]
+            - gridcell "0.09" [ref=f3e827]
+            - gridcell "100" [ref=f3e828]
+            - gridcell "+0.0%" [ref=f3e829]
+            - gridcell "+0.00" [ref=f3e830]
+            - gridcell "6,189,200" [ref=f3e831]
+            - gridcell "0.09" [ref=f3e832]
+            - gridcell "160,600" [ref=f3e833]
+            - gridcell "0.10" [ref=f3e834]
+            - gridcell "259,400" [ref=f3e835]
+            - gridcell "0.10" [ref=f3e836]
+            - gridcell "186,000" [ref=f3e837]
+            - gridcell "0.09" [ref=f3e838]
+            - gridcell "0.09" [ref=f3e839]
+            - gridcell "0.09" [ref=f3e840]
+            - gridcell [ref=f3e841]
+            - gridcell "31,000" [ref=f3e842]
+            - gridcell "31,000" [ref=f3e843]
+            - gridcell [ref=f3e844]
+            - gridcell "6,189,200" [ref=f3e845]
+            - gridcell "♡" [ref=f3e846] [cursor=pointer]
+          - row "0.03 12,000 0.03 800 0.03 100 0.03 200 +0.0% +0.00 5,600 0.03 14,700 0.03 6,900 0.03 16,500 0.03 0.03 0.03 5,600 ♡" [ref=f3e847]:
+            - gridcell "0.03" [ref=f3e848]
+            - gridcell "12,000" [ref=f3e849]
+            - gridcell "0.03" [ref=f3e850]
+            - gridcell "800" [ref=f3e851]
+            - gridcell "0.03" [ref=f3e852]
+            - gridcell "100" [ref=f3e853]
+            - gridcell "0.03" [ref=f3e854]
+            - gridcell "200" [ref=f3e855]
+            - gridcell "+0.0%" [ref=f3e856]
+            - gridcell "+0.00" [ref=f3e857]
+            - gridcell "5,600" [ref=f3e858]
+            - gridcell "0.03" [ref=f3e859]
+            - gridcell "14,700" [ref=f3e860]
+            - gridcell "0.03" [ref=f3e861]
+            - gridcell "6,900" [ref=f3e862]
+            - gridcell "0.03" [ref=f3e863]
+            - gridcell "16,500" [ref=f3e864]
+            - gridcell "0.03" [ref=f3e865]
+            - gridcell "0.03" [ref=f3e866]
+            - gridcell "0.03" [ref=f3e867]
+            - gridcell [ref=f3e868]
+            - gridcell [ref=f3e869]
+            - gridcell [ref=f3e870]
+            - gridcell [ref=f3e871]
+            - gridcell "5,600" [ref=f3e872]
+            - gridcell "♡" [ref=f3e873] [cursor=pointer]
+          - row "0.07 37,500 0.07 41,600 0.07 7,300 0.07 1,200 +0.0% +0.00 773,500 0.07 108,300 0.07 52,500 0.07 73,800 0.07 0.07 0.07 100 100 773,500 ♡" [ref=f3e874]:
+            - gridcell "0.07" [ref=f3e875]
+            - gridcell "37,500" [ref=f3e876]
+            - gridcell "0.07" [ref=f3e877]
+            - gridcell "41,600" [ref=f3e878]
+            - gridcell "0.07" [ref=f3e879]
+            - gridcell "7,300" [ref=f3e880]
+            - gridcell "0.07" [ref=f3e881]
+            - gridcell "1,200" [ref=f3e882]
+            - gridcell "+0.0%" [ref=f3e883]
+            - gridcell "+0.00" [ref=f3e884]
+            - gridcell "773,500" [ref=f3e885]
+            - gridcell "0.07" [ref=f3e886]
+            - gridcell "108,300" [ref=f3e887]
+            - gridcell "0.07" [ref=f3e888]
+            - gridcell "52,500" [ref=f3e889]
+            - gridcell "0.07" [ref=f3e890]
+            - gridcell "73,800" [ref=f3e891]
+            - gridcell "0.07" [ref=f3e892]
+            - gridcell "0.07" [ref=f3e893]
+            - gridcell "0.07" [ref=f3e894]
+            - gridcell [ref=f3e895]
+            - gridcell "100" [ref=f3e896]
+            - gridcell "100" [ref=f3e897]
+            - gridcell [ref=f3e898]
+            - gridcell "773,500" [ref=f3e899]
+            - gridcell "♡" [ref=f3e900] [cursor=pointer]
+          - row "0.18 248,500 0.19 148,300 0.19 246,800 0.19 400 +5.6% +0.01 1,084,700 0.19 20,600 0.19 108,500 0.19 427,000 0.19 0.19 0.18 7,300 500 +6,800 1,084,700 ♡" [ref=f3e901]:
+            - gridcell "0.18" [ref=f3e902]
+            - gridcell "248,500" [ref=f3e903]
+            - gridcell "0.19" [ref=f3e904]
+            - gridcell "148,300" [ref=f3e905]
+            - gridcell "0.19" [ref=f3e906]
+            - gridcell "246,800" [ref=f3e907]
+            - gridcell "0.19" [ref=f3e908]
+            - gridcell "400" [ref=f3e909]
+            - gridcell "+5.6%" [ref=f3e910]
+            - gridcell "+0.01" [ref=f3e911]
+            - gridcell "1,084,700" [ref=f3e912]
+            - gridcell "0.19" [ref=f3e913]
+            - gridcell "20,600" [ref=f3e914]
+            - gridcell "0.19" [ref=f3e915]
+            - gridcell "108,500" [ref=f3e916]
+            - gridcell "0.19" [ref=f3e917]
+            - gridcell "427,000" [ref=f3e918]
+            - gridcell "0.19" [ref=f3e919]
+            - gridcell "0.19" [ref=f3e920]
+            - gridcell "0.18" [ref=f3e921]
+            - gridcell "7,300" [ref=f3e922]
+            - gridcell "500" [ref=f3e923]
+            - gridcell "+6,800" [ref=f3e924]
+            - gridcell [ref=f3e925]
+            - gridcell "1,084,700" [ref=f3e926]
+            - gridcell "♡" [ref=f3e927] [cursor=pointer]
+          - row "0.10 1,800 0.10 8,500 0.10 1,100 0.10 200 +0.0% +0.00 5,700 0.10 3,300 0.10 3,300 0.11 2,000 0.10 0.10 0.10 5,700 ♡" [ref=f3e928]:
+            - gridcell "0.10" [ref=f3e929]
+            - gridcell "1,800" [ref=f3e930]
+            - gridcell "0.10" [ref=f3e931]
+            - gridcell "8,500" [ref=f3e932]
+            - gridcell "0.10" [ref=f3e933]
+            - gridcell "1,100" [ref=f3e934]
+            - gridcell "0.10" [ref=f3e935]
+            - gridcell "200" [ref=f3e936]
+            - gridcell "+0.0%" [ref=f3e937]
+            - gridcell "+0.00" [ref=f3e938]
+            - gridcell "5,700" [ref=f3e939]
+            - gridcell "0.10" [ref=f3e940]
+            - gridcell "3,300" [ref=f3e941]
+            - gridcell "0.10" [ref=f3e942]
+            - gridcell "3,300" [ref=f3e943]
+            - gridcell "0.11" [ref=f3e944]
+            - gridcell "2,000" [ref=f3e945]
+            - gridcell "0.10" [ref=f3e946]
+            - gridcell "0.10" [ref=f3e947]
+            - gridcell "0.10" [ref=f3e948]
+            - gridcell [ref=f3e949]
+            - gridcell [ref=f3e950]
+            - gridcell [ref=f3e951]
+            - gridcell [ref=f3e952]
+            - gridcell "5,700" [ref=f3e953]
+            - gridcell "♡" [ref=f3e954] [cursor=pointer]
+          - row "0.19 11,200 0.19 2,200 0.19 300 0.19 4,700 +0.0% +0.00 10,900 0.19 13,800 0.20 5,900 0.20 5,000 0.19 0.19 0.19 800 800 10,900 ♡" [ref=f3e955]:
+            - gridcell "0.19" [ref=f3e956]
+            - gridcell "11,200" [ref=f3e957]
+            - gridcell "0.19" [ref=f3e958]
+            - gridcell "2,200" [ref=f3e959]
+            - gridcell "0.19" [ref=f3e960]
+            - gridcell "300" [ref=f3e961]
+            - gridcell "0.19" [ref=f3e962]
+            - gridcell "4,700" [ref=f3e963]
+            - gridcell "+0.0%" [ref=f3e964]
+            - gridcell "+0.00" [ref=f3e965]
+            - gridcell "10,900" [ref=f3e966]
+            - gridcell "0.19" [ref=f3e967]
+            - gridcell "13,800" [ref=f3e968]
+            - gridcell "0.20" [ref=f3e969]
+            - gridcell "5,900" [ref=f3e970]
+            - gridcell "0.20" [ref=f3e971]
+            - gridcell "5,000" [ref=f3e972]
+            - gridcell "0.19" [ref=f3e973]
+            - gridcell "0.19" [ref=f3e974]
+            - gridcell "0.19" [ref=f3e975]
+            - gridcell [ref=f3e976]
+            - gridcell "800" [ref=f3e977]
+            - gridcell "800" [ref=f3e978]
+            - gridcell [ref=f3e979]
+            - gridcell "10,900" [ref=f3e980]
+            - gridcell "♡" [ref=f3e981] [cursor=pointer]
+          - row "0.11 600 0.11 1,000 0.11 200 0.00 -100.0% -0.12 0.12 700 0.12 100 0.12 100 0.00 0.00 0.00 ♡" [ref=f3e982]:
+            - gridcell "0.11" [ref=f3e983]
+            - gridcell "600" [ref=f3e984]
+            - gridcell "0.11" [ref=f3e985]
+            - gridcell "1,000" [ref=f3e986]
+            - gridcell "0.11" [ref=f3e987]
+            - gridcell "200" [ref=f3e988]
+            - gridcell "0.00" [ref=f3e989]
+            - gridcell [ref=f3e990]
+            - gridcell "-100.0%" [ref=f3e991]
+            - gridcell "-0.12" [ref=f3e992]
+            - gridcell [ref=f3e993]
+            - gridcell "0.12" [ref=f3e994]
+            - gridcell "700" [ref=f3e995]
+            - gridcell "0.12" [ref=f3e996]
+            - gridcell "100" [ref=f3e997]
+            - gridcell "0.12" [ref=f3e998]
+            - gridcell "100" [ref=f3e999]
+            - gridcell "0.00" [ref=f3e1000]
+            - gridcell "0.00" [ref=f3e1001]
+            - gridcell "0.00" [ref=f3e1002]
+            - gridcell [ref=f3e1003]
+            - gridcell [ref=f3e1004]
+            - gridcell [ref=f3e1005]
+            - gridcell [ref=f3e1006]
+            - gridcell [ref=f3e1007]
+            - gridcell "♡" [ref=f3e1008] [cursor=pointer]
+          - row "0.03 11,000 0.03 3,400 0.03 1,000 0.03 3,300 +0.0% +0.00 215,400 0.03 5,000 0.03 15,000 0.03 5,300 0.03 0.03 0.03 215,400 ♡" [ref=f3e1009]:
+            - gridcell "0.03" [ref=f3e1010]
+            - gridcell "11,000" [ref=f3e1011]
+            - gridcell "0.03" [ref=f3e1012]
+            - gridcell "3,400" [ref=f3e1013]
+            - gridcell "0.03" [ref=f3e1014]
+            - gridcell "1,000" [ref=f3e1015]
+            - gridcell "0.03" [ref=f3e1016]
+            - gridcell "3,300" [ref=f3e1017]
+            - gridcell "+0.0%" [ref=f3e1018]
+            - gridcell "+0.00" [ref=f3e1019]
+            - gridcell "215,400" [ref=f3e1020]
+            - gridcell "0.03" [ref=f3e1021]
+            - gridcell "5,000" [ref=f3e1022]
+            - gridcell "0.03" [ref=f3e1023]
+            - gridcell "15,000" [ref=f3e1024]
+            - gridcell "0.03" [ref=f3e1025]
+            - gridcell "5,300" [ref=f3e1026]
+            - gridcell "0.03" [ref=f3e1027]
+            - gridcell "0.03" [ref=f3e1028]
+            - gridcell "0.03" [ref=f3e1029]
+            - gridcell [ref=f3e1030]
+            - gridcell [ref=f3e1031]
+            - gridcell [ref=f3e1032]
+            - gridcell [ref=f3e1033]
+            - gridcell "215,400" [ref=f3e1034]
+            - gridcell "♡" [ref=f3e1035] [cursor=pointer]
+          - row "0.53 1,100 0.54 200 0.54 100 0.54 200 +0.0% +0.00 1,300 0.54 400 0.55 400 0.55 200 0.54 0.54 0.54 1,100 +1,100 1,300 ♡" [ref=f3e1036]:
+            - gridcell "0.53" [ref=f3e1037]
+            - gridcell "1,100" [ref=f3e1038]
+            - gridcell "0.54" [ref=f3e1039]
+            - gridcell "200" [ref=f3e1040]
+            - gridcell "0.54" [ref=f3e1041]
+            - gridcell "100" [ref=f3e1042]
+            - gridcell "0.54" [ref=f3e1043]
+            - gridcell "200" [ref=f3e1044]
+            - gridcell "+0.0%" [ref=f3e1045]
+            - gridcell "+0.00" [ref=f3e1046]
+            - gridcell "1,300" [ref=f3e1047]
+            - gridcell "0.54" [ref=f3e1048]
+            - gridcell "400" [ref=f3e1049]
+            - gridcell "0.55" [ref=f3e1050]
+            - gridcell "400" [ref=f3e1051]
+            - gridcell "0.55" [ref=f3e1052]
+            - gridcell "200" [ref=f3e1053]
+            - gridcell "0.54" [ref=f3e1054]
+            - gridcell "0.54" [ref=f3e1055]
+            - gridcell "0.54" [ref=f3e1056]
+            - gridcell "1,100" [ref=f3e1057]
+            - gridcell [ref=f3e1058]
+            - gridcell "+1,100" [ref=f3e1059]
+            - gridcell [ref=f3e1060]
+            - gridcell "1,300" [ref=f3e1061]
+            - gridcell "♡" [ref=f3e1062] [cursor=pointer]
+          - row "0.13 31,300 0.13 28,300 0.13 68,500 0.14 100 +7.7% +0.01 1,122,800 0.14 9,800 0.14 17,300 0.14 40,000 0.14 0.14 0.13 200 200 1,122,800 ♡" [ref=f3e1063]:
+            - gridcell "0.13" [ref=f3e1064]
+            - gridcell "31,300" [ref=f3e1065]
+            - gridcell "0.13" [ref=f3e1066]
+            - gridcell "28,300" [ref=f3e1067]
+            - gridcell "0.13" [ref=f3e1068]
+            - gridcell "68,500" [ref=f3e1069]
+            - gridcell "0.14" [ref=f3e1070]
+            - gridcell "100" [ref=f3e1071]
+            - gridcell "+7.7%" [ref=f3e1072]
+            - gridcell "+0.01" [ref=f3e1073]
+            - gridcell "1,122,800" [ref=f3e1074]
+            - gridcell "0.14" [ref=f3e1075]
+            - gridcell "9,800" [ref=f3e1076]
+            - gridcell "0.14" [ref=f3e1077]
+            - gridcell "17,300" [ref=f3e1078]
+            - gridcell "0.14" [ref=f3e1079]
+            - gridcell "40,000" [ref=f3e1080]
+            - gridcell "0.14" [ref=f3e1081]
+            - gridcell "0.14" [ref=f3e1082]
+            - gridcell "0.13" [ref=f3e1083]
+            - gridcell [ref=f3e1084]
+            - gridcell "200" [ref=f3e1085]
+            - gridcell "200" [ref=f3e1086]
+            - gridcell [ref=f3e1087]
+            - gridcell "1,122,800" [ref=f3e1088]
+            - gridcell "♡" [ref=f3e1089] [cursor=pointer]
+          - row "0.23 175,200 0.23 141,000 0.23 240,900 0.23 455,100 +0.0% +0.00 10,682,700 0.23 204,700 0.23 213,600 0.23 182,100 0.23 0.23 0.22 124,400 2,080,822 1,956,422 10,682,700 ♡" [ref=f3e1090]:
+            - gridcell "0.23" [ref=f3e1091]
+            - gridcell "175,200" [ref=f3e1092]
+            - gridcell "0.23" [ref=f3e1093]
+            - gridcell "141,000" [ref=f3e1094]
+            - gridcell "0.23" [ref=f3e1095]
+            - gridcell "240,900" [ref=f3e1096]
+            - gridcell "0.23" [ref=f3e1097]
+            - gridcell "455,100" [ref=f3e1098]
+            - gridcell "+0.0%" [ref=f3e1099]
+            - gridcell "+0.00" [ref=f3e1100]
+            - gridcell "10,682,700" [ref=f3e1101]
+            - gridcell "0.23" [ref=f3e1102]
+            - gridcell "204,700" [ref=f3e1103]
+            - gridcell "0.23" [ref=f3e1104]
+            - gridcell "213,600" [ref=f3e1105]
+            - gridcell "0.23" [ref=f3e1106]
+            - gridcell "182,100" [ref=f3e1107]
+            - gridcell "0.23" [ref=f3e1108]
+            - gridcell "0.23" [ref=f3e1109]
+            - gridcell "0.22" [ref=f3e1110]
+            - gridcell "124,400" [ref=f3e1111]
+            - gridcell "2,080,822" [ref=f3e1112]
+            - gridcell "1,956,422" [ref=f3e1113]
+            - gridcell [ref=f3e1114]
+            - gridcell "10,682,700" [ref=f3e1115]
+            - gridcell "♡" [ref=f3e1116] [cursor=pointer]
+          - row "0.11 100 0.11 100 0.11 1,000 0.11 4,600 +0.0% +0.00 50,600 0.11 2,000 0.11 100 0.11 7,000 0.11 0.11 0.11 50,600 ♡" [ref=f3e1117]:
+            - gridcell "0.11" [ref=f3e1118]
+            - gridcell "100" [ref=f3e1119]
+            - gridcell "0.11" [ref=f3e1120]
+            - gridcell "100" [ref=f3e1121]
+            - gridcell "0.11" [ref=f3e1122]
+            - gridcell "1,000" [ref=f3e1123]
+            - gridcell "0.11" [ref=f3e1124]
+            - gridcell "4,600" [ref=f3e1125]
+            - gridcell "+0.0%" [ref=f3e1126]
+            - gridcell "+0.00" [ref=f3e1127]
+            - gridcell "50,600" [ref=f3e1128]
+            - gridcell "0.11" [ref=f3e1129]
+            - gridcell "2,000" [ref=f3e1130]
+            - gridcell "0.11" [ref=f3e1131]
+            - gridcell "100" [ref=f3e1132]
+            - gridcell "0.11" [ref=f3e1133]
+            - gridcell "7,000" [ref=f3e1134]
+            - gridcell "0.11" [ref=f3e1135]
+            - gridcell "0.11" [ref=f3e1136]
+            - gridcell "0.11" [ref=f3e1137]
+            - gridcell [ref=f3e1138]
+            - gridcell [ref=f3e1139]
+            - gridcell [ref=f3e1140]
+            - gridcell [ref=f3e1141]
+            - gridcell "50,600" [ref=f3e1142]
+            - gridcell "♡" [ref=f3e1143] [cursor=pointer]
+          - row "0.35 100 0.36 300 0.36 200 0.36 100 +0.0% +0.00 800 0.36 200 0.37 300 0.37 600 0.37 0.36 0.36 800 ♡" [ref=f3e1144]:
+            - gridcell "0.35" [ref=f3e1145]
+            - gridcell "100" [ref=f3e1146]
+            - gridcell "0.36" [ref=f3e1147]
+            - gridcell "300" [ref=f3e1148]
+            - gridcell "0.36" [ref=f3e1149]
+            - gridcell "200" [ref=f3e1150]
+            - gridcell "0.36" [ref=f3e1151]
+            - gridcell "100" [ref=f3e1152]
+            - gridcell "+0.0%" [ref=f3e1153]
+            - gridcell "+0.00" [ref=f3e1154]
+            - gridcell "800" [ref=f3e1155]
+            - gridcell "0.36" [ref=f3e1156]
+            - gridcell "200" [ref=f3e1157]
+            - gridcell "0.37" [ref=f3e1158]
+            - gridcell "300" [ref=f3e1159]
+            - gridcell "0.37" [ref=f3e1160]
+            - gridcell "600" [ref=f3e1161]
+            - gridcell "0.37" [ref=f3e1162]
+            - gridcell "0.36" [ref=f3e1163]
+            - gridcell "0.36" [ref=f3e1164]
+            - gridcell [ref=f3e1165]
+            - gridcell [ref=f3e1166]
+            - gridcell [ref=f3e1167]
+            - gridcell [ref=f3e1168]
+            - gridcell "800" [ref=f3e1169]
+            - gridcell "♡" [ref=f3e1170] [cursor=pointer]
+          - row "0.33 7,000 0.33 100 0.33 100 0.33 6,000 +0.0% +0.00 16,400 0.33 500 0.34 200 0.34 2,700 0.33 0.33 0.33 400 +400 16,400 ♡" [ref=f3e1171]:
+            - gridcell "0.33" [ref=f3e1172]
+            - gridcell "7,000" [ref=f3e1173]
+            - gridcell "0.33" [ref=f3e1174]
+            - gridcell "100" [ref=f3e1175]
+            - gridcell "0.33" [ref=f3e1176]
+            - gridcell "100" [ref=f3e1177]
+            - gridcell "0.33" [ref=f3e1178]
+            - gridcell "6,000" [ref=f3e1179]
+            - gridcell "+0.0%" [ref=f3e1180]
+            - gridcell "+0.00" [ref=f3e1181]
+            - gridcell "16,400" [ref=f3e1182]
+            - gridcell "0.33" [ref=f3e1183]
+            - gridcell "500" [ref=f3e1184]
+            - gridcell "0.34" [ref=f3e1185]
+            - gridcell "200" [ref=f3e1186]
+            - gridcell "0.34" [ref=f3e1187]
+            - gridcell "2,700" [ref=f3e1188]
+            - gridcell "0.33" [ref=f3e1189]
+            - gridcell "0.33" [ref=f3e1190]
+            - gridcell "0.33" [ref=f3e1191]
+            - gridcell "400" [ref=f3e1192]
+            - gridcell [ref=f3e1193]
+            - gridcell "+400" [ref=f3e1194]
+            - gridcell [ref=f3e1195]
+            - gridcell "16,400" [ref=f3e1196]
+            - gridcell "♡" [ref=f3e1197] [cursor=pointer]
+          - row "0.00 0.12 1,000 0.12 200 0.13 1,000 +0.0% +0.00 7,300 0.13 4,000 0.13 5,000 0.13 6,000 0.13 0.13 0.12 6,098 6,098 7,300 ♡" [ref=f3e1198]:
+            - gridcell "0.00" [ref=f3e1199]
+            - gridcell [ref=f3e1200]
+            - gridcell "0.12" [ref=f3e1201]
+            - gridcell "1,000" [ref=f3e1202]
+            - gridcell "0.12" [ref=f3e1203]
+            - gridcell "200" [ref=f3e1204]
+            - gridcell "0.13" [ref=f3e1205]
+            - gridcell "1,000" [ref=f3e1206]
+            - gridcell "+0.0%" [ref=f3e1207]
+            - gridcell "+0.00" [ref=f3e1208]
+            - gridcell "7,300" [ref=f3e1209]
+            - gridcell "0.13" [ref=f3e1210]
+            - gridcell "4,000" [ref=f3e1211]
+            - gridcell "0.13" [ref=f3e1212]
+            - gridcell "5,000" [ref=f3e1213]
+            - gridcell "0.13" [ref=f3e1214]
+            - gridcell "6,000" [ref=f3e1215]
+            - gridcell "0.13" [ref=f3e1216]
+            - gridcell "0.13" [ref=f3e1217]
+            - gridcell "0.12" [ref=f3e1218]
+            - gridcell [ref=f3e1219]
+            - gridcell "6,098" [ref=f3e1220]
+            - gridcell "6,098" [ref=f3e1221]
+            - gridcell [ref=f3e1222]
+            - gridcell "7,300" [ref=f3e1223]
+            - gridcell "♡" [ref=f3e1224] [cursor=pointer]
+          - row "0.00 0.00 985,900 0.01 4,800 0.01 100 +0.0% +0.00 445,300 0.01 2,352,800 0.00 0.00 0.01 0.01 0.01 445,300 ♡" [ref=f3e1225]:
+            - gridcell "0.00" [ref=f3e1226]
+            - gridcell [ref=f3e1227]
+            - gridcell "0.00" [ref=f3e1228]
+            - gridcell "985,900" [ref=f3e1229]
+            - gridcell "0.01" [ref=f3e1230]
+            - gridcell "4,800" [ref=f3e1231]
+            - gridcell "0.01" [ref=f3e1232]
+            - gridcell "100" [ref=f3e1233]
+            - gridcell "+0.0%" [ref=f3e1234]
+            - gridcell "+0.00" [ref=f3e1235]
+            - gridcell "445,300" [ref=f3e1236]
+            - gridcell "0.01" [ref=f3e1237]
+            - gridcell "2,352,800" [ref=f3e1238]
+            - gridcell "0.00" [ref=f3e1239]
+            - gridcell [ref=f3e1240]
+            - gridcell "0.00" [ref=f3e1241]
+            - gridcell [ref=f3e1242]
+            - gridcell "0.01" [ref=f3e1243]
+            - gridcell "0.01" [ref=f3e1244]
+            - gridcell "0.01" [ref=f3e1245]
+            - gridcell [ref=f3e1246]
+            - gridcell [ref=f3e1247]
+            - gridcell [ref=f3e1248]
+            - gridcell [ref=f3e1249]
+            - gridcell "445,300" [ref=f3e1250]
+            - gridcell "♡" [ref=f3e1251] [cursor=pointer]
+          - row "0.00 0.00 0.05 100 0.00 -100.0% -0.05 0.06 1,000 0.06 100 0.06 200 0.00 0.00 0.00 ♡" [ref=f3e1252]:
+            - gridcell "0.00" [ref=f3e1253]
+            - gridcell [ref=f3e1254]
+            - gridcell "0.00" [ref=f3e1255]
+            - gridcell [ref=f3e1256]
+            - gridcell "0.05" [ref=f3e1257]
+            - gridcell "100" [ref=f3e1258]
+            - gridcell "0.00" [ref=f3e1259]
+            - gridcell [ref=f3e1260]
+            - gridcell "-100.0%" [ref=f3e1261]
+            - gridcell "-0.05" [ref=f3e1262]
+            - gridcell [ref=f3e1263]
+            - gridcell "0.06" [ref=f3e1264]
+            - gridcell "1,000" [ref=f3e1265]
+            - gridcell "0.06" [ref=f3e1266]
+            - gridcell "100" [ref=f3e1267]
+            - gridcell "0.06" [ref=f3e1268]
+            - gridcell "200" [ref=f3e1269]
+            - gridcell "0.00" [ref=f3e1270]
+            - gridcell "0.00" [ref=f3e1271]
+            - gridcell "0.00" [ref=f3e1272]
+            - gridcell [ref=f3e1273]
+            - gridcell [ref=f3e1274]
+            - gridcell [ref=f3e1275]
+            - gridcell [ref=f3e1276]
+            - gridcell [ref=f3e1277]
+            - gridcell "♡" [ref=f3e1278] [cursor=pointer]
+          - row "0.43 47,800 0.43 110,600 0.44 14,200 0.44 1,000 +0.0% +0.00 717,400 0.44 12,000 0.44 26,500 0.44 36,900 0.44 0.44 0.43 5,000 194,040 189,040 717,400 ♡" [ref=f3e1279]:
+            - gridcell "0.43" [ref=f3e1280]
+            - gridcell "47,800" [ref=f3e1281]
+            - gridcell "0.43" [ref=f3e1282]
+            - gridcell "110,600" [ref=f3e1283]
+            - gridcell "0.44" [ref=f3e1284]
+            - gridcell "14,200" [ref=f3e1285]
+            - gridcell "0.44" [ref=f3e1286]
+            - gridcell "1,000" [ref=f3e1287]
+            - gridcell "+0.0%" [ref=f3e1288]
+            - gridcell "+0.00" [ref=f3e1289]
+            - gridcell "717,400" [ref=f3e1290]
+            - gridcell "0.44" [ref=f3e1291]
+            - gridcell "12,000" [ref=f3e1292]
+            - gridcell "0.44" [ref=f3e1293]
+            - gridcell "26,500" [ref=f3e1294]
+            - gridcell "0.44" [ref=f3e1295]
+            - gridcell "36,900" [ref=f3e1296]
+            - gridcell "0.44" [ref=f3e1297]
+            - gridcell "0.44" [ref=f3e1298]
+            - gridcell "0.43" [ref=f3e1299]
+            - gridcell "5,000" [ref=f3e1300]
+            - gridcell "194,040" [ref=f3e1301]
+            - gridcell "189,040" [ref=f3e1302]
+            - gridcell [ref=f3e1303]
+            - gridcell "717,400" [ref=f3e1304]
+            - gridcell "♡" [ref=f3e1305] [cursor=pointer]
+          - row "0.00 0.16 100 0.17 100 0.00 -100.0% -0.17 0.19 900 0.19 200 0.00 0.00 0.00 0.00 ♡" [ref=f3e1306]:
+            - gridcell "0.00" [ref=f3e1307]
+            - gridcell [ref=f3e1308]
+            - gridcell "0.16" [ref=f3e1309]
+            - gridcell "100" [ref=f3e1310]
+            - gridcell "0.17" [ref=f3e1311]
+            - gridcell "100" [ref=f3e1312]
+            - gridcell "0.00" [ref=f3e1313]
+            - gridcell [ref=f3e1314]
+            - gridcell "-100.0%" [ref=f3e1315]
+            - gridcell "-0.17" [ref=f3e1316]
+            - gridcell [ref=f3e1317]
+            - gridcell "0.19" [ref=f3e1318]
+            - gridcell "900" [ref=f3e1319]
+            - gridcell "0.19" [ref=f3e1320]
+            - gridcell "200" [ref=f3e1321]
+            - gridcell "0.00" [ref=f3e1322]
+            - gridcell [ref=f3e1323]
+            - gridcell "0.00" [ref=f3e1324]
+            - gridcell "0.00" [ref=f3e1325]
+            - gridcell "0.00" [ref=f3e1326]
+            - gridcell [ref=f3e1327]
+            - gridcell [ref=f3e1328]
+            - gridcell [ref=f3e1329]
+            - gridcell [ref=f3e1330]
+            - gridcell [ref=f3e1331]
+            - gridcell "♡" [ref=f3e1332] [cursor=pointer]
+          - row "0.08 2,100 0.08 200 0.08 100 0.09 300 +0.0% +0.00 1,000 0.09 5,200 0.09 100 0.09 10,100 0.09 0.09 0.08 1,000 ♡" [ref=f3e1333]:
+            - gridcell "0.08" [ref=f3e1334]
+            - gridcell "2,100" [ref=f3e1335]
+            - gridcell "0.08" [ref=f3e1336]
+            - gridcell "200" [ref=f3e1337]
+            - gridcell "0.08" [ref=f3e1338]
+            - gridcell "100" [ref=f3e1339]
+            - gridcell "0.09" [ref=f3e1340]
+            - gridcell "300" [ref=f3e1341]
+            - gridcell "+0.0%" [ref=f3e1342]
+            - gridcell "+0.00" [ref=f3e1343]
+            - gridcell "1,000" [ref=f3e1344]
+            - gridcell "0.09" [ref=f3e1345]
+            - gridcell "5,200" [ref=f3e1346]
+            - gridcell "0.09" [ref=f3e1347]
+            - gridcell "100" [ref=f3e1348]
+            - gridcell "0.09" [ref=f3e1349]
+            - gridcell "10,100" [ref=f3e1350]
+            - gridcell "0.09" [ref=f3e1351]
+            - gridcell "0.09" [ref=f3e1352]
+            - gridcell "0.08" [ref=f3e1353]
+            - gridcell [ref=f3e1354]
+            - gridcell [ref=f3e1355]
+            - gridcell [ref=f3e1356]
+            - gridcell [ref=f3e1357]
+            - gridcell "1,000" [ref=f3e1358]
+            - gridcell "♡" [ref=f3e1359] [cursor=pointer]
+          - row "0.23 100 0.23 500 0.23 100 0.23 100 +0.0% +0.00 17,200 0.23 5,000 0.23 1,300 0.23 1,400 0.23 0.23 0.23 17,100 17,100 17,200 ♡" [ref=f3e1360]:
+            - gridcell "0.23" [ref=f3e1361]
+            - gridcell "100" [ref=f3e1362]
+            - gridcell "0.23" [ref=f3e1363]
+            - gridcell "500" [ref=f3e1364]
+            - gridcell "0.23" [ref=f3e1365]
+            - gridcell "100" [ref=f3e1366]
+            - gridcell "0.23" [ref=f3e1367]
+            - gridcell "100" [ref=f3e1368]
+            - gridcell "+0.0%" [ref=f3e1369]
+            - gridcell "+0.00" [ref=f3e1370]
+            - gridcell "17,200" [ref=f3e1371]
+            - gridcell "0.23" [ref=f3e1372]
+            - gridcell "5,000" [ref=f3e1373]
+            - gridcell "0.23" [ref=f3e1374]
+            - gridcell "1,300" [ref=f3e1375]
+            - gridcell "0.23" [ref=f3e1376]
+            - gridcell "1,400" [ref=f3e1377]
+            - gridcell "0.23" [ref=f3e1378]
+            - gridcell "0.23" [ref=f3e1379]
+            - gridcell "0.23" [ref=f3e1380]
+            - gridcell [ref=f3e1381]
+            - gridcell "17,100" [ref=f3e1382]
+            - gridcell "17,100" [ref=f3e1383]
+            - gridcell [ref=f3e1384]
+            - gridcell "17,200" [ref=f3e1385]
+            - gridcell "♡" [ref=f3e1386] [cursor=pointer]
+        - rowgroup
+        - rowgroup
+        - rowgroup [ref=f3e1390]
+        - rowgroup
+      - text:    
+  - generic [ref=f3e1397]:
+    - generic [ref=f3e1398]: "Cơ sở: Giá ×1,000 │ KL ×1"
+    - generic [ref=f3e1399]: │
+    - generic [ref=f3e1400]: "Phái sinh: Giá ×1 │ KL ×1"

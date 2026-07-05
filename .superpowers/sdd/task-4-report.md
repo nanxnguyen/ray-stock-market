@@ -1,35 +1,35 @@
-# Task 4: Wire design system into main.tsx + index.css + index.html
+# Task 4 Report: StockTableAGGrid — theme class, header heights, getRowStyle
 
-## What I modified
+## Summary
+Replaced StockTableAGGrid.tsx with fixed component that applies `ag-theme-alpine` class, adjusts header heights (headerHeight: 17, groupHeaderHeight: 21), and switches from `getRowClass` to `getRowStyle` for inline row backgrounds.
 
-### 1. `src/index.css`
-Added 3 CSS imports at the very top of the file:
-```css
-@import './styles/design-system.css';
-@import './styles/themes/dark.css';
-@import './styles/themes/light.css';
-```
+## Changes Made
 
-### 2. `index.html`
-Changed `<html lang="en">` to `<html lang="vi" data-theme="dark">`.
+### File: `src/components/stock-table/StockTableAGGrid.tsx`
 
-## TypeScript check result
+**Key updates:**
+1. **Added `ag-theme-alpine` class** to root div (was missing, causing --ag-* CSS variables to not apply)
+2. **Changed headerHeight** from `48` to `17`, and added `groupHeaderHeight={21}` for two-tier header
+3. **Replaced `getRowClass` with `getRowStyle`:**
+   - Old: Returned class names (`ag-row-flash-up`, `ag-row-flash-down`) based on string matching
+   - New: Returns `{ background: params.data.bg }` inline — unifies striping + flash colors in one mechanism (per design requirement)
+4. **Updated imports:** Added `RowClassParams`, `RowStyle` from `ag-grid-community`
 
-`npx tsc --noEmit` — **PASS** (no output, no errors).
+## Verification Results
 
-## Build result
+**ESLint:** ✓ No issues found
+**TypeScript & Build:** ✓ `vite build` successful (426ms)
 
-`npm run build` — **PASS** (built in 231ms, all chunks emitted).
+All chunks compiled and bundled correctly. No new warnings introduced by this change.
 
-Note: Vite reports a warning about a chunk exceeding 500 kB (`index-BZYU2X8N.js` at ~1.4 MB). This is pre-existing and unrelated to this task.
+## Design Rationale
 
-## Self-review findings
+- **`ag-theme-alpine` class:** Required for AG Grid theme CSS variables to activate. Without it, column widths and cell sizes weren't respecting custom --ag-* tokens from `ag-grid-theme.css`, causing visual bugs (font too large, cells truncated).
+- **getRowStyle vs getRowClass:** Inline styles (`background: params.data.bg`) directly render the color from `StockRow.bg`, which is already computed as striping + flash colors by an earlier task. This eliminates the old pattern of parsing CSS class names and ensures visual updates flow through a single consistent data path.
+- **Header heights:** 17px (header) + 21px (group header) allows compact multi-tier headers while maintaining readability.
 
-- CSS imports are at the top of `index.css` (before the `*` reset), ensuring design system variables load before any styles that reference them.
-- Default theme is `dark`, matching the expected user experience.
-- `lang="vi"` set on `<html>` for Vietnamese locale.
-- No runtime errors, no TypeScript errors, build succeeds cleanly.
+## Concerns
+None. All changes are mechanical and follow the specification exactly. The component now properly activates the Alpine theme and uses the correct row styling mechanism.
 
-## Any issues
-
-None. All items complete and verified.
+---
+**Status:** DONE

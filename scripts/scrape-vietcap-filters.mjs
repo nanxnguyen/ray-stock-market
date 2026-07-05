@@ -63,31 +63,6 @@ const FILTER_OPTIONS = [
   { group: 'BOND', value: 'BOND_LISTED', label: 'TP niêm yết' },
 ]
 
-// Scrape function will be injected via Playwright
-const SCRAPE_FUNCTION = `
-  async () => {
-    // Wait for table to load
-    await new Promise(r => setTimeout(r, 2000));
-    
-    // Get all rows from the table
-    const rows = [];
-    const tableRows = document.querySelectorAll('tr[class*="row"]');
-    
-    for (const row of tableRows) {
-      const cells = row.querySelectorAll('td');
-      if (cells.length > 0) {
-        const rowData = [];
-        for (const cell of cells) {
-          rowData.push(cell.textContent.trim());
-        }
-        rows.push(rowData);
-      }
-    }
-    
-    return rows;
-  }
-`
-
 async function scrapeFilterOption(page, option) {
   const url = `https://trading.vietcap.com.vn/priceboard?filter-group=${option.group}&filter-value=${option.value}`;
   
@@ -95,25 +70,64 @@ async function scrapeFilterOption(page, option) {
     await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
     await page.waitForTimeout(3000); // Wait for data to load
     
-    // Extract data from table
+    // Extract data from table using ARIA grid roles
     const data = await page.evaluate(async () => {
       await new Promise(r => setTimeout(r, 2000));
       
-      const rows = [];
-      const tableRows = document.querySelectorAll('tr');
+      const rows = document.querySelectorAll('[role="row"]');
+      const symbols = [];
+      const priceData = [];
       
-      for (const row of tableRows) {
-        const cells = row.querySelectorAll('td');
-        if (cells.length > 0) {
+      for (const row of rows) {
+        const cells = row.querySelectorAll('[role="gridcell"]');
+        if (cells.length === 1) {
+          // Symbol row
+          symbols.push(cells[0].textContent.trim());
+        } else if (cells.length > 10) {
+          // Price data row
           const rowData = [];
           for (const cell of cells) {
             rowData.push(cell.textContent.trim());
           }
-          rows.push(rowData);
+          priceData.push(rowData);
         }
       }
       
-      return rows;
+      // Combine symbols with price data
+      const result = [];
+      for (let i = 0; i < Math.min(symbols.length, priceData.length); i++) {
+        result.push({
+          symbol: symbols[i],
+          ceil: priceData[i][0],
+          tc: priceData[i][1],
+          floor: priceData[i][2],
+          b3p: priceData[i][3],
+          b3q: priceData[i][4],
+          b2p: priceData[i][5],
+          b2q: priceData[i][6],
+          b1p: priceData[i][7],
+          b1q: priceData[i][8],
+          lp: priceData[i][9],
+          lq: priceData[i][10],
+          pct: priceData[i][11],
+          tvol: priceData[i][12],
+          a1p: priceData[i][13],
+          a1q: priceData[i][14],
+          a2p: priceData[i][15],
+          a2q: priceData[i][16],
+          a3p: priceData[i][17],
+          a3q: priceData[i][18],
+          hi: priceData[i][19],
+          avg: priceData[i][20],
+          lo: priceData[i][21],
+          fbuy: priceData[i][22],
+          fsell: priceData[i][23],
+          room: priceData[i][24],
+          kltt: priceData[i][25]
+        });
+      }
+      
+      return result;
     });
     
     return data;

@@ -26,7 +26,7 @@ function mapStockRows(
 ): StockRow[] {
   const now = Date.now()
   return stocks.map((s, i) => {
-    const fl = s.fl_ && now - s.fts < 800
+    const fl = s.fl_ && now - s.fts < 900
     const bg = fl
       ? s.fl_ === 'u'
         ? dark ? 'var(--ds-color-market-flash-up)' : '#dcfce7'
@@ -51,7 +51,7 @@ function mapStockRows(
       b1p: formatPrice(s.b1p), b1q: formatQuantity(s.b1q), b1c: pc(s.b1p),
       lp: formatPrice(s.lp), lq: formatQuantity(s.lq), lc: pc(s.lp),
       pct: (s.pct >= 0 ? '+' : '') + s.pct.toFixed(1) + '%',
-      pc: s.pct > 0 ? '#4ade80' : s.pct < 0 ? '#f87171' : '#facc15',
+      pc: s.pct > 0 ? 'var(--ds-color-market-up)' : s.pct < 0 ? 'var(--ds-color-market-down)' : 'var(--ds-color-market-flat)',
       chg: (chg >= 0 ? '+' : '') + formatPrice(chg),
       tvol: formatQuantity(s.tv),
       a1p: formatPrice(s.a1p), a1q: formatQuantity(s.a1q), a1c: pc(s.a1p),
@@ -63,7 +63,7 @@ function mapStockRows(
       fbuy: s.fb > 0 ? formatQuantity(s.fb) : '',
       fsell: s.fs > 0 ? formatQuantity(s.fs) : '',
       fbal: fbal ? ((fbal > 0 ? '+' : '') + formatQuantity(Math.abs(fbal))) : '',
-      fbc: fbal >= 0 ? '#4ade80' : '#f87171',
+      fbc: fbal >= 0 ? 'var(--ds-color-market-foreign-buy)' : 'var(--ds-color-red-400)',
       room: s.rm ? formatQuantity(Math.abs(s.rm)) : '',
       kltt: formatQuantity(Math.abs(s.rm) || s.tv),
       sparkPts: sparkRange ? toPolylinePoints(s.ipts, 100, 22, sparkRange) : '',
@@ -109,7 +109,7 @@ function App() {
   }>(() => {
     const params = new URLSearchParams(window.location.search)
     const group = (params.get('filter-group') || 'WL') as VietcapFilterGroup
-    const value = params.get('filter-value') || 'DEFAULT'
+    const value = params.get('filter-value') || group
     return { group, value, searchText: '', watchlist: [] }
   })
   const [chart, setChart] = useState<ChartState>({ open: false, sym: '', range: '1Đ' })
@@ -227,7 +227,7 @@ function App() {
           b1p: '', b1q: '', b1c: '',
           lp: formatPrice(cw.lp), lq: formatQuantity(cw.lq), lc: pc(cw.lp),
           pct: (cw.pct >= 0 ? '+' : '') + cw.pct.toFixed(1) + '%',
-          pc: cw.pct > 0 ? '#4ade80' : cw.pct < 0 ? '#f87171' : '#facc15',
+          pc: cw.pct > 0 ? 'var(--ds-color-market-up)' : cw.pct < 0 ? 'var(--ds-color-market-down)' : 'var(--ds-color-market-flat)',
           chg: (chg >= 0 ? '+' : '') + formatPrice(chg),
           tvol: formatQuantity(cw.tv),
           a1p: '', a1q: '', a1c: '',
@@ -239,7 +239,7 @@ function App() {
           fbuy: cw.fb > 0 ? formatQuantity(cw.fb) : '',
           fsell: cw.fs > 0 ? formatQuantity(cw.fs) : '',
           fbal: fbal ? ((fbal > 0 ? '+' : '') + formatQuantity(Math.abs(fbal))) : '',
-          fbc: fbal >= 0 ? '#4ade80' : '#f87171',
+          fbc: fbal >= 0 ? 'var(--ds-color-market-foreign-buy)' : 'var(--ds-color-red-400)',
           room: '',
           kltt: formatQuantity(cw.tv),
           sparkPts: '',
@@ -258,7 +258,7 @@ function App() {
     setFilter((prev) => ({
       ...prev,
       group,
-      value: value || prev.value,
+      value: value || group,
       searchText: '',
     }))
   }, [])

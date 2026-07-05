@@ -20,6 +20,12 @@
   --ds-color-border-subtle: #0f1e36;
   --ds-color-border-strong: #232b38;
 
+  --ds-color-text-vol: #4a7090;
+  --ds-color-border-row: #0d1a2e;
+  --ds-color-bg-table-header: #080f1c;
+  --ds-color-bg-header-buy: #05111e;
+  --ds-color-bg-header-sell: #1a0808;
+
   --ds-shadow-sm: 0 1px 2px rgba(0,0,0,.3);
   --ds-shadow-md: 0 4px 12px rgba(0,0,0,.4);
   --ds-shadow-lg: 0 12px 30px rgba(0,0,0,.5);

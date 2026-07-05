@@ -1,0 +1,50 @@
+- generic [ref=f36e5]:
+  - generic [ref=f36e6]:
+    - generic [ref=f36e7]:
+      - link [ref=f36e8] [cursor=pointer]:
+        - /url: /home
+        - generic [ref=f36e9]:
+          - img [ref=f36e11]
+          - img [ref=f36e13]
+      - generic [ref=f36e15]:
+        - button "Cơ sở" [ref=f36e17] [cursor=pointer]
+        - button "Phái sinh" [ref=f36e18] [cursor=pointer]
+      - generic [ref=f36e19]: 05/07/2026 14:59:42
+    - generic [ref=f36e22]:
+      - generic [ref=f36e23]:
+        - img [ref=f36e24] [cursor=pointer]
+        - textbox "Nhập từ khoá"
+      - img [ref=f36e26] [cursor=pointer]
+      - generic [ref=f36e27]:
+        - button "Mở tài khoản" [ref=f36e28] [cursor=pointer]
+        - button "Đăng nhập" [ref=f36e29] [cursor=pointer]
+      - img [ref=f36e32] [cursor=pointer]
+  - generic [ref=f36e35]:
+    - link "Trang chủ" [ref=f36e36] [cursor=pointer]:
+      - /url: /home
+    - button "Bảng giá" [ref=f36e38] [cursor=pointer]:
+      - generic [ref=f36e39]: Bảng giá
+      - img [ref=f36e40]
+    - link "Thị trường" [ref=f36e41] [cursor=pointer]:
+      - /url: /iq/market
+    - button "Thông tin tài sản" [ref=f36e43] [cursor=pointer]:
+      - generic [ref=f36e44]: Thông tin tài sản
+      - img [ref=f36e45]
+    - button "Giao dịch tiền" [ref=f36e47] [cursor=pointer]:
+      - generic [ref=f36e48]: Giao dịch tiền
+      - img [ref=f36e49]
+    - button "Giao Dịch Chứng Khoán" [ref=f36e51] [cursor=pointer]:
+      - generic [ref=f36e52]: Giao Dịch Chứng Khoán
+      - img [ref=f36e53]
+    - button "Vietcap IQ" [ref=f36e55] [cursor=pointer]:
+      - generic [ref=f36e56]: Vietcap IQ
+      - img [ref=f36e57]
+    - button "AI News" [ref=f36e59] [cursor=pointer]:
+      - generic [ref=f36e60]: AI News
+      - img [ref=f36e61]
+    - button "Sản phẩm Đầu tư" [ref=f36e63] [cursor=pointer]:
+      - generic [ref=f36e64]: Sản phẩm Đầu tư
+      - img [ref=f36e65]
+    - button "Tiện ích" [ref=f36e67] [cursor=pointer]:
+      - generic [ref=f36e68]: Tiện ích
+      - img [ref=f36e69]

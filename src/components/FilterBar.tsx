@@ -5,6 +5,11 @@ import SymbolSearch from './SymbolSearch'
 import FilterDropdown from './FilterDropdown'
 import filterOptionsData from '../data/generated/filter-options.json'
 import { resolveTopGroup } from '../lib/filterStocks'
+import { Button } from './ui/button'
+import { Badge } from './ui/badge'
+import { Input } from './ui/input'
+import { Separator } from './ui/separator'
+import { cn } from '../lib/utils'
 
 const filterGroups = filterOptionsData.groups as FilterGroupConfig[]
 
@@ -40,6 +45,13 @@ type Props = {
 
 const SECTOR_LIST = ['Tất cả','VN30','Ngân hàng','BĐS','Thực phẩm','Chứng khoán','Thép','Năng lượng','Công nghệ','Dược phẩm','Bảo hiểm','Bán lẻ','Vận tải','Hóa chất','Cao su','Thủy sản','Dệt may']
 
+const VIEW_ICONS: Record<string, string> = {
+  table: '\u2630',
+  grid: '\u229E',
+  heat: '\u25A6',
+  movers: '\u{1F4CA}',
+}
+
 function FilterBarInner({
   th, filter, onFilterChange, onSymbolAdd,
   viewMode = 'table', onViewModeChange,
@@ -52,64 +64,64 @@ function FilterBarInner({
 }: Props) {
   const displayGroup = resolveTopGroup(filter.group)
 
-  const tabStyle = useMemo(() => (active: boolean): React.CSSProperties => ({
-    background: active ? 'var(--ds-color-blue-600)' : 'transparent',
-    color: active ? 'var(--ds-color-text-inverse)' : th.tabFg,
-    border: active ? 'none' : th.tabBorder,
-    borderRadius: 6,
-    padding: '4px 11px',
-    fontSize: 11,
-    fontWeight: active ? '700' : '500',
-    cursor: 'pointer',
-    flexShrink: 0,
-    whiteSpace: 'nowrap',
-    letterSpacing: 0.2,
-    transition: 'all .15s',
-  }), [th.tabFg, th.tabBorder])
-
-  const iconBtn = useMemo(() => (active: boolean): React.CSSProperties => ({
-    background: active ? 'var(--ds-color-orange-500)' : th.iconBg,
-    border: `1px solid ${active ? '#ea580c' : th.navBorder}`,
-    color: active ? 'var(--ds-color-text-inverse)' : th.textMuted,
-    borderRadius: 5,
-    width: 26,
-    height: 26,
-    cursor: 'pointer',
-    fontSize: 12,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }), [th.iconBg, th.navBorder, th.textMuted])
+  const inputCls = useMemo(() => cn(
+    'h-7 w-[60px] rounded-md border text-center',
+  ), [])
 
   return (
     <div>
       {/* Main filter bar */}
-      <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, display: 'flex', alignItems: 'center', padding: '5px 14px', gap: 5, flexShrink: 0, height: 42, overflowX: 'auto' }}>
+      <div
+        className="flex items-center gap-1 overflow-x-auto shrink-0"
+        style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '5px 14px', height: 42 }}
+      >
         {/* View mode buttons */}
-        <div style={{ display: 'flex', gap: 2, flexShrink: 0 }}>
-          <button onClick={() => onViewModeChange?.('table')} style={{ background: viewMode === 'table' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'table' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u2630'}</button>
-          <button onClick={() => onViewModeChange?.('grid')} style={{ background: viewMode === 'grid' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'grid' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u229E'}</button>
-          <button onClick={() => onViewModeChange?.('heat')} style={{ background: viewMode === 'heat' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'heat' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u25A6'}</button>
-          <button onClick={() => onViewModeChange?.('movers')} style={{ background: viewMode === 'movers' ? 'var(--ds-color-blue-600)' : th.iconBg, border: `1px solid ${th.navBorder}`, width: 26, height: 26, borderRadius: 5, cursor: 'pointer', color: viewMode === 'movers' ? 'var(--ds-color-text-inverse)' : th.textMuted, fontSize: 13, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{'\u{1F4CA}'}</button>
+        <div className="flex gap-0.5 shrink-0">
+          {(['table', 'grid', 'heat', 'movers'] as const).map((mode) => (
+            <Button
+              key={mode}
+              variant="ghost"
+              size="icon-xs"
+              onClick={() => onViewModeChange?.(mode)}
+              className={cn(
+                'shrink-0 transition-all',
+                viewMode === mode
+                  ? 'bg-[var(--ds-color-blue-600)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-blue-700)]'
+                  : 'hover:bg-[var(--ds-color-surface-hover)]',
+              )}
+              style={{ width: 26, height: 26, border: `1px solid ${th.navBorder}`, borderRadius: 5 }}
+            >
+              {VIEW_ICONS[mode]}
+            </Button>
+          ))}
         </div>
 
         {/* Search */}
         <SymbolSearch th={th} onSelect={onSymbolAdd} />
 
-        <div style={{ width: 1, height: 20, background: th.navBorder, flexShrink: 0 }} />
+        <Separator orientation="vertical" className="shrink-0" style={{ height: 20, background: th.navBorder }} />
 
         {/* Filter tabs */}
-        <div style={{ display: 'flex', gap: 4, alignItems: 'center', overflowX: 'auto', flex: 1, minWidth: 0 }}>
+        <div className="flex gap-1 items-center overflow-x-auto flex-1 min-w-0">
           {filterGroups.map((group) => {
             if (group.id === 'WL' || !group.hasDropdown) {
+              const isActive = displayGroup === group.id
               return (
-                <button
+                <Button
                   key={group.id}
+                  variant="ghost"
+                  size="xs"
                   onClick={() => onFilterChange(group.id as VietcapFilterGroup)}
-                  style={tabStyle(displayGroup === group.id)}
+                  className={cn(
+                    'shrink-0 transition-all',
+                    isActive
+                      ? 'bg-[var(--ds-color-blue-600)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-blue-700)] font-bold'
+                      : 'font-medium hover:bg-[var(--ds-color-surface-hover)]',
+                  )}
+                  style={{ border: isActive ? 'none' : th.tabBorder, borderRadius: 6 }}
                 >
                   {group.label}
-                </button>
+                </Button>
               )
             }
 
@@ -133,79 +145,180 @@ function FilterBarInner({
         </div>
 
         {/* Action buttons */}
-        <div style={{ marginLeft: 'auto', display: 'flex', gap: 6, alignItems: 'center', flexShrink: 0 }}>
-          <button onClick={onToggleAdvFilter} style={iconBtn(!!showAdvFilter)} title="Bộ lọc nâng cao">{'\u{1F50D}'}</button>
-          <button onClick={onToggleTradeHist} style={iconBtn(!!showTradeHist)} title="Lịch sử giao dịch">{'\u{1F4CB}'}</button>
-          <button onClick={onExportCSV} style={{ ...iconBtn(false), background: th.iconBg, border: `1px solid ${th.navBorder}`, color: th.textMuted }} title="Xuất CSV">{'\u2B07'}</button>
+        <div className="ml-auto flex gap-1.5 items-center shrink-0">
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            onClick={onToggleAdvFilter}
+            title="Bộ lọc nâng cao"
+            className={cn(
+              'shrink-0 transition-all',
+              showAdvFilter
+                ? 'bg-[var(--ds-color-orange-500)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-orange-400)]'
+                : 'hover:bg-[var(--ds-color-surface-hover)]',
+            )}
+            style={{ width: 26, height: 26, border: `1px solid ${showAdvFilter ? '#ea580c' : th.navBorder}`, borderRadius: 5 }}
+          >
+            {'\u{1F50D}'}
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            onClick={onToggleTradeHist}
+            title="Lịch sử giao dịch"
+            className={cn(
+              'shrink-0 transition-all',
+              showTradeHist
+                ? 'bg-[var(--ds-color-orange-500)] text-[var(--ds-color-text-inverse)] hover:bg-[var(--ds-color-orange-400)]'
+                : 'hover:bg-[var(--ds-color-surface-hover)]',
+            )}
+            style={{ width: 26, height: 26, border: `1px solid ${showTradeHist ? '#ea580c' : th.navBorder}`, borderRadius: 5 }}
+          >
+            {'\u{1F4CB}'}
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-xs"
+            onClick={onExportCSV}
+            title="Xuất CSV"
+            className="shrink-0 hover:bg-[var(--ds-color-surface-hover)] transition-all"
+            style={{ width: 26, height: 26, border: `1px solid ${th.navBorder}`, borderRadius: 5, background: th.iconBg, color: th.textMuted }}
+          >
+            {'\u2B07'}
+          </Button>
         </div>
       </div>
 
       {/* Sector filter panel */}
       {showSector && (
-        <div style={{
-          background: th.navBg, borderBottom: `1px solid ${th.navBorder}`,
-          padding: '7px 14px', display: 'flex', flexWrap: 'wrap', gap: 5, flexShrink: 0,
-          animation: 'fadeUp .15s ease',
-        }}>
+        <div
+          className="flex flex-wrap gap-1.5 shrink-0"
+          style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '7px 14px', animation: 'fadeUp .15s ease' }}
+        >
           {SECTOR_LIST.map((sec) => (
-            <button
+            <Badge
               key={sec}
+              variant="outline"
+              render={<button />}
               onClick={() => onSectorChange?.(sec)}
+              className={cn(
+                'cursor-pointer rounded-full transition-all text-[10.5px] px-2.5 py-0.5',
+                activeSector === sec
+                  ? 'bg-[var(--ds-color-blue-600)] text-[var(--ds-color-text-inverse)] border-[var(--ds-color-blue-600)] font-bold'
+                  : 'hover:bg-[var(--ds-color-surface-hover)]',
+              )}
               style={{
                 background: activeSector === sec ? 'var(--ds-color-blue-600)' : th.iconBg,
                 color: activeSector === sec ? 'var(--ds-color-text-inverse)' : th.textMuted,
-                border: `1px solid ${activeSector === sec ? 'var(--ds-color-blue-600)' : th.navBorder}`,
-                borderRadius: 16, padding: '3px 11px', fontSize: 10.5,
+                borderColor: activeSector === sec ? 'var(--ds-color-blue-600)' : th.navBorder,
                 fontWeight: activeSector === sec ? 700 : 400,
-                cursor: 'pointer', whiteSpace: 'nowrap', transition: 'all .15s',
+                borderRadius: 16,
               }}
             >
               {sec}
-            </button>
+            </Badge>
           ))}
         </div>
       )}
 
       {/* Advanced filter panel */}
       {showAdvFilter && (
-        <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '10px 14px', display: 'flex', gap: 12, alignItems: 'flex-end', flexShrink: 0, animation: 'fadeUp .15s ease', flexWrap: 'wrap' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <label style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: 'uppercase' }}>% Thay đổi</label>
-            <div style={{ display: 'flex', gap: 4 }}>
-              <input type="number" placeholder="Từ" value={filterPctFrom || ''} onChange={(e) => onSetPctFrom?.(e.target.value)} style={{ width: 60, padding: '4px 6px', border: `1px solid ${th.cellBorder}`, borderRadius: 4, background: th.appBg, color: th.text, fontSize: 10 }} />
+        <div
+          className="flex gap-3 items-end shrink-0 flex-wrap"
+          style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '10px 14px', animation: 'fadeUp .15s ease' }}
+        >
+          <div className="flex flex-col gap-1">
+            <label className="text-[9px] font-bold uppercase" style={{ color: th.textMuted }}>% Thay đổi</label>
+            <div className="flex gap-1 items-center">
+              <Input
+                type="number"
+                placeholder="Từ"
+                value={filterPctFrom || ''}
+                onChange={(e) => onSetPctFrom?.(e.target.value)}
+                className={inputCls}
+                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+              />
               <span style={{ color: th.textMuted, padding: '4px 0' }}>{'\u2192'}</span>
-              <input type="number" placeholder="Đến" value={filterPctTo || ''} onChange={(e) => onSetPctTo?.(e.target.value)} style={{ width: 60, padding: '4px 6px', border: `1px solid ${th.cellBorder}`, borderRadius: 4, background: th.appBg, color: th.text, fontSize: 10 }} />
+              <Input
+                type="number"
+                placeholder="Đến"
+                value={filterPctTo || ''}
+                onChange={(e) => onSetPctTo?.(e.target.value)}
+                className={inputCls}
+                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+              />
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <label style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: 'uppercase' }}>KLGD (triệu)</label>
-            <input type="number" placeholder="Tối thiểu" value={filterVolMin || ''} onChange={(e) => onSetVolMin?.(e.target.value)} style={{ width: 100, padding: '4px 6px', border: `1px solid ${th.cellBorder}`, borderRadius: 4, background: th.appBg, color: th.text, fontSize: 10 }} />
+          <div className="flex flex-col gap-1">
+            <label className="text-[9px] font-bold uppercase" style={{ color: th.textMuted }}>KLGD (triệu)</label>
+            <Input
+              type="number"
+              placeholder="Tối thiểu"
+              value={filterVolMin || ''}
+              onChange={(e) => onSetVolMin?.(e.target.value)}
+              className={cn(inputCls, 'w-[100px]')}
+              style={{ background: th.appBg, color: th.text, fontSize: 10, width: 100 }}
+            />
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-            <label style={{ fontSize: 9, fontWeight: 700, color: th.textMuted, textTransform: 'uppercase' }}>Giá (từ-đến)</label>
-            <div style={{ display: 'flex', gap: 4 }}>
-              <input type="number" placeholder="Min" value={filterPriceMin || ''} onChange={(e) => onSetPriceMin?.(e.target.value)} style={{ width: 60, padding: '4px 6px', border: `1px solid ${th.cellBorder}`, borderRadius: 4, background: th.appBg, color: th.text, fontSize: 10 }} />
-              <input type="number" placeholder="Max" value={filterPriceMax || ''} onChange={(e) => onSetPriceMax?.(e.target.value)} style={{ width: 60, padding: '4px 6px', border: `1px solid ${th.cellBorder}`, borderRadius: 4, background: th.appBg, color: th.text, fontSize: 10 }} />
+          <div className="flex flex-col gap-1">
+            <label className="text-[9px] font-bold uppercase" style={{ color: th.textMuted }}>Giá (từ-đến)</label>
+            <div className="flex gap-1">
+              <Input
+                type="number"
+                placeholder="Min"
+                value={filterPriceMin || ''}
+                onChange={(e) => onSetPriceMin?.(e.target.value)}
+                className={inputCls}
+                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+              />
+              <Input
+                type="number"
+                placeholder="Max"
+                value={filterPriceMax || ''}
+                onChange={(e) => onSetPriceMax?.(e.target.value)}
+                className={inputCls}
+                style={{ background: th.appBg, color: th.text, fontSize: 10, width: 60 }}
+              />
             </div>
           </div>
-          <button onClick={onResetFilters} style={{ background: th.iconBg, border: `1px solid ${th.cellBorder}`, color: th.textMuted, borderRadius: 4, padding: '4px 10px', fontSize: 10, fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap' }}>Reset</button>
+          <Button
+            variant="outline"
+            size="xs"
+            onClick={onResetFilters}
+            className="shrink-0 font-bold"
+            style={{ color: th.textMuted, fontSize: 10 }}
+          >
+            Reset
+          </Button>
         </div>
       )}
 
       {/* Trade history panel */}
       {showTradeHist && (
-        <div style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '10px 14px', display: 'flex', flexDirection: 'column', gap: 6, flexShrink: 0, animation: 'fadeUp .15s ease', maxHeight: 200, overflowY: 'auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-            <span style={{ fontSize: 11, fontWeight: 700, color: 'var(--ds-color-blue-400)', letterSpacing: 0.5 }}>LỊCH SỬ GIAO DỊCH KHỚP LỆNH</span>
-            <span style={{ fontSize: 9, color: th.textMuted }}>Realtime</span>
+        <div
+          className="flex flex-col gap-1.5 shrink-0 overflow-y-auto"
+          style={{ background: th.navBg, borderBottom: `1px solid ${th.navBorder}`, padding: '10px 14px', animation: 'fadeUp .15s ease', maxHeight: 200 }}
+        >
+          <div className="flex justify-between items-center mb-1">
+            <span className="text-[11px] font-bold tracking-wider" style={{ color: 'var(--ds-color-blue-400)' }}>LỊCH SỬ GIAO DỊCH KHỚP LỆNH</span>
+            <span className="text-[9px]" style={{ color: th.textMuted }}>Realtime</span>
           </div>
           {(tradeHistory || []).map((item, i) => (
-            <div key={i} style={{ display: 'grid', gridTemplateColumns: '60px 50px 60px 60px 70px', gap: 8, padding: 6, background: th.appBg, borderRadius: 4, border: `1px solid ${th.cellBorder}`, fontSize: 9, fontFamily: "'JetBrains Mono', monospace" }}>
-              <div style={{ fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{item.sym}</div>
-              <div style={{ color: item.timeColor, textAlign: 'right' }}>{item.time}</div>
-              <div style={{ color: item.priceColor, textAlign: 'right', fontWeight: 700 }}>{item.price}</div>
-              <div style={{ color: item.volColor, textAlign: 'right' }}>{item.qty}</div>
-              <div style={{ color: item.sideColor, textAlign: 'center', fontWeight: 700 }}>{item.side}</div>
+            <div
+              key={i}
+              className="grid gap-2 py-1.5 px-1.5 rounded text-[9px]"
+              style={{
+                gridTemplateColumns: '60px 50px 60px 60px 70px',
+                background: th.appBg,
+                border: `1px solid ${th.cellBorder}`,
+                fontFamily: "var(--ds-font-mono)",
+              }}
+            >
+              <div className="font-bold" style={{ color: 'var(--ds-color-blue-400)' }}>{item.sym}</div>
+              <div className="text-right" style={{ color: item.timeColor }}>{item.time}</div>
+              <div className="text-right font-bold" style={{ color: item.priceColor }}>{item.price}</div>
+              <div className="text-right" style={{ color: item.volColor }}>{item.qty}</div>
+              <div className="text-center font-bold" style={{ color: item.sideColor }}>{item.side}</div>
             </div>
           ))}
         </div>

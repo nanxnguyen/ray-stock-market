@@ -1,0 +1,430 @@
+import type { ColDef, ColGroupDef } from 'ag-grid-community'
+import type { StockRow } from '../../types/priceboard'
+import { SymbolCellRenderer, WatchlistCellRenderer } from './cellRenderers'
+
+type CellStyleParams = { data?: StockRow }
+
+const WIDTH = {
+  symbol: 72,
+  pinnedPrice: 60,
+  orderBookPrice: 60,
+  matchedPrice: 64,
+  orderBookVolume: 62,
+  matchedVolume: 64,
+  narrowMetric: 54,
+  tradedVolume: 74,
+  foreignVolume: 74,
+  room: 90,
+  marketVolume: 90,
+  watchlist: 36,
+} as const
+
+const cellStyle = (colorField?: string) => (params: CellStyleParams): Record<string, string | number> => {
+  const base: Record<string, string | number> = { textAlign: 'right' }
+  if (colorField && params.data) {
+    base.color = params.data[colorField as keyof StockRow] as string
+  }
+  return base
+}
+
+const volumeCellStyle = (): Record<string, string | number> => ({
+  textAlign: 'right',
+  color: 'var(--ds-color-text-vol)',
+})
+
+const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
+  {
+    headerName: 'Mã CK',
+    colId: 'sym',
+    field: 'sym',
+    pinned: 'left',
+    width: WIDTH.symbol,
+    minWidth: WIDTH.symbol,
+    cellRenderer: SymbolCellRenderer,
+    headerClass: 'ag-header-cell-center',
+    cellStyle: () => ({
+      textAlign: 'center' as const,
+      fontWeight: 700,
+      fontSize: '11.5px',
+      color: 'var(--ds-color-blue-400)',
+      cursor: 'pointer',
+      letterSpacing: '.3px',
+      fontFamily: "'Inter', sans-serif",
+    }),
+  },
+  {
+    headerName: 'Trần',
+    colId: 'ceil',
+    field: 'ceil',
+    pinned: 'left',
+    width: WIDTH.pinnedPrice,
+    minWidth: WIDTH.pinnedPrice,
+    headerClass: 'ag-header-cell-ceiling',
+    cellStyle: () => ({
+      textAlign: 'right',
+      color: 'var(--ds-color-market-ceiling)',
+    }),
+  },
+  {
+    headerName: 'TC',
+    colId: 'tc',
+    field: 'tc',
+    pinned: 'left',
+    width: WIDTH.pinnedPrice,
+    minWidth: WIDTH.pinnedPrice,
+    headerClass: 'ag-header-cell-yellow',
+    cellStyle: () => ({
+      textAlign: 'right',
+      color: 'var(--ds-color-market-flat)',
+    }),
+  },
+  {
+    headerName: 'Sàn',
+    colId: 'floor',
+    field: 'floor',
+    pinned: 'left',
+    width: WIDTH.pinnedPrice,
+    minWidth: WIDTH.pinnedPrice,
+    headerClass: 'ag-header-cell-cyan',
+    cellStyle: () => ({
+      textAlign: 'right',
+      color: 'var(--ds-color-cyan-400)',
+    }),
+  },
+  {
+    headerName: '── DƯ MUA ──',
+    groupId: 'buy',
+    headerClass: 'ag-header-cell-buy',
+    children: [
+      {
+        headerName: 'Giá 3',
+        colId: 'b3p',
+        field: 'b3p',
+        width: WIDTH.orderBookPrice,
+        minWidth: WIDTH.orderBookPrice,
+        headerClass: 'ag-header-cell-blue',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.b3c ?? 'inherit',
+          opacity: 0.75,
+        }),
+      },
+      {
+        headerName: 'KL 3',
+        colId: 'b3q',
+        field: 'b3q',
+        width: WIDTH.orderBookVolume,
+        minWidth: WIDTH.orderBookVolume,
+        headerClass: 'ag-header-cell-blue',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.b3c ?? 'inherit',
+          opacity: 0.75,
+        }),
+      },
+      {
+        headerName: 'Giá 2',
+        colId: 'b2p',
+        field: 'b2p',
+        width: WIDTH.orderBookPrice,
+        minWidth: WIDTH.orderBookPrice,
+        headerClass: 'ag-header-cell-blue',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.b2c ?? 'inherit',
+          opacity: 0.85,
+        }),
+      },
+      {
+        headerName: 'KL 2',
+        colId: 'b2q',
+        field: 'b2q',
+        width: WIDTH.orderBookVolume,
+        minWidth: WIDTH.orderBookVolume,
+        headerClass: 'ag-header-cell-blue',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.b2c ?? 'inherit',
+          opacity: 0.85,
+        }),
+      },
+      {
+        headerName: 'Giá 1',
+        colId: 'b1p',
+        field: 'b1p',
+        width: WIDTH.orderBookPrice,
+        minWidth: WIDTH.orderBookPrice,
+        headerClass: 'ag-header-cell-blue',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.b1c ?? 'inherit',
+        }),
+      },
+      {
+        headerName: 'KL 1',
+        colId: 'b1q',
+        field: 'b1q',
+        width: WIDTH.orderBookVolume,
+        minWidth: WIDTH.orderBookVolume,
+        headerClass: 'ag-header-cell-blue',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.b1c ?? 'inherit',
+        }),
+      },
+    ],
+  },
+  {
+    headerName: 'KHỚP LỆNH',
+    groupId: 'matched',
+    headerClass: 'ag-header-group-cell-matched',
+    children: [
+      {
+        headerName: 'Giá',
+        colId: 'lp',
+        field: 'lp',
+        width: WIDTH.matchedPrice,
+        minWidth: WIDTH.matchedPrice,
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          fontWeight: 700,
+          fontSize: 12,
+          color: params.data?.lc ?? 'inherit',
+        }),
+      },
+      {
+        headerName: 'KL',
+        colId: 'lq',
+        field: 'lq',
+        width: WIDTH.matchedVolume,
+        minWidth: WIDTH.matchedVolume,
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.lc ?? 'inherit',
+          opacity: 0.9,
+        }),
+      },
+      {
+        headerName: '%',
+        colId: 'pct',
+        field: 'pct',
+        width: WIDTH.narrowMetric,
+        minWidth: WIDTH.narrowMetric,
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          fontWeight: 700,
+          color: params.data?.pc ?? 'inherit',
+        }),
+      },
+      {
+        headerName: '↕',
+        colId: 'chg',
+        field: 'chg',
+        width: WIDTH.narrowMetric,
+        minWidth: WIDTH.narrowMetric,
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.pc ?? 'inherit',
+        }),
+      },
+      {
+        headerName: 'KLGD',
+        colId: 'tvol',
+        field: 'tvol',
+        width: WIDTH.tradedVolume,
+        minWidth: WIDTH.tradedVolume,
+        cellStyle: volumeCellStyle,
+      },
+    ],
+  },
+  {
+    headerName: '── DƯ BÁN ──',
+    groupId: 'sell',
+    headerClass: 'ag-header-cell-sell',
+    children: [
+      {
+        headerName: 'Giá 1',
+        colId: 'a1p',
+        field: 'a1p',
+        width: WIDTH.orderBookPrice,
+        minWidth: WIDTH.orderBookPrice,
+        headerClass: 'ag-header-cell-red',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.a1c ?? 'inherit',
+        }),
+      },
+      {
+        headerName: 'KL 1',
+        colId: 'a1q',
+        field: 'a1q',
+        width: WIDTH.orderBookVolume,
+        minWidth: WIDTH.orderBookVolume,
+        headerClass: 'ag-header-cell-red',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.a1c ?? 'inherit',
+        }),
+      },
+      {
+        headerName: 'Giá 2',
+        colId: 'a2p',
+        field: 'a2p',
+        width: WIDTH.orderBookPrice,
+        minWidth: WIDTH.orderBookPrice,
+        headerClass: 'ag-header-cell-red',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.a2c ?? 'inherit',
+          opacity: 0.85,
+        }),
+      },
+      {
+        headerName: 'KL 2',
+        colId: 'a2q',
+        field: 'a2q',
+        width: WIDTH.orderBookVolume,
+        minWidth: WIDTH.orderBookVolume,
+        headerClass: 'ag-header-cell-red',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.a2c ?? 'inherit',
+          opacity: 0.85,
+        }),
+      },
+      {
+        headerName: 'Giá 3',
+        colId: 'a3p',
+        field: 'a3p',
+        width: WIDTH.orderBookPrice,
+        minWidth: WIDTH.orderBookPrice,
+        headerClass: 'ag-header-cell-red',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.a3c ?? 'inherit',
+          opacity: 0.75,
+        }),
+      },
+      {
+        headerName: 'KL 3',
+        colId: 'a3q',
+        field: 'a3q',
+        width: WIDTH.orderBookVolume,
+        minWidth: WIDTH.orderBookVolume,
+        headerClass: 'ag-header-cell-red',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.a3c ?? 'inherit',
+          opacity: 0.75,
+        }),
+      },
+    ],
+  },
+  {
+    headerName: 'Cao',
+    colId: 'hi',
+    field: 'hi',
+    width: WIDTH.pinnedPrice,
+    minWidth: WIDTH.pinnedPrice,
+    cellStyle: cellStyle('hc'),
+  },
+  {
+    headerName: 'TB',
+    colId: 'avg',
+    field: 'avg',
+    width: WIDTH.pinnedPrice,
+    minWidth: WIDTH.pinnedPrice,
+    cellStyle: (params: CellStyleParams) => ({
+      textAlign: 'right',
+      color: params.data?.ac ?? 'inherit',
+      opacity: 0.7,
+    }),
+  },
+  {
+    headerName: 'Thấp',
+    colId: 'lo',
+    field: 'lo',
+    width: WIDTH.pinnedPrice,
+    minWidth: WIDTH.pinnedPrice,
+    cellStyle: cellStyle('oc'),
+  },
+  {
+    headerName: 'NN',
+    groupId: 'foreign',
+    headerClass: 'ag-header-cell-purple',
+    children: [
+      {
+        headerName: 'Mua',
+        colId: 'fbuy',
+        field: 'fbuy',
+        width: WIDTH.foreignVolume,
+        minWidth: WIDTH.foreignVolume,
+        headerClass: 'ag-header-cell-purple',
+        cellStyle: () => ({
+          textAlign: 'right',
+          color: 'var(--ds-color-market-foreign-buy)',
+        }),
+      },
+      {
+        headerName: 'Bán',
+        colId: 'fsell',
+        field: 'fsell',
+        width: WIDTH.foreignVolume,
+        minWidth: WIDTH.foreignVolume,
+        headerClass: 'ag-header-cell-purple',
+        cellStyle: () => ({
+          textAlign: 'right',
+          color: 'var(--ds-color-red-400)',
+        }),
+      },
+      {
+        headerName: '↕',
+        colId: 'fbal',
+        field: 'fbal',
+        width: WIDTH.foreignVolume,
+        minWidth: WIDTH.foreignVolume,
+        headerClass: 'ag-header-cell-purple',
+        cellStyle: (params: CellStyleParams) => ({
+          textAlign: 'right',
+          color: params.data?.fbc ?? 'inherit',
+        }),
+      },
+      {
+        headerName: 'Room',
+        colId: 'room',
+        field: 'room',
+        width: WIDTH.room,
+        minWidth: WIDTH.room,
+        headerClass: 'ag-header-cell-purple',
+        cellStyle: () => ({
+          textAlign: 'right',
+          color: 'var(--ds-color-neutral-500)',
+        }),
+      },
+    ],
+  },
+  {
+    headerName: 'KLGD TT',
+    colId: 'kltt',
+    field: 'kltt',
+    width: WIDTH.marketVolume,
+    minWidth: WIDTH.marketVolume,
+    headerClass: 'ag-header-cell-secondary',
+    cellStyle: volumeCellStyle,
+  },
+  {
+    headerName: '♡',
+    colId: 'watchlist',
+    width: WIDTH.watchlist,
+    minWidth: WIDTH.watchlist,
+    cellRenderer: WatchlistCellRenderer,
+    headerClass: ['ag-header-cell-heart', 'ag-header-cell-center'],
+    cellStyle: () => ({
+      textAlign: 'center' as const,
+      cursor: 'pointer',
+      fontSize: 13,
+    }),
+  },
+]
+
+export default columnDefs

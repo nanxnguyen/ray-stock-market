@@ -1,0 +1,315 @@
+/* ═══ AG Grid theme — khớp 1:1 với designHtml/Bang Dien.dc.html (dark) ═══ */
+
+.home-page-shell {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.home-page-view {
+  flex: 1 1 auto;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.priceboard-scroll-shell {
+  --priceboard-grid-min-width: 1900px;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  background: var(--ds-color-bg-table);
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-color: #1e3a5f transparent;
+  scrollbar-width: thin;
+}
+
+.priceboard-scroll-shell::-webkit-scrollbar {
+  width: 4px;
+  height: 8px;
+}
+
+.priceboard-scroll-shell::-webkit-scrollbar-track {
+  background: var(--ds-color-bg-table);
+}
+
+.priceboard-scroll-shell::-webkit-scrollbar-thumb {
+  background: #1e3a5f;
+  border-radius: 4px;
+}
+
+.priceboard-scroll-shell::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+.priceboard-grid {
+  width: max(100%, var(--priceboard-grid-min-width));
+  min-width: var(--priceboard-grid-min-width);
+  height: 100%;
+}
+
+.ag-vietcap {
+  --ag-background-color: var(--ds-color-bg-table);
+  --ag-header-background-color: var(--ds-color-bg-table-header);
+  --ag-header-foreground-color: #4a7090;
+  --ag-foreground-color: var(--ds-color-text-primary);
+  --ag-border-color: var(--ds-color-border-subtle);
+  --ag-row-border-color: var(--ds-color-border-row);
+  --ag-row-hover-color: var(--ds-color-bg-row-hover);
+  --ag-selected-row-background-color: rgba(59, 130, 246, 0.12);
+  --ag-range-selection-background-color: rgba(59, 130, 246, 0.08);
+  --ag-font-family: 'JetBrains Mono', monospace;
+  --ag-font-size: 11px;
+  /* AG đánh số row từ 0: ag-row-even (0,2,4…) = design i%2===0 → rowOdd */
+  --ag-even-row-background-color: var(--ds-color-bg-row-odd);
+  --ag-odd-row-background-color: var(--ds-color-bg-row-even);
+  --ag-checkbox-checked-color: var(--ds-color-blue-400);
+  --ag-input-focus-border-color: transparent;
+  --ag-input-border-color: transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── HEADER tầng 1 (group row): design dòng 348 — 9.5px Inter 700 #4a7090, bg #080f1c ── */
+.ag-vietcap .ag-header {
+  border-bottom: none;
+}
+
+.ag-vietcap .ag-header-group-cell {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #4a7090;
+  padding: 0 5px;
+  border-right: 2px solid var(--ds-color-border-default);
+}
+
+.ag-vietcap .ag-header-group-cell-label {
+  justify-content: center;
+  white-space: nowrap;
+  overflow: visible;
+  width: 100%;
+}
+
+/* Group màu — design dòng 353-355, 359 */
+.ag-vietcap .ag-header-group-cell.ag-header-cell-buy {
+  background: var(--ds-color-bg-header-buy);
+  color: #60a5fa;
+  letter-spacing: 0.8px;
+}
+.ag-vietcap .ag-header-group-cell.ag-header-group-cell-matched {
+  color: #e2e8f0;
+  letter-spacing: 0.5px;
+}
+.ag-vietcap .ag-header-group-cell.ag-header-cell-sell {
+  background: var(--ds-color-bg-header-sell);
+  color: #f87171;
+  letter-spacing: 0.8px;
+}
+
+/* ── HEADER tầng 2 (leaf row): design dòng 363 — 9px Inter #3a6080, letter-spacing .3px ── */
+.ag-vietcap .ag-header-cell {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  color: #3a6080;
+  padding: 3px 6px;
+  cursor: default;
+}
+
+.ag-vietcap .ag-header-cell-label {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  align-self: center;
+  min-height: 11px;
+  height: auto;
+  line-height: 1;
+}
+
+.ag-vietcap .ag-cell-label-container {
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
+  padding: 0;
+  height: 100%;
+}
+
+.ag-vietcap .ag-header-cell-text {
+  display: inline-block;
+  overflow: visible;
+  text-overflow: clip;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+/* Cột không group span 2 tầng (Mã CK, Trần, TC, Sàn, Cao, TB, Thấp, KLGD TT, ♡)
+   → style như tầng 1: 9.5px #4a7090 — design dòng 349-361 */
+.ag-vietcap .ag-header-cell.ag-header-span-height {
+  font-size: 9.5px;
+  letter-spacing: 0.5px;
+  color: #4a7090;
+  padding: 5px 6px;
+}
+
+/* Sub-header DƯ MUA: bg #05111e, chữ #3b7fc4 — design dòng 364-369 */
+.ag-vietcap .ag-header-cell[col-id='b3p'],
+.ag-vietcap .ag-header-cell[col-id='b3q'],
+.ag-vietcap .ag-header-cell[col-id='b2p'],
+.ag-vietcap .ag-header-cell[col-id='b2q'],
+.ag-vietcap .ag-header-cell[col-id='b1p'],
+.ag-vietcap .ag-header-cell[col-id='b1q'] {
+  background: var(--ds-color-bg-header-buy);
+  color: #3b7fc4;
+}
+
+/* Sub-header DƯ BÁN: bg #1a0808, chữ #c04040 — design dòng 375-380 */
+.ag-vietcap .ag-header-cell[col-id='a1p'],
+.ag-vietcap .ag-header-cell[col-id='a1q'],
+.ag-vietcap .ag-header-cell[col-id='a2p'],
+.ag-vietcap .ag-header-cell[col-id='a2q'],
+.ag-vietcap .ag-header-cell[col-id='a3p'],
+.ag-vietcap .ag-header-cell[col-id='a3q'] {
+  background: var(--ds-color-bg-header-sell);
+  color: #c04040;
+}
+
+/* Header màu theo cột — hex nguyên văn từ design */
+.ag-vietcap .ag-header-cell-center .ag-header-cell-label { justify-content: center; }
+.ag-vietcap .ag-header-cell-ceiling { color: #b07ef8 !important; }
+.ag-vietcap .ag-header-cell-yellow { color: #fbbf24 !important; }
+.ag-vietcap .ag-header-cell-cyan { color: #38bdf8 !important; }
+.ag-vietcap .ag-header-cell-purple { color: #a78bfa !important; }
+.ag-vietcap .ag-header-cell-secondary { color: #94a3b8 !important; }
+.ag-vietcap .ag-header-cell-heart { color: #60a5fa !important; }
+
+/* Ẩn sort indicator (design không có) */
+.ag-vietcap .ag-header-cell .ag-sort-indicator-container,
+.ag-vietcap .ag-header-cell .ag-sort-order {
+  display: none !important;
+}
+
+/* ── CELLS: design dòng 394 — padding 3px 6px, JetBrains Mono, tabular-nums ── */
+.ag-vietcap .ag-cell {
+  padding: 3px 6px;
+  border-right: 1px solid var(--ds-color-border-subtle);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+  font-size: 11px !important;
+}
+
+.ag-vietcap .ag-cell[col-id='lp'] {
+  font-size: 12px !important;
+  font-weight: 700;
+}
+
+.ag-vietcap .ag-cell[col-id='ceil'],
+.ag-vietcap .ag-cell[col-id='tc'],
+.ag-vietcap .ag-cell[col-id='floor'],
+.ag-vietcap .ag-cell[col-id='b3p'],
+.ag-vietcap .ag-cell[col-id='b2p'],
+.ag-vietcap .ag-cell[col-id='b1p'],
+.ag-vietcap .ag-cell[col-id='lp'],
+.ag-vietcap .ag-cell[col-id='a1p'],
+.ag-vietcap .ag-cell[col-id='a2p'],
+.ag-vietcap .ag-cell[col-id='a3p'],
+.ag-vietcap .ag-cell[col-id='hi'],
+.ag-vietcap .ag-cell[col-id='avg'],
+.ag-vietcap .ag-cell[col-id='lo'] {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+.ag-vietcap .ag-cell[col-id='sym'],
+.ag-vietcap .ag-cell[col-id='kltt'],
+.ag-vietcap .ag-cell[col-id='room'] {
+  padding: 3px 8px;
+}
+
+.ag-vietcap .ag-cell[col-id='sym'],
+.ag-vietcap .ag-cell[col-id='watchlist'] {
+  justify-content: center;
+}
+
+.ag-vietcap .ag-cell-focus {
+  outline: none !important;
+  border-right: 1px solid var(--ds-color-border-subtle) !important;
+}
+
+/* Separator 2px sau mỗi group — design: Sàn, KL1(mua), KLGD, KL3(bán), Thấp, Room */
+.ag-vietcap .ag-cell[col-id='b1q'],
+.ag-vietcap .ag-cell[col-id='tvol'],
+.ag-vietcap .ag-cell[col-id='a3q'],
+.ag-vietcap .ag-cell[col-id='lo'],
+.ag-vietcap .ag-cell[col-id='room'],
+.ag-vietcap .ag-header-cell[col-id='b1q'],
+.ag-vietcap .ag-header-cell[col-id='tvol'],
+.ag-vietcap .ag-header-cell[col-id='a3q'],
+.ag-vietcap .ag-header-cell[col-id='lo'],
+.ag-vietcap .ag-header-cell[col-id='room'] {
+  border-right: 2px solid var(--ds-color-border-default);
+}
+
+/* ── ROWS: transition .5s cho flash (design dòng 389), hover #102040 ── */
+.ag-vietcap .ag-row {
+  transition: background 0.5s ease;
+  border-bottom: 1px solid var(--ds-color-border-row);
+}
+
+.ag-vietcap .ag-row-hover {
+  background-color: var(--ds-color-bg-row-hover) !important;
+}
+
+.ag-vietcap .ag-row-selected {
+  background-color: rgba(59, 130, 246, 0.08) !important;
+}
+
+/* Pinned: cell trong suốt cho bg row xuyên qua; border 2px sau Sàn — design dòng 393 */
+.ag-vietcap .ag-pinned-left-header,
+.ag-vietcap .ag-pinned-left-cols-container {
+  border-right: none;
+}
+
+.ag-vietcap .ag-cell.ag-cell-last-left-pinned,
+.ag-vietcap .ag-header-cell.ag-header-cell-last-left-pinned {
+  border-right: 2px solid var(--ds-color-border-default) !important;
+}
+
+.ag-vietcap .ag-cell[col-id='sym'],
+.ag-vietcap .ag-cell[col-id='ceil'],
+.ag-vietcap .ag-cell[col-id='tc'],
+.ag-vietcap .ag-cell[col-id='floor'] {
+  border-right-color: var(--ds-color-border-default);
+}
+
+/* ── SCROLLBAR — design dòng 15-18: 4px, thumb #1e3a5f ── */
+.ag-vietcap ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+.ag-vietcap ::-webkit-scrollbar-track {
+  background: transparent;
+}
+.ag-vietcap ::-webkit-scrollbar-thumb {
+  background: #1e3a5f;
+  border-radius: 4px;
+}
+.ag-vietcap ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}

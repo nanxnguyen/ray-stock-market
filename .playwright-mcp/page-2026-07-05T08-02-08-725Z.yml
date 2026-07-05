@@ -1,0 +1,447 @@
+- generic [ref=f59e2]:
+  - generic [ref=f59e4]:
+    - generic [ref=f59e5]:
+      - generic [ref=f59e6]:
+        - generic [ref=f59e7]:
+          - link [ref=f59e8] [cursor=pointer]:
+            - /url: /home
+            - generic [ref=f59e9]:
+              - img [ref=f59e11]
+              - img [ref=f59e13]
+          - generic [ref=f59e15]:
+            - button "Cơ sở" [ref=f59e16] [cursor=pointer]
+            - button "Phái sinh" [ref=f59e17] [cursor=pointer]
+          - generic [ref=f59e18]: 05/07/2026 15:02:08
+        - generic [ref=f59e97]:
+          - img [ref=f59e98]
+          - link "Go Green Go Up - Chung tay xanh rừng, vững thêm chắn lũ cùng Vietcap" [ref=f59e99] [cursor=pointer]:
+            - /url: https://trading.vietcap.com.vn/utilities/go-green-go-up
+        - generic [ref=f59e21]:
+          - generic [ref=f59e22]:
+            - img [ref=f59e23] [cursor=pointer]
+            - textbox "Nhập từ khoá"
+          - img [ref=f59e25] [cursor=pointer]
+          - generic [ref=f59e26]:
+            - button "Mở tài khoản" [ref=f59e27] [cursor=pointer]
+            - button "Đăng nhập" [ref=f59e28] [cursor=pointer]
+          - img [ref=f59e31] [cursor=pointer]
+      - generic [ref=f59e34]:
+        - link "Trang chủ" [ref=f59e35] [cursor=pointer]:
+          - /url: /home
+        - button "Bảng giá" [ref=f59e37] [cursor=pointer]:
+          - generic [ref=f59e38]: Bảng giá
+          - img [ref=f59e39]
+        - link "Thị trường" [ref=f59e40] [cursor=pointer]:
+          - /url: /iq/market
+        - button "Thông tin tài sản" [ref=f59e42] [cursor=pointer]:
+          - generic [ref=f59e43]: Thông tin tài sản
+          - img [ref=f59e44]
+        - button "Giao dịch tiền" [ref=f59e46] [cursor=pointer]:
+          - generic [ref=f59e47]: Giao dịch tiền
+          - img [ref=f59e48]
+        - button "Giao Dịch Chứng Khoán" [ref=f59e50] [cursor=pointer]:
+          - generic [ref=f59e51]: Giao Dịch Chứng Khoán
+          - img [ref=f59e52]
+        - button "Vietcap IQ" [ref=f59e54] [cursor=pointer]:
+          - generic [ref=f59e55]: Vietcap IQ
+          - img [ref=f59e56]
+        - button "AI News" [ref=f59e58] [cursor=pointer]:
+          - generic [ref=f59e59]: AI News
+          - img [ref=f59e60]
+        - button "Sản phẩm Đầu tư" [ref=f59e62] [cursor=pointer]:
+          - generic [ref=f59e63]: Sản phẩm Đầu tư
+          - img [ref=f59e64]
+        - button "Tiện ích" [ref=f59e66] [cursor=pointer]:
+          - generic [ref=f59e67]: Tiện ích
+          - img [ref=f59e68]
+    - generic [ref=f59e106]:
+      - generic [ref=f59e107]:
+        - generic [ref=f59e110]:
+          - heading "VnIndex Và Kỳ Vọng 12 Tháng" [level=2] [ref=f59e115]
+          - img [ref=f59e122]:
+            - generic [ref=f59e124]:
+              - generic [ref=f59e126]: 1,026.00
+              - generic [ref=f59e128]: 1,215.00
+              - generic [ref=f59e130]: 1,404.00
+              - generic [ref=f59e132]: 1,593.00
+              - generic [ref=f59e134]: 1,782.00
+              - generic [ref=f59e136]: 1,971.00
+              - generic [ref=f59e138]: "2024"
+              - generic [ref=f59e140]: "2025"
+              - generic [ref=f59e142]: "2026"
+              - generic [ref=f59e148]: VN Index
+              - generic [ref=f59e152]: Kỳ Vọng 12 Tháng
+              - generic [ref=f59e158]: 1,862.08
+              - generic [ref=f59e161]: 1,968.99
+        - generic [ref=f59e164]:
+          - heading "Cơ Cấu Đánh Giá Động Bởi Vietcap" [level=2] [ref=f59e169]
+          - img [ref=f59e177]:
+            - generic [ref=f59e179]:
+              - generic [ref=f59e191]: MUA
+              - generic [ref=f59e193]: 68.7%
+              - generic [ref=f59e196]: KQ
+              - generic [ref=f59e198]: 18.1%
+              - generic [ref=f59e201]: PHTT
+              - generic [ref=f59e203]: 9.6%
+              - generic [ref=f59e206]: BÁN
+              - generic [ref=f59e208]: 2.4%
+              - generic [ref=f59e212]: "83"
+              - generic [ref=f59e214]: Mã
+        - generic [ref=f59e217]:
+          - heading "Cổ Phiếu Có Dự Báo Cao Nhất" [level=2] [ref=f59e222]
+          - generic [ref=f59e224]:
+            - generic [ref=f59e227]:
+              - generic [ref=f59e228]: Mức Sinh Lời (%)
+              - generic [ref=f59e229]: Tăng Trưởng Lợi Nhuận (%)
+              - generic [ref=f59e230]: ROE (%)
+              - generic [ref=f59e231]: Lợi Suất Cổ Tức (%)
+            - img [ref=f59e240]:
+              - generic [ref=f59e242]:
+                - generic [ref=f59e244]: REE
+                - generic [ref=f59e246]: VIC
+                - generic [ref=f59e248]: ACB
+                - generic [ref=f59e250]: LHG
+                - generic [ref=f59e252]: TCB
+                - generic [ref=f59e254]: TPB
+                - generic [ref=f59e256]: VRE
+                - generic [ref=f59e258]: VIC
+                - generic [ref=f59e260]: SAB
+                - generic [ref=f59e270]: "24.5"
+                - generic [ref=f59e271]: "25.9"
+                - generic [ref=f59e272]: "29.4"
+                - generic [ref=f59e273]: "32.8"
+                - generic [ref=f59e274]: "33.5"
+                - generic [ref=f59e275]: "35.3"
+                - generic [ref=f59e276]: "37.3"
+                - generic [ref=f59e277]: "38.5"
+                - generic [ref=f59e278]: "42.2"
+      - generic [ref=f59e280]:
+        - generic [ref=f59e282]:
+          - heading "Danh Mục Phân Tích" [level=2] [ref=f59e285]
+          - tablist [ref=f59e290]:
+            - tab "Mã" [ref=f59e291]:
+              - generic [ref=f59e293] [cursor=pointer]: Mã
+            - listitem
+            - tab "Ngành" [selected] [ref=f59e294] [cursor=pointer]:
+              - generic [ref=f59e296]: Ngành
+        - generic [ref=f59e297]:
+          - tabpanel "Mã"
+          - tabpanel "Ngành" [ref=f59e889]:
+            - generic [ref=f59e897]:
+              - text:  
+              - treegrid [ref=f59e899]:
+                - rowgroup [ref=f59e900]:
+                  - row [ref=f59e901]:  
+                  - row [ref=f59e902]:  
+                  - row "Ngành" [ref=f59e903]:
+                    - columnheader "Ngành" [ref=f59e904]:
+                      - text: 
+                      - generic [ref=f59e909]: Ngành
+                - rowgroup [ref=f59e910]:
+                  - row "Vốn Hoá (tỷ VNĐ) TB Cộng TB" [ref=f59e911]:
+                    - text:  
+                    - columnheader "Vốn Hoá (tỷ VNĐ)" [ref=f59e912]:
+                      - generic [ref=f59e914]: Vốn Hoá (tỷ VNĐ)
+                    - columnheader "TB Cộng" [ref=f59e915]: TB Cộng  
+                    - columnheader "TB" [ref=f59e916]: TB  
+                    - text:  
+                  - row "P/E TP/ EPS (VNĐ) P/B P/E P/B" [ref=f59e917]:
+                    - text:    
+                    - columnheader "P/E" [ref=f59e918]: P/E  
+                    - columnheader "TP/ EPS (VNĐ)" [ref=f59e919]:
+                      - generic [ref=f59e921]: TP/ EPS (VNĐ)
+                    - columnheader "P/B" [ref=f59e922]: P/B  
+                    - columnheader "P/E" [ref=f59e923]: P/E  
+                    - columnheader "P/B" [ref=f59e924]: P/B  
+                    - text:  
+                  - row "SL Công Ty Tổng TB FY25 FY26 FY27 FY26 Hiện Tại FY25 FY26 FY27 Hiện Tại Lợi Suất Cổ Tức TB" [ref=f59e925]:
+                    - columnheader "SL Công Ty" [ref=f59e926]:
+                      - text: 
+                      - generic [ref=f59e931]: SL Công Ty
+                    - columnheader "Tổng" [ref=f59e932]:
+                      - text: 
+                      - generic [ref=f59e937]: Tổng
+                    - columnheader "TB" [ref=f59e938]:
+                      - text: 
+                      - generic [ref=f59e943]: TB
+                    - columnheader "FY25" [ref=f59e944]:
+                      - text: 
+                      - generic [ref=f59e949]: FY25
+                    - columnheader "FY26" [ref=f59e950]:
+                      - text: 
+                      - generic [ref=f59e955]: FY26
+                    - columnheader "FY27" [ref=f59e956]:
+                      - text: 
+                      - generic [ref=f59e961]: FY27
+                    - columnheader "FY26" [ref=f59e962]:
+                      - text: 
+                      - generic [ref=f59e967]: FY26
+                    - columnheader "Hiện Tại" [ref=f59e968]:
+                      - text: 
+                      - generic [ref=f59e973]: Hiện Tại
+                    - columnheader "FY25" [ref=f59e974]:
+                      - text: 
+                      - generic [ref=f59e979]: FY25
+                    - columnheader "FY26" [ref=f59e980]:
+                      - text: 
+                      - generic [ref=f59e985]: FY26
+                    - columnheader "FY27" [ref=f59e986]:
+                      - text: 
+                      - generic [ref=f59e991]: FY27
+                    - columnheader "Hiện Tại" [ref=f59e992]:
+                      - text: 
+                      - generic [ref=f59e997]: Hiện Tại
+                    - columnheader "Lợi Suất Cổ Tức TB" [ref=f59e998]:
+                      - text: 
+                      - generic [ref=f59e1003]: Lợi Suất Cổ Tức TB
+                - rowgroup [ref=f59e1004]:
+                  - row "Tổng Tổng" [ref=f59e1005]:
+                    - gridcell "Tổng Tổng" [ref=f59e1006]:
+                      - generic [ref=f59e1007]:
+                        - generic [ref=f59e1008]: Tổng
+                        - generic [ref=f59e1009]: Tổng
+                - rowgroup [ref=f59e1010]:
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1011]:
+                    - gridcell "99" [ref=f59e1012]
+                    - gridcell "1,000" [ref=f59e1013]
+                    - gridcell "1" [ref=f59e1014]
+                    - gridcell "99.9" [ref=f59e1015]
+                    - gridcell "99.9" [ref=f59e1016]
+                    - gridcell "99.9" [ref=f59e1017]
+                    - gridcell "99.9" [ref=f59e1018]
+                    - gridcell "99.9" [ref=f59e1019]
+                    - gridcell "99.9" [ref=f59e1020]
+                    - gridcell "99.9" [ref=f59e1021]
+                    - gridcell "99.9" [ref=f59e1022]
+                    - gridcell "9.9" [ref=f59e1023]
+                    - gridcell "90.0%" [ref=f59e1024]
+                - rowgroup
+                - rowgroup [ref=f59e1025]:
+                  - row "Power & Water Power & Water" [ref=f59e1026]:
+                    - gridcell "Power & Water Power & Water" [ref=f59e1027]:
+                      - generic [ref=f59e1028]:
+                        - generic [ref=f59e1029]: Power & Water
+                        - generic [ref=f59e1030]: Power & Water
+                  - row "Consumer Consumer" [ref=f59e1031]:
+                    - gridcell "Consumer Consumer" [ref=f59e1032]:
+                      - generic [ref=f59e1033]:
+                        - generic [ref=f59e1034]: Consumer
+                        - generic [ref=f59e1035]: Consumer
+                  - row "Real Estate Real Estate" [ref=f59e1036]:
+                    - gridcell "Real Estate Real Estate" [ref=f59e1037]:
+                      - generic [ref=f59e1038]:
+                        - generic [ref=f59e1039]: Real Estate
+                        - generic [ref=f59e1040]: Real Estate
+                  - row "Insurance Insurance" [ref=f59e1041]:
+                    - gridcell "Insurance Insurance" [ref=f59e1042]:
+                      - generic [ref=f59e1043]:
+                        - generic [ref=f59e1044]: Insurance
+                        - generic [ref=f59e1045]: Insurance
+                  - row "Materials Materials" [ref=f59e1046]:
+                    - gridcell "Materials Materials" [ref=f59e1047]:
+                      - generic [ref=f59e1048]:
+                        - generic [ref=f59e1049]: Materials
+                        - generic [ref=f59e1050]: Materials
+                  - row "Banks Banks" [ref=f59e1051]:
+                    - gridcell "Banks Banks" [ref=f59e1052]:
+                      - generic [ref=f59e1053]:
+                        - generic [ref=f59e1054]: Banks
+                        - generic [ref=f59e1055]: Banks
+                  - row "Transport & Logistics Transport & Logistics" [ref=f59e1056]:
+                    - gridcell "Transport & Logistics Transport & Logistics" [ref=f59e1057]:
+                      - generic [ref=f59e1058]:
+                        - generic [ref=f59e1059]: Transport & Logistics
+                        - generic [ref=f59e1060]: Transport & Logistics
+                  - row "Industrials Industrials" [ref=f59e1061]:
+                    - gridcell "Industrials Industrials" [ref=f59e1062]:
+                      - generic [ref=f59e1063]:
+                        - generic [ref=f59e1064]: Industrials
+                        - generic [ref=f59e1065]: Industrials
+                  - row "Oil & Gas Oil & Gas" [ref=f59e1066]:
+                    - gridcell "Oil & Gas Oil & Gas" [ref=f59e1067]:
+                      - generic [ref=f59e1068]:
+                        - generic [ref=f59e1069]: Oil & Gas
+                        - generic [ref=f59e1070]: Oil & Gas
+                  - row "Industrial Parks Industrial Parks" [ref=f59e1071]:
+                    - gridcell "Industrial Parks Industrial Parks" [ref=f59e1072]:
+                      - generic [ref=f59e1073]:
+                        - generic [ref=f59e1074]: Industrial Parks
+                        - generic [ref=f59e1075]: Industrial Parks
+                  - row "Brokerage Brokerage" [ref=f59e1076]:
+                    - gridcell "Brokerage Brokerage" [ref=f59e1077]:
+                      - generic [ref=f59e1078]:
+                        - generic [ref=f59e1079]: Brokerage
+                        - generic [ref=f59e1080]: Brokerage
+                - rowgroup [ref=f59e1081]:
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1082]:
+                    - gridcell "99" [ref=f59e1083]
+                    - gridcell "1,000" [ref=f59e1084]
+                    - gridcell "1" [ref=f59e1085]
+                    - gridcell "99.9" [ref=f59e1086]
+                    - gridcell "99.9" [ref=f59e1087]
+                    - gridcell "99.9" [ref=f59e1088]
+                    - gridcell "99.9" [ref=f59e1089]
+                    - gridcell "99.9" [ref=f59e1090]
+                    - gridcell "99.9" [ref=f59e1091]
+                    - gridcell "99.9" [ref=f59e1092]
+                    - gridcell "99.9" [ref=f59e1093]
+                    - gridcell "9.9" [ref=f59e1094]
+                    - gridcell "90.0%" [ref=f59e1095]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1096]:
+                    - gridcell "99" [ref=f59e1097]
+                    - gridcell "1,000" [ref=f59e1098]
+                    - gridcell "1" [ref=f59e1099]
+                    - gridcell "99.9" [ref=f59e1100]
+                    - gridcell "99.9" [ref=f59e1101]
+                    - gridcell "99.9" [ref=f59e1102]
+                    - gridcell "99.9" [ref=f59e1103]
+                    - gridcell "99.9" [ref=f59e1104]
+                    - gridcell "99.9" [ref=f59e1105]
+                    - gridcell "99.9" [ref=f59e1106]
+                    - gridcell "99.9" [ref=f59e1107]
+                    - gridcell "9.9" [ref=f59e1108]
+                    - gridcell "90.0%" [ref=f59e1109]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1110]:
+                    - gridcell "99" [ref=f59e1111]
+                    - gridcell "1,000" [ref=f59e1112]
+                    - gridcell "1" [ref=f59e1113]
+                    - gridcell "99.9" [ref=f59e1114]
+                    - gridcell "99.9" [ref=f59e1115]
+                    - gridcell "99.9" [ref=f59e1116]
+                    - gridcell "99.9" [ref=f59e1117]
+                    - gridcell "99.9" [ref=f59e1118]
+                    - gridcell "99.9" [ref=f59e1119]
+                    - gridcell "99.9" [ref=f59e1120]
+                    - gridcell "99.9" [ref=f59e1121]
+                    - gridcell "9.9" [ref=f59e1122]
+                    - gridcell "90.0%" [ref=f59e1123]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1124]:
+                    - gridcell "99" [ref=f59e1125]
+                    - gridcell "1,000" [ref=f59e1126]
+                    - gridcell "1" [ref=f59e1127]
+                    - gridcell "99.9" [ref=f59e1128]
+                    - gridcell "99.9" [ref=f59e1129]
+                    - gridcell "99.9" [ref=f59e1130]
+                    - gridcell "99.9" [ref=f59e1131]
+                    - gridcell "99.9" [ref=f59e1132]
+                    - gridcell "99.9" [ref=f59e1133]
+                    - gridcell "99.9" [ref=f59e1134]
+                    - gridcell "99.9" [ref=f59e1135]
+                    - gridcell "9.9" [ref=f59e1136]
+                    - gridcell "90.0%" [ref=f59e1137]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1138]:
+                    - gridcell "99" [ref=f59e1139]
+                    - gridcell "1,000" [ref=f59e1140]
+                    - gridcell "1" [ref=f59e1141]
+                    - gridcell "99.9" [ref=f59e1142]
+                    - gridcell "99.9" [ref=f59e1143]
+                    - gridcell "99.9" [ref=f59e1144]
+                    - gridcell "99.9" [ref=f59e1145]
+                    - gridcell "99.9" [ref=f59e1146]
+                    - gridcell "99.9" [ref=f59e1147]
+                    - gridcell "99.9" [ref=f59e1148]
+                    - gridcell "99.9" [ref=f59e1149]
+                    - gridcell "9.9" [ref=f59e1150]
+                    - gridcell "90.0%" [ref=f59e1151]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1152]:
+                    - gridcell "99" [ref=f59e1153]
+                    - gridcell "1,000" [ref=f59e1154]
+                    - gridcell "1" [ref=f59e1155]
+                    - gridcell "99.9" [ref=f59e1156]
+                    - gridcell "99.9" [ref=f59e1157]
+                    - gridcell "99.9" [ref=f59e1158]
+                    - gridcell "99.9" [ref=f59e1159]
+                    - gridcell "99.9" [ref=f59e1160]
+                    - gridcell "99.9" [ref=f59e1161]
+                    - gridcell "99.9" [ref=f59e1162]
+                    - gridcell "99.9" [ref=f59e1163]
+                    - gridcell "9.9" [ref=f59e1164]
+                    - gridcell "90.0%" [ref=f59e1165]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1166]:
+                    - gridcell "99" [ref=f59e1167]
+                    - gridcell "1,000" [ref=f59e1168]
+                    - gridcell "1" [ref=f59e1169]
+                    - gridcell "99.9" [ref=f59e1170]
+                    - gridcell "99.9" [ref=f59e1171]
+                    - gridcell "99.9" [ref=f59e1172]
+                    - gridcell "99.9" [ref=f59e1173]
+                    - gridcell "99.9" [ref=f59e1174]
+                    - gridcell "99.9" [ref=f59e1175]
+                    - gridcell "99.9" [ref=f59e1176]
+                    - gridcell "99.9" [ref=f59e1177]
+                    - gridcell "9.9" [ref=f59e1178]
+                    - gridcell "90.0%" [ref=f59e1179]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1180]:
+                    - gridcell "99" [ref=f59e1181]
+                    - gridcell "1,000" [ref=f59e1182]
+                    - gridcell "1" [ref=f59e1183]
+                    - gridcell "99.9" [ref=f59e1184]
+                    - gridcell "99.9" [ref=f59e1185]
+                    - gridcell "99.9" [ref=f59e1186]
+                    - gridcell "99.9" [ref=f59e1187]
+                    - gridcell "99.9" [ref=f59e1188]
+                    - gridcell "99.9" [ref=f59e1189]
+                    - gridcell "99.9" [ref=f59e1190]
+                    - gridcell "99.9" [ref=f59e1191]
+                    - gridcell "9.9" [ref=f59e1192]
+                    - gridcell "90.0%" [ref=f59e1193]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1194]:
+                    - gridcell "99" [ref=f59e1195]
+                    - gridcell "1,000" [ref=f59e1196]
+                    - gridcell "1" [ref=f59e1197]
+                    - gridcell "99.9" [ref=f59e1198]
+                    - gridcell "99.9" [ref=f59e1199]
+                    - gridcell "99.9" [ref=f59e1200]
+                    - gridcell "99.9" [ref=f59e1201]
+                    - gridcell "99.9" [ref=f59e1202]
+                    - gridcell "99.9" [ref=f59e1203]
+                    - gridcell "99.9" [ref=f59e1204]
+                    - gridcell "99.9" [ref=f59e1205]
+                    - gridcell "9.9" [ref=f59e1206]
+                    - gridcell "90.0%" [ref=f59e1207]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1208]:
+                    - gridcell "99" [ref=f59e1209]
+                    - gridcell "1,000" [ref=f59e1210]
+                    - gridcell "1" [ref=f59e1211]
+                    - gridcell "99.9" [ref=f59e1212]
+                    - gridcell "99.9" [ref=f59e1213]
+                    - gridcell "99.9" [ref=f59e1214]
+                    - gridcell "99.9" [ref=f59e1215]
+                    - gridcell "99.9" [ref=f59e1216]
+                    - gridcell "99.9" [ref=f59e1217]
+                    - gridcell "99.9" [ref=f59e1218]
+                    - gridcell "99.9" [ref=f59e1219]
+                    - gridcell "9.9" [ref=f59e1220]
+                    - gridcell "90.0%" [ref=f59e1221]
+                  - row "99 1,000 1 99.9 99.9 99.9 99.9 99.9 99.9 99.9 99.9 9.9 90.0%" [ref=f59e1222]:
+                    - gridcell "99" [ref=f59e1223]
+                    - gridcell "1,000" [ref=f59e1224]
+                    - gridcell "1" [ref=f59e1225]
+                    - gridcell "99.9" [ref=f59e1226]
+                    - gridcell "99.9" [ref=f59e1227]
+                    - gridcell "99.9" [ref=f59e1228]
+                    - gridcell "99.9" [ref=f59e1229]
+                    - gridcell "99.9" [ref=f59e1230]
+                    - gridcell "99.9" [ref=f59e1231]
+                    - gridcell "99.9" [ref=f59e1232]
+                    - gridcell "99.9" [ref=f59e1233]
+                    - gridcell "9.9" [ref=f59e1234]
+                    - gridcell "90.0%" [ref=f59e1235]
+                - rowgroup
+                - rowgroup
+                - rowgroup [ref=f59e1236]
+                - rowgroup
+              - text:    
+  - generic [ref=f59e71]:
+    - generic [ref=f59e73]:
+      - text: "Cơ sở: Giá: x1,000 - Khối lượng: x1"
+      - text: "Phái sinh & Bond: Giá: x1 - Khối lượng: x1"
+    - generic [ref=f59e75]:
+      - generic [ref=f59e77] [cursor=pointer]: OTP
+      - generic [ref=f59e78] [cursor=pointer]:
+        - img [ref=f59e80]
+        - generic [ref=f59e83]: Tài sản
+      - generic [ref=f59e85] [cursor=pointer]:
+        - img [ref=f59e87]
+        - generic [ref=f59e89]: Sổ lệnh
+      - generic [ref=f59e91] [cursor=pointer]: Đặt lệnh
