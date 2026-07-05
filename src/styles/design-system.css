@@ -93,11 +93,19 @@
   /* ── Market Colors ── */
   --ds-color-market-up: #22c55e;
   --ds-color-market-down: #f43f5e;
-  --ds-color-market-flat: #facc15;
-  --ds-color-market-ceiling: #c084fc;
+  --ds-color-market-flat: #fbbf24;
+  --ds-color-market-ceiling: #b07ef8;
   --ds-color-market-floor: #38bdf8;
-  --ds-color-market-flash-up: #14532d;
-  --ds-color-market-flash-down: #450a0a;
+  --ds-color-market-flash-up: #0d2a14;
+  --ds-color-market-flash-down: #2a0a0d;
+  --ds-color-market-foreign-buy: #22d3a5;
+
+  /* ── Table-specific (Bang Dien design) ── */
+  --ds-color-text-vol: #4a7090;
+  --ds-color-border-row: #0d1a2e;
+  --ds-color-bg-table-header: #080f1c;
+  --ds-color-bg-header-buy: #05111e;
+  --ds-color-bg-header-sell: #1a0808;
 
   /* ── Spacing (base 4px) ── */
   --ds-space-0: 0px;

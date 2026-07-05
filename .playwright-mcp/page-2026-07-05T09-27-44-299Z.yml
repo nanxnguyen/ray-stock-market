@@ -1,0 +1,50 @@
+- generic [ref=f106e5]:
+  - generic [ref=f106e6]:
+    - generic [ref=f106e7]:
+      - link [ref=f106e8] [cursor=pointer]:
+        - /url: /home
+        - generic [ref=f106e9]:
+          - img [ref=f106e11]
+          - img [ref=f106e13]
+      - generic [ref=f106e15]:
+        - button "Cơ sở" [ref=f106e16] [cursor=pointer]
+        - button "Phái sinh" [ref=f106e17] [cursor=pointer]
+      - generic [ref=f106e18]: "---"
+    - generic [ref=f106e21]:
+      - generic [ref=f106e22]:
+        - img [ref=f106e23] [cursor=pointer]
+        - textbox "Nhập từ khoá"
+      - img [ref=f106e25] [cursor=pointer]
+      - generic [ref=f106e26]:
+        - button "Mở tài khoản" [ref=f106e27] [cursor=pointer]
+        - button "Đăng nhập" [ref=f106e28] [cursor=pointer]
+      - img [ref=f106e31] [cursor=pointer]
+  - generic [ref=f106e34]:
+    - link "Trang chủ" [ref=f106e35] [cursor=pointer]:
+      - /url: /home
+    - button "Bảng giá" [ref=f106e37] [cursor=pointer]:
+      - generic [ref=f106e38]: Bảng giá
+      - img [ref=f106e39]
+    - link "Thị trường" [ref=f106e40] [cursor=pointer]:
+      - /url: /iq/market
+    - button "Thông tin tài sản" [ref=f106e42] [cursor=pointer]:
+      - generic [ref=f106e43]: Thông tin tài sản
+      - img [ref=f106e44]
+    - button "Giao dịch tiền" [ref=f106e46] [cursor=pointer]:
+      - generic [ref=f106e47]: Giao dịch tiền
+      - img [ref=f106e48]
+    - button "Giao Dịch Chứng Khoán" [ref=f106e50] [cursor=pointer]:
+      - generic [ref=f106e51]: Giao Dịch Chứng Khoán
+      - img [ref=f106e52]
+    - button "Vietcap IQ" [ref=f106e54] [cursor=pointer]:
+      - generic [ref=f106e55]: Vietcap IQ
+      - img [ref=f106e56]
+    - button "AI News" [ref=f106e58] [cursor=pointer]:
+      - generic [ref=f106e59]: AI News
+      - img [ref=f106e60]
+    - button "Sản phẩm Đầu tư" [ref=f106e62] [cursor=pointer]:
+      - generic [ref=f106e63]: Sản phẩm Đầu tư
+      - img [ref=f106e64]
+    - button "Tiện ích" [ref=f106e66] [cursor=pointer]:
+      - generic [ref=f106e67]: Tiện ích
+      - img [ref=f106e68]

@@ -71,17 +71,17 @@ export type VietcapSector = {
 
 export type VietcapFilterGroup =
   | 'WL' | 'HOSE' | 'HNX' | 'UPCOM'
-  | 'DERIVATIVE' | 'CW' | 'SECTOR' | 'BOND'
-  | 'VN30' | 'VN100' | 'VNMidCap' | 'VNSmallCap' | 'VNAllShare'
-  | 'VNDiamond' | 'VNFinLead' | 'VNFinSelect' | 'VNDividend' | 'VNMiTech'
-  | 'ETF' | 'GDTT_HOSE' | 'ODD_LOT_HOSE'
-  | 'VN50_Growth' | 'VNFin' | 'VNInd' | 'VNMat' | 'VNIT' | 'VNReal'
-  | 'VNCons' | 'VNEne' | 'VNHeal' | 'VNSI' | 'VNUti' | 'VNX50' | 'VNXAllShare'
-  | 'HNX30' | 'HNXCon' | 'HNXFin' | 'HNXLCap' | 'HNXMSCap' | 'HNXMan'
-  | 'GDTT_HNX' | 'ODD_LOT_HNX'
-  | 'GDTT_UPCOM' | 'ODD_LOT_UPCOM'
-  | 'INDEX_FU' | 'BOND_FU' | 'GDTT_DERIVATIVE'
-  | 'BOND_PRIVATE' | 'BOND_LISTED'
+  | 'FU' | 'CW' | 'SECTOR' | 'BOND'
+  | 'VN30' | 'VN100' | 'VNMIDCAP' | 'VNSMALLCAP' | 'VNALLSHARE'
+  | 'VNDIAMOND' | 'VNFINLEAD' | 'VNFINSELECT' | 'VNDIVIDEND' | 'VNMITECH'
+  | 'ETF' | 'PUT_THROUGH_HOSE' | 'ODD_LOT_HOSE'
+  | 'VN50_GROWTH' | 'VNFIN' | 'VNIND' | 'VNMAT' | 'VNIT' | 'VNREAL'
+  | 'VNCONS' | 'VNEE' | 'VNHEAL' | 'VNSI' | 'VNUTI' | 'VNX50' | 'VNXALLSHARE'
+  | 'HNX30' | 'HNXCON' | 'HNXFIN' | 'HNXLCAP' | 'HNXMSCAP' | 'HNXMAN'
+  | 'PUT_THROUGH_HNX' | 'ODD_LOT_HNX'
+  | 'PUT_THROUGH_UPCOM' | 'ODD_LOT_UPCOM'
+  | 'FU_INDEX' | 'BOND_FU' | 'DERIVATIVE'
+  | 'PRIVATE_BOND' | 'LISTED_BOND'
 
 export type FilterOption = {
   label: string

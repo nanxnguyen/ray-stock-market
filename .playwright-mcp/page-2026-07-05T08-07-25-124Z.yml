@@ -1,0 +1,41 @@
+- generic [ref=f71e5]:
+  - generic [ref=f71e6]:
+    - generic [ref=f71e7]:
+      - link [ref=f71e8] [cursor=pointer]:
+        - /url: /home
+        - generic [ref=f71e9]:
+          - img [ref=f71e11]
+          - img [ref=f71e13]
+      - generic [ref=f71e15]:
+        - button "Cơ sở" [ref=f71e16] [cursor=pointer]
+        - button "Phái sinh" [ref=f71e17] [cursor=pointer]
+      - generic [ref=f71e18]: "---"
+    - generic [ref=f71e21]:
+      - generic [ref=f71e22]:
+        - img [ref=f71e23] [cursor=pointer]
+        - textbox "Nhập từ khoá"
+      - img [ref=f71e25] [cursor=pointer]
+      - generic [ref=f71e26]:
+        - button "Mở tài khoản" [ref=f71e27] [cursor=pointer]
+        - button "Đăng nhập" [ref=f71e28] [cursor=pointer]
+  - generic [ref=f71e33]:
+    - link "Trang chủ" [ref=f71e34] [cursor=pointer]:
+      - /url: /home
+    - button "Bảng giá" [ref=f71e36] [cursor=pointer]:
+      - generic [ref=f71e37]: Bảng giá
+    - link "Thị trường" [ref=f71e38] [cursor=pointer]:
+      - /url: /iq/market
+    - button "Thông tin tài sản" [ref=f71e40] [cursor=pointer]:
+      - generic [ref=f71e41]: Thông tin tài sản
+    - button "Giao dịch tiền" [ref=f71e43] [cursor=pointer]:
+      - generic [ref=f71e44]: Giao dịch tiền
+    - button "Giao Dịch Chứng Khoán" [ref=f71e46] [cursor=pointer]:
+      - generic [ref=f71e47]: Giao Dịch Chứng Khoán
+    - button "Vietcap IQ" [ref=f71e49] [cursor=pointer]:
+      - generic [ref=f71e50]: Vietcap IQ
+    - button "AI News" [ref=f71e52] [cursor=pointer]:
+      - generic [ref=f71e53]: AI News
+    - button "Sản phẩm Đầu tư" [ref=f71e55] [cursor=pointer]:
+      - generic [ref=f71e56]: Sản phẩm Đầu tư
+    - button "Tiện ích" [ref=f71e58] [cursor=pointer]:
+      - generic [ref=f71e59]: Tiện ích

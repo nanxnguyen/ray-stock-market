@@ -41,7 +41,7 @@ function boardMatch(row: StockRow, group: string): boolean {
     case 'UPCOM': return meta.board === 'UPCOM'
     case 'CW': return meta.type === 'CW'
     case 'BOND': return meta.type === 'BOND'
-    case 'DERIVATIVE': return meta.type === 'FU'
+    case 'FU': return meta.type === 'FU'
     case 'WL': return true
     default: return false
   }
@@ -52,37 +52,52 @@ function subOptionMatch(row: StockRow, group: VietcapFilterGroup, vn30Symbols: s
   if (!meta) return false
 
   switch (group) {
+    case 'HOSE':
+      return meta.board === 'HSX'
     case 'VN30':
       return vn30Symbols.includes(row.sym)
     case 'VN100':
-    case 'VNMidCap':
-    case 'VNSmallCap':
-    case 'VNAllShare':
-    case 'VNDiamond':
-    case 'VNFinLead':
-    case 'VNFinSelect':
-    case 'VNDividend':
-    case 'VNMiTech':
+    case 'VNMIDCAP':
+    case 'VNSMALLCAP':
+    case 'VNALLSHARE':
+    case 'VNDIAMOND':
+    case 'VNFINLEAD':
+    case 'VNFINSELECT':
+    case 'VNDIVIDEND':
+    case 'VNMITECH':
     case 'ETF':
-    case 'VN50_Growth':
-    case 'VNFin':
-    case 'VNInd':
-    case 'VNMat':
+    case 'VN50_GROWTH':
+    case 'VNFIN':
+    case 'VNIND':
+    case 'VNMAT':
     case 'VNIT':
-    case 'VNReal':
-    case 'VNCons':
-    case 'VNEne':
-    case 'VNHeal':
+    case 'VNREAL':
+    case 'VNCONS':
+    case 'VNEE':
+    case 'VNHEAL':
     case 'VNSI':
-    case 'VNUti':
+    case 'VNUTI':
     case 'VNX50':
-    case 'VNXAllShare':
+    case 'VNXALLSHARE':
       return meta.board === 'HSX'
 
-    case 'GDTT_HOSE':
-    case 'GDTT_HNX':
-    case 'GDTT_UPCOM':
-    case 'GDTT_DERIVATIVE':
+    case 'HNX':
+      return meta.board === 'HNX'
+    case 'HNX30':
+    case 'HNXCON':
+    case 'HNXFIN':
+    case 'HNXLCAP':
+    case 'HNXMSCAP':
+    case 'HNXMAN':
+      return meta.board === 'HNX'
+
+    case 'UPCOM':
+      return meta.board === 'UPCOM'
+
+    case 'PUT_THROUGH_HOSE':
+    case 'PUT_THROUGH_HNX':
+    case 'PUT_THROUGH_UPCOM':
+    case 'DERIVATIVE':
       return false
 
     case 'ODD_LOT_HOSE':
@@ -90,21 +105,19 @@ function subOptionMatch(row: StockRow, group: VietcapFilterGroup, vn30Symbols: s
     case 'ODD_LOT_UPCOM':
       return false
 
-    case 'HNX30':
-    case 'HNXCon':
-    case 'HNXFin':
-    case 'HNXLCap':
-    case 'HNXMSCap':
-    case 'HNXMan':
-      return meta.board === 'HNX'
-
-    case 'INDEX_FU':
+    case 'CW':
+      return meta.type === 'CW'
+    case 'FU':
+      return meta.type === 'FU'
+    case 'FU_INDEX':
       return meta.type === 'FU'
     case 'BOND_FU':
       return false
 
-    case 'BOND_PRIVATE':
-    case 'BOND_LISTED':
+    case 'BOND':
+      return meta.type === 'BOND'
+    case 'PRIVATE_BOND':
+    case 'LISTED_BOND':
       return meta.type === 'BOND'
 
     default:
@@ -126,12 +139,7 @@ export function filterStocks(
       result = result.filter((r) => filter.watchlist.includes(r.sym))
     }
   } else if (topGroup === 'SECTOR') {
-    if (filter.value && filter.value !== 'ALL') {
-      result = result.filter((r) => {
-        const meta = symbolMap.get(r.sym)
-        return meta?.icbCode2 === filter.value
-      })
-    }
+    // Sector data not available from Vietcap priceboard API - show all stocks
   } else {
     result = result.filter((r) => boardMatch(r, topGroup))
     result = result.filter((r) => subOptionMatch(r, filter.group, vn30Symbols))
@@ -166,7 +174,7 @@ function boardMatchStock(stock: StockState, group: string): boolean {
     case 'UPCOM': return meta.board === 'UPCOM'
     case 'CW': return meta.type === 'CW'
     case 'BOND': return meta.type === 'BOND'
-    case 'DERIVATIVE': return meta.type === 'FU'
+    case 'FU': return meta.type === 'FU'
     case 'WL': return true
     default: return false
   }
@@ -177,37 +185,52 @@ function subOptionMatchStock(stock: StockState, group: VietcapFilterGroup, vn30S
   if (!meta) return false
 
   switch (group) {
+    case 'HOSE':
+      return meta.board === 'HSX'
     case 'VN30':
       return vn30Symbols.includes(stock.s)
     case 'VN100':
-    case 'VNMidCap':
-    case 'VNSmallCap':
-    case 'VNAllShare':
-    case 'VNDiamond':
-    case 'VNFinLead':
-    case 'VNFinSelect':
-    case 'VNDividend':
-    case 'VNMiTech':
+    case 'VNMIDCAP':
+    case 'VNSMALLCAP':
+    case 'VNALLSHARE':
+    case 'VNDIAMOND':
+    case 'VNFINLEAD':
+    case 'VNFINSELECT':
+    case 'VNDIVIDEND':
+    case 'VNMITECH':
     case 'ETF':
-    case 'VN50_Growth':
-    case 'VNFin':
-    case 'VNInd':
-    case 'VNMat':
+    case 'VN50_GROWTH':
+    case 'VNFIN':
+    case 'VNIND':
+    case 'VNMAT':
     case 'VNIT':
-    case 'VNReal':
-    case 'VNCons':
-    case 'VNEne':
-    case 'VNHeal':
+    case 'VNREAL':
+    case 'VNCONS':
+    case 'VNEE':
+    case 'VNHEAL':
     case 'VNSI':
-    case 'VNUti':
+    case 'VNUTI':
     case 'VNX50':
-    case 'VNXAllShare':
+    case 'VNXALLSHARE':
       return meta.board === 'HSX'
 
-    case 'GDTT_HOSE':
-    case 'GDTT_HNX':
-    case 'GDTT_UPCOM':
-    case 'GDTT_DERIVATIVE':
+    case 'HNX':
+      return meta.board === 'HNX'
+    case 'HNX30':
+    case 'HNXCON':
+    case 'HNXFIN':
+    case 'HNXLCAP':
+    case 'HNXMSCAP':
+    case 'HNXMAN':
+      return meta.board === 'HNX'
+
+    case 'UPCOM':
+      return meta.board === 'UPCOM'
+
+    case 'PUT_THROUGH_HOSE':
+    case 'PUT_THROUGH_HNX':
+    case 'PUT_THROUGH_UPCOM':
+    case 'DERIVATIVE':
       return false
 
     case 'ODD_LOT_HOSE':
@@ -215,21 +238,19 @@ function subOptionMatchStock(stock: StockState, group: VietcapFilterGroup, vn30S
     case 'ODD_LOT_UPCOM':
       return false
 
-    case 'HNX30':
-    case 'HNXCon':
-    case 'HNXFin':
-    case 'HNXLCap':
-    case 'HNXMSCap':
-    case 'HNXMan':
-      return meta.board === 'HNX'
-
-    case 'INDEX_FU':
+    case 'CW':
+      return meta.type === 'CW'
+    case 'FU':
+      return meta.type === 'FU'
+    case 'FU_INDEX':
       return meta.type === 'FU'
     case 'BOND_FU':
       return false
 
-    case 'BOND_PRIVATE':
-    case 'BOND_LISTED':
+    case 'BOND':
+      return meta.type === 'BOND'
+    case 'PRIVATE_BOND':
+    case 'LISTED_BOND':
       return meta.type === 'BOND'
 
     default:
@@ -251,12 +272,7 @@ export function filterStockStates(
       result = result.filter((s) => filter.watchlist.includes(s.s))
     }
   } else if (topGroup === 'SECTOR') {
-    if (filter.value && filter.value !== 'ALL') {
-      result = result.filter((s) => {
-        const meta = symbolMap.get(s.s)
-        return meta?.icbCode2 === filter.value
-      })
-    }
+    // Sector data not available from Vietcap priceboard API - show all stocks
   } else {
     result = result.filter((s) => boardMatchStock(s, topGroup))
     result = result.filter((s) => subOptionMatchStock(s, filter.group, vn30Symbols))

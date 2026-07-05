@@ -30,32 +30,28 @@
 <div style="display:flex;flex-direction:column;height:100vh;font-family:'Inter',system-ui,sans-serif;color:{{ th.text }};overflow:hidden;background:{{ th.appBg }};transition:background .3s,color .3s;">
 
   <!-- ══ TOP BAR ══ -->
-  <div style="background:linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%);display:flex;align-items:center;padding:0 16px;height:42px;flex-shrink:0;gap:10px;border-bottom:1px solid #0f1e36;">
+  <div style="background:{{ th.topBarBg }};display:flex;align-items:center;padding:0 16px;height:42px;flex-shrink:0;gap:10px;border-bottom:1px solid {{ th.topBarBorder }};">
     <div style="display:flex;align-items:center;gap:7px;flex-shrink:0;margin-right:4px;">
       <div style="width:26px;height:26px;background:linear-gradient(135deg,#22c55e,#16a34a);border-radius:6px;display:flex;align-items:center;justify-content:center;">
         <svg width="14" height="12" viewBox="0 0 14 12"><polygon points="7,0 14,12 0,12" fill="#fff"></polygon></svg>
       </div>
-      <span style="font-size:15px;font-weight:800;color:#fff;letter-spacing:.4px;font-family:'Inter',sans-serif;">Ray <span style="color:#22c55e;">Stock Market</span></span>
+      <span style="font-size:15px;font-weight:800;color:{{ th.text }};letter-spacing:.4px;font-family:'Inter',sans-serif;">Ray <span style="color:#22c55e;">Stock Market</span></span>
     </div>
-    <div style="display:flex;align-items:center;gap:5px;background:#0f1e36;border-radius:20px;padding:3px 10px;flex-shrink:0;">
-      <div style="width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse 2s infinite;"></div>
-      <span style="font-size:10px;font-weight:600;color:#22c55e;letter-spacing:.3px;">ĐANG GIAO DỊCH</span>
-    </div>
-    <span style="color:#4a6080;font-size:11px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:.5px;">{{ timeStr }}</span>
+    <span style="color:{{ th.theadFg }};font-size:11px;flex-shrink:0;font-family:'JetBrains Mono',monospace;font-weight:500;letter-spacing:.5px;">{{ timeStr }}</span>
     <div style="flex:1;overflow:hidden;position:relative;height:100%;display:flex;align-items:center;min-width:0;">
-      <div style="position:absolute;inset:0;left:0;width:40px;background:linear-gradient(90deg,#060c18,transparent);z-index:1;pointer-events:none;"></div>
+      <div style="position:absolute;inset:0;left:0;width:40px;background:linear-gradient(90deg,{{ th.topBarFadeFrom }},transparent);z-index:1;pointer-events:none;"></div>
       <span style="position:absolute;white-space:nowrap;animation:ticker 34s linear infinite;color:#94a3b8;font-size:10.5px;font-weight:500;font-family:'JetBrains Mono',monospace;">
         <span style="color:#fbbf24;">VN-Index</span> <span style="color:#4ade80;">▲1,860.01 +5.04</span> &nbsp;│&nbsp;
         <span style="color:#fbbf24;">VN30</span> <span style="color:#4ade80;">▲1,995.71 +5.06</span> &nbsp;│&nbsp;
         <span style="color:#fbbf24;">ACB</span> <span style="color:#f87171;">▼22.65 -0.25</span> &nbsp;│&nbsp;
         <span style="color:#fbbf24;">HPG</span> <span style="color:#4ade80;">▲24.10 +0.32</span>
       </span>
-      <div style="position:absolute;inset:0;right:0;left:auto;width:40px;background:linear-gradient(270deg,#060c18,transparent);z-index:1;pointer-events:none;"></div>
+      <div style="position:absolute;inset:0;right:0;left:auto;width:40px;background:linear-gradient(270deg,{{ th.topBarFadeFrom }},transparent);z-index:1;pointer-events:none;"></div>
     </div>
-    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;position:relative;">
-      <a href="Portfolio.dc.html" title="Danh mục đầu tư" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:#0f1e36;border:1px solid #1a3050;border-radius:14px;padding:4px 9px;color:#94a3b8;font-size:10px;font-weight:600;">💼 Danh mục</a>
-      <a href="Trading Panel.dc.html" title="Đặt lệnh" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:#0f1e36;border:1px solid #1a3050;border-radius:14px;padding:4px 9px;color:#94a3b8;font-size:10px;font-weight:600;">💰 Đặt lệnh</a>
-      <a href="Order Book.dc.html" title="Sổ lệnh" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:#0f1e36;border:1px solid #1a3050;border-radius:14px;padding:4px 9px;color:#94a3b8;font-size:10px;font-weight:600;">📖 Sổ lệnh</a>
+    <div style="display:flex;align-items:center;gap:5px;flex-shrink:0;">
+      <a href="Portfolio.dc.html" title="Danh mục đầu tư" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:{{ th.chipBg }};border:1px solid {{ th.chipBorder }};border-radius:14px;padding:4px 9px;color:{{ th.chipFg }};font-size:10px;font-weight:600;">💼 Danh mục</a>
+      <a href="Trading Panel.dc.html" title="Đặt lệnh" style="text-decoration:none;display:flex;align-items:center;gap:4px;background:{{ th.chipBg }};border:1px solid {{ th.chipBorder }};border-radius:14px;padding:4px 9px;color:{{ th.chipFg }};font-size:10px;font-weight:600;">💰 Đặt lệnh</a>
+      <div style="position:relative;">
       <div onClick="{{ toggleMoreTools }}" style="cursor:pointer;display:flex;align-items:center;gap:5px;background:{{ moreToolsBg }};border:1px solid {{ moreToolsBorder }};border-radius:14px;padding:4px 10px 4px 9px;color:{{ moreToolsFg }};font-size:10px;font-weight:700;transition:all .15s;">
         <span style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:9px;height:9px;">
           <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
@@ -64,36 +60,37 @@
         Công cụ
         <span style="font-size:8px;transform:{{ arrowRotate }};transition:transform .15s;">▾</span>
       </div>
-      <div style="width:1px;height:18px;background:#1a3050;"></div>
-      <div onClick="{{ toggleDark }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:#0f1e36;border:1px solid #1a3050;border-radius:20px;padding:4px 10px;transition:all .25s;">
-        <span style="font-size:12px;">{{ th.toggleIcon }}</span>
-        <span style="font-size:10px;font-weight:600;color:#64748b;">{{ th.toggleLabel }}</span>
-      </div>
 
       <sc-if value="{{ showMoreTools }}" hint-placeholder-val="{{ false }}">
-        <div onClick="{{ stopProp }}" style="position:absolute;top:38px;right:0;background:#0b1424;border:1px solid #1a3050;border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
+        <div onClick="{{ stopProp }}" style="position:absolute;top:32px;left:0;background:{{ th.menuBg }};border:1px solid {{ th.menuBorder }};border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
           <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
             <sc-for list="{{ menuGroups }}" as="grp" hint-placeholder-count="3">
               <div style="display:flex;flex-direction:column;gap:2px;">
                 <span style="font-size:9.5px;font-weight:800;color:{{ grp.color }};text-transform:uppercase;letter-spacing:.5px;padding:0 8px 8px;">{{ grp.title }}</span>
                 <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="5">
-                  <a href="{{ it.href }}" style="text-decoration:none;display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;transition:background .12s;" style-hover="background:#131f36;">
+                  <a href="{{ it.href }}" style="text-decoration:none;display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:8px;transition:background .12s;" style-hover="background:{{ th.menuHover }};">
                     <span style="width:28px;height:28px;border-radius:8px;background:{{ it.iconBg }};display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;">{{ it.icon }}</span>
                     <span style="display:flex;flex-direction:column;gap:1px;min-width:0;">
-                      <span style="font-size:11.5px;font-weight:700;color:#e2e8f0;white-space:nowrap;">{{ it.label }}</span>
-                      <span style="font-size:9px;color:#5b7290;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.desc }}</span>
+                      <span style="font-size:11.5px;font-weight:700;color:{{ th.menuLabelFg }};white-space:nowrap;">{{ it.label }}</span>
+                      <span style="font-size:9px;color:{{ th.menuDescFg }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">{{ it.desc }}</span>
                     </span>
                   </a>
                 </sc-for>
               </div>
             </sc-for>
           </div>
-          <div style="border-top:1px solid #16233b;padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:#08101f;">
-            <span style="font-size:9.5px;color:#3a5570;font-weight:600;">{{ toolCount }} công cụ &amp; sẽ tiếp tục mở rộng</span>
+          <div style="border-top:1px solid {{ th.menuBorder }};padding:10px 20px;display:flex;justify-content:space-between;align-items:center;background:{{ th.menuFooterBg }};">
+            <span style="font-size:9.5px;color:{{ th.menuFooterFg }};font-weight:600;">{{ toolCount }} công cụ &amp; sẽ tiếp tục mở rộng</span>
             <a href="Bang Dien.dc.html" style="text-decoration:none;font-size:10px;font-weight:700;color:#60a5fa;">🏠 Về Trang chủ</a>
           </div>
         </div>
       </sc-if>
+      </div>
+      <div style="width:1px;height:18px;background:{{ th.chipBorder }};"></div>
+      <div onClick="{{ toggleDark }}" style="cursor:pointer;display:flex;align-items:center;gap:6px;background:{{ th.chipBg }};border:1px solid {{ th.chipBorder }};border-radius:20px;padding:4px 10px;transition:all .25s;">
+        <span style="font-size:12px;">{{ th.toggleIcon }}</span>
+        <span style="font-size:10px;font-weight:600;color:{{ th.chipFg }};">{{ th.toggleLabel }}</span>
+      </div>
     </div>
   </div>
 
@@ -345,78 +342,102 @@
   <div style="flex:1;overflow:auto;background:{{ th.tableBg }};">
     <table style="width:max-content;min-width:100%;font-size:11px;font-variant-numeric:tabular-nums;font-family:'JetBrains Mono',monospace;">
       <thead style="position:sticky;top:0;z-index:20;">
-        <tr style="background:#080f1c;color:#4a7090;font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-family:'Inter',sans-serif;">
-          <th style="position:sticky;left:0;top:0;z-index:31;background:#080f1c;padding:5px 8px;text-align:center;border-right:1px solid #0f1e36;min-width:58px;" rowspan="2">Mã CK</th>
-          <th style="position:sticky;left:58px;top:0;z-index:31;background:#080f1c;padding:5px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:48px;color:#b07ef8;" rowspan="2">Trần</th>
-          <th style="position:sticky;left:106px;top:0;z-index:31;background:#080f1c;padding:5px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:48px;color:#fbbf24;" rowspan="2">TC</th>
-          <th style="position:sticky;left:154px;top:0;z-index:31;background:#080f1c;padding:5px 6px;text-align:right;border-right:2px solid #1a3050;min-width:48px;color:#38bdf8;" rowspan="2">Sàn</th>
-          <th colspan="6" style="text-align:center;background:#05111e;color:#60a5fa;border-right:2px solid #1a3050;padding:5px;letter-spacing:.8px;">── DƯ MUA ──</th>
-          <th colspan="5" style="text-align:center;border-right:2px solid #1a3050;padding:5px;color:#e2e8f0;letter-spacing:.5px;">KHỚP LỆNH</th>
-          <th colspan="6" style="text-align:center;background:#1a0808;color:#f87171;border-right:2px solid #1a3050;padding:5px;letter-spacing:.8px;">── DƯ BÁN ──</th>
-          <th style="padding:5px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:48px;" rowspan="2">Cao</th>
-          <th style="padding:5px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:48px;" rowspan="2">TB</th>
-          <th style="padding:5px 6px;text-align:right;border-right:2px solid #1a3050;min-width:48px;" rowspan="2">Thấp</th>
-          <th colspan="4" style="text-align:center;padding:5px;color:#a78bfa;border-right:2px solid #1a3050;letter-spacing:.5px;">NN</th>
+        <tr style="background:{{ th.theadBg }};color:{{ th.theadFg }};font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;font-family:'Inter',sans-serif;">
+          <th style="position:sticky;left:0;top:0;z-index:31;background:{{ th.theadBg }};padding:5px 6px;text-align:left;border-right:1px solid {{ th.theadBorder }};min-width:58px;" rowspan="2">Mã CK</th>
+          <th style="position:sticky;left:58px;top:0;z-index:31;background:{{ th.theadBg }};padding:5px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:48px;color:#b07ef8;" rowspan="2">Trần</th>
+          <th style="position:sticky;left:106px;top:0;z-index:31;background:{{ th.theadBg }};padding:5px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:48px;color:#fbbf24;" rowspan="2">TC</th>
+          <th style="position:sticky;left:154px;top:0;z-index:31;background:{{ th.theadBg }};padding:5px 6px;text-align:right;border-right:2px solid {{ th.theadBorder2 }};min-width:48px;color:#38bdf8;" rowspan="2">Sàn</th>
+          <th colspan="6" style="text-align:center;background:{{ th.theadBgBid }};color:#60a5fa;border-right:2px solid {{ th.theadBorder2 }};padding:5px;letter-spacing:.8px;">── DƯ MUA ──</th>
+          <th colspan="6" style="text-align:center;border-right:2px solid {{ th.theadBorder2 }};padding:5px;color:{{ th.theadMatchFg }};letter-spacing:.5px;">KHỚP LỆNH</th>
+          <th colspan="6" style="text-align:center;background:{{ th.theadBgAsk }};color:#f87171;border-right:2px solid {{ th.theadBorder2 }};padding:5px;letter-spacing:.8px;">── DƯ BÁN ──</th>
+          <th style="padding:5px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:48px;" rowspan="2">Cao</th>
+          <th style="padding:5px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:48px;" rowspan="2">TB</th>
+          <th style="padding:5px 6px;text-align:right;border-right:2px solid {{ th.theadBorder2 }};min-width:48px;" rowspan="2">Thấp</th>
+          <th colspan="4" style="text-align:center;padding:5px;color:#a78bfa;border-right:2px solid {{ th.theadBorder2 }};letter-spacing:.5px;">NN</th>
           <th style="padding:5px 8px;text-align:right;min-width:90px;color:#94a3b8;" rowspan="2">KLGD TT</th>
           <th style="padding:5px 8px;text-align:center;min-width:36px;color:#60a5fa;" rowspan="2">♡</th>
         </tr>
-        <tr style="background:#080f1c;color:#3a6080;font-size:9px;font-family:'Inter',sans-serif;letter-spacing:.3px;">
-          <th style="background:#05111e;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;color:#3b7fc4;">Giá 3</th>
-          <th style="background:#05111e;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:58px;color:#3b7fc4;">KL 3</th>
-          <th style="background:#05111e;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;color:#3b7fc4;">Giá 2</th>
-          <th style="background:#05111e;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:58px;color:#3b7fc4;">KL 2</th>
-          <th style="background:#05111e;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;color:#3b7fc4;">Giá 1</th>
-          <th style="background:#05111e;padding:3px 6px;text-align:right;border-right:2px solid #1a3050;min-width:58px;color:#3b7fc4;">KL 1</th>
-          <th style="padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;">Giá</th>
-          <th style="padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:64px;">KL</th>
-          <th style="padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:54px;">%</th>
-          <th style="padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;">↕</th>
-          <th style="padding:3px 6px;text-align:right;border-right:2px solid #1a3050;min-width:74px;">KLGD</th>
-          <th style="background:#1a0808;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;color:#c04040;">Giá 1</th>
-          <th style="background:#1a0808;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:58px;color:#c04040;">KL 1</th>
-          <th style="background:#1a0808;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;color:#c04040;">Giá 2</th>
-          <th style="background:#1a0808;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:58px;color:#c04040;">KL 2</th>
-          <th style="background:#1a0808;padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:46px;color:#c04040;">Giá 3</th>
-          <th style="background:#1a0808;padding:3px 6px;text-align:right;border-right:2px solid #1a3050;min-width:58px;color:#c04040;">KL 3</th>
-          <th style="padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:74px;color:#a78bfa;">Mua</th>
-          <th style="padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:74px;color:#a78bfa;">Bán</th>
-          <th style="padding:3px 6px;text-align:right;border-right:1px solid #0f1e36;min-width:74px;color:#a78bfa;">↕</th>
-          <th style="padding:3px 6px;text-align:right;border-right:2px solid #1a3050;min-width:90px;color:#a78bfa;">Room</th>
+        <tr style="background:{{ th.theadBg }};color:{{ th.theadFg2 }};font-size:9px;font-family:'Inter',sans-serif;letter-spacing:.3px;">
+          <th style="background:{{ th.theadBgBid }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;color:#3b7fc4;">Giá 3</th>
+          <th style="background:{{ th.theadBgBid }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:58px;color:#3b7fc4;">KL 3</th>
+          <th style="background:{{ th.theadBgBid }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;color:#3b7fc4;">Giá 2</th>
+          <th style="background:{{ th.theadBgBid }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:58px;color:#3b7fc4;">KL 2</th>
+          <th style="background:{{ th.theadBgBid }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;color:#3b7fc4;">Giá 1</th>
+          <th style="background:{{ th.theadBgBid }};padding:3px 6px;text-align:right;border-right:2px solid {{ th.theadBorder2 }};min-width:58px;color:#3b7fc4;">KL 1</th>
+          <th onClick="{{ sortByPrice }}" style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;cursor:pointer;color:{{ sortPriceColor }};" title="Sắp xếp theo Giá">Giá{{ sortPriceArrow }}</th>
+          <th style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:64px;">KL</th>
+          <th onClick="{{ sortByPct }}" style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:54px;cursor:pointer;color:{{ sortPctColor }};" title="Sắp xếp theo %">%{{ sortPctArrow }}</th>
+          <th style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;">↕</th>
+          <th onClick="{{ sortByVol }}" style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:74px;cursor:pointer;color:{{ sortVolColor }};" title="Sắp xếp theo KLGD">KLGD{{ sortVolArrow }}</th>
+          <th style="padding:3px 6px;text-align:center;border-right:2px solid {{ th.theadBorder2 }};min-width:64px;color:#5b8ab0;">Xu hướng</th>
+          <th style="background:{{ th.theadBgAsk }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;color:#c04040;">Giá 1</th>
+          <th style="background:{{ th.theadBgAsk }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:58px;color:#c04040;">KL 1</th>
+          <th style="background:{{ th.theadBgAsk }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;color:#c04040;">Giá 2</th>
+          <th style="background:{{ th.theadBgAsk }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:58px;color:#c04040;">KL 2</th>
+          <th style="background:{{ th.theadBgAsk }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:46px;color:#c04040;">Giá 3</th>
+          <th style="background:{{ th.theadBgAsk }};padding:3px 6px;text-align:right;border-right:2px solid {{ th.theadBorder2 }};min-width:58px;color:#c04040;">KL 3</th>
+          <th style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:74px;color:#a78bfa;">Mua</th>
+          <th style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:74px;color:#a78bfa;">Bán</th>
+          <th style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.theadBorder }};min-width:74px;color:#a78bfa;">↕</th>
+          <th style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.theadBorder2 }};min-width:90px;color:#a78bfa;">Room</th>
         </tr>
       </thead>
       <tbody>
         <sc-for list="{{ stocks }}" as="s" hint-placeholder-count="30">
           <tr style="background:{{ s.bg }};border-bottom:1px solid {{ th.rowBorder }};height:26px;transition:background .5s;" style-hover="background:{{ th.rowHover }};">
-            <td onClick="{{ s.onChart }}" style="position:sticky;left:0;z-index:5;background:{{ s.bg }};padding:3px 8px;text-align:center;border-right:1px solid {{ th.cellBorder }};font-weight:700;font-size:11.5px;color:#60a5fa;cursor:pointer;letter-spacing:.3px;font-family:'Inter',sans-serif;" style-hover="color:#93c5fd;background:{{ th.rowHover }};">{{ s.sym }}</td>
+            <td style="position:sticky;left:0;z-index:5;background:{{ s.bg }};padding:3px 6px;text-align:left;border-right:1px solid {{ th.cellBorder }};border-left:{{ s.pinBorder }};outline:{{ s.focusOutline }};outline-offset:-2px;font-weight:700;font-size:11.5px;color:#60a5fa;letter-spacing:.3px;font-family:'Inter',sans-serif;">
+              <div style="display:flex;align-items:center;gap:4px;justify-content:flex-start;">
+                <input type="checkbox" checked="{{ s.isSelected }}" onChange="{{ s.onToggleCompare }}" style="width:11px;height:11px;cursor:pointer;accent-color:#3b82f6;flex-shrink:0;margin:0;"/>
+                <span onDoubleClick="{{ s.onChart }}" style="cursor:pointer;" style-hover="color:#93c5fd;" title="Nhấp đúp để xem chi tiết">{{ s.sym }}</span>
+              </div>
+            </td>
             <td style="position:sticky;left:58px;z-index:5;background:{{ s.bg }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorder }};color:#b07ef8;" style-hover="background:{{ th.rowHover }};">{{ s.ceil }}</td>
             <td style="position:sticky;left:106px;z-index:5;background:{{ s.bg }};padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorder }};color:#fbbf24;" style-hover="background:{{ th.rowHover }};">{{ s.tc }}</td>
             <td style="position:sticky;left:154px;z-index:5;background:{{ s.bg }};padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:#38bdf8;" style-hover="background:{{ th.rowHover }};">{{ s.floor }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.b3c }};opacity:.75;">{{ s.b3p }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.b3c }};opacity:.75;">{{ s.b3q }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.b3c }};opacity:.75;animation:{{ s.flashB3q }};border-radius:3px;">{{ s.b3q }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.b2c }};opacity:.85;">{{ s.b2p }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.b2c }};opacity:.85;">{{ s.b2q }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.b2c }};opacity:.85;animation:{{ s.flashB2q }};border-radius:3px;">{{ s.b2q }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.b1c }};">{{ s.b1p }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:{{ s.b1c }};">{{ s.b1q }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};font-weight:700;font-size:12px;color:{{ s.lc }};">{{ s.lp }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.lc }};opacity:.9;">{{ s.lq }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};font-weight:700;color:{{ s.pc }};">{{ s.pct }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.pc }};">{{ s.chg }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:{{ th.volColor }};">{{ s.tvol }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:{{ s.b1c }};animation:{{ s.flashB1q }};border-radius:3px;">{{ s.b1q }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};font-weight:700;font-size:12px;color:{{ s.lc }};background:{{ s.priceCellBg }};animation:{{ s.flashPrice }};border-radius:3px;">{{ s.lp }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.lc }};opacity:.9;animation:{{ s.flashQty }};border-radius:3px;">{{ s.lq }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};font-weight:700;color:{{ s.pc }};animation:{{ s.flashPrice }};border-radius:3px;">{{ s.pct }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.pc }};animation:{{ s.flashPrice }};border-radius:3px;">{{ s.chg }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ th.volColor }};animation:{{ s.flashVol }};border-radius:3px;">{{ s.tvol }}</td>
+            <td style="padding:2px 6px;text-align:center;border-right:2px solid {{ th.cellBorder }};">
+              <svg viewBox="0 0 80 24" preserveAspectRatio="none" style="width:64px;height:20px;display:inline-block;vertical-align:middle;">
+                <path d="{{ s.sparkFill }}" fill="{{ s.lc }}" opacity="0.15"></path>
+                <polyline points="{{ s.sparkPts }}" fill="none" stroke="{{ s.lc }}" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"></polyline>
+              </svg>
+            </td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.a1c }};">{{ s.a1p }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.a1c }};">{{ s.a1q }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.a1c }};animation:{{ s.flashA1q }};border-radius:3px;">{{ s.a1q }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.a2c }};opacity:.85;">{{ s.a2p }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.a2c }};opacity:.85;">{{ s.a2q }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.a2c }};opacity:.85;animation:{{ s.flashA2q }};border-radius:3px;">{{ s.a2q }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.a3c }};opacity:.75;">{{ s.a3p }}</td>
-            <td style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:{{ s.a3c }};opacity:.75;">{{ s.a3q }}</td>
+            <td style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:{{ s.a3c }};opacity:.75;animation:{{ s.flashA3q }};border-radius:3px;">{{ s.a3q }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.hc }};">{{ s.hi }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.ac }};opacity:.7;">{{ s.avg }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:2px solid {{ th.cellBorder }};color:{{ s.oc }};">{{ s.lo }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:#22d3a5;">{{ s.fbuy }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:#f87171;">{{ s.fsell }}</td>
             <td style="padding:3px 6px;text-align:right;border-right:1px solid {{ th.cellBorderL }};color:{{ s.fbc }};">{{ s.fbal }}</td>
-            <td style="padding:3px 8px;text-align:right;color:#64748b;">{{ s.room }}</td>
+            <td style="padding:3px 8px;text-align:right;color:#64748b;animation:{{ s.flashRoom }};border-radius:3px;">
+              <div style="display:flex;flex-direction:column;gap:2px;align-items:flex-end;">
+                <span>{{ s.room }}</span>
+                <div style="width:44px;height:3px;background:{{ th.cellBorderL }};border-radius:2px;overflow:hidden;">
+                  <div style="width:{{ s.roomPct }}%;height:100%;background:#a78bfa;"></div>
+                </div>
+              </div>
+            </td>
             <td style="padding:3px 8px;text-align:right;color:{{ th.volColor }};">{{ s.kltt }}</td>
-            <td style="padding:3px 8px;text-align:center;cursor:pointer;font-size:13px;" style-hover="transform:scale(1.2);">{{ watchlist.includes(s.sym) ? '♥' : '♡' }}</td>
+            <td style="padding:3px 8px;text-align:center;font-size:12px;">
+              <div style="display:flex;align-items:center;justify-content:center;gap:7px;">
+                <span onClick="{{ s.onOpenAlert }}" style="cursor:pointer;color:{{ th.textMuted }};" style-hover="color:#f59e0b;" title="Đặt cảnh báo giá">🔔</span>
+                <span onClick="{{ s.onToggleWatch }}" style="cursor:pointer;color:{{ s.heartColor }};font-size:13px;" style-hover="transform:scale(1.2);">{{ s.heart }}</span>
+              </div>
+            </td>
           </tr>
         </sc-for>
       </tbody>
@@ -432,6 +453,38 @@
       <span>Phái sinh: Giá ×1 │ KL ×1</span>
     </div>
   </div>
+
+  <!-- ══ COMPARE FLOATING BAR ══ -->
+  <sc-if value="{{ showCompareBar }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;bottom:40px;left:50%;transform:translateX(-50%);background:#0b1628;border:1px solid #2563eb;border-radius:12px;padding:10px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 12px 40px rgba(0,0,0,.5);z-index:150;animation:fadeUp .2s ease;">
+      <span style="font-size:11px;font-weight:700;color:#93c5fd;white-space:nowrap;">So sánh ({{ compareCount }}/5):</span>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;max-width:280px;">
+        <sc-for list="{{ compareChips }}" as="cc" hint-placeholder-count="3">
+          <span onClick="{{ cc.onRemove }}" style="background:#1e3a5f;color:#dbeafe;border-radius:6px;padding:3px 8px;font-size:10.5px;font-weight:700;cursor:pointer;white-space:nowrap;">{{ cc.sym }} ✕</span>
+        </sc-for>
+      </div>
+      <a href="{{ compareUrl }}" style="text-decoration:none;background:#22c55e;color:#fff;border-radius:6px;padding:6px 14px;font-size:11px;font-weight:800;white-space:nowrap;">So sánh ngay →</a>
+      <button onClick="{{ clearCompare }}" style="background:transparent;border:1px solid #1a3050;color:#64748b;border-radius:6px;padding:6px 10px;font-size:10.5px;cursor:pointer;white-space:nowrap;">Xóa hết</button>
+    </div>
+  </sc-if>
+
+  <!-- ══ QUICK PRICE ALERT MODAL ══ -->
+  <sc-if value="{{ alertModal.open }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeAlertModal }}" style="position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:250;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);">
+      <div onClick="{{ stopProp }}" style="background:#0b1628;border:1px solid #1a3050;border-radius:12px;padding:20px;width:320px;max-width:92vw;animation:fadeUp .15s ease;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <span style="font-size:13px;font-weight:800;color:#fff;">🔔 Cảnh báo giá — {{ alertModal.sym }}</span>
+          <button onClick="{{ closeAlertModal }}" style="background:none;border:none;color:#64748b;font-size:16px;cursor:pointer;">✕</button>
+        </div>
+        <div style="display:flex;gap:6px;margin-bottom:12px;">
+          <button onClick="{{ setAlertAbove }}" style="flex:1;background:{{ alertModal.aboveBg }};color:{{ alertModal.aboveFg }};border:1px solid #1a3050;border-radius:6px;padding:7px;font-size:11px;font-weight:700;cursor:pointer;">Giá LÊN đến</button>
+          <button onClick="{{ setAlertBelow }}" style="flex:1;background:{{ alertModal.belowBg }};color:{{ alertModal.belowFg }};border:1px solid #1a3050;border-radius:6px;padding:7px;font-size:11px;font-weight:700;cursor:pointer;">Giá XUỐNG đến</button>
+        </div>
+        <input type="number" step="0.01" placeholder="Ngưỡng giá" value="{{ alertModal.threshold }}" onInput="{{ setAlertThreshold }}" style="width:100%;padding:8px 10px;border:1px solid #1a3050;border-radius:6px;background:#060c18;color:#fff;font-size:14px;font-family:'JetBrains Mono',monospace;margin-bottom:14px;outline:none;box-sizing:border-box;"/>
+        <button onClick="{{ saveAlert }}" style="width:100%;background:#22c55e;color:#fff;border:none;border-radius:6px;padding:10px;font-size:12px;font-weight:800;cursor:pointer;">Lưu cảnh báo</button>
+      </div>
+    </div>
+  </sc-if>
 
   <!-- ══ TRADINGVIEW INDEX MODAL ══ -->
   <sc-if value="{{ idxChart.open }}" hint-placeholder-val="{{ false }}">
@@ -454,82 +507,9 @@
     </div>
   </sc-if>
 
-  <!-- ══ INTRADAY CHART MODAL ══ -->
+  <!-- ══ STOCK DETAIL MODAL ══ -->
   <sc-if value="{{ chart.open }}" hint-placeholder-val="{{ false }}">
-    <div onClick="{{ closeChart }}" style="position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:100;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);">
-      <div onClick="{{ stopProp }}" style="background:#080f1c;border:1px solid #1a3050;border-radius:12px;width:700px;max-width:96vw;overflow:hidden;animation:fadeUp .18s ease;box-shadow:0 32px 80px rgba(0,0,0,.6),0 0 40px rgba(37,99,235,.1);">
-        <div style="background:linear-gradient(90deg,#060c18,#0b1628);padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1a3050;">
-          <div style="display:flex;align-items:center;gap:12px;">
-            <div style="background:#1e3a5f;border-radius:6px;padding:3px 8px;">
-              <span style="font-size:14px;font-weight:800;color:#60a5fa;font-family:'Inter',sans-serif;letter-spacing:.5px;">{{ chart.sym }}</span>
-            </div>
-            <span style="font-size:22px;font-weight:800;color:{{ chart.lc }};font-family:'JetBrains Mono',monospace;">{{ chart.lp }}</span>
-            <span style="font-size:12px;color:{{ chart.lc }};font-weight:600;background:{{ chart.chgBg }};padding:2px 8px;border-radius:5px;">{{ chart.chg }}</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:5px;">
-            <sc-for list="{{ chart.ranges }}" as="rng" hint-placeholder-count="4">
-              <button onClick="{{ rng.onClick }}" style="background:{{ rng.bg }};color:{{ rng.fg }};border:1px solid {{ rng.border }};border-radius:5px;padding:4px 10px;font-size:11px;font-weight:700;cursor:pointer;letter-spacing:.3px;transition:all .15s;">{{ rng.label }}</button>
-            </sc-for>
-            <div style="width:1px;height:20px;background:#1a3050;margin:0 4px;"></div>
-            <button onClick="{{ closeChart }}" style="background:#0f1e36;color:#64748b;border:1px solid #1a3050;border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;" style-hover="color:#e2e8f0;background:#1a2d45;">✕</button>
-          </div>
-        </div>
-        <div style="padding:16px 18px 10px;background:#060c18;">
-          <div style="position:relative;height:186px;">
-            <svg viewBox="0 0 640 160" preserveAspectRatio="none" style="width:100%;height:160px;display:block;">
-              <defs>
-                <linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stop-color="{{ chart.lc }}" stop-opacity="0.25"></stop>
-                  <stop offset="100%" stop-color="{{ chart.lc }}" stop-opacity="0"></stop>
-                </linearGradient>
-              </defs>
-              <line x1="0" y1="40" x2="640" y2="40" stroke="#0f1e36" stroke-width="1"></line>
-              <line x1="0" y1="80" x2="640" y2="80" stroke="#0f1e36" stroke-width="1"></line>
-              <line x1="0" y1="120" x2="640" y2="120" stroke="#0f1e36" stroke-width="1"></line>
-              <line x1="160" y1="0" x2="160" y2="160" stroke="#0d1a2e" stroke-width="1"></line>
-              <line x1="320" y1="0" x2="320" y2="160" stroke="#0d1a2e" stroke-width="1"></line>
-              <line x1="480" y1="0" x2="480" y2="160" stroke="#0d1a2e" stroke-width="1"></line>
-              <line x1="0" y1="{{ chart.refY }}" x2="640" y2="{{ chart.refY }}" stroke="#fbbf24" stroke-width="1" stroke-dasharray="5,4" opacity="0.7"></line>
-              <path d="{{ chart.fillPath }}" fill="url(#chartFill)"></path>
-              <polyline points="{{ chart.linePts }}" fill="none" stroke="{{ chart.lc }}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></polyline>
-            </svg>
-            <div style="position:absolute;top:0;right:6px;height:160px;display:flex;flex-direction:column;justify-content:space-between;pointer-events:none;">
-              <sc-for list="{{ chart.yLabels }}" as="yl" hint-placeholder-count="5">
-                <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">{{ yl }}</span>
-              </sc-for>
-            </div>
-          </div>
-          <div style="height:44px;margin-top:4px;border-top:1px solid #0f1e36;padding-top:4px;">
-            <svg viewBox="0 0 640 36" preserveAspectRatio="none" style="width:100%;height:36px;display:block;">
-              <sc-for list="{{ chart.vbars }}" as="vb" hint-placeholder-count="30">
-                <rect x="{{ vb.x }}" y="{{ vb.y }}" width="{{ vb.w }}" height="{{ vb.h }}" fill="{{ vb.c }}" opacity="0.6" rx="1"></rect>
-              </sc-for>
-            </svg>
-          </div>
-          <div style="display:flex;justify-content:space-between;padding:3px 0 2px;border-top:1px solid #0f1e36;">
-            <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">09:00</span>
-            <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">10:30</span>
-            <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">11:30</span>
-            <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">13:30</span>
-            <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">14:30</span>
-            <span style="font-size:9px;color:#2a4a6a;font-family:'JetBrains Mono',monospace;">15:00</span>
-          </div>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(6,1fr);border-top:1px solid #1a3050;background:#080f1c;">
-          <sc-for list="{{ chart.stats }}" as="st" hint-placeholder-count="6">
-            <div style="padding:10px 12px;border-right:1px solid #0f1e36;text-align:center;">
-              <div style="font-size:9px;color:#3a5570;margin-bottom:3px;letter-spacing:.4px;text-transform:uppercase;font-family:'Inter',sans-serif;">{{ st.label }}</div>
-              <div style="font-size:12px;font-weight:700;color:{{ st.color }};font-family:'JetBrains Mono',monospace;">{{ st.val }}</div>
-            </div>
-          </sc-for>
-        </div>
-        <div style="display:flex;gap:8px;padding:12px 18px;background:#060c18;border-top:1px solid #1a3050;">
-          <a href="{{ chart.infoLink }}" style="flex:1;text-decoration:none;text-align:center;background:#0f1e36;border:1px solid #1a3050;color:#cbd5e1;border-radius:6px;padding:9px;font-size:11px;font-weight:700;">📄 Thông tin CP</a>
-          <a href="{{ chart.orderBookLink }}" style="flex:1;text-decoration:none;text-align:center;background:#0f1e36;border:1px solid #1a3050;color:#cbd5e1;border-radius:6px;padding:9px;font-size:11px;font-weight:700;">📖 Sổ lệnh</a>
-          <a href="{{ chart.tradeLink }}" style="flex:1.3;text-decoration:none;text-align:center;background:#22c55e;border:1px solid #16a34a;color:#fff;border-radius:6px;padding:9px;font-size:11px;font-weight:800;">✓ Đặt lệnh {{ chart.sym }}</a>
-        </div>
-      </div>
-    </div>
+    <dc-import name="Stock Detail Modal" sym="{{ chart.sym }}" stock="{{ chartStock }}" on-close="{{ closeChart }}" hint-size="100vw,100vh"></dc-import>
   </sc-if>
 
 </div>
@@ -558,6 +538,12 @@ class Component extends DCLogic {
     filterPriceMin: '',
     filterPriceMax: '',
     showTradeHist: false,
+    sortKey: null,
+    sortDir: 'desc',
+    selectedCompare: [],
+    focusedIndex: -1,
+    recentSyms: [],
+    alertModal: { open: false, sym: '', threshold: '', direction: 'above' },
   };
 
   componentDidMount() {
@@ -565,11 +551,33 @@ class Component extends DCLogic {
     this._c = setInterval(() => this.setState({ time: new Date() }), 1000);
     this._p = setInterval(() => this._tick(), 1100);
     this._i = setInterval(() => this._tickIdx(), 2800);
+    this._b = setInterval(() => this._tickBook(), 3500);
+    window.addEventListener('keydown', this._onKeyDown);
   }
 
   componentWillUnmount() {
-    clearInterval(this._c); clearInterval(this._p); clearInterval(this._i);
+    clearInterval(this._c); clearInterval(this._p); clearInterval(this._i); clearInterval(this._b);
+    window.removeEventListener('keydown', this._onKeyDown);
   }
+
+  _onKeyDown = (e) => {
+    const tag = (e.target && e.target.tagName) || '';
+    if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+    const list = this._lastVisibleStocks || [];
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      this.setState(p => ({ focusedIndex: Math.min((p.focusedIndex ?? -1) + 1, list.length - 1) }));
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      this.setState(p => ({ focusedIndex: Math.max((p.focusedIndex ?? 0) - 1, 0) }));
+    } else if (e.key === 'Enter') {
+      const idx = this.state.focusedIndex;
+      if (idx != null && idx >= 0 && list[idx]) {
+        this.pinRecent(list[idx].sym);
+        this.setState({ chart: { open:true, sym: list[idx].sym, range:'1D' } });
+      }
+    }
+  };
 
   _saveWatchlist(wl) {
     localStorage.setItem('watchlist', JSON.stringify(wl));
@@ -578,6 +586,44 @@ class Component extends DCLogic {
 
   searchInput = (e) => {
     this.setState({ searchText: e.target.value });
+  };
+
+  toggleWatch = (sym) => {
+    const { watchlist } = this.state;
+    const wl = watchlist.includes(sym) ? watchlist.filter(s => s !== sym) : [...watchlist, sym];
+    this._saveWatchlist(wl);
+  };
+
+  sortBy = (key) => this.setState(p => ({
+    sortKey: key,
+    sortDir: p.sortKey === key ? (p.sortDir === 'desc' ? 'asc' : 'desc') : 'desc',
+  }));
+  sortByPrice = () => this.sortBy('lp');
+  sortByPct = () => this.sortBy('pct');
+  sortByVol = () => this.sortBy('tv');
+
+  toggleCompare = (sym) => this.setState(p => {
+    const has = p.selectedCompare.includes(sym);
+    const next = has ? p.selectedCompare.filter(s => s !== sym) : (p.selectedCompare.length >= 5 ? p.selectedCompare : [...p.selectedCompare, sym]);
+    return { selectedCompare: next };
+  });
+  clearCompare = () => this.setState({ selectedCompare: [] });
+
+  pinRecent = (sym) => this.setState(p => ({ recentSyms: [sym, ...p.recentSyms.filter(s => s !== sym)].slice(0, 3) }));
+
+  openAlertModal = (sym, price) => this.setState({ alertModal: { open: true, sym, threshold: String(price), direction: 'above' } });
+  closeAlertModal = () => this.setState(p => ({ alertModal: { ...p.alertModal, open: false } }));
+  setAlertThreshold = (e) => this.setState(p => ({ alertModal: { ...p.alertModal, threshold: e.target.value } }));
+  setAlertDirection = (dir) => this.setState(p => ({ alertModal: { ...p.alertModal, direction: dir } }));
+  setAlertAbove = () => this.setAlertDirection('above');
+  setAlertBelow = () => this.setAlertDirection('below');
+  saveAlert = () => {
+    const { alertModal } = this.state;
+    if (!alertModal.sym || !alertModal.threshold) return;
+    const alerts = JSON.parse(localStorage.getItem('priceAlerts') || '[]');
+    alerts.push({ id: Date.now(), sym: alertModal.sym, threshold: parseFloat(alertModal.threshold), direction: alertModal.direction, createdAt: new Date().toISOString(), active: true });
+    localStorage.setItem('priceAlerts', JSON.stringify(alerts));
+    this.setState({ alertModal: { open: false, sym: '', threshold: '', direction: 'above' } });
   };
 
   toggleFilter = () => this.setState(p => ({ showAdvFilter: !p.showAdvFilter }));
@@ -681,10 +727,39 @@ class Component extends DCLogic {
         const pct = +((lp-s.r)/s.r*100).toFixed(1);
         return {...s, lp, lq, pct, tv:s.tv+lq,
           hi:Math.max(s.hi,lp), lo:Math.min(s.lo,lp),
-          b1p:+Math.max(s.fl,lp-s.tk).toFixed(2), b1q:(Math.floor(Math.random()*200)+1)*100,
-          a1p:+Math.min(s.cl,lp+s.tk).toFixed(2), a1q:(Math.floor(Math.random()*200)+1)*100,
           ipts:[...(s.ipts||[]).slice(1), lp],
-          fl_:dir>0?'u':'d', fts:now};
+          fl_:dir>0?'u':'d',
+          flq: lq>s.lq?'u':(lq<s.lq?'d':null),
+          fts:now};
+      })
+    }));
+  }
+
+  // Dư mua / Dư bán (order book ladder) updates much slower & independently
+  // from the matched-trade ticker above — real boards refresh standing
+  // orders far less often than the last-traded price.
+  _tickBook() {
+    const now = Date.now();
+    this.setState(prev => ({
+      stocks: prev.stocks.map(s => {
+        if (Math.random() < 0.7) return s;
+        const rq = () => (Math.floor(Math.random()*200)+1)*100;
+        const b1q=rq(), b2q=rq(), b3q=rq(), a1q=rq(), a2q=rq(), a3q=rq();
+        const d = (nv, ov) => nv>ov ? 'u' : (nv<ov ? 'd' : null);
+        // Room (foreign ownership) drifts as NN buys/sells
+        const rm = Math.max(0, (s.rm||0) + (Math.floor(Math.random()*44)-20)*1000);
+        return {...s,
+          b1p:+Math.max(s.fl, s.lp - s.tk).toFixed(2),   b1q,
+          b2p:+Math.max(s.fl, s.lp - s.tk*2).toFixed(2), b2q,
+          b3p:+Math.max(s.fl, s.lp - s.tk*3).toFixed(2), b3q,
+          a1p:+Math.min(s.cl, s.lp + s.tk).toFixed(2),   a1q,
+          a2p:+Math.min(s.cl, s.lp + s.tk*2).toFixed(2), a2q,
+          a3p:+Math.min(s.cl, s.lp + s.tk*3).toFixed(2), a3q,
+          rm,
+          fb1q:d(b1q,s.b1q), fb2q:d(b2q,s.b2q), fb3q:d(b3q,s.b3q),
+          fa1q:d(a1q,s.a1q), fa2q:d(a2q,s.a2q), fa3q:d(a3q,s.a3q),
+          frm:d(rm, s.rm||0), bts:now,
+        };
       })
     }));
   }
@@ -775,7 +850,7 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const { time, stocks, indices, darkMode, activeTab, activeSector, showSector, showMoreTools, chart, searchText, watchlist, showAdvFilter, filterPctFrom, filterPctTo, filterVolMin, filterPriceMin, filterPriceMax, showTradeHist } = this.state;
+    const { time, stocks, indices, darkMode, activeTab, activeSector, showSector, showMoreTools, chart, searchText, watchlist, showAdvFilter, filterPctFrom, filterPctTo, filterVolMin, filterPriceMin, filterPriceMax, showTradeHist, sortKey, sortDir, selectedCompare, focusedIndex, recentSyms, alertModal: alertModalState } = this.state;
     const dark = darkMode;
 
     const th = {
@@ -806,6 +881,27 @@ class Component extends DCLogic {
       toggleIcon:  dark ? '☀️' : '🌙',
       toggleLabel: dark ? 'LIGHT' : 'DARK',
       toggleTitle: dark ? 'Chuyển Light mode' : 'Chuyển Dark mode',
+      topBarBg:    dark ? 'linear-gradient(90deg,#060c18 0%,#0b1628 60%,#060c18 100%)' : 'linear-gradient(90deg,#ffffff 0%,#f7f9fc 60%,#ffffff 100%)',
+      topBarBorder:dark ? '#0f1e36' : '#e1e8f0',
+      topBarFadeFrom: dark ? '#060c18' : '#ffffff',
+      chipBg:      dark ? '#0f1e36' : '#eef2f7',
+      chipBorder:  dark ? '#1a3050' : '#dce8f5',
+      chipFg:      dark ? '#94a3b8' : '#475569',
+      menuBg:      dark ? '#0b1424' : '#ffffff',
+      menuBorder:  dark ? '#1a3050' : '#e1e8f0',
+      menuHover:   dark ? '#131f36' : '#f0f4f9',
+      menuFooterBg:dark ? '#08101f' : '#f7f9fc',
+      menuFooterFg:dark ? '#3a5570' : '#7d90a5',
+      menuLabelFg: dark ? '#e2e8f0' : '#1e293b',
+      menuDescFg:  dark ? '#5b7290' : '#8296ab',
+      theadBg:     dark ? '#080f1c' : '#eef2f7',
+      theadBgBid:  dark ? '#05111e' : '#e6f0fc',
+      theadBgAsk:  dark ? '#1a0808' : '#fcebec',
+      theadBorder: dark ? '#0f1e36' : '#dce8f5',
+      theadBorder2:dark ? '#1a3050' : '#c9d9ea',
+      theadFg:     dark ? '#4a7090' : '#64748b',
+      theadFg2:    dark ? '#3a6080' : '#7d90a5',
+      theadMatchFg:dark ? '#e2e8f0' : '#1e293b',
     };
 
     const toggleDark = () => this.setState(p => ({ darkMode: !p.darkMode }));
@@ -837,6 +933,7 @@ class Component extends DCLogic {
     }));
 
     const baseTabs = [
+      {label:'★ Yêu thích', id:'FAV', arrow:false},
       {label:'HOSE', id:'HOSE', arrow:false},
       {label:'HNX',  id:'HNX',  arrow:false},
       {label:'UPCOM',id:'UPCOM',arrow:false},
@@ -855,6 +952,14 @@ class Component extends DCLogic {
         ? () => this.setState(p => ({ showSector: !p.showSector, activeTab:'NGANH' }))
         : () => this.setState({ activeTab: tb.id, showSector: false }),
     }));
+
+    const arrowFor = (key) => sortKey===key ? (sortDir==='asc' ? ' ▲' : ' ▼') : '';
+    const sortPriceArrow = arrowFor('lp');
+    const sortPctArrow = arrowFor('pct');
+    const sortVolArrow = arrowFor('tv');
+    const sortPriceColor = sortKey==='lp' ? '#60a5fa' : 'inherit';
+    const sortPctColor = sortKey==='pct' ? '#60a5fa' : 'inherit';
+    const sortVolColor = sortKey==='tv' ? '#60a5fa' : 'inherit';
 
     const tvSymMap = {
       'VN-Index':   'HOSE:VNINDEX',
@@ -950,15 +1055,38 @@ class Component extends DCLogic {
 
     const VN30 = ['ACB','BID','BVH','CTG','EIB','FPT','GAS','GVR','HDB','HPG','HVN','MBB','MWG','NLG','POW','SAB','SSI','STB','TCB','VCB','VCI','VHM','VIC','VJC','VNM','VPB','VRE','DCM','DPM','DRC'];
     const now = Date.now();
+    const maxRoom = (stocks||[]).reduce((m,s)=>Math.max(m, Math.abs(s.rm||0)), 1);
     let allStocks = (stocks||[]).map((s,i) => {
       const fl  = s.fl_ && now-s.fts<900;
-      const bg  = fl
-        ? (s.fl_==='u' ? (dark?'#0d2a14':'#dcfce7') : (dark?'#2a0a0d':'#fee2e2'))
-        : (i%2===0 ? th.rowOdd : th.rowEven);
+      const bg  = i%2===0 ? th.rowOdd : th.rowEven;
+      // Per-cell flash: each cell flashes by the direction of ITS OWN value change
+      const flashPrice = fl ? (s.fl_==='u' ? 'flashUp 0.8s ease' : 'flashDn 0.8s ease') : 'none';
+      const flashQty   = (fl && s.flq) ? (s.flq==='u' ? 'flashUp 0.8s ease' : 'flashDn 0.8s ease') : 'none';
+      // KLGD (tổng KL) rises on every match → green flash
+      const flashVol   = fl ? 'flashUp 0.8s ease' : 'none';
+      // Dư mua / Dư bán / Room flash by their own change direction, on the slower book tick
+      const bookFresh  = s.bts && now - s.bts < 900;
+      const _fa = d => d==='u' ? 'flashUp 0.8s ease' : (d==='d' ? 'flashDn 0.8s ease' : 'none');
+      const flashB1q = bookFresh ? _fa(s.fb1q) : 'none';
+      const flashB2q = bookFresh ? _fa(s.fb2q) : 'none';
+      const flashB3q = bookFresh ? _fa(s.fb3q) : 'none';
+      const flashA1q = bookFresh ? _fa(s.fa1q) : 'none';
+      const flashA2q = bookFresh ? _fa(s.fa2q) : 'none';
+      const flashA3q = bookFresh ? _fa(s.fa3q) : 'none';
+      const flashRoom = bookFresh ? _fa(s.frm) : 'none';
       const pc  = p => this._c0(p,s.r,s.cl,s.fl);
       const chg = +(s.lp-s.r).toFixed(2);
       const fbal= s.fb-s.fs;
       const avg = +((s.hi+s.lo+s.lp)/3).toFixed(2);
+      const intensity = Math.min(Math.abs(s.pct)/7, 1);
+      const priceCellBg = s.pct > 0
+        ? `rgba(34,197,94,${(0.06+intensity*0.32).toFixed(2)})`
+        : s.pct < 0
+          ? `rgba(244,63,94,${(0.06+intensity*0.32).toFixed(2)})`
+          : 'transparent';
+      const roomPct = Math.max(2, Math.round(Math.abs(s.rm||0)/maxRoom*100));
+      const isSelected = selectedCompare.includes(s.s);
+      const isPinned = recentSyms.includes(s.s);
       return {
         sym:s.s, ng:s.ng, bg,
         ceil:this._f(s.cl), tc:this._f(s.r), floor:this._f(s.fl),
@@ -982,7 +1110,18 @@ class Component extends DCLogic {
         fbc:  fbal>=0?'#22d3a5':'#f87171',
         room: s.rm?this._q(Math.abs(s.rm)):'',
         kltt: this._q(Math.abs(s.rm)||s.tv),
-        onChart: () => this.setState({ chart:{ open:true, sym:s.s, range:'1D' } }),
+        sparkPts: this._pts(s.ipts,80,24),
+        sparkFill: this._fill(s.ipts,80,24),
+        heart: watchlist.includes(s.s) ? '♥' : '♡',
+        heartColor: watchlist.includes(s.s) ? '#f43f5e' : '#60a5fa',
+        onToggleWatch: ((sym) => (e) => { if (e && e.stopPropagation) e.stopPropagation(); this.toggleWatch(sym); })(s.s),
+        onChart: () => { this.pinRecent(s.s); this.setState({ chart:{ open:true, sym:s.s, range:'1D' } }); },
+        priceCellBg, roomPct, isSelected, isPinned,
+        onToggleCompare: () => this.toggleCompare(s.s),
+        onOpenAlert: () => this.openAlertModal(s.s, s.lp),
+        pinBorder: isPinned ? '3px solid #f59e0b' : '3px solid transparent',
+        flashPrice, flashQty,
+        flashVol, flashB1q, flashB2q, flashB3q, flashA1q, flashA2q, flashA3q, flashRoom,
       };
     });
 
@@ -1014,8 +1153,30 @@ class Component extends DCLogic {
       allStocks = allStocks.filter(s => s.ng===activeSector);
     }
 
+    // ⭐ Favorites tab filter
+    if (activeTab === 'FAV') {
+      allStocks = allStocks.filter(s => watchlist.includes(s.sym));
+    }
+
+    // 🔀 Sort or pin-recent
+    if (sortKey) {
+      allStocks = [...allStocks].sort((a,b) => {
+        let av, bv;
+        if (sortKey === 'lp') { av=parseFloat(a.lp.replace(/,/g,'')); bv=parseFloat(b.lp.replace(/,/g,'')); }
+        else if (sortKey === 'pct') { av=parseFloat(a.pct); bv=parseFloat(b.pct); }
+        else { av=parseInt(a.tvol.replace(/,/g,'')); bv=parseInt(b.tvol.replace(/,/g,'')); }
+        return sortDir==='asc' ? av-bv : bv-av;
+      });
+    } else if (recentSyms.length) {
+      const inRecent = [], rest = [];
+      allStocks.forEach(s => { (recentSyms.includes(s.sym) ? inRecent : rest).push(s); });
+      inRecent.sort((a,b) => recentSyms.indexOf(a.sym) - recentSyms.indexOf(b.sym));
+      allStocks = [...inRecent, ...rest];
+    }
+
     const closeIdxChart = () => this.setState({ idxChart:{ open:false, sym:'', iframeUrl:'' } });
     const closeChart = () => this.setState({ chart:{...this.state.chart, open:false} });
+    const chartStock = (this.state.stocks||[]).find(x=>x.s===chart.sym) || null;
     const stopProp   = e  => { if(e&&e.stopPropagation) e.stopPropagation(); };
     const toggleMoreTools = () => this.setState(p => ({ showMoreTools: !p.showMoreTools }));
 
@@ -1187,13 +1348,40 @@ class Component extends DCLogic {
     ];
 
     const idxChart = this.state.idxChart || { open:false };
+
+    // 🎯 Focus-index highlight (final visible order)
+    const preFinal = isGrid ? gridStocks : allStocks;
+    const finalStocks = preFinal.map((s, idx) => ({ ...s, focusOutline: idx===focusedIndex ? '2px solid #3b82f6' : 'none' }));
+    this._lastVisibleStocks = finalStocks;
+
+    // 🔔 Alert modal computed
+    const alertModal = {
+      ...alertModalState,
+      aboveBg: alertModalState.direction==='above' ? '#2563eb' : th.iconBg,
+      aboveFg: alertModalState.direction==='above' ? '#fff' : th.textMuted,
+      belowBg: alertModalState.direction==='below' ? '#2563eb' : th.iconBg,
+      belowFg: alertModalState.direction==='below' ? '#fff' : th.textMuted,
+    };
+
+    // 📊 Compare bar
+    const compareChips = selectedCompare.map(sym => ({
+      sym, onRemove: () => this.toggleCompare(sym),
+    }));
+    const compareUrl = `Stock Comparison.dc.html?syms=${encodeURIComponent(selectedCompare.join(','))}`;
+
     return { th, toggleDark, timeStr, navItems, tabs, indices:idxOut, globals, globalTabs,
-      stocks: isGrid ? gridStocks : allStocks,
-      showSector, sectorBtns, chart:chartOut, closeChart, stopProp,
+      stocks: finalStocks,
+      sortPriceArrow, sortPctArrow, sortVolArrow, sortPriceColor, sortPctColor, sortVolColor,
+      sortByPrice: this.sortByPrice, sortByPct: this.sortByPct, sortByVol: this.sortByVol,
+      alertModal, closeAlertModal: this.closeAlertModal, setAlertThreshold: this.setAlertThreshold,
+      setAlertAbove: this.setAlertAbove, setAlertBelow: this.setAlertBelow, saveAlert: this.saveAlert,
+      selectedCompare, compareChips, compareUrl, clearCompare: this.clearCompare,
+      showCompareBar: selectedCompare.length >= 1, compareCount: selectedCompare.length,
+      showSector, sectorBtns, chart:chartOut, chartStock, closeChart, stopProp,
       showMoreTools, toggleMoreTools,
-      moreToolsBg: showMoreTools ? '#16457a' : '#0f1e36',
-      moreToolsBorder: showMoreTools ? '#2563eb' : '#1a3050',
-      moreToolsFg: showMoreTools ? '#dbeafe' : '#94a3b8',
+      moreToolsBg: showMoreTools ? '#16457a' : th.chipBg,
+      moreToolsBorder: showMoreTools ? '#2563eb' : th.chipBorder,
+      moreToolsFg: showMoreTools ? '#dbeafe' : th.chipFg,
       arrowRotate: showMoreTools ? 'rotate(180deg)' : 'rotate(0deg)',
       toolCount: menuGroups.reduce((s,g)=>s+g.items.length,0),
       menuGroups,

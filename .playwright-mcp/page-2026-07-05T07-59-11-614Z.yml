@@ -1,0 +1,50 @@
+- generic [ref=f13e5]:
+  - generic [ref=f13e6]:
+    - generic [ref=f13e7]:
+      - link [ref=f13e8] [cursor=pointer]:
+        - /url: /home
+        - generic [ref=f13e9]:
+          - img [ref=f13e11]
+          - img [ref=f13e13]
+      - generic [ref=f13e15]:
+        - button "Cơ sở" [ref=f13e17] [cursor=pointer]
+        - button "Phái sinh" [ref=f13e18] [cursor=pointer]
+      - generic [ref=f13e19]: "---"
+    - generic [ref=f13e22]:
+      - generic [ref=f13e23]:
+        - img [ref=f13e24] [cursor=pointer]
+        - textbox "Nhập từ khoá"
+      - img [ref=f13e26] [cursor=pointer]
+      - generic [ref=f13e27]:
+        - button "Mở tài khoản" [ref=f13e28] [cursor=pointer]
+        - button "Đăng nhập" [ref=f13e29] [cursor=pointer]
+      - img [ref=f13e32] [cursor=pointer]
+  - generic [ref=f13e35]:
+    - link "Trang chủ" [ref=f13e36] [cursor=pointer]:
+      - /url: /home
+    - button "Bảng giá" [ref=f13e38] [cursor=pointer]:
+      - generic [ref=f13e39]: Bảng giá
+      - img [ref=f13e40]
+    - link "Thị trường" [ref=f13e41] [cursor=pointer]:
+      - /url: /iq/market
+    - button "Thông tin tài sản" [ref=f13e43] [cursor=pointer]:
+      - generic [ref=f13e44]: Thông tin tài sản
+      - img [ref=f13e45]
+    - button "Giao dịch tiền" [ref=f13e47] [cursor=pointer]:
+      - generic [ref=f13e48]: Giao dịch tiền
+      - img [ref=f13e49]
+    - button "Giao Dịch Chứng Khoán" [ref=f13e51] [cursor=pointer]:
+      - generic [ref=f13e52]: Giao Dịch Chứng Khoán
+      - img [ref=f13e53]
+    - button "Vietcap IQ" [ref=f13e55] [cursor=pointer]:
+      - generic [ref=f13e56]: Vietcap IQ
+      - img [ref=f13e57]
+    - button "AI News" [ref=f13e59] [cursor=pointer]:
+      - generic [ref=f13e60]: AI News
+      - img [ref=f13e61]
+    - button "Sản phẩm Đầu tư" [ref=f13e63] [cursor=pointer]:
+      - generic [ref=f13e64]: Sản phẩm Đầu tư
+      - img [ref=f13e65]
+    - button "Tiện ích" [ref=f13e67] [cursor=pointer]:
+      - generic [ref=f13e68]: Tiện ích
+      - img [ref=f13e69]

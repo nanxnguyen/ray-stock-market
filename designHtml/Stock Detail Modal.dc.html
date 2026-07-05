@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+<style>
+@keyframes sdIn{from{opacity:0;transform:translateY(10px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes sdFade{from{opacity:0}to{opacity:1}}
+#sdScroll::-webkit-scrollbar,.sdSb::-webkit-scrollbar{width:8px;height:8px}
+#sdScroll::-webkit-scrollbar-thumb,.sdSb::-webkit-scrollbar-thumb{background:#2a3a4d;border-radius:8px}
+#sdScroll::-webkit-scrollbar-track,.sdSb::-webkit-scrollbar-track{background:transparent}
+</style>
+</helmet>
+
+<div onClick="{{ onCloseBg }}" style="position:fixed;inset:0;z-index:400;background:rgba(4,8,14,.72);backdrop-filter:blur(3px);display:flex;align-items:center;justify-content:center;font-family:'Inter',-apple-system,sans-serif;">
+  <div id="sdModalRoot" onClick="{{ stop }}" style="width:min(1560px,97vw);height:93vh;background:#0b1420;border:1px solid #1e2c3d;border-radius:12px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.7);animation:sdIn .2s ease;">
+
+    <!-- TITLE BAR -->
+    <div style="flex-shrink:0;height:52px;background:linear-gradient(180deg,#243347,#1b2838);border-bottom:1px solid #1e2c3d;display:flex;align-items:center;justify-content:space-between;padding:0 20px;">
+      <span style="font-size:16px;font-weight:700;color:#eef3f9;letter-spacing:.2px;">Phân tích chuyên sâu cổ phiếu</span>
+      <div onClick="{{ onCloseBtn }}" style="cursor:pointer;width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#93a4b8;font-size:18px;" style-hover="background:#2b3a4d;color:#fff;">✕</div>
+    </div>
+
+    <!-- SYMBOL ROW -->
+    <div style="flex-shrink:0;padding:12px 20px 10px;display:flex;align-items:center;gap:18px;border-bottom:1px solid #14202e;">
+      <div style="display:flex;align-items:center;gap:6px;background:#111c29;border:1px solid #24344a;border-radius:7px;padding:7px 12px;min-width:120px;">
+        <span style="font-size:15px;font-weight:800;color:#eef3f9;font-family:'JetBrains Mono',monospace;letter-spacing:.5px;">{{ sym }}</span>
+      </div>
+      <span style="font-size:26px;font-weight:800;color:{{ col }};font-family:'JetBrains Mono',monospace;">{{ priceStr }}</span>
+      <span style="font-size:14px;font-weight:700;color:{{ col }};font-family:'JetBrains Mono',monospace;">{{ chgStr }}</span>
+      <span style="font-size:14px;font-weight:700;color:{{ col }};font-family:'JetBrains Mono',monospace;">{{ pctStr }}</span>
+      <span style="font-size:13px;color:#8fa1b4;font-weight:500;">{{ company }} <span style="color:#5f7488;">({{ exch }})</span></span>
+      <div style="margin-left:auto;display:flex;align-items:center;gap:14px;color:#6b7d92;font-size:16px;">
+        <span style="cursor:pointer;" style-hover="color:#fbbf24;">🔔</span>
+        <span onClick="{{ toggleStar }}" style="cursor:pointer;color:{{ starColor }};" style-hover="color:#fbbf24;">{{ starIcon }}</span>
+      </div>
+    </div>
+
+    <!-- TABS -->
+    <div style="flex-shrink:0;display:flex;align-items:stretch;gap:2px;padding:0 20px;border-bottom:1px solid #1a2736;background:#0b1420;">
+      <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
+        <div onClick="{{ t.onClick }}" style="cursor:pointer;padding:12px 4px;margin-right:22px;font-size:13.5px;font-weight:{{ t.weight }};color:{{ t.color }};border-bottom:2px solid {{ t.border }};transition:color .12s;white-space:nowrap;">{{ t.label }}</div>
+      </sc-for>
+    </div>
+
+    <!-- BODY -->
+    <div id="sdScroll" style="flex:1;overflow-y:auto;background:#08111b;padding:16px 20px 22px;">
+
+      <!-- ═══ OVERVIEW ═══ -->
+      <sc-if value="{{ isOverview }}" hint-placeholder-val="{{ true }}">
+        <div style="display:grid;grid-template-columns:1fr 356px;gap:14px;align-items:start;animation:sdFade .2s ease;">
+          <div style="display:flex;flex-direction:column;gap:14px;min-width:0;">
+            <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px 10px;">
+              <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+                <span style="font-size:13px;font-weight:700;color:#e2e8f0;">Biến động giá</span>
+                <span style="font-size:11px;color:#f43f5e;">●</span>
+              </div>
+              <div id="sdPrice" style="width:100%;height:320px;"></div>
+              <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:10px;">
+                <sc-for list="{{ ranges }}" as="r" hint-placeholder-count="7">
+                  <div onClick="{{ r.onClick }}" style="cursor:pointer;text-align:center;background:{{ r.bg }};border:1px solid {{ r.border }};border-radius:7px;padding:8px 4px;">
+                    <div style="font-size:11.5px;font-weight:700;color:{{ r.labelColor }};">{{ r.label }}</div>
+                    <div style="font-size:11px;font-weight:700;color:{{ r.pctColor }};margin-top:2px;">{{ r.pct }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:12px 14px;">
+                <span style="font-size:12.5px;font-weight:700;color:#e2e8f0;">Thanh khoản</span>
+                <div id="sdLiq" style="width:100%;height:170px;margin-top:6px;"></div>
+                <div style="display:flex;gap:12px;justify-content:center;font-size:9.5px;color:#7d90a5;margin-top:4px;">
+                  <span style="color:#3b82f6;">● Hôm nay</span><span style="color:#94a3b8;">● Hôm qua</span><span style="color:#eab308;">● 1 Tuần</span>
+                </div>
+              </div>
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:12px 14px;">
+                <span style="font-size:12.5px;font-weight:700;color:#e2e8f0;">Khối ngoại</span>
+                <div id="sdForeign" style="width:100%;height:170px;margin-top:6px;"></div>
+                <div style="display:flex;gap:12px;justify-content:center;font-size:9.5px;color:#7d90a5;margin-top:4px;">
+                  <span style="color:#22c55e;">● Mua</span><span style="color:#f43f5e;">● Bán</span><span style="color:#94a3b8;">● Hôm qua</span>
+                </div>
+              </div>
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:12px 14px;">
+                <span style="font-size:12.5px;font-weight:700;color:#e2e8f0;">Tâm lý kỹ thuật</span>
+                <div id="sdSentiment" style="width:100%;height:150px;margin-top:6px;"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;margin-top:2px;">
+                  <div><div style="font-size:9.5px;color:#f43f5e;font-weight:700;">Tiêu cực</div><div style="font-size:13px;font-weight:800;color:#e2e8f0;">{{ sent.neg }}</div></div>
+                  <div><div style="font-size:9.5px;color:#94a3b8;font-weight:700;">Trung lập</div><div style="font-size:13px;font-weight:800;color:#e2e8f0;">{{ sent.neu }}</div></div>
+                  <div><div style="font-size:9.5px;color:#22c55e;font-weight:700;">Tích cực</div><div style="font-size:13px;font-weight:800;color:#e2e8f0;">{{ sent.pos }}</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT SIDEBAR -->
+          <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;gap:6px;">
+              <div onClick="{{ setKeyMetrics }}" style="cursor:pointer;flex:1;text-align:center;padding:6px;border-radius:7px;font-size:11.5px;font-weight:700;background:{{ ovTab.km.bg }};color:{{ ovTab.km.fg }};">Chỉ số chính</div>
+              <div onClick="{{ setTimeSales }}" style="cursor:pointer;flex:1;text-align:center;padding:6px;border-radius:7px;font-size:11.5px;font-weight:700;background:{{ ovTab.ts.bg }};color:{{ ovTab.ts.fg }};">Khớp lệnh</div>
+            </div>
+
+            <sc-if value="{{ ovKeyMetrics }}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;gap:2px;">
+                <sc-for list="{{ keyMetrics }}" as="km" hint-placeholder-count="10">
+                  <div style="display:flex;justify-content:space-between;padding:8px 6px;border-bottom:1px solid #14202e;">
+                    <span style="font-size:11px;color:#8296ab;">{{ km.k }}</span>
+                    <span style="font-size:11.5px;font-weight:700;color:{{ km.c }};font-family:'JetBrains Mono',monospace;">{{ km.v }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{ ovTimeSales }}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;flex-direction:column;gap:5px;">
+                <sc-for list="{{ depthRows }}" as="d" hint-placeholder-count="3">
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border-radius:5px;overflow:hidden;font-family:'JetBrains Mono',monospace;font-size:11.5px;">
+                    <span style="background:rgba(34,197,94,.16);padding:7px 8px;color:#cbd5e1;">{{ d.bv }}</span>
+                    <span style="background:rgba(34,197,94,.16);padding:7px 8px;text-align:right;color:#22c55e;font-weight:700;">{{ d.bp }}</span>
+                    <span style="background:rgba(244,63,94,.16);padding:7px 8px;color:#f43f5e;font-weight:700;">{{ d.ap }}</span>
+                    <span style="background:rgba(244,63,94,.16);padding:7px 8px;text-align:right;color:#cbd5e1;">{{ d.av }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div>
+                <span style="font-size:12px;font-weight:700;color:#e2e8f0;">Nhật ký khớp lệnh</span>
+                <div class="sdSb" style="margin-top:6px;max-height:280px;overflow-y:auto;display:flex;flex-direction:column;">
+                  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 18px;padding:2px 6px;font-size:10px;color:#5f7488;font-weight:700;position:sticky;top:0;background:#0d1826;">
+                    <span>Giờ</span><span style="text-align:right;">Giá</span><span style="text-align:right;">KL</span><span></span>
+                  </div>
+                  <sc-for list="{{ tradeLog }}" as="tl" hint-placeholder-count="16">
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 18px;padding:5px 6px;font-size:11px;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #101c29;">
+                      <span style="color:#8296ab;">{{ tl.time }}</span>
+                      <span style="text-align:right;color:{{ tl.pc }};">{{ tl.price }}</span>
+                      <span style="text-align:right;color:#cbd5e1;">{{ tl.vol }}</span>
+                      <span style="text-align:center;color:{{ tl.sc }};font-weight:700;font-size:9.5px;">{{ tl.side }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="background:#0f2033;border:1px solid #1c3450;border-radius:8px;padding:10px;">
+                <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;font-size:10px;color:#7d90a5;font-weight:700;padding-bottom:6px;"><span></span><span style="text-align:right;">Khối lượng</span><span style="text-align:right;">Giá trị</span></div>
+                <sc-for list="{{ aggr }}" as="a" hint-placeholder-count="3">
+                  <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;padding:4px 0;font-size:11px;font-family:'JetBrains Mono',monospace;">
+                    <span style="color:{{ a.c }};font-weight:600;">{{ a.k }}</span>
+                    <span style="text-align:right;color:#cbd5e1;">{{ a.vol }}</span>
+                    <span style="text-align:right;color:#cbd5e1;">{{ a.val }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ═══ STATISTICS ═══ -->
+      <sc-if value="{{ isStats }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:sdFade .2s ease;">
+          <div style="display:flex;gap:6px;margin-bottom:14px;">
+            <sc-for list="{{ statSubs }}" as="s" hint-placeholder-count="3">
+              <div onClick="{{ s.onClick }}" style="cursor:pointer;padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;background:{{ s.bg }};color:{{ s.fg }};">{{ s.label }}</div>
+            </sc-for>
+          </div>
+
+          <sc-if value="{{ statStats }}" hint-placeholder-val="{{ true }}">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;">
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px;">
+                <span style="font-size:13px;font-weight:700;color:#e2e8f0;">Thanh khoản</span>
+                <div id="sdStatLiq" style="width:100%;height:440px;margin-top:8px;"></div>
+              </div>
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:13px;font-weight:700;color:#e2e8f0;">Nhật ký khớp lệnh</span>
+                  <span style="font-size:12px;color:#8296ab;">Giá TB (VWAP): <b style="color:#e2e8f0;">{{ vwap }}</b></span>
+                </div>
+                <div style="display:grid;grid-template-columns:1.15fr .85fr;gap:8px;margin-top:8px;">
+                  <div id="sdDepth" style="width:100%;height:400px;"></div>
+                  <div class="sdSb" style="max-height:400px;overflow-y:auto;">
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr 16px;padding:2px 4px;font-size:9.5px;color:#5f7488;font-weight:700;position:sticky;top:0;background:#0d1826;"><span></span><span style="text-align:right;">Giá</span><span style="text-align:right;">KL</span><span></span></div>
+                    <sc-for list="{{ tradeLog }}" as="tl" hint-placeholder-count="18">
+                      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 16px;padding:4px;font-size:10.5px;font-family:'JetBrains Mono',monospace;border-bottom:1px solid #101c29;">
+                        <span style="color:#8296ab;">{{ tl.time }}</span>
+                        <span style="text-align:right;color:{{ tl.pc }};">{{ tl.price }}</span>
+                        <span style="text-align:right;color:#cbd5e1;">{{ tl.vol }}</span>
+                        <span style="text-align:center;color:{{ tl.sc }};font-weight:700;font-size:9px;">{{ tl.side }}</span>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ statForeign }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:270px 1fr;gap:14px;align-items:start;">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px;">
+                  <sc-for list="{{ fxValue }}" as="f" hint-placeholder-count="3">
+                    <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#8296ab;">{{ f.k }}</span><span style="font-size:12.5px;font-weight:700;color:{{ f.c }};font-family:'JetBrains Mono',monospace;">{{ f.v }}</span></div>
+                  </sc-for>
+                </div>
+                <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px;">
+                  <sc-for list="{{ fxVol }}" as="f" hint-placeholder-count="3">
+                    <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#8296ab;">{{ f.k }}</span><span style="font-size:12.5px;font-weight:700;color:{{ f.c }};font-family:'JetBrains Mono',monospace;">{{ f.v }}</span></div>
+                  </sc-for>
+                </div>
+                <div style="background:#0f2033;border:1px solid #1c3450;border-radius:10px;padding:12px 14px;display:flex;justify-content:space-between;">
+                  <span style="font-size:12px;font-weight:700;color:#60a5fa;">Room NN</span>
+                  <span style="font-size:12.5px;font-weight:700;color:#e2e8f0;font-family:'JetBrains Mono',monospace;">{{ fRoom }}</span>
+                </div>
+              </div>
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px;">
+                <div id="sdFxArea" style="width:100%;height:440px;"></div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ statProp }}" hint-placeholder-val="{{ false }}">
+            <div style="display:grid;grid-template-columns:270px 1fr;gap:14px;align-items:start;">
+              <div style="display:flex;flex-direction:column;gap:12px;">
+                <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px;">
+                  <sc-for list="{{ propValue }}" as="f" hint-placeholder-count="3">
+                    <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#8296ab;">{{ f.k }}</span><span style="font-size:12.5px;font-weight:700;color:{{ f.c }};font-family:'JetBrains Mono',monospace;">{{ f.v }}</span></div>
+                  </sc-for>
+                </div>
+                <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:9px;">
+                  <sc-for list="{{ propVol }}" as="f" hint-placeholder-count="3">
+                    <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#8296ab;">{{ f.k }}</span><span style="font-size:12.5px;font-weight:700;color:{{ f.c }};font-family:'JetBrains Mono',monospace;">{{ f.v }}</span></div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px;">
+                <div id="sdPropBar" style="width:100%;height:440px;"></div>
+                <div style="display:flex;gap:20px;justify-content:center;font-size:10px;color:#7d90a5;margin-top:4px;"><span style="color:#22c55e;">● Mua ròng</span><span style="color:#f43f5e;">● Bán ròng</span></div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- ═══ TECHNICAL CHART ═══ -->
+      <sc-if value="{{ isTech }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:sdFade .2s ease;background:#0b1219;border:1px solid #1b2838;border-radius:10px;overflow:hidden;">
+          <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid #16222f;">
+            <span style="font-size:12.5px;font-weight:700;color:#e2e8f0;">Biểu đồ kỹ thuật — {{ sym }}</span>
+            <span style="font-size:10.5px;color:#5f7488;">Nguồn: TradingView · Thời gian thực</span>
+            <a href="{{ tvOpenUrl }}" target="_blank" style="margin-left:auto;text-decoration:none;background:#182b42;border:1px solid #2f5f9a;color:#93c5fd;border-radius:6px;padding:5px 12px;font-size:11px;font-weight:700;">Mở trên TradingView ↗</a>
+          </div>
+          <iframe src="{{ tvIframeUrl }}" style="width:100%;height:640px;border:none;background:#0b1219;" allowtransparency="true" scrolling="no"></iframe>
+        </div>
+      </sc-if>
+
+      <!-- ═══ TECHNICAL SENTIMENT ═══ -->
+      <sc-if value="{{ isSentiment }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:sdFade .2s ease;">
+          <div style="display:flex;gap:6px;margin-bottom:16px;">
+            <sc-for list="{{ sentPeriods }}" as="p" hint-placeholder-count="3">
+              <div onClick="{{ p.onClick }}" style="cursor:pointer;padding:5px 14px;border-radius:7px;font-size:12px;font-weight:700;background:{{ p.bg }};color:{{ p.fg }};">{{ p.label }}</div>
+            </sc-for>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 460px;gap:16px;align-items:start;">
+            <div style="display:flex;flex-direction:column;gap:16px;">
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:16px;">
+                <div style="text-align:center;font-size:14px;font-weight:700;color:#e2e8f0;margin-bottom:4px;">Tổng quan</div>
+                <div id="sdSum" style="width:100%;height:200px;"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;">
+                  <div><div style="font-size:11px;color:#f43f5e;font-weight:700;">Tiêu cực</div><div style="font-size:16px;font-weight:800;color:#e2e8f0;">{{ sent.neg }}</div></div>
+                  <div><div style="font-size:11px;color:#94a3b8;font-weight:700;">Trung lập</div><div style="font-size:16px;font-weight:800;color:#e2e8f0;">{{ sent.neu }}</div></div>
+                  <div><div style="font-size:11px;color:#22c55e;font-weight:700;">Tích cực</div><div style="font-size:16px;font-weight:800;color:#e2e8f0;">{{ sent.pos }}</div></div>
+                </div>
+                <div style="border-top:1px solid #182634;margin-top:12px;padding-top:12px;display:flex;flex-direction:column;gap:6px;font-size:11.5px;">
+                  <div style="display:flex;gap:10px;"><span style="color:#7d90a5;min-width:140px;">Khuyến nghị:</span><span style="color:#cbd5e1;">{{ sent.rec }}</span></div>
+                  <div style="display:flex;gap:10px;"><span style="color:#7d90a5;min-width:140px;">Tỷ lệ giải ngân:</span><span style="color:#cbd5e1;">{{ sent.disb }}</span></div>
+                  <div style="display:flex;gap:10px;"><span style="color:#7d90a5;min-width:140px;">Gợi ý chiến lược:</span><span style="color:#cbd5e1;">{{ sent.strat }}</span></div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;">
+                <sc-for list="{{ gaugeCards }}" as="g" hint-placeholder-count="3">
+                  <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:12px;">
+                    <div style="text-align:center;font-size:12.5px;font-weight:700;color:#e2e8f0;">{{ g.title }}</div>
+                    <div id="{{ g.id }}" style="width:100%;height:150px;"></div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;text-align:center;font-size:10px;">
+                      <div><div style="color:#f43f5e;font-weight:700;">Tiêu cực</div><div style="color:#e2e8f0;font-weight:800;">{{ g.neg }}</div></div>
+                      <div><div style="color:#94a3b8;font-weight:700;">Trung lập</div><div style="color:#e2e8f0;font-weight:800;">{{ g.neu }}</div></div>
+                      <div><div style="color:#22c55e;font-weight:700;">Tích cực</div><div style="color:#e2e8f0;font-weight:800;">{{ g.pos }}</div></div>
+                    </div>
+                    <div style="text-align:center;font-size:10px;color:#7d90a5;margin-top:6px;">{{ g.note }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;overflow:hidden;">
+              <div style="display:grid;grid-template-columns:1fr 70px;padding:11px 14px;border-bottom:1px solid #182634;font-size:11.5px;font-weight:700;color:#8296ab;"><span>Chỉ báo</span><span style="text-align:right;">Tín hiệu</span></div>
+              <div class="sdSb" style="max-height:560px;overflow-y:auto;">
+                <sc-for list="{{ indGroups }}" as="grp" hint-placeholder-count="3">
+                  <div style="padding:8px 14px;background:#111c29;font-size:11px;font-weight:800;color:#cbd5e1;">{{ grp.title }}</div>
+                  <sc-for list="{{ grp.rows }}" as="row" hint-placeholder-count="5">
+                    <div style="display:grid;grid-template-columns:1fr 70px;padding:9px 14px;border-bottom:1px solid #101c29;font-size:11.5px;">
+                      <span style="color:#b9c6d4;">{{ row.name }}</span>
+                      <span style="text-align:right;font-weight:700;color:{{ row.c }};">{{ row.action }}</span>
+                    </div>
+                  </sc-for>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ═══ FINANCIALS ═══ -->
+      <sc-if value="{{ isFin }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:sdFade .2s ease;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <div style="display:flex;gap:6px;">
+              <sc-for list="{{ finSubs }}" as="s" hint-placeholder-count="2">
+                <div onClick="{{ s.onClick }}" style="cursor:pointer;padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;background:{{ s.bg }};color:{{ s.fg }};">{{ s.label }}</div>
+              </sc-for>
+            </div>
+            <div style="display:flex;gap:4px;">
+              <sc-for list="{{ finPeriods }}" as="p" hint-placeholder-count="2">
+                <div onClick="{{ p.onClick }}" style="cursor:pointer;padding:6px 12px;font-size:12px;font-weight:700;color:{{ p.fg }};border-bottom:2px solid {{ p.border }};">{{ p.label }}</div>
+              </sc-for>
+            </div>
+          </div>
+
+          <sc-if value="{{ finOverview }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px;">
+                <span style="font-size:13px;font-weight:700;color:#e2e8f0;">Định giá</span>
+                <div id="sdValuation" style="width:100%;height:300px;margin-top:6px;"></div>
+                <div style="display:flex;gap:24px;justify-content:center;font-size:11px;color:#7d90a5;"><span style="color:#3b82f6;">● P/E TTM</span><span style="color:#eab308;">● P/B TTM</span></div>
+              </div>
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px;">
+                <span style="font-size:13px;font-weight:700;color:#e2e8f0;">Kết quả kinh doanh</span>
+                <div id="sdPerf" style="width:100%;height:320px;margin-top:6px;"></div>
+                <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;font-size:10.5px;color:#7d90a5;"><span style="color:#3b82f6;">● Doanh thu thuần (tỷ VND)</span><span style="color:#22c55e;">● Lợi nhuận thuần (tỷ VND)</span><span style="color:#eab308;">● Tăng trưởng DT theo quý</span><span style="color:#cbd5e1;">● Tăng trưởng LN theo quý</span></div>
+              </div>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ finIndicators }}" hint-placeholder-val="{{ false }}">
+            <div class="sdSb" style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;overflow:auto;max-height:620px;">
+              <table style="width:100%;border-collapse:collapse;font-size:11.5px;white-space:nowrap;">
+                <thead>
+                  <tr style="position:sticky;top:0;background:#152234;z-index:2;">
+                    <th style="text-align:left;padding:10px 14px;color:#8296ab;font-weight:700;position:sticky;left:0;background:#152234;min-width:190px;"></th>
+                    <sc-for list="{{ finCols }}" as="c" hint-placeholder-count="11">
+                      <th style="text-align:right;padding:10px 14px;color:#b9c6d4;font-weight:700;">{{ c }}</th>
+                    </sc-for>
+                  </tr>
+                </thead>
+                <tbody>
+                  <sc-for list="{{ finTable }}" as="r" hint-placeholder-count="18">
+                    <tr style="background:{{ r.rowBg }};border-bottom:1px solid #101c29;">
+                      <td style="text-align:left;padding:9px 14px;color:{{ r.labelColor }};font-weight:{{ r.labelWeight }};position:sticky;left:0;background:{{ r.rowBg }};">{{ r.label }}</td>
+                      <sc-for list="{{ r.cells }}" as="v" hint-placeholder-count="11">
+                        <td style="text-align:right;padding:9px 14px;color:#cbd5e1;font-family:'JetBrains Mono',monospace;">{{ v }}</td>
+                      </sc-for>
+                    </tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+
+      <!-- ═══ HSC RESEARCH ═══ -->
+      <sc-if value="{{ isResearch }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:sdFade .2s ease;display:grid;grid-template-columns:280px 1fr;gap:14px;align-items:start;">
+          <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:14px;">
+            <div style="text-align:center;">
+              <div style="font-size:11px;color:#7d90a5;font-weight:700;">Khuyến nghị</div>
+              <div style="font-size:22px;font-weight:800;color:{{ research.ratingColor }};margin-top:4px;">{{ research.rating }}</div>
+            </div>
+            <div style="display:flex;justify-content:space-between;border-top:1px solid #182634;padding-top:10px;"><span style="font-size:12px;color:#8296ab;">Giá mục tiêu</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ research.target }}</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#8296ab;">Tiềm năng tăng giá</span><span style="font-size:13px;font-weight:800;color:#22c55e;font-family:'JetBrains Mono',monospace;">{{ research.upside }}</span></div>
+            <div style="display:flex;justify-content:space-between;"><span style="font-size:12px;color:#8296ab;">Giá hiện tại</span><span style="font-size:13px;font-weight:700;color:#e2e8f0;font-family:'JetBrains Mono',monospace;">{{ priceStr }}</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <sc-for list="{{ reports }}" as="rp" hint-placeholder-count="5">
+              <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;padding:14px 16px;cursor:pointer;" style-hover="border-color:#2f4a6a;">
+                <div style="display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-size:13px;font-weight:700;color:#e2e8f0;">{{ rp.title }}</span>
+                  <span style="font-size:10px;font-weight:700;color:{{ rp.tagColor }};background:{{ rp.tagBg }};padding:3px 9px;border-radius:10px;">{{ rp.tag }}</span>
+                </div>
+                <p style="margin:8px 0 0;font-size:11.5px;color:#8296ab;line-height:1.6;">{{ rp.summary }}</p>
+                <div style="margin-top:8px;font-size:10.5px;color:#5f7488;">{{ rp.date }} · Ray Research</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+      <!-- ═══ EVENTS ═══ -->
+      <sc-if value="{{ isEvents }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:sdFade .2s ease;">
+          <div style="display:flex;gap:6px;margin-bottom:14px;">
+            <sc-for list="{{ eventSubs }}" as="e" hint-placeholder-count="4">
+              <div onClick="{{ e.onClick }}" style="cursor:pointer;padding:6px 14px;border-radius:7px;font-size:12px;font-weight:700;background:{{ e.bg }};color:{{ e.fg }};">{{ e.label }}</div>
+            </sc-for>
+          </div>
+          <div style="background:#0d1826;border:1px solid #1b2838;border-radius:10px;overflow:hidden;">
+            <div style="display:grid;grid-template-columns:150px 1fr 220px;padding:11px 16px;border-bottom:1px solid #182634;font-size:11.5px;font-weight:700;color:#8296ab;"><span>Ngày công bố</span><span>Tiêu đề</span><span>Loại</span></div>
+            <sc-for list="{{ events }}" as="ev" hint-placeholder-count="14">
+              <div style="display:grid;grid-template-columns:150px 1fr 220px;padding:11px 16px;border-bottom:1px solid #101c29;font-size:12px;" style-hover="background:#0f1a28;">
+                <span style="color:#8296ab;font-family:'JetBrains Mono',monospace;">{{ ev.date }}</span>
+                <span style="color:#dbe3ec;">{{ ev.title }}</span>
+                <span style="color:#8296ab;">{{ ev.type }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;100%&quot;,&quot;height&quot;:&quot;100%&quot;},&quot;sym&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;BSR&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;stock&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;object&quot;},&quot;onClose&quot;:{&quot;editor&quot;:null,&quot;tsType&quot;:&quot;() =&gt; void&quot;}}">
+class Component extends DCLogic {
+  state = {
+    tab: 'overview',
+    ovPanel: 'timesales',
+    ovRange: '1D',
+    statSub: 'stats',
+    finSub: 'overview',
+    finPeriod: 'quarter',
+    sentPeriod: '1D',
+    techTf: '1y',
+    eventSub: 'news',
+    starred: false,
+  };
+
+  // ---------- lifecycle ----------
+  componentDidMount() {
+    this._charts = {};
+    this._onResize = () => { Object.values(this._charts||{}).forEach(c => { try { c.resize(); } catch(e){} }); };
+    window.addEventListener('resize', this._onResize);
+    this._key = null;
+    this._schedule();
+  }
+  componentDidUpdate() {
+    const k = [this.state.tab, this.state.statSub, this.state.finSub, this.state.finPeriod,
+               this.state.sentPeriod, this.state.techTf, this.state.ovRange, this.state.ovPanel,
+               (this.props.sym||'')].join('|');
+    if (k !== this._key) { this._key = k; this._schedule(); }
+  }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._onResize);
+    if (this._poll) clearInterval(this._poll);
+    this._dispose();
+  }
+  _schedule() { setTimeout(() => this._render(), 30); }
+  _dispose() { Object.values(this._charts||{}).forEach(c => { try { c.dispose(); } catch(e){} }); this._charts = {}; }
+  _ensure() { if (this._poll) return; this._poll = setInterval(() => { if (window.echarts) { clearInterval(this._poll); this._poll=null; this._render(); } }, 80); }
+  _mk(id, opt) { const el = document.getElementById(id); if (!el || !window.echarts) return; const c = window.echarts.init(el, null, { renderer:'canvas' }); c.setOption(opt); this._charts[id]=c; }
+
+  // ---------- deterministic RNG ----------
+  _rng(seed) {
+    let h = 1779033703 ^ String(seed||'x').length;
+    for (let i=0;i<String(seed||'x').length;i++){ h = Math.imul(h ^ seed.charCodeAt(i), 3432918353); h = h<<13 | h>>>19; }
+    let a = h>>>0;
+    return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a>>>15, 1 | a); t = t + Math.imul(t ^ t>>>7, 61 | t) ^ t; return ((t ^ t>>>14) >>> 0) / 4294967296; };
+  }
+
+  _stock() { return this.props.stock || {}; }
+  _sym() { return this.props.sym || this._stock().s || 'BSR'; }
+
+  // ---------- cached synthetic datasets ----------
+  _data() {
+    const sym = this._sym();
+    this._cache = this._cache || {};
+    if (this._cache[sym]) return this._cache[sym];
+    const st = this._stock();
+    const ref = +(st.r ?? 24.9), lp = +(st.lp ?? ref);
+    const hi = +(st.hi ?? lp*1.02), lo = +(st.lo ?? lp*0.98);
+    const R = this._rng(sym);
+
+    // intraday price + volume
+    const times = [];
+    const genTimes = () => {
+      const out = [];
+      let h=9, m=0;
+      for (let i=0;i<135;i++){ out.push(String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')); m+=2; if(h<11||(h===11&&m<=30)){ if(m>=60){h++;m-=60;} if(h===11&&m>30){ h=13; m=0; } } else { if(m>=60){h++;m-=60;} } }
+      return out;
+    };
+    for (let i=0;i<135;i++){ let h,m; if(i<75){ const tot=9*60+i*2; h=Math.floor(tot/60); m=tot%60; } else { const tot=13*60+(i-75)*2; h=Math.floor(tot/60); m=tot%60; } times.push(String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')); }
+    const price = []; const vol = [];
+    let p = ref;
+    for (let i=0;i<times.length;i++){
+      const target = i < times.length-1 ? p + (lp-p)/(times.length-i)*0.4 : lp;
+      p = +(target + (R()-0.5)*ref*0.006).toFixed(2);
+      p = Math.max(lo*0.99, Math.min(hi*1.01, p));
+      if (i===times.length-1) p = lp;
+      price.push(p);
+      vol.push(Math.round(2000 + R()*9000));
+    }
+
+    // liquidity cumulative (VND)
+    const liqT=[], liqY=[], liqW=[]; let ct=0,cy=0,cw=0;
+    for (let i=0;i<times.length;i++){ ct += R()*1.4e9; cy += R()*1.0e9; cw += R()*1.35e9; liqT.push(Math.round(ct)); liqY.push(Math.round(cy)); liqW.push(Math.round(cw*1.05)); }
+
+    // foreign net cumulative
+    const fBuy=[], fSell=[]; let cb=0, cs=0;
+    for (let i=0;i<times.length;i++){ cb += (R()-0.35)*2.5e8; cs -= (R()-0.3)*3.2e8; fBuy.push(Math.round(Math.max(0,cb))); fSell.push(Math.round(Math.min(0,cs))); }
+
+    // daily candles (~180d)
+    const days=180; const candle=[]; const cvol=[]; const cdates=[];
+    let o = lp*0.5; const now = new Date();
+    for (let k=0;k<days;k++){
+      const t = k/days;
+      const targ = lp*(0.55 + 0.75*Math.sin(t*Math.PI));
+      o += (targ-o)*0.12 + (R()-0.5)*lp*0.035;
+      let cl = o + (R()-0.5)*lp*0.03;
+      if (k===days-1) cl = lp;
+      const h2 = Math.max(o,cl) + R()*lp*0.02;
+      const l2 = Math.max(0.1, Math.min(o,cl) - R()*lp*0.02);
+      candle.push([+o.toFixed(2), +cl.toFixed(2), +l2.toFixed(2), +h2.toFixed(2)]);
+      cvol.push(Math.round(2e6 + R()*6e6));
+      const d = new Date(now.getTime() - (days-1-k)*86400000);
+      cdates.push((d.getMonth()+1)+'/'+d.getDate());
+      o = cl;
+    }
+    const ohlc = candle[candle.length-1];
+
+    // depth ladder (Statistics)
+    const levels = [];
+    const tk = st.tk || (ref>=50?0.1:ref>=10?0.05:0.01);
+    for (let i=6;i>=-6;i--){ const pr=+(lp+i*tk).toFixed(2); levels.push({ price:pr, buy:Math.round(R()*700000), sell:Math.round(R()*700000) }); }
+    let vwSum=0, vwVol=0; levels.forEach(l=>{ const v=l.buy+l.sell; vwSum+=l.price*v; vwVol+=v; });
+    const vwap = (vwSum/vwVol);
+
+    // financials (11 quarters)
+    const qCols = ['Q3/23','Q4/23','Q1/24','Q2/24','Q3/24','Q4/24','Q1/25','Q2/25','Q3/25','Q4/25','Q1/26'];
+    const yCols = ['2021','2022','2023','2024','2025'];
+    const mkSeries = (base, spread) => qCols.map(()=> +(base + (R()-0.5)*spread).toFixed(2));
+    const pe = mkSeries(12, 20).map(v=>Math.max(-30, v));
+    const pb = mkSeries(1.4, 1.2).map(v=>Math.max(0.4, v));
+    const netSales = qCols.map((_,i)=> Math.round(20000 + R()*30000 + i*1500));
+    const netProfit = qCols.map(()=> Math.round((R()-0.2)*3500));
+    const salesGrowth = netSales.map((v,i)=> i===0?0:+(((v-netSales[i-1])/netSales[i-1])*100).toFixed(1));
+    const profitGrowth = netProfit.map((v,i)=> i===0?0:+(((v-netProfit[i-1])/Math.abs(netProfit[i-1]||1))*100).toFixed(1));
+
+    const out = { ref, lp, hi, lo, times, price, vol, liqT, liqY, liqW, fBuy, fSell,
+      candle, cvol, cdates, ohlc, levels, vwap, qCols, yCols, pe, pb, netSales, netProfit, salesGrowth, profitGrowth, R:this._rng(sym+'2') };
+    this._cache[sym] = out;
+    return out;
+  }
+
+  // ---------- formatters ----------
+  _fmtN(v){ const a=Math.abs(v); if(a>=1e9) return (v/1e9).toFixed(1)+' B'; if(a>=1e6) return (v/1e6).toFixed(1)+' M'; if(a>=1e3) return (v/1e3).toFixed(1)+' K'; return Math.round(v).toString(); }
+  _fmtV(v){ const a=Math.abs(v); if(a>=1e9) return (v/1e9).toFixed(1)+' B'; if(a>=1e6) return (v/1e6).toFixed(1)+' M'; if(a>=1e3) return (v/1e3).toFixed(0)+' K'; return Math.round(v).toString(); }
+  _ax(){ return { axisLine:{lineStyle:{color:'#26374a'}}, axisTick:{show:false}, axisLabel:{color:'#6b7d92',fontSize:10}, splitLine:{lineStyle:{color:'#152232'}} }; }
+  _grid(o){ return Object.assign({ left:8, right:14, top:14, bottom:22, containLabel:true }, o||{}); }
+
+  // ---------- chart rendering ----------
+  _render() {
+    if (!window.echarts) { this._ensure(); return; }
+    this._dispose();
+    const d = this._data();
+    const tab = this.state.tab;
+    const up = this.props.stock ? ((this.props.stock.lp??0) >= (this.props.stock.r??0)) : false;
+    const lineCol = '#eab308';
+
+    if (tab === 'overview') this._renderOverview(d, lineCol);
+    else if (tab === 'stats') this._renderStats(d);
+    else if (tab === 'sentiment') this._renderSentiment(d);
+    else if (tab === 'fin' && this.state.finSub==='overview') this._renderFin(d);
+  }
+
+  _renderOverview(d, lineCol) {
+    this._mk('sdPrice', {
+      animation:false, backgroundColor:'transparent',
+      tooltip:{ trigger:'axis', backgroundColor:'#0f1c2b', borderColor:'#26374a', textStyle:{color:'#cbd5e1',fontSize:11},
+        formatter:(ps)=>{ const i=ps[0].dataIndex; return d.times[i]+'<br/>Price '+d.price[i].toFixed(2)+'<br/>Volume '+d.vol[i].toLocaleString(); } },
+      axisPointer:{ link:[{xAxisIndex:'all'}], lineStyle:{color:'#3a4a5c'} },
+      grid:[ this._grid({left:8,right:44,top:12,bottom:78,height:'62%'}), { left:8, right:44, bottom:24, height:'16%', containLabel:true } ],
+      xAxis:[ Object.assign({ type:'category', data:d.times, boundaryGap:false, gridIndex:0, axisLabel:{show:false} }, this._ax()),
+              Object.assign({ type:'category', data:d.times, gridIndex:1, axisLabel:{color:'#6b7d92',fontSize:9,interval:26} }, this._ax()) ],
+      yAxis:[ Object.assign({ type:'value', scale:true, position:'right', gridIndex:0 }, this._ax()),
+              Object.assign({ type:'value', gridIndex:1, axisLabel:{show:false}, splitLine:{show:false} }, this._ax()) ],
+      series:[
+        { type:'line', data:d.price, xAxisIndex:0, yAxisIndex:0, showSymbol:false, lineStyle:{color:lineCol,width:1.6}, areaStyle:{color:new echarts.graphic.LinearGradient(0,0,0,1,[{offset:0,color:'rgba(234,179,8,.28)'},{offset:1,color:'rgba(234,179,8,0)'}])},
+          markLine:{ silent:true, symbol:'none', data:[{yAxis:d.ref}], lineStyle:{color:'#f43f5e',type:'solid',width:1}, label:{show:true,position:'end',color:'#f43f5e',fontSize:10,formatter:d.ref.toFixed(2)} } },
+        { type:'bar', data:d.vol.map((v,i)=>({value:v, itemStyle:{color: i>0 && d.price[i]>=d.price[i-1] ? 'rgba(34,197,94,.55)':'rgba(244,63,94,.55)'}})), xAxisIndex:1, yAxisIndex:1 }
+      ]
+    });
+    const area = (id, series) => this._mk(id, { animation:false, backgroundColor:'transparent',
+      tooltip:{trigger:'axis', backgroundColor:'#0f1c2b', borderColor:'#26374a', textStyle:{color:'#cbd5e1',fontSize:10}, valueFormatter:(v)=>this._fmtN(v)},
+      grid:this._grid({right:44,bottom:16}), xAxis:Object.assign({type:'category',data:d.times,boundaryGap:false,axisLabel:{color:'#6b7d92',fontSize:9,interval:40}},this._ax()),
+      yAxis:Object.assign({type:'value',position:'right',axisLabel:{formatter:(v)=>this._fmtN(v)}},this._ax()), series });
+    area('sdLiq', [
+      { type:'line', data:d.liqT, showSymbol:false, lineStyle:{color:'#3b82f6',width:1.4}, areaStyle:{color:'rgba(59,130,246,.18)'} },
+      { type:'line', data:d.liqY, showSymbol:false, lineStyle:{color:'#94a3b8',width:1.2} },
+      { type:'line', data:d.liqW, showSymbol:false, lineStyle:{color:'#eab308',width:1.2} },
+    ]);
+    area('sdForeign', [
+      { type:'line', data:d.fBuy, showSymbol:false, lineStyle:{color:'#22c55e',width:1.3}, areaStyle:{color:'rgba(34,197,94,.16)'} },
+      { type:'line', data:d.fSell, showSymbol:false, lineStyle:{color:'#f43f5e',width:1.3}, areaStyle:{color:'rgba(244,63,94,.14)'} },
+    ]);
+    this._gauge('sdSentiment', this._sentVal(), 150);
+  }
+
+  _renderStats(d) {
+    if (this.state.statSub === 'stats') {
+      this._mk('sdStatLiq', { animation:false, backgroundColor:'transparent',
+        tooltip:{trigger:'axis',backgroundColor:'#0f1c2b',borderColor:'#26374a',textStyle:{color:'#cbd5e1',fontSize:10},valueFormatter:(v)=>this._fmtN(v)},
+        grid:this._grid({right:48,bottom:20}), xAxis:Object.assign({type:'category',data:d.times,boundaryGap:false,axisLabel:{color:'#6b7d92',fontSize:9,interval:40}},this._ax()),
+        yAxis:Object.assign({type:'value',position:'right',axisLabel:{formatter:(v)=>this._fmtN(v)}},this._ax()),
+        series:[
+          { type:'line',data:d.liqT,showSymbol:false,lineStyle:{color:'#3b82f6',width:1.5},areaStyle:{color:'rgba(59,130,246,.2)'}},
+          { type:'line',data:d.liqY,showSymbol:false,lineStyle:{color:'#94a3b8',width:1.3},areaStyle:{color:'rgba(148,163,184,.12)'}},
+          { type:'line',data:d.liqW,showSymbol:false,lineStyle:{color:'#eab308',width:1.4}},
+        ] });
+      const cats = d.levels.map(l=>l.price.toFixed(2));
+      this._mk('sdDepth', { animation:false, backgroundColor:'transparent',
+        tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'#0f1c2b',borderColor:'#26374a',textStyle:{color:'#cbd5e1',fontSize:10}},
+        grid:this._grid({left:6,right:56,top:8,bottom:24}),
+        xAxis:Object.assign({type:'value',inverse:true,axisLabel:{formatter:(v)=>this._fmtN(v),color:'#6b7d92',fontSize:9}},this._ax()),
+        yAxis:Object.assign({type:'category',data:cats,position:'right',axisLabel:{color:'#8296ab',fontSize:10,fontFamily:'JetBrains Mono'}},this._ax()),
+        series:[
+          { name:'Buy',type:'bar',stack:'x',data:d.levels.map(l=>l.buy),itemStyle:{color:'#22c55e'},barWidth:'62%'},
+          { name:'Sell',type:'bar',stack:'x',data:d.levels.map(l=>l.sell),itemStyle:{color:'#f43f5e'}},
+        ] });
+    } else if (this.state.statSub === 'foreign') {
+      this._mk('sdFxArea', { animation:false, backgroundColor:'transparent',
+        tooltip:{trigger:'axis',backgroundColor:'#0f1c2b',borderColor:'#26374a',textStyle:{color:'#cbd5e1',fontSize:10},valueFormatter:(v)=>this._fmtN(v)},
+        grid:this._grid({right:52,bottom:20}), xAxis:Object.assign({type:'category',data:d.times,boundaryGap:false,axisLabel:{color:'#6b7d92',fontSize:9,interval:40}},this._ax()),
+        yAxis:Object.assign({type:'value',position:'right',axisLabel:{formatter:(v)=>this._fmtN(v)}},this._ax()),
+        series:[
+          { type:'line',data:d.fBuy,showSymbol:false,lineStyle:{color:'#22c55e',width:1.5},areaStyle:{color:'rgba(34,197,94,.2)'}},
+          { type:'line',data:d.fSell,showSymbol:false,lineStyle:{color:'#f43f5e',width:1.5},areaStyle:{color:'rgba(244,63,94,.16)'}},
+          { type:'line',data:d.fBuy.map(v=>Math.round(v*0.6)),showSymbol:false,lineStyle:{color:'#94a3b8',width:1.2}},
+        ] });
+    } else {
+      const R=d.R; const dates=[]; const vals=[]; const now=new Date();
+      for(let i=6;i>=0;i--){ const dt=new Date(now.getTime()-i*86400000); dates.push((dt.getMonth()+1)+'/'+dt.getDate()); vals.push(Math.round((R()-0.4)*2.5e10)); }
+      this._mk('sdPropBar', { animation:false, backgroundColor:'transparent',
+        tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'#0f1c2b',borderColor:'#26374a',textStyle:{color:'#cbd5e1',fontSize:10},valueFormatter:(v)=>this._fmtN(v)},
+        grid:this._grid({right:52,bottom:24}), xAxis:Object.assign({type:'category',data:dates,axisLabel:{color:'#6b7d92',fontSize:10}},this._ax()),
+        yAxis:Object.assign({type:'value',position:'right',axisLabel:{formatter:(v)=>this._fmtN(v)}},this._ax()),
+        series:[{ type:'bar',data:vals.map(v=>({value:v,itemStyle:{color:v>=0?'#22c55e':'#f43f5e'}})),barWidth:'52%'}] });
+    }
+  }
+
+  _sentVal(){ const R=this._rng(this._sym()+'sent'); return Math.round((R()*0.5+0.15)*100); }
+
+  _renderSentiment(d){
+    this._gauge('sdSum', this._sentVal(), 200);
+    const sub = { sdMA:22, sdOsc:58, sdVol:64 };
+    Object.keys(sub).forEach(id => this._gauge(id, sub[id], 150));
+  }
+
+  _gauge(id, value, h){
+    this._mk(id, { animation:false, backgroundColor:'transparent',
+      series:[{ type:'gauge', startAngle:200, endAngle:-20, min:0, max:100, radius:'92%', center:['50%','72%'],
+        progress:{show:false}, pointer:{width:4,length:'62%',itemStyle:{color:'#e2e8f0'}},
+        axisLine:{lineStyle:{width:14,color:[[0.35,'#f43f5e'],[0.65,'#4b5a6d'],[1,'#22c55e']]}},
+        axisTick:{show:false}, splitLine:{show:false}, axisLabel:{show:false}, detail:{show:false},
+        title:{show:false}, data:[{value}] }] });
+  }
+
+  _sentiment(){
+    const R=this._rng(this._sym()+'sx');
+    const val=this._sentVal();
+    const neg = 8 + Math.round(R()*8), pos = 3 + Math.round(R()*6), neu = 1 + Math.round(R()*2);
+    return { val, neg, neu, pos };
+  }
+
+  // ---------- financial charts ----------
+  _renderFin(d){
+    const cols = this.state.finPeriod==='year' ? d.yCols : d.qCols;
+    const n = cols.length;
+    this._mk('sdValuation', { animation:false, backgroundColor:'transparent',
+      tooltip:{trigger:'axis',backgroundColor:'#0f1c2b',borderColor:'#26374a',textStyle:{color:'#cbd5e1',fontSize:10}},
+      legend:{show:false}, grid:this._grid({left:8,right:48,top:16,bottom:24}),
+      xAxis:Object.assign({type:'category',data:cols,axisLabel:{color:'#6b7d92',fontSize:9}},this._ax()),
+      yAxis:[ Object.assign({type:'value',position:'left',axisLabel:{color:'#6b7d92',fontSize:9}},this._ax()),
+              Object.assign({type:'value',position:'right',axisLabel:{color:'#6b7d92',fontSize:9}},this._ax()) ],
+      series:[
+        { name:'P/E TTM', type:'line', data:d.pe.slice(0,n), yAxisIndex:0, symbol:'circle', symbolSize:7, lineStyle:{color:'#3b82f6',width:2}, itemStyle:{color:'#3b82f6'} },
+        { name:'P/B TTM', type:'line', data:d.pb.slice(0,n), yAxisIndex:1, symbol:'circle', symbolSize:7, lineStyle:{color:'#eab308',width:2}, itemStyle:{color:'#eab308'} },
+      ] });
+    this._mk('sdPerf', { animation:false, backgroundColor:'transparent',
+      tooltip:{trigger:'axis',axisPointer:{type:'shadow'},backgroundColor:'#0f1c2b',borderColor:'#26374a',textStyle:{color:'#cbd5e1',fontSize:10}},
+      grid:this._grid({left:8,right:52,top:16,bottom:24}),
+      xAxis:Object.assign({type:'category',data:cols,axisLabel:{color:'#6b7d92',fontSize:9}},this._ax()),
+      yAxis:[ Object.assign({type:'value',position:'left',axisLabel:{formatter:(v)=>v+'%',color:'#6b7d92',fontSize:9}},this._ax()),
+              Object.assign({type:'value',position:'right',axisLabel:{color:'#6b7d92',fontSize:9}},this._ax()) ],
+      series:[
+        { name:'Net Sales', type:'bar', yAxisIndex:1, data:d.netSales.slice(0,n), itemStyle:{color:'#3b82f6'}, barWidth:'46%' },
+        { name:'Net Profit', type:'bar', yAxisIndex:1, data:d.netProfit.slice(0,n), itemStyle:{color:'#22c55e'}, barWidth:'46%' },
+        { name:'QoQ Sales', type:'line', yAxisIndex:0, data:d.salesGrowth.slice(0,n), symbol:'circle', symbolSize:6, lineStyle:{color:'#eab308',width:1.6}, itemStyle:{color:'#eab308'} },
+        { name:'QoQ Profit', type:'line', yAxisIndex:0, data:d.profitGrowth.slice(0,n), symbol:'circle', symbolSize:6, lineStyle:{color:'#cbd5e1',width:1.6}, itemStyle:{color:'#cbd5e1'} },
+      ] });
+  }
+
+  // ---------- handlers ----------
+  _tab = (t) => () => this.setState({ tab:t });
+  _set = (k,v) => () => this.setState({ [k]:v });
+
+  renderVals() {
+    const st = this._stock();
+    const sym = this._sym();
+    const ref = +(st.r ?? 24.9), lp = +(st.lp ?? ref);
+    const chg = +(lp-ref).toFixed(2);
+    const pct = ref ? +(chg/ref*100).toFixed(2) : 0;
+    const upDir = chg >= 0;
+    const col = chg > 0 ? '#22c55e' : chg < 0 ? '#f43f5e' : '#eab308';
+    const d = this._data();
+    const tvSym = 'HOSE:' + sym;
+    const tvIframeUrl = `https://s.tradingview.com/widgetembed/?frameElementId=tvsd&symbol=${encodeURIComponent(tvSym)}&interval=D&hidesidetoolbar=0&hidetoptoolbar=0&theme=dark&style=1&locale=vi&toolbar_bg=%23131722&enable_publishing=false&allow_symbol_change=true&save_image=false&show_popup_button=false`;
+    const tvOpenUrl = `https://www.tradingview.com/chart/?symbol=${encodeURIComponent(tvSym)}&theme=dark`;
+
+    const names = {
+      AAA:'CTCP Nhựa An Phát Xanh', ACB:'Ngân hàng TMCP Á Châu', BID:'Ngân hàng TMCP Đầu tư và Phát triển Việt Nam',
+      CTG:'Ngân hàng TMCP Công Thương Việt Nam', FPT:'CTCP FPT', GAS:'Tổng Công ty Khí Việt Nam', HPG:'CTCP Tập đoàn Hòa Phát',
+      HDB:'Ngân hàng TMCP Phát triển TP.HCM', MBB:'Ngân hàng TMCP Quân đội', TCB:'Ngân hàng TMCP Kỹ Thương Việt Nam',
+      VCB:'Ngân hàng TMCP Ngoại thương Việt Nam', VNM:'CTCP Sữa Việt Nam (Vinamilk)', VHM:'CTCP Vinhomes',
+      BSR:'CTCP Lọc hóa dầu Bình Sơn'
+    };
+    const company = names[sym] || (sym + ' - Công ty Cổ phần');
+
+    const tabDefs = [
+      ['overview','Tổng quan'],['stats','Thống kê'],['tech','Biểu đồ kỹ thuật'],['sentiment','Tâm lý kỹ thuật'],
+      ['fin','Tài chính'],['research','Khuyến nghị'],['events','Sự kiện']
+    ];
+    const tabs = tabDefs.map(([k,l]) => ({ label:l, onClick:this._tab(k),
+      color: this.state.tab===k ? '#fff' : '#8296ab', weight: this.state.tab===k ? 700 : 500,
+      border: this.state.tab===k ? '#2f7fff' : 'transparent' }));
+
+    const rangeDefs = [['1D','1 Ngày','-0.80%'],['2D','2 Ngày','+2.28%'],['1W','1 Tuần','-3.33%'],['3M','3 Tháng','-4.63%'],['YTD','Từ đầu năm','+52.47%'],['1Y','1 Năm','+38.76%'],['5Y','5 Năm','+20.49%']];
+    const ranges = rangeDefs.map(([k,l,p]) => { const active=this.state.ovRange===k; const pos=p[0]==='+';
+      return { label:l, pct:p, onClick:this._set('ovRange',k),
+        bg: active ? '#182b42' : '#101c29', border: active ? '#2f5f9a' : '#1b2838',
+        labelColor: active ? '#fff' : '#cbd5e1', pctColor: pos ? '#22c55e' : '#f43f5e' }; });
+
+    const sent = this._sentiment();
+    const sentTxt = { rec:'Cân nhắc giải ngân thăm dò / theo dõi chặt', disb:'≤15%',
+      strat: upDir ? 'Xu hướng tăng còn nguyên vẹn. Tích lũy khi giá điều chỉnh về vùng hỗ trợ; đặt cắt lỗ dưới đường trung bình 10 phiên.' : 'Xu hướng giảm. Có thể xuất hiện hồi phục kỹ thuật ngắn hạn. Mua gần vùng hỗ trợ; thoát khi biến động vượt 1,2 lần trung bình 10 phiên.' };
+    const sentData = Object.assign({}, sent, sentTxt);
+
+    // Time & Sales sidebar
+    const R = this._rng(sym+'log');
+    const depthRows = [0,1,2].map(i => ({ bv:this._fmtN(Math.round(50000+R()*250000)), bp:(lp - (i+1)*(st.tk||0.05)).toFixed(2), ap:(lp + (i+1)*(st.tk||0.05)).toFixed(2), av:this._fmtN(Math.round(20000+R()*230000)) }));
+    const tradeLog = Array.from({length:20}).map((_,i)=>{ const buy=R()>0.55; const pr=+(lp + (R()-0.5)*(st.tk||0.05)*2).toFixed(2); const pc = pr>ref?'#22c55e':pr<ref?'#f43f5e':'#eab308';
+      const mm = 45 - Math.floor(i*0.8); return { time:'14:'+String(Math.max(10,mm)).padStart(2,'0'), price:pr.toFixed(2), vol:(Math.floor(R()*30)*100+100).toLocaleString(), side: buy?'B':'S', sc: buy?'#22c55e':'#f43f5e', pc }; });
+    const aggr = [
+      { k:'Mua chủ động', c:'#22c55e', vol:'1.8 M', val:'44.5 B' },
+      { k:'Bán chủ động', c:'#f43f5e', vol:'3.0 M', val:'75.4 B' },
+      { k:'Mua/Bán chủ động ròng', c:'#cbd5e1', vol:'-1.2 M', val:'-30.9 B' },
+    ];
+    const keyMetrics = [
+      { k:'Mở cửa', v:d.price[0].toFixed(2), c:'#cbd5e1' }, { k:'Cao nhất', v:d.hi.toFixed(2), c:'#22c55e' }, { k:'Thấp nhất', v:d.lo.toFixed(2), c:'#f43f5e' },
+      { k:'Trần', v:(st.cl??ref*1.07).toFixed(2), c:'#b07ef8' }, { k:'Tham chiếu', v:ref.toFixed(2), c:'#eab308' }, { k:'Sàn', v:(st.fl??ref*0.93).toFixed(2), c:'#38bdf8' },
+      { k:'KLGD', v:this._fmtN(st.tv??4.9e6), c:'#cbd5e1' }, { k:'Cao nhất 52T', v:(d.hi*1.4).toFixed(2), c:'#cbd5e1' }, { k:'Thấp nhất 52T', v:(d.lo*0.55).toFixed(2), c:'#cbd5e1' },
+      { k:'P/E', v:d.pe[d.pe.length-1].toFixed(2), c:'#cbd5e1' }, { k:'P/B', v:d.pb[d.pb.length-1].toFixed(2), c:'#cbd5e1' }, { k:'Vốn hóa', v:this._fmtN(lp*1e9*4.5)+' VND', c:'#cbd5e1' },
+    ];
+
+    // Statistics
+    const statSubDefs = [['stats','Thống kê'],['foreign','Giao dịch NĐTNN'],['proprietary','Tự doanh']];
+    const statSubs = statSubDefs.map(([k,l]) => ({ label:l, onClick:this._set('statSub',k),
+      bg: this.state.statSub===k ? '#2f7fff':'transparent', fg: this.state.statSub===k ? '#fff':'#8296ab' }));
+    const fxValue = [ {k:'Giá trị mua',v:'6.8 B',c:'#cbd5e1'}, {k:'Giá trị bán',v:'7.3 B',c:'#cbd5e1'}, {k:'Giá trị ròng',v:'-466.8 M',c:'#f43f5e'} ];
+    const fxVol = [ {k:'KL mua',v:'276.4 K',c:'#cbd5e1'}, {k:'KL bán',v:'295.3 K',c:'#cbd5e1'}, {k:'KL ròng',v:'-18.9 K',c:'#f43f5e'} ];
+    const propValue = [ {k:'Giá trị mua',v:'44.5 B',c:'#cbd5e1'}, {k:'Giá trị bán',v:'19.0 B',c:'#cbd5e1'}, {k:'Giá trị ròng',v:'25.5 B',c:'#22c55e'} ];
+    const propVol = [ {k:'KL mua',v:'1.8 M',c:'#cbd5e1'}, {k:'KL bán',v:'763.4 K',c:'#cbd5e1'}, {k:'KL ròng',v:'1.0 M',c:'#22c55e'} ];
+
+    // Technical Sentiment tab
+    const sentPeriods = ['1D','1W','1M'].map(p => ({ label:p, onClick:this._set('sentPeriod',p),
+      bg: this.state.sentPeriod===p ? '#2f7fff':'transparent', fg: this.state.sentPeriod===p ? '#fff':'#8296ab' }));
+    const gaugeCards = [
+      { id:'sdMA', title:'Đường trung bình', neg:3, neu:1, pos:1, note:'Giá giảm chậm' },
+      { id:'sdOsc', title:'Dao động', neg:6, neu:0, pos:4, note:'Giá giảm trong phiên' },
+      { id:'sdVol', title:'Biến động', neg:3, neu:0, pos:1, note:'Giá ổn định, hình thành xu hướng mới' },
+    ];
+    const A = (v)=>({ action:v, c: v==='Mua'?'#22c55e':v==='Bán'?'#f43f5e':'#eab308' });
+    const indGroups = [
+      { title:'Đường trung bình', rows:[
+        Object.assign({name:'Trung bình động giản đơn – SMA (20)'},A('Bán')),
+        Object.assign({name:'Trung bình động lũy thừa – EMA (20)'},A('Bán')),
+        Object.assign({name:'Trung bình động theo khối lượng – VWMA (20)'},A('Bán')),
+        Object.assign({name:'Chỉ báo Supertrend (10, 3)'},A('Mua')),
+        Object.assign({name:'Giá TB theo khối lượng – VWAP (W)'},A('Trung lập')),
+      ]},
+      { title:'Dao động', rows:[
+        Object.assign({name:'MACD (12, 26, 9)'},A('Mua')),
+        Object.assign({name:'Chỉ số sức mạnh tương đối – RSI (14)'},A('Bán')),
+        Object.assign({name:'Chỉ báo động lượng – MOM (10)'},A('Bán')),
+        Object.assign({name:'Tỷ lệ thay đổi (10)'},A('Bán')),
+        Object.assign({name:'Chỉ số dòng tiền – MFI (14)'},A('Bán')),
+        Object.assign({name:'Chỉ số kênh hàng hóa – CCI (20)'},A('Mua')),
+        Object.assign({name:'Dao động Stochastic'},A('Bán')),
+        Object.assign({name:'Williams %R (14)'},A('Bán')),
+        Object.assign({name:'Dao động Ultimate – UO'},A('Mua')),
+      ]},
+      { title:'Biến động', rows:[
+        Object.assign({name:'Dải Bollinger – BB (20, 2)'},A('Bán')),
+        Object.assign({name:'Độ lệch chuẩn'},A('Bán')),
+        Object.assign({name:'Biên độ dao động TB – ATR (14)'},A('Trung lập')),
+      ]},
+    ];
+
+    // Financials
+    const finSubDefs = [['overview','Tổng quan'],['indicators','Chỉ số']];
+    const finSubs = finSubDefs.map(([k,l]) => ({ label:l, onClick:this._set('finSub',k),
+      bg: this.state.finSub===k ? '#2f7fff':'transparent', fg: this.state.finSub===k ? '#fff':'#8296ab' }));
+    const finPeriods = [['quarter','Quý'],['year','Năm']].map(([k,l]) => ({ label:l, onClick:this._set('finPeriod',k),
+      fg: this.state.finPeriod===k ? '#fff':'#8296ab', border: this.state.finPeriod===k ? '#2f7fff':'transparent' }));
+    const finColsRaw = this.state.finPeriod==='year' ? d.yCols : ['Q3/2023','Q4/2023','Q1/2024','Q2/2024','Q3/2024','Q4/2024','Q1/2025','Q2/2025','Q3/2025','Q4/2025','Q1/2026'];
+    const finCols = finColsRaw;
+    const nCol = finCols.length;
+    const RF = this._rng(sym+'fin');
+    const mkRow = (label, base, spread, dec, isHead) => {
+      if (isHead) return { label, cells: finCols.map(()=> ''), rowBg:'#152234', labelColor:'#cbd5e1', labelWeight:800 };
+      return { label, rowBg:'transparent', labelColor:'#9fb0c2', labelWeight:500,
+        cells: finCols.map(()=> { const v = base + (RF()-0.5)*spread; return (dec===0? Math.round(v).toLocaleString() : v.toFixed(dec)); }) };
+    };
+    const finTable = [
+      mkRow('Định giá',0,0,0,true),
+      mkRow('Vốn hóa (tỷ VND)', 70000, 60000, 0),
+      mkRow('P/E TTM (x)', 15, 60, 2),
+      mkRow('P/B TTM (x)', 1.3, 1.0, 2),
+      mkRow('ROE (%)', 8, 20, 2),
+      mkRow('ROA (%)', 5, 10, 2),
+      mkRow('Kết quả kinh doanh',0,0,0,true),
+      mkRow('Doanh thu thuần (tỷ VND)', 34000, 16000, 0),
+      mkRow('Lợi nhuận gộp (tỷ VND)', 3000, 5000, 0),
+      mkRow('Lợi nhuận sau thuế (tỷ VND)', 1500, 4000, 0),
+      mkRow('Biên LN gộp (%)', 5, 8, 2),
+      mkRow('Biên LN ròng (%)', 4, 6, 2),
+      mkRow('EPS (VND)', 1500, 2500, 0),
+      mkRow('Bảng cân đối kế toán',0,0,0,true),
+      mkRow('Tổng tài sản (tỷ VND)', 90000, 20000, 0),
+      mkRow('Vốn chủ sở hữu (tỷ VND)', 55000, 10000, 0),
+      mkRow('Tổng nợ (tỷ VND)', 12000, 8000, 0),
+      mkRow('Tiền và tương đương tiền (tỷ VND)', 25000, 12000, 0),
+    ];
+
+    // Research
+    const research = { rating: upDir?'MUA':'NẮM GIỮ', ratingColor: upDir?'#22c55e':'#eab308',
+      target:(lp*1.18).toFixed(2), upside:'+18.0%' };
+    const reports = [
+      { title:sym+' — Cập nhật doanh nghiệp', tag:'MUA', tagColor:'#22c55e', tagBg:'rgba(34,197,94,.15)', date:'02/07/2026', summary:'Biên lợi nhuận cải thiện nhờ sản lượng tăng và chi phí đầu vào thuận lợi; nâng giá mục tiêu và duy trì quan điểm tích cực.' },
+      { title:'Triển vọng ngành nửa cuối 2026', tag:'KHẢ QUAN', tagColor:'#60a5fa', tagBg:'rgba(96,165,250,.15)', date:'28/06/2026', summary:'Duy trì đánh giá Khả quan với ngành khi nhu cầu phục hồi và định giá vẫn hấp dẫn so với khu vực.' },
+      { title:'Đánh giá KQKD Quý 1/2026', tag:'TRUNG LẬP', tagColor:'#eab308', tagBg:'rgba(234,179,8,.15)', date:'29/04/2026', summary:'Kết quả sát với dự báo. Doanh thu tăng trưởng ổn định trong khi một số khoản mục bất thường ảnh hưởng nhẹ đến lợi nhuận.' },
+      { title:'Ghi chú định giá & rủi ro', tag:'MUA', tagColor:'#22c55e', tagBg:'rgba(34,197,94,.15)', date:'15/04/2026', summary:'Tương quan rủi ro/lợi nhuận thuận lợi ở vùng giá hiện tại; các yếu tố cần theo dõi là chi phí đầu vào và dòng vốn NĐTNN.' },
+    ];
+
+    // Events
+    const eventSubDefs = [['news','Tin tức'],['dividends','Cổ tức & Tăng vốn'],['insider','Cổ đông lớn & GD nội bộ'],['other','Sự kiện khác']];
+    const eventSubs = eventSubDefs.map(([k,l]) => ({ label:l, onClick:this._set('eventSub',k),
+      bg: this.state.eventSub===k ? '#2f7fff':'transparent', fg: this.state.eventSub===k ? '#fff':'#8296ab' }));
+    const eventBank = {
+      news: [
+        ['02/07/2026',sym+': Thông qua giao dịch với ngân hàng đối tác','Hoạt động khác'],
+        ['01/07/2026',sym+': Ngày ĐKCC trả cổ tức tiền mặt năm 2025','Cổ tức'],
+        ['30/06/2026',sym+': Thông qua giao dịch với bên liên quan','Hoạt động khác'],
+        ['22/06/2026',sym+': Thông qua kế hoạch trả cổ tức 2025','Cổ tức'],
+        ['03/06/2026',sym+': Thông qua hạn mức tín dụng','Hoạt động khác'],
+        ['29/05/2026',sym+': Thông qua hợp đồng và giao dịch','Hoạt động khác'],
+        ['12/05/2026',sym+': Thay đổi nhân sự','Thay đổi nhân sự'],
+        ['29/04/2026',sym+': Giải trình lợi nhuận sau thuế Quý 1/2026','Công bố KQKD'],
+        ['21/04/2026',sym+': Ký hợp đồng kiểm toán năm 2026','Công bố KQKD'],
+      ],
+      dividends: [
+        ['22/06/2026',sym+': Thông qua kế hoạch trả cổ tức 2025 (10% tiền mặt)','Cổ tức'],
+        ['01/07/2026',sym+': Ngày ĐKCC trả cổ tức tiền mặt năm 2025','Cổ tức'],
+        ['15/03/2026',sym+': Hoàn tất trả cổ tức cổ phiếu 5% năm 2024','Tăng vốn'],
+      ],
+      insider: [
+        ['18/06/2026',sym+': Thành viên HĐQT đăng ký mua 500.000 cổ phiếu','GD nội bộ'],
+        ['02/05/2026',sym+': Cổ đông lớn bán 1.200.000 cổ phiếu','Cổ đông lớn'],
+        ['12/03/2026',sym+': Tổng Giám đốc hoàn tất mua 200.000 cổ phiếu','GD nội bộ'],
+      ],
+      other: [
+        ['20/05/2026',sym+': Sửa đổi, bổ sung Điều lệ công ty','Hoạt động khác'],
+        ['12/05/2026',sym+': Thay đổi mẫu con dấu','Hoạt động khác'],
+        ['12/05/2026',sym+': Thay đổi Giấy chứng nhận đăng ký doanh nghiệp','Hoạt động khác'],
+      ],
+    };
+    const events = (eventBank[this.state.eventSub]||[]).map(([date,title,type]) => ({ date, title, type }));
+
+    return {
+      onCloseBg: this.props.onClose || (()=>{}), onCloseBtn: this.props.onClose || (()=>{}),
+      stop: (e)=>{ if(e&&e.stopPropagation) e.stopPropagation(); },
+      sym, company, exch:'HOSE',
+      priceStr: lp.toFixed(2), chgStr:(chg>=0?'+':'')+chg.toFixed(2), pctStr:(pct>=0?'+':'')+pct.toFixed(2)+'%', col,
+      toggleStar: ()=>this.setState(p=>({starred:!p.starred})),
+      starIcon: this.state.starred?'★':'☆', starColor: this.state.starred?'#fbbf24':'#6b7d92',
+      tabs,
+      isOverview: this.state.tab==='overview', isStats: this.state.tab==='stats', isTech: this.state.tab==='tech',
+      isSentiment: this.state.tab==='sentiment', isFin: this.state.tab==='fin', isResearch: this.state.tab==='research', isEvents: this.state.tab==='events',
+      ranges, sent: sentData,
+      setKeyMetrics: this._set('ovPanel','keymetrics'), setTimeSales: this._set('ovPanel','timesales'),
+      ovKeyMetrics: this.state.ovPanel==='keymetrics', ovTimeSales: this.state.ovPanel==='timesales',
+      ovTab: { km:{ bg:this.state.ovPanel==='keymetrics'?'#2f7fff':'#101c29', fg:this.state.ovPanel==='keymetrics'?'#fff':'#8296ab' },
+               ts:{ bg:this.state.ovPanel==='timesales'?'#2f7fff':'#101c29', fg:this.state.ovPanel==='timesales'?'#fff':'#8296ab' } },
+      keyMetrics, depthRows, tradeLog, aggr,
+      statSubs, statStats:this.state.statSub==='stats', statForeign:this.state.statSub==='foreign', statProp:this.state.statSub==='proprietary',
+      vwap: d.vwap.toFixed(3), fxValue, fxVol, propValue, propVol, fRoom:'2.4 B (47.91%)',
+      tvIframeUrl, tvOpenUrl,
+      sentPeriods, gaugeCards, indGroups,
+      finSubs, finPeriods, finOverview:this.state.finSub==='overview', finIndicators:this.state.finSub==='indicators',
+      finCols, finTable,
+      research, reports, eventSubs, events,
+    };
+  }
+}
+</script>
+</body>
+</html>

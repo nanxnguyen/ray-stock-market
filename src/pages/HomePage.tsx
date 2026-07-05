@@ -9,7 +9,7 @@ import type {
 import type { VietcapFilterGroup } from '../types/vietcap'
 import IndexStrip from '../components/IndexStrip'
 import FilterBar from '../components/FilterBar'
-import StockTable from '../components/StockTable'
+import StockTable from '../components/stock-table/StockTableAGGrid'
 import GridView from '../components/GridView'
 import HeatmapView from '../components/HeatmapView'
 import IntradayChartModal from '../components/IntradayChartModal'
@@ -63,7 +63,7 @@ function HomePageInner({
   chartView, onCloseChart, idxChart, onCloseIdxChart,
 }: Props) {
   return (
-    <>
+    <div className="home-page-shell">
       <IndexStrip
         indices={indices}
         th={th}
@@ -97,10 +97,12 @@ function HomePageInner({
         onResetFilters={onResetFilters}
         tradeHistory={tradeHistory}
       />
-      {viewMode === 'table' && <StockTable rows={stocksWithWatchlist} th={th} />}
-      {viewMode === 'grid' && <GridView rows={stocksWithWatchlist} th={th} />}
-      {viewMode === 'heat' && <HeatmapView rows={stocksWithWatchlist} th={th} />}
-      {viewMode === 'movers' && <TopMoversView rows={stocksWithWatchlist} th={th} />}
+      <div className="home-page-view">
+        {viewMode === 'table' && <StockTable rows={stocksWithWatchlist} th={th} />}
+        {viewMode === 'grid' && <GridView rows={stocksWithWatchlist} th={th} />}
+        {viewMode === 'heat' && <HeatmapView rows={stocksWithWatchlist} th={th} />}
+        {viewMode === 'movers' && <TopMoversView rows={stocksWithWatchlist} th={th} />}
+      </div>
       {chartView && (
         <IntradayChartModal chart={chartView} onClose={onCloseChart} />
       )}
@@ -111,7 +113,7 @@ function HomePageInner({
           onClose={onCloseIdxChart}
         />
       )}
-    </>
+    </div>
   )
 }
 

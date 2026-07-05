@@ -13270,5 +13270,75 @@
     "board": "BOND",
     "companyName": "Trái phiếu CTCP Đầu tư Văn Phú -Invest",
     "companyNameEn": "VAN PHU REAL ESTATE DEVELOPMENT JOINT STOCK COMPANY"
+  },
+  {
+    "symbol": "DDG",
+    "type": "STOCK",
+    "board": "HOSE",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "BSC",
+    "type": "STOCK",
+    "board": "HOSE",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I1G7000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I1G8000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I1G9000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I1GC000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I2G7000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I2G8000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I2G9000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
+  },
+  {
+    "symbol": "41I2GC000",
+    "type": "FU",
+    "board": "HNX",
+    "companyName": "",
+    "companyNameEn": ""
   }
 ]

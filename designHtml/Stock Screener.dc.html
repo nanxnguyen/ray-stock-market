@@ -63,8 +63,8 @@ body { margin:0; padding:0; font-family:'Inter',-apple-system,BlinkMacSystemFont
       <a href="Bang Dien.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">🏠 Trang chủ</a>
       <a href="Portfolio.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💼 Danh mục</a>
       <a href="Trading Panel.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">💰 Đặt lệnh</a>
-      <a href="Order Book.dc.html" style="text-decoration:none;flex-shrink:0;display:flex;align-items:center;gap:5px;background:{{ th.headerChipBg }};border:1px solid {{ th.headerChipBorder }};color:{{ th.headerChipFg }};border-radius:14px;padding:5px 12px;font-size:10.5px;font-weight:600;white-space:nowrap;" style-hover="border-color:#2563eb;color:#fff;">📖 Sổ lệnh</a>
 
+      <div style="position:relative;">
       <div onClick="{{ toggleMoreTools }}" style="cursor:pointer;flex-shrink:0;display:flex;align-items:center;gap:6px;background:{{ moreToolsBg }};border:1px solid {{ moreToolsBorder }};color:{{ moreToolsFg }};border-radius:14px;padding:5px 12px 5px 11px;font-size:10.5px;font-weight:700;transition:all .15s;white-space:nowrap;">
         <span style="display:grid;grid-template-columns:1fr 1fr;gap:2px;width:9px;height:9px;">
           <span style="background:currentColor;border-radius:1px;"></span><span style="background:currentColor;border-radius:1px;"></span>
@@ -82,7 +82,7 @@ body { margin:0; padding:0; font-family:'Inter',-apple-system,BlinkMacSystemFont
       </div>
 
       <sc-if value="{{ showMoreTools }}" hint-placeholder-val="{{ false }}">
-        <div onClick="{{ stopProp }}" style="position:absolute;top:44px;right:14px;background:{{ th.menuBg }};border:1px solid {{ th.menuBorder }};border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
+        <div onClick="{{ stopProp }}" style="position:absolute;top:38px;left:0;background:{{ th.menuBg }};border:1px solid {{ th.menuBorder }};border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.55);z-index:300;width:660px;max-width:88vw;overflow:hidden;animation:fadeUp .15s ease;">
           <div style="padding:16px 20px;display:grid;grid-template-columns:repeat(3,1fr);gap:22px;">
             <sc-for list="{{ menuGroups }}" as="grp" hint-placeholder-count="3">
               <div style="display:flex;flex-direction:column;gap:2px;">
@@ -105,6 +105,7 @@ body { margin:0; padding:0; font-family:'Inter',-apple-system,BlinkMacSystemFont
           </div>
         </div>
       </sc-if>
+      </div>
     </div>
   </div>
 

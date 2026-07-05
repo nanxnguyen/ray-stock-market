@@ -1,0 +1,64 @@
+- generic [ref=f47e2]:
+  - generic [ref=f47e5]:
+    - generic [ref=f47e6]:
+      - generic [ref=f47e7]:
+        - link [ref=f47e8] [cursor=pointer]:
+          - /url: /home
+          - generic [ref=f47e9]:
+            - img [ref=f47e11]
+            - img [ref=f47e13]
+        - generic [ref=f47e15]:
+          - button "Cơ sở" [ref=f47e17] [cursor=pointer]
+          - button "Phái sinh" [ref=f47e18] [cursor=pointer]
+        - generic [ref=f47e19]: 05/07/2026 15:01:30
+      - generic [ref=f47e22]:
+        - generic [ref=f47e23]:
+          - img [ref=f47e24] [cursor=pointer]
+          - textbox "Nhập từ khoá"
+        - img [ref=f47e26] [cursor=pointer]
+        - generic [ref=f47e27]:
+          - button "Mở tài khoản" [ref=f47e28] [cursor=pointer]
+          - button "Đăng nhập" [ref=f47e29] [cursor=pointer]
+        - img [ref=f47e32] [cursor=pointer]
+    - generic [ref=f47e35]:
+      - link "Trang chủ" [ref=f47e36] [cursor=pointer]:
+        - /url: /home
+      - button "Bảng giá" [ref=f47e38] [cursor=pointer]:
+        - generic [ref=f47e39]: Bảng giá
+        - img [ref=f47e40]
+      - link "Thị trường" [ref=f47e41] [cursor=pointer]:
+        - /url: /iq/market
+      - button "Thông tin tài sản" [ref=f47e43] [cursor=pointer]:
+        - generic [ref=f47e44]: Thông tin tài sản
+        - img [ref=f47e45]
+      - button "Giao dịch tiền" [ref=f47e47] [cursor=pointer]:
+        - generic [ref=f47e48]: Giao dịch tiền
+        - img [ref=f47e49]
+      - button "Giao Dịch Chứng Khoán" [ref=f47e51] [cursor=pointer]:
+        - generic [ref=f47e52]: Giao Dịch Chứng Khoán
+        - img [ref=f47e53]
+      - button "Vietcap IQ" [ref=f47e55] [cursor=pointer]:
+        - generic [ref=f47e56]: Vietcap IQ
+        - img [ref=f47e57]
+      - button "AI News" [ref=f47e59] [cursor=pointer]:
+        - generic [ref=f47e60]: AI News
+        - img [ref=f47e61]
+      - button "Sản phẩm Đầu tư" [ref=f47e63] [cursor=pointer]:
+        - generic [ref=f47e64]: Sản phẩm Đầu tư
+        - img [ref=f47e65]
+      - button "Tiện ích" [ref=f47e67] [cursor=pointer]:
+        - generic [ref=f47e68]: Tiện ích
+        - img [ref=f47e69]
+  - generic [ref=f47e72]:
+    - generic [ref=f47e74]:
+      - text: "Cơ sở: Giá: x1,000 - Khối lượng: x1"
+      - text: "Phái sinh & Bond: Giá: x1 - Khối lượng: x1"
+    - generic [ref=f47e76]:
+      - generic [ref=f47e78] [cursor=pointer]: OTP
+      - generic [ref=f47e79] [cursor=pointer]:
+        - img [ref=f47e81]
+        - generic [ref=f47e84]: Tài sản
+      - generic [ref=f47e86] [cursor=pointer]:
+        - img [ref=f47e88]
+        - generic [ref=f47e90]: Sổ lệnh
+      - generic [ref=f47e92] [cursor=pointer]: Đặt lệnh
