@@ -144,7 +144,8 @@ function App() {
     const params = new URLSearchParams(window.location.search)
     const group = (params.get('filter-group') || 'HOSE') as VietcapFilterGroup
     const value = params.get('filter-value') || 'VN30'
-    return { group, value, searchText: '', watchlist: [] }
+    const saved = JSON.parse(localStorage.getItem('watchlist') || '[]')
+    return { group, value, searchText: '', watchlist: saved }
   })
   const [chart, setChart] = useState<ChartState>({ open: false, sym: '', range: '1Đ' })
   const [viewMode, setViewMode] = useState<'table' | 'grid' | 'heat' | 'movers'>('table')
@@ -237,6 +238,10 @@ function App() {
     const newUrl = `${window.location.pathname}?${params.toString()}`
     window.history.replaceState({}, '', newUrl)
   }, [filter.group, filter.value])
+
+  useEffect(() => {
+    localStorage.setItem('watchlist', JSON.stringify(filter.watchlist))
+  }, [filter.watchlist])
 
   // Keyboard navigation
   useEffect(() => {
