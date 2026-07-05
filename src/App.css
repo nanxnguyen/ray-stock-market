@@ -9,13 +9,13 @@
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes flashUp {
-  0% { background: #14532d; }
-  60% { background: #14532d; }
+  0% { background: var(--ds-color-market-flash-up); }
+  60% { background: var(--ds-color-market-flash-up); }
   100% { background: inherit; }
 }
 @keyframes flashDn {
-  0% { background: #450a0a; }
-  60% { background: #450a0a; }
+  0% { background: var(--ds-color-market-flash-down); }
+  60% { background: var(--ds-color-market-flash-down); }
   100% { background: inherit; }
 }
 @keyframes pricePop {
@@ -29,5 +29,19 @@
 
 ::-webkit-scrollbar { width: 4px; height: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #2563eb; }
+::-webkit-scrollbar-thumb { background: var(--ds-color-surface-elevated); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ds-color-blue-600); }
+
+/* Stock Detail Modal */
+@keyframes sdIn { from { opacity: 0; transform: translateY(10px) scale(.99); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@keyframes sdFade { from { opacity: 0; } to { opacity: 1; } }
+#sdScroll::-webkit-scrollbar, .sdSb::-webkit-scrollbar { width: 8px; height: 8px; }
+#sdScroll::-webkit-scrollbar-thumb, .sdSb::-webkit-scrollbar-thumb { background: var(--ds-color-surface-elevated); border-radius: 8px; }
+#sdScroll::-webkit-scrollbar-track, .sdSb::-webkit-scrollbar-track { background: transparent; }
+
+/* Hover effects for StockDetailModal */
+.sd-close-btn:hover { background: var(--ds-color-surface-elevated); color: var(--ds-color-text-inverse); }
+.sd-report-card:hover { border-color: var(--ds-color-border-default); }
+.sd-event-row:hover { background: var(--ds-color-bg-row-hover); }
+.sd-bell:hover { color: var(--ds-color-yellow-400) !important; }
+.sd-star:hover { color: var(--ds-color-yellow-400) !important; }

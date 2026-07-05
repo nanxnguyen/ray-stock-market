@@ -13,7 +13,7 @@ const WIDTH = {
   orderBookVolume: 56,
   matchedVolume: 58,
   narrowMetric: 48,
-  tradedVolume: 68,
+  tradedVolume: 78,
   sparkline: 62,
   foreignVolume: 68,
   room: 82,
@@ -25,6 +25,21 @@ const cellStyle = (colorField?: string) => (params: CellStyleParams): Record<str
   const base: Record<string, string | number> = { textAlign: 'right' }
   if (colorField && params.data) {
     base.color = params.data[colorField as keyof StockRow] as string
+  }
+  return base
+}
+
+const flashCellStyle = (flashField?: string, colorField?: string) => (params: CellStyleParams): Record<string, string | number> => {
+  const base: Record<string, string | number> = { textAlign: 'right' }
+  if (colorField && params.data) {
+    base.color = params.data[colorField as keyof StockRow] as string
+  }
+  if (flashField && params.data) {
+    const anim = params.data[flashField as keyof StockRow] as string | undefined
+    if (anim && anim !== 'none') {
+      base.animation = anim
+      base.borderRadius = '3px'
+    }
   }
   return base
 }
@@ -134,11 +149,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         width: WIDTH.orderBookVolume,
         minWidth: WIDTH.orderBookVolume,
         headerClass: 'ag-header-cell-blue',
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.b3c ?? 'inherit',
-          opacity: 0.75,
-        }),
+        cellStyle: flashCellStyle('flashB3q', 'b3c'),
       },
       {
         headerName: 'Giá 2',
@@ -160,11 +171,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         width: WIDTH.orderBookVolume,
         minWidth: WIDTH.orderBookVolume,
         headerClass: 'ag-header-cell-blue',
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.b2c ?? 'inherit',
-          opacity: 0.85,
-        }),
+        cellStyle: flashCellStyle('flashB2q', 'b2c'),
       },
       {
         headerName: 'Giá 1',
@@ -185,10 +192,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         width: WIDTH.orderBookVolume,
         minWidth: WIDTH.orderBookVolume,
         headerClass: 'ag-header-cell-blue',
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.b1c ?? 'inherit',
-        }),
+        cellStyle: flashCellStyle('flashB1q', 'b1c'),
       },
     ],
   },
@@ -204,12 +208,22 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         sortable: true,
         width: WIDTH.matchedPrice,
         minWidth: WIDTH.matchedPrice,
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          fontWeight: 700,
-          fontSize: 12,
-          color: params.data?.lc ?? 'inherit',
-        }),
+        cellStyle: (params: CellStyleParams) => {
+          const base: Record<string, string | number> = {
+            textAlign: 'right',
+            fontWeight: 700,
+            fontSize: 12,
+            color: params.data?.lc ?? 'inherit',
+          }
+          if (params.data?.priceCellBg) {
+            base.background = params.data.priceCellBg
+          }
+          if (params.data?.flashPrice && params.data.flashPrice !== 'none') {
+            base.animation = params.data.flashPrice
+            base.borderRadius = '3px'
+          }
+          return base
+        },
       },
       {
         headerName: 'KL',
@@ -217,11 +231,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         field: 'lq',
         width: WIDTH.matchedVolume,
         minWidth: WIDTH.matchedVolume,
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.lc ?? 'inherit',
-          opacity: 0.9,
-        }),
+        cellStyle: flashCellStyle('flashQty', 'lc'),
       },
       {
         headerName: '%',
@@ -230,11 +240,18 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         sortable: true,
         width: WIDTH.narrowMetric,
         minWidth: WIDTH.narrowMetric,
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          fontWeight: 700,
-          color: params.data?.pc ?? 'inherit',
-        }),
+        cellStyle: (params: CellStyleParams) => {
+          const base: Record<string, string | number> = {
+            textAlign: 'right',
+            fontWeight: 700,
+            color: params.data?.pc ?? 'inherit',
+          }
+          if (params.data?.flashPrice && params.data.flashPrice !== 'none') {
+            base.animation = params.data.flashPrice
+            base.borderRadius = '3px'
+          }
+          return base
+        },
       },
       {
         headerName: '↕',
@@ -242,10 +259,17 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         field: 'chg',
         width: WIDTH.narrowMetric,
         minWidth: WIDTH.narrowMetric,
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.pc ?? 'inherit',
-        }),
+        cellStyle: (params: CellStyleParams) => {
+          const base: Record<string, string | number> = {
+            textAlign: 'right',
+            color: params.data?.pc ?? 'inherit',
+          }
+          if (params.data?.flashPrice && params.data.flashPrice !== 'none') {
+            base.animation = params.data.flashPrice
+            base.borderRadius = '3px'
+          }
+          return base
+        },
       },
       {
         headerName: 'KLGD',
@@ -254,7 +278,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         sortable: true,
         width: WIDTH.tradedVolume,
         minWidth: WIDTH.tradedVolume,
-        cellStyle: volumeCellStyle,
+        cellStyle: flashCellStyle('flashVol'),
       },
       {
         headerName: 'Xu hướng',
@@ -294,10 +318,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         width: WIDTH.orderBookVolume,
         minWidth: WIDTH.orderBookVolume,
         headerClass: 'ag-header-cell-red',
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.a1c ?? 'inherit',
-        }),
+        cellStyle: flashCellStyle('flashA1q', 'a1c'),
       },
       {
         headerName: 'Giá 2',
@@ -319,11 +340,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         width: WIDTH.orderBookVolume,
         minWidth: WIDTH.orderBookVolume,
         headerClass: 'ag-header-cell-red',
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.a2c ?? 'inherit',
-          opacity: 0.85,
-        }),
+        cellStyle: flashCellStyle('flashA2q', 'a2c'),
       },
       {
         headerName: 'Giá 3',
@@ -345,11 +362,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         width: WIDTH.orderBookVolume,
         minWidth: WIDTH.orderBookVolume,
         headerClass: 'ag-header-cell-red',
-        cellStyle: (params: CellStyleParams) => ({
-          textAlign: 'right',
-          color: params.data?.a3c ?? 'inherit',
-          opacity: 0.75,
-        }),
+        cellStyle: flashCellStyle('flashA3q', 'a3c'),
       },
     ],
   },
@@ -430,10 +443,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         minWidth: WIDTH.room,
         headerClass: 'ag-header-cell-purple',
         cellRenderer: RoomCellRenderer,
-        cellStyle: () => ({
-          textAlign: 'right',
-          color: 'var(--ds-color-neutral-500)',
-        }),
+        cellStyle: flashCellStyle('flashRoom'),
       },
     ],
   },

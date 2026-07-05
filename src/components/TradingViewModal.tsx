@@ -67,63 +67,41 @@ export default function TradingViewModal({ sym, tvSymbol, onClose }: Props) {
   return (
     <div
       onClick={onClose}
-      style={{
-        position: 'fixed', inset: 0, background: 'rgba(0,0,0,.7)', zIndex: 200,
-        display: 'flex', alignItems: 'center', justifyContent: 'center',
-        backdropFilter: 'blur(4px)',
-      }}
+      className="fixed inset-0 z-[200] flex items-center justify-center bg-black/70 backdrop-blur-sm"
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        style={{
-          background: 'var(--ds-color-bg-app)', border: '1px solid var(--ds-color-border-default)', borderRadius: 12,
-          width: 980, height: 640, maxWidth: '97vw', maxHeight: '93vh',
-          overflow: 'hidden', animation: 'fadeUp .18s ease',
-          boxShadow: '0 32px 80px rgba(0,0,0,.7), 0 0 40px rgba(37,99,235,.12)',
-          display: 'flex', flexDirection: 'column',
-        }}
+        className="flex w-[980px] max-w-[97vw] flex-col overflow-hidden rounded-xl border border-border bg-app shadow-[0_32px_80px_rgba(0,0,0,.7),0_0_40px_rgba(37,99,235,.12)] h-[640px] max-h-[93vh] animate-[fadeUp_0.18s_ease]"
       >
-        <div style={{
-          background: 'var(--ds-color-bg-nav)', padding: '10px 18px',
-          display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-          borderBottom: '1px solid var(--ds-color-border-default)', flexShrink: 0,
-        }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-            <div style={{ background: 'var(--ds-color-surface-elevated)', borderRadius: 6, padding: '3px 10px' }}>
-              <span style={{ fontSize: 13, fontWeight: 800, color: 'var(--ds-color-blue-400)', fontFamily: "'Inter', sans-serif", letterSpacing: 0.5 }}>
+        <div className="flex shrink-0 items-center justify-between border-b border-border bg-nav px-[18px] py-[10px]">
+          <div className="flex items-center gap-2.5">
+            <div className="rounded-md px-2.5 py-[3px] bg-[var(--ds-color-surface-elevated)]">
+              <span className="font-extrabold text-[13px] tracking-[0.5px] font-[var(--ds-font-sans)] text-[var(--ds-color-blue-400)]">
                 {sym}
               </span>
             </div>
-            <span style={{ fontSize: 10, color: 'var(--ds-color-label-muted)' }}>
+            <span className="text-[10px] text-[var(--ds-color-label-muted)]">
               Biểu đồ TradingView - Thời gian thực
             </span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+          <div className="flex items-center gap-1.5">
             <a
               href={tvOpenUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                background: 'var(--ds-color-surface-elevated)', color: 'var(--ds-color-blue-400)', border: '1px solid var(--ds-color-blue-600)',
-                borderRadius: 6, padding: '4px 10px', fontSize: 10, fontWeight: 700,
-                cursor: 'pointer', textDecoration: 'none',
-              }}
+              className="cursor-pointer rounded-md border border-[var(--ds-color-blue-600)] bg-[var(--ds-color-surface-elevated)] px-2.5 py-1 text-[10px] font-bold text-[var(--ds-color-blue-400)] no-underline"
             >
               {'\u2197'} Mở TradingView
             </a>
             <button
               onClick={onClose}
-              style={{
-                background: 'var(--ds-color-border-subtle)', color: 'var(--ds-color-text-muted)', border: '1px solid var(--ds-color-border-default)',
-                borderRadius: 6, width: 28, height: 28, cursor: 'pointer', fontSize: 14,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}
+              className="flex h-7 w-7 cursor-pointer items-center justify-center rounded-md border border-border bg-border-subtle text-[14px] text-txt-muted"
             >
               {'\u2715'}
             </button>
           </div>
         </div>
-        <div ref={containerRef} style={{ flex: 1, width: '100%', background: 'var(--ds-color-bg-app)' }} />
+        <div ref={containerRef} className="h-full w-full flex-1 bg-app" />
       </div>
     </div>
   )

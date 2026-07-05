@@ -29,6 +29,7 @@ function mapStockRows(
   toggleCompare: (sym: string) => void,
   openAlertModal: (sym: string, price: number) => void,
   focusedIndex: number,
+  recentSyms: string[],
 ): StockRow[] {
   const now = Date.now()
   const maxRoom = stocks.reduce((m, s) => Math.max(m, Math.abs(s.rm || 0)), 1)
@@ -47,22 +48,39 @@ function mapStockRows(
     const avg = +((s.hi + s.lo + s.lp) / 3).toFixed(2)
     const sparkRange = s.ipts.length > 1 ? minMaxRange(s.ipts) : undefined
 
-    // Flash effects
+    // Flash effects — per-cell based on individual change direction
     const flashPrice = fl ? (s.fl_ === 'u' ? 'flashUp 0.8s ease' : 'flashDn 0.8s ease') : 'none'
+    const flashQty = fl ? (s.fl_ === 'u' ? 'flashUp 0.8s ease' : 'flashDn 0.8s ease') : 'none'
+    // KLGD (total vol) always rises on match → green flash
     const flashVol = fl ? 'flashUp 0.8s ease' : 'none'
-    const flashB1q = 'none'
-    const flashB2q = 'none'
-    const flashB3q = 'none'
-    const flashA1q = 'none'
-    const flashA2q = 'none'
-    const flashA3q = 'none'
-    const flashRoom = 'none'
+    // Order book flash — on the slower book tick
+    const bookFresh = s.bts && now - s.bts < 900
+    const _fa = (d: 'u' | 'd' | null) => d === 'u' ? 'flashUp 0.8s ease' : d === 'd' ? 'flashDn 0.8s ease' : 'none'
+    const flashB1q = bookFresh ? _fa(s.fb1q) : 'none'
+    const flashB2q = bookFresh ? _fa(s.fb2q) : 'none'
+    const flashB3q = bookFresh ? _fa(s.fb3q) : 'none'
+    const flashA1q = bookFresh ? _fa(s.fa1q) : 'none'
+    const flashA2q = bookFresh ? _fa(s.fa2q) : 'none'
+    const flashA3q = bookFresh ? _fa(s.fa3q) : 'none'
+    const flashRoom = bookFresh ? _fa(s.frm) : 'none'
+
+    // Price cell background — dynamic intensity by % change
+    const intensity = Math.min(Math.abs(s.pct) / 7, 1)
+    const priceCellBg = s.pct > 0
+      ? `rgba(34,197,94,${(0.06 + intensity * 0.32).toFixed(2)})`
+      : s.pct < 0
+        ? `rgba(244,63,94,${(0.06 + intensity * 0.32).toFixed(2)})`
+        : 'transparent'
 
     // Room progress bar
     const roomPct = Math.max(2, Math.round(Math.abs(s.rm || 0) / maxRoom * 100))
 
     // Focus outline for keyboard nav
     const focusOutline = i === focusedIndex ? '2px solid #3b82f6' : 'none'
+
+    // Pinned symbol border (recently viewed)
+    const isPinned = recentSyms.includes(s.s)
+    const pinBorder = isPinned ? '3px solid #f59e0b' : '3px solid transparent'
 
     return {
       sym: s.s,
@@ -99,9 +117,12 @@ function mapStockRows(
       onToggleCompare: () => toggleCompare(s.s),
       onOpenAlert: () => openAlertModal(s.s, s.lp),
       flashPrice,
+      flashQty,
       flashB1q, flashB2q, flashB3q,
       flashA1q, flashA2q, flashA3q,
       flashVol, flashRoom,
+      priceCellBg,
+      pinBorder,
       focusOutline,
     }
   })
@@ -174,6 +195,12 @@ function App() {
   const [focusedIndex, setFocusedIndex] = useState(-1)
   const visibleStocksRef = useRef<StockRow[]>([])
 
+  // Pinned (recently viewed) symbols
+  const [recentSyms, setRecentSyms] = useState<string[]>([])
+  const pinRecent = useCallback((sym: string) => {
+    setRecentSyms(prev => [sym, ...prev.filter(s => s !== sym)].slice(0, 3))
+  }, [])
+
   const th = useMemo(() => ({
     appBg: 'var(--ds-color-bg-app)',
     navBg: 'var(--ds-color-bg-nav)',
@@ -208,8 +235,9 @@ function App() {
   }), [darkMode])
 
   const openChart = useCallback((sym: string) => {
+    pinRecent(sym)
     setChart({ open: true, sym, range: '1Đ' })
-  }, [])
+  }, [pinRecent])
 
   const closeChart = useCallback(() => {
     setChart((prev) => ({ ...prev, open: false }))
@@ -366,8 +394,8 @@ function App() {
     }
     
     const filteredStocks = filterStockStates(stocks, filter, VN30_SYMBOLS)
-    return mapStockRows(filteredStocks, darkMode, th, openChart, selectedCompare, toggleCompare, openAlertModal, focusedIndex)
-  }, [stocks, darkMode, th, openChart, filter, selectedCompare, toggleCompare, openAlertModal, focusedIndex])
+    return mapStockRows(filteredStocks, darkMode, th, openChart, selectedCompare, toggleCompare, openAlertModal, focusedIndex, recentSyms)
+  }, [stocks, darkMode, th, openChart, filter, selectedCompare, toggleCompare, openAlertModal, focusedIndex, recentSyms])
 
   const handleFilterChange = useCallback((group: VietcapFilterGroup, value?: string) => {
     setFilter((prev) => ({
@@ -376,6 +404,10 @@ function App() {
       value: value || group,
       searchText: '',
     }))
+  }, [])
+
+  const handleSearchTextChange = useCallback((text: string) => {
+    setFilter((prev) => ({ ...prev, searchText: text }))
   }, [])
 
   const handleSymbolAdd = useCallback((symbol: string) => {
@@ -490,6 +522,7 @@ function App() {
       indices={indexViews}
       filter={filter}
       onFilterChange={handleFilterChange}
+      onSearchTextChange={handleSearchTextChange}
       onSymbolAdd={handleSymbolAdd}
       viewMode={viewMode}
       onViewModeChange={setViewMode}

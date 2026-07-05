@@ -10,6 +10,8 @@
     "preview": "vite preview",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
+    "test:structural": "playwright test tests/visual/structural.spec.ts",
+    "test:visual:check": "playwright test tests/visual/ --update-snapshots && git diff --quiet tests/visual/*.png",
     "sync:vietcap-data": "node scripts/sync-vietcap-data.mjs"
   },
   "dependencies": {

@@ -51,6 +51,9 @@ export function createInitialStocks(): StockState[] {
       fl_: null,
       fts: 0,
       ipts: generateIntraday(d.lp, d.r),
+      fb1q: null, fb2q: null, fb3q: null,
+      fa1q: null, fa2q: null, fa3q: null,
+      frm: null, bts: 0,
     }
   })
 }
@@ -90,6 +93,12 @@ export function tickStocks(stocks: StockState[], now: number): StockState[] {
     const lq = (Math.floor(Math.random() * 100) + 1) * r100
     const newPts = s.ipts.slice(1)
     newPts.push(lp)
+    // Track order book qty changes for flash direction
+    const newB1q = (Math.floor(Math.random() * 200) + 1) * r200
+    const newA1q = (Math.floor(Math.random() * 200) + 1) * r200
+    const d200 = (nv: number, ov: number) => nv > ov ? 'u' as const : nv < ov ? 'd' as const : null
+    // Room drift
+    const newRm = Math.max(0, (s.rm || 0) + (Math.floor(Math.random() * 44) - 20) * 1000)
     result[i] = {
       ...s,
       lp,
@@ -99,12 +108,16 @@ export function tickStocks(stocks: StockState[], now: number): StockState[] {
       hi: Math.max(s.hi, lp),
       lo: Math.min(s.lo, lp),
       b1p: +Math.max(s.fl, lp - s.tk).toFixed(2),
-      b1q: (Math.floor(Math.random() * 200) + 1) * r200,
+      b1q: newB1q,
       a1p: +Math.min(s.cl, lp + s.tk).toFixed(2),
-      a1q: (Math.floor(Math.random() * 200) + 1) * r200,
+      a1q: newA1q,
       fl_: dir > 0 ? 'u' : 'd',
       fts: now,
       ipts: newPts,
+      fb1q: d200(newB1q, s.b1q), fb2q: null, fb3q: null,
+      fa1q: d200(newA1q, s.a1q), fa2q: null, fa3q: null,
+      frm: d200(newRm, s.rm || 0),
+      bts: now,
     }
   }
 

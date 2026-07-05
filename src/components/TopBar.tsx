@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { memo } from 'react'
 import { NavLink } from 'react-router-dom'
 import type { ThemeTokens } from '../types/priceboard'
+import { cn } from '@/lib/utils'
 
 type Props = { th: ThemeTokens; toggleDark: () => void }
 
@@ -78,125 +79,102 @@ function TopBarInner({ th, toggleDark }: Props) {
   const toolCount = MENU_GROUPS.reduce((s, g) => s + g.items.length, 0)
 
   return (
-    <div style={{ flexShrink: 0 }}>
-      {/* Main top bar */}
-      <div style={{
-        background: 'linear-gradient(90deg, var(--ds-color-bg-app) 0%, var(--ds-color-bg-nav) 60%, var(--ds-color-bg-app) 100%)',
-        display: 'flex', alignItems: 'center', padding: '0 16px', height: 42,
-        flexShrink: 0, gap: 10, borderBottom: '1px solid var(--ds-color-border-subtle)',
-      }}>
-        {/* Logo */}
-        <NavLink to="/" style={{ display: 'flex', alignItems: 'center', gap: 7, flexShrink: 0, marginRight: 4, textDecoration: 'none' }}>
-          <div style={{
-            width: 26, height: 26, background: 'linear-gradient(135deg, var(--ds-color-market-up), var(--ds-color-green-600))',
-            borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center',
-          }}>
+    <div className="flex-shrink-0">
+      <div className="flex items-center gap-2.5 h-[42px] flex-shrink-0 px-4 border-b border-line bg-gradient-to-r from-app via-nav to-app">
+        <NavLink to="/" className="flex items-center gap-[7px] flex-shrink-0 mr-1 no-underline">
+          <div className="w-[26px] h-[26px] rounded-md bg-gradient-to-br from-market-up to-green-500 flex items-center justify-center">
             <svg width="14" height="12" viewBox="0 0 14 12">
               <polygon points="7,0 14,12 0,12" fill="var(--ds-color-text-inverse)" />
             </svg>
           </div>
-          <span style={{ fontSize: 15, fontWeight: 800, color: 'var(--ds-color-text-inverse)', letterSpacing: 0.4, fontFamily: "'Inter', sans-serif" }}>
-            Ray <span style={{ color: 'var(--ds-color-market-up)' }}>Stock Market</span>
+          <span className="text-[15px] font-extrabold text-txt-inverse tracking-[0.4px] font-sans">
+            Ray <span className="text-market-up">Stock Market</span>
           </span>
         </NavLink>
 
-        {/* Clock */}
-        <span style={{ color: 'var(--ds-color-text-muted)', fontSize: 11, flexShrink: 0, fontFamily: "'JetBrains Mono', monospace", fontWeight: 500, letterSpacing: 0.5 }}>
+        <span className="text-txt-muted text-[11px] flex-shrink-0 font-mono font-medium tracking-[0.5px]">
           {timeStr}
         </span>
 
-        {/* Ticker tape */}
-        <div style={{ flex: 1, overflow: 'hidden', position: 'relative', height: '100%', display: 'flex', alignItems: 'center', minWidth: 0 }}>
-          <div style={{ position: 'absolute', inset: 0, left: 0, width: 40, background: 'linear-gradient(90deg, var(--ds-color-bg-app), transparent)', zIndex: 1, pointerEvents: 'none' }} />
-          <span style={{ position: 'absolute', whiteSpace: 'nowrap', animation: 'ticker 34s linear infinite', color: 'var(--ds-color-text-secondary)', fontSize: 10.5, fontWeight: 500, fontFamily: "'JetBrains Mono', monospace" }}>
-            <span style={{ color: 'var(--ds-color-yellow-400)' }}>VN-Index</span> <span style={{ color: 'var(--ds-color-green-400)' }}>{'\u25B2'}1,860.01 +5.04</span> {'\u2502'}
-            <span style={{ color: 'var(--ds-color-yellow-400)' }}>VN30</span> <span style={{ color: 'var(--ds-color-green-400)' }}>{'\u25B2'}1,995.71 +5.06</span> {'\u2502'}
-            <span style={{ color: 'var(--ds-color-yellow-400)' }}>ACB</span> <span style={{ color: 'var(--ds-color-red-400)' }}>{'\u25BC'}22.65 -0.25</span> {'\u2502'}
-            <span style={{ color: 'var(--ds-color-yellow-400)' }}>HPG</span> <span style={{ color: 'var(--ds-color-green-400)' }}>{'\u25B2'}24.10 +0.32</span> {'\u2502'}
-            <span style={{ color: 'var(--ds-color-yellow-400)' }}>VCB</span> <span style={{ color: 'var(--ds-color-green-400)' }}>{'\u25B2'}81.50 +1.13</span> {'\u2502'}
-            <span style={{ color: 'var(--ds-color-yellow-400)' }}>FPT</span> <span style={{ color: 'var(--ds-color-green-400)' }}>{'\u25B2'}137.50 +1.89</span> {'\u2502'}
-            <span style={{ color: 'var(--ds-color-yellow-400)' }}>DOW</span> <span style={{ color: 'var(--ds-color-green-400)' }}>{'\u25B2'}52,342 +0.31%</span>
+        <div className="flex-1 overflow-hidden relative h-full flex items-center min-w-0">
+          <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-app to-transparent z-[1] pointer-events-none" />
+          <span className="absolute whitespace-nowrap animate-[ticker_34s_linear_infinite] text-txt-secondary text-[10.5px] font-medium font-mono">
+            <span className="text-yellow-400">VN-Index</span> <span className="text-green-400">{'\u25B2'}1,860.01 +5.04</span> {'\u2502'}
+            <span className="text-yellow-400">VN30</span> <span className="text-green-400">{'\u25B2'}1,995.71 +5.06</span> {'\u2502'}
+            <span className="text-yellow-400">ACB</span> <span className="text-red-400">{'\u25BC'}22.65 -0.25</span> {'\u2502'}
+            <span className="text-yellow-400">HPG</span> <span className="text-green-400">{'\u25B2'}24.10 +0.32</span> {'\u2502'}
+            <span className="text-yellow-400">VCB</span> <span className="text-green-400">{'\u25B2'}81.50 +1.13</span> {'\u2502'}
+            <span className="text-yellow-400">FPT</span> <span className="text-green-400">{'\u25B2'}137.50 +1.89</span> {'\u2502'}
+            <span className="text-yellow-400">DOW</span> <span className="text-green-400">{'\u25B2'}52,342 +0.31%</span>
           </span>
-          <div style={{ position: 'absolute', inset: 0, right: 0, left: 'auto', width: 40, background: 'linear-gradient(270deg, var(--ds-color-bg-app), transparent)', zIndex: 1, pointerEvents: 'none' }} />
+          <div className="absolute inset-y-0 right-0 left-auto w-10 bg-gradient-to-l from-app to-transparent z-[1] pointer-events-none" />
         </div>
 
-        {/* Right controls */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: 5, flexShrink: 0, position: 'relative' }}>
-          {/* Quick links */}
-          <NavLink to="/portfolio" title="Danh mục đầu tư" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4, background: 'var(--ds-color-border-subtle)', border: '1px solid var(--ds-color-border-default)', borderRadius: 14, padding: '4px 9px', color: 'var(--ds-color-text-secondary)', fontSize: 10, fontWeight: 600 }}>{'\u{1F4BC}'} Danh mục</NavLink>
-          <NavLink to="/trading-panel" title="Đặt lệnh" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4, background: 'var(--ds-color-border-subtle)', border: '1px solid var(--ds-color-border-default)', borderRadius: 14, padding: '4px 9px', color: 'var(--ds-color-text-secondary)', fontSize: 10, fontWeight: 600 }}>{'\u{1F4B0}'} Đặt lệnh</NavLink>
-          <NavLink to="/order-book" title="Sổ lệnh" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 4, background: 'var(--ds-color-border-subtle)', border: '1px solid var(--ds-color-border-default)', borderRadius: 14, padding: '4px 9px', color: 'var(--ds-color-text-secondary)', fontSize: 10, fontWeight: 600 }}>{'\u{1F4D6}'} Sổ lệnh</NavLink>
+        <div className="flex items-center gap-[5px] flex-shrink-0 relative">
+          <NavLink to="/portfolio" title="Danh mục đầu tư" className="no-underline flex items-center gap-1 bg-line-subtle border border-line rounded-[14px] py-1 px-[9px] text-txt-secondary text-[10px] font-semibold">
+            {'\u{1F4BC}'} Danh mục
+          </NavLink>
+          <NavLink to="/trading-panel" title="Đặt lệnh" className="no-underline flex items-center gap-1 bg-line-subtle border border-line rounded-[14px] py-1 px-[9px] text-txt-secondary text-[10px] font-semibold">
+            {'\u{1F4B0}'} Đặt lệnh
+          </NavLink>
 
-          {/* More tools button */}
           <div
             onClick={(e) => { e.stopPropagation(); setShowMoreTools(p => !p) }}
-            style={{
-              cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 5,
-              background: showMoreTools ? '#16457a' : 'var(--ds-color-border-subtle)',
-              border: `1px solid ${showMoreTools ? 'var(--ds-color-blue-600)' : 'var(--ds-color-border-default)'}`,
-              borderRadius: 14, padding: '4px 10px 4px 9px',
-              color: showMoreTools ? 'var(--ds-color-blue-100)' : 'var(--ds-color-text-secondary)',
-              fontSize: 10, fontWeight: 700, transition: 'all .15s',
-            }}
+            className={cn(
+              "cursor-pointer flex items-center gap-[5px] rounded-[14px] py-1 px-[10px] pl-[9px] text-[10px] font-bold transition-all duration-150",
+              showMoreTools
+                ? "bg-blue-700/25 border border-blue-600 text-blue-100"
+                : "bg-line-subtle border border-line text-txt-secondary"
+            )}
           >
-            <span style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 2, width: 9, height: 9 }}>
-              <span style={{ background: 'currentColor', borderRadius: 1 }} /><span style={{ background: 'currentColor', borderRadius: 1 }} />
-              <span style={{ background: 'currentColor', borderRadius: 1 }} /><span style={{ background: 'currentColor', borderRadius: 1 }} />
+            <span className="grid grid-cols-2 gap-[2px] w-[9px] h-[9px]">
+              <span className="bg-current rounded-[1px]" /><span className="bg-current rounded-[1px]" />
+              <span className="bg-current rounded-[1px]" /><span className="bg-current rounded-[1px]" />
             </span>
             Công cụ
-            <span style={{ fontSize: 8, transform: showMoreTools ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform .15s' }}>{'\u25BE'}</span>
+            <span className={cn("text-[8px] transition-transform duration-150", showMoreTools ? "rotate-180" : "rotate-0")}>{'\u25BE'}</span>
           </div>
 
-          <div style={{ width: 1, height: 18, background: 'var(--ds-color-border-default)' }} />
+          <div className="w-px h-[18px] bg-line" />
 
-          {/* Dark/light toggle */}
           <div
             onClick={toggleDark}
             title={th.toggleTitle}
-            style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: 6, background: 'var(--ds-color-border-subtle)', border: '1px solid var(--ds-color-border-default)', borderRadius: 20, padding: '4px 10px', transition: 'all .25s' }}
+            className="cursor-pointer flex items-center gap-1.5 bg-line-subtle border border-line rounded-full py-1 px-2.5 transition-all duration-250"
           >
-            <span style={{ fontSize: 12, lineHeight: 1 }}>{th.toggleIcon}</span>
-            <span style={{ fontSize: 10, fontWeight: 600, color: 'var(--ds-color-text-muted)' }}>{th.toggleLabel}</span>
+            <span className="text-xs leading-none">{th.toggleIcon}</span>
+            <span className="text-[10px] font-semibold text-txt-muted">{th.toggleLabel}</span>
           </div>
 
-          {/* More tools dropdown */}
           {showMoreTools && (
             <div
               onClick={(e) => e.stopPropagation()}
-              style={{
-                position: 'absolute', top: 38, right: 0,
-                background: 'var(--ds-color-bg-card)', border: '1px solid var(--ds-color-border-default)', borderRadius: 14,
-                boxShadow: '0 24px 60px rgba(0,0,0,.55)', zIndex: 300,
-                width: 660, maxWidth: '88vw', overflow: 'hidden',
-                animation: 'fadeUp .15s ease',
-              }}
+              className="absolute top-[38px] right-0 bg-card border border-line rounded-[14px] shadow-[0_24px_60px_rgba(0,0,0,.55)] z-[300] w-[660px] max-w-[88vw] overflow-hidden animate-[fadeUp_0.15s_ease]"
             >
-              <div style={{ padding: '16px 20px', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 22 }}>
+              <div className="p-5 px-[20px] grid grid-cols-3 gap-[22px]">
                 {MENU_GROUPS.map((grp) => (
-                  <div key={grp.title} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                    <span style={{ fontSize: 9.5, fontWeight: 800, color: grp.color, textTransform: 'uppercase', letterSpacing: 0.5, padding: '0 8px 8px' }}>{grp.title}</span>
+                  <div key={grp.title} className="flex flex-col gap-[2px]">
+                    <span className="text-[9.5px] font-extrabold uppercase tracking-[0.5px] pb-2 px-2" style={{ color: grp.color }}>{grp.title}</span>
                     {grp.items.map((it) => (
                       <NavLink
                         key={it.label}
                         to={it.href}
                         onClick={() => setShowMoreTools(false)}
-                        onMouseEnter={(e) => { e.currentTarget.style.background = 'var(--ds-color-bg-elevated)' }}
-                        onMouseLeave={(e) => { e.currentTarget.style.background = 'transparent' }}
-                        style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 10, padding: '7px 8px', borderRadius: 8, transition: 'background .12s' }}
+                        className="no-underline flex items-center gap-2.5 py-[7px] px-2 rounded-lg transition-colors duration-100 hover:bg-row-hover"
                       >
-                        <span style={{ width: 28, height: 28, borderRadius: 8, background: it.iconBg, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13, flexShrink: 0 }}>{it.icon}</span>
-                        <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0 }}>
-                          <span style={{ fontSize: 11.5, fontWeight: 700, color: 'var(--ds-color-text-primary)', whiteSpace: 'nowrap' }}>{it.label}</span>
-                          <span style={{ fontSize: 9, color: 'var(--ds-color-text-muted)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{it.desc}</span>
+                        <span className="w-7 h-7 rounded-lg flex items-center justify-center text-[13px] flex-shrink-0" style={{ background: it.iconBg }}>{it.icon}</span>
+                        <span className="flex flex-col gap-px min-w-0">
+                          <span className="text-[11.5px] font-bold text-txt-primary whitespace-nowrap">{it.label}</span>
+                          <span className="text-[9px] text-txt-muted whitespace-nowrap overflow-hidden text-ellipsis">{it.desc}</span>
                         </span>
                       </NavLink>
                     ))}
                   </div>
                 ))}
               </div>
-              <div style={{ borderTop: '1px solid var(--ds-color-border-subtle)', padding: '10px 20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'var(--ds-color-bg-elevated)' }}>
-                <span style={{ fontSize: 9.5, color: 'var(--ds-color-text-muted)', fontWeight: 600 }}>{toolCount} công cụ & sẽ tiếp tục mở rộng</span>
-                <NavLink to="/" onClick={() => setShowMoreTools(false)} style={{ textDecoration: 'none', fontSize: 10, fontWeight: 700, color: 'var(--ds-color-blue-400)' }}>{'\u{1F3E0}'} Về Trang chủ</NavLink>
+              <div className="border-t border-line-subtle py-2.5 px-5 flex justify-between items-center bg-elevated">
+                <span className="text-[9.5px] text-txt-muted font-semibold">{toolCount} công cụ & sẽ tiếp tục mở rộng</span>
+                <NavLink to="/" onClick={() => setShowMoreTools(false)} className="no-underline text-[10px] font-bold text-blue-400">{'\u{1F3E0}'} Về Trang chủ</NavLink>
               </div>
             </div>
           )}

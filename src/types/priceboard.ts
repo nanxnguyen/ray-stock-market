@@ -66,6 +66,15 @@ export type StockState = RawStock & {
   fl_: 'u' | 'd' | null
   fts: number
   ipts: number[]
+  /** Order book flash directions — set by _tickBook() */
+  fb1q: 'u' | 'd' | null
+  fb2q: 'u' | 'd' | null
+  fb3q: 'u' | 'd' | null
+  fa1q: 'u' | 'd' | null
+  fa2q: 'u' | 'd' | null
+  fa3q: 'u' | 'd' | null
+  frm: 'u' | 'd' | null
+  bts: number
 }
 
 export type StockRow = {
@@ -128,8 +137,11 @@ export type StockRow = {
   flashA1q?: string
   flashA2q?: string
   flashA3q?: string
+  flashQty?: string
   flashVol?: string
   flashRoom?: string
+  priceCellBg?: string
+  pinBorder?: string
   focusOutline?: string
 }
 

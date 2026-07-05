@@ -48,51 +48,43 @@ function HeatmapViewInner({ rows, th }: Props) {
   }, [rows])
 
   return (
-    <div style={{ flex: 1, overflow: 'auto', background: th.tableBg, padding: 14 }}>
+    <div className="flex-1 overflow-auto p-3.5" style={{ background: th.tableBg }}>
       {sectors.map(({ sec, cells, totalColor, totalPctStr }) => (
-        <div key={sec} style={{ marginBottom: 14 }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
-            <span style={{ fontSize: 10, fontWeight: 700, color: 'var(--ds-color-blue-400)', letterSpacing: 0.8, textTransform: 'uppercase', fontFamily: "'Inter', sans-serif" }}>{sec}</span>
-            <div style={{ flex: 1, height: 1, background: th.cellBorderL }} />
-            <span style={{ fontSize: 9, color: totalColor, fontWeight: 600 }}>{totalPctStr}</span>
+        <div key={sec} className="mb-3.5">
+          <div className="mb-1.5 flex items-center gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-blue-400">{sec}</span>
+            <div className="h-px flex-1" style={{ background: th.cellBorderL }} />
+            <span className="text-[9px] font-semibold" style={{ color: totalColor }}>{totalPctStr}</span>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+          <div className="flex flex-wrap gap-0.5">
             {cells.map((c) => (
                 <div
                   key={c.sym}
                   onClick={c.onChart}
                   onMouseEnter={(e) => { e.currentTarget.style.filter = 'brightness(1.25)' }}
                   onMouseLeave={(e) => { e.currentTarget.style.filter = 'none' }}
-                  style={{
-                    background: c.bg, borderRadius: 5,
-                    padding: '7px 8px', cursor: 'pointer',
-                    minWidth: c.minW,
-                    position: 'relative', overflow: 'hidden',
-                    transition: 'filter .2s',
-                  }}
+                  className="relative cursor-pointer overflow-hidden rounded-[5px] transition-[filter]"
+                  style={{ background: c.bg, minWidth: c.minW, padding: '7px 8px' }}
                 >
-                  <div style={{ fontSize: 11, fontWeight: 800, color: '#fff', fontFamily: "'Inter', sans-serif", letterSpacing: 0.3, lineHeight: 1.2 }}>{c.sym}</div>
-                  <div style={{ fontSize: 13, fontWeight: 700, color: '#fff', fontFamily: "'JetBrains Mono', monospace", lineHeight: 1.3 }}>{c.lp}</div>
-                  <div style={{ fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,.85)' }}>{c.pct}</div>
-                  <div style={{ fontSize: 8.5, color: 'rgba(255,255,255,.5)', marginTop: 1 }}>{c.vol}</div>
+                  <div className="text-[11px] font-extrabold leading-snug tracking-wide text-white">{c.sym}</div>
+                  <div className="text-[13px] font-bold leading-tight text-white font-mono">{c.lp}</div>
+                  <div className="text-[10px] font-bold text-white/85">{c.pct}</div>
+                  <div className="mt-px text-[8.5px] text-white/50">{c.vol}</div>
                 </div>
               ))}
           </div>
         </div>
       ))}
-      <div style={{
-        display: 'flex', alignItems: 'center', gap: 6, marginTop: 8, paddingTop: 8,
-        borderTop: `1px solid ${th.cellBorderL}`,
-      }}>
-        <span style={{ fontSize: 9, color: th.textMuted, fontFamily: "'Inter', sans-serif" }}>Chú thích:</span>
-        <div style={{ display: 'flex', gap: 3, alignItems: 'center' }}>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-purple-700)' }} /><span style={{ fontSize: 8, color: th.textMuted }}>Trần</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-green-600)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+4%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-green-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>+2%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-yellow-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>0%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-red-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-2%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-red-500)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>-4%</span>
-          <div style={{ width: 28, height: 14, borderRadius: 3, background: 'var(--ds-color-blue-700)', marginLeft: 4 }} /><span style={{ fontSize: 8, color: th.textMuted }}>Sàn</span>
+      <div className="mt-2 flex items-center gap-1.5 border-t pt-2" style={{ borderColor: th.cellBorderL }}>
+        <span className="text-[9px] font-sans text-txt-muted">Chú thích:</span>
+        <div className="flex items-center gap-0.5">
+          <div className="h-3.5 w-7 rounded-[3px] bg-purple-700" /><span className="text-[8px] text-txt-muted">Trần</span>
+          <div className="ml-1 h-3.5 w-7 rounded-[3px] bg-green-600" /><span className="text-[8px] text-txt-muted">+4%</span>
+          <div className="ml-1 h-3.5 w-7 rounded-[3px] bg-green-500" /><span className="text-[8px] text-txt-muted">+2%</span>
+          <div className="ml-1 h-3.5 w-7 rounded-[3px] bg-yellow-500" /><span className="text-[8px] text-txt-muted">0%</span>
+          <div className="ml-1 h-3.5 w-7 rounded-[3px] bg-red-500" /><span className="text-[8px] text-txt-muted">-2%</span>
+          <div className="ml-1 h-3.5 w-7 rounded-[3px] bg-red-500" /><span className="text-[8px] text-txt-muted">-4%</span>
+          <div className="ml-1 h-3.5 w-7 rounded-[3px] bg-blue-700" /><span className="text-[8px] text-txt-muted">Sàn</span>
         </div>
       </div>
     </div>

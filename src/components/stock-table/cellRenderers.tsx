@@ -44,23 +44,13 @@ function WatchlistCellRendererInner(props: ICellRendererParams<StockRow>) {
   if (!data) return null
 
   return (
-    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 4 }}>
-      <span
-        onClick={(e) => {
-          e.stopPropagation()
-          data.onOpenAlert?.()
-        }}
-        style={{ cursor: 'pointer', fontSize: 13, lineHeight: 1, color: '#f59e0b' }}
-        title="Đặt cảnh báo giá"
-      >
-        {'\u{1F514}'}
-      </span>
+    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <span
         onClick={(e) => {
           e.stopPropagation()
           data.onToggleWatchlist?.()
         }}
-        style={{ cursor: 'pointer', fontSize: 14, lineHeight: 1, color: data.watchlisted ? '#f87171' : '#60a5fa' }}
+        style={{ cursor: 'pointer', fontSize: 14, lineHeight: 1, color: data.watchlisted ? 'var(--ds-color-red-400)' : 'var(--ds-color-blue-400)' }}
       >
         {data.watchlisted ? '\u2665' : '\u2661'}
       </span>
@@ -113,7 +103,7 @@ function CompareCellRendererInner(props: ICellRendererParams<StockRow>) {
         e.stopPropagation()
         data.onToggleCompare?.()
       }}
-      style={{ width: 11, height: 11, cursor: 'pointer', accentColor: '#3b82f6' }}
+      style={{ width: 11, height: 11, cursor: 'pointer', accentColor: 'var(--ds-color-blue-500)' }}
     />
   )
 }

@@ -1,62 +1,33 @@
-# Task 3 Report: Color Mapping & Flash Timing
-
-## Changes Made
-
-### File: `src/App.tsx`
-
-1. **Line 29 — Flash window timeout**
-   - Changed: `const fl = s.fl_ && now - s.fts < 800`
-   - To: `const fl = s.fl_ && now - s.fts < 900`
-   - Matches design requirement at line 954 `now-s.fts<900`
-
-2. **Line 54 — Percentage color (`pc`) in mapStockRows**
-   - Changed: `pc: s.pct > 0 ? '#4ade80' : s.pct < 0 ? '#f87171' : '#facc15',`
-   - To: `pc: s.pct > 0 ? 'var(--ds-color-market-up)' : s.pct < 0 ? 'var(--ds-color-market-down)' : 'var(--ds-color-market-flat)',`
-   - Uses design tokens instead of hardcoded hex colors
-
-3. **Line 66 — Foreign balance color (`fbc`) in mapStockRows**
-   - Changed: `fbc: fbal >= 0 ? '#4ade80' : '#f87171',`
-   - To: `fbc: fbal >= 0 ? 'var(--ds-color-market-foreign-buy)' : 'var(--ds-color-red-400)',`
-   - Uses design tokens for foreign buy/sell colors
-
-4. **Line 230 — Percentage color (`pc`) in CW block**
-   - Changed: `pc: cw.pct > 0 ? '#4ade80' : cw.pct < 0 ? '#f87171' : '#facc15',`
-   - To: `pc: cw.pct > 0 ? 'var(--ds-color-market-up)' : cw.pct < 0 ? 'var(--ds-color-market-down)' : 'var(--ds-color-market-flat)',`
-   - Applies identical color mapping to covered warrants block
-
-5. **Line 242 — Foreign balance color (`fbc`) in CW block**
-   - Changed: `fbc: fbal >= 0 ? '#4ade80' : '#f87171',`
-   - To: `fbc: fbal >= 0 ? 'var(--ds-color-market-foreign-buy)' : 'var(--ds-color-red-400)',`
-   - Applies identical color mapping to covered warrants block
-
-## Verification Results
-
-### Linting
-```
-ESLint: No issues found
-```
-✓ PASS
-
-### Build
-```
-vite v8.1.2 building client environment for production...
-[...]
-✓ built in 397ms
-```
-✓ PASS
-
-- Successfully transpiled 175 modules
-- No TypeScript errors
-- No ESLint violations
-- Build completed successfully
-
-## Concerns
-
-None. All changes follow the brief requirements exactly:
-- Flash window changed from 800 → 900ms as specified
-- Both `mapStockRows` and CW block color mappings updated identically
-- All color expressions use CSS custom properties from design tokens (Task 2)
-- Type safety maintained (`StockRow` interface unchanged)
-- No functional logic altered, only color value references
+# Task 3 Report: StockDetailModal Complete
 
 ## Status: DONE
+
+## Commits
+
+- `2b41578` feat: StockDetailModal complete with all 7 tabs and ECharts
+
+## Test Summary
+
+- `npx tsc --noEmit`: 0 errors
+- `npm run build`: Success (built in 1.92s)
+
+## What Was Implemented
+
+Rewrote `src/components/StockDetailModal.tsx` (168 → ~1000 lines) with:
+
+1. **State management**: tab, ovPanel, ovRange, statSub, finSub, finPeriod, sentPeriod, eventSub, starred
+2. **ECharts lifecycle**: chartsRef, resize handler, dispose on tab change, render after tab change
+3. **Deterministic RNG**: Seeded by symbol, generates reproducible synthetic data
+4. **Synthetic data generator**: 135 intraday prices, 180 daily candles, depth ladder, financials
+5. **All 7 tabs**:
+   - **Overview**: Price chart with 7 range buttons, Liquidity/Foreign/Sentiment gauges, Key Metrics or Time & Sales sidebar
+   - **Statistics**: 3 sub-tabs (Thống kê/Giao dịch NĐTNN/Tự doanh) with liquidity chart, depth chart, foreign area chart, proprietary bar chart
+   - **Technical**: TradingView iframe embed with external link
+   - **Sentiment**: Period selector, summary gauge, 3 gauge cards, indicator groups table
+   - **Financials**: 2 sub-tabs (Tổng quan/Chỉ số), period toggle (Quý/Năm), P/E+P/B chart, Revenue/Profit chart, financial indicators table
+   - **Research**: Rating card with target price, 4 report cards
+   - **Events**: 4 sub-tabs (Tin tức/Cổ tức/Cổ đông/Sự kiện) with event list table
+
+## File Path
+
+- `/Users/nguyenanhnhut/Desktop/Projects/vietcap-priceboard/.superpowers/sdd/task-3-report.md`
