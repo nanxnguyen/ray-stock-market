@@ -1,10 +1,11 @@
 import type { ColDef, ColGroupDef } from 'ag-grid-community'
 import type { StockRow } from '../../types/priceboard'
-import { SymbolCellRenderer, WatchlistCellRenderer } from './cellRenderers'
+import { SymbolCellRenderer, WatchlistCellRenderer, SparklineCellRenderer, RoomCellRenderer, CompareCellRenderer } from './cellRenderers'
 
 type CellStyleParams = { data?: StockRow }
 
 const WIDTH = {
+  compare: 30,
   symbol: 72,
   pinnedPrice: 60,
   orderBookPrice: 60,
@@ -13,10 +14,11 @@ const WIDTH = {
   matchedVolume: 64,
   narrowMetric: 54,
   tradedVolume: 74,
+  sparkline: 70,
   foreignVolume: 74,
   room: 90,
   marketVolume: 90,
-  watchlist: 36,
+  watchlist: 52,
 } as const
 
 const cellStyle = (colorField?: string) => (params: CellStyleParams): Record<string, string | number> => {
@@ -33,6 +35,22 @@ const volumeCellStyle = (): Record<string, string | number> => ({
 })
 
 const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
+  {
+    headerName: '',
+    colId: 'compare',
+    width: WIDTH.compare,
+    minWidth: WIDTH.compare,
+    pinned: 'left',
+    cellRenderer: CompareCellRenderer,
+    headerClass: 'ag-header-cell-center',
+    suppressMenu: true,
+    cellStyle: () => ({
+      textAlign: 'center' as const,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    }),
+  },
   {
     headerName: 'Mã CK',
     colId: 'sym',
@@ -183,6 +201,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         headerName: 'Giá',
         colId: 'lp',
         field: 'lp',
+        sortable: true,
         width: WIDTH.matchedPrice,
         minWidth: WIDTH.matchedPrice,
         cellStyle: (params: CellStyleParams) => ({
@@ -208,6 +227,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         headerName: '%',
         colId: 'pct',
         field: 'pct',
+        sortable: true,
         width: WIDTH.narrowMetric,
         minWidth: WIDTH.narrowMetric,
         cellStyle: (params: CellStyleParams) => ({
@@ -231,9 +251,22 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         headerName: 'KLGD',
         colId: 'tvol',
         field: 'tvol',
+        sortable: true,
         width: WIDTH.tradedVolume,
         minWidth: WIDTH.tradedVolume,
         cellStyle: volumeCellStyle,
+      },
+      {
+        headerName: 'Xu hướng',
+        colId: 'sparkline',
+        width: WIDTH.sparkline,
+        minWidth: WIDTH.sparkline,
+        cellRenderer: SparklineCellRenderer,
+        suppressMenu: true,
+        cellStyle: () => ({
+          textAlign: 'center',
+          padding: '2px 6px',
+        }),
       },
     ],
   },
@@ -396,6 +429,7 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
         width: WIDTH.room,
         minWidth: WIDTH.room,
         headerClass: 'ag-header-cell-purple',
+        cellRenderer: RoomCellRenderer,
         cellStyle: () => ({
           textAlign: 'right',
           color: 'var(--ds-color-neutral-500)',
@@ -413,12 +447,13 @@ const columnDefs: (ColDef<StockRow> | ColGroupDef<StockRow>)[] = [
     cellStyle: volumeCellStyle,
   },
   {
-    headerName: '♡',
+    headerName: '',
     colId: 'watchlist',
     width: WIDTH.watchlist,
     minWidth: WIDTH.watchlist,
     cellRenderer: WatchlistCellRenderer,
     headerClass: ['ag-header-cell-heart', 'ag-header-cell-center'],
+    suppressMenu: true,
     cellStyle: () => ({
       textAlign: 'center' as const,
       cursor: 'pointer',

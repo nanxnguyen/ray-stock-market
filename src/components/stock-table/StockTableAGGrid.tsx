@@ -1,6 +1,6 @@
 import { memo, useCallback } from 'react'
 import { AgGridReact } from 'ag-grid-react'
-import type { RowClickedEvent, RowClassParams, RowStyle, SizeColumnsToFitGridStrategy } from 'ag-grid-community'
+import type { RowClassParams, RowStyle, SizeColumnsToFitGridStrategy } from 'ag-grid-community'
 import 'ag-grid-community/styles/ag-grid.css'
 import 'ag-grid-community/styles/ag-theme-alpine.css'
 import '../../styles/ag-grid-theme.css'
@@ -14,10 +14,6 @@ const autoSizeStrategy: SizeColumnsToFitGridStrategy = {
 }
 
 function StockTableAGGridInner({ rows }: Props) {
-  const onRowClicked = useCallback((e: RowClickedEvent<StockRow>) => {
-    e.data?.onChart()
-  }, [])
-
   const getRowStyle = useCallback(
     (params: RowClassParams<StockRow>): RowStyle | undefined =>
       params.data ? { background: params.data.bg } : undefined,
@@ -36,7 +32,6 @@ function StockTableAGGridInner({ rows }: Props) {
           groupHeaderHeight={21}
           animateRows={true}
           suppressRowClickSelection={true}
-          onRowClicked={onRowClicked}
           getRowStyle={getRowStyle}
           suppressCellFocus={true}
           suppressMovableColumns={true}
