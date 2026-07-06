@@ -16,7 +16,6 @@ import { SettingsIcon } from "lucide-react"
 export default function DevComponents() {
   const [modalOpen, setModalOpen] = useState(false)
   const [search, setSearch] = useState("")
-  const [filterActive, setFilterActive] = useState(false)
   const [chipActive, setChipActive] = useState("all")
 
   return (

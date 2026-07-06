@@ -48,4 +48,4 @@ function IconChip({
   )
 }
 
-export { IconChip, iconChipVariants }
+export { IconChip }

@@ -39,4 +39,4 @@ function NavPill({
   )
 }
 
-export { NavPill, navPillVariants }
+export { NavPill }

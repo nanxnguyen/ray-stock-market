@@ -47,7 +47,7 @@ function IndexStripInner({ indices, th }: Props) {
           </div>
         ))}
       </div>
-      <GlobalMarketsPanel th={th} />
+      <GlobalMarketsPanel />
     </div>
   )
 }

@@ -53,7 +53,7 @@ const VIEW_ICONS: Record<string, string> = {
 }
 
 function FilterBarInner({
-  th, filter, onFilterChange, onSearchTextChange, onSymbolAdd,
+  th, filter, onFilterChange, onSearchTextChange,
   viewMode = 'table', onViewModeChange,
   showSector, activeSector = 'Tất cả', onSectorChange,
   showAdvFilter, onToggleAdvFilter,

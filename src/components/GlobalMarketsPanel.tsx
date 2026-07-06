@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import type { ThemeTokens } from '../types/priceboard'
 
 type MarketItem = { name: string; v: number; chg: number; pct: number; unit?: string }
 type MarketTab = { id: string; label: string }
@@ -44,7 +43,7 @@ const DATA: Record<string, MarketItem[]> = {
 
 const fmt = (v: number) => v.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 
-export default function GlobalMarketsPanel({ th }: { th: ThemeTokens }) {
+export default function GlobalMarketsPanel() {
   const [active, setActive] = useState('US')
   const items = DATA[active] || []
 

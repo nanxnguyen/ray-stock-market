@@ -38,4 +38,4 @@ function Panel({
   )
 }
 
-export { Panel, panelVariants }
+export { Panel }
