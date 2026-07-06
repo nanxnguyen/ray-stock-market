@@ -17,7 +17,7 @@ type Props = {
   columns?: number
 }
 
-export default function FilterDropdown({ th, label, items, activeValue, onSelect, arrow = true, columns = 1 }: Props) {
+export default function FilterDropdown({ label, items, activeValue, onSelect, arrow = true, columns = 1 }: Props) {
   const [open, setOpen] = useState(false)
   const btnRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)

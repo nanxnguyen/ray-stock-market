@@ -57,4 +57,4 @@ function ChangeBadge({
   )
 }
 
-export { ChangeBadge, changeBadgeVariants }
+export { ChangeBadge }

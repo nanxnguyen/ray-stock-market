@@ -475,7 +475,9 @@ function App() {
   }, [stocksWithWatchlist, sortKey, sortDir])
 
   // Update visible stocks ref for keyboard nav
-  visibleStocksRef.current = sortedStocks
+  useEffect(() => {
+    visibleStocksRef.current = sortedStocks
+  }, [sortedStocks])
 
   // Reset filters
   const resetFilters = useCallback(() => {

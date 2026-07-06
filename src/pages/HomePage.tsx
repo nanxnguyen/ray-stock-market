@@ -68,7 +68,7 @@ type Props = {
 }
 
 function HomePageInner({
-  th, indices, filter, onFilterChange, onSearchTextChange, onSymbolAdd,
+  th, indices, filter, onFilterChange, onSearchTextChange,
   viewMode, onViewModeChange, showSector, onToggleSector, activeSector,
   onSectorChange, showAdvFilter, onToggleAdvFilter, showTradeHist,
   onToggleTradeHist, onExportCSV, filterPctFrom, filterPctTo,
@@ -90,7 +90,6 @@ function HomePageInner({
         filter={filter}
         onFilterChange={onFilterChange}
         onSearchTextChange={onSearchTextChange}
-        onSymbolAdd={onSymbolAdd}
         viewMode={viewMode}
         onViewModeChange={onViewModeChange}
         showSector={showSector}

@@ -46,4 +46,4 @@ function FilterChip({
   )
 }
 
-export { FilterChip, filterChipVariants }
+export { FilterChip }

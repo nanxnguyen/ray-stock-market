@@ -44,4 +44,4 @@ function PriceText({
   )
 }
 
-export { PriceText, priceTextVariants }
+export { PriceText }

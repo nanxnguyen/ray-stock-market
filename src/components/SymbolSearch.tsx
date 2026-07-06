@@ -9,7 +9,7 @@ type Props = {
   placeholder?: string
 }
 
-export default function SymbolSearch({ th, value, onChange, placeholder = 'Tìm mã ...' }: Props) {
+export default function SymbolSearch({ value, onChange, placeholder = 'Tìm mã ...' }: Props) {
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
 

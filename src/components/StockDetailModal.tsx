@@ -3,6 +3,24 @@ import type { StockState } from '../types/priceboard'
 
 type Props = { stock: StockState; onClose: () => void }
 
+type EChartInstance = {
+  setOption: (option: Record<string, unknown>) => void
+  dispose: () => void
+  resize: () => void
+}
+
+type EChartsApi = {
+  init: (element: HTMLElement, theme?: string | null, opts?: Record<string, unknown>) => EChartInstance
+}
+
+type WindowWithECharts = Window & {
+  echarts?: EChartsApi
+}
+
+type TooltipParam = {
+  dataIndex: number
+}
+
 type Tab = 'overview' | 'stats' | 'tech' | 'sentiment' | 'fin' | 'research' | 'events'
 type OvPanel = 'keymetrics' | 'timesales'
 type OvRange = '1D' | '2D' | '1W' | '3M' | 'YTD' | '1Y' | '5Y'
@@ -159,7 +177,7 @@ export default function StockDetailModal({ stock, onClose }: Props) {
   const [eventSub, setEventSub] = useState<EventSub>('news')
   const [starred, setStarred] = useState(false)
 
-  const chartsRef = useRef<Record<string, { dispose: () => void; resize: () => void }>>({})
+  const chartsRef = useRef<Record<string, EChartInstance>>({})
   const prevKeyRef = useRef('')
 
   const sym = stock.s
@@ -167,8 +185,9 @@ export default function StockDetailModal({ stock, onClose }: Props) {
 
   const mkChart = useCallback((id: string, option: Record<string, unknown>) => {
     const el = document.getElementById(id)
-    if (!el || !(window as any).echarts) return
-    const c = (window as any).echarts.init(el, null, { renderer: 'canvas' })
+    const echarts = (window as WindowWithECharts).echarts
+    if (!el || !echarts) return
+    const c = echarts.init(el, null, { renderer: 'canvas' })
     c.setOption(option)
     chartsRef.current[id] = c
   }, [])
@@ -192,24 +211,6 @@ export default function StockDetailModal({ stock, onClose }: Props) {
   }, [mkChart])
 
   useEffect(() => {
-    const key = [tab, statSub, finSub, finPeriod, sentPeriod, ovRange, ovPanel, sym].join('|')
-    if (key === prevKeyRef.current) return
-    prevKeyRef.current = key
-
-    const t = setTimeout(() => {
-      dispose()
-      if (!(window as any).echarts) {
-        const poll = setInterval(() => {
-          if ((window as any).echarts) { clearInterval(poll); renderCharts() }
-        }, 80)
-        return
-      }
-      renderCharts()
-    }, 30)
-    return () => clearTimeout(t)
-  }, [tab, statSub, finSub, finPeriod, sentPeriod, ovRange, ovPanel, sym, dispose])
-
-  useEffect(() => {
     const onResize = () => { Object.values(chartsRef.current).forEach(c => { try { c.resize() } catch { /* */ } }) }
     window.addEventListener('resize', onResize)
     return () => {
@@ -218,20 +219,12 @@ export default function StockDetailModal({ stock, onClose }: Props) {
     }
   }, [dispose])
 
-  function renderCharts() {
-    const d = data
-    if (tab === 'overview') renderOverview(d)
-    else if (tab === 'stats') renderStats(d)
-    else if (tab === 'sentiment') renderSentiment()
-    else if (tab === 'fin' && finSub === 'overview') renderFin(d)
-  }
-
   function renderOverview(d: Data) {
     mkChart('sdPrice', {
       animation: false, backgroundColor: 'transparent',
       tooltip: {
         trigger: 'axis', backgroundColor: '#0f1c2b', borderColor: '#26374a', textStyle: { color: '#cbd5e1', fontSize: 11 },
-        formatter: (ps: any[]) => { const i = ps[0].dataIndex; return d.times[i] + '<br/>Price ' + d.price[i].toFixed(2) + '<br/>Volume ' + d.vol[i].toLocaleString() },
+        formatter: (ps: TooltipParam[]) => { const i = ps[0].dataIndex; return d.times[i] + '<br/>Price ' + d.price[i].toFixed(2) + '<br/>Volume ' + d.vol[i].toLocaleString() },
       },
       axisPointer: { link: [{ xAxisIndex: 'all' }], lineStyle: { color: '#3a4a5c' } },
       grid: [gridDef({ left: 8, right: 44, top: 12, bottom: 78, height: '62%' }), { left: 8, right: 44, bottom: 24, height: '16%', containLabel: true }],
@@ -257,7 +250,7 @@ export default function StockDetailModal({ stock, onClose }: Props) {
       ],
     })
 
-    const area = (id: string, series: any[]) => mkChart(id, {
+    const area = (id: string, series: Record<string, unknown>[]) => mkChart(id, {
       animation: false, backgroundColor: 'transparent',
       tooltip: { trigger: 'axis', backgroundColor: '#0f1c2b', borderColor: '#26374a', textStyle: { color: '#cbd5e1', fontSize: 10 }, valueFormatter: (v: number) => fmtN(v) },
       grid: gridDef({ right: 44, bottom: 16 }),
@@ -378,6 +371,34 @@ export default function StockDetailModal({ stock, onClose }: Props) {
       ],
     })
   }
+
+  function renderCharts() {
+    const d = data
+    if (tab === 'overview') renderOverview(d)
+    else if (tab === 'stats') renderStats(d)
+    else if (tab === 'sentiment') renderSentiment()
+    else if (tab === 'fin' && finSub === 'overview') renderFin(d)
+  }
+
+  useEffect(() => {
+    const key = [tab, statSub, finSub, finPeriod, sentPeriod, ovRange, ovPanel, sym].join('|')
+    if (key === prevKeyRef.current) return
+    prevKeyRef.current = key
+
+    const t = setTimeout(() => {
+      dispose()
+      if (!(window as WindowWithECharts).echarts) {
+        const poll = setInterval(() => {
+          if ((window as WindowWithECharts).echarts) { clearInterval(poll); renderCharts() }
+        }, 80)
+        return
+      }
+      renderCharts()
+    }, 30)
+    return () => clearTimeout(t)
+    // renderCharts is intentionally keyed by the state tuple above.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [tab, statSub, finSub, finPeriod, sentPeriod, ovRange, ovPanel, sym, dispose])
 
   function sentVal() { return Math.round((makeRng(sym + 'sent')() * 0.5 + 0.15) * 100) }
 
